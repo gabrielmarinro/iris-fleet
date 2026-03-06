@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "fuente": "BI corporativo + ERP + Geotab + TMS",
+    "actualizado": "2026-03-06T01:00:00-06:00"
+  },
+  "torre_control": {
+    "uptime_flota_pct": 90.6,
+    "uptime_tendencia": "+2.1%",
+    "costo_por_km_mxn": 2.3,
+    "costo_tendencia": "-$0.15",
+    "mtbf_horas": 720,
+    "mtbf_tendencia": "+45h",
+    "activos_criticos": 3,
+    "activos_requieren_reemplazo_hoy": 1,
+    "roi_por_activo_pct": 18.5,
+    "roi_tendencia": "+1.2%",
+    "dias_sin_accidentes": 23,
+    "meta_dias_sin_accidentes": 30
+  },
+  "combustible": {
+    "consumo_hoy_litros": 12850,
+    "costo_hoy_mxn": 48500,
+    "unidades_consumo_anomalo": 3,
+    "rendimiento_promedio_kml": 3.6,
+    "rendimiento_benchmark_kml": 3.8
+  },
+  "compliance": {
+    "alertas_nom087_activas": 4,
+    "operadores_exceden_diario": 1,
+    "operadores_preventiva": 3,
+    "verificaciones_por_vencer_30d": 5,
+    "pct_cumplimiento_nom087": 92
+  },
+  "entregas": {
+    "entregas_hoy": 18,
+    "entregas_a_tiempo_pct": 78,
+    "entregas_demoradas": 4,
+    "sla_en_riesgo_monto_mxn": 450000
+  },
+  "seguridad": {
+    "incidentes_mes": 2,
+    "robos_mes": 0,
+    "accidentes_mes": 1,
+    "score_seguridad_flota": 82,
+    "zonas_riesgo_activas": 4
+  },
+  "financiero": {
+    "costo_operativo_mes_mxn": 4850000,
+    "ingresos_mes_mxn": 12400000,
+    "margen_pct": 60.9,
+    "ahorro_estimado_ia_mes_mxn": 180000,
+    "penalizaciones_sla_mes_mxn": 150000,
+    "costo_mantenimiento_mes_mxn": 485000,
+    "costo_combustible_mes_mxn": 1450000,
+    "costo_casetas_mes_mxn": 320000
+  }
+}

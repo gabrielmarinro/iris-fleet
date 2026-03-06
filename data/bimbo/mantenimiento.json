@@ -1,0 +1,108 @@
+{
+  "_meta": {
+    "fuente": "CMMS + ERP + Geotab diagnósticos",
+    "actualizado": "2026-03-06T01:00:00-06:00"
+  },
+  "en_taller": [
+    {
+      "unidad": "MX-5012",
+      "tipo_servicio": "correctivo",
+      "descripcion": "Reparación de turbo",
+      "ingreso": "2026-03-04T10:00:00-06:00",
+      "eta_salida": "2026-03-07T14:00:00-06:00",
+      "costo_estimado_mxn": 45000,
+      "prioridad": "alta",
+      "taller": "Taller Central CDMX",
+      "tecnico": "Ing. Martín Rojas",
+      "avance_pct": 65
+    },
+    {
+      "unidad": "MX-5034",
+      "tipo_servicio": "preventivo",
+      "descripcion": "Servicio 200,000 km — cambio aceite, filtros, balatas",
+      "ingreso": "2026-03-05T08:00:00-06:00",
+      "eta_salida": "2026-03-06T16:00:00-06:00",
+      "costo_estimado_mxn": 18500,
+      "prioridad": "media",
+      "taller": "Taller GDL Norte",
+      "tecnico": "Ing. Laura Soto",
+      "avance_pct": 80
+    },
+    {
+      "unidad": "MX-5067",
+      "tipo_servicio": "correctivo",
+      "descripcion": "Falla en sensor de temperatura + cambio de radiador",
+      "ingreso": "2026-03-03T14:00:00-06:00",
+      "eta_salida": "2026-03-08T10:00:00-06:00",
+      "costo_estimado_mxn": 62000,
+      "prioridad": "alta",
+      "taller": "Taller MTY",
+      "tecnico": "Ing. Pedro Salinas",
+      "avance_pct": 40
+    },
+    {
+      "unidad": "MX-5089",
+      "tipo_servicio": "preventivo",
+      "descripcion": "Cambio de llantas (6 posiciones) + alineación",
+      "ingreso": "2026-03-05T14:00:00-06:00",
+      "eta_salida": "2026-03-06T12:00:00-06:00",
+      "costo_estimado_mxn": 95000,
+      "prioridad": "media",
+      "taller": "Taller QRO",
+      "tecnico": "Ing. Ana Beltrán",
+      "avance_pct": 90
+    }
+  ],
+  "programados_proximos_7d": [
+    {
+      "unidad": "MX-2341",
+      "tipo": "preventivo",
+      "descripcion": "Servicio 100,000 km",
+      "fecha_programada": "2026-03-08",
+      "km_restantes": 2400,
+      "taller": "Taller CDMX"
+    },
+    {
+      "unidad": "EXT-4501",
+      "tipo": "verificacion",
+      "descripcion": "Verificación vehicular — vence en 7 días",
+      "fecha_programada": "2026-03-13",
+      "km_restantes": null,
+      "taller": "Centro de verificación CDMX"
+    },
+    {
+      "unidad": "MX-3102",
+      "tipo": "preventivo",
+      "descripcion": "Cambio de balatas traseras",
+      "fecha_programada": "2026-03-10",
+      "km_restantes": 5200,
+      "taller": "Taller GDL"
+    },
+    {
+      "unidad": "RF-1002",
+      "tipo": "preventivo",
+      "descripcion": "Servicio unidad refrigeración ThermoKing",
+      "fecha_programada": "2026-03-09",
+      "km_restantes": null,
+      "taller": "Taller especializado GDL"
+    },
+    {
+      "unidad": "MX-4001",
+      "tipo": "preventivo",
+      "descripcion": "Cambio de aceite + filtros",
+      "fecha_programada": "2026-03-12",
+      "km_restantes": 8100,
+      "taller": "Taller MTY"
+    }
+  ],
+  "resumen_mensual": {
+    "correctivos_mes": 8,
+    "preventivos_mes": 15,
+    "costo_total_mes_mxn": 485000,
+    "pct_preventivo_vs_correctivo": 65,
+    "meta_pct_preventivo": 80,
+    "mtbf_horas": 720,
+    "mttr_horas": 18,
+    "disponibilidad_flota_pct": 90.6
+  }
+}

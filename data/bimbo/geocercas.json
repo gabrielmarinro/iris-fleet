@@ -1,0 +1,174 @@
+{
+  "_meta": {
+    "fuente": "Google Maps API + Iris Fleet IA + SSP",
+    "actualizado": "2026-03-06T01:00:00-06:00"
+  },
+  "sugeridas_por_ia": [
+    {
+      "id": 1,
+      "nombre": "CEDIS Oriente",
+      "tipo": "critical",
+      "riesgo_score": 67,
+      "confianza_pct": 89,
+      "descripcion": "Patrón de detenciones recurrentes sugiere operaciones de carga/descarga.",
+      "poligono": [
+        {
+          "lat": 28.63,
+          "lng": -106.1
+        },
+        {
+          "lat": 28.64,
+          "lng": -106.08
+        },
+        {
+          "lat": 28.62,
+          "lng": -106.08
+        },
+        {
+          "lat": 28.62,
+          "lng": -106.1
+        }
+      ],
+      "impacto_economico": {
+        "ahorro_riesgo": 420000,
+        "ahorro_sla": 180000,
+        "ahorro_combustible": 95000
+      },
+      "imagen_mapa": "./screenshots/Sugerencia-en-tiempo-real-de-creacion-de-Geocerca-4.jpg"
+    },
+    {
+      "id": 2,
+      "nombre": "Zona Alto Riesgo Poniente",
+      "tipo": "critical",
+      "riesgo_score": 87,
+      "confianza_pct": 92,
+      "descripcion": "3 incidentes reportados. 8 vehículos expuestos en horario nocturno.",
+      "poligono": [
+        {
+          "lat": 28.68,
+          "lng": -106.15
+        },
+        {
+          "lat": 28.7,
+          "lng": -106.12
+        },
+        {
+          "lat": 28.67,
+          "lng": -106.11
+        },
+        {
+          "lat": 28.66,
+          "lng": -106.14
+        }
+      ],
+      "impacto_economico": {
+        "ahorro_riesgo": 1200000,
+        "ahorro_sla": 890000,
+        "ahorro_combustible": 340000
+      },
+      "imagen_mapa": "./screenshots/Sugerencia-en-tiempo-real-de-creacion-de-Geocerca-8.jpg"
+    },
+    {
+      "id": 3,
+      "nombre": "Corredor Carga Valiosa Norte",
+      "tipo": "critical",
+      "riesgo_score": 73,
+      "confianza_pct": 85,
+      "descripcion": "Ruta crítica: 20 unidades con carga >$500K MXN y 4 clientes Tier-1.",
+      "poligono": [
+        {
+          "lat": 28.73,
+          "lng": -106.2
+        },
+        {
+          "lat": 28.75,
+          "lng": -106.05
+        },
+        {
+          "lat": 28.74,
+          "lng": -106.04
+        },
+        {
+          "lat": 28.72,
+          "lng": -106.19
+        }
+      ],
+      "impacto_economico": {
+        "ahorro_riesgo": 680000,
+        "ahorro_sla": 520000,
+        "ahorro_combustible": 180000
+      },
+      "imagen_mapa": "./screenshots/Sugerencia-en-tiempo-real-de-creacion-de-Geocerca-6.jpg"
+    },
+    {
+      "id": 4,
+      "nombre": "Zona Sospecha Huachicoleo Sur",
+      "tipo": "emerging",
+      "riesgo_score": 54,
+      "confianza_pct": 71,
+      "descripcion": "Detenciones aleatorias correlacionadas con caída anómala de combustible.",
+      "poligono": [
+        {
+          "lat": 28.58,
+          "lng": -106.12
+        },
+        {
+          "lat": 28.6,
+          "lng": -106.09
+        },
+        {
+          "lat": 28.57,
+          "lng": -106.08
+        },
+        {
+          "lat": 28.56,
+          "lng": -106.11
+        }
+      ],
+      "impacto_economico": {
+        "ahorro_riesgo": 0,
+        "ahorro_sla": 0,
+        "ahorro_combustible": 520000
+      },
+      "imagen_mapa": "./screenshots/zona-huachicoleo-horizontal.jpg"
+    }
+  ],
+  "activas": [
+    {
+      "id": "GEO-A01",
+      "nombre": "CEDIS CDMX Norte",
+      "tipo": "cedis",
+      "lat": 19.4326,
+      "lng": -99.1332,
+      "radio_m": 200,
+      "activa": true
+    },
+    {
+      "id": "GEO-A02",
+      "nombre": "CEDIS Monterrey",
+      "tipo": "cedis",
+      "lat": 25.6866,
+      "lng": -100.3161,
+      "radio_m": 250,
+      "activa": true
+    },
+    {
+      "id": "GEO-A03",
+      "nombre": "CEDIS GDL",
+      "tipo": "cedis",
+      "lat": 20.6597,
+      "lng": -103.3496,
+      "radio_m": 200,
+      "activa": true
+    },
+    {
+      "id": "GEO-A04",
+      "nombre": "Planta Bimbo MTY",
+      "tipo": "planta",
+      "lat": 25.72,
+      "lng": -100.28,
+      "radio_m": 300,
+      "activa": true
+    }
+  ]
+}

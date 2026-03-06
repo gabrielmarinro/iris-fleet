@@ -1,0 +1,117 @@
+{
+  "_meta": {
+    "fuente": "AccuWeather API + NOAA + radar meteorológico",
+    "actualizado": "2026-03-06T01:00:00-06:00"
+  },
+  "condiciones_por_tramo": [
+    {
+      "tramo": "CDMX-Querétaro",
+      "condicion": "despejado",
+      "temp_c": 14,
+      "visibilidad_km": 15,
+      "viento_kmh": 12,
+      "precipitacion_mm": 0,
+      "alerta": null
+    },
+    {
+      "tramo": "Querétaro-SLP",
+      "condicion": "nublado",
+      "temp_c": 16,
+      "visibilidad_km": 8,
+      "viento_kmh": 18,
+      "precipitacion_mm": 0,
+      "alerta": null
+    },
+    {
+      "tramo": "SLP-Saltillo",
+      "condicion": "lluvia_moderada",
+      "temp_c": 12,
+      "visibilidad_km": 4,
+      "viento_kmh": 25,
+      "precipitacion_mm": 8,
+      "alerta": {
+        "tipo": "lluvia",
+        "severidad": "media",
+        "mensaje": "Lluvia moderada. Reducir velocidad.",
+        "inicio": "2026-03-05T23:00:00-06:00",
+        "estimacion_fin": "2026-03-06T06:00:00-06:00"
+      }
+    },
+    {
+      "tramo": "Saltillo-MTY",
+      "condicion": "neblina",
+      "temp_c": 10,
+      "visibilidad_km": 0.2,
+      "viento_kmh": 5,
+      "precipitacion_mm": 0,
+      "alerta": {
+        "tipo": "neblina",
+        "severidad": "alta",
+        "mensaje": "Neblina densa. Visibilidad <200m. Precaución extrema.",
+        "inicio": "2026-03-05T23:30:00-06:00",
+        "estimacion_fin": "2026-03-06T07:00:00-06:00"
+      }
+    },
+    {
+      "tramo": "GDL-León",
+      "condicion": "despejado",
+      "temp_c": 18,
+      "visibilidad_km": 20,
+      "viento_kmh": 8,
+      "precipitacion_mm": 0,
+      "alerta": null
+    },
+    {
+      "tramo": "CDMX-Puebla",
+      "condicion": "parcialmente_nublado",
+      "temp_c": 15,
+      "visibilidad_km": 12,
+      "viento_kmh": 15,
+      "precipitacion_mm": 0,
+      "alerta": null
+    },
+    {
+      "tramo": "CDMX-Toluca-Morelia",
+      "condicion": "despejado",
+      "temp_c": 12,
+      "visibilidad_km": 18,
+      "viento_kmh": 10,
+      "precipitacion_mm": 0,
+      "alerta": null
+    },
+    {
+      "tramo": "Tijuana-Hermosillo",
+      "condicion": "despejado",
+      "temp_c": 22,
+      "visibilidad_km": 25,
+      "viento_kmh": 20,
+      "precipitacion_mm": 0,
+      "alerta": null
+    },
+    {
+      "tramo": "Mérida-Cancún",
+      "condicion": "parcialmente_nublado",
+      "temp_c": 28,
+      "visibilidad_km": 15,
+      "viento_kmh": 22,
+      "precipitacion_mm": 2,
+      "alerta": null
+    },
+    {
+      "tramo": "MTY-Reynosa",
+      "condicion": "nublado",
+      "temp_c": 20,
+      "visibilidad_km": 6,
+      "viento_kmh": 15,
+      "precipitacion_mm": 0,
+      "alerta": null
+    }
+  ],
+  "pronostico_4h": {
+    "tendencia_general": "Lluvia en norte del país se intensifica. Neblina persistente en Saltillo-MTY hasta amanecer.",
+    "alertas_nowcast": [
+      "Granizo posible en tramo SLP-Matehuala entre 03:00-05:00",
+      "Vientos >40 km/h esperados en La Rumorosa desde 06:00"
+    ]
+  }
+}

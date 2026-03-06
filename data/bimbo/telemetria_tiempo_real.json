@@ -1,0 +1,2803 @@
+{
+  "_meta": {
+    "fuente": "Geotab + Samsara real-time API",
+    "actualizado": "2026-03-06T01:00:00-06:00",
+    "vehiculos_reportando": 22
+  },
+  "telemetria": [
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "MX-3012",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 2024,
+        "temp_motor_c": 87,
+        "presion_aceite_psi": 58,
+        "temp_aceite_c": 103,
+        "temp_refrigerante_c": 94,
+        "vibracion_nivel": 0.78,
+        "horas_motor": 23056
+      },
+      "transmision": {
+        "temp_c": 74,
+        "marcha_actual": 9,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 104,
+        "desgaste_pastillas_pct": 53,
+        "abs_activo": false,
+        "temp_discos_c": 220
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 101,
+          "temp_c": 46,
+          "desgaste_pct": 11
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 98,
+          "temp_c": 49,
+          "desgaste_pct": 51
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 114,
+          "temp_c": 63,
+          "desgaste_pct": 26
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 107,
+          "temp_c": 39,
+          "desgaste_pct": 22
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 109,
+          "temp_c": 52,
+          "desgaste_pct": 37
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 100,
+          "temp_c": 54,
+          "desgaste_pct": 51
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 109,
+          "temp_c": 61,
+          "desgaste_pct": 12
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 105,
+          "temp_c": 37,
+          "desgaste_pct": 37
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 110,
+          "temp_c": 40,
+          "desgaste_pct": 18
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 112,
+          "temp_c": 64,
+          "desgaste_pct": 41
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 26,
+        "consumo_lh": 17.0,
+        "rendimiento_kml": 3.3,
+        "tanque_litros": 600,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 12.9,
+        "voltaje_alternador_v": 14.2
+      },
+      "cabina": {
+        "temp_interior_c": 28,
+        "ac_encendido": true,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": null,
+        "humedad_pct": null,
+        "refrigeracion_activa": false,
+        "peso_carga_kg": 18908
+      },
+      "gps": {
+        "lat": 23.361,
+        "lng": -99.8374,
+        "velocidad_kmh": 93,
+        "altitud_m": 880,
+        "heading_deg": 123,
+        "satelites": 10,
+        "hdop": 1.5,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 3,
+        "frenados_agresivos_hoy": 2,
+        "excesos_velocidad_hoy": 0,
+        "score_conduccion": 77
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "MX-2478",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 1545,
+        "temp_motor_c": 98,
+        "presion_aceite_psi": 44,
+        "temp_aceite_c": 100,
+        "temp_refrigerante_c": 85,
+        "vibracion_nivel": 0.12,
+        "horas_motor": 19398
+      },
+      "transmision": {
+        "temp_c": 83,
+        "marcha_actual": 10,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 123,
+        "desgaste_pastillas_pct": 40,
+        "abs_activo": false,
+        "temp_discos_c": 196
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 95,
+          "temp_c": 36,
+          "desgaste_pct": 47
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 106,
+          "temp_c": 53,
+          "desgaste_pct": 35
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 95,
+          "temp_c": 57,
+          "desgaste_pct": 10
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 115,
+          "temp_c": 40,
+          "desgaste_pct": 28
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 107,
+          "temp_c": 44,
+          "desgaste_pct": 28
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 105,
+          "temp_c": 57,
+          "desgaste_pct": 27
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 114,
+          "temp_c": 45,
+          "desgaste_pct": 14
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 102,
+          "temp_c": 63,
+          "desgaste_pct": 39
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 95,
+          "temp_c": 58,
+          "desgaste_pct": 47
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 96,
+          "temp_c": 44,
+          "desgaste_pct": 28
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 66,
+        "consumo_lh": 8.7,
+        "rendimiento_kml": 3.3,
+        "tanque_litros": 500,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 13.5,
+        "voltaje_alternador_v": 13.9
+      },
+      "cabina": {
+        "temp_interior_c": 26,
+        "ac_encendido": true,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": null,
+        "humedad_pct": null,
+        "refrigeracion_activa": false,
+        "peso_carga_kg": 14879
+      },
+      "gps": {
+        "lat": 19.5791,
+        "lng": -99.7949,
+        "velocidad_kmh": 83,
+        "altitud_m": 2331,
+        "heading_deg": 142,
+        "satelites": 8,
+        "hdop": 1.6,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 2,
+        "frenados_agresivos_hoy": 0,
+        "excesos_velocidad_hoy": 0,
+        "score_conduccion": 84
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "MX-2456",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 1615,
+        "temp_motor_c": 89,
+        "presion_aceite_psi": 53,
+        "temp_aceite_c": 92,
+        "temp_refrigerante_c": 94,
+        "vibracion_nivel": 0.55,
+        "horas_motor": 20537
+      },
+      "transmision": {
+        "temp_c": 72,
+        "marcha_actual": 12,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 124,
+        "desgaste_pastillas_pct": 21,
+        "abs_activo": false,
+        "temp_discos_c": 173
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 109,
+          "temp_c": 47,
+          "desgaste_pct": 25
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 98,
+          "temp_c": 52,
+          "desgaste_pct": 23
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 105,
+          "temp_c": 63,
+          "desgaste_pct": 10
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 95,
+          "temp_c": 47,
+          "desgaste_pct": 23
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 100,
+          "temp_c": 50,
+          "desgaste_pct": 35
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 109,
+          "temp_c": 51,
+          "desgaste_pct": 36
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 95,
+          "temp_c": 40,
+          "desgaste_pct": 22
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 113,
+          "temp_c": 47,
+          "desgaste_pct": 12
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 97,
+          "temp_c": 45,
+          "desgaste_pct": 33
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 101,
+          "temp_c": 50,
+          "desgaste_pct": 51
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 95,
+        "consumo_lh": 12.5,
+        "rendimiento_kml": 4.0,
+        "tanque_litros": 500,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 14.1,
+        "voltaje_alternador_v": 14.4
+      },
+      "cabina": {
+        "temp_interior_c": 24,
+        "ac_encendido": false,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": null,
+        "humedad_pct": null,
+        "refrigeracion_activa": false,
+        "peso_carga_kg": 12638
+      },
+      "gps": {
+        "lat": 30.5926,
+        "lng": -113.7259,
+        "velocidad_kmh": 73,
+        "altitud_m": 1970,
+        "heading_deg": 325,
+        "satelites": 10,
+        "hdop": 2.1,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 1,
+        "frenados_agresivos_hoy": 4,
+        "excesos_velocidad_hoy": 3,
+        "score_conduccion": 78
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "MX-2341",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 1935,
+        "temp_motor_c": 89,
+        "presion_aceite_psi": 57,
+        "temp_aceite_c": 94,
+        "temp_refrigerante_c": 90,
+        "vibracion_nivel": 0.48,
+        "horas_motor": 13660
+      },
+      "transmision": {
+        "temp_c": 85,
+        "marcha_actual": 8,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 107,
+        "desgaste_pastillas_pct": 29,
+        "abs_activo": false,
+        "temp_discos_c": 166
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 95,
+          "temp_c": 49,
+          "desgaste_pct": 37
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 104,
+          "temp_c": 57,
+          "desgaste_pct": 23
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 102,
+          "temp_c": 54,
+          "desgaste_pct": 23
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 100,
+          "temp_c": 44,
+          "desgaste_pct": 32
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 103,
+          "temp_c": 47,
+          "desgaste_pct": 28
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 95,
+          "temp_c": 37,
+          "desgaste_pct": 21
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 99,
+          "temp_c": 49,
+          "desgaste_pct": 38
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 106,
+          "temp_c": 58,
+          "desgaste_pct": 23
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 98,
+          "temp_c": 47,
+          "desgaste_pct": 11
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 97,
+          "temp_c": 39,
+          "desgaste_pct": 27
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 53,
+        "consumo_lh": 9.0,
+        "rendimiento_kml": 3.0,
+        "tanque_litros": 400,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 13.4,
+        "voltaje_alternador_v": 13.9
+      },
+      "cabina": {
+        "temp_interior_c": 22,
+        "ac_encendido": false,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": null,
+        "humedad_pct": null,
+        "refrigeracion_activa": false,
+        "peso_carga_kg": 10035
+      },
+      "gps": {
+        "lat": 20.4604,
+        "lng": -102.4534,
+        "velocidad_kmh": 93,
+        "altitud_m": 1960,
+        "heading_deg": 263,
+        "satelites": 8,
+        "hdop": 2.3,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 3,
+        "frenados_agresivos_hoy": 3,
+        "excesos_velocidad_hoy": 3,
+        "score_conduccion": 96
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "MX-3045",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 1890,
+        "temp_motor_c": 98,
+        "presion_aceite_psi": 46,
+        "temp_aceite_c": 102,
+        "temp_refrigerante_c": 93,
+        "vibracion_nivel": 0.56,
+        "horas_motor": 20524
+      },
+      "transmision": {
+        "temp_c": 82,
+        "marcha_actual": 11,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 110,
+        "desgaste_pastillas_pct": 26,
+        "abs_activo": false,
+        "temp_discos_c": 121
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 102,
+          "temp_c": 41,
+          "desgaste_pct": 12
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 111,
+          "temp_c": 37,
+          "desgaste_pct": 35
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 110,
+          "temp_c": 54,
+          "desgaste_pct": 11
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 115,
+          "temp_c": 65,
+          "desgaste_pct": 12
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 112,
+          "temp_c": 57,
+          "desgaste_pct": 18
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 107,
+          "temp_c": 61,
+          "desgaste_pct": 45
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 107,
+          "temp_c": 38,
+          "desgaste_pct": 14
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 96,
+          "temp_c": 48,
+          "desgaste_pct": 41
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 108,
+          "temp_c": 58,
+          "desgaste_pct": 22
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 107,
+          "temp_c": 60,
+          "desgaste_pct": 39
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 30,
+        "consumo_lh": 14.5,
+        "rendimiento_kml": 4.1,
+        "tanque_litros": 400,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 14.0,
+        "voltaje_alternador_v": 14.1
+      },
+      "cabina": {
+        "temp_interior_c": 24,
+        "ac_encendido": false,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": null,
+        "humedad_pct": null,
+        "refrigeracion_activa": false,
+        "peso_carga_kg": 15799
+      },
+      "gps": {
+        "lat": 20.6175,
+        "lng": -101.9787,
+        "velocidad_kmh": 73,
+        "altitud_m": 1382,
+        "heading_deg": 98,
+        "satelites": 8,
+        "hdop": 2.3,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 2,
+        "frenados_agresivos_hoy": 0,
+        "excesos_velocidad_hoy": 1,
+        "score_conduccion": 76
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "MX-3089",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 1692,
+        "temp_motor_c": 88,
+        "presion_aceite_psi": 48,
+        "temp_aceite_c": 93,
+        "temp_refrigerante_c": 89,
+        "vibracion_nivel": 0.18,
+        "horas_motor": 22938
+      },
+      "transmision": {
+        "temp_c": 74,
+        "marcha_actual": 11,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 120,
+        "desgaste_pastillas_pct": 28,
+        "abs_activo": false,
+        "temp_discos_c": 215
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 110,
+          "temp_c": 41,
+          "desgaste_pct": 10
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 112,
+          "temp_c": 53,
+          "desgaste_pct": 11
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 97,
+          "temp_c": 56,
+          "desgaste_pct": 41
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 112,
+          "temp_c": 64,
+          "desgaste_pct": 49
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 97,
+          "temp_c": 49,
+          "desgaste_pct": 40
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 105,
+          "temp_c": 36,
+          "desgaste_pct": 51
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 96,
+          "temp_c": 57,
+          "desgaste_pct": 53
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 107,
+          "temp_c": 51,
+          "desgaste_pct": 41
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 102,
+          "temp_c": 62,
+          "desgaste_pct": 17
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 102,
+          "temp_c": 54,
+          "desgaste_pct": 20
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 53,
+        "consumo_lh": 16.8,
+        "rendimiento_kml": 3.0,
+        "tanque_litros": 400,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 14.0,
+        "voltaje_alternador_v": 13.9
+      },
+      "cabina": {
+        "temp_interior_c": 21,
+        "ac_encendido": false,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": null,
+        "humedad_pct": null,
+        "refrigeracion_activa": false,
+        "peso_carga_kg": 14591
+      },
+      "gps": {
+        "lat": 23.6757,
+        "lng": -100.7234,
+        "velocidad_kmh": 106,
+        "altitud_m": 1040,
+        "heading_deg": 175,
+        "satelites": 11,
+        "hdop": 2.5,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 1,
+        "frenados_agresivos_hoy": 0,
+        "excesos_velocidad_hoy": 0,
+        "score_conduccion": 97
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "MX-3102",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 1714,
+        "temp_motor_c": 96,
+        "presion_aceite_psi": 40,
+        "temp_aceite_c": 100,
+        "temp_refrigerante_c": 91,
+        "vibracion_nivel": 0.68,
+        "horas_motor": 22816
+      },
+      "transmision": {
+        "temp_c": 74,
+        "marcha_actual": 10,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 106,
+        "desgaste_pastillas_pct": 38,
+        "abs_activo": false,
+        "temp_discos_c": 168
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 115,
+          "temp_c": 59,
+          "desgaste_pct": 51
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 101,
+          "temp_c": 54,
+          "desgaste_pct": 50
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 111,
+          "temp_c": 51,
+          "desgaste_pct": 11
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 97,
+          "temp_c": 57,
+          "desgaste_pct": 34
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 96,
+          "temp_c": 56,
+          "desgaste_pct": 50
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 106,
+          "temp_c": 37,
+          "desgaste_pct": 17
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 110,
+          "temp_c": 40,
+          "desgaste_pct": 39
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 110,
+          "temp_c": 49,
+          "desgaste_pct": 31
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 102,
+          "temp_c": 39,
+          "desgaste_pct": 33
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 107,
+          "temp_c": 60,
+          "desgaste_pct": 41
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 38,
+        "consumo_lh": 9.1,
+        "rendimiento_kml": 4.1,
+        "tanque_litros": 500,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 13.3,
+        "voltaje_alternador_v": 14.6
+      },
+      "cabina": {
+        "temp_interior_c": 20,
+        "ac_encendido": false,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": null,
+        "humedad_pct": null,
+        "refrigeracion_activa": false,
+        "peso_carga_kg": 21821
+      },
+      "gps": {
+        "lat": 21.372,
+        "lng": -102.7101,
+        "velocidad_kmh": 91,
+        "altitud_m": 503,
+        "heading_deg": 86,
+        "satelites": 8,
+        "hdop": 1.1,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 1,
+        "frenados_agresivos_hoy": 3,
+        "excesos_velocidad_hoy": 1,
+        "score_conduccion": 66
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "MX-3134",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 1650,
+        "temp_motor_c": 94,
+        "presion_aceite_psi": 64,
+        "temp_aceite_c": 88,
+        "temp_refrigerante_c": 86,
+        "vibracion_nivel": 0.46,
+        "horas_motor": 19005
+      },
+      "transmision": {
+        "temp_c": 71,
+        "marcha_actual": 12,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 106,
+        "desgaste_pastillas_pct": 24,
+        "abs_activo": false,
+        "temp_discos_c": 122
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 95,
+          "temp_c": 61,
+          "desgaste_pct": 31
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 111,
+          "temp_c": 35,
+          "desgaste_pct": 41
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 111,
+          "temp_c": 56,
+          "desgaste_pct": 27
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 113,
+          "temp_c": 37,
+          "desgaste_pct": 26
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 112,
+          "temp_c": 39,
+          "desgaste_pct": 55
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 110,
+          "temp_c": 64,
+          "desgaste_pct": 24
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 95,
+          "temp_c": 37,
+          "desgaste_pct": 34
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 106,
+          "temp_c": 64,
+          "desgaste_pct": 31
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 99,
+          "temp_c": 37,
+          "desgaste_pct": 13
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 109,
+          "temp_c": 37,
+          "desgaste_pct": 54
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 36,
+        "consumo_lh": 11.9,
+        "rendimiento_kml": 3.3,
+        "tanque_litros": 600,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 12.5,
+        "voltaje_alternador_v": 14.4
+      },
+      "cabina": {
+        "temp_interior_c": 23,
+        "ac_encendido": false,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": null,
+        "humedad_pct": null,
+        "refrigeracion_activa": false,
+        "peso_carga_kg": 17724
+      },
+      "gps": {
+        "lat": 20.3783,
+        "lng": -100.0661,
+        "velocidad_kmh": 97,
+        "altitud_m": 2190,
+        "heading_deg": 168,
+        "satelites": 8,
+        "hdop": 1.5,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 2,
+        "frenados_agresivos_hoy": 3,
+        "excesos_velocidad_hoy": 3,
+        "score_conduccion": 80
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "EXT-4501",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 1527,
+        "temp_motor_c": 89,
+        "presion_aceite_psi": 47,
+        "temp_aceite_c": 85,
+        "temp_refrigerante_c": 92,
+        "vibracion_nivel": 0.78,
+        "horas_motor": 24310
+      },
+      "transmision": {
+        "temp_c": 91,
+        "marcha_actual": 11,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 101,
+        "desgaste_pastillas_pct": 32,
+        "abs_activo": false,
+        "temp_discos_c": 204
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 104,
+          "temp_c": 42,
+          "desgaste_pct": 12
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 112,
+          "temp_c": 39,
+          "desgaste_pct": 49
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 112,
+          "temp_c": 64,
+          "desgaste_pct": 18
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 104,
+          "temp_c": 57,
+          "desgaste_pct": 30
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 114,
+          "temp_c": 52,
+          "desgaste_pct": 19
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 100,
+          "temp_c": 37,
+          "desgaste_pct": 32
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 95,
+          "temp_c": 62,
+          "desgaste_pct": 42
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 98,
+          "temp_c": 47,
+          "desgaste_pct": 47
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 99,
+          "temp_c": 46,
+          "desgaste_pct": 40
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 109,
+          "temp_c": 35,
+          "desgaste_pct": 14
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 32,
+        "consumo_lh": 13.4,
+        "rendimiento_kml": 3.1,
+        "tanque_litros": 400,
+        "variacion_anomala": true
+      },
+      "electrico": {
+        "voltaje_bateria_v": 14.1,
+        "voltaje_alternador_v": 14.1
+      },
+      "cabina": {
+        "temp_interior_c": 22,
+        "ac_encendido": false,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": null,
+        "humedad_pct": null,
+        "refrigeracion_activa": false,
+        "peso_carga_kg": 17435
+      },
+      "gps": {
+        "lat": 19.6153,
+        "lng": -100.6334,
+        "velocidad_kmh": 87,
+        "altitud_m": 2317,
+        "heading_deg": 139,
+        "satelites": 14,
+        "hdop": 2.5,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 4,
+        "frenados_agresivos_hoy": 3,
+        "excesos_velocidad_hoy": 3,
+        "score_conduccion": 85
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "MX-3156",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 1216,
+        "temp_motor_c": 98,
+        "presion_aceite_psi": 48,
+        "temp_aceite_c": 91,
+        "temp_refrigerante_c": 89,
+        "vibracion_nivel": 0.39,
+        "horas_motor": 13030
+      },
+      "transmision": {
+        "temp_c": 91,
+        "marcha_actual": 9,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 119,
+        "desgaste_pastillas_pct": 49,
+        "abs_activo": false,
+        "temp_discos_c": 154
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 112,
+          "temp_c": 38,
+          "desgaste_pct": 40
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 104,
+          "temp_c": 63,
+          "desgaste_pct": 25
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 109,
+          "temp_c": 48,
+          "desgaste_pct": 38
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 104,
+          "temp_c": 45,
+          "desgaste_pct": 42
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 114,
+          "temp_c": 49,
+          "desgaste_pct": 16
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 95,
+          "temp_c": 39,
+          "desgaste_pct": 38
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 114,
+          "temp_c": 36,
+          "desgaste_pct": 46
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 106,
+          "temp_c": 50,
+          "desgaste_pct": 14
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 95,
+          "temp_c": 52,
+          "desgaste_pct": 38
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 108,
+          "temp_c": 36,
+          "desgaste_pct": 18
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 82,
+        "consumo_lh": 16.1,
+        "rendimiento_kml": 3.3,
+        "tanque_litros": 400,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 13.3,
+        "voltaje_alternador_v": 14.4
+      },
+      "cabina": {
+        "temp_interior_c": 24,
+        "ac_encendido": true,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": null,
+        "humedad_pct": null,
+        "refrigeracion_activa": false,
+        "peso_carga_kg": 14558
+      },
+      "gps": {
+        "lat": 21.4527,
+        "lng": -103.6581,
+        "velocidad_kmh": 73,
+        "altitud_m": 936,
+        "heading_deg": 313,
+        "satelites": 12,
+        "hdop": 2.5,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 0,
+        "frenados_agresivos_hoy": 3,
+        "excesos_velocidad_hoy": 2,
+        "score_conduccion": 86
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "MX-3178",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 1459,
+        "temp_motor_c": 86,
+        "presion_aceite_psi": 56,
+        "temp_aceite_c": 105,
+        "temp_refrigerante_c": 85,
+        "vibracion_nivel": 0.53,
+        "horas_motor": 10052
+      },
+      "transmision": {
+        "temp_c": 76,
+        "marcha_actual": 12,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 107,
+        "desgaste_pastillas_pct": 49,
+        "abs_activo": false,
+        "temp_discos_c": 158
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 102,
+          "temp_c": 46,
+          "desgaste_pct": 19
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 100,
+          "temp_c": 55,
+          "desgaste_pct": 35
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 115,
+          "temp_c": 50,
+          "desgaste_pct": 47
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 114,
+          "temp_c": 51,
+          "desgaste_pct": 33
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 106,
+          "temp_c": 40,
+          "desgaste_pct": 19
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 95,
+          "temp_c": 47,
+          "desgaste_pct": 11
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 111,
+          "temp_c": 60,
+          "desgaste_pct": 28
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 107,
+          "temp_c": 38,
+          "desgaste_pct": 32
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 106,
+          "temp_c": 63,
+          "desgaste_pct": 30
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 112,
+          "temp_c": 49,
+          "desgaste_pct": 52
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 33,
+        "consumo_lh": 8.8,
+        "rendimiento_kml": 4.4,
+        "tanque_litros": 500,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 12.7,
+        "voltaje_alternador_v": 14.1
+      },
+      "cabina": {
+        "temp_interior_c": 28,
+        "ac_encendido": true,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": null,
+        "humedad_pct": null,
+        "refrigeracion_activa": false,
+        "peso_carga_kg": 13660
+      },
+      "gps": {
+        "lat": 25.8805,
+        "lng": -99.3364,
+        "velocidad_kmh": 101,
+        "altitud_m": 2039,
+        "heading_deg": 172,
+        "satelites": 8,
+        "hdop": 1.9,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 3,
+        "frenados_agresivos_hoy": 3,
+        "excesos_velocidad_hoy": 3,
+        "score_conduccion": 76
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "MX-3201",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 1893,
+        "temp_motor_c": 92,
+        "presion_aceite_psi": 64,
+        "temp_aceite_c": 102,
+        "temp_refrigerante_c": 94,
+        "vibracion_nivel": 0.23,
+        "horas_motor": 24139
+      },
+      "transmision": {
+        "temp_c": 86,
+        "marcha_actual": 12,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 109,
+        "desgaste_pastillas_pct": 25,
+        "abs_activo": false,
+        "temp_discos_c": 128
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 106,
+          "temp_c": 61,
+          "desgaste_pct": 11
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 101,
+          "temp_c": 61,
+          "desgaste_pct": 24
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 113,
+          "temp_c": 38,
+          "desgaste_pct": 11
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 96,
+          "temp_c": 49,
+          "desgaste_pct": 12
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 99,
+          "temp_c": 41,
+          "desgaste_pct": 19
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 111,
+          "temp_c": 60,
+          "desgaste_pct": 43
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 114,
+          "temp_c": 39,
+          "desgaste_pct": 23
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 104,
+          "temp_c": 62,
+          "desgaste_pct": 16
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 108,
+          "temp_c": 62,
+          "desgaste_pct": 31
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 112,
+          "temp_c": 50,
+          "desgaste_pct": 50
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 77,
+        "consumo_lh": 14.7,
+        "rendimiento_kml": 3.1,
+        "tanque_litros": 500,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 13.5,
+        "voltaje_alternador_v": 14.3
+      },
+      "cabina": {
+        "temp_interior_c": 27,
+        "ac_encendido": false,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": null,
+        "humedad_pct": null,
+        "refrigeracion_activa": false,
+        "peso_carga_kg": 15945
+      },
+      "gps": {
+        "lat": 21.1619,
+        "lng": -102.5151,
+        "velocidad_kmh": 110,
+        "altitud_m": 1729,
+        "heading_deg": 2,
+        "satelites": 14,
+        "hdop": 1.5,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 2,
+        "frenados_agresivos_hoy": 2,
+        "excesos_velocidad_hoy": 0,
+        "score_conduccion": 79
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "MX-4001",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 1376,
+        "temp_motor_c": 89,
+        "presion_aceite_psi": 52,
+        "temp_aceite_c": 103,
+        "temp_refrigerante_c": 81,
+        "vibracion_nivel": 0.12,
+        "horas_motor": 11466
+      },
+      "transmision": {
+        "temp_c": 79,
+        "marcha_actual": 11,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 107,
+        "desgaste_pastillas_pct": 38,
+        "abs_activo": false,
+        "temp_discos_c": 206
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 98,
+          "temp_c": 62,
+          "desgaste_pct": 28
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 101,
+          "temp_c": 42,
+          "desgaste_pct": 42
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 109,
+          "temp_c": 35,
+          "desgaste_pct": 22
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 105,
+          "temp_c": 48,
+          "desgaste_pct": 30
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 96,
+          "temp_c": 42,
+          "desgaste_pct": 24
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 109,
+          "temp_c": 59,
+          "desgaste_pct": 12
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 99,
+          "temp_c": 46,
+          "desgaste_pct": 28
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 102,
+          "temp_c": 43,
+          "desgaste_pct": 21
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 114,
+          "temp_c": 45,
+          "desgaste_pct": 23
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 111,
+          "temp_c": 45,
+          "desgaste_pct": 18
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 82,
+        "consumo_lh": 11.9,
+        "rendimiento_kml": 2.9,
+        "tanque_litros": 400,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 13.9,
+        "voltaje_alternador_v": 13.8
+      },
+      "cabina": {
+        "temp_interior_c": 21,
+        "ac_encendido": true,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": null,
+        "humedad_pct": null,
+        "refrigeracion_activa": false,
+        "peso_carga_kg": 10459
+      },
+      "gps": {
+        "lat": 21.9853,
+        "lng": -99.6007,
+        "velocidad_kmh": 88,
+        "altitud_m": 722,
+        "heading_deg": 251,
+        "satelites": 14,
+        "hdop": 1.1,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 3,
+        "frenados_agresivos_hoy": 2,
+        "excesos_velocidad_hoy": 3,
+        "score_conduccion": 65
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "MX-4023",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 1668,
+        "temp_motor_c": 82,
+        "presion_aceite_psi": 63,
+        "temp_aceite_c": 88,
+        "temp_refrigerante_c": 94,
+        "vibracion_nivel": 0.65,
+        "horas_motor": 18556
+      },
+      "transmision": {
+        "temp_c": 71,
+        "marcha_actual": 12,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 114,
+        "desgaste_pastillas_pct": 28,
+        "abs_activo": false,
+        "temp_discos_c": 159
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 96,
+          "temp_c": 60,
+          "desgaste_pct": 10
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 103,
+          "temp_c": 53,
+          "desgaste_pct": 26
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 109,
+          "temp_c": 53,
+          "desgaste_pct": 26
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 96,
+          "temp_c": 45,
+          "desgaste_pct": 53
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 109,
+          "temp_c": 40,
+          "desgaste_pct": 43
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 97,
+          "temp_c": 59,
+          "desgaste_pct": 16
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 96,
+          "temp_c": 38,
+          "desgaste_pct": 51
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 102,
+          "temp_c": 48,
+          "desgaste_pct": 40
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 104,
+          "temp_c": 43,
+          "desgaste_pct": 45
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 100,
+          "temp_c": 41,
+          "desgaste_pct": 26
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 30,
+        "consumo_lh": 10.9,
+        "rendimiento_kml": 4.0,
+        "tanque_litros": 500,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 13.9,
+        "voltaje_alternador_v": 14.4
+      },
+      "cabina": {
+        "temp_interior_c": 22,
+        "ac_encendido": true,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": null,
+        "humedad_pct": null,
+        "refrigeracion_activa": false,
+        "peso_carga_kg": 12182
+      },
+      "gps": {
+        "lat": 19.3357,
+        "lng": -99.2473,
+        "velocidad_kmh": 79,
+        "altitud_m": 1684,
+        "heading_deg": 293,
+        "satelites": 13,
+        "hdop": 1.7,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 5,
+        "frenados_agresivos_hoy": 3,
+        "excesos_velocidad_hoy": 2,
+        "score_conduccion": 68
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "MX-4045",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 2040,
+        "temp_motor_c": 92,
+        "presion_aceite_psi": 57,
+        "temp_aceite_c": 101,
+        "temp_refrigerante_c": 80,
+        "vibracion_nivel": 0.53,
+        "horas_motor": 15717
+      },
+      "transmision": {
+        "temp_c": 89,
+        "marcha_actual": 12,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 117,
+        "desgaste_pastillas_pct": 30,
+        "abs_activo": false,
+        "temp_discos_c": 159
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 100,
+          "temp_c": 44,
+          "desgaste_pct": 27
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 99,
+          "temp_c": 45,
+          "desgaste_pct": 40
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 102,
+          "temp_c": 56,
+          "desgaste_pct": 21
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 114,
+          "temp_c": 55,
+          "desgaste_pct": 44
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 104,
+          "temp_c": 44,
+          "desgaste_pct": 51
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 105,
+          "temp_c": 36,
+          "desgaste_pct": 24
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 115,
+          "temp_c": 64,
+          "desgaste_pct": 23
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 110,
+          "temp_c": 35,
+          "desgaste_pct": 35
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 101,
+          "temp_c": 51,
+          "desgaste_pct": 24
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 103,
+          "temp_c": 48,
+          "desgaste_pct": 15
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 65,
+        "consumo_lh": 8.2,
+        "rendimiento_kml": 3.8,
+        "tanque_litros": 500,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 12.6,
+        "voltaje_alternador_v": 14.2
+      },
+      "cabina": {
+        "temp_interior_c": 20,
+        "ac_encendido": true,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": null,
+        "humedad_pct": null,
+        "refrigeracion_activa": false,
+        "peso_carga_kg": 19139
+      },
+      "gps": {
+        "lat": 19.2953,
+        "lng": -98.0826,
+        "velocidad_kmh": 88,
+        "altitud_m": 1420,
+        "heading_deg": 255,
+        "satelites": 10,
+        "hdop": 0.9,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 5,
+        "frenados_agresivos_hoy": 4,
+        "excesos_velocidad_hoy": 3,
+        "score_conduccion": 85
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "MX-4067",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 1897,
+        "temp_motor_c": 85,
+        "presion_aceite_psi": 64,
+        "temp_aceite_c": 105,
+        "temp_refrigerante_c": 89,
+        "vibracion_nivel": 0.17,
+        "horas_motor": 20303
+      },
+      "transmision": {
+        "temp_c": 86,
+        "marcha_actual": 11,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 107,
+        "desgaste_pastillas_pct": 45,
+        "abs_activo": false,
+        "temp_discos_c": 138
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 101,
+          "temp_c": 62,
+          "desgaste_pct": 21
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 102,
+          "temp_c": 46,
+          "desgaste_pct": 12
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 107,
+          "temp_c": 57,
+          "desgaste_pct": 32
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 103,
+          "temp_c": 56,
+          "desgaste_pct": 17
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 100,
+          "temp_c": 61,
+          "desgaste_pct": 10
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 111,
+          "temp_c": 45,
+          "desgaste_pct": 32
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 112,
+          "temp_c": 38,
+          "desgaste_pct": 36
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 108,
+          "temp_c": 54,
+          "desgaste_pct": 50
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 109,
+          "temp_c": 63,
+          "desgaste_pct": 55
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 99,
+          "temp_c": 54,
+          "desgaste_pct": 48
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 33,
+        "consumo_lh": 17.5,
+        "rendimiento_kml": 2.8,
+        "tanque_litros": 400,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 13.5,
+        "voltaje_alternador_v": 13.8
+      },
+      "cabina": {
+        "temp_interior_c": 23,
+        "ac_encendido": true,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": null,
+        "humedad_pct": null,
+        "refrigeracion_activa": false,
+        "peso_carga_kg": 16596
+      },
+      "gps": {
+        "lat": 21.0811,
+        "lng": -88.354,
+        "velocidad_kmh": 98,
+        "altitud_m": 1442,
+        "heading_deg": 332,
+        "satelites": 10,
+        "hdop": 1.5,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 5,
+        "frenados_agresivos_hoy": 4,
+        "excesos_velocidad_hoy": 0,
+        "score_conduccion": 83
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "MX-4089",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 1233,
+        "temp_motor_c": 94,
+        "presion_aceite_psi": 41,
+        "temp_aceite_c": 104,
+        "temp_refrigerante_c": 81,
+        "vibracion_nivel": 0.37,
+        "horas_motor": 23524
+      },
+      "transmision": {
+        "temp_c": 87,
+        "marcha_actual": 10,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 110,
+        "desgaste_pastillas_pct": 35,
+        "abs_activo": false,
+        "temp_discos_c": 197
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 95,
+          "temp_c": 39,
+          "desgaste_pct": 23
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 97,
+          "temp_c": 41,
+          "desgaste_pct": 51
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 110,
+          "temp_c": 36,
+          "desgaste_pct": 31
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 97,
+          "temp_c": 49,
+          "desgaste_pct": 38
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 96,
+          "temp_c": 39,
+          "desgaste_pct": 35
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 104,
+          "temp_c": 38,
+          "desgaste_pct": 21
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 102,
+          "temp_c": 46,
+          "desgaste_pct": 28
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 96,
+          "temp_c": 62,
+          "desgaste_pct": 36
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 108,
+          "temp_c": 49,
+          "desgaste_pct": 33
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 97,
+          "temp_c": 62,
+          "desgaste_pct": 29
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 66,
+        "consumo_lh": 16.1,
+        "rendimiento_kml": 3.8,
+        "tanque_litros": 400,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 13.7,
+        "voltaje_alternador_v": 13.9
+      },
+      "cabina": {
+        "temp_interior_c": 21,
+        "ac_encendido": true,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": null,
+        "humedad_pct": null,
+        "refrigeracion_activa": false,
+        "peso_carga_kg": 14896
+      },
+      "gps": {
+        "lat": 21.7218,
+        "lng": -102.1941,
+        "velocidad_kmh": 97,
+        "altitud_m": 2306,
+        "heading_deg": 109,
+        "satelites": 8,
+        "hdop": 1.8,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 4,
+        "frenados_agresivos_hoy": 2,
+        "excesos_velocidad_hoy": 1,
+        "score_conduccion": 96
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "MX-4102",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 1755,
+        "temp_motor_c": 89,
+        "presion_aceite_psi": 63,
+        "temp_aceite_c": 86,
+        "temp_refrigerante_c": 88,
+        "vibracion_nivel": 0.21,
+        "horas_motor": 10048
+      },
+      "transmision": {
+        "temp_c": 83,
+        "marcha_actual": 11,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 119,
+        "desgaste_pastillas_pct": 20,
+        "abs_activo": false,
+        "temp_discos_c": 218
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 103,
+          "temp_c": 42,
+          "desgaste_pct": 33
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 105,
+          "temp_c": 39,
+          "desgaste_pct": 16
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 106,
+          "temp_c": 53,
+          "desgaste_pct": 27
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 110,
+          "temp_c": 43,
+          "desgaste_pct": 17
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 95,
+          "temp_c": 64,
+          "desgaste_pct": 46
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 111,
+          "temp_c": 36,
+          "desgaste_pct": 38
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 110,
+          "temp_c": 62,
+          "desgaste_pct": 32
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 114,
+          "temp_c": 35,
+          "desgaste_pct": 35
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 113,
+          "temp_c": 46,
+          "desgaste_pct": 14
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 100,
+          "temp_c": 43,
+          "desgaste_pct": 25
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 70,
+        "consumo_lh": 13.5,
+        "rendimiento_kml": 4.0,
+        "tanque_litros": 400,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 14.0,
+        "voltaje_alternador_v": 14.5
+      },
+      "cabina": {
+        "temp_interior_c": 24,
+        "ac_encendido": true,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": null,
+        "humedad_pct": null,
+        "refrigeracion_activa": false,
+        "peso_carga_kg": 21401
+      },
+      "gps": {
+        "lat": 20.4942,
+        "lng": -90.1804,
+        "velocidad_kmh": 92,
+        "altitud_m": 857,
+        "heading_deg": 122,
+        "satelites": 14,
+        "hdop": 1.9,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 2,
+        "frenados_agresivos_hoy": 3,
+        "excesos_velocidad_hoy": 1,
+        "score_conduccion": 69
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "RF-1001",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 2022,
+        "temp_motor_c": 83,
+        "presion_aceite_psi": 57,
+        "temp_aceite_c": 101,
+        "temp_refrigerante_c": 88,
+        "vibracion_nivel": 0.26,
+        "horas_motor": 21898
+      },
+      "transmision": {
+        "temp_c": 88,
+        "marcha_actual": 12,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 116,
+        "desgaste_pastillas_pct": 43,
+        "abs_activo": false,
+        "temp_discos_c": 143
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 110,
+          "temp_c": 62,
+          "desgaste_pct": 35
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 115,
+          "temp_c": 49,
+          "desgaste_pct": 11
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 98,
+          "temp_c": 39,
+          "desgaste_pct": 24
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 109,
+          "temp_c": 42,
+          "desgaste_pct": 40
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 95,
+          "temp_c": 51,
+          "desgaste_pct": 45
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 113,
+          "temp_c": 49,
+          "desgaste_pct": 15
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 115,
+          "temp_c": 64,
+          "desgaste_pct": 51
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 99,
+          "temp_c": 52,
+          "desgaste_pct": 34
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 114,
+          "temp_c": 51,
+          "desgaste_pct": 12
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 112,
+          "temp_c": 58,
+          "desgaste_pct": 39
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 49,
+        "consumo_lh": 9.6,
+        "rendimiento_kml": 3.0,
+        "tanque_litros": 600,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 12.6,
+        "voltaje_alternador_v": 14.6
+      },
+      "cabina": {
+        "temp_interior_c": 26,
+        "ac_encendido": true,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": 0.1,
+        "humedad_pct": 46,
+        "refrigeracion_activa": true,
+        "peso_carga_kg": 9197
+      },
+      "gps": {
+        "lat": 19.2922,
+        "lng": -98.7062,
+        "velocidad_kmh": 70,
+        "altitud_m": 1655,
+        "heading_deg": 105,
+        "satelites": 8,
+        "hdop": 1.7,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 5,
+        "frenados_agresivos_hoy": 4,
+        "excesos_velocidad_hoy": 1,
+        "score_conduccion": 98
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "RF-1002",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 2042,
+        "temp_motor_c": 90,
+        "presion_aceite_psi": 45,
+        "temp_aceite_c": 105,
+        "temp_refrigerante_c": 82,
+        "vibracion_nivel": 0.43,
+        "horas_motor": 9446
+      },
+      "transmision": {
+        "temp_c": 79,
+        "marcha_actual": 10,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 109,
+        "desgaste_pastillas_pct": 41,
+        "abs_activo": false,
+        "temp_discos_c": 129
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 99,
+          "temp_c": 55,
+          "desgaste_pct": 35
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 109,
+          "temp_c": 63,
+          "desgaste_pct": 38
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 98,
+          "temp_c": 52,
+          "desgaste_pct": 39
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 106,
+          "temp_c": 42,
+          "desgaste_pct": 23
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 105,
+          "temp_c": 47,
+          "desgaste_pct": 43
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 114,
+          "temp_c": 57,
+          "desgaste_pct": 21
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 97,
+          "temp_c": 55,
+          "desgaste_pct": 21
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 101,
+          "temp_c": 41,
+          "desgaste_pct": 13
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 95,
+          "temp_c": 60,
+          "desgaste_pct": 47
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 95,
+          "temp_c": 55,
+          "desgaste_pct": 47
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 93,
+        "consumo_lh": 8.4,
+        "rendimiento_kml": 3.5,
+        "tanque_litros": 500,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 12.7,
+        "voltaje_alternador_v": 14.3
+      },
+      "cabina": {
+        "temp_interior_c": 23,
+        "ac_encendido": true,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": 1.6,
+        "humedad_pct": 43,
+        "refrigeracion_activa": true,
+        "peso_carga_kg": 17943
+      },
+      "gps": {
+        "lat": 20.9779,
+        "lng": -102.127,
+        "velocidad_kmh": 85,
+        "altitud_m": 1127,
+        "heading_deg": 224,
+        "satelites": 13,
+        "hdop": 1.3,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 1,
+        "frenados_agresivos_hoy": 2,
+        "excesos_velocidad_hoy": 1,
+        "score_conduccion": 88
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "RF-1003",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 1794,
+        "temp_motor_c": 94,
+        "presion_aceite_psi": 63,
+        "temp_aceite_c": 102,
+        "temp_refrigerante_c": 91,
+        "vibracion_nivel": 0.43,
+        "horas_motor": 17825
+      },
+      "transmision": {
+        "temp_c": 78,
+        "marcha_actual": 12,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 104,
+        "desgaste_pastillas_pct": 59,
+        "abs_activo": false,
+        "temp_discos_c": 155
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 113,
+          "temp_c": 48,
+          "desgaste_pct": 46
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 96,
+          "temp_c": 58,
+          "desgaste_pct": 55
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 104,
+          "temp_c": 54,
+          "desgaste_pct": 34
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 107,
+          "temp_c": 52,
+          "desgaste_pct": 35
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 106,
+          "temp_c": 48,
+          "desgaste_pct": 55
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 100,
+          "temp_c": 65,
+          "desgaste_pct": 37
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 98,
+          "temp_c": 60,
+          "desgaste_pct": 12
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 105,
+          "temp_c": 53,
+          "desgaste_pct": 46
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 110,
+          "temp_c": 52,
+          "desgaste_pct": 45
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 98,
+          "temp_c": 40,
+          "desgaste_pct": 41
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 70,
+        "consumo_lh": 17.9,
+        "rendimiento_kml": 3.1,
+        "tanque_litros": 600,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 13.8,
+        "voltaje_alternador_v": 13.9
+      },
+      "cabina": {
+        "temp_interior_c": 20,
+        "ac_encendido": false,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": 2.8,
+        "humedad_pct": 64,
+        "refrigeracion_activa": true,
+        "peso_carga_kg": 20203
+      },
+      "gps": {
+        "lat": 25.584,
+        "lng": -100.6155,
+        "velocidad_kmh": 109,
+        "altitud_m": 1863,
+        "heading_deg": 228,
+        "satelites": 9,
+        "hdop": 2.4,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 2,
+        "frenados_agresivos_hoy": 0,
+        "excesos_velocidad_hoy": 1,
+        "score_conduccion": 65
+      }
+    },
+    {
+      "_fuente": "Geotab MyGeotab API + Samsara",
+      "unidad": "RF-1004",
+      "timestamp": "2026-03-06T01:00:00-06:00",
+      "motor": {
+        "rpm": 1266,
+        "temp_motor_c": 82,
+        "presion_aceite_psi": 47,
+        "temp_aceite_c": 95,
+        "temp_refrigerante_c": 89,
+        "vibracion_nivel": 0.11,
+        "horas_motor": 14196
+      },
+      "transmision": {
+        "temp_c": 71,
+        "marcha_actual": 12,
+        "modo": "automático"
+      },
+      "frenos": {
+        "presion_psi": 128,
+        "desgaste_pastillas_pct": 35,
+        "abs_activo": false,
+        "temp_discos_c": 206
+      },
+      "llantas_tpms": [
+        {
+          "posicion": "DI",
+          "presion_psi": 97,
+          "temp_c": 51,
+          "desgaste_pct": 21
+        },
+        {
+          "posicion": "DD",
+          "presion_psi": 105,
+          "temp_c": 63,
+          "desgaste_pct": 47
+        },
+        {
+          "posicion": "TIE",
+          "presion_psi": 100,
+          "temp_c": 54,
+          "desgaste_pct": 19
+        },
+        {
+          "posicion": "TII",
+          "presion_psi": 112,
+          "temp_c": 48,
+          "desgaste_pct": 33
+        },
+        {
+          "posicion": "TDE",
+          "presion_psi": 101,
+          "temp_c": 50,
+          "desgaste_pct": 53
+        },
+        {
+          "posicion": "TDI",
+          "presion_psi": 104,
+          "temp_c": 52,
+          "desgaste_pct": 29
+        },
+        {
+          "posicion": "RIE",
+          "presion_psi": 100,
+          "temp_c": 36,
+          "desgaste_pct": 39
+        },
+        {
+          "posicion": "RII",
+          "presion_psi": 104,
+          "temp_c": 60,
+          "desgaste_pct": 32
+        },
+        {
+          "posicion": "RDE",
+          "presion_psi": 109,
+          "temp_c": 43,
+          "desgaste_pct": 42
+        },
+        {
+          "posicion": "RDI",
+          "presion_psi": 95,
+          "temp_c": 44,
+          "desgaste_pct": 53
+        }
+      ],
+      "combustible": {
+        "nivel_pct": 28,
+        "consumo_lh": 10.7,
+        "rendimiento_kml": 4.4,
+        "tanque_litros": 600,
+        "variacion_anomala": false
+      },
+      "electrico": {
+        "voltaje_bateria_v": 12.9,
+        "voltaje_alternador_v": 14.3
+      },
+      "cabina": {
+        "temp_interior_c": 20,
+        "ac_encendido": true,
+        "cinturon_abrochado": true,
+        "puerta_abierta": false
+      },
+      "caja_remolque": {
+        "puerta_abierta": false,
+        "temp_interior_c": 3.0,
+        "humedad_pct": 64,
+        "refrigeracion_activa": true,
+        "peso_carga_kg": 9080
+      },
+      "gps": {
+        "lat": 19.623,
+        "lng": -99.3351,
+        "velocidad_kmh": 88,
+        "altitud_m": 1860,
+        "heading_deg": 22,
+        "satelites": 9,
+        "hdop": 1.3,
+        "señal_calidad": "buena"
+      },
+      "conduccion": {
+        "aceleraciones_bruscas_hoy": 4,
+        "frenados_agresivos_hoy": 3,
+        "excesos_velocidad_hoy": 0,
+        "score_conduccion": 97
+      }
+    }
+  ]
+}

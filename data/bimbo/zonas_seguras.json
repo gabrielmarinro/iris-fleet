@@ -1,0 +1,124 @@
+{
+  "_meta": {
+    "fuente": "Base interna Bimbo + Google Maps",
+    "actualizado": "2026-03-06T01:00:00-06:00"
+  },
+  "zonas": [
+    {
+      "id": "ZS-01",
+      "nombre": "Gasolinera BP Autopista México-Querétaro km 78",
+      "tipo": "gasolinera_segura",
+      "lat": 19.85,
+      "lng": -99.45,
+      "servicios": [
+        "⛽ Combustible",
+        "🅿️ Estacionamiento vigilado",
+        "🍽️ Alimentos",
+        "🚿 Sanitarios"
+      ],
+      "capacidad_camiones": 15,
+      "ocupacion_actual": 8
+    },
+    {
+      "id": "ZS-02",
+      "nombre": "Paradero Pemex Autopista SLP-MTY km 210",
+      "tipo": "gasolinera_segura",
+      "lat": 23.5,
+      "lng": -100.7,
+      "servicios": [
+        "⛽ Combustible",
+        "🅿️ Estacionamiento",
+        "🍽️ Alimentos"
+      ],
+      "capacidad_camiones": 20,
+      "ocupacion_actual": 12
+    },
+    {
+      "id": "ZS-03",
+      "nombre": "Estación de Servicio G500 Saltillo",
+      "tipo": "gasolinera_segura",
+      "lat": 25.42,
+      "lng": -101.0,
+      "servicios": [
+        "⛽ Combustible",
+        "🅿️ Patio vigilado",
+        "🛏️ Dormitorios",
+        "🍽️ Comedor"
+      ],
+      "capacidad_camiones": 30,
+      "ocupacion_actual": 15
+    },
+    {
+      "id": "ZS-04",
+      "nombre": "Patio Seguro Transportes GDL",
+      "tipo": "patio_seguro",
+      "lat": 20.68,
+      "lng": -103.38,
+      "servicios": [
+        "🅿️ Patio cerrado CCTV",
+        "🛏️ Dormitorios",
+        "🍽️ Comedor",
+        "🚿 Sanitarios"
+      ],
+      "capacidad_camiones": 40,
+      "ocupacion_actual": 22
+    },
+    {
+      "id": "ZS-05",
+      "nombre": "Base Militar km 120 MTY-Reynosa",
+      "tipo": "zona_militar",
+      "lat": 25.85,
+      "lng": -99.0,
+      "servicios": [
+        "🛡️ Seguridad militar",
+        "🅿️ Estacionamiento"
+      ],
+      "capacidad_camiones": 10,
+      "ocupacion_actual": 3
+    },
+    {
+      "id": "ZS-06",
+      "nombre": "CEDIS CDMX Norte (Bimbo)",
+      "tipo": "cedis",
+      "lat": 19.4326,
+      "lng": -99.1332,
+      "servicios": [
+        "🅿️ Patio",
+        "🍽️ Comedor",
+        "🛏️ Dormitorios",
+        "🔧 Taller"
+      ],
+      "capacidad_camiones": 80,
+      "ocupacion_actual": 30
+    },
+    {
+      "id": "ZS-07",
+      "nombre": "CEDIS Monterrey (Bimbo)",
+      "tipo": "cedis",
+      "lat": 25.6866,
+      "lng": -100.3161,
+      "servicios": [
+        "🅿️ Patio",
+        "🍽️ Comedor",
+        "🛏️ Dormitorios",
+        "🔧 Taller"
+      ],
+      "capacidad_camiones": 60,
+      "ocupacion_actual": 25
+    },
+    {
+      "id": "ZS-08",
+      "nombre": "CEDIS Guadalajara (Bimbo)",
+      "tipo": "cedis",
+      "lat": 20.6597,
+      "lng": -103.3496,
+      "servicios": [
+        "🅿️ Patio",
+        "🍽️ Comedor",
+        "🔧 Taller"
+      ],
+      "capacidad_camiones": 50,
+      "ocupacion_actual": 18
+    }
+  ]
+}

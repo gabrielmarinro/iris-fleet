@@ -1,0 +1,99 @@
+{
+  "_meta": {
+    "fuente": "SSP + Guardia Nacional + Waze + C5 + crowdsourced",
+    "actualizado": "2026-03-06T01:00:00-06:00"
+  },
+  "zonas_riesgo": [
+    {
+      "id": "ZR-001",
+      "nombre": "Boulevard Norte Poniente",
+      "tipo": "alto_riesgo",
+      "riesgo_score": 87,
+      "incidentes_60d": 3,
+      "descripcion": "3 robos reportados en 60 días. Horario nocturno.",
+      "lat_centro": 25.78,
+      "lng_centro": -100.35,
+      "radio_km": 5,
+      "horario_peligroso": "22:00-05:00",
+      "fuentes": [
+        "SSP Nuevo León",
+        "Waze reportes",
+        "Asociación de Transportistas"
+      ]
+    },
+    {
+      "id": "ZR-002",
+      "nombre": "Tramo Autopista del Sol km 80-120",
+      "tipo": "medio_riesgo",
+      "riesgo_score": 62,
+      "incidentes_60d": 1,
+      "descripcion": "Zona montañosa con curvas cerradas. 1 volcadura en 60 días.",
+      "lat_centro": 18.65,
+      "lng_centro": -99.48,
+      "radio_km": 20,
+      "horario_peligroso": "todo_horario",
+      "fuentes": [
+        "SCT",
+        "Google Maps Traffic"
+      ]
+    },
+    {
+      "id": "ZR-003",
+      "nombre": "Zona industrial Reynosa",
+      "tipo": "alto_riesgo",
+      "riesgo_score": 78,
+      "incidentes_60d": 2,
+      "descripcion": "Reportes de asalto en zona de carga nocturna.",
+      "lat_centro": 26.05,
+      "lng_centro": -98.3,
+      "radio_km": 3,
+      "horario_peligroso": "20:00-06:00",
+      "fuentes": [
+        "SSP Tamaulipas",
+        "Transportistas"
+      ]
+    },
+    {
+      "id": "ZR-004",
+      "nombre": "Caseta La Rumorosa",
+      "tipo": "medio_riesgo",
+      "riesgo_score": 55,
+      "incidentes_60d": 0,
+      "descripcion": "Pendiente peligrosa. Frenos sometidos. Historial de volcaduras.",
+      "lat_centro": 32.54,
+      "lng_centro": -116.05,
+      "radio_km": 8,
+      "horario_peligroso": "todo_horario",
+      "fuentes": [
+        "SCT",
+        "Protección Civil BC"
+      ]
+    }
+  ],
+  "alertas_activas": [
+    {
+      "tipo": "bloqueo_carretero",
+      "ubicacion": "Autopista CDMX-Puebla km 45",
+      "lat": 19.25,
+      "lng": -98.65,
+      "desde": "2026-03-05T22:00:00-06:00",
+      "fuente": "Waze + C5"
+    },
+    {
+      "tipo": "accidente",
+      "ubicacion": "Libramiento SLP km 12",
+      "lat": 22.18,
+      "lng": -100.95,
+      "desde": "2026-03-06T00:30:00-06:00",
+      "fuente": "Guardia Nacional + Google Maps"
+    },
+    {
+      "tipo": "lluvia_intensa",
+      "ubicacion": "Tramo SLP-MTY km 180-250",
+      "lat": 24.1,
+      "lng": -100.5,
+      "desde": "2026-03-05T23:00:00-06:00",
+      "fuente": "AccuWeather + Waze"
+    }
+  ]
+}

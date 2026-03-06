@@ -1,0 +1,509 @@
+{
+  "_meta": {
+    "fuente": "TMS / Oracle OTM",
+    "actualizado": "2026-03-06T01:00:00-06:00",
+    "total_rutas": 8
+  },
+  "rutas": [
+    {
+      "_fuente": "TMS / OTM planeación",
+      "id": "RTA-001",
+      "unidad": "MX-3012",
+      "nombre_ruta": "CDMX → Monterrey",
+      "origen": "CDMX",
+      "destino": "Monterrey",
+      "distancia_total_km": 912,
+      "tipo_carga": "Tortillas Tía Rosa",
+      "prioridad": "critica",
+      "shipment_id": "SHP-20260306-728",
+      "paradas": [
+        {
+          "nombre": "CEDIS CDMX Norte",
+          "tipo": "origen",
+          "planeada": "08:00",
+          "real": "08:15",
+          "status": "completada",
+          "lat": 19.4326,
+          "lng": -99.1332
+        },
+        {
+          "nombre": "Caseta Tepotzotlán",
+          "tipo": "caseta",
+          "planeada": "08:45",
+          "real": "08:52",
+          "status": "completada",
+          "lat": 19.715,
+          "lng": -99.2239,
+          "caseta": {
+            "tag": "IAVE-77201",
+            "monto": 156,
+            "pagada": true
+          }
+        },
+        {
+          "nombre": "Caseta Palmillas",
+          "tipo": "caseta",
+          "planeada": "10:30",
+          "real": "10:50",
+          "status": "completada",
+          "lat": 20.38,
+          "lng": -99.54,
+          "caseta": {
+            "tag": "IAVE-77201",
+            "monto": 320,
+            "pagada": true
+          }
+        },
+        {
+          "nombre": "Caseta San Luis Potosí",
+          "tipo": "caseta",
+          "planeada": "11:40",
+          "real": "12:05",
+          "status": "completada",
+          "lat": 22.15,
+          "lng": -100.98,
+          "caseta": {
+            "tag": "IAVE-77201",
+            "monto": 410,
+            "pagada": true
+          }
+        },
+        {
+          "nombre": "Caseta Huizache",
+          "tipo": "caseta",
+          "planeada": "12:15",
+          "real": null,
+          "status": "proximo",
+          "lat": 22.35,
+          "lng": -100.97,
+          "caseta": {
+            "tag": null,
+            "monto": 280,
+            "pagada": false
+          }
+        },
+        {
+          "nombre": "Caseta Saltillo",
+          "tipo": "caseta",
+          "planeada": "13:20",
+          "real": null,
+          "status": "pendiente",
+          "lat": 25.42,
+          "lng": -100.99,
+          "caseta": {
+            "tag": null,
+            "monto": 350,
+            "pagada": false
+          }
+        },
+        {
+          "nombre": "CEDIS Monterrey",
+          "tipo": "destino",
+          "planeada": "14:30",
+          "real": null,
+          "status": "pendiente",
+          "lat": 25.6866,
+          "lng": -100.3161
+        }
+      ],
+      "ruta_alternativa_disponible": false,
+      "notas": ""
+    },
+    {
+      "_fuente": "TMS / OTM planeación",
+      "id": "RTA-002",
+      "unidad": "MX-2478",
+      "nombre_ruta": "GDL → CDMX",
+      "origen": "GDL",
+      "destino": "CDMX",
+      "distancia_total_km": 540,
+      "tipo_carga": "Pan Molido",
+      "prioridad": "alta",
+      "shipment_id": "SHP-20260306-701",
+      "paradas": [
+        {
+          "nombre": "CEDIS Guadalajara",
+          "tipo": "origen",
+          "planeada": "12:00",
+          "real": "12:00",
+          "status": "completada",
+          "lat": 20.6597,
+          "lng": -103.3496
+        },
+        {
+          "nombre": "Caseta Zapotlanejo",
+          "tipo": "caseta",
+          "planeada": "12:40",
+          "real": "12:38",
+          "status": "completada",
+          "lat": 20.6227,
+          "lng": -103.0681,
+          "caseta": {
+            "tag": "IAVE-55102",
+            "monto": 198,
+            "pagada": true
+          }
+        },
+        {
+          "nombre": "Caseta La Piedad",
+          "tipo": "caseta",
+          "planeada": "13:45",
+          "real": "13:50",
+          "status": "completada",
+          "lat": 20.346,
+          "lng": -102.031,
+          "caseta": {
+            "tag": "IAVE-55102",
+            "monto": 245,
+            "pagada": true
+          }
+        },
+        {
+          "nombre": "Caseta Palmillas",
+          "tipo": "caseta",
+          "planeada": "15:00",
+          "real": null,
+          "status": "proximo",
+          "lat": 20.38,
+          "lng": -99.54,
+          "caseta": {
+            "tag": null,
+            "monto": 320,
+            "pagada": false
+          }
+        },
+        {
+          "nombre": "CEDIS CDMX Vallejo",
+          "tipo": "destino",
+          "planeada": "18:00",
+          "real": null,
+          "status": "pendiente",
+          "lat": 19.49,
+          "lng": -99.15
+        }
+      ],
+      "ruta_alternativa_disponible": true,
+      "notas": ""
+    },
+    {
+      "_fuente": "TMS / OTM planeación",
+      "id": "RTA-003",
+      "unidad": "MX-4045",
+      "nombre_ruta": "CDMX → Veracruz",
+      "origen": "CDMX",
+      "destino": "Veracruz",
+      "distancia_total_km": 420,
+      "tipo_carga": "Tortillas Tía Rosa",
+      "prioridad": "media",
+      "shipment_id": "SHP-20260306-696",
+      "paradas": [
+        {
+          "nombre": "CEDIS Veracruz Puerto",
+          "tipo": "origen",
+          "planeada": "10:00",
+          "real": "10:00",
+          "status": "completada",
+          "lat": 19.1738,
+          "lng": -96.1342
+        },
+        {
+          "nombre": "Caseta Fortín",
+          "tipo": "caseta",
+          "planeada": "11:30",
+          "real": "11:28",
+          "status": "completada",
+          "lat": 18.9,
+          "lng": -96.99,
+          "caseta": {
+            "tag": "IAVE-33890",
+            "monto": 185,
+            "pagada": true
+          }
+        },
+        {
+          "nombre": "Caseta Maltrata",
+          "tipo": "caseta",
+          "planeada": "12:00",
+          "real": "12:05",
+          "status": "completada",
+          "lat": 18.81,
+          "lng": -97.27,
+          "caseta": {
+            "tag": "IAVE-33890",
+            "monto": 220,
+            "pagada": true
+          }
+        },
+        {
+          "nombre": "CEDIS Puebla",
+          "tipo": "destino",
+          "planeada": "16:00",
+          "real": null,
+          "status": "proximo",
+          "lat": 19.0414,
+          "lng": -98.2063
+        }
+      ],
+      "ruta_alternativa_disponible": false,
+      "notas": ""
+    },
+    {
+      "_fuente": "TMS / OTM planeación",
+      "id": "RTA-004",
+      "unidad": "MX-3178",
+      "nombre_ruta": "MTY → Reynosa",
+      "origen": "MTY",
+      "destino": "Reynosa",
+      "distancia_total_km": 310,
+      "tipo_carga": "Donas Bimbo",
+      "prioridad": "alta",
+      "shipment_id": "SHP-20260306-561",
+      "paradas": [
+        {
+          "nombre": "CEDIS Monterrey",
+          "tipo": "origen",
+          "planeada": "10:30",
+          "real": "10:30",
+          "status": "completada",
+          "lat": 25.6866,
+          "lng": -100.3161
+        },
+        {
+          "nombre": "Caseta MTY-Reynosa",
+          "tipo": "caseta",
+          "planeada": "11:00",
+          "real": "11:05",
+          "status": "completada",
+          "lat": 25.78,
+          "lng": -99.85,
+          "caseta": {
+            "tag": "IAVE-41002",
+            "monto": 195,
+            "pagada": true
+          }
+        },
+        {
+          "nombre": "Revisión Militar km 120",
+          "tipo": "inspeccion",
+          "planeada": null,
+          "real": "12:15",
+          "status": "actual",
+          "lat": 25.85,
+          "lng": -99.0
+        },
+        {
+          "nombre": "CEDIS Reynosa",
+          "tipo": "destino",
+          "planeada": "13:00",
+          "real": null,
+          "status": "pendiente",
+          "lat": 26.0508,
+          "lng": -98.2979
+        }
+      ],
+      "ruta_alternativa_disponible": false,
+      "notas": ""
+    },
+    {
+      "_fuente": "TMS / OTM planeación",
+      "id": "RTA-005",
+      "unidad": "MX-2456",
+      "nombre_ruta": "Tijuana → Hermosillo",
+      "origen": "Tijuana",
+      "destino": "Hermosillo",
+      "distancia_total_km": 680,
+      "tipo_carga": "Barcel Snacks",
+      "prioridad": "critica",
+      "shipment_id": "SHP-20260306-666",
+      "paradas": [
+        {
+          "nombre": "CEDIS Tijuana",
+          "tipo": "origen",
+          "planeada": "14:00",
+          "real": "14:00",
+          "status": "completada",
+          "lat": 32.5149,
+          "lng": -117.0382
+        },
+        {
+          "nombre": "Caseta La Rumorosa",
+          "tipo": "caseta",
+          "planeada": "15:00",
+          "real": "15:10",
+          "status": "completada",
+          "lat": 32.54,
+          "lng": -116.05,
+          "caseta": {
+            "tag": "IAVE-86501",
+            "monto": 275,
+            "pagada": true
+          }
+        },
+        {
+          "nombre": "Descanso Caborca",
+          "tipo": "descanso",
+          "planeada": "17:00",
+          "real": null,
+          "status": "pendiente",
+          "lat": 30.7167,
+          "lng": -112.15
+        },
+        {
+          "nombre": "CEDIS Hermosillo",
+          "tipo": "destino",
+          "planeada": "20:00",
+          "real": null,
+          "status": "pendiente",
+          "lat": 29.0729,
+          "lng": -110.9559
+        }
+      ],
+      "ruta_alternativa_disponible": true,
+      "notas": ""
+    },
+    {
+      "_fuente": "TMS / OTM planeación",
+      "id": "RTA-006",
+      "unidad": "MX-4067",
+      "nombre_ruta": "Mérida → Cancún",
+      "origen": "Mérida",
+      "destino": "Cancún",
+      "distancia_total_km": 320,
+      "tipo_carga": "Pan Dulce",
+      "prioridad": "media",
+      "shipment_id": "SHP-20260306-743",
+      "paradas": [
+        {
+          "nombre": "CEDIS Mérida",
+          "tipo": "origen",
+          "planeada": "10:00",
+          "real": "10:00",
+          "status": "completada",
+          "lat": 20.9674,
+          "lng": -89.6237
+        },
+        {
+          "nombre": "Caseta Kantunil",
+          "tipo": "caseta",
+          "planeada": "11:15",
+          "real": "11:12",
+          "status": "completada",
+          "lat": 20.6333,
+          "lng": -89.0333,
+          "caseta": {
+            "tag": "IAVE-24780",
+            "monto": 165,
+            "pagada": true
+          }
+        },
+        {
+          "nombre": "CEDIS Cancún",
+          "tipo": "destino",
+          "planeada": "15:30",
+          "real": null,
+          "status": "proximo",
+          "lat": 21.1619,
+          "lng": -86.8515
+        }
+      ],
+      "ruta_alternativa_disponible": false,
+      "notas": ""
+    },
+    {
+      "_fuente": "TMS / OTM planeación",
+      "id": "RTA-007",
+      "unidad": "MX-4089",
+      "nombre_ruta": "León → AGS",
+      "origen": "León",
+      "destino": "AGS",
+      "distancia_total_km": 130,
+      "tipo_carga": "Barcel Snacks",
+      "prioridad": "critica",
+      "shipment_id": "SHP-20260306-158",
+      "paradas": [
+        {
+          "nombre": "CEDIS León",
+          "tipo": "origen",
+          "planeada": "10:00",
+          "real": "10:00",
+          "status": "completada",
+          "lat": 21.122,
+          "lng": -101.6821
+        },
+        {
+          "nombre": "Caseta León-AGS",
+          "tipo": "caseta",
+          "planeada": "10:30",
+          "real": "10:28",
+          "status": "completada",
+          "lat": 21.35,
+          "lng": -101.89,
+          "caseta": {
+            "tag": "IAVE-25021",
+            "monto": 178,
+            "pagada": true
+          }
+        },
+        {
+          "nombre": "CEDIS Aguascalientes",
+          "tipo": "destino",
+          "planeada": "12:45",
+          "real": null,
+          "status": "proximo",
+          "lat": 21.8818,
+          "lng": -102.2916
+        }
+      ],
+      "ruta_alternativa_disponible": false,
+      "notas": ""
+    },
+    {
+      "_fuente": "TMS / OTM planeación",
+      "id": "RTA-008",
+      "unidad": "EXT-4501",
+      "nombre_ruta": "CDMX → Morelia",
+      "origen": "CDMX",
+      "destino": "Morelia",
+      "distancia_total_km": 305,
+      "tipo_carga": "Tortillas Tía Rosa",
+      "prioridad": "critica",
+      "shipment_id": "SHP-20260306-251",
+      "paradas": [
+        {
+          "nombre": "Planta CDMX",
+          "tipo": "origen",
+          "planeada": "07:00",
+          "real": "07:15",
+          "status": "completada",
+          "lat": 19.4326,
+          "lng": -99.1332
+        },
+        {
+          "nombre": "Caseta Toluca",
+          "tipo": "caseta",
+          "planeada": "08:00",
+          "real": "08:20",
+          "status": "completada",
+          "lat": 19.2826,
+          "lng": -99.6557,
+          "caseta": {
+            "tag": "IAVE-EXT-101",
+            "monto": 198,
+            "pagada": true
+          }
+        },
+        {
+          "nombre": "CEDIS Morelia",
+          "tipo": "destino",
+          "planeada": "11:00",
+          "real": null,
+          "status": "pendiente",
+          "lat": 19.7006,
+          "lng": -101.1844
+        }
+      ],
+      "ruta_alternativa_disponible": true,
+      "notas": ""
+    }
+  ]
+}

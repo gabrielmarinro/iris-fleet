@@ -1,0 +1,1212 @@
+{
+  "_meta": {
+    "fuente": "Geotab + IA predictiva Iris Fleet",
+    "actualizado": "2026-03-06T01:00:00-06:00"
+  },
+  "vehiculos": [
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-3012",
+      "status": "en_ruta",
+      "salud_general_pct": 87,
+      "sistemas": {
+        "motor": {
+          "score": 97,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 96,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 66,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 79,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 95,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-09",
+      "km_para_siguiente_servicio": 12862
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-2478",
+      "status": "en_ruta",
+      "salud_general_pct": 74,
+      "sistemas": {
+        "motor": {
+          "score": 82,
+          "prediccion_falla_dias": 30,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 93,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 88,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 80,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 95,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-08",
+      "km_para_siguiente_servicio": 9676
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-2456",
+      "status": "en_ruta",
+      "salud_general_pct": 79,
+      "sistemas": {
+        "motor": {
+          "score": 96,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 96,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 92,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 88,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 98,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-08",
+      "km_para_siguiente_servicio": 14035
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-2341",
+      "status": "en_ruta",
+      "salud_general_pct": 96,
+      "sistemas": {
+        "motor": {
+          "score": 82,
+          "prediccion_falla_dias": 7,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 75,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 89,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 94,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 99,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-19",
+      "km_para_siguiente_servicio": 1033
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-3045",
+      "status": "en_ruta",
+      "salud_general_pct": 75,
+      "sistemas": {
+        "motor": {
+          "score": 71,
+          "prediccion_falla_dias": null,
+          "diagnosticos": [
+            "Vibración anormal cigüeñal"
+          ]
+        },
+        "frenos": {
+          "score": 90,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 97,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 82,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 80,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-08",
+      "km_para_siguiente_servicio": 2284
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-3089",
+      "status": "en_ruta",
+      "salud_general_pct": 93,
+      "sistemas": {
+        "motor": {
+          "score": 78,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 82,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 76,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 75,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 90,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-19",
+      "km_para_siguiente_servicio": 4054
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-3102",
+      "status": "en_ruta",
+      "salud_general_pct": 85,
+      "sistemas": {
+        "motor": {
+          "score": 98,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 94,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 63,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 88,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 83,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-18",
+      "km_para_siguiente_servicio": 11597
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-3134",
+      "status": "en_ruta",
+      "salud_general_pct": 96,
+      "sistemas": {
+        "motor": {
+          "score": 70,
+          "prediccion_falla_dias": 30,
+          "diagnosticos": [
+            "Vibración anormal cigüeñal"
+          ]
+        },
+        "frenos": {
+          "score": 68,
+          "prediccion_falla_dias": null,
+          "diagnosticos": [
+            "Desgaste pastillas >50%"
+          ]
+        },
+        "llantas": {
+          "score": 83,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 76,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 84,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-09",
+      "km_para_siguiente_servicio": 3776
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "EXT-4501",
+      "status": "en_ruta",
+      "salud_general_pct": 74,
+      "sistemas": {
+        "motor": {
+          "score": 82,
+          "prediccion_falla_dias": 45,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 96,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 69,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 76,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 97,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-16",
+      "km_para_siguiente_servicio": 10139
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-3156",
+      "status": "en_ruta",
+      "salud_general_pct": 83,
+      "sistemas": {
+        "motor": {
+          "score": 87,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 86,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 76,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 78,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 80,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-14",
+      "km_para_siguiente_servicio": 1465
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-3178",
+      "status": "en_ruta",
+      "salud_general_pct": 74,
+      "sistemas": {
+        "motor": {
+          "score": 85,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 66,
+          "prediccion_falla_dias": null,
+          "diagnosticos": [
+            "Desgaste pastillas >50%"
+          ]
+        },
+        "llantas": {
+          "score": 68,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 78,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 92,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-16",
+      "km_para_siguiente_servicio": 5732
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-3201",
+      "status": "en_ruta",
+      "salud_general_pct": 92,
+      "sistemas": {
+        "motor": {
+          "score": 91,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 89,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 79,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 93,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 93,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-20",
+      "km_para_siguiente_servicio": 10451
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-4001",
+      "status": "en_ruta",
+      "salud_general_pct": 72,
+      "sistemas": {
+        "motor": {
+          "score": 84,
+          "prediccion_falla_dias": 7,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 84,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 96,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 85,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 81,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-18",
+      "km_para_siguiente_servicio": 1020
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-4023",
+      "status": "en_ruta",
+      "salud_general_pct": 73,
+      "sistemas": {
+        "motor": {
+          "score": 90,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 79,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 63,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 85,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 89,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-17",
+      "km_para_siguiente_servicio": 12284
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-4045",
+      "status": "en_ruta",
+      "salud_general_pct": 83,
+      "sistemas": {
+        "motor": {
+          "score": 80,
+          "prediccion_falla_dias": 7,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 65,
+          "prediccion_falla_dias": null,
+          "diagnosticos": [
+            "Desgaste pastillas >50%"
+          ]
+        },
+        "llantas": {
+          "score": 65,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 89,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 80,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-10",
+      "km_para_siguiente_servicio": 11519
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-4067",
+      "status": "en_ruta",
+      "salud_general_pct": 84,
+      "sistemas": {
+        "motor": {
+          "score": 72,
+          "prediccion_falla_dias": 7,
+          "diagnosticos": [
+            "Vibración anormal cigüeñal"
+          ]
+        },
+        "frenos": {
+          "score": 91,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 93,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 85,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 83,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-15",
+      "km_para_siguiente_servicio": 14905
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-4089",
+      "status": "en_ruta",
+      "salud_general_pct": 79,
+      "sistemas": {
+        "motor": {
+          "score": 71,
+          "prediccion_falla_dias": null,
+          "diagnosticos": [
+            "Vibración anormal cigüeñal"
+          ]
+        },
+        "frenos": {
+          "score": 86,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 68,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 76,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 90,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-20",
+      "km_para_siguiente_servicio": 12804
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-4102",
+      "status": "en_ruta",
+      "salud_general_pct": 89,
+      "sistemas": {
+        "motor": {
+          "score": 85,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 74,
+          "prediccion_falla_dias": null,
+          "diagnosticos": [
+            "Desgaste pastillas >50%"
+          ]
+        },
+        "llantas": {
+          "score": 82,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 98,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 94,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-07",
+      "km_para_siguiente_servicio": 7574
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-5012",
+      "status": "en_taller",
+      "salud_general_pct": 90,
+      "sistemas": {
+        "motor": {
+          "score": 95,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 78,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 81,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 80,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 95,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-09",
+      "km_para_siguiente_servicio": 3553
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-5034",
+      "status": "en_taller",
+      "salud_general_pct": 80,
+      "sistemas": {
+        "motor": {
+          "score": 96,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 81,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 91,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 79,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 88,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-19",
+      "km_para_siguiente_servicio": 10058
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-5067",
+      "status": "en_taller",
+      "salud_general_pct": 75,
+      "sistemas": {
+        "motor": {
+          "score": 78,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 75,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 68,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 92,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 92,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-09",
+      "km_para_siguiente_servicio": 3057
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-5089",
+      "status": "en_taller",
+      "salud_general_pct": 89,
+      "sistemas": {
+        "motor": {
+          "score": 74,
+          "prediccion_falla_dias": null,
+          "diagnosticos": [
+            "Vibración anormal cigüeñal"
+          ]
+        },
+        "frenos": {
+          "score": 74,
+          "prediccion_falla_dias": null,
+          "diagnosticos": [
+            "Desgaste pastillas >50%"
+          ]
+        },
+        "llantas": {
+          "score": 93,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 90,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 80,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-20",
+      "km_para_siguiente_servicio": 9083
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-6001",
+      "status": "en_patio",
+      "salud_general_pct": 91,
+      "sistemas": {
+        "motor": {
+          "score": 80,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 93,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 71,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 82,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 87,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-11",
+      "km_para_siguiente_servicio": 9293
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-6002",
+      "status": "en_patio",
+      "salud_general_pct": 79,
+      "sistemas": {
+        "motor": {
+          "score": 93,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 84,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 82,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 75,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 81,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-09",
+      "km_para_siguiente_servicio": 14740
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-6003",
+      "status": "en_patio",
+      "salud_general_pct": 75,
+      "sistemas": {
+        "motor": {
+          "score": 70,
+          "prediccion_falla_dias": 15,
+          "diagnosticos": [
+            "Vibración anormal cigüeñal"
+          ]
+        },
+        "frenos": {
+          "score": 91,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 68,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 89,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 82,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-07",
+      "km_para_siguiente_servicio": 4651
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-6004",
+      "status": "en_patio",
+      "salud_general_pct": 73,
+      "sistemas": {
+        "motor": {
+          "score": 84,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 70,
+          "prediccion_falla_dias": null,
+          "diagnosticos": [
+            "Desgaste pastillas >50%"
+          ]
+        },
+        "llantas": {
+          "score": 72,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 86,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 87,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-12",
+      "km_para_siguiente_servicio": 10790
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-6005",
+      "status": "en_patio",
+      "salud_general_pct": 92,
+      "sistemas": {
+        "motor": {
+          "score": 70,
+          "prediccion_falla_dias": null,
+          "diagnosticos": [
+            "Vibración anormal cigüeñal"
+          ]
+        },
+        "frenos": {
+          "score": 74,
+          "prediccion_falla_dias": null,
+          "diagnosticos": [
+            "Desgaste pastillas >50%"
+          ]
+        },
+        "llantas": {
+          "score": 94,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 81,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 96,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-14",
+      "km_para_siguiente_servicio": 5639
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "MX-6006",
+      "status": "en_patio",
+      "salud_general_pct": 87,
+      "sistemas": {
+        "motor": {
+          "score": 72,
+          "prediccion_falla_dias": null,
+          "diagnosticos": [
+            "Vibración anormal cigüeñal"
+          ]
+        },
+        "frenos": {
+          "score": 95,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 88,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 92,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 80,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": null
+      },
+      "proxima_revision": "2026-03-19",
+      "km_para_siguiente_servicio": 11205
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "RF-1001",
+      "status": "en_ruta",
+      "salud_general_pct": 88,
+      "sistemas": {
+        "motor": {
+          "score": 81,
+          "prediccion_falla_dias": 45,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 76,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 72,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 98,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 94,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": {
+          "score": 88,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        }
+      },
+      "proxima_revision": "2026-03-12",
+      "km_para_siguiente_servicio": 7897
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "RF-1002",
+      "status": "en_ruta",
+      "salud_general_pct": 85,
+      "sistemas": {
+        "motor": {
+          "score": 77,
+          "prediccion_falla_dias": 15,
+          "diagnosticos": [
+            "Vibración anormal cigüeñal"
+          ]
+        },
+        "frenos": {
+          "score": 69,
+          "prediccion_falla_dias": null,
+          "diagnosticos": [
+            "Desgaste pastillas >50%"
+          ]
+        },
+        "llantas": {
+          "score": 74,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 86,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 98,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": {
+          "score": 88,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        }
+      },
+      "proxima_revision": "2026-03-17",
+      "km_para_siguiente_servicio": 4224
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "RF-1003",
+      "status": "en_ruta",
+      "salud_general_pct": 96,
+      "sistemas": {
+        "motor": {
+          "score": 77,
+          "prediccion_falla_dias": null,
+          "diagnosticos": [
+            "Vibración anormal cigüeñal"
+          ]
+        },
+        "frenos": {
+          "score": 85,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 76,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 93,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 91,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": {
+          "score": 90,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        }
+      },
+      "proxima_revision": "2026-03-09",
+      "km_para_siguiente_servicio": 5478
+    },
+    {
+      "_fuente": "Geotab diagnósticos + IA predictiva",
+      "unidad": "RF-1004",
+      "status": "en_ruta",
+      "salud_general_pct": 92,
+      "sistemas": {
+        "motor": {
+          "score": 92,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "frenos": {
+          "score": 83,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "llantas": {
+          "score": 78,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "transmision": {
+          "score": 98,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "electrico": {
+          "score": 97,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        },
+        "refrigeracion": {
+          "score": 96,
+          "prediccion_falla_dias": null,
+          "diagnosticos": []
+        }
+      },
+      "proxima_revision": "2026-03-11",
+      "km_para_siguiente_servicio": 11108
+    }
+  ]
+}

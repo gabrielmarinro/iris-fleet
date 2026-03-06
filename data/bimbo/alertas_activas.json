@@ -1,0 +1,155 @@
+{
+  "_meta": {
+    "fuente": "Motor de alertas Iris Fleet IA",
+    "actualizado": "2026-03-06T01:00:00-06:00",
+    "total_alertas": 12,
+    "criticas": 2,
+    "no_atendidas": 9
+  },
+  "alertas": [
+    {
+      "id": "ALT-001",
+      "tipo": "excepcion_critica",
+      "severidad": "critica",
+      "unidad": "MX-3012",
+      "titulo": "ETA en riesgo — SLA $150K",
+      "descripcion": "Lluvia moderada en tramo SLP-MTY. Velocidad reducida. ETA ajustado +75 min.",
+      "fuente": "IA Predictiva + AccuWeather",
+      "timestamp": "2026-03-06T00:45:00-06:00",
+      "accion_sugerida": "Notificar cliente nuevo ETA. Monitorear clima cada 15 min.",
+      "atendida": false
+    },
+    {
+      "id": "ALT-002",
+      "tipo": "nom_087",
+      "severidad": "preventiva",
+      "unidad": "EXT-4501",
+      "titulo": "NOM-087 — 6.5h conducción continua",
+      "descripcion": "Operador Fernando Cruz lleva 6.5h sin descanso. Límite: 8h. Verificación vehicular vence en 7 días.",
+      "fuente": "Geotab HoS + RH",
+      "timestamp": "2026-03-06T00:30:00-06:00",
+      "accion_sugerida": "Programar descanso en próxima zona segura. Agendar verificación.",
+      "atendida": false
+    },
+    {
+      "id": "ALT-003",
+      "tipo": "consumo_anomalo",
+      "severidad": "alta",
+      "unidad": "EXT-4501",
+      "titulo": "Consumo anómalo +18% en EXT-4501",
+      "descripcion": "Rendimiento 3.1 km/L vs 3.8 km/L esperado. Desviación -18.4%. Posible falla en inyectores o ruta ineficiente.",
+      "fuente": "Samsara + IA Predictiva",
+      "timestamp": "2026-03-06T00:15:00-06:00",
+      "accion_sugerida": "Revisar inyectores. Evaluar ruta alternativa. Ahorro potencial: $12,000/mes.",
+      "atendida": false
+    },
+    {
+      "id": "ALT-004",
+      "tipo": "desvio_ruta",
+      "severidad": "alta",
+      "unidad": "EXT-4501",
+      "titulo": "Desvío de ruta detectado",
+      "descripcion": "Unidad se desvió 4.2 km de la ruta planificada cerca de Toluca. Sin autorización.",
+      "fuente": "GPS + TMS comparación",
+      "timestamp": "2026-03-06T00:10:00-06:00",
+      "accion_sugerida": "Contactar operador. Verificar causa del desvío.",
+      "atendida": false
+    },
+    {
+      "id": "ALT-005",
+      "tipo": "mantenimiento",
+      "severidad": "media",
+      "unidad": "MX-2341",
+      "titulo": "Mantenimiento preventivo próximo",
+      "descripcion": "Servicio de 100,000 km a 2,400 km de distancia. Cambio de aceite + filtros.",
+      "fuente": "ERP + Geotab odómetro",
+      "timestamp": "2026-03-06T00:00:00-06:00",
+      "accion_sugerida": "Programar ingreso a taller al finalizar ruta actual.",
+      "atendida": false
+    },
+    {
+      "id": "ALT-006",
+      "tipo": "clima",
+      "severidad": "media",
+      "unidad": "MX-3089",
+      "titulo": "Neblina densa en tramo SLP-MTY",
+      "descripcion": "Visibilidad < 200m reportada en km 180-210 de la autopista SLP-MTY.",
+      "fuente": "AccuWeather + Waze reportes",
+      "timestamp": "2026-03-05T23:45:00-06:00",
+      "accion_sugerida": "Reducir velocidad. Activar luces antiniebla. Monitorear condiciones.",
+      "atendida": true
+    },
+    {
+      "id": "ALT-007",
+      "tipo": "seguridad",
+      "severidad": "critica",
+      "unidad": "MX-3045",
+      "titulo": "Zona de riesgo — 3 incidentes recientes",
+      "descripcion": "Unidad entrará a zona con 3 robos reportados en últimos 60 días (Boulevard Norte, Poniente).",
+      "fuente": "SSP + Waze + Histórico",
+      "timestamp": "2026-03-06T00:20:00-06:00",
+      "accion_sugerida": "Redirigir por ruta alterna o acompañar con escolta.",
+      "atendida": false
+    },
+    {
+      "id": "ALT-008",
+      "tipo": "cadena_frio",
+      "severidad": "alta",
+      "unidad": "RF-1001",
+      "titulo": "Temperatura caja +0.5°C sobre setpoint",
+      "descripcion": "Temp actual: 2.5°C. Setpoint: 2.0°C. Tendencia ascendente desde hace 30 min.",
+      "fuente": "Sensor ThermoKing + Samsara",
+      "timestamp": "2026-03-06T00:50:00-06:00",
+      "accion_sugerida": "Verificar estado de unidad de refrigeración. Revisar puertas.",
+      "atendida": false
+    },
+    {
+      "id": "ALT-009",
+      "tipo": "fatiga_camera",
+      "severidad": "alta",
+      "unidad": "MX-4023",
+      "titulo": "Microsueño detectado — cámara Lytx",
+      "descripcion": "Sistema detectó cierre parcial de ojos por 2.3 segundos. Segundo evento en 1 hora.",
+      "fuente": "Lytx DriveCam IA",
+      "timestamp": "2026-03-06T00:55:00-06:00",
+      "accion_sugerida": "Alerta sonora al operador. Si repite, parada obligatoria.",
+      "atendida": false
+    },
+    {
+      "id": "ALT-010",
+      "tipo": "geocerca",
+      "severidad": "info",
+      "unidad": "MX-3012",
+      "titulo": "Entrada a geocerca Caseta SLP",
+      "descripcion": "Unidad entró a geocerca de Caseta San Luis Potosí. TAG IAVE-77201 detectado.",
+      "fuente": "GPS + IAVE",
+      "timestamp": "2026-03-06T00:05:00-06:00",
+      "accion_sugerida": "Registro automático. Sin acción requerida.",
+      "atendida": true
+    },
+    {
+      "id": "ALT-011",
+      "tipo": "llanta_baja",
+      "severidad": "media",
+      "unidad": "MX-3134",
+      "titulo": "Presión baja en llanta TII",
+      "descripcion": "Posición TII: 88 PSI (mínimo: 95 PSI). Temp normal. Posible pinchazo lento.",
+      "fuente": "TPMS Geotab",
+      "timestamp": "2026-03-06T00:40:00-06:00",
+      "accion_sugerida": "Monitorear cada 30 min. Si baja a 80 PSI, parada obligatoria.",
+      "atendida": false
+    },
+    {
+      "id": "ALT-012",
+      "tipo": "celular_detectado",
+      "severidad": "media",
+      "unidad": "MX-2341",
+      "titulo": "Uso de celular detectado",
+      "descripcion": "Cámara detectó celular en mano derecha durante 8 segundos a 95 km/h.",
+      "fuente": "Lytx DriveCam IA",
+      "timestamp": "2026-03-06T00:35:00-06:00",
+      "accion_sugerida": "Enviar alerta sonora. Registrar infracción.",
+      "atendida": true
+    }
+  ]
+}
