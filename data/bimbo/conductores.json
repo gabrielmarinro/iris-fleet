@@ -2,967 +2,3409 @@
   {
     "id": "DRV-001",
     "nombre": "Manuel Ortiz García",
-    "edad": 51,
-    "licencia_tipo": "E",
-    "licencia_vigencia": "2027-11-23",
-    "telefono": "+52 2258586340",
+    "edad": 41,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2026-10-04",
+    "telefono": "+52 712743 5889",
     "unidad_asignada": "MX-3000",
-    "status": "Activo",
-    "score_seguridad": 90,
-    "horas_conduccion_hoy": 8.0,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 8178387461",
-    "certificaciones": [
-      "Manejo Defensivo",
-      "NOM-012-SCT"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 54.2,
-      "presion_frenado_promedio": 12.8,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 0,
-      "eventos_exceso_velocidad": 0,
-      "km_recorridos_mes": 5621
+    "status": "activo",
+    "score_seguridad": 71,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 15.4,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 8,
+      "frenadas_bruscas": 9,
+      "excesos_velocidad": 1,
+      "uso_telefono": 1,
+      "score_mes": 71
     },
-    "fecha_ingreso": "2020-12-13",
-    "incidentes_30dias": 2
+    "capacitaciones": [
+      "Primeros auxilios",
+      "Cadena de frío",
+      "Manejo defensivo",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 0.8
   },
   {
     "id": "DRV-002",
-    "nombre": "Juan Pérez Hernández",
-    "edad": 31,
-    "licencia_tipo": "E",
-    "licencia_vigencia": "2027-04-02",
-    "telefono": "+52 2265177213",
-    "unidad_asignada": "MX-3037",
-    "status": "En Ruta",
-    "score_seguridad": 85,
-    "horas_conduccion_hoy": 6.9,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 5597705310",
-    "certificaciones": [
-      "Manejo Defensivo",
-      "NOM-012-SCT",
-      "HAZMAT"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 54.6,
-      "presion_frenado_promedio": 12.0,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 2,
-      "eventos_exceso_velocidad": 0,
-      "km_recorridos_mes": 7073
+    "nombre": "Carlos Ruiz Méndez",
+    "edad": 54,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2026-05-30",
+    "telefono": "+52 762612 1993",
+    "unidad_asignada": "MX-3001",
+    "status": "activo",
+    "score_seguridad": 94,
+    "horas_conduccion_hoy": 2.7,
+    "horas_descanso": 10.9,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 5,
+      "frenadas_bruscas": 12,
+      "excesos_velocidad": 0,
+      "uso_telefono": 1,
+      "score_mes": 94
     },
-    "fecha_ingreso": "2023-07-16",
-    "incidentes_30dias": 0
+    "capacitaciones": [
+      "Primeros auxilios",
+      "Cadena de frío",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 3.7
   },
   {
     "id": "DRV-003",
-    "nombre": "Roberto Silva López",
-    "edad": 28,
-    "licencia_tipo": "C",
-    "licencia_vigencia": "2028-02-13",
-    "telefono": "+52 5528024248",
-    "unidad_asignada": "MX-3074",
-    "status": "Activo",
-    "score_seguridad": 98,
-    "horas_conduccion_hoy": 0.9,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 5584252420",
-    "certificaciones": [
-      "Doble Remolque"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 55.9,
-      "presion_frenado_promedio": 11.8,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 2,
-      "eventos_exceso_velocidad": 2,
-      "km_recorridos_mes": 6450
+    "nombre": "Pedro Gómez López",
+    "edad": 58,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2026-12-28",
+    "telefono": "+52 616147 4910",
+    "unidad_asignada": "MX-3002",
+    "status": "activo",
+    "score_seguridad": 59,
+    "horas_conduccion_hoy": 4.0,
+    "horas_descanso": 9.1,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 10,
+      "excesos_velocidad": 5,
+      "uso_telefono": 2,
+      "score_mes": 59
     },
-    "fecha_ingreso": "2021-11-03",
-    "incidentes_30dias": 0
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "Manejo defensivo",
+      "Cadena de frío",
+      "Primeros auxilios",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 4.2
   },
   {
     "id": "DRV-004",
-    "nombre": "Miguel Ángel Rosas",
-    "edad": 39,
-    "licencia_tipo": "E",
-    "licencia_vigencia": "2026-06-15",
-    "telefono": "+52 3393638503",
-    "unidad_asignada": "MX-3111",
-    "status": "Activo",
-    "score_seguridad": 88,
-    "horas_conduccion_hoy": 5.3,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 5550308572",
-    "certificaciones": [
-      "Doble Remolque",
-      "Seguridad Carretera",
-      "HAZMAT"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 56.0,
-      "presion_frenado_promedio": 12.8,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 3,
-      "eventos_exceso_velocidad": 2,
-      "km_recorridos_mes": 7844
+    "nombre": "Ana María Torres",
+    "edad": 27,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2026-11-06",
+    "telefono": "+52 765088 2684",
+    "unidad_asignada": "MX-3003",
+    "status": "activo",
+    "score_seguridad": 73,
+    "horas_conduccion_hoy": 7.7,
+    "horas_descanso": 5.7,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 8,
+      "frenadas_bruscas": 6,
+      "excesos_velocidad": 4,
+      "uso_telefono": 1,
+      "score_mes": 73
     },
-    "fecha_ingreso": "2019-06-21",
-    "incidentes_30dias": 0
+    "capacitaciones": [
+      "Primeros auxilios",
+      "Seguridad vial",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 13.4
   },
   {
     "id": "DRV-005",
-    "nombre": "Diego Hernández Cruz",
-    "edad": 41,
-    "licencia_tipo": "A",
-    "licencia_vigencia": "2026-11-02",
-    "telefono": "+52 2262274692",
-    "unidad_asignada": "MX-3148",
-    "status": "En Ruta",
-    "score_seguridad": 96,
-    "horas_conduccion_hoy": 7.6,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 5587267850",
-    "certificaciones": [
-      "Seguridad Carretera",
-      "Manejo Defensivo"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 55.0,
-      "presion_frenado_promedio": 13.3,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 2,
-      "eventos_exceso_velocidad": 1,
-      "km_recorridos_mes": 9389
+    "nombre": "Jorge Hernández Soto",
+    "edad": 37,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-06-20",
+    "telefono": "+52 576409 6143",
+    "unidad_asignada": "MX-3004",
+    "status": "activo",
+    "score_seguridad": 82,
+    "horas_conduccion_hoy": 7.9,
+    "horas_descanso": 6.8,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 1,
+      "frenadas_bruscas": 11,
+      "excesos_velocidad": 2,
+      "uso_telefono": 2,
+      "score_mes": 82
     },
-    "fecha_ingreso": "2020-12-26",
-    "incidentes_30dias": 2
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "NOM-087",
+      "Seguridad vial",
+      "Cadena de frío",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 12.1
   },
   {
     "id": "DRV-006",
-    "nombre": "Jorge Ramírez Flores",
-    "edad": 58,
-    "licencia_tipo": "C",
-    "licencia_vigencia": "2027-12-26",
-    "telefono": "+52 4474893936",
-    "unidad_asignada": "MX-3185",
-    "status": "En Ruta",
-    "score_seguridad": 98,
-    "horas_conduccion_hoy": 3.5,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 4446023439",
-    "certificaciones": [
-      "HAZMAT",
-      "Manejo Defensivo"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 55.8,
-      "presion_frenado_promedio": 12.5,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 2,
-      "eventos_exceso_velocidad": 1,
-      "km_recorridos_mes": 6995
+    "nombre": "Roberto Martínez Cruz",
+    "edad": 45,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-12-23",
+    "telefono": "+52 819270 7991",
+    "unidad_asignada": "MX-3005",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 5.4,
+    "horas_descanso": 9.9,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 8,
+      "frenadas_bruscas": 7,
+      "excesos_velocidad": 1,
+      "uso_telefono": 3,
+      "score_mes": 100
     },
-    "fecha_ingreso": "2020-06-22",
-    "incidentes_30dias": 2
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "Primeros auxilios",
+      "Seguridad vial",
+      "NOM-087",
+      "Cadena de frío"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 5.3
   },
   {
     "id": "DRV-007",
     "nombre": "Fernando Cruz Martínez",
-    "edad": 32,
-    "licencia_tipo": "C",
-    "licencia_vigencia": "2026-07-01",
-    "telefono": "+52 8125898299",
-    "unidad_asignada": "MX-3222",
-    "status": "En Ruta",
-    "score_seguridad": 86,
-    "horas_conduccion_hoy": 6.1,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 4490010790",
-    "certificaciones": [
-      "HAZMAT",
-      "Seguridad Carretera",
-      "NOM-012-SCT"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 54.9,
-      "presion_frenado_promedio": 12.1,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 3,
-      "eventos_exceso_velocidad": 1,
-      "km_recorridos_mes": 10025
+    "edad": 54,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-03-16",
+    "telefono": "+52 797211 5558",
+    "unidad_asignada": "MX-3006",
+    "status": "activo",
+    "score_seguridad": 46,
+    "horas_conduccion_hoy": 6.4,
+    "horas_descanso": 8.6,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 6,
+      "frenadas_bruscas": 4,
+      "excesos_velocidad": 0,
+      "uso_telefono": 3,
+      "score_mes": 46
     },
-    "fecha_ingreso": "2022-04-06",
-    "incidentes_30dias": 2
+    "capacitaciones": [
+      "Seguridad vial",
+      "Cadena de frío"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 17.2
   },
   {
     "id": "DRV-008",
-    "nombre": "Carlos Mendoza Ruiz",
+    "nombre": "José Luis Rivera Ponce",
     "edad": 54,
-    "licencia_tipo": "A",
-    "licencia_vigencia": "2028-02-07",
-    "telefono": "+52 4472005415",
-    "unidad_asignada": "MX-3259",
-    "status": "En Ruta",
-    "score_seguridad": 98,
-    "horas_conduccion_hoy": 0.4,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 4458557203",
-    "certificaciones": [
-      "Seguridad Carretera",
-      "NOM-012-SCT",
-      "Manejo Defensivo"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 55.4,
-      "presion_frenado_promedio": 13.2,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 1,
-      "eventos_exceso_velocidad": 1,
-      "km_recorridos_mes": 11998
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2026-09-08",
+    "telefono": "+52 683885 9548",
+    "unidad_asignada": "MX-3007",
+    "status": "descanso",
+    "score_seguridad": 61,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 14.5,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 8,
+      "frenadas_bruscas": 12,
+      "excesos_velocidad": 3,
+      "uso_telefono": 3,
+      "score_mes": 61
     },
-    "fecha_ingreso": "2024-03-20",
-    "incidentes_30dias": 1
+    "capacitaciones": [
+      "Seguridad vial",
+      "Cadena de frío",
+      "Materiales peligrosos",
+      "Primeros auxilios",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 2.0
   },
   {
     "id": "DRV-009",
     "nombre": "Alejandro Torres Vega",
-    "edad": 51,
-    "licencia_tipo": "A",
-    "licencia_vigencia": "2027-06-23",
-    "telefono": "+52 5595060193",
-    "unidad_asignada": "MX-3296",
-    "status": "Descanso",
-    "score_seguridad": 89,
-    "horas_conduccion_hoy": 7.0,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 2232329103",
-    "certificaciones": [
-      "Doble Remolque",
-      "Manejo Defensivo",
-      "Seguridad Carretera"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 55.7,
-      "presion_frenado_promedio": 13.6,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 2,
-      "eventos_exceso_velocidad": 0,
-      "km_recorridos_mes": 7806
+    "edad": 55,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-11-29",
+    "telefono": "+52 799595 5636",
+    "unidad_asignada": "MX-3008",
+    "status": "activo",
+    "score_seguridad": 79,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 15.9,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 3,
+      "frenadas_bruscas": 4,
+      "excesos_velocidad": 1,
+      "uso_telefono": 2,
+      "score_mes": 79
     },
-    "fecha_ingreso": "2021-08-31",
-    "incidentes_30dias": 1
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "Manejo defensivo",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 17.6
   },
   {
     "id": "DRV-010",
-    "nombre": "Ricardo Gutiérrez Sánchez",
-    "edad": 49,
-    "licencia_tipo": "C",
-    "licencia_vigencia": "2027-11-24",
-    "telefono": "+52 2295704631",
-    "unidad_asignada": "MX-3333",
-    "status": "Activo",
-    "score_seguridad": 93,
-    "horas_conduccion_hoy": 0.9,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 8173280554",
-    "certificaciones": [
-      "NOM-012-SCT"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 55.1,
-      "presion_frenado_promedio": 13.7,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 2,
-      "eventos_exceso_velocidad": 2,
-      "km_recorridos_mes": 6626
+    "nombre": "Luis Ángel Moreno",
+    "edad": 41,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-11-29",
+    "telefono": "+52 764241 7965",
+    "unidad_asignada": "MX-3009",
+    "status": "activo",
+    "score_seguridad": 78,
+    "horas_conduccion_hoy": 2.1,
+    "horas_descanso": 10.4,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 3,
+      "frenadas_bruscas": 10,
+      "excesos_velocidad": 1,
+      "uso_telefono": 2,
+      "score_mes": 78
     },
-    "fecha_ingreso": "2024-12-23",
-    "incidentes_30dias": 2
+    "capacitaciones": [
+      "Manejo defensivo",
+      "Seguridad vial",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 10.9
   },
   {
     "id": "DRV-011",
-    "nombre": "Luis Enrique Morales",
-    "edad": 55,
-    "licencia_tipo": "E",
-    "licencia_vigencia": "2027-06-15",
-    "telefono": "+52 5575802771",
-    "unidad_asignada": "MX-3370",
-    "status": "Descanso",
-    "score_seguridad": 97,
-    "horas_conduccion_hoy": 7.3,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 5520843514",
-    "certificaciones": [
-      "NOM-012-SCT",
-      "HAZMAT"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 55.2,
-      "presion_frenado_promedio": 13.1,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 0,
-      "eventos_exceso_velocidad": 0,
-      "km_recorridos_mes": 7505
+    "nombre": "Miguel Ángel Ramírez",
+    "edad": 54,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2026-05-30",
+    "telefono": "+52 619494 6927",
+    "unidad_asignada": "MX-3010",
+    "status": "descanso",
+    "score_seguridad": 52,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 14.5,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 0,
+      "frenadas_bruscas": 3,
+      "excesos_velocidad": 2,
+      "uso_telefono": 1,
+      "score_mes": 52
     },
-    "fecha_ingreso": "2019-07-15",
-    "incidentes_30dias": 2
+    "capacitaciones": [
+      "NOM-087",
+      "Seguridad vial",
+      "Manejo defensivo",
+      "Cadena de frío"
+    ],
+    "incidentes_12_meses": 3,
+    "antiguedad_anios": 11.2
   },
   {
     "id": "DRV-012",
-    "nombre": "Pedro Castillo Reyes",
-    "edad": 32,
-    "licencia_tipo": "B",
-    "licencia_vigencia": "2027-12-28",
-    "telefono": "+52 5520949687",
-    "unidad_asignada": "MX-3407",
-    "status": "Activo",
-    "score_seguridad": 83,
-    "horas_conduccion_hoy": 3.5,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 2275184410",
-    "certificaciones": [
-      "Seguridad Carretera",
-      "NOM-012-SCT",
-      "HAZMAT"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 54.1,
-      "presion_frenado_promedio": 13.4,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 1,
-      "eventos_exceso_velocidad": 2,
-      "km_recorridos_mes": 4864
+    "nombre": "Francisco Javier López",
+    "edad": 27,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-08-02",
+    "telefono": "+52 777246 7325",
+    "unidad_asignada": "MX-3011",
+    "status": "activo",
+    "score_seguridad": 53,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 16.0,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 7,
+      "excesos_velocidad": 0,
+      "uso_telefono": 1,
+      "score_mes": 53
     },
-    "fecha_ingreso": "2021-10-25",
-    "incidentes_30dias": 1
+    "capacitaciones": [
+      "Manejo defensivo",
+      "NOM-087",
+      "Seguridad vial",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 3,
+    "antiguedad_anios": 0.8
   },
   {
     "id": "DRV-013",
-    "nombre": "Arturo Vázquez Luna",
-    "edad": 46,
-    "licencia_tipo": "A",
-    "licencia_vigencia": "2027-03-31",
-    "telefono": "+52 4419957701",
-    "unidad_asignada": "MX-3444",
-    "status": "Activo",
-    "score_seguridad": 90,
-    "horas_conduccion_hoy": 3.7,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 5517635653",
-    "certificaciones": [
-      "Doble Remolque",
-      "Manejo Defensivo"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 54.1,
-      "presion_frenado_promedio": 12.3,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 0,
-      "eventos_exceso_velocidad": 2,
-      "km_recorridos_mes": 11307
+    "nombre": "Ricardo Sánchez Flores",
+    "edad": 44,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-06-13",
+    "telefono": "+52 775097 8484",
+    "unidad_asignada": "MX-3012",
+    "status": "activo",
+    "score_seguridad": 74,
+    "horas_conduccion_hoy": 10.5,
+    "horas_descanso": 4.9,
+    "status_nom087": "excedido",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 3,
+      "frenadas_bruscas": 6,
+      "excesos_velocidad": 3,
+      "uso_telefono": 0,
+      "score_mes": 74
     },
-    "fecha_ingreso": "2021-05-17",
-    "incidentes_30dias": 1
+    "capacitaciones": [
+      "NOM-087",
+      "Cadena de frío",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 17.9
   },
   {
     "id": "DRV-014",
-    "nombre": "Sergio Delgado Ríos",
-    "edad": 37,
-    "licencia_tipo": "E",
-    "licencia_vigencia": "2026-10-20",
-    "telefono": "+52 3386560394",
-    "unidad_asignada": "MX-3481",
-    "status": "En Ruta",
-    "score_seguridad": 89,
-    "horas_conduccion_hoy": 3.7,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 3361254050",
-    "certificaciones": [
-      "NOM-012-SCT",
-      "Seguridad Carretera",
-      "Manejo Defensivo"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 55.5,
-      "presion_frenado_promedio": 11.4,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 1,
-      "eventos_exceso_velocidad": 2,
-      "km_recorridos_mes": 5267
+    "nombre": "Eduardo Pérez Gutiérrez",
+    "edad": 48,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2027-05-14",
+    "telefono": "+52 555332 9791",
+    "unidad_asignada": "MX-3013",
+    "status": "activo",
+    "score_seguridad": 96,
+    "horas_conduccion_hoy": 3.3,
+    "horas_descanso": 9.2,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 5,
+      "frenadas_bruscas": 10,
+      "excesos_velocidad": 5,
+      "uso_telefono": 2,
+      "score_mes": 96
     },
-    "fecha_ingreso": "2022-11-18",
-    "incidentes_30dias": 0
+    "capacitaciones": [
+      "Seguridad vial",
+      "Materiales peligrosos",
+      "Manejo defensivo",
+      "Cadena de frío",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 11.3
   },
   {
     "id": "DRV-015",
-    "nombre": "Raúl Espinoza Chávez",
-    "edad": 32,
-    "licencia_tipo": "A",
-    "licencia_vigencia": "2027-03-31",
-    "telefono": "+52 4455439043",
-    "unidad_asignada": "MX-3518",
-    "status": "Descanso",
-    "score_seguridad": 92,
-    "horas_conduccion_hoy": 1.4,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 2274227366",
-    "certificaciones": [
-      "HAZMAT",
-      "NOM-012-SCT",
-      "Manejo Defensivo"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 56.0,
-      "presion_frenado_promedio": 13.4,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 3,
-      "eventos_exceso_velocidad": 0,
-      "km_recorridos_mes": 7807
+    "nombre": "Raúl García Domínguez",
+    "edad": 38,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2027-10-24",
+    "telefono": "+52 614538 4817",
+    "unidad_asignada": "MX-3014",
+    "status": "activo",
+    "score_seguridad": 83,
+    "horas_conduccion_hoy": 2.0,
+    "horas_descanso": 11.3,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 12,
+      "excesos_velocidad": 4,
+      "uso_telefono": 0,
+      "score_mes": 83
     },
-    "fecha_ingreso": "2023-06-05",
-    "incidentes_30dias": 0
+    "capacitaciones": [
+      "Primeros auxilios",
+      "Seguridad vial",
+      "Materiales peligrosos",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 15.7
   },
   {
     "id": "DRV-016",
-    "nombre": "Francisco Javier López",
-    "edad": 50,
-    "licencia_tipo": "E",
-    "licencia_vigencia": "2026-10-26",
-    "telefono": "+52 5528217159",
-    "unidad_asignada": "MX-3555",
-    "status": "Activo",
-    "score_seguridad": 91,
-    "horas_conduccion_hoy": 3.6,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 2221783073",
-    "certificaciones": [
-      "Doble Remolque",
-      "NOM-012-SCT",
-      "Seguridad Carretera"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 54.7,
-      "presion_frenado_promedio": 12.8,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 0,
-      "eventos_exceso_velocidad": 2,
-      "km_recorridos_mes": 11882
+    "nombre": "Alberto Jiménez Reyes",
+    "edad": 54,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-06-04",
+    "telefono": "+52 782557 6120",
+    "unidad_asignada": "MX-3015",
+    "status": "activo",
+    "score_seguridad": 62,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 13.7,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 4,
+      "frenadas_bruscas": 5,
+      "excesos_velocidad": 1,
+      "uso_telefono": 3,
+      "score_mes": 62
     },
-    "fecha_ingreso": "2022-06-06",
-    "incidentes_30dias": 1
+    "capacitaciones": [
+      "Manejo defensivo",
+      "Seguridad vial"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 2.2
   },
   {
     "id": "DRV-017",
-    "nombre": "Eduardo Salazar Ramos",
+    "nombre": "Gustavo Vargas Méndez",
     "edad": 38,
-    "licencia_tipo": "C",
-    "licencia_vigencia": "2027-03-24",
-    "telefono": "+52 2227551135",
-    "unidad_asignada": "MX-3592",
-    "status": "Activo",
-    "score_seguridad": 86,
-    "horas_conduccion_hoy": 4.1,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 5552831009",
-    "certificaciones": [
-      "Seguridad Carretera"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 54.3,
-      "presion_frenado_promedio": 11.2,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 0,
-      "eventos_exceso_velocidad": 1,
-      "km_recorridos_mes": 10366
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-06-08",
+    "telefono": "+52 696585 3578",
+    "unidad_asignada": "MX-3016",
+    "status": "activo",
+    "score_seguridad": 93,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 13.5,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 5,
+      "frenadas_bruscas": 12,
+      "excesos_velocidad": 4,
+      "uso_telefono": 0,
+      "score_mes": 93
     },
-    "fecha_ingreso": "2022-11-27",
-    "incidentes_30dias": 0
+    "capacitaciones": [
+      "Primeros auxilios",
+      "Seguridad vial"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 1.4
   },
   {
     "id": "DRV-018",
-    "nombre": "José Antonio Méndez",
-    "edad": 49,
-    "licencia_tipo": "A",
-    "licencia_vigencia": "2027-06-05",
-    "telefono": "+52 4451295819",
-    "unidad_asignada": "MX-3629",
-    "status": "Descanso",
-    "score_seguridad": 92,
-    "horas_conduccion_hoy": 7.0,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 5590115852",
-    "certificaciones": [
-      "Doble Remolque",
-      "HAZMAT"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 54.8,
-      "presion_frenado_promedio": 11.5,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 0,
-      "eventos_exceso_velocidad": 2,
-      "km_recorridos_mes": 10871
+    "nombre": "Sergio Castillo Herrera",
+    "edad": 54,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-04-10",
+    "telefono": "+52 578155 2734",
+    "unidad_asignada": "MX-3017",
+    "status": "activo",
+    "score_seguridad": 80,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 13.0,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 6,
+      "frenadas_bruscas": 8,
+      "excesos_velocidad": 0,
+      "uso_telefono": 3,
+      "score_mes": 80
     },
-    "fecha_ingreso": "2023-10-10",
-    "incidentes_30dias": 2
+    "capacitaciones": [
+      "Seguridad vial",
+      "Materiales peligrosos",
+      "Primeros auxilios",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 1.8
   },
   {
     "id": "DRV-019",
-    "nombre": "Héctor Domínguez Peña",
-    "edad": 48,
-    "licencia_tipo": "B",
-    "licencia_vigencia": "2027-10-04",
-    "telefono": "+52 5533496796",
-    "unidad_asignada": "MX-3666",
-    "status": "En Ruta",
-    "score_seguridad": 84,
-    "horas_conduccion_hoy": 7.1,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 8114877451",
-    "certificaciones": [
-      "Seguridad Carretera",
-      "HAZMAT"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 54.9,
-      "presion_frenado_promedio": 11.8,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 2,
-      "eventos_exceso_velocidad": 0,
-      "km_recorridos_mes": 3151
+    "nombre": "Antonio Romero Núñez",
+    "edad": 34,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2027-07-10",
+    "telefono": "+52 586626 2381",
+    "unidad_asignada": "MX-3018",
+    "status": "activo",
+    "score_seguridad": 66,
+    "horas_conduccion_hoy": 10.5,
+    "horas_descanso": 3.5,
+    "status_nom087": "excedido",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 0,
+      "excesos_velocidad": 1,
+      "uso_telefono": 3,
+      "score_mes": 66
     },
-    "fecha_ingreso": "2022-05-04",
-    "incidentes_30dias": 2
+    "capacitaciones": [
+      "Cadena de frío",
+      "Seguridad vial",
+      "Primeros auxilios",
+      "NOM-087",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 3,
+    "antiguedad_anios": 7.3
   },
   {
     "id": "DRV-020",
-    "nombre": "Martín Aguilar Rojas",
-    "edad": 53,
-    "licencia_tipo": "A",
-    "licencia_vigencia": "2027-07-13",
-    "telefono": "+52 8178886959",
-    "unidad_asignada": "MX-3703",
-    "status": "En Ruta",
-    "score_seguridad": 96,
-    "horas_conduccion_hoy": 3.7,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Seguro",
-    "contacto_emergencia": "+52 5585000490",
-    "certificaciones": [
-      "Doble Remolque",
-      "Manejo Defensivo"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 54.9,
-      "presion_frenado_promedio": 13.5,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 3,
-      "eventos_exceso_velocidad": 1,
-      "km_recorridos_mes": 3049
+    "nombre": "Jesús Maldonado Ochoa",
+    "edad": 58,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2028-02-11",
+    "telefono": "+52 653147 7172",
+    "unidad_asignada": "MX-3019",
+    "status": "activo",
+    "score_seguridad": 67,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 12.6,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 11,
+      "excesos_velocidad": 4,
+      "uso_telefono": 1,
+      "score_mes": 67
     },
-    "fecha_ingreso": "2023-03-30",
-    "incidentes_30dias": 2
+    "capacitaciones": [
+      "Manejo defensivo",
+      "NOM-087",
+      "Materiales peligrosos",
+      "Cadena de frío",
+      "Seguridad vial"
+    ],
+    "incidentes_12_meses": 3,
+    "antiguedad_anios": 11.2
   },
   {
     "id": "DRV-021",
-    "nombre": "Óscar Navarro Bautista",
-    "edad": 33,
-    "licencia_tipo": "E",
-    "licencia_vigencia": "2026-12-07",
-    "telefono": "+52 8150364158",
-    "unidad_asignada": "MX-3740",
-    "status": "Descanso",
-    "score_seguridad": 67,
-    "horas_conduccion_hoy": 1.2,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Atención",
-    "contacto_emergencia": "+52 2217734153",
-    "certificaciones": [
-      "Seguridad Carretera",
-      "NOM-012-SCT",
-      "Doble Remolque"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 76.1,
-      "presion_frenado_promedio": 69.4,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 4,
-      "eventos_exceso_velocidad": 6,
-      "km_recorridos_mes": 6978
+    "nombre": "Oscar Delgado Rivas",
+    "edad": 53,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2026-04-10",
+    "telefono": "+52 571311 5193",
+    "unidad_asignada": "MX-3020",
+    "status": "activo",
+    "score_seguridad": 73,
+    "horas_conduccion_hoy": 11.8,
+    "horas_descanso": 1.1,
+    "status_nom087": "excedido",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 8,
+      "excesos_velocidad": 5,
+      "uso_telefono": 3,
+      "score_mes": 73
     },
-    "fecha_ingreso": "2022-10-29",
-    "incidentes_30dias": 2
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 1.3
   },
   {
     "id": "DRV-022",
-    "nombre": "Iván Contreras Soto",
-    "edad": 29,
-    "licencia_tipo": "E",
-    "licencia_vigencia": "2028-02-09",
-    "telefono": "+52 2212111482",
-    "unidad_asignada": "MX-3777",
-    "status": "Activo",
-    "score_seguridad": 66,
-    "horas_conduccion_hoy": 4.3,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Atención",
-    "contacto_emergencia": "+52 2211590610",
-    "certificaciones": [
-      "NOM-012-SCT"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 74.8,
-      "presion_frenado_promedio": 69.6,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 8,
-      "eventos_exceso_velocidad": 8,
-      "km_recorridos_mes": 7697
+    "nombre": "Arturo Medina Contreras",
+    "edad": 44,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-05-17",
+    "telefono": "+52 819897 8756",
+    "unidad_asignada": "MX-3021",
+    "status": "activo",
+    "score_seguridad": 83,
+    "horas_conduccion_hoy": 4.5,
+    "horas_descanso": 8.5,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 3,
+      "frenadas_bruscas": 4,
+      "excesos_velocidad": 2,
+      "uso_telefono": 0,
+      "score_mes": 83
     },
-    "fecha_ingreso": "2025-06-29",
-    "incidentes_30dias": 5
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "Manejo defensivo",
+      "Seguridad vial",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 3,
+    "antiguedad_anios": 13.5
   },
   {
     "id": "DRV-023",
-    "nombre": "Adrián Romero Díaz",
-    "edad": 40,
-    "licencia_tipo": "B",
-    "licencia_vigencia": "2027-05-08",
-    "telefono": "+52 3358412365",
-    "unidad_asignada": "MX-3814",
-    "status": "Activo",
+    "nombre": "Daniel Guerrero Salinas",
+    "edad": 32,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2026-10-12",
+    "telefono": "+52 709482 7340",
+    "unidad_asignada": "MX-3022",
+    "status": "activo",
     "score_seguridad": 59,
-    "horas_conduccion_hoy": 0.7,
-    "status_nom087": "Revisar",
-    "perfil_conduccion": "Atención",
-    "contacto_emergencia": "+52 3369691437",
-    "certificaciones": [
-      "Doble Remolque",
-      "Manejo Defensivo"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 74.1,
-      "presion_frenado_promedio": 66.9,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 4,
-      "eventos_exceso_velocidad": 1,
-      "km_recorridos_mes": 6070
+    "horas_conduccion_hoy": 2.0,
+    "horas_descanso": 13.7,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 1,
+      "frenadas_bruscas": 4,
+      "excesos_velocidad": 2,
+      "uso_telefono": 3,
+      "score_mes": 59
     },
-    "fecha_ingreso": "2020-11-07",
-    "incidentes_30dias": 4
+    "capacitaciones": [
+      "Cadena de frío",
+      "Materiales peligrosos",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 2.9
   },
   {
     "id": "DRV-024",
-    "nombre": "Gustavo Herrera Jiménez",
-    "edad": 42,
-    "licencia_tipo": "E",
-    "licencia_vigencia": "2027-11-22",
-    "telefono": "+52 2281721578",
-    "unidad_asignada": "MX-3851",
-    "status": "En Ruta",
-    "score_seguridad": 57,
-    "horas_conduccion_hoy": 7.4,
-    "status_nom087": "Revisar",
-    "perfil_conduccion": "Atención",
-    "contacto_emergencia": "+52 2282966824",
-    "certificaciones": [
-      "Doble Remolque"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 74.1,
-      "presion_frenado_promedio": 72.5,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 2,
-      "eventos_exceso_velocidad": 1,
-      "km_recorridos_mes": 7067
+    "nombre": "Pablo Figueroa Estrada",
+    "edad": 39,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-09-18",
+    "telefono": "+52 642292 5105",
+    "unidad_asignada": "MX-3023",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 10.3,
+    "horas_descanso": 2.5,
+    "status_nom087": "excedido",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 8,
+      "frenadas_bruscas": 4,
+      "excesos_velocidad": 1,
+      "uso_telefono": 2,
+      "score_mes": 100
     },
-    "fecha_ingreso": "2021-09-14",
-    "incidentes_30dias": 2
+    "capacitaciones": [
+      "Cadena de frío",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 10.7
   },
   {
     "id": "DRV-025",
-    "nombre": "Enrique Vargas Medina",
-    "edad": 50,
-    "licencia_tipo": "C",
-    "licencia_vigencia": "2027-12-25",
-    "telefono": "+52 4421375216",
-    "unidad_asignada": "MX-3888",
-    "status": "Descanso",
-    "score_seguridad": 76,
-    "horas_conduccion_hoy": 1.1,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Atención",
-    "contacto_emergencia": "+52 5542020689",
-    "certificaciones": [
-      "Manejo Defensivo",
-      "HAZMAT"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 74.7,
-      "presion_frenado_promedio": 71.6,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 11,
-      "eventos_exceso_velocidad": 11,
-      "km_recorridos_mes": 5316
+    "nombre": "Héctor Navarro Bautista",
+    "edad": 35,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-11-17",
+    "telefono": "+52 786123 4110",
+    "unidad_asignada": "MX-3024",
+    "status": "activo",
+    "score_seguridad": 64,
+    "horas_conduccion_hoy": 6.4,
+    "horas_descanso": 8.7,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 7,
+      "frenadas_bruscas": 8,
+      "excesos_velocidad": 3,
+      "uso_telefono": 3,
+      "score_mes": 64
     },
-    "fecha_ingreso": "2019-12-16",
-    "incidentes_30dias": 4
+    "capacitaciones": [
+      "NOM-087",
+      "Manejo defensivo",
+      "Cadena de frío",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 17.4
   },
   {
     "id": "DRV-026",
-    "nombre": "Andrés Cortés Ibarra",
-    "edad": 32,
-    "licencia_tipo": "B",
-    "licencia_vigencia": "2026-12-16",
-    "telefono": "+52 8153231088",
-    "unidad_asignada": "MX-3925",
-    "status": "Activo",
-    "score_seguridad": 75,
-    "horas_conduccion_hoy": 6.1,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Atención",
-    "contacto_emergencia": "+52 2275694038",
-    "certificaciones": [
-      "NOM-012-SCT"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 73.2,
-      "presion_frenado_promedio": 67.2,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 8,
-      "eventos_exceso_velocidad": 10,
-      "km_recorridos_mes": 9786
+    "nombre": "Armando Espinoza Ríos",
+    "edad": 56,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-11-02",
+    "telefono": "+52 648780 1272",
+    "unidad_asignada": "MX-3025",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 8.3,
+    "horas_descanso": 5.2,
+    "status_nom087": "precaucion",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 1,
+      "frenadas_bruscas": 6,
+      "excesos_velocidad": 4,
+      "uso_telefono": 2,
+      "score_mes": 100
     },
-    "fecha_ingreso": "2021-06-24",
-    "incidentes_30dias": 4
+    "capacitaciones": [
+      "Cadena de frío",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 12.0
   },
   {
     "id": "DRV-027",
-    "nombre": "Pablo León Figueroa",
-    "edad": 49,
-    "licencia_tipo": "E",
-    "licencia_vigencia": "2026-11-13",
-    "telefono": "+52 5523484199",
-    "unidad_asignada": "MX-3962",
-    "status": "Activo",
-    "score_seguridad": 74,
-    "horas_conduccion_hoy": 6.0,
-    "status_nom087": "Cumple",
-    "perfil_conduccion": "Atención",
-    "contacto_emergencia": "+52 4461543890",
-    "certificaciones": [
-      "Seguridad Carretera",
-      "Doble Remolque"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 74.0,
-      "presion_frenado_promedio": 70.3,
-      "uso_telefono_pct": 0.0,
-      "eventos_frenado_brusco": 4,
-      "eventos_exceso_velocidad": 3,
-      "km_recorridos_mes": 7537
+    "nombre": "Rubén Aguilar Cervantes",
+    "edad": 42,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2026-08-07",
+    "telefono": "+52 739899 7220",
+    "unidad_asignada": "MX-3026",
+    "status": "activo",
+    "score_seguridad": 97,
+    "horas_conduccion_hoy": 10.5,
+    "horas_descanso": 5.1,
+    "status_nom087": "excedido",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 6,
+      "frenadas_bruscas": 5,
+      "excesos_velocidad": 1,
+      "uso_telefono": 2,
+      "score_mes": 97
     },
-    "fecha_ingreso": "2024-09-27",
-    "incidentes_30dias": 2
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 8.2
   },
   {
     "id": "DRV-028",
-    "nombre": "Víctor Hugo Sandoval",
-    "edad": 36,
-    "licencia_tipo": "A",
-    "licencia_vigencia": "2027-08-26",
-    "telefono": "+52 2278555983",
-    "unidad_asignada": "MX-3999",
-    "status": "Activo",
-    "score_seguridad": 32,
-    "horas_conduccion_hoy": 0.4,
-    "status_nom087": "Revisar",
-    "perfil_conduccion": "Riesgo",
-    "contacto_emergencia": "+52 4432398441",
-    "certificaciones": [
-      "HAZMAT",
-      "Doble Remolque"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 51.4,
-      "presion_frenado_promedio": 39.8,
-      "uso_telefono_pct": 100.0,
-      "eventos_frenado_brusco": 3,
-      "eventos_exceso_velocidad": 9,
-      "km_recorridos_mes": 4889
+    "nombre": "Hugo Camacho Ortega",
+    "edad": 58,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2026-08-20",
+    "telefono": "+52 718668 5470",
+    "unidad_asignada": "MX-3027",
+    "status": "activo",
+    "score_seguridad": 99,
+    "horas_conduccion_hoy": 3.3,
+    "horas_descanso": 9.5,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 1,
+      "frenadas_bruscas": 5,
+      "excesos_velocidad": 1,
+      "uso_telefono": 3,
+      "score_mes": 99
     },
-    "fecha_ingreso": "2023-02-15",
-    "incidentes_30dias": 6
+    "capacitaciones": [
+      "Seguridad vial",
+      "Primeros auxilios",
+      "Manejo defensivo",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 5.7
   },
   {
     "id": "DRV-029",
-    "nombre": "Jesús Maldonado Ochoa",
-    "edad": 36,
-    "licencia_tipo": "B",
-    "licencia_vigencia": "2026-06-20",
-    "telefono": "+52 8128268622",
-    "unidad_asignada": "MX-4036",
-    "status": "En Ruta",
-    "score_seguridad": 44,
-    "horas_conduccion_hoy": 0.9,
-    "status_nom087": "Revisar",
-    "perfil_conduccion": "Riesgo",
-    "contacto_emergencia": "+52 5532062036",
-    "certificaciones": [
-      "Seguridad Carretera",
-      "Doble Remolque"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 48.5,
-      "presion_frenado_promedio": 40.1,
-      "uso_telefono_pct": 100.0,
-      "eventos_frenado_brusco": 13,
-      "eventos_exceso_velocidad": 1,
-      "km_recorridos_mes": 11780
+    "nombre": "Felipe Rojas Sandoval",
+    "edad": 58,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-09-27",
+    "telefono": "+52 776927 2279",
+    "unidad_asignada": "MX-3028",
+    "status": "activo",
+    "score_seguridad": 69,
+    "horas_conduccion_hoy": 8.6,
+    "horas_descanso": 7.1,
+    "status_nom087": "precaucion",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 1,
+      "frenadas_bruscas": 0,
+      "excesos_velocidad": 4,
+      "uso_telefono": 1,
+      "score_mes": 69
     },
-    "fecha_ingreso": "2021-09-01",
-    "incidentes_30dias": 2
+    "capacitaciones": [
+      "Primeros auxilios",
+      "Materiales peligrosos",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 4.1
   },
   {
     "id": "DRV-030",
-    "nombre": "Daniel Estrada Cervantes",
-    "edad": 33,
-    "licencia_tipo": "A",
-    "licencia_vigencia": "2027-02-25",
-    "telefono": "+52 4439396392",
-    "unidad_asignada": "MX-4073",
-    "status": "Activo",
-    "score_seguridad": 38,
-    "horas_conduccion_hoy": 7.2,
-    "status_nom087": "Revisar",
-    "perfil_conduccion": "Riesgo",
-    "contacto_emergencia": "+52 3317863981",
-    "certificaciones": [
-      "NOM-012-SCT",
-      "Doble Remolque"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 49.0,
-      "presion_frenado_promedio": 40.5,
-      "uso_telefono_pct": 100.0,
-      "eventos_frenado_brusco": 7,
-      "eventos_exceso_velocidad": 2,
-      "km_recorridos_mes": 4640
+    "nombre": "Enrique León Cabrera",
+    "edad": 54,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-10-14",
+    "telefono": "+52 689715 7214",
+    "unidad_asignada": "MX-3029",
+    "status": "activo",
+    "score_seguridad": 73,
+    "horas_conduccion_hoy": 4.8,
+    "horas_descanso": 10.5,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 3,
+      "frenadas_bruscas": 7,
+      "excesos_velocidad": 2,
+      "uso_telefono": 1,
+      "score_mes": 73
     },
-    "fecha_ingreso": "2022-11-27",
-    "incidentes_30dias": 6
+    "capacitaciones": [
+      "Primeros auxilios",
+      "Manejo defensivo",
+      "Cadena de frío",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 13.9
   },
   {
     "id": "DRV-031",
-    "nombre": "Armando Guerrero Ponce",
-    "edad": 50,
-    "licencia_tipo": "A",
-    "licencia_vigencia": "2027-03-29",
-    "telefono": "+52 3324500158",
-    "unidad_asignada": "MX-4110",
-    "status": "Descanso",
-    "score_seguridad": 37,
-    "horas_conduccion_hoy": 0.0,
-    "status_nom087": "Revisar",
-    "perfil_conduccion": "Riesgo",
-    "contacto_emergencia": "+52 2268816911",
-    "certificaciones": [
-      "Seguridad Carretera",
-      "HAZMAT",
-      "NOM-012-SCT"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 51.3,
-      "presion_frenado_promedio": 38.5,
-      "uso_telefono_pct": 100.0,
-      "eventos_frenado_brusco": 15,
-      "eventos_exceso_velocidad": 6,
-      "km_recorridos_mes": 8754
+    "nombre": "Víctor Morales Ávila",
+    "edad": 51,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-09-29",
+    "telefono": "+52 597363 4978",
+    "unidad_asignada": "MX-3030",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 9.6,
+    "horas_descanso": 3.4,
+    "status_nom087": "precaucion",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 5,
+      "frenadas_bruscas": 10,
+      "excesos_velocidad": 0,
+      "uso_telefono": 3,
+      "score_mes": 100
     },
-    "fecha_ingreso": "2019-07-25",
-    "incidentes_30dias": 4
+    "capacitaciones": [
+      "Manejo defensivo",
+      "Cadena de frío",
+      "Primeros auxilios",
+      "Seguridad vial"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 12.3
   },
   {
     "id": "DRV-032",
-    "nombre": "Alfredo Cabrera Nava",
-    "edad": 41,
-    "licencia_tipo": "E",
-    "licencia_vigencia": "2027-11-12",
-    "telefono": "+52 8173922841",
-    "unidad_asignada": "MX-4147",
-    "status": "Activo",
-    "score_seguridad": 46,
-    "horas_conduccion_hoy": 0.6,
-    "status_nom087": "Revisar",
-    "perfil_conduccion": "Riesgo",
-    "contacto_emergencia": "+52 5577390918",
-    "certificaciones": [
-      "NOM-012-SCT",
-      "HAZMAT",
-      "Manejo Defensivo"
-    ],
-    "notas": "",
-    "telemetria": {
-      "velocidad_promedio": 49.8,
-      "presion_frenado_promedio": 39.3,
-      "uso_telefono_pct": 100.0,
-      "eventos_frenado_brusco": 14,
-      "eventos_exceso_velocidad": 2,
-      "km_recorridos_mes": 5738
+    "nombre": "Iván Acosta Paredes",
+    "edad": 46,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-08-18",
+    "telefono": "+52 789037 8550",
+    "unidad_asignada": "MX-3031",
+    "status": "activo",
+    "score_seguridad": 68,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 14.9,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 5,
+      "frenadas_bruscas": 2,
+      "excesos_velocidad": 1,
+      "uso_telefono": 3,
+      "score_mes": 68
     },
-    "fecha_ingreso": "2023-04-24",
-    "incidentes_30dias": 2
+    "capacitaciones": [
+      "Cadena de frío",
+      "Manejo defensivo",
+      "Seguridad vial"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 1.8
+  },
+  {
+    "id": "DRV-033",
+    "nombre": "Javier Vázquez Ibarra",
+    "edad": 46,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2026-07-11",
+    "telefono": "+52 711697 4764",
+    "unidad_asignada": "MX-3032",
+    "status": "activo",
+    "score_seguridad": 93,
+    "horas_conduccion_hoy": 10.1,
+    "horas_descanso": 2.7,
+    "status_nom087": "excedido",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 7,
+      "frenadas_bruscas": 4,
+      "excesos_velocidad": 0,
+      "uso_telefono": 0,
+      "score_mes": 93
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "Seguridad vial",
+      "Manejo defensivo",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 3,
+    "antiguedad_anios": 6.0
+  },
+  {
+    "id": "DRV-034",
+    "nombre": "Mario Castro Treviño",
+    "edad": 44,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-04-08",
+    "telefono": "+52 795419 2674",
+    "unidad_asignada": "MX-3033",
+    "status": "activo",
+    "score_seguridad": 69,
+    "horas_conduccion_hoy": 6.2,
+    "horas_descanso": 6.3,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 6,
+      "excesos_velocidad": 3,
+      "uso_telefono": 3,
+      "score_mes": 69
+    },
+    "capacitaciones": [
+      "Manejo defensivo",
+      "Seguridad vial"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 2.1
+  },
+  {
+    "id": "DRV-035",
+    "nombre": "Andrés Peña Guzmán",
+    "edad": 50,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2026-07-30",
+    "telefono": "+52 734273 9939",
+    "unidad_asignada": "MX-3034",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 4.0,
+    "horas_descanso": 8.7,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 8,
+      "frenadas_bruscas": 0,
+      "excesos_velocidad": 5,
+      "uso_telefono": 3,
+      "score_mes": 100
+    },
+    "capacitaciones": [
+      "NOM-087",
+      "Materiales peligrosos",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 14.4
+  },
+  {
+    "id": "DRV-036",
+    "nombre": "Rafael Suárez Montoya",
+    "edad": 34,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-02-18",
+    "telefono": "+52 658460 4389",
+    "unidad_asignada": "MX-3035",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 6.3,
+    "horas_descanso": 7.8,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 5,
+      "frenadas_bruscas": 7,
+      "excesos_velocidad": 0,
+      "uso_telefono": 3,
+      "score_mes": 100
+    },
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "Manejo defensivo",
+      "Seguridad vial",
+      "Cadena de frío",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 6.5
+  },
+  {
+    "id": "DRV-037",
+    "nombre": "Óscar Herrera Solís",
+    "edad": 45,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2026-12-05",
+    "telefono": "+52 642916 3999",
+    "unidad_asignada": "MX-3036",
+    "status": "activo",
+    "score_seguridad": 74,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 13.5,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 8,
+      "excesos_velocidad": 3,
+      "uso_telefono": 3,
+      "score_mes": 74
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "NOM-087",
+      "Seguridad vial"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 11.6
+  },
+  {
+    "id": "DRV-038",
+    "nombre": "Tomás Blanco Cortés",
+    "edad": 40,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2027-11-28",
+    "telefono": "+52 776744 8015",
+    "unidad_asignada": "MX-3037",
+    "status": "activo",
+    "score_seguridad": 91,
+    "horas_conduccion_hoy": 6.6,
+    "horas_descanso": 6.1,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 12,
+      "excesos_velocidad": 1,
+      "uso_telefono": 1,
+      "score_mes": 91
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 10.9
+  },
+  {
+    "id": "DRV-039",
+    "nombre": "Gilberto Reyes Duarte",
+    "edad": 43,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-10-17",
+    "telefono": "+52 733139 8951",
+    "unidad_asignada": "MX-3038",
+    "status": "activo",
+    "score_seguridad": 93,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 15.2,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 0,
+      "frenadas_bruscas": 0,
+      "excesos_velocidad": 0,
+      "uso_telefono": 3,
+      "score_mes": 93
+    },
+    "capacitaciones": [
+      "Manejo defensivo",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 0.5
+  },
+  {
+    "id": "DRV-040",
+    "nombre": "Ernesto Fuentes Miranda",
+    "edad": 31,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2026-08-09",
+    "telefono": "+52 737291 6759",
+    "unidad_asignada": "MX-3039",
+    "status": "activo",
+    "score_seguridad": 42,
+    "horas_conduccion_hoy": 4.1,
+    "horas_descanso": 11.8,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 5,
+      "frenadas_bruscas": 12,
+      "excesos_velocidad": 1,
+      "uso_telefono": 1,
+      "score_mes": 42
+    },
+    "capacitaciones": [
+      "Seguridad vial",
+      "Manejo defensivo",
+      "Primeros auxilios",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 13.1
+  },
+  {
+    "id": "DRV-041",
+    "nombre": "Salvador Luna Pacheco",
+    "edad": 34,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2026-06-29",
+    "telefono": "+52 642294 9377",
+    "unidad_asignada": "MX-3040",
+    "status": "activo",
+    "score_seguridad": 65,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 15.7,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 8,
+      "excesos_velocidad": 2,
+      "uso_telefono": 3,
+      "score_mes": 65
+    },
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 15.3
+  },
+  {
+    "id": "DRV-042",
+    "nombre": "Gregorio Mendoza Cisneros",
+    "edad": 45,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2026-06-23",
+    "telefono": "+52 737108 2956",
+    "unidad_asignada": "MX-3041",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 4.5,
+    "horas_descanso": 9.5,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 0,
+      "frenadas_bruscas": 2,
+      "excesos_velocidad": 1,
+      "uso_telefono": 0,
+      "score_mes": 100
+    },
+    "capacitaciones": [
+      "Manejo defensivo",
+      "NOM-087",
+      "Materiales peligrosos",
+      "Primeros auxilios",
+      "Cadena de frío"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 8.5
+  },
+  {
+    "id": "DRV-043",
+    "nombre": "Adrián Orozco Valencia",
+    "edad": 45,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-03-05",
+    "telefono": "+52 658417 5455",
+    "unidad_asignada": "MX-3042",
+    "status": "activo",
+    "score_seguridad": 58,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 12.3,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 3,
+      "frenadas_bruscas": 2,
+      "excesos_velocidad": 4,
+      "uso_telefono": 0,
+      "score_mes": 58
+    },
+    "capacitaciones": [
+      "Manejo defensivo",
+      "Primeros auxilios",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 7.6
+  },
+  {
+    "id": "DRV-044",
+    "nombre": "Ignacio Salazar Villegas",
+    "edad": 52,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-05-14",
+    "telefono": "+52 701483 7270",
+    "unidad_asignada": "MX-3043",
+    "status": "activo",
+    "score_seguridad": 80,
+    "horas_conduccion_hoy": 9.4,
+    "horas_descanso": 5.3,
+    "status_nom087": "precaucion",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 5,
+      "excesos_velocidad": 1,
+      "uso_telefono": 1,
+      "score_mes": 80
+    },
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "NOM-087",
+      "Primeros auxilios",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 11.3
+  },
+  {
+    "id": "DRV-045",
+    "nombre": "Alfredo Trejo Cárdenas",
+    "edad": 47,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-11-03",
+    "telefono": "+52 594084 9064",
+    "unidad_asignada": "MX-3044",
+    "status": "activo",
+    "score_seguridad": 52,
+    "horas_conduccion_hoy": 6.4,
+    "horas_descanso": 7.8,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 7,
+      "excesos_velocidad": 0,
+      "uso_telefono": 0,
+      "score_mes": 52
+    },
+    "capacitaciones": [
+      "Primeros auxilios",
+      "Cadena de frío"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 9.7
+  },
+  {
+    "id": "DRV-046",
+    "nombre": "Ramón Campos Lozano",
+    "edad": 30,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2028-02-20",
+    "telefono": "+52 756500 8317",
+    "unidad_asignada": "MX-3045",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 9.6,
+    "horas_descanso": 2.4,
+    "status_nom087": "precaucion",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 3,
+      "frenadas_bruscas": 3,
+      "excesos_velocidad": 5,
+      "uso_telefono": 0,
+      "score_mes": 100
+    },
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "Manejo defensivo",
+      "Cadena de frío",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 13.3
+  },
+  {
+    "id": "DRV-047",
+    "nombre": "Samuel Ríos Echeverría",
+    "edad": 55,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2026-07-13",
+    "telefono": "+52 554390 3798",
+    "unidad_asignada": "MX-3046",
+    "status": "activo",
+    "score_seguridad": 50,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 14.6,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 1,
+      "frenadas_bruscas": 7,
+      "excesos_velocidad": 0,
+      "uso_telefono": 2,
+      "score_mes": 50
+    },
+    "capacitaciones": [
+      "NOM-087",
+      "Seguridad vial",
+      "Materiales peligrosos",
+      "Manejo defensivo",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 16.0
+  },
+  {
+    "id": "DRV-048",
+    "nombre": "Noé Pineda Barrera",
+    "edad": 42,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-07-18",
+    "telefono": "+52 559561 7874",
+    "unidad_asignada": "MX-3047",
+    "status": "activo",
+    "score_seguridad": 59,
+    "horas_conduccion_hoy": 6.4,
+    "horas_descanso": 6.1,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 2,
+      "excesos_velocidad": 4,
+      "uso_telefono": 0,
+      "score_mes": 59
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 15.7
+  },
+  {
+    "id": "DRV-049",
+    "nombre": "Benjamín Ochoa Galván",
+    "edad": 58,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2026-05-04",
+    "telefono": "+52 604158 4288",
+    "unidad_asignada": "MX-3048",
+    "status": "activo",
+    "score_seguridad": 89,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 15.3,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 3,
+      "frenadas_bruscas": 0,
+      "excesos_velocidad": 3,
+      "uso_telefono": 0,
+      "score_mes": 89
+    },
+    "capacitaciones": [
+      "Seguridad vial",
+      "Primeros auxilios",
+      "Materiales peligrosos",
+      "Cadena de frío"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 9.3
+  },
+  {
+    "id": "DRV-050",
+    "nombre": "Martín Estrada Quintero",
+    "edad": 43,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2028-03-05",
+    "telefono": "+52 588892 2045",
+    "unidad_asignada": "MX-3049",
+    "status": "activo",
+    "score_seguridad": 82,
+    "horas_conduccion_hoy": 9.3,
+    "horas_descanso": 4.0,
+    "status_nom087": "precaucion",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 4,
+      "frenadas_bruscas": 10,
+      "excesos_velocidad": 2,
+      "uso_telefono": 2,
+      "score_mes": 82
+    },
+    "capacitaciones": [
+      "Seguridad vial",
+      "Materiales peligrosos",
+      "Primeros auxilios",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 4.7
+  },
+  {
+    "id": "DRV-051",
+    "nombre": "César Montes Nájera",
+    "edad": 28,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2026-08-23",
+    "telefono": "+52 616614 7704",
+    "unidad_asignada": "MX-3050",
+    "status": "activo",
+    "score_seguridad": 89,
+    "horas_conduccion_hoy": 9.2,
+    "horas_descanso": 6.7,
+    "status_nom087": "precaucion",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 7,
+      "frenadas_bruscas": 2,
+      "excesos_velocidad": 2,
+      "uso_telefono": 1,
+      "score_mes": 89
+    },
+    "capacitaciones": [
+      "NOM-087",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 3.6
+  },
+  {
+    "id": "DRV-052",
+    "nombre": "Fabián Coronado Lugo",
+    "edad": 33,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2026-04-27",
+    "telefono": "+52 739267 3768",
+    "unidad_asignada": "MX-3051",
+    "status": "activo",
+    "score_seguridad": 78,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 13.5,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 0,
+      "frenadas_bruscas": 6,
+      "excesos_velocidad": 5,
+      "uso_telefono": 2,
+      "score_mes": 78
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 11.9
+  },
+  {
+    "id": "DRV-053",
+    "nombre": "Lorenzo Tapia Bravo",
+    "edad": 31,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2026-05-15",
+    "telefono": "+52 646901 6123",
+    "unidad_asignada": "MX-3052",
+    "status": "activo",
+    "score_seguridad": 71,
+    "horas_conduccion_hoy": 7.6,
+    "horas_descanso": 6.1,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 1,
+      "frenadas_bruscas": 1,
+      "excesos_velocidad": 0,
+      "uso_telefono": 0,
+      "score_mes": 71
+    },
+    "capacitaciones": [
+      "Seguridad vial",
+      "Primeros auxilios",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 8.2
+  },
+  {
+    "id": "DRV-054",
+    "nombre": "Wilfredo Zúñiga Arce",
+    "edad": 40,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-03-25",
+    "telefono": "+52 767305 3435",
+    "unidad_asignada": "MX-3053",
+    "status": "activo",
+    "score_seguridad": 67,
+    "horas_conduccion_hoy": 7.8,
+    "horas_descanso": 7.6,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 8,
+      "frenadas_bruscas": 9,
+      "excesos_velocidad": 0,
+      "uso_telefono": 0,
+      "score_mes": 67
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "NOM-087",
+      "Seguridad vial"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 1.8
+  },
+  {
+    "id": "DRV-055",
+    "nombre": "Emilio Parra Mora",
+    "edad": 37,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2026-08-06",
+    "telefono": "+52 674532 8488",
+    "unidad_asignada": "MX-3054",
+    "status": "activo",
+    "score_seguridad": 89,
+    "horas_conduccion_hoy": 6.0,
+    "horas_descanso": 9.3,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 3,
+      "frenadas_bruscas": 11,
+      "excesos_velocidad": 2,
+      "uso_telefono": 0,
+      "score_mes": 89
+    },
+    "capacitaciones": [
+      "Manejo defensivo",
+      "Cadena de frío",
+      "Seguridad vial",
+      "Primeros auxilios",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 17.2
+  },
+  {
+    "id": "DRV-056",
+    "nombre": "Gerardo Almanza Romo",
+    "edad": 51,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-10-03",
+    "telefono": "+52 647920 1209",
+    "unidad_asignada": "MX-3055",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 14.1,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 0,
+      "frenadas_bruscas": 6,
+      "excesos_velocidad": 1,
+      "uso_telefono": 0,
+      "score_mes": 100
+    },
+    "capacitaciones": [
+      "Primeros auxilios",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 3.3
+  },
+  {
+    "id": "DRV-057",
+    "nombre": "Jonathan Becerra Téllez",
+    "edad": 42,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2026-12-31",
+    "telefono": "+52 593636 5178",
+    "unidad_asignada": "MX-3056",
+    "status": "activo",
+    "score_seguridad": 61,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 13.3,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 0,
+      "excesos_velocidad": 1,
+      "uso_telefono": 2,
+      "score_mes": 61
+    },
+    "capacitaciones": [
+      "Seguridad vial",
+      "Cadena de frío"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 5.8
+  },
+  {
+    "id": "DRV-058",
+    "nombre": "Cristóbal Villanueva Segura",
+    "edad": 29,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2028-02-20",
+    "telefono": "+52 754492 7950",
+    "unidad_asignada": "MX-3057",
+    "status": "activo",
+    "score_seguridad": 69,
+    "horas_conduccion_hoy": 3.2,
+    "horas_descanso": 12.1,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 3,
+      "frenadas_bruscas": 8,
+      "excesos_velocidad": 5,
+      "uso_telefono": 3,
+      "score_mes": 69
+    },
+    "capacitaciones": [
+      "Seguridad vial",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 13.0
+  },
+  {
+    "id": "DRV-059",
+    "nombre": "Rogelio Escamilla Tovar",
+    "edad": 50,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-10-17",
+    "telefono": "+52 575992 4441",
+    "unidad_asignada": "MX-3058",
+    "status": "activo",
+    "score_seguridad": 90,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 15.0,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 5,
+      "frenadas_bruscas": 3,
+      "excesos_velocidad": 3,
+      "uso_telefono": 1,
+      "score_mes": 90
+    },
+    "capacitaciones": [
+      "Primeros auxilios",
+      "Seguridad vial",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 3.7
+  },
+  {
+    "id": "DRV-060",
+    "nombre": "Maximiano Cedillo Ayala",
+    "edad": 37,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2028-01-06",
+    "telefono": "+52 572235 1305",
+    "unidad_asignada": "MX-3059",
+    "status": "activo",
+    "score_seguridad": 43,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 15.4,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 0,
+      "frenadas_bruscas": 9,
+      "excesos_velocidad": 4,
+      "uso_telefono": 3,
+      "score_mes": 43
+    },
+    "capacitaciones": [
+      "Manejo defensivo",
+      "Cadena de frío",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 18.0
+  },
+  {
+    "id": "DRV-061",
+    "nombre": "Edgar Quiroz Balderas",
+    "edad": 39,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-05-25",
+    "telefono": "+52 666653 8976",
+    "unidad_asignada": "MX-3060",
+    "status": "activo",
+    "score_seguridad": 93,
+    "horas_conduccion_hoy": 9.5,
+    "horas_descanso": 5.7,
+    "status_nom087": "precaucion",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 0,
+      "frenadas_bruscas": 8,
+      "excesos_velocidad": 1,
+      "uso_telefono": 3,
+      "score_mes": 93
+    },
+    "capacitaciones": [
+      "Primeros auxilios",
+      "Manejo defensivo",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 3.8
+  },
+  {
+    "id": "DRV-062",
+    "nombre": "Saúl Ibáñez Rangel",
+    "edad": 57,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-06-08",
+    "telefono": "+52 813450 2577",
+    "unidad_asignada": "MX-3061",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 5.1,
+    "horas_descanso": 7.6,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 0,
+      "frenadas_bruscas": 12,
+      "excesos_velocidad": 4,
+      "uso_telefono": 0,
+      "score_mes": 100
+    },
+    "capacitaciones": [
+      "NOM-087",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 3,
+    "antiguedad_anios": 9.9
+  },
+  {
+    "id": "DRV-063",
+    "nombre": "Patricio Huerta Olvera",
+    "edad": 50,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2026-08-24",
+    "telefono": "+52 762951 4764",
+    "unidad_asignada": "MX-3062",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 10.1,
+    "horas_descanso": 3.7,
+    "status_nom087": "excedido",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 1,
+      "excesos_velocidad": 1,
+      "uso_telefono": 3,
+      "score_mes": 100
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "Seguridad vial",
+      "Manejo defensivo",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 11.6
+  },
+  {
+    "id": "DRV-064",
+    "nombre": "Santiago Velázquez Zamora",
+    "edad": 51,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2026-07-23",
+    "telefono": "+52 722185 9243",
+    "unidad_asignada": "MX-3063",
+    "status": "activo",
+    "score_seguridad": 56,
+    "horas_conduccion_hoy": 6.2,
+    "horas_descanso": 7.0,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 1,
+      "frenadas_bruscas": 12,
+      "excesos_velocidad": 4,
+      "uso_telefono": 2,
+      "score_mes": 56
+    },
+    "capacitaciones": [
+      "Seguridad vial",
+      "NOM-087",
+      "Cadena de frío",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 4.8
+  },
+  {
+    "id": "DRV-065",
+    "nombre": "Nicolás Carrillo Palacios",
+    "edad": 42,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2026-10-09",
+    "telefono": "+52 799374 5591",
+    "unidad_asignada": "MX-3064",
+    "status": "activo",
+    "score_seguridad": 79,
+    "horas_conduccion_hoy": 10.6,
+    "horas_descanso": 3.0,
+    "status_nom087": "excedido",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 0,
+      "excesos_velocidad": 4,
+      "uso_telefono": 3,
+      "score_mes": 79
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "Manejo defensivo",
+      "Materiales peligrosos",
+      "Primeros auxilios",
+      "Seguridad vial"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 2.6
+  },
+  {
+    "id": "DRV-066",
+    "nombre": "Mauricio Bernal Escobar",
+    "edad": 35,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2026-11-11",
+    "telefono": "+52 815166 8807",
+    "unidad_asignada": "MX-3065",
+    "status": "activo",
+    "score_seguridad": 62,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 15.4,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 1,
+      "frenadas_bruscas": 7,
+      "excesos_velocidad": 5,
+      "uso_telefono": 2,
+      "score_mes": 62
+    },
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "Seguridad vial",
+      "Cadena de frío",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 2.6
+  },
+  {
+    "id": "DRV-067",
+    "nombre": "Leonel Sosa Marroquín",
+    "edad": 30,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2026-12-29",
+    "telefono": "+52 743544 2381",
+    "unidad_asignada": "MX-3066",
+    "status": "activo",
+    "score_seguridad": 73,
+    "horas_conduccion_hoy": 5.6,
+    "horas_descanso": 9.0,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 6,
+      "frenadas_bruscas": 4,
+      "excesos_velocidad": 1,
+      "uso_telefono": 1,
+      "score_mes": 73
+    },
+    "capacitaciones": [
+      "NOM-087",
+      "Primeros auxilios",
+      "Cadena de frío",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 1.0
+  },
+  {
+    "id": "DRV-068",
+    "nombre": "Efraín Meza Rosales",
+    "edad": 58,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-01-08",
+    "telefono": "+52 649715 5404",
+    "unidad_asignada": "MX-3067",
+    "status": "activo",
+    "score_seguridad": 77,
+    "horas_conduccion_hoy": 8.0,
+    "horas_descanso": 5.7,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 1,
+      "frenadas_bruscas": 2,
+      "excesos_velocidad": 1,
+      "uso_telefono": 2,
+      "score_mes": 77
+    },
+    "capacitaciones": [
+      "Seguridad vial",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 5.3
+  },
+  {
+    "id": "DRV-069",
+    "nombre": "Rodrigo Cuevas Amaya",
+    "edad": 44,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2027-04-09",
+    "telefono": "+52 564568 2850",
+    "unidad_asignada": "MX-3068",
+    "status": "activo",
+    "score_seguridad": 51,
+    "horas_conduccion_hoy": 1.1,
+    "horas_descanso": 11.8,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 6,
+      "frenadas_bruscas": 5,
+      "excesos_velocidad": 0,
+      "uso_telefono": 1,
+      "score_mes": 51
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "Manejo defensivo",
+      "NOM-087",
+      "Seguridad vial"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 1.2
+  },
+  {
+    "id": "DRV-070",
+    "nombre": "Ulises Portillo Dávila",
+    "edad": 48,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2026-12-05",
+    "telefono": "+52 652037 9830",
+    "unidad_asignada": "MX-3069",
+    "status": "activo",
+    "score_seguridad": 85,
+    "horas_conduccion_hoy": 7.4,
+    "horas_descanso": 7.9,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 3,
+      "frenadas_bruscas": 8,
+      "excesos_velocidad": 5,
+      "uso_telefono": 3,
+      "score_mes": 85
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "Materiales peligrosos",
+      "Seguridad vial"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 6.1
+  },
+  {
+    "id": "DRV-071",
+    "nombre": "Marco Villareal Tello",
+    "edad": 36,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-05-21",
+    "telefono": "+52 716529 3591",
+    "unidad_asignada": "MX-3070",
+    "status": "activo",
+    "score_seguridad": 42,
+    "horas_conduccion_hoy": 6.3,
+    "horas_descanso": 7.8,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 7,
+      "frenadas_bruscas": 5,
+      "excesos_velocidad": 2,
+      "uso_telefono": 2,
+      "score_mes": 42
+    },
+    "capacitaciones": [
+      "NOM-087",
+      "Seguridad vial",
+      "Materiales peligrosos",
+      "Cadena de frío"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 10.0
+  },
+  {
+    "id": "DRV-072",
+    "nombre": "Gonzalo Arellano Pedraza",
+    "edad": 32,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2028-02-02",
+    "telefono": "+52 741187 7266",
+    "unidad_asignada": "MX-3071",
+    "status": "activo",
+    "score_seguridad": 87,
+    "horas_conduccion_hoy": 4.0,
+    "horas_descanso": 8.2,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 8,
+      "frenadas_bruscas": 0,
+      "excesos_velocidad": 2,
+      "uso_telefono": 1,
+      "score_mes": 87
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "Primeros auxilios",
+      "Seguridad vial",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 18.0
+  },
+  {
+    "id": "DRV-073",
+    "nombre": "Fidel Bustamante Nava",
+    "edad": 43,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2027-03-22",
+    "telefono": "+52 772823 5999",
+    "unidad_asignada": "MX-3072",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 1.9,
+    "horas_descanso": 11.9,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 0,
+      "frenadas_bruscas": 5,
+      "excesos_velocidad": 1,
+      "uso_telefono": 1,
+      "score_mes": 100
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "Seguridad vial",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 11.4
+  },
+  {
+    "id": "DRV-074",
+    "nombre": "Aarón Olivares Galindo",
+    "edad": 49,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2027-10-25",
+    "telefono": "+52 634695 3485",
+    "unidad_asignada": "MX-3073",
+    "status": "activo",
+    "score_seguridad": 65,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 13.4,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 6,
+      "frenadas_bruscas": 10,
+      "excesos_velocidad": 1,
+      "uso_telefono": 0,
+      "score_mes": 65
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "Seguridad vial",
+      "Primeros auxilios",
+      "NOM-087",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 8.0
+  },
+  {
+    "id": "DRV-075",
+    "nombre": "Joel Palomino Zavala",
+    "edad": 35,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2026-11-22",
+    "telefono": "+52 567694 1245",
+    "unidad_asignada": "MX-3074",
+    "status": "activo",
+    "score_seguridad": 76,
+    "horas_conduccion_hoy": 11.0,
+    "horas_descanso": 4.7,
+    "status_nom087": "excedido",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 6,
+      "frenadas_bruscas": 3,
+      "excesos_velocidad": 5,
+      "uso_telefono": 1,
+      "score_mes": 76
+    },
+    "capacitaciones": [
+      "Manejo defensivo",
+      "Primeros auxilios",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 9.1
+  },
+  {
+    "id": "DRV-076",
+    "nombre": "Uriel Lara Barajas",
+    "edad": 45,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2026-04-30",
+    "telefono": "+52 608433 4308",
+    "unidad_asignada": "MX-3075",
+    "status": "descanso",
+    "score_seguridad": 86,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 12.4,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 5,
+      "frenadas_bruscas": 11,
+      "excesos_velocidad": 5,
+      "uso_telefono": 1,
+      "score_mes": 86
+    },
+    "capacitaciones": [
+      "Manejo defensivo",
+      "Seguridad vial"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 11.6
+  },
+  {
+    "id": "DRV-077",
+    "nombre": "Ezequiel Noriega Trujillo",
+    "edad": 36,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2028-02-22",
+    "telefono": "+52 643906 8460",
+    "unidad_asignada": "MX-3076",
+    "status": "activo",
+    "score_seguridad": 72,
+    "horas_conduccion_hoy": 2.8,
+    "horas_descanso": 12.2,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 5,
+      "frenadas_bruscas": 0,
+      "excesos_velocidad": 0,
+      "uso_telefono": 2,
+      "score_mes": 72
+    },
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "NOM-087",
+      "Manejo defensivo",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 1.6
+  },
+  {
+    "id": "DRV-078",
+    "nombre": "Braulio Serrano Delfín",
+    "edad": 46,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-11-08",
+    "telefono": "+52 741477 3877",
+    "unidad_asignada": "MX-3077",
+    "status": "activo",
+    "score_seguridad": 71,
+    "horas_conduccion_hoy": 1.9,
+    "horas_descanso": 10.9,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 5,
+      "frenadas_bruscas": 10,
+      "excesos_velocidad": 3,
+      "uso_telefono": 3,
+      "score_mes": 71
+    },
+    "capacitaciones": [
+      "Seguridad vial",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 11.5
+  },
+  {
+    "id": "DRV-079",
+    "nombre": "Cornelio Becerra Jaime",
+    "edad": 58,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2026-08-18",
+    "telefono": "+52 611598 8526",
+    "unidad_asignada": "MX-3078",
+    "status": "activo",
+    "score_seguridad": 91,
+    "horas_conduccion_hoy": 7.3,
+    "horas_descanso": 6.3,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 8,
+      "frenadas_bruscas": 1,
+      "excesos_velocidad": 0,
+      "uso_telefono": 2,
+      "score_mes": 91
+    },
+    "capacitaciones": [
+      "Seguridad vial",
+      "Cadena de frío"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 6.3
+  },
+  {
+    "id": "DRV-080",
+    "nombre": "Dagoberto Murillo Franco",
+    "edad": 54,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2026-08-17",
+    "telefono": "+52 578672 2593",
+    "unidad_asignada": "MX-3079",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 7.7,
+    "horas_descanso": 6.1,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 7,
+      "frenadas_bruscas": 7,
+      "excesos_velocidad": 1,
+      "uso_telefono": 1,
+      "score_mes": 100
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "Materiales peligrosos",
+      "Seguridad vial"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 12.7
+  },
+  {
+    "id": "DRV-081",
+    "nombre": "Eleazar Benítez Cortazar",
+    "edad": 28,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2026-11-13",
+    "telefono": "+52 813276 1003",
+    "unidad_asignada": "MX-3080",
+    "status": "activo",
+    "score_seguridad": 77,
+    "horas_conduccion_hoy": 9.2,
+    "horas_descanso": 5.8,
+    "status_nom087": "precaucion",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 7,
+      "excesos_velocidad": 4,
+      "uso_telefono": 2,
+      "score_mes": 77
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "Seguridad vial",
+      "NOM-087",
+      "Manejo defensivo",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 6.0
+  },
+  {
+    "id": "DRV-082",
+    "nombre": "Florencio Cano Mijares",
+    "edad": 53,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-04-03",
+    "telefono": "+52 624044 7959",
+    "unidad_asignada": "MX-3081",
+    "status": "activo",
+    "score_seguridad": 52,
+    "horas_conduccion_hoy": 1.0,
+    "horas_descanso": 13.4,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 7,
+      "frenadas_bruscas": 11,
+      "excesos_velocidad": 1,
+      "uso_telefono": 2,
+      "score_mes": 52
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "Seguridad vial",
+      "Materiales peligrosos",
+      "Manejo defensivo",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 12.8
+  },
+  {
+    "id": "DRV-083",
+    "nombre": "Gaspar Durán Sepúlveda",
+    "edad": 41,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2026-07-28",
+    "telefono": "+52 743860 3476",
+    "unidad_asignada": "MX-3082",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 8.4,
+    "horas_descanso": 6.2,
+    "status_nom087": "precaucion",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 5,
+      "frenadas_bruscas": 12,
+      "excesos_velocidad": 1,
+      "uso_telefono": 2,
+      "score_mes": 100
+    },
+    "capacitaciones": [
+      "NOM-087",
+      "Primeros auxilios",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 2.0
+  },
+  {
+    "id": "DRV-084",
+    "nombre": "Humberto Escalante Quiroga",
+    "edad": 40,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2028-02-22",
+    "telefono": "+52 734193 9518",
+    "unidad_asignada": "MX-3083",
+    "status": "descanso",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 14.7,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 5,
+      "excesos_velocidad": 4,
+      "uso_telefono": 0,
+      "score_mes": 100
+    },
+    "capacitaciones": [
+      "Manejo defensivo",
+      "Seguridad vial"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 9.7
+  },
+  {
+    "id": "DRV-085",
+    "nombre": "Isaías Fonseca Rubio",
+    "edad": 31,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2026-12-26",
+    "telefono": "+52 581571 2194",
+    "unidad_asignada": "MX-3084",
+    "status": "activo",
+    "score_seguridad": 56,
+    "horas_conduccion_hoy": 8.1,
+    "horas_descanso": 4.2,
+    "status_nom087": "precaucion",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 4,
+      "frenadas_bruscas": 12,
+      "excesos_velocidad": 3,
+      "uso_telefono": 0,
+      "score_mes": 56
+    },
+    "capacitaciones": [
+      "Primeros auxilios",
+      "Manejo defensivo",
+      "Cadena de frío",
+      "Materiales peligrosos",
+      "Seguridad vial"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 12.8
+  },
+  {
+    "id": "DRV-086",
+    "nombre": "Juventino Galaviz Saldaña",
+    "edad": 27,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2026-08-04",
+    "telefono": "+52 619570 8509",
+    "unidad_asignada": "MX-3085",
+    "status": "activo",
+    "score_seguridad": 85,
+    "horas_conduccion_hoy": 2.2,
+    "horas_descanso": 13.6,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 8,
+      "frenadas_bruscas": 2,
+      "excesos_velocidad": 5,
+      "uso_telefono": 1,
+      "score_mes": 85
+    },
+    "capacitaciones": [
+      "Manejo defensivo",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 0.8
+  },
+  {
+    "id": "DRV-087",
+    "nombre": "Kevin Iturbe Vergara",
+    "edad": 55,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2026-08-12",
+    "telefono": "+52 613344 5439",
+    "unidad_asignada": "MX-3086",
+    "status": "activo",
+    "score_seguridad": 88,
+    "horas_conduccion_hoy": 9.2,
+    "horas_descanso": 4.9,
+    "status_nom087": "precaucion",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 6,
+      "frenadas_bruscas": 3,
+      "excesos_velocidad": 1,
+      "uso_telefono": 0,
+      "score_mes": 88
+    },
+    "capacitaciones": [
+      "Seguridad vial",
+      "NOM-087",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 14.2
+  },
+  {
+    "id": "DRV-088",
+    "nombre": "Lucio Juárez Abundis",
+    "edad": 48,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2027-07-17",
+    "telefono": "+52 784181 6875",
+    "unidad_asignada": "MX-3087",
+    "status": "activo",
+    "score_seguridad": 53,
+    "horas_conduccion_hoy": 2.9,
+    "horas_descanso": 13.0,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 3,
+      "frenadas_bruscas": 5,
+      "excesos_velocidad": 1,
+      "uso_telefono": 0,
+      "score_mes": 53
+    },
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 8.6
+  },
+  {
+    "id": "DRV-089",
+    "nombre": "Macedonio Kuroda Limón",
+    "edad": 30,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2027-08-09",
+    "telefono": "+52 765994 3650",
+    "unidad_asignada": "MX-3088",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 14.8,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 0,
+      "frenadas_bruscas": 7,
+      "excesos_velocidad": 3,
+      "uso_telefono": 1,
+      "score_mes": 100
+    },
+    "capacitaciones": [
+      "Primeros auxilios",
+      "Materiales peligrosos",
+      "NOM-087",
+      "Cadena de frío",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 1.7
+  },
+  {
+    "id": "DRV-090",
+    "nombre": "Néstor Lemus Menchaca",
+    "edad": 43,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-12-31",
+    "telefono": "+52 662075 4085",
+    "unidad_asignada": "MX-3089",
+    "status": "descanso",
+    "score_seguridad": 86,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 12.3,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 6,
+      "frenadas_bruscas": 2,
+      "excesos_velocidad": 2,
+      "uso_telefono": 0,
+      "score_mes": 86
+    },
+    "capacitaciones": [
+      "Primeros auxilios",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 3.1
+  },
+  {
+    "id": "DRV-091",
+    "nombre": "Otilio Mata Orduña",
+    "edad": 27,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-02-23",
+    "telefono": "+52 663423 7109",
+    "unidad_asignada": "MX-3090",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 1.6,
+    "horas_descanso": 12.2,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 8,
+      "excesos_velocidad": 2,
+      "uso_telefono": 0,
+      "score_mes": 100
+    },
+    "capacitaciones": [
+      "NOM-087",
+      "Seguridad vial"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 17.1
+  },
+  {
+    "id": "DRV-092",
+    "nombre": "Porfirio Nolasco Pizaña",
+    "edad": 47,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-07-05",
+    "telefono": "+52 722435 4533",
+    "unidad_asignada": "MX-3091",
+    "status": "activo",
+    "score_seguridad": 76,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 14.9,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 7,
+      "frenadas_bruscas": 11,
+      "excesos_velocidad": 3,
+      "uso_telefono": 3,
+      "score_mes": 76
+    },
+    "capacitaciones": [
+      "Primeros auxilios",
+      "NOM-087",
+      "Cadena de frío",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 11.0
+  },
+  {
+    "id": "DRV-093",
+    "nombre": "Quintín Obregón Quiroz",
+    "edad": 35,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2026-06-03",
+    "telefono": "+52 596237 8553",
+    "unidad_asignada": "MX-3092",
+    "status": "activo",
+    "score_seguridad": 80,
+    "horas_conduccion_hoy": 8.1,
+    "horas_descanso": 7.4,
+    "status_nom087": "precaucion",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 5,
+      "excesos_velocidad": 1,
+      "uso_telefono": 0,
+      "score_mes": 80
+    },
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "NOM-087",
+      "Seguridad vial",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 9.8
+  },
+  {
+    "id": "DRV-094",
+    "nombre": "Rosendo Padilla Solano",
+    "edad": 58,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2026-09-28",
+    "telefono": "+52 775991 1471",
+    "unidad_asignada": "MX-3093",
+    "status": "activo",
+    "score_seguridad": 92,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 12.9,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 11,
+      "excesos_velocidad": 1,
+      "uso_telefono": 2,
+      "score_mes": 92
+    },
+    "capacitaciones": [
+      "Primeros auxilios",
+      "Seguridad vial",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 13.9
+  },
+  {
+    "id": "DRV-095",
+    "nombre": "Silvestre Quezada Turrubiartes",
+    "edad": 32,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2026-08-09",
+    "telefono": "+52 692807 9515",
+    "unidad_asignada": "MX-3094",
+    "status": "activo",
+    "score_seguridad": 54,
+    "horas_conduccion_hoy": 7.7,
+    "horas_descanso": 4.8,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 5,
+      "frenadas_bruscas": 11,
+      "excesos_velocidad": 2,
+      "uso_telefono": 0,
+      "score_mes": 54
+    },
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 5.5
+  },
+  {
+    "id": "DRV-096",
+    "nombre": "Teodoro Rangel Uribe",
+    "edad": 26,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2026-05-29",
+    "telefono": "+52 812117 9161",
+    "unidad_asignada": "MX-3095",
+    "status": "activo",
+    "score_seguridad": 65,
+    "horas_conduccion_hoy": 4.7,
+    "horas_descanso": 10.0,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 2,
+      "frenadas_bruscas": 6,
+      "excesos_velocidad": 4,
+      "uso_telefono": 2,
+      "score_mes": 65
+    },
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "Cadena de frío",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 12.1
+  },
+  {
+    "id": "DRV-097",
+    "nombre": "Ubaldo Sigala Villalpando",
+    "edad": 26,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-03-20",
+    "telefono": "+52 672594 8014",
+    "unidad_asignada": "MX-3096",
+    "status": "activo",
+    "score_seguridad": 89,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 13.4,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 5,
+      "frenadas_bruscas": 6,
+      "excesos_velocidad": 2,
+      "uso_telefono": 0,
+      "score_mes": 89
+    },
+    "capacitaciones": [
+      "Primeros auxilios",
+      "Seguridad vial",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 16.4
+  },
+  {
+    "id": "DRV-098",
+    "nombre": "Valentín Terán Xicoténcatl",
+    "edad": 52,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2027-03-26",
+    "telefono": "+52 802256 5945",
+    "unidad_asignada": "MX-3097",
+    "status": "activo",
+    "score_seguridad": 52,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 14.0,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 4,
+      "frenadas_bruscas": 6,
+      "excesos_velocidad": 5,
+      "uso_telefono": 2,
+      "score_mes": 52
+    },
+    "capacitaciones": [
+      "NOM-087",
+      "Seguridad vial",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 8.4
+  },
+  {
+    "id": "DRV-099",
+    "nombre": "Wenceslao Ugalde Yáñez",
+    "edad": 26,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-01-14",
+    "telefono": "+52 763883 1691",
+    "unidad_asignada": "MX-3098",
+    "status": "activo",
+    "score_seguridad": 75,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 15.9,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 7,
+      "frenadas_bruscas": 12,
+      "excesos_velocidad": 0,
+      "uso_telefono": 0,
+      "score_mes": 75
+    },
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "Cadena de frío"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 1.6
+  },
+  {
+    "id": "DRV-100",
+    "nombre": "Xóchitl Valdivia Zaragoza",
+    "edad": 44,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-04-11",
+    "telefono": "+52 802999 9763",
+    "unidad_asignada": "MX-3099",
+    "status": "activo",
+    "score_seguridad": 62,
+    "horas_conduccion_hoy": 8.6,
+    "horas_descanso": 6.9,
+    "status_nom087": "precaucion",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 7,
+      "frenadas_bruscas": 6,
+      "excesos_velocidad": 0,
+      "uso_telefono": 3,
+      "score_mes": 62
+    },
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "Manejo defensivo",
+      "Primeros auxilios",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 16.1
+  },
+  {
+    "id": "DRV-101",
+    "nombre": "Conductor 101",
+    "edad": 36,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-04-26",
+    "telefono": "+52 814677 1339",
+    "unidad_asignada": "MX-3100",
+    "status": "activo",
+    "score_seguridad": 63,
+    "horas_conduccion_hoy": 10.2,
+    "horas_descanso": 5.6,
+    "status_nom087": "excedido",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 8,
+      "frenadas_bruscas": 10,
+      "excesos_velocidad": 4,
+      "uso_telefono": 1,
+      "score_mes": 63
+    },
+    "capacitaciones": [
+      "NOM-087",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 15.4
+  },
+  {
+    "id": "DRV-102",
+    "nombre": "Conductor 102",
+    "edad": 55,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-12-16",
+    "telefono": "+52 761745 1087",
+    "unidad_asignada": "MX-3101",
+    "status": "activo",
+    "score_seguridad": 65,
+    "horas_conduccion_hoy": 9.3,
+    "horas_descanso": 3.7,
+    "status_nom087": "precaucion",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 6,
+      "frenadas_bruscas": 4,
+      "excesos_velocidad": 3,
+      "uso_telefono": 2,
+      "score_mes": 65
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "Manejo defensivo",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 9.3
+  },
+  {
+    "id": "DRV-103",
+    "nombre": "Conductor 103",
+    "edad": 35,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2027-09-07",
+    "telefono": "+52 815469 4479",
+    "unidad_asignada": "MX-3102",
+    "status": "activo",
+    "score_seguridad": 49,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 14.3,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 0,
+      "frenadas_bruscas": 8,
+      "excesos_velocidad": 4,
+      "uso_telefono": 1,
+      "score_mes": 49
+    },
+    "capacitaciones": [
+      "Manejo defensivo",
+      "Primeros auxilios",
+      "NOM-087",
+      "Materiales peligrosos",
+      "Seguridad vial"
+    ],
+    "incidentes_12_meses": 3,
+    "antiguedad_anios": 1.0
+  },
+  {
+    "id": "DRV-104",
+    "nombre": "Conductor 104",
+    "edad": 52,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2027-06-11",
+    "telefono": "+52 807033 4053",
+    "unidad_asignada": "MX-3103",
+    "status": "activo",
+    "score_seguridad": 55,
+    "horas_conduccion_hoy": 1.4,
+    "horas_descanso": 12.3,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 6,
+      "frenadas_bruscas": 1,
+      "excesos_velocidad": 0,
+      "uso_telefono": 2,
+      "score_mes": 55
+    },
+    "capacitaciones": [
+      "Seguridad vial",
+      "Primeros auxilios",
+      "Cadena de frío",
+      "NOM-087",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 8.2
+  },
+  {
+    "id": "DRV-105",
+    "nombre": "Conductor 105",
+    "edad": 56,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-12-29",
+    "telefono": "+52 816910 7471",
+    "unidad_asignada": "MX-3104",
+    "status": "activo",
+    "score_seguridad": 80,
+    "horas_conduccion_hoy": 6.1,
+    "horas_descanso": 9.1,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 1,
+      "frenadas_bruscas": 2,
+      "excesos_velocidad": 1,
+      "uso_telefono": 0,
+      "score_mes": 80
+    },
+    "capacitaciones": [
+      "Manejo defensivo",
+      "Seguridad vial",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 2,
+    "antiguedad_anios": 4.2
+  },
+  {
+    "id": "DRV-106",
+    "nombre": "Conductor 106",
+    "edad": 47,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-06-25",
+    "telefono": "+52 553643 5718",
+    "unidad_asignada": "MX-3105",
+    "status": "activo",
+    "score_seguridad": 77,
+    "horas_conduccion_hoy": 3.9,
+    "horas_descanso": 11.0,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 7,
+      "frenadas_bruscas": 5,
+      "excesos_velocidad": 3,
+      "uso_telefono": 1,
+      "score_mes": 77
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "Materiales peligrosos",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 5.6
+  },
+  {
+    "id": "DRV-107",
+    "nombre": "Conductor 107",
+    "edad": 31,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2026-05-17",
+    "telefono": "+52 712727 3736",
+    "unidad_asignada": "MX-3106",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 15.5,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 5,
+      "frenadas_bruscas": 2,
+      "excesos_velocidad": 5,
+      "uso_telefono": 2,
+      "score_mes": 100
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "NOM-087",
+      "Manejo defensivo",
+      "Seguridad vial",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 2.9
+  },
+  {
+    "id": "DRV-108",
+    "nombre": "Conductor 108",
+    "edad": 58,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2026-09-02",
+    "telefono": "+52 777618 8310",
+    "unidad_asignada": "MX-3107",
+    "status": "activo",
+    "score_seguridad": 84,
+    "horas_conduccion_hoy": 3.5,
+    "horas_descanso": 11.1,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 8,
+      "frenadas_bruscas": 9,
+      "excesos_velocidad": 4,
+      "uso_telefono": 3,
+      "score_mes": 84
+    },
+    "capacitaciones": [
+      "Seguridad vial",
+      "NOM-087",
+      "Primeros auxilios",
+      "Cadena de frío"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 9.9
+  },
+  {
+    "id": "DRV-109",
+    "nombre": "Conductor 109",
+    "edad": 51,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2026-07-08",
+    "telefono": "+52 567961 3130",
+    "unidad_asignada": "MX-3108",
+    "status": "activo",
+    "score_seguridad": 93,
+    "horas_conduccion_hoy": 6.9,
+    "horas_descanso": 7.0,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 7,
+      "frenadas_bruscas": 1,
+      "excesos_velocidad": 2,
+      "uso_telefono": 3,
+      "score_mes": 93
+    },
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "Cadena de frío",
+      "NOM-087",
+      "Seguridad vial",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 3,
+    "antiguedad_anios": 12.6
+  },
+  {
+    "id": "DRV-110",
+    "nombre": "Conductor 110",
+    "edad": 45,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2028-01-04",
+    "telefono": "+52 767711 7344",
+    "unidad_asignada": "MX-3109",
+    "status": "activo",
+    "score_seguridad": 66,
+    "horas_conduccion_hoy": 6.6,
+    "horas_descanso": 6.3,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 6,
+      "frenadas_bruscas": 5,
+      "excesos_velocidad": 4,
+      "uso_telefono": 0,
+      "score_mes": 66
+    },
+    "capacitaciones": [
+      "Seguridad vial",
+      "Materiales peligrosos",
+      "Manejo defensivo",
+      "NOM-087",
+      "Cadena de frío"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 14.4
+  },
+  {
+    "id": "DRV-111",
+    "nombre": "Conductor 111",
+    "edad": 32,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2026-10-29",
+    "telefono": "+52 624874 9076",
+    "unidad_asignada": "MX-3110",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 7.6,
+    "horas_descanso": 6.4,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 8,
+      "frenadas_bruscas": 6,
+      "excesos_velocidad": 0,
+      "uso_telefono": 2,
+      "score_mes": 100
+    },
+    "capacitaciones": [
+      "Materiales peligrosos",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 1.6
+  },
+  {
+    "id": "DRV-112",
+    "nombre": "Conductor 112",
+    "edad": 52,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2027-12-21",
+    "telefono": "+52 716215 6613",
+    "unidad_asignada": "MX-3111",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 14.5,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 7,
+      "frenadas_bruscas": 4,
+      "excesos_velocidad": 1,
+      "uso_telefono": 2,
+      "score_mes": 100
+    },
+    "capacitaciones": [
+      "Primeros auxilios",
+      "NOM-087",
+      "Materiales peligrosos",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 3,
+    "antiguedad_anios": 2.8
+  },
+  {
+    "id": "DRV-113",
+    "nombre": "Conductor 113",
+    "edad": 36,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2027-11-28",
+    "telefono": "+52 592065 3087",
+    "unidad_asignada": "MX-3112",
+    "status": "activo",
+    "score_seguridad": 88,
+    "horas_conduccion_hoy": 6.4,
+    "horas_descanso": 6.6,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 3,
+      "frenadas_bruscas": 8,
+      "excesos_velocidad": 5,
+      "uso_telefono": 2,
+      "score_mes": 88
+    },
+    "capacitaciones": [
+      "Seguridad vial",
+      "Manejo defensivo",
+      "Materiales peligrosos"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 16.0
+  },
+  {
+    "id": "DRV-114",
+    "nombre": "Conductor 114",
+    "edad": 53,
+    "licencia_tipo": "Federal B",
+    "licencia_vigencia": "2026-08-10",
+    "telefono": "+52 571994 1546",
+    "unidad_asignada": "MX-3113",
+    "status": "activo",
+    "score_seguridad": 65,
+    "horas_conduccion_hoy": 3.3,
+    "horas_descanso": 10.2,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 1,
+      "frenadas_bruscas": 12,
+      "excesos_velocidad": 1,
+      "uso_telefono": 0,
+      "score_mes": 65
+    },
+    "capacitaciones": [
+      "Manejo defensivo",
+      "Materiales peligrosos",
+      "NOM-087",
+      "Seguridad vial",
+      "Cadena de frío"
+    ],
+    "incidentes_12_meses": 1,
+    "antiguedad_anios": 10.3
+  },
+  {
+    "id": "DRV-115",
+    "nombre": "Conductor 115",
+    "edad": 47,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2026-10-27",
+    "telefono": "+52 754297 2120",
+    "unidad_asignada": "MX-3114",
+    "status": "activo",
+    "score_seguridad": 98,
+    "horas_conduccion_hoy": 4.4,
+    "horas_descanso": 9.0,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 7,
+      "frenadas_bruscas": 11,
+      "excesos_velocidad": 5,
+      "uso_telefono": 3,
+      "score_mes": 98
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "Seguridad vial",
+      "Materiales peligrosos",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 6.3
+  },
+  {
+    "id": "DRV-116",
+    "nombre": "Conductor 116",
+    "edad": 33,
+    "licencia_tipo": "Federal E",
+    "licencia_vigencia": "2026-10-18",
+    "telefono": "+52 727196 7131",
+    "unidad_asignada": "MX-3115",
+    "status": "activo",
+    "score_seguridad": 100,
+    "horas_conduccion_hoy": 4.3,
+    "horas_descanso": 9.0,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 6,
+      "frenadas_bruscas": 10,
+      "excesos_velocidad": 1,
+      "uso_telefono": 0,
+      "score_mes": 100
+    },
+    "capacitaciones": [
+      "Cadena de frío",
+      "Materiales peligrosos",
+      "Primeros auxilios"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 1.4
+  },
+  {
+    "id": "DRV-117",
+    "nombre": "Conductor 117",
+    "edad": 36,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2026-11-30",
+    "telefono": "+52 632243 6883",
+    "unidad_asignada": "MX-3116",
+    "status": "activo",
+    "score_seguridad": 85,
+    "horas_conduccion_hoy": 4.7,
+    "horas_descanso": 10.9,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 4,
+      "frenadas_bruscas": 8,
+      "excesos_velocidad": 4,
+      "uso_telefono": 0,
+      "score_mes": 85
+    },
+    "capacitaciones": [
+      "Primeros auxilios",
+      "Manejo defensivo",
+      "Cadena de frío",
+      "NOM-087"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 10.1
+  },
+  {
+    "id": "DRV-118",
+    "nombre": "Conductor 118",
+    "edad": 44,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-11-27",
+    "telefono": "+52 551527 3279",
+    "unidad_asignada": "MX-3117",
+    "status": "activo",
+    "score_seguridad": 59,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 15.9,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 5,
+      "frenadas_bruscas": 9,
+      "excesos_velocidad": 5,
+      "uso_telefono": 3,
+      "score_mes": 59
+    },
+    "capacitaciones": [
+      "Primeros auxilios",
+      "NOM-087",
+      "Manejo defensivo",
+      "Materiales peligrosos",
+      "Seguridad vial"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 2.4
+  },
+  {
+    "id": "DRV-119",
+    "nombre": "Conductor 119",
+    "edad": 54,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2027-02-03",
+    "telefono": "+52 673869 7800",
+    "unidad_asignada": "MX-3118",
+    "status": "activo",
+    "score_seguridad": 87,
+    "horas_conduccion_hoy": 4.9,
+    "horas_descanso": 8.1,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 6,
+      "frenadas_bruscas": 7,
+      "excesos_velocidad": 3,
+      "uso_telefono": 1,
+      "score_mes": 87
+    },
+    "capacitaciones": [
+      "NOM-087",
+      "Manejo defensivo"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 15.7
+  },
+  {
+    "id": "DRV-120",
+    "nombre": "Conductor 120",
+    "edad": 53,
+    "licencia_tipo": "Federal A",
+    "licencia_vigencia": "2026-10-04",
+    "telefono": "+52 611564 9721",
+    "unidad_asignada": "MX-3119",
+    "status": "activo",
+    "score_seguridad": 70,
+    "horas_conduccion_hoy": 0,
+    "horas_descanso": 13.8,
+    "status_nom087": "cumple",
+    "perfil_conduccion": {
+      "aceleraciones_bruscas": 0,
+      "frenadas_bruscas": 10,
+      "excesos_velocidad": 4,
+      "uso_telefono": 0,
+      "score_mes": 70
+    },
+    "capacitaciones": [
+      "Seguridad vial",
+      "Materiales peligrosos",
+      "NOM-087",
+      "Manejo defensivo",
+      "Cadena de frío"
+    ],
+    "incidentes_12_meses": 0,
+    "antiguedad_anios": 7.1
   }
 ]

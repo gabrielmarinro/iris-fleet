@@ -1,0 +1,343 @@
+{
+  "ultima_actualizacion": "2026-03-06T11:00:00",
+  "periodo": "Marzo 2026",
+  "general": {
+    "total_unidades": 120,
+    "conductores_activos": 115,
+    "vehiculos_operativos": 104,
+    "vehiculos_en_ruta": 69,
+    "vehiculos_en_taller": 13,
+    "vehiculos_detenidos": 11,
+    "vehiculos_no_ubicables": 3,
+    "rutas_activas": 11,
+    "alertas_sin_atender": 17,
+    "eventos_camara_24h": 25,
+    "score_flota": 72.3
+  },
+  "seguridad": {
+    "incidentes_mes": 38,
+    "conductores_seguro": 57,
+    "conductores_atencion": 41,
+    "conductores_riesgo": 22,
+    "frenados_bruscos_semana": 763,
+    "exceso_velocidad_semana": 276,
+    "uso_telefono_semana": 179,
+    "fatiga_detectada_semana": 11,
+    "dias_sin_accidentes": 23,
+    "tasa_siniestralidad_pct": 2.1
+  },
+  "operaciones": {
+    "entregas_a_tiempo_pct": 84.2,
+    "km_recorridos_mes": 14973,
+    "combustible_consumido_mes": 434977.0,
+    "costo_operativo_mes": 1395580.0,
+    "costo_por_km": 14.85
+  },
+  "mantenimiento": {
+    "vehiculos_en_taller": 13,
+    "servicios_programados": 28,
+    "costo_mantenimiento_mes": 892450,
+    "uptime_pct": 86.7,
+    "mtbf_horas": 680,
+    "mttr_horas": 4.8,
+    "cumplimiento_preventivo_pct": 82,
+    "backlog_ordenes": 12,
+    "downtime_programado": 9,
+    "downtime_no_programado": 4,
+    "mix_preventivo_pct": 65,
+    "mix_correctivo_pct": 35,
+    "tasa_fallas_recurrentes_pct": 14,
+    "costo_mant_por_km": 2.15
+  },
+  "financiero": {
+    "ingresos_mes_mxn": 18500000,
+    "costos_operativos_mes_mxn": 12800000,
+    "margen_operativo_pct": 30.8,
+    "costo_por_km_total": 14.85,
+    "ebitda_por_activo": 285000,
+    "roi_promedio_unidad_pct": 18.5,
+    "variabilidad_costos_pct": 8.3,
+    "capex_ejecutado_pct": 72,
+    "utilizacion_real_pct": 76,
+    "edad_promedio_flota_anios": 3.2
+  },
+  "compliance": {
+    "docs_vigentes": 106,
+    "docs_total": 120,
+    "operadores_certificados": 108,
+    "operadores_total": 120,
+    "inspecciones_cumplidas": 108,
+    "inspecciones_total": 120,
+    "pct_cumplimiento_nom087": 85,
+    "vencimientos_proximos": [
+      {
+        "tipo": "Licencia Federal",
+        "unidad": "MX-3015",
+        "operador": "Roberto Martínez Cruz",
+        "vence": "2026-03-15",
+        "dias_restantes": 9,
+        "status": "rojo"
+      },
+      {
+        "tipo": "Verificación Vehicular",
+        "unidad": "MX-3038",
+        "operador": "Eduardo Pérez Gutiérrez",
+        "vence": "2026-03-08",
+        "dias_restantes": 2,
+        "status": "rojo"
+      },
+      {
+        "tipo": "Póliza Seguro",
+        "unidad": "MX-3055",
+        "operador": "Héctor Navarro Bautista",
+        "vence": "2026-03-20",
+        "dias_restantes": 14,
+        "status": "amarillo"
+      },
+      {
+        "tipo": "Examen Médico",
+        "unidad": "MX-3072",
+        "operador": "Armando Espinoza Ríos",
+        "vence": "2026-04-01",
+        "dias_restantes": 26,
+        "status": "verde"
+      },
+      {
+        "tipo": "Licencia Federal",
+        "unidad": "MX-3099",
+        "operador": "Otilio Mata Orduña",
+        "vence": "2026-03-12",
+        "dias_restantes": 6,
+        "status": "rojo"
+      },
+      {
+        "tipo": "Permiso SCT",
+        "unidad": "MX-3103",
+        "operador": "Porfirio Nolasco Pizaña",
+        "vence": "2026-03-25",
+        "dias_restantes": 19,
+        "status": "amarillo"
+      }
+    ]
+  },
+  "asset_lifecycle": [
+    {
+      "unidad": "MX-3000",
+      "conductor": "Manuel Ortiz García",
+      "edad_anios": 6.0,
+      "km_totales": 750000,
+      "costo_acumulado": 4200000,
+      "ingreso_generado": 5800000,
+      "roi_pct": 38.1,
+      "valor_residual": 280000,
+      "salud_pct": 62,
+      "recomendacion": "Evaluar reemplazo"
+    },
+    {
+      "unidad": "MX-3005",
+      "conductor": "Jorge Hernández Soto",
+      "edad_anios": 4.5,
+      "km_totales": 520000,
+      "costo_acumulado": 2450000,
+      "ingreso_generado": 3900000,
+      "roi_pct": 59.2,
+      "valor_residual": 450000,
+      "salud_pct": 71,
+      "recomendacion": "Mantener"
+    },
+    {
+      "unidad": "MX-3012",
+      "conductor": "Francisco Javier López",
+      "edad_anios": 2.1,
+      "km_totales": 210000,
+      "costo_acumulado": 920000,
+      "ingreso_generado": 2800000,
+      "roi_pct": 204.3,
+      "valor_residual": 820000,
+      "salud_pct": 88,
+      "recomendacion": "Mantener"
+    },
+    {
+      "unidad": "MX-3033",
+      "conductor": "Miguel Ángel Ramírez",
+      "edad_anios": 1.8,
+      "km_totales": 145000,
+      "costo_acumulado": 780000,
+      "ingreso_generado": 1900000,
+      "roi_pct": 143.6,
+      "valor_residual": 920000,
+      "salud_pct": 92,
+      "recomendacion": "Excelente"
+    },
+    {
+      "unidad": "MX-3055",
+      "conductor": "Héctor Navarro Bautista",
+      "edad_anios": 0.9,
+      "km_totales": 85000,
+      "costo_acumulado": 620000,
+      "ingreso_generado": 1200000,
+      "roi_pct": 93.5,
+      "valor_residual": 1050000,
+      "salud_pct": 95,
+      "recomendacion": "Excelente"
+    },
+    {
+      "unidad": "MX-3072",
+      "conductor": "Armando Espinoza Ríos",
+      "edad_anios": 5.8,
+      "km_totales": 680000,
+      "costo_acumulado": 3800000,
+      "ingreso_generado": 4100000,
+      "roi_pct": 7.9,
+      "valor_residual": 320000,
+      "salud_pct": 58,
+      "recomendacion": "Reemplazar"
+    },
+    {
+      "unidad": "MX-3091",
+      "conductor": "Dagoberto Murillo Franco",
+      "edad_anios": 3.5,
+      "km_totales": 380000,
+      "costo_acumulado": 1850000,
+      "ingreso_generado": 3200000,
+      "roi_pct": 73.0,
+      "valor_residual": 650000,
+      "salud_pct": 75,
+      "recomendacion": "Mantener"
+    },
+    {
+      "unidad": "MX-3103",
+      "conductor": "Porfirio Nolasco Pizaña",
+      "edad_anios": 7.2,
+      "km_totales": 890000,
+      "costo_acumulado": 5100000,
+      "ingreso_generado": 6200000,
+      "roi_pct": 21.6,
+      "valor_residual": 180000,
+      "salud_pct": 48,
+      "recomendacion": "Reemplazar"
+    }
+  ],
+  "fleet_maintenance_detail": [
+    {
+      "unit": "MX-3015",
+      "tipo": "Motor",
+      "mtbf": 580,
+      "mttr": 6.2,
+      "costo_acumulado": 285000,
+      "preventivo": false,
+      "fallas": 5,
+      "ultima_falla": "2026-02-28",
+      "prox_servicio": "2026-03-08",
+      "status": "critica"
+    },
+    {
+      "unit": "MX-3038",
+      "tipo": "Frenos",
+      "mtbf": 920,
+      "mttr": 2.1,
+      "costo_acumulado": 95000,
+      "preventivo": true,
+      "fallas": 1,
+      "ultima_falla": "2026-01-20",
+      "prox_servicio": "2026-03-10",
+      "status": "operativa"
+    },
+    {
+      "unit": "MX-3055",
+      "tipo": "Refrigeración",
+      "mtbf": 340,
+      "mttr": 8.5,
+      "costo_acumulado": 420000,
+      "preventivo": false,
+      "fallas": 7,
+      "ultima_falla": "2026-03-06",
+      "prox_servicio": "URGENTE",
+      "status": "critica"
+    },
+    {
+      "unit": "MX-3072",
+      "tipo": "Transmisión",
+      "mtbf": 450,
+      "mttr": 12.0,
+      "costo_acumulado": 380000,
+      "preventivo": false,
+      "fallas": 4,
+      "ultima_falla": "2026-02-25",
+      "prox_servicio": "2026-03-07",
+      "status": "critica"
+    },
+    {
+      "unit": "MX-3091",
+      "tipo": "Motor",
+      "mtbf": 680,
+      "mttr": 5.2,
+      "costo_acumulado": 185000,
+      "preventivo": true,
+      "fallas": 3,
+      "ultima_falla": "2026-02-15",
+      "prox_servicio": "2026-03-10",
+      "status": "operativa"
+    },
+    {
+      "unit": "MX-3033",
+      "tipo": "Neumáticos",
+      "mtbf": 1200,
+      "mttr": 1.5,
+      "costo_acumulado": 78000,
+      "preventivo": true,
+      "fallas": 1,
+      "ultima_falla": "2026-01-10",
+      "prox_servicio": "2026-04-01",
+      "status": "excelente"
+    },
+    {
+      "unit": "MX-3103",
+      "tipo": "Eléctrico",
+      "mtbf": 280,
+      "mttr": 4.0,
+      "costo_acumulado": 520000,
+      "preventivo": false,
+      "fallas": 9,
+      "ultima_falla": "2026-03-03",
+      "prox_servicio": "URGENTE",
+      "status": "critica"
+    },
+    {
+      "unit": "MX-3018",
+      "tipo": "Suspensión",
+      "mtbf": 850,
+      "mttr": 3.5,
+      "costo_acumulado": 145000,
+      "preventivo": true,
+      "fallas": 2,
+      "ultima_falla": "2026-01-28",
+      "prox_servicio": "2026-03-20",
+      "status": "operativa"
+    },
+    {
+      "unit": "MX-3048",
+      "tipo": "Motor",
+      "mtbf": 720,
+      "mttr": 4.8,
+      "costo_acumulado": 210000,
+      "preventivo": true,
+      "fallas": 3,
+      "ultima_falla": "2026-02-10",
+      "prox_servicio": "2026-03-15",
+      "status": "operativa"
+    },
+    {
+      "unit": "MX-3112",
+      "tipo": "GPS/Telemetría",
+      "mtbf": 2000,
+      "mttr": 1.0,
+      "costo_acumulado": 25000,
+      "preventivo": true,
+      "fallas": 1,
+      "ultima_falla": "2026-03-04",
+      "prox_servicio": "2026-03-07",
+      "status": "operativa"
+    }
+  ]
+}

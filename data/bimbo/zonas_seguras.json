@@ -2,138 +2,167 @@
   "zonas": [
     {
       "id": "ZS-001",
-      "nombre": "CEDIS Bimbo CDMX Norte",
-      "tipo": "Planta",
-      "lat": 19.413404,
-      "lng": -99.142621,
+      "nombre": "Base Bimbo CDMX Norte",
+      "tipo": "base_operativa",
+      "lat": 19.492,
+      "lng": -99.151,
       "servicios": [
-        "Vigilancia 24h",
-        "Baños"
+        "Estacionamiento",
+        "Comedor",
+        "Dormitorios",
+        "Taller"
       ],
-      "capacidad_camiones": 22,
-      "ocupacion_actual": 16,
-      "horario": "24/7",
+      "capacidad_camiones": 50,
+      "ocupacion_actual": 32,
+      "horario": "24 horas",
       "activa": true
     },
     {
       "id": "ZS-002",
-      "nombre": "CEDIS Bimbo Monterrey Sur",
-      "tipo": "Base",
-      "lat": 25.701099,
-      "lng": -100.359952,
+      "nombre": "CEDIS Bimbo Monterrey",
+      "tipo": "cedis",
+      "lat": 25.68,
+      "lng": -100.31,
       "servicios": [
-        "Taller",
-        "Baños",
-        "Combustible"
+        "Estacionamiento",
+        "Carga/Descarga",
+        "Comedor"
       ],
-      "capacidad_camiones": 58,
-      "ocupacion_actual": 22,
-      "horario": "24/7",
+      "capacidad_camiones": 40,
+      "ocupacion_actual": 28,
+      "horario": "24 horas",
       "activa": true
     },
     {
       "id": "ZS-003",
-      "nombre": "Planta Barcel Lerma",
-      "tipo": "Estacionamiento",
-      "lat": 20.648698,
-      "lng": -103.341807,
+      "nombre": "Gasolinera BP km 158 QRO",
+      "tipo": "gasolinera_segura",
+      "lat": 20.38,
+      "lng": -100.01,
       "servicios": [
-        "Taller",
-        "Descanso",
-        "Baños"
+        "Diesel",
+        "Tienda",
+        "Baños",
+        "Vigilancia"
       ],
-      "capacidad_camiones": 29,
-      "ocupacion_actual": 16,
-      "horario": "24/7",
+      "capacidad_camiones": 15,
+      "ocupacion_actual": 8,
+      "horario": "24 horas",
       "activa": true
     },
     {
       "id": "ZS-004",
-      "nombre": "CEDIS Marinela Guadalajara",
-      "tipo": "Estacionamiento",
-      "lat": 19.090429,
-      "lng": -98.198027,
+      "nombre": "Estacionamiento Seguro GDL",
+      "tipo": "estacionamiento",
+      "lat": 20.67,
+      "lng": -103.34,
       "servicios": [
-        "Taller",
-        "Descanso",
-        "Combustible",
         "Vigilancia 24h",
-        "Comedor"
+        "Cámaras",
+        "Baños",
+        "WiFi"
       ],
-      "capacidad_camiones": 48,
-      "ocupacion_actual": 29,
-      "horario": "06:00-22:00",
+      "capacidad_camiones": 25,
+      "ocupacion_actual": 18,
+      "horario": "24 horas",
       "activa": true
     },
     {
       "id": "ZS-005",
-      "nombre": "Estacionamiento Seguro Querétaro",
-      "tipo": "Estacionamiento",
-      "lat": 20.625368,
-      "lng": -100.416376,
+      "nombre": "CEDIS Bimbo Querétaro",
+      "tipo": "cedis",
+      "lat": 20.59,
+      "lng": -100.39,
       "servicios": [
-        "Vigilancia 24h",
-        "Descanso",
-        "Comedor",
-        "Taller",
-        "Baños"
+        "Estacionamiento",
+        "Carga/Descarga",
+        "Taller"
       ],
-      "capacidad_camiones": 55,
-      "ocupacion_actual": 9,
-      "horario": "24/7",
-      "activa": true
-    },
-    {
-      "id": "ZS-006",
-      "nombre": "Base Operativa Puebla",
-      "tipo": "Base",
-      "lat": 21.086007,
-      "lng": -101.676558,
-      "servicios": [
-        "Comedor",
-        "Taller",
-        "Descanso",
-        "Vigilancia 24h"
-      ],
-      "capacidad_camiones": 37,
-      "ocupacion_actual": 13,
+      "capacidad_camiones": 30,
+      "ocupacion_actual": 22,
       "horario": "06:00-22:00",
       "activa": true
     },
     {
-      "id": "ZS-007",
-      "nombre": "Punto Seguro Arco Norte",
-      "tipo": "CEDIS",
-      "lat": 19.247,
-      "lng": -99.617211,
+      "id": "ZS-006",
+      "nombre": "Parador Seguro Matehuala",
+      "tipo": "estacionamiento",
+      "lat": 23.65,
+      "lng": -100.64,
       "servicios": [
-        "Taller",
-        "Combustible",
-        "Vigilancia 24h",
-        "Descanso",
-        "Comedor"
+        "Vigilancia",
+        "Comedor",
+        "Diesel",
+        "Baños"
       ],
-      "capacidad_camiones": 11,
-      "ocupacion_actual": 3,
-      "horario": "24/7",
+      "capacidad_camiones": 20,
+      "ocupacion_actual": 12,
+      "horario": "24 horas",
+      "activa": true
+    },
+    {
+      "id": "ZS-007",
+      "nombre": "Base Bimbo Puebla",
+      "tipo": "base_operativa",
+      "lat": 19.05,
+      "lng": -98.2,
+      "servicios": [
+        "Estacionamiento",
+        "Taller",
+        "Dormitorios"
+      ],
+      "capacidad_camiones": 25,
+      "ocupacion_actual": 15,
+      "horario": "24 horas",
       "activa": true
     },
     {
       "id": "ZS-008",
-      "nombre": "CEDIS Veracruz Puerto",
-      "tipo": "Planta",
-      "lat": 25.418639,
-      "lng": -101.002888,
+      "nombre": "CEDIS Bimbo León",
+      "tipo": "cedis",
+      "lat": 21.12,
+      "lng": -101.68,
       "servicios": [
-        "Comedor",
-        "Descanso",
-        "Taller",
-        "Combustible",
-        "Vigilancia 24h"
+        "Carga/Descarga",
+        "Estacionamiento",
+        "Comedor"
       ],
-      "capacidad_camiones": 64,
-      "ocupacion_actual": 41,
-      "horario": "24/7",
+      "capacidad_camiones": 20,
+      "ocupacion_actual": 14,
+      "horario": "06:00-22:00",
+      "activa": true
+    },
+    {
+      "id": "ZS-009",
+      "nombre": "Gasolinera Pemex km 380 AGS",
+      "tipo": "gasolinera_segura",
+      "lat": 21.88,
+      "lng": -102.29,
+      "servicios": [
+        "Diesel",
+        "Tienda",
+        "Baños"
+      ],
+      "capacidad_camiones": 10,
+      "ocupacion_actual": 5,
+      "horario": "24 horas",
+      "activa": true
+    },
+    {
+      "id": "ZS-010",
+      "nombre": "CEDIS Bimbo Veracruz",
+      "tipo": "cedis",
+      "lat": 19.18,
+      "lng": -96.92,
+      "servicios": [
+        "Carga/Descarga",
+        "Estacionamiento",
+        "Comedor",
+        "Taller"
+      ],
+      "capacidad_camiones": 20,
+      "ocupacion_actual": 11,
+      "horario": "24 horas",
       "activa": true
     }
   ]
