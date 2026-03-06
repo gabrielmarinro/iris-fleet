@@ -1,115 +1,242 @@
-{
-  "_meta": {
-    "fuente": "Lytx DriveCam + IA visión computacional",
-    "actualizado": "2026-03-06T01:00:00-06:00",
-    "total_eventos_24h": 7,
-    "alta_severidad": 3
+[
+  {
+    "id": "CAM-001",
+    "unidad": "MX-3222",
+    "tipoEvento": "Microsueño",
+    "severidad": "Alta",
+    "conductor": "Fernando Cruz Martínez",
+    "conductor_id": "DRV-007",
+    "timestamp": "2026-03-04T23:00:00",
+    "duracion_segundos": 11,
+    "video_url": null,
+    "video_placeholder": "lytx_event_001.mp4",
+    "dispositivo": "Lytx DriveCam SF400",
+    "dispositivo_id": "LYTX-99849",
+    "ubicacion": {
+      "lat": 25.33411,
+      "lng": -100.538762
+    },
+    "revisado": true,
+    "accion_tomada": "Coaching realizado"
   },
-  "eventos": [
-    {
-      "id": "CAM-001",
-      "unidad": "MX-4023",
-      "tipo": "microsueño",
-      "severidad": "alta",
-      "camara": "cabina",
-      "timestamp": "2026-03-06T00:55:00-06:00",
-      "duracion_seg": 2.3,
-      "velocidad_kmh": 88,
-      "descripcion": "Cierre parcial de ojos 2.3s. Segundo evento en 1h.",
-      "video_url": "lytx://event/CAM-001",
-      "conductor": "Manuel Ortiz",
-      "accion_tomada": "Alerta sonora enviada",
-      "score_confianza": 94
+  {
+    "id": "CAM-002",
+    "unidad": "MX-3185",
+    "tipoEvento": "Celular en Mano",
+    "severidad": "Media",
+    "conductor": "Jorge Ramírez Flores",
+    "conductor_id": "DRV-006",
+    "timestamp": "2026-03-06T05:00:00",
+    "duracion_segundos": 27,
+    "video_url": null,
+    "video_placeholder": "lytx_event_002.mp4",
+    "dispositivo": "Lytx DriveCam SF400",
+    "dispositivo_id": "LYTX-96062",
+    "ubicacion": {
+      "lat": 19.311693,
+      "lng": -100.191255
     },
-    {
-      "id": "CAM-002",
-      "unidad": "MX-2341",
-      "tipo": "celular_en_mano",
-      "severidad": "media",
-      "camara": "cabina",
-      "timestamp": "2026-03-06T00:35:00-06:00",
-      "duracion_seg": 8,
-      "velocidad_kmh": 95,
-      "descripcion": "Celular en mano derecha durante 8 segundos.",
-      "video_url": "lytx://event/CAM-002",
-      "conductor": "Juan Pérez",
-      "accion_tomada": "Infracción registrada",
-      "score_confianza": 97
+    "revisado": true,
+    "accion_tomada": "Coaching realizado"
+  },
+  {
+    "id": "CAM-003",
+    "unidad": "MX-3296",
+    "tipoEvento": "Distracción Visual",
+    "severidad": "Media",
+    "conductor": "Alejandro Torres Vega",
+    "conductor_id": "DRV-009",
+    "timestamp": "2026-03-05T08:00:00",
+    "duracion_segundos": 29,
+    "video_url": null,
+    "video_placeholder": "lytx_event_003.mp4",
+    "dispositivo": "Lytx DriveCam SF400",
+    "dispositivo_id": "LYTX-94922",
+    "ubicacion": {
+      "lat": 21.14932,
+      "lng": -103.111999
     },
-    {
-      "id": "CAM-003",
-      "unidad": "MX-3012",
-      "tipo": "distraccion_visual",
-      "severidad": "media",
-      "camara": "cabina",
-      "timestamp": "2026-03-05T23:15:00-06:00",
-      "duracion_seg": 4.5,
-      "velocidad_kmh": 78,
-      "descripcion": "Mirada fuera de carretera >4s (mirando tablero/GPS).",
-      "video_url": "lytx://event/CAM-003",
-      "conductor": "Roberto Silva",
-      "accion_tomada": "Registro preventivo",
-      "score_confianza": 86
+    "revisado": true,
+    "accion_tomada": "Notificación enviada"
+  },
+  {
+    "id": "CAM-004",
+    "unidad": "MX-3666",
+    "tipoEvento": "Neblina Detectada",
+    "severidad": "Alta",
+    "conductor": "Héctor Domínguez Peña",
+    "conductor_id": "DRV-019",
+    "timestamp": "2026-03-05T03:00:00",
+    "duracion_segundos": 29,
+    "video_url": null,
+    "video_placeholder": "lytx_event_004.mp4",
+    "dispositivo": "Lytx DriveCam SF400",
+    "dispositivo_id": "LYTX-19924",
+    "ubicacion": {
+      "lat": 25.676817,
+      "lng": -100.228285
     },
-    {
-      "id": "CAM-004",
-      "unidad": "MX-3089",
-      "tipo": "neblina_detectada",
-      "severidad": "alta",
-      "camara": "frontal",
-      "timestamp": "2026-03-05T23:50:00-06:00",
-      "duracion_seg": null,
-      "velocidad_kmh": 65,
-      "descripcion": "Visibilidad <200m. Neblina densa en tramo.",
-      "video_url": "lytx://event/CAM-004",
-      "conductor": "Miguel Ángel Rosas",
-      "accion_tomada": "Notificación a monitorista",
-      "score_confianza": 91
+    "revisado": false,
+    "accion_tomada": "Notificación enviada"
+  },
+  {
+    "id": "CAM-005",
+    "unidad": "MX-3370",
+    "tipoEvento": "Frenado Agresivo",
+    "severidad": "Media",
+    "conductor": "Luis Enrique Morales",
+    "conductor_id": "DRV-011",
+    "timestamp": "2026-03-06T04:00:00",
+    "duracion_segundos": 16,
+    "video_url": null,
+    "video_placeholder": "lytx_event_005.mp4",
+    "dispositivo": "Lytx DriveCam SF400",
+    "dispositivo_id": "LYTX-18177",
+    "ubicacion": {
+      "lat": 19.215754,
+      "lng": -99.278257
     },
-    {
-      "id": "CAM-005",
-      "unidad": "RF-1003",
-      "tipo": "frenado_agresivo",
-      "severidad": "media",
-      "camara": "frontal",
-      "timestamp": "2026-03-06T00:25:00-06:00",
-      "duracion_seg": 1.8,
-      "velocidad_kmh": 92,
-      "descripcion": "Frenado agresivo: 92→35 km/h en 1.8s. Objeto en carretera.",
-      "video_url": "lytx://event/CAM-005",
-      "conductor": "Diego Hernández",
-      "accion_tomada": "Registro. Sin colisión.",
-      "score_confianza": 99
+    "revisado": false,
+    "accion_tomada": "Pendiente revisión"
+  },
+  {
+    "id": "CAM-006",
+    "unidad": "MX-4036",
+    "tipoEvento": "Cabeceo/Fatiga",
+    "severidad": "Alta",
+    "conductor": "Jesús Maldonado Ochoa",
+    "conductor_id": "DRV-029",
+    "timestamp": "2026-03-06T04:00:00",
+    "duracion_segundos": 23,
+    "video_url": null,
+    "video_placeholder": "lytx_event_006.mp4",
+    "dispositivo": "Lytx DriveCam SF400",
+    "dispositivo_id": "LYTX-36302",
+    "ubicacion": {
+      "lat": 20.902981,
+      "lng": -101.230242
     },
-    {
-      "id": "CAM-006",
-      "unidad": "MX-3134",
-      "tipo": "cabeceo_fatiga",
-      "severidad": "alta",
-      "camara": "cabina",
-      "timestamp": "2026-03-06T00:48:00-06:00",
-      "duracion_seg": 1.5,
-      "velocidad_kmh": 82,
-      "descripcion": "Cabeceo detectado. Posible somnolencia.",
-      "video_url": "lytx://event/CAM-006",
-      "conductor": "Jorge Ramírez",
-      "accion_tomada": "Alerta sonora + vibración asiento",
-      "score_confianza": 88
+    "revisado": false,
+    "accion_tomada": "Pendiente revisión"
+  },
+  {
+    "id": "CAM-007",
+    "unidad": "MX-3222",
+    "tipoEvento": "Cinturón No Puesto",
+    "severidad": "Baja",
+    "conductor": "Fernando Cruz Martínez",
+    "conductor_id": "DRV-007",
+    "timestamp": "2026-03-05T04:00:00",
+    "duracion_segundos": 30,
+    "video_url": null,
+    "video_placeholder": "lytx_event_007.mp4",
+    "dispositivo": "Lytx DriveCam SF400",
+    "dispositivo_id": "LYTX-43947",
+    "ubicacion": {
+      "lat": 25.407517,
+      "lng": -100.273293
     },
-    {
-      "id": "CAM-007",
-      "unidad": "EXT-4501",
-      "tipo": "cinturon_no_puesto",
-      "severidad": "baja",
-      "camara": "cabina",
-      "timestamp": "2026-03-05T22:10:00-06:00",
-      "duracion_seg": 45,
-      "velocidad_kmh": 40,
-      "descripcion": "Cinturón desabrochado por 45s en zona urbana.",
-      "video_url": "lytx://event/CAM-007",
-      "conductor": "Fernando Cruz",
-      "accion_tomada": "Alerta sonora",
-      "score_confianza": 99
-    }
-  ]
-}
+    "revisado": false,
+    "accion_tomada": null
+  },
+  {
+    "id": "CAM-008",
+    "unidad": "MX-3037",
+    "tipoEvento": "Comiendo al Volante",
+    "severidad": "Media",
+    "conductor": "Juan Pérez Hernández",
+    "conductor_id": "DRV-002",
+    "timestamp": "2026-03-05T01:00:00",
+    "duracion_segundos": 12,
+    "video_url": null,
+    "video_placeholder": "lytx_event_008.mp4",
+    "dispositivo": "Lytx DriveCam SF400",
+    "dispositivo_id": "LYTX-95572",
+    "ubicacion": {
+      "lat": 19.692336,
+      "lng": -99.795838
+    },
+    "revisado": false,
+    "accion_tomada": null
+  },
+  {
+    "id": "CAM-009",
+    "unidad": "MX-3000",
+    "tipoEvento": "Fumando en Cabina",
+    "severidad": "Baja",
+    "conductor": "Manuel Ortiz García",
+    "conductor_id": "DRV-001",
+    "timestamp": "2026-03-05T00:00:00",
+    "duracion_segundos": 30,
+    "video_url": null,
+    "video_placeholder": "lytx_event_009.mp4",
+    "dispositivo": "Lytx DriveCam SF400",
+    "dispositivo_id": "LYTX-74314",
+    "ubicacion": {
+      "lat": 25.384835,
+      "lng": -100.292023
+    },
+    "revisado": true,
+    "accion_tomada": null
+  },
+  {
+    "id": "CAM-010",
+    "unidad": "MX-4110",
+    "tipoEvento": "Exceso de Velocidad",
+    "severidad": "Alta",
+    "conductor": "Armando Guerrero Ponce",
+    "conductor_id": "DRV-031",
+    "timestamp": "2026-03-06T01:00:00",
+    "duracion_segundos": 26,
+    "video_url": null,
+    "video_placeholder": "lytx_event_010.mp4",
+    "dispositivo": "Lytx DriveCam SF400",
+    "dispositivo_id": "LYTX-80163",
+    "ubicacion": {
+      "lat": 21.022164,
+      "lng": -100.449531
+    },
+    "revisado": true,
+    "accion_tomada": "Notificación enviada"
+  },
+  {
+    "id": "CAM-011",
+    "unidad": "MX-3777",
+    "tipoEvento": "Cambio Brusco de Carril",
+    "severidad": "Media",
+    "conductor": "Iván Contreras Soto",
+    "conductor_id": "DRV-022",
+    "timestamp": "2026-03-06T03:00:00",
+    "duracion_segundos": 22,
+    "video_url": null,
+    "video_placeholder": "lytx_event_011.mp4",
+    "dispositivo": "Lytx DriveCam SF400",
+    "dispositivo_id": "LYTX-48005",
+    "ubicacion": {
+      "lat": 18.847371,
+      "lng": -98.852692
+    },
+    "revisado": true,
+    "accion_tomada": "Notificación enviada"
+  },
+  {
+    "id": "CAM-012",
+    "unidad": "MX-3888",
+    "tipoEvento": "Objeto en Vía",
+    "severidad": "Alta",
+    "conductor": "Enrique Vargas Medina",
+    "conductor_id": "DRV-025",
+    "timestamp": "2026-03-06T02:00:00",
+    "duracion_segundos": 28,
+    "video_url": null,
+    "video_placeholder": "lytx_event_012.mp4",
+    "dispositivo": "Lytx DriveCam SF400",
+    "dispositivo_id": "LYTX-57089",
+    "ubicacion": {
+      "lat": 25.174117,
+      "lng": -100.854105
+    },
+    "revisado": true,
+    "accion_tomada": "Coaching realizado"
+  }
+]

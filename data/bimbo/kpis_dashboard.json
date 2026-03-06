@@ -1,57 +1,34 @@
 {
-  "_meta": {
-    "fuente": "BI corporativo + ERP + Geotab + TMS",
-    "actualizado": "2026-03-06T01:00:00-06:00"
-  },
-  "torre_control": {
-    "uptime_flota_pct": 90.6,
-    "uptime_tendencia": "+2.1%",
-    "costo_por_km_mxn": 2.3,
-    "costo_tendencia": "-$0.15",
-    "mtbf_horas": 720,
-    "mtbf_tendencia": "+45h",
-    "activos_criticos": 3,
-    "activos_requieren_reemplazo_hoy": 1,
-    "roi_por_activo_pct": 18.5,
-    "roi_tendencia": "+1.2%",
-    "dias_sin_accidentes": 23,
-    "meta_dias_sin_accidentes": 30
-  },
-  "combustible": {
-    "consumo_hoy_litros": 12850,
-    "costo_hoy_mxn": 48500,
-    "unidades_consumo_anomalo": 3,
-    "rendimiento_promedio_kml": 3.6,
-    "rendimiento_benchmark_kml": 3.8
-  },
-  "compliance": {
-    "alertas_nom087_activas": 4,
-    "operadores_exceden_diario": 1,
-    "operadores_preventiva": 3,
-    "verificaciones_por_vencer_30d": 5,
-    "pct_cumplimiento_nom087": 92
-  },
-  "entregas": {
-    "entregas_hoy": 18,
-    "entregas_a_tiempo_pct": 78,
-    "entregas_demoradas": 4,
-    "sla_en_riesgo_monto_mxn": 450000
+  "ultima_actualizacion": "2026-03-06T09:00:00",
+  "periodo": "Marzo 2026",
+  "general": {
+    "conductores_activos": 32,
+    "vehiculos_operativos": 31,
+    "rutas_activas": 8,
+    "alertas_sin_atender": 13,
+    "eventos_camara_24h": 12,
+    "score_flota": 77.9
   },
   "seguridad": {
-    "incidentes_mes": 2,
-    "robos_mes": 0,
-    "accidentes_mes": 1,
-    "score_seguridad_flota": 82,
-    "zonas_riesgo_activas": 4
+    "incidentes_mes": 22,
+    "conductores_seguro": 20,
+    "conductores_atencion": 7,
+    "conductores_riesgo": 5,
+    "frenados_bruscos_semana": 45,
+    "exceso_velocidad_semana": 10,
+    "uso_telefono_semana": 6,
+    "fatiga_detectada_semana": 4
   },
-  "financiero": {
-    "costo_operativo_mes_mxn": 4850000,
-    "ingresos_mes_mxn": 12400000,
-    "margen_pct": 60.9,
-    "ahorro_estimado_ia_mes_mxn": 180000,
-    "penalizaciones_sla_mes_mxn": 150000,
-    "costo_mantenimiento_mes_mxn": 485000,
-    "costo_combustible_mes_mxn": 1450000,
-    "costo_casetas_mes_mxn": 320000
+  "operaciones": {
+    "entregas_a_tiempo_pct": 87.5,
+    "km_recorridos_mes": 242148,
+    "combustible_consumido_mes": 76511.0,
+    "costo_operativo_mes": 1268503.25,
+    "costo_por_km": 13.18
+  },
+  "mantenimiento": {
+    "vehiculos_en_taller": 9,
+    "servicios_programados": 15,
+    "costo_mantenimiento_mes": 350194.93
   }
 }

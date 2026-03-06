@@ -1,124 +1,140 @@
 {
-  "_meta": {
-    "fuente": "Base interna Bimbo + Google Maps",
-    "actualizado": "2026-03-06T01:00:00-06:00"
-  },
   "zonas": [
     {
-      "id": "ZS-01",
-      "nombre": "Gasolinera BP Autopista México-Querétaro km 78",
-      "tipo": "gasolinera_segura",
-      "lat": 19.85,
-      "lng": -99.45,
+      "id": "ZS-001",
+      "nombre": "CEDIS Bimbo CDMX Norte",
+      "tipo": "Planta",
+      "lat": 19.413404,
+      "lng": -99.142621,
       "servicios": [
-        "⛽ Combustible",
-        "🅿️ Estacionamiento vigilado",
-        "🍽️ Alimentos",
-        "🚿 Sanitarios"
+        "Vigilancia 24h",
+        "Baños"
       ],
-      "capacidad_camiones": 15,
-      "ocupacion_actual": 8
+      "capacidad_camiones": 22,
+      "ocupacion_actual": 16,
+      "horario": "24/7",
+      "activa": true
     },
     {
-      "id": "ZS-02",
-      "nombre": "Paradero Pemex Autopista SLP-MTY km 210",
-      "tipo": "gasolinera_segura",
-      "lat": 23.5,
-      "lng": -100.7,
+      "id": "ZS-002",
+      "nombre": "CEDIS Bimbo Monterrey Sur",
+      "tipo": "Base",
+      "lat": 25.701099,
+      "lng": -100.359952,
       "servicios": [
-        "⛽ Combustible",
-        "🅿️ Estacionamiento",
-        "🍽️ Alimentos"
+        "Taller",
+        "Baños",
+        "Combustible"
       ],
-      "capacidad_camiones": 20,
-      "ocupacion_actual": 12
+      "capacidad_camiones": 58,
+      "ocupacion_actual": 22,
+      "horario": "24/7",
+      "activa": true
     },
     {
-      "id": "ZS-03",
-      "nombre": "Estación de Servicio G500 Saltillo",
-      "tipo": "gasolinera_segura",
-      "lat": 25.42,
-      "lng": -101.0,
+      "id": "ZS-003",
+      "nombre": "Planta Barcel Lerma",
+      "tipo": "Estacionamiento",
+      "lat": 20.648698,
+      "lng": -103.341807,
       "servicios": [
-        "⛽ Combustible",
-        "🅿️ Patio vigilado",
-        "🛏️ Dormitorios",
-        "🍽️ Comedor"
+        "Taller",
+        "Descanso",
+        "Baños"
       ],
-      "capacidad_camiones": 30,
-      "ocupacion_actual": 15
+      "capacidad_camiones": 29,
+      "ocupacion_actual": 16,
+      "horario": "24/7",
+      "activa": true
     },
     {
-      "id": "ZS-04",
-      "nombre": "Patio Seguro Transportes GDL",
-      "tipo": "patio_seguro",
-      "lat": 20.68,
-      "lng": -103.38,
+      "id": "ZS-004",
+      "nombre": "CEDIS Marinela Guadalajara",
+      "tipo": "Estacionamiento",
+      "lat": 19.090429,
+      "lng": -98.198027,
       "servicios": [
-        "🅿️ Patio cerrado CCTV",
-        "🛏️ Dormitorios",
-        "🍽️ Comedor",
-        "🚿 Sanitarios"
+        "Taller",
+        "Descanso",
+        "Combustible",
+        "Vigilancia 24h",
+        "Comedor"
       ],
-      "capacidad_camiones": 40,
-      "ocupacion_actual": 22
+      "capacidad_camiones": 48,
+      "ocupacion_actual": 29,
+      "horario": "06:00-22:00",
+      "activa": true
     },
     {
-      "id": "ZS-05",
-      "nombre": "Base Militar km 120 MTY-Reynosa",
-      "tipo": "zona_militar",
-      "lat": 25.85,
-      "lng": -99.0,
+      "id": "ZS-005",
+      "nombre": "Estacionamiento Seguro Querétaro",
+      "tipo": "Estacionamiento",
+      "lat": 20.625368,
+      "lng": -100.416376,
       "servicios": [
-        "🛡️ Seguridad militar",
-        "🅿️ Estacionamiento"
+        "Vigilancia 24h",
+        "Descanso",
+        "Comedor",
+        "Taller",
+        "Baños"
       ],
-      "capacidad_camiones": 10,
-      "ocupacion_actual": 3
+      "capacidad_camiones": 55,
+      "ocupacion_actual": 9,
+      "horario": "24/7",
+      "activa": true
     },
     {
-      "id": "ZS-06",
-      "nombre": "CEDIS CDMX Norte (Bimbo)",
-      "tipo": "cedis",
-      "lat": 19.4326,
-      "lng": -99.1332,
+      "id": "ZS-006",
+      "nombre": "Base Operativa Puebla",
+      "tipo": "Base",
+      "lat": 21.086007,
+      "lng": -101.676558,
       "servicios": [
-        "🅿️ Patio",
-        "🍽️ Comedor",
-        "🛏️ Dormitorios",
-        "🔧 Taller"
+        "Comedor",
+        "Taller",
+        "Descanso",
+        "Vigilancia 24h"
       ],
-      "capacidad_camiones": 80,
-      "ocupacion_actual": 30
+      "capacidad_camiones": 37,
+      "ocupacion_actual": 13,
+      "horario": "06:00-22:00",
+      "activa": true
     },
     {
-      "id": "ZS-07",
-      "nombre": "CEDIS Monterrey (Bimbo)",
-      "tipo": "cedis",
-      "lat": 25.6866,
-      "lng": -100.3161,
+      "id": "ZS-007",
+      "nombre": "Punto Seguro Arco Norte",
+      "tipo": "CEDIS",
+      "lat": 19.247,
+      "lng": -99.617211,
       "servicios": [
-        "🅿️ Patio",
-        "🍽️ Comedor",
-        "🛏️ Dormitorios",
-        "🔧 Taller"
+        "Taller",
+        "Combustible",
+        "Vigilancia 24h",
+        "Descanso",
+        "Comedor"
       ],
-      "capacidad_camiones": 60,
-      "ocupacion_actual": 25
+      "capacidad_camiones": 11,
+      "ocupacion_actual": 3,
+      "horario": "24/7",
+      "activa": true
     },
     {
-      "id": "ZS-08",
-      "nombre": "CEDIS Guadalajara (Bimbo)",
-      "tipo": "cedis",
-      "lat": 20.6597,
-      "lng": -103.3496,
+      "id": "ZS-008",
+      "nombre": "CEDIS Veracruz Puerto",
+      "tipo": "Planta",
+      "lat": 25.418639,
+      "lng": -101.002888,
       "servicios": [
-        "🅿️ Patio",
-        "🍽️ Comedor",
-        "🔧 Taller"
+        "Comedor",
+        "Descanso",
+        "Taller",
+        "Combustible",
+        "Vigilancia 24h"
       ],
-      "capacidad_camiones": 50,
-      "ocupacion_actual": 18
+      "capacidad_camiones": 64,
+      "ocupacion_actual": 41,
+      "horario": "24/7",
+      "activa": true
     }
   ]
 }
