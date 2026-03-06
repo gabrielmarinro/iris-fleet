@@ -1,1 +1,0 @@
-# Videos Lytx\n\nColoca aquí los archivos .mp4 de eventos de cámaras Lytx.\nLuego usa la URL relativa en el panel de administración:\n\n  ./videos/nombre-del-video.mp4\n\nLos videos se mostrarán en el reproductor integrado del dashboard.
