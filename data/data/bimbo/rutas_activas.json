@@ -29,7 +29,11 @@
       "vehiculos_asignados": 6,
       "costo_estimado": 2830.0,
       "sla_compromiso": "13:00",
-      "status": "en_curso"
+      "status": "en_curso",
+      "unidad": "MX-3001",
+      "tipo_carga": "Pan de caja",
+      "prioridad": "alta",
+      "valor_carga_mxn": 419381
     },
     {
       "id": "RT-002",
@@ -67,7 +71,11 @@
       "vehiculos_asignados": 8,
       "costo_estimado": 7683.0,
       "sla_compromiso": "17:00",
-      "status": "en_curso"
+      "status": "en_curso",
+      "unidad": "MX-3003",
+      "tipo_carga": "Bollería",
+      "prioridad": "media",
+      "valor_carga_mxn": 1131391
     },
     {
       "id": "RT-003",
@@ -105,7 +113,11 @@
       "vehiculos_asignados": 7,
       "costo_estimado": 11344.0,
       "sla_compromiso": "18:00",
-      "status": "completada"
+      "status": "completada",
+      "unidad": "MX-3005",
+      "tipo_carga": "Pan dulce",
+      "prioridad": "media",
+      "valor_carga_mxn": 823127
     },
     {
       "id": "RT-004",
@@ -136,7 +148,11 @@
       "vehiculos_asignados": 7,
       "costo_estimado": 13885.0,
       "sla_compromiso": "11:00",
-      "status": "demorada"
+      "status": "demorada",
+      "unidad": "MX-3006",
+      "tipo_carga": "Pastelería",
+      "prioridad": "media",
+      "valor_carga_mxn": 1081495
     },
     {
       "id": "RT-005",
@@ -174,7 +190,11 @@
       "vehiculos_asignados": 4,
       "costo_estimado": 2341.0,
       "sla_compromiso": "11:00",
-      "status": "en_curso"
+      "status": "en_curso",
+      "unidad": "MX-3009",
+      "tipo_carga": "Tortillas",
+      "prioridad": "baja",
+      "valor_carga_mxn": 215885
     },
     {
       "id": "RT-006",
@@ -212,7 +232,11 @@
       "vehiculos_asignados": 3,
       "costo_estimado": 6242.0,
       "sla_compromiso": "10:00",
-      "status": "en_curso"
+      "status": "en_curso",
+      "unidad": "MX-3012",
+      "tipo_carga": "Botanas Barcel",
+      "prioridad": "alta",
+      "valor_carga_mxn": 432228
     },
     {
       "id": "RT-007",
@@ -271,7 +295,11 @@
       "vehiculos_asignados": 8,
       "costo_estimado": 8562.0,
       "sla_compromiso": "14:00",
-      "status": "completada"
+      "status": "completada",
+      "unidad": "MX-3013",
+      "tipo_carga": "Galletas",
+      "prioridad": "media",
+      "valor_carga_mxn": 1302548
     },
     {
       "id": "RT-008",
@@ -316,7 +344,11 @@
       "vehiculos_asignados": 5,
       "costo_estimado": 10152.0,
       "sla_compromiso": "13:00",
-      "status": "completada"
+      "status": "completada",
+      "unidad": "MX-3014",
+      "tipo_carga": "Confitería",
+      "prioridad": "media",
+      "valor_carga_mxn": 990786
     },
     {
       "id": "RT-009",
@@ -375,7 +407,11 @@
       "vehiculos_asignados": 6,
       "costo_estimado": 3658.0,
       "sla_compromiso": "18:00",
-      "status": "en_curso"
+      "status": "en_curso",
+      "unidad": "MX-3018",
+      "tipo_carga": "Productos refrigerados",
+      "prioridad": "media",
+      "valor_carga_mxn": 232628
     },
     {
       "id": "RT-010",
@@ -406,7 +442,11 @@
       "vehiculos_asignados": 6,
       "costo_estimado": 2566.0,
       "sla_compromiso": "18:00",
-      "status": "completada"
+      "status": "completada",
+      "unidad": "MX-3021",
+      "tipo_carga": "Pan artesanal",
+      "prioridad": "baja",
+      "valor_carga_mxn": 245270
     },
     {
       "id": "RT-011",
@@ -458,7 +498,11 @@
       "vehiculos_asignados": 3,
       "costo_estimado": 5085.0,
       "sla_compromiso": "16:00",
-      "status": "en_curso"
+      "status": "en_curso",
+      "unidad": "MX-3022",
+      "tipo_carga": "Pan de caja",
+      "prioridad": "alta",
+      "valor_carga_mxn": 675292
     },
     {
       "id": "RT-012",
@@ -496,7 +540,11 @@
       "vehiculos_asignados": 4,
       "costo_estimado": 4650.0,
       "sla_compromiso": "11:00",
-      "status": "completada"
+      "status": "completada",
+      "unidad": "MX-3023",
+      "tipo_carga": "Bollería",
+      "prioridad": "media",
+      "valor_carga_mxn": 448615
     },
     {
       "id": "RT-013",
@@ -527,7 +575,11 @@
       "vehiculos_asignados": 4,
       "costo_estimado": 8754.0,
       "sla_compromiso": "13:00",
-      "status": "en_curso"
+      "status": "en_curso",
+      "unidad": "MX-3025",
+      "tipo_carga": "Pan dulce",
+      "prioridad": "media",
+      "valor_carga_mxn": 951764
     },
     {
       "id": "RT-014",
@@ -572,7 +624,11 @@
       "vehiculos_asignados": 7,
       "costo_estimado": 13471.0,
       "sla_compromiso": "15:00",
-      "status": "demorada"
+      "status": "demorada",
+      "unidad": "MX-3026",
+      "tipo_carga": "Pastelería",
+      "prioridad": "media",
+      "valor_carga_mxn": 1730478
     },
     {
       "id": "RT-015",
@@ -610,7 +666,11 @@
       "vehiculos_asignados": 5,
       "costo_estimado": 4576.0,
       "sla_compromiso": "09:00",
-      "status": "completada"
+      "status": "completada",
+      "unidad": "MX-3027",
+      "tipo_carga": "Tortillas",
+      "prioridad": "baja",
+      "valor_carga_mxn": 574564
     },
     {
       "id": "RT-016",
@@ -648,7 +708,11 @@
       "vehiculos_asignados": 8,
       "costo_estimado": 1271.0,
       "sla_compromiso": "09:00",
-      "status": "en_curso"
+      "status": "en_curso",
+      "unidad": "MX-3030",
+      "tipo_carga": "Botanas Barcel",
+      "prioridad": "alta",
+      "valor_carga_mxn": 70197
     },
     {
       "id": "RT-017",
@@ -679,7 +743,11 @@
       "vehiculos_asignados": 7,
       "costo_estimado": 1513.0,
       "sla_compromiso": "09:00",
-      "status": "en_curso"
+      "status": "en_curso",
+      "unidad": "MX-3032",
+      "tipo_carga": "Galletas",
+      "prioridad": "media",
+      "valor_carga_mxn": 156378
     },
     {
       "id": "RT-018",
@@ -738,7 +806,11 @@
       "vehiculos_asignados": 5,
       "costo_estimado": 1237.0,
       "sla_compromiso": "13:00",
-      "status": "en_curso"
+      "status": "en_curso",
+      "unidad": "MX-3034",
+      "tipo_carga": "Confitería",
+      "prioridad": "media",
+      "valor_carga_mxn": 69929
     },
     {
       "id": "RT-019",
@@ -797,7 +869,11 @@
       "vehiculos_asignados": 4,
       "costo_estimado": 1256.0,
       "sla_compromiso": "11:00",
-      "status": "en_curso"
+      "status": "en_curso",
+      "unidad": "MX-3035",
+      "tipo_carga": "Productos refrigerados",
+      "prioridad": "media",
+      "valor_carga_mxn": 136787
     },
     {
       "id": "RT-020",
@@ -828,7 +904,11 @@
       "vehiculos_asignados": 5,
       "costo_estimado": 4781.0,
       "sla_compromiso": "14:00",
-      "status": "completada"
+      "status": "completada",
+      "unidad": "MX-3037",
+      "tipo_carga": "Pan artesanal",
+      "prioridad": "baja",
+      "valor_carga_mxn": 358256
     }
   ],
   "_meta": {
