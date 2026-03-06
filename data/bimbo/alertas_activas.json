@@ -1,155 +1,377 @@
-{
-  "_meta": {
-    "fuente": "Motor de alertas Iris Fleet IA",
-    "actualizado": "2026-03-06T01:00:00-06:00",
-    "total_alertas": 12,
-    "criticas": 2,
-    "no_atendidas": 9
+[
+  {
+    "id": "ALT-013",
+    "titulo": "Geocerca Violada",
+    "tipo": "Geocerca Violada",
+    "severidad": "Alta",
+    "timestamp": "2026-03-06T08:34:00",
+    "conductor": "Roberto Silva López",
+    "conductor_id": "DRV-003",
+    "unidad": "MX-3074",
+    "descripcion": "Geocerca Violada detectado - Roberto Silva López en unidad MX-3074",
+    "prioridad": "Alta",
+    "ubicacion": {
+      "lat": 19.311224,
+      "lng": -95.678016,
+      "referencia": "Km 120 Autopista Arco Norte"
+    },
+    "detalle_telemetria": {
+      "velocidad": 45.7,
+      "presion_freno": 46.7,
+      "uso_telefono": true
+    },
+    "atendida": false,
+    "accion_sugerida": "Pendiente de revisión",
+    "notas": ""
   },
-  "alertas": [
-    {
-      "id": "ALT-001",
-      "tipo": "excepcion_critica",
-      "severidad": "critica",
-      "unidad": "MX-3012",
-      "titulo": "ETA en riesgo — SLA $150K",
-      "descripcion": "Lluvia moderada en tramo SLP-MTY. Velocidad reducida. ETA ajustado +75 min.",
-      "fuente": "IA Predictiva + AccuWeather",
-      "timestamp": "2026-03-06T00:45:00-06:00",
-      "accion_sugerida": "Notificar cliente nuevo ETA. Monitorear clima cada 15 min.",
-      "atendida": false
+  {
+    "id": "ALT-008",
+    "titulo": "Fatiga Detectada",
+    "tipo": "Fatiga Detectada",
+    "severidad": "Crítica",
+    "timestamp": "2026-03-06T08:30:00",
+    "conductor": "Manuel Ortiz García",
+    "conductor_id": "DRV-001",
+    "unidad": "MX-3000",
+    "descripcion": "Fatiga Detectada detectado - Manuel Ortiz García en unidad MX-3000",
+    "prioridad": "Alta",
+    "ubicacion": {
+      "lat": 21.069831,
+      "lng": -103.110633,
+      "referencia": "Km 178 Autopista Guadalajara-León"
     },
-    {
-      "id": "ALT-002",
-      "tipo": "nom_087",
-      "severidad": "preventiva",
-      "unidad": "EXT-4501",
-      "titulo": "NOM-087 — 6.5h conducción continua",
-      "descripcion": "Operador Fernando Cruz lleva 6.5h sin descanso. Límite: 8h. Verificación vehicular vence en 7 días.",
-      "fuente": "Geotab HoS + RH",
-      "timestamp": "2026-03-06T00:30:00-06:00",
-      "accion_sugerida": "Programar descanso en próxima zona segura. Agendar verificación.",
-      "atendida": false
+    "detalle_telemetria": {
+      "velocidad": 68.8,
+      "presion_freno": 88.6,
+      "uso_telefono": false
     },
-    {
-      "id": "ALT-003",
-      "tipo": "consumo_anomalo",
-      "severidad": "alta",
-      "unidad": "EXT-4501",
-      "titulo": "Consumo anómalo +18% en EXT-4501",
-      "descripcion": "Rendimiento 3.1 km/L vs 3.8 km/L esperado. Desviación -18.4%. Posible falla en inyectores o ruta ineficiente.",
-      "fuente": "Samsara + IA Predictiva",
-      "timestamp": "2026-03-06T00:15:00-06:00",
-      "accion_sugerida": "Revisar inyectores. Evaluar ruta alternativa. Ahorro potencial: $12,000/mes.",
-      "atendida": false
+    "atendida": false,
+    "accion_sugerida": "Llamada al conductor",
+    "notas": ""
+  },
+  {
+    "id": "ALT-007",
+    "titulo": "Combustible Bajo",
+    "tipo": "Combustible Bajo",
+    "severidad": "Baja",
+    "timestamp": "2026-03-06T08:26:00",
+    "conductor": "Jorge Ramírez Flores",
+    "conductor_id": "DRV-006",
+    "unidad": "MX-3185",
+    "descripcion": "Combustible Bajo detectado - Jorge Ramírez Flores en unidad MX-3185",
+    "prioridad": "Media",
+    "ubicacion": {
+      "lat": 26.038045,
+      "lng": -100.538251,
+      "referencia": "Km 43 Autopista Arco Norte"
     },
-    {
-      "id": "ALT-004",
-      "tipo": "desvio_ruta",
-      "severidad": "alta",
-      "unidad": "EXT-4501",
-      "titulo": "Desvío de ruta detectado",
-      "descripcion": "Unidad se desvió 4.2 km de la ruta planificada cerca de Toluca. Sin autorización.",
-      "fuente": "GPS + TMS comparación",
-      "timestamp": "2026-03-06T00:10:00-06:00",
-      "accion_sugerida": "Contactar operador. Verificar causa del desvío.",
-      "atendida": false
+    "detalle_telemetria": {
+      "velocidad": 64.4,
+      "presion_freno": 32.4,
+      "uso_telefono": true
     },
-    {
-      "id": "ALT-005",
-      "tipo": "mantenimiento",
-      "severidad": "media",
-      "unidad": "MX-2341",
-      "titulo": "Mantenimiento preventivo próximo",
-      "descripcion": "Servicio de 100,000 km a 2,400 km de distancia. Cambio de aceite + filtros.",
-      "fuente": "ERP + Geotab odómetro",
-      "timestamp": "2026-03-06T00:00:00-06:00",
-      "accion_sugerida": "Programar ingreso a taller al finalizar ruta actual.",
-      "atendida": false
+    "atendida": false,
+    "accion_sugerida": "Pendiente de revisión",
+    "notas": ""
+  },
+  {
+    "id": "ALT-012",
+    "titulo": "Combustible Bajo",
+    "tipo": "Combustible Bajo",
+    "severidad": "Baja",
+    "timestamp": "2026-03-06T08:21:00",
+    "conductor": "Eduardo Salazar Ramos",
+    "conductor_id": "DRV-017",
+    "unidad": "MX-3592",
+    "descripcion": "Combustible Bajo detectado - Eduardo Salazar Ramos en unidad MX-3592",
+    "prioridad": "Media",
+    "ubicacion": {
+      "lat": 18.794463,
+      "lng": -99.228477,
+      "referencia": "Km 124 Autopista Guadalajara-León"
     },
-    {
-      "id": "ALT-006",
-      "tipo": "clima",
-      "severidad": "media",
-      "unidad": "MX-3089",
-      "titulo": "Neblina densa en tramo SLP-MTY",
-      "descripcion": "Visibilidad < 200m reportada en km 180-210 de la autopista SLP-MTY.",
-      "fuente": "AccuWeather + Waze reportes",
-      "timestamp": "2026-03-05T23:45:00-06:00",
-      "accion_sugerida": "Reducir velocidad. Activar luces antiniebla. Monitorear condiciones.",
-      "atendida": true
+    "detalle_telemetria": {
+      "velocidad": 73.6,
+      "presion_freno": 88.9,
+      "uso_telefono": false
     },
-    {
-      "id": "ALT-007",
-      "tipo": "seguridad",
-      "severidad": "critica",
-      "unidad": "MX-3045",
-      "titulo": "Zona de riesgo — 3 incidentes recientes",
-      "descripcion": "Unidad entrará a zona con 3 robos reportados en últimos 60 días (Boulevard Norte, Poniente).",
-      "fuente": "SSP + Waze + Histórico",
-      "timestamp": "2026-03-06T00:20:00-06:00",
-      "accion_sugerida": "Redirigir por ruta alterna o acompañar con escolta.",
-      "atendida": false
+    "atendida": false,
+    "accion_sugerida": "Pendiente de revisión",
+    "notas": ""
+  },
+  {
+    "id": "ALT-011",
+    "titulo": "Frenado Brusco",
+    "tipo": "Frenado Brusco",
+    "severidad": "Media",
+    "timestamp": "2026-03-06T08:16:00",
+    "conductor": "Miguel Ángel Rosas",
+    "conductor_id": "DRV-004",
+    "unidad": "MX-3111",
+    "descripcion": "Frenado Brusco detectado - Miguel Ángel Rosas en unidad MX-3111",
+    "prioridad": "Media",
+    "ubicacion": {
+      "lat": 19.258832,
+      "lng": -99.679434,
+      "referencia": "Km 146 Autopista México-Puebla"
     },
-    {
-      "id": "ALT-008",
-      "tipo": "cadena_frio",
-      "severidad": "alta",
-      "unidad": "RF-1001",
-      "titulo": "Temperatura caja +0.5°C sobre setpoint",
-      "descripcion": "Temp actual: 2.5°C. Setpoint: 2.0°C. Tendencia ascendente desde hace 30 min.",
-      "fuente": "Sensor ThermoKing + Samsara",
-      "timestamp": "2026-03-06T00:50:00-06:00",
-      "accion_sugerida": "Verificar estado de unidad de refrigeración. Revisar puertas.",
-      "atendida": false
+    "detalle_telemetria": {
+      "velocidad": 85.0,
+      "presion_freno": 99.5,
+      "uso_telefono": false
     },
-    {
-      "id": "ALT-009",
-      "tipo": "fatiga_camera",
-      "severidad": "alta",
-      "unidad": "MX-4023",
-      "titulo": "Microsueño detectado — cámara Lytx",
-      "descripcion": "Sistema detectó cierre parcial de ojos por 2.3 segundos. Segundo evento en 1 hora.",
-      "fuente": "Lytx DriveCam IA",
-      "timestamp": "2026-03-06T00:55:00-06:00",
-      "accion_sugerida": "Alerta sonora al operador. Si repite, parada obligatoria.",
-      "atendida": false
+    "atendida": false,
+    "accion_sugerida": "Coaching programado",
+    "notas": ""
+  },
+  {
+    "id": "ALT-001",
+    "titulo": "Distracción Visual",
+    "tipo": "Distracción Visual",
+    "severidad": "Alta",
+    "timestamp": "2026-03-06T07:58:00",
+    "conductor": "Alfredo Cabrera Nava",
+    "conductor_id": "DRV-032",
+    "unidad": "MX-4147",
+    "descripcion": "Distracción Visual detectado - Alfredo Cabrera Nava en unidad MX-4147",
+    "prioridad": "Alta",
+    "ubicacion": {
+      "lat": 18.94305,
+      "lng": -95.707636,
+      "referencia": "Km 157 Autopista Monterrey-Saltillo"
     },
-    {
-      "id": "ALT-010",
-      "tipo": "geocerca",
-      "severidad": "info",
-      "unidad": "MX-3012",
-      "titulo": "Entrada a geocerca Caseta SLP",
-      "descripcion": "Unidad entró a geocerca de Caseta San Luis Potosí. TAG IAVE-77201 detectado.",
-      "fuente": "GPS + IAVE",
-      "timestamp": "2026-03-06T00:05:00-06:00",
-      "accion_sugerida": "Registro automático. Sin acción requerida.",
-      "atendida": true
+    "detalle_telemetria": {
+      "velocidad": 63.1,
+      "presion_freno": 46.8,
+      "uso_telefono": false
     },
-    {
-      "id": "ALT-011",
-      "tipo": "llanta_baja",
-      "severidad": "media",
-      "unidad": "MX-3134",
-      "titulo": "Presión baja en llanta TII",
-      "descripcion": "Posición TII: 88 PSI (mínimo: 95 PSI). Temp normal. Posible pinchazo lento.",
-      "fuente": "TPMS Geotab",
-      "timestamp": "2026-03-06T00:40:00-06:00",
-      "accion_sugerida": "Monitorear cada 30 min. Si baja a 80 PSI, parada obligatoria.",
-      "atendida": false
+    "atendida": true,
+    "accion_sugerida": "Notificación enviada",
+    "notas": ""
+  },
+  {
+    "id": "ALT-014",
+    "titulo": "Zona de Riesgo",
+    "tipo": "Zona de Riesgo",
+    "severidad": "Alta",
+    "timestamp": "2026-03-06T07:50:00",
+    "conductor": "José Antonio Méndez",
+    "conductor_id": "DRV-018",
+    "unidad": "MX-3629",
+    "descripcion": "Zona de Riesgo detectado - José Antonio Méndez en unidad MX-3629",
+    "prioridad": "Alta",
+    "ubicacion": {
+      "lat": 25.441944,
+      "lng": -100.231923,
+      "referencia": "Km 128 Autopista México-Puebla"
     },
-    {
-      "id": "ALT-012",
-      "tipo": "celular_detectado",
-      "severidad": "media",
-      "unidad": "MX-2341",
-      "titulo": "Uso de celular detectado",
-      "descripcion": "Cámara detectó celular en mano derecha durante 8 segundos a 95 km/h.",
-      "fuente": "Lytx DriveCam IA",
-      "timestamp": "2026-03-06T00:35:00-06:00",
-      "accion_sugerida": "Enviar alerta sonora. Registrar infracción.",
-      "atendida": true
-    }
-  ]
-}
+    "detalle_telemetria": {
+      "velocidad": 42.4,
+      "presion_freno": 34.4,
+      "uso_telefono": true
+    },
+    "atendida": false,
+    "accion_sugerida": "Llamada al conductor",
+    "notas": ""
+  },
+  {
+    "id": "ALT-005",
+    "titulo": "Mantenimiento Urgente",
+    "tipo": "Mantenimiento Urgente",
+    "severidad": "Media",
+    "timestamp": "2026-03-06T07:43:00",
+    "conductor": "Adrián Romero Díaz",
+    "conductor_id": "DRV-023",
+    "unidad": "MX-3814",
+    "descripcion": "Mantenimiento Urgente detectado - Adrián Romero Díaz en unidad MX-3814",
+    "prioridad": "Media",
+    "ubicacion": {
+      "lat": 20.195026,
+      "lng": -102.926735,
+      "referencia": "Km 87 Autopista Arco Norte"
+    },
+    "detalle_telemetria": {
+      "velocidad": 43.4,
+      "presion_freno": 34.8,
+      "uso_telefono": true
+    },
+    "atendida": false,
+    "accion_sugerida": "Notificación enviada",
+    "notas": ""
+  },
+  {
+    "id": "ALT-004",
+    "titulo": "Distracción Visual",
+    "tipo": "Distracción Visual",
+    "severidad": "Alta",
+    "timestamp": "2026-03-06T07:31:00",
+    "conductor": "Miguel Ángel Rosas",
+    "conductor_id": "DRV-004",
+    "unidad": "MX-3111",
+    "descripcion": "Distracción Visual detectado - Miguel Ángel Rosas en unidad MX-3111",
+    "prioridad": "Alta",
+    "ubicacion": {
+      "lat": 19.401469,
+      "lng": -99.120537,
+      "referencia": "Km 130 Autopista Arco Norte"
+    },
+    "detalle_telemetria": {
+      "velocidad": 69.6,
+      "presion_freno": 70.0,
+      "uso_telefono": false
+    },
+    "atendida": false,
+    "accion_sugerida": "Pendiente de revisión",
+    "notas": ""
+  },
+  {
+    "id": "ALT-002",
+    "titulo": "Distracción Visual",
+    "tipo": "Distracción Visual",
+    "severidad": "Alta",
+    "timestamp": "2026-03-06T07:24:00",
+    "conductor": "Armando Guerrero Ponce",
+    "conductor_id": "DRV-031",
+    "unidad": "MX-4110",
+    "descripcion": "Distracción Visual detectado - Armando Guerrero Ponce en unidad MX-4110",
+    "prioridad": "Alta",
+    "ubicacion": {
+      "lat": 20.948933,
+      "lng": -89.402103,
+      "referencia": "Km 46 Autopista Arco Norte"
+    },
+    "detalle_telemetria": {
+      "velocidad": 40.5,
+      "presion_freno": 35.9,
+      "uso_telefono": true
+    },
+    "atendida": false,
+    "accion_sugerida": "Coaching programado",
+    "notas": ""
+  },
+  {
+    "id": "ALT-010",
+    "titulo": "Combustible Bajo",
+    "tipo": "Combustible Bajo",
+    "severidad": "Baja",
+    "timestamp": "2026-03-06T07:20:00",
+    "conductor": "Pablo León Figueroa",
+    "conductor_id": "DRV-027",
+    "unidad": "MX-3962",
+    "descripcion": "Combustible Bajo detectado - Pablo León Figueroa en unidad MX-3962",
+    "prioridad": "Media",
+    "ubicacion": {
+      "lat": 25.649199,
+      "lng": -101.328017,
+      "referencia": "Km 157 Autopista Monterrey-Saltillo"
+    },
+    "detalle_telemetria": {
+      "velocidad": 65.5,
+      "presion_freno": 74.0,
+      "uso_telefono": false
+    },
+    "atendida": true,
+    "accion_sugerida": "Pendiente de revisión",
+    "notas": ""
+  },
+  {
+    "id": "ALT-009",
+    "titulo": "Fatiga Detectada",
+    "tipo": "Fatiga Detectada",
+    "severidad": "Crítica",
+    "timestamp": "2026-03-06T06:54:00",
+    "conductor": "Francisco Javier López",
+    "conductor_id": "DRV-016",
+    "unidad": "MX-3555",
+    "descripcion": "Fatiga Detectada detectado - Francisco Javier López en unidad MX-3555",
+    "prioridad": "Alta",
+    "ubicacion": {
+      "lat": 19.535814,
+      "lng": -96.291352,
+      "referencia": "Km 31 Autopista México-Puebla"
+    },
+    "detalle_telemetria": {
+      "velocidad": 70.1,
+      "presion_freno": 39.4,
+      "uso_telefono": true
+    },
+    "atendida": false,
+    "accion_sugerida": "Llamada al conductor",
+    "notas": ""
+  },
+  {
+    "id": "ALT-003",
+    "titulo": "Geocerca Violada",
+    "tipo": "Geocerca Violada",
+    "severidad": "Alta",
+    "timestamp": "2026-03-06T06:45:00",
+    "conductor": "Jorge Ramírez Flores",
+    "conductor_id": "DRV-006",
+    "unidad": "MX-3185",
+    "descripcion": "Geocerca Violada detectado - Jorge Ramírez Flores en unidad MX-3185",
+    "prioridad": "Alta",
+    "ubicacion": {
+      "lat": 20.555846,
+      "lng": -89.620148,
+      "referencia": "Km 199 Autopista México-Querétaro"
+    },
+    "detalle_telemetria": {
+      "velocidad": 39.1,
+      "presion_freno": 33.9,
+      "uso_telefono": true
+    },
+    "atendida": false,
+    "accion_sugerida": "Pendiente de revisión",
+    "notas": ""
+  },
+  {
+    "id": "ALT-006",
+    "titulo": "Cabeceo/Microsueño",
+    "tipo": "Cabeceo/Microsueño",
+    "severidad": "Crítica",
+    "timestamp": "2026-03-06T06:30:00",
+    "conductor": "Armando Guerrero Ponce",
+    "conductor_id": "DRV-031",
+    "unidad": "MX-4110",
+    "descripcion": "Cabeceo/Microsueño detectado - Armando Guerrero Ponce en unidad MX-4110",
+    "prioridad": "Alta",
+    "ubicacion": {
+      "lat": 20.51902,
+      "lng": -89.102235,
+      "referencia": "Km 198 Autopista Arco Norte"
+    },
+    "detalle_telemetria": {
+      "velocidad": 90.7,
+      "presion_freno": 59.6,
+      "uso_telefono": false
+    },
+    "atendida": true,
+    "accion_sugerida": "Pendiente de revisión",
+    "notas": ""
+  },
+  {
+    "id": "ALT-015",
+    "titulo": "Geocerca Violada",
+    "tipo": "Geocerca Violada",
+    "severidad": "Alta",
+    "timestamp": "2026-03-06T06:05:00",
+    "conductor": "Iván Contreras Soto",
+    "conductor_id": "DRV-022",
+    "unidad": "MX-3777",
+    "descripcion": "Geocerca Violada detectado - Iván Contreras Soto en unidad MX-3777",
+    "prioridad": "Alta",
+    "ubicacion": {
+      "lat": 20.47297,
+      "lng": -103.839022,
+      "referencia": "Km 12 Autopista México-Querétaro"
+    },
+    "detalle_telemetria": {
+      "velocidad": 42.2,
+      "presion_freno": 40.8,
+      "uso_telefono": true
+    },
+    "atendida": true,
+    "accion_sugerida": "Coaching programado",
+    "notas": ""
+  }
+]

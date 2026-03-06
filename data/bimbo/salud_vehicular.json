@@ -1,1212 +1,1002 @@
-{
-  "_meta": {
-    "fuente": "Geotab + IA predictiva Iris Fleet",
-    "actualizado": "2026-03-06T01:00:00-06:00"
+[
+  {
+    "unidad": "MX-3000",
+    "modelo": "Kenworth T680",
+    "score_general": 58.8,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
+      },
+      "frenos": {
+        "score": 83,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 48,
+        "estado": "Cambio Pronto"
+      },
+      "sistema_electrico": {
+        "score": 64,
+        "estado": "Revisar"
+      }
+    },
+    "alertas_activas": 2,
+    "odometro": 378847
   },
-  "vehiculos": [
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-3012",
-      "status": "en_ruta",
-      "salud_general_pct": 87,
-      "sistemas": {
-        "motor": {
-          "score": 97,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 96,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 66,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 79,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 95,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+  {
+    "unidad": "MX-3037",
+    "modelo": "Freightliner Cascadia",
+    "score_general": 71.5,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-09",
-      "km_para_siguiente_servicio": 12862
+      "frenos": {
+        "score": 94,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 78,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 74,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-2478",
-      "status": "en_ruta",
-      "salud_general_pct": 74,
-      "sistemas": {
-        "motor": {
-          "score": 82,
-          "prediccion_falla_dias": 30,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 93,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 88,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 80,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 95,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 2,
+    "odometro": 169515
+  },
+  {
+    "unidad": "MX-3074",
+    "modelo": "International LT625",
+    "score_general": 74.0,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-08",
-      "km_para_siguiente_servicio": 9676
+      "frenos": {
+        "score": 80,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 79,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 97,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-2456",
-      "status": "en_ruta",
-      "salud_general_pct": 79,
-      "sistemas": {
-        "motor": {
-          "score": 96,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 96,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 92,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 88,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 98,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 2,
+    "odometro": 350028
+  },
+  {
+    "unidad": "MX-3111",
+    "modelo": "Kenworth T370",
+    "score_general": 71.8,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-08",
-      "km_para_siguiente_servicio": 14035
+      "frenos": {
+        "score": 81,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 80,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 86,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-2341",
-      "status": "en_ruta",
-      "salud_general_pct": 96,
-      "sistemas": {
-        "motor": {
-          "score": 82,
-          "prediccion_falla_dias": 7,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 75,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 89,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 94,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 99,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 2,
+    "odometro": 63345
+  },
+  {
+    "unidad": "MX-3148",
+    "modelo": "Freightliner M2 106",
+    "score_general": 62.5,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-19",
-      "km_para_siguiente_servicio": 1033
+      "frenos": {
+        "score": 87,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 48,
+        "estado": "Cambio Pronto"
+      },
+      "sistema_electrico": {
+        "score": 75,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-3045",
-      "status": "en_ruta",
-      "salud_general_pct": 75,
-      "sistemas": {
-        "motor": {
-          "score": 71,
-          "prediccion_falla_dias": null,
-          "diagnosticos": [
-            "Vibración anormal cigüeñal"
-          ]
-        },
-        "frenos": {
-          "score": 90,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 97,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 82,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 80,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 1,
+    "odometro": 382606
+  },
+  {
+    "unidad": "MX-3185",
+    "modelo": "Isuzu NPR",
+    "score_general": 62.5,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-08",
-      "km_para_siguiente_servicio": 2284
+      "frenos": {
+        "score": 92,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 56,
+        "estado": "Cambio Pronto"
+      },
+      "sistema_electrico": {
+        "score": 62,
+        "estado": "Revisar"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-3089",
-      "status": "en_ruta",
-      "salud_general_pct": 93,
-      "sistemas": {
-        "motor": {
-          "score": 78,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 82,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 76,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 75,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 90,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 3,
+    "odometro": 329855
+  },
+  {
+    "unidad": "MX-3222",
+    "modelo": "Hino 500",
+    "score_general": 78.8,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-19",
-      "km_para_siguiente_servicio": 4054
+      "frenos": {
+        "score": 78,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 99,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 98,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-3102",
-      "status": "en_ruta",
-      "salud_general_pct": 85,
-      "sistemas": {
-        "motor": {
-          "score": 98,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 94,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 63,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 88,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 83,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 3,
+    "odometro": 110707
+  },
+  {
+    "unidad": "MX-3259",
+    "modelo": "International CV515",
+    "score_general": 60.2,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-18",
-      "km_para_siguiente_servicio": 11597
+      "frenos": {
+        "score": 75,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 57,
+        "estado": "Cambio Pronto"
+      },
+      "sistema_electrico": {
+        "score": 69,
+        "estado": "Revisar"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-3134",
-      "status": "en_ruta",
-      "salud_general_pct": 96,
-      "sistemas": {
-        "motor": {
-          "score": 70,
-          "prediccion_falla_dias": 30,
-          "diagnosticos": [
-            "Vibración anormal cigüeñal"
-          ]
-        },
-        "frenos": {
-          "score": 68,
-          "prediccion_falla_dias": null,
-          "diagnosticos": [
-            "Desgaste pastillas >50%"
-          ]
-        },
-        "llantas": {
-          "score": 83,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 76,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 84,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 0,
+    "odometro": 96663
+  },
+  {
+    "unidad": "MX-3296",
+    "modelo": "Mercedes-Benz Atego",
+    "score_general": 69.2,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-09",
-      "km_para_siguiente_servicio": 3776
+      "frenos": {
+        "score": 94,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 48,
+        "estado": "Cambio Pronto"
+      },
+      "sistema_electrico": {
+        "score": 95,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "EXT-4501",
-      "status": "en_ruta",
-      "salud_general_pct": 74,
-      "sistemas": {
-        "motor": {
-          "score": 82,
-          "prediccion_falla_dias": 45,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 96,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 69,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 76,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 97,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 0,
+    "odometro": 348290
+  },
+  {
+    "unidad": "MX-3333",
+    "modelo": "Volvo FH",
+    "score_general": 71.8,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-16",
-      "km_para_siguiente_servicio": 10139
+      "frenos": {
+        "score": 92,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 67,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 88,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-3156",
-      "status": "en_ruta",
-      "salud_general_pct": 83,
-      "sistemas": {
-        "motor": {
-          "score": 87,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 86,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 76,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 78,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 80,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 1,
+    "odometro": 195834
+  },
+  {
+    "unidad": "MX-3370",
+    "modelo": "Kenworth T680",
+    "score_general": 68.2,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-14",
-      "km_para_siguiente_servicio": 1465
+      "frenos": {
+        "score": 77,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 87,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 69,
+        "estado": "Revisar"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-3178",
-      "status": "en_ruta",
-      "salud_general_pct": 74,
-      "sistemas": {
-        "motor": {
-          "score": 85,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 66,
-          "prediccion_falla_dias": null,
-          "diagnosticos": [
-            "Desgaste pastillas >50%"
-          ]
-        },
-        "llantas": {
-          "score": 68,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 78,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 92,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 4,
+    "odometro": 370262
+  },
+  {
+    "unidad": "MX-3407",
+    "modelo": "Freightliner Cascadia",
+    "score_general": 70.8,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-16",
-      "km_para_siguiente_servicio": 5732
+      "frenos": {
+        "score": 80,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 80,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 83,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-3201",
-      "status": "en_ruta",
-      "salud_general_pct": 92,
-      "sistemas": {
-        "motor": {
-          "score": 91,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 89,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 79,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 93,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 93,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 0,
+    "odometro": 119558
+  },
+  {
+    "unidad": "MX-3444",
+    "modelo": "International LT625",
+    "score_general": 79.0,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-20",
-      "km_para_siguiente_servicio": 10451
+      "frenos": {
+        "score": 91,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 93,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 92,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-4001",
-      "status": "en_ruta",
-      "salud_general_pct": 72,
-      "sistemas": {
-        "motor": {
-          "score": 84,
-          "prediccion_falla_dias": 7,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 84,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 96,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 85,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 81,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 3,
+    "odometro": 253190
+  },
+  {
+    "unidad": "MX-3481",
+    "modelo": "Kenworth T370",
+    "score_general": 64.5,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-18",
-      "km_para_siguiente_servicio": 1020
+      "frenos": {
+        "score": 89,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 52,
+        "estado": "Cambio Pronto"
+      },
+      "sistema_electrico": {
+        "score": 77,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-4023",
-      "status": "en_ruta",
-      "salud_general_pct": 73,
-      "sistemas": {
-        "motor": {
-          "score": 90,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 79,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 63,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 85,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 89,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 4,
+    "odometro": 421028
+  },
+  {
+    "unidad": "MX-3518",
+    "modelo": "Freightliner M2 106",
+    "score_general": 68.5,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-17",
-      "km_para_siguiente_servicio": 12284
+      "frenos": {
+        "score": 91,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 61,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 82,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-4045",
-      "status": "en_ruta",
-      "salud_general_pct": 83,
-      "sistemas": {
-        "motor": {
-          "score": 80,
-          "prediccion_falla_dias": 7,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 65,
-          "prediccion_falla_dias": null,
-          "diagnosticos": [
-            "Desgaste pastillas >50%"
-          ]
-        },
-        "llantas": {
-          "score": 65,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 89,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 80,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 3,
+    "odometro": 104487
+  },
+  {
+    "unidad": "MX-3555",
+    "modelo": "Isuzu NPR",
+    "score_general": 77.2,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-10",
-      "km_para_siguiente_servicio": 11519
+      "frenos": {
+        "score": 78,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 99,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 92,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-4067",
-      "status": "en_ruta",
-      "salud_general_pct": 84,
-      "sistemas": {
-        "motor": {
-          "score": 72,
-          "prediccion_falla_dias": 7,
-          "diagnosticos": [
-            "Vibración anormal cigüeñal"
-          ]
-        },
-        "frenos": {
-          "score": 91,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 93,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 85,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 83,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 4,
+    "odometro": 341016
+  },
+  {
+    "unidad": "MX-3592",
+    "modelo": "Hino 500",
+    "score_general": 67.8,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-15",
-      "km_para_siguiente_servicio": 14905
+      "frenos": {
+        "score": 86,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 59,
+        "estado": "Cambio Pronto"
+      },
+      "sistema_electrico": {
+        "score": 86,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-4089",
-      "status": "en_ruta",
-      "salud_general_pct": 79,
-      "sistemas": {
-        "motor": {
-          "score": 71,
-          "prediccion_falla_dias": null,
-          "diagnosticos": [
-            "Vibración anormal cigüeñal"
-          ]
-        },
-        "frenos": {
-          "score": 86,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 68,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 76,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 90,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 3,
+    "odometro": 406295
+  },
+  {
+    "unidad": "MX-3629",
+    "modelo": "International CV515",
+    "score_general": 73.0,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-20",
-      "km_para_siguiente_servicio": 12804
+      "frenos": {
+        "score": 78,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 85,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 89,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-4102",
-      "status": "en_ruta",
-      "salud_general_pct": 89,
-      "sistemas": {
-        "motor": {
-          "score": 85,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 74,
-          "prediccion_falla_dias": null,
-          "diagnosticos": [
-            "Desgaste pastillas >50%"
-          ]
-        },
-        "llantas": {
-          "score": 82,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 98,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 94,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 3,
+    "odometro": 240770
+  },
+  {
+    "unidad": "MX-3666",
+    "modelo": "Mercedes-Benz Atego",
+    "score_general": 66.8,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-07",
-      "km_para_siguiente_servicio": 7574
+      "frenos": {
+        "score": 82,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 46,
+        "estado": "Cambio Pronto"
+      },
+      "sistema_electrico": {
+        "score": 99,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-5012",
-      "status": "en_taller",
-      "salud_general_pct": 90,
-      "sistemas": {
-        "motor": {
-          "score": 95,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 78,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 81,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 80,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 95,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 0,
+    "odometro": 392536
+  },
+  {
+    "unidad": "MX-3703",
+    "modelo": "Volvo FH",
+    "score_general": 73.0,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-09",
-      "km_para_siguiente_servicio": 3553
+      "frenos": {
+        "score": 96,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 69,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 87,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-5034",
-      "status": "en_taller",
-      "salud_general_pct": 80,
-      "sistemas": {
-        "motor": {
-          "score": 96,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 81,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 91,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 79,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 88,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 1,
+    "odometro": 124822
+  },
+  {
+    "unidad": "MX-3740",
+    "modelo": "Kenworth T680",
+    "score_general": 72.2,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-19",
-      "km_para_siguiente_servicio": 10058
+      "frenos": {
+        "score": 85,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 89,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 75,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-5067",
-      "status": "en_taller",
-      "salud_general_pct": 75,
-      "sistemas": {
-        "motor": {
-          "score": 78,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 75,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 68,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 92,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 92,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 2,
+    "odometro": 183440
+  },
+  {
+    "unidad": "MX-3777",
+    "modelo": "Freightliner Cascadia",
+    "score_general": 72.0,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-09",
-      "km_para_siguiente_servicio": 3057
+      "frenos": {
+        "score": 92,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 89,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 67,
+        "estado": "Revisar"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-5089",
-      "status": "en_taller",
-      "salud_general_pct": 89,
-      "sistemas": {
-        "motor": {
-          "score": 74,
-          "prediccion_falla_dias": null,
-          "diagnosticos": [
-            "Vibración anormal cigüeñal"
-          ]
-        },
-        "frenos": {
-          "score": 74,
-          "prediccion_falla_dias": null,
-          "diagnosticos": [
-            "Desgaste pastillas >50%"
-          ]
-        },
-        "llantas": {
-          "score": 93,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 90,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 80,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 2,
+    "odometro": 122387
+  },
+  {
+    "unidad": "MX-3814",
+    "modelo": "International LT625",
+    "score_general": 68.0,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-20",
-      "km_para_siguiente_servicio": 9083
+      "frenos": {
+        "score": 90,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 49,
+        "estado": "Cambio Pronto"
+      },
+      "sistema_electrico": {
+        "score": 93,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-6001",
-      "status": "en_patio",
-      "salud_general_pct": 91,
-      "sistemas": {
-        "motor": {
-          "score": 80,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 93,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 71,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 82,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 87,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 4,
+    "odometro": 138857
+  },
+  {
+    "unidad": "MX-3851",
+    "modelo": "Kenworth T370",
+    "score_general": 69.8,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-11",
-      "km_para_siguiente_servicio": 9293
+      "frenos": {
+        "score": 89,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 82,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 68,
+        "estado": "Revisar"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-6002",
-      "status": "en_patio",
-      "salud_general_pct": 79,
-      "sistemas": {
-        "motor": {
-          "score": 93,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 84,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 82,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 75,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 81,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 2,
+    "odometro": 291550
+  },
+  {
+    "unidad": "MX-3888",
+    "modelo": "Freightliner M2 106",
+    "score_general": 76.2,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-09",
-      "km_para_siguiente_servicio": 14740
+      "frenos": {
+        "score": 92,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 96,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 77,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-6003",
-      "status": "en_patio",
-      "salud_general_pct": 75,
-      "sistemas": {
-        "motor": {
-          "score": 70,
-          "prediccion_falla_dias": 15,
-          "diagnosticos": [
-            "Vibración anormal cigüeñal"
-          ]
-        },
-        "frenos": {
-          "score": 91,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 68,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 89,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 82,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 0,
+    "odometro": 404320
+  },
+  {
+    "unidad": "MX-3925",
+    "modelo": "Isuzu NPR",
+    "score_general": 67.5,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-07",
-      "km_para_siguiente_servicio": 4651
+      "frenos": {
+        "score": 96,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 69,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 65,
+        "estado": "Revisar"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-6004",
-      "status": "en_patio",
-      "salud_general_pct": 73,
-      "sistemas": {
-        "motor": {
-          "score": 84,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 70,
-          "prediccion_falla_dias": null,
-          "diagnosticos": [
-            "Desgaste pastillas >50%"
-          ]
-        },
-        "llantas": {
-          "score": 72,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 86,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 87,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 0,
+    "odometro": 191247
+  },
+  {
+    "unidad": "MX-3962",
+    "modelo": "Hino 500",
+    "score_general": 66.2,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-12",
-      "km_para_siguiente_servicio": 10790
+      "frenos": {
+        "score": 88,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 68,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 69,
+        "estado": "Revisar"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-6005",
-      "status": "en_patio",
-      "salud_general_pct": 92,
-      "sistemas": {
-        "motor": {
-          "score": 70,
-          "prediccion_falla_dias": null,
-          "diagnosticos": [
-            "Vibración anormal cigüeñal"
-          ]
-        },
-        "frenos": {
-          "score": 74,
-          "prediccion_falla_dias": null,
-          "diagnosticos": [
-            "Desgaste pastillas >50%"
-          ]
-        },
-        "llantas": {
-          "score": 94,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 81,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 96,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 3,
+    "odometro": 440381
+  },
+  {
+    "unidad": "MX-3999",
+    "modelo": "International CV515",
+    "score_general": 70.2,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-14",
-      "km_para_siguiente_servicio": 5639
+      "frenos": {
+        "score": 85,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 65,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 91,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "MX-6006",
-      "status": "en_patio",
-      "salud_general_pct": 87,
-      "sistemas": {
-        "motor": {
-          "score": 72,
-          "prediccion_falla_dias": null,
-          "diagnosticos": [
-            "Vibración anormal cigüeñal"
-          ]
-        },
-        "frenos": {
-          "score": 95,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 88,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 92,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 80,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": null
+    "alertas_activas": 3,
+    "odometro": 137509
+  },
+  {
+    "unidad": "MX-4036",
+    "modelo": "Mercedes-Benz Atego",
+    "score_general": 68.5,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-19",
-      "km_para_siguiente_servicio": 11205
+      "frenos": {
+        "score": 85,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 55,
+        "estado": "Cambio Pronto"
+      },
+      "sistema_electrico": {
+        "score": 94,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "RF-1001",
-      "status": "en_ruta",
-      "salud_general_pct": 88,
-      "sistemas": {
-        "motor": {
-          "score": 81,
-          "prediccion_falla_dias": 45,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 76,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 72,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 98,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 94,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": {
-          "score": 88,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        }
+    "alertas_activas": 0,
+    "odometro": 96952
+  },
+  {
+    "unidad": "MX-4073",
+    "modelo": "Volvo FH",
+    "score_general": 70.0,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-12",
-      "km_para_siguiente_servicio": 7897
+      "frenos": {
+        "score": 82,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 69,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 89,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "RF-1002",
-      "status": "en_ruta",
-      "salud_general_pct": 85,
-      "sistemas": {
-        "motor": {
-          "score": 77,
-          "prediccion_falla_dias": 15,
-          "diagnosticos": [
-            "Vibración anormal cigüeñal"
-          ]
-        },
-        "frenos": {
-          "score": 69,
-          "prediccion_falla_dias": null,
-          "diagnosticos": [
-            "Desgaste pastillas >50%"
-          ]
-        },
-        "llantas": {
-          "score": 74,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 86,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 98,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": {
-          "score": 88,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        }
+    "alertas_activas": 0,
+    "odometro": 201831
+  },
+  {
+    "unidad": "MX-4110",
+    "modelo": "Kenworth T680",
+    "score_general": 74.2,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-17",
-      "km_para_siguiente_servicio": 4224
+      "frenos": {
+        "score": 79,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 80,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 98,
+        "estado": "Bueno"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "RF-1003",
-      "status": "en_ruta",
-      "salud_general_pct": 96,
-      "sistemas": {
-        "motor": {
-          "score": 77,
-          "prediccion_falla_dias": null,
-          "diagnosticos": [
-            "Vibración anormal cigüeñal"
-          ]
-        },
-        "frenos": {
-          "score": 85,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 76,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 93,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 91,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": {
-          "score": 90,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        }
+    "alertas_activas": 1,
+    "odometro": 302302
+  },
+  {
+    "unidad": "MX-4147",
+    "modelo": "Freightliner Cascadia",
+    "score_general": 63.2,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-09",
-      "km_para_siguiente_servicio": 5478
+      "frenos": {
+        "score": 95,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 52,
+        "estado": "Cambio Pronto"
+      },
+      "sistema_electrico": {
+        "score": 66,
+        "estado": "Revisar"
+      }
     },
-    {
-      "_fuente": "Geotab diagnósticos + IA predictiva",
-      "unidad": "RF-1004",
-      "status": "en_ruta",
-      "salud_general_pct": 92,
-      "sistemas": {
-        "motor": {
-          "score": 92,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "frenos": {
-          "score": 83,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "llantas": {
-          "score": 78,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "transmision": {
-          "score": 98,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "electrico": {
-          "score": 97,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        },
-        "refrigeracion": {
-          "score": 96,
-          "prediccion_falla_dias": null,
-          "diagnosticos": []
-        }
+    "alertas_activas": 1,
+    "odometro": 429793
+  },
+  {
+    "unidad": "RF-1416",
+    "modelo": "International LT625",
+    "score_general": 71.0,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
       },
-      "proxima_revision": "2026-03-11",
-      "km_para_siguiente_servicio": 11108
-    }
-  ]
-}
+      "frenos": {
+        "score": 77,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 81,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 86,
+        "estado": "Bueno"
+      }
+    },
+    "alertas_activas": 3,
+    "odometro": 306853
+  },
+  {
+    "unidad": "RF-1429",
+    "modelo": "Kenworth T370",
+    "score_general": 63.8,
+    "componentes": {
+      "motor": {
+        "score": 48,
+        "estado": "Atención"
+      },
+      "frenos": {
+        "score": 80,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 53,
+        "estado": "Cambio Pronto"
+      },
+      "sistema_electrico": {
+        "score": 74,
+        "estado": "Bueno"
+      }
+    },
+    "alertas_activas": 2,
+    "odometro": 137456
+  },
+  {
+    "unidad": "RF-1442",
+    "modelo": "Freightliner M2 106",
+    "score_general": 80.5,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
+      },
+      "frenos": {
+        "score": 90,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 94,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 98,
+        "estado": "Bueno"
+      }
+    },
+    "alertas_activas": 3,
+    "odometro": 220232
+  },
+  {
+    "unidad": "RF-1455",
+    "modelo": "Isuzu NPR",
+    "score_general": 73.8,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
+      },
+      "frenos": {
+        "score": 85,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 95,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 75,
+        "estado": "Bueno"
+      }
+    },
+    "alertas_activas": 4,
+    "odometro": 299484
+  },
+  {
+    "unidad": "RF-1468",
+    "modelo": "Hino 500",
+    "score_general": 74.2,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
+      },
+      "frenos": {
+        "score": 83,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 95,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 79,
+        "estado": "Bueno"
+      }
+    },
+    "alertas_activas": 3,
+    "odometro": 409325
+  },
+  {
+    "unidad": "RF-1481",
+    "modelo": "International CV515",
+    "score_general": 65.2,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
+      },
+      "frenos": {
+        "score": 83,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 57,
+        "estado": "Cambio Pronto"
+      },
+      "sistema_electrico": {
+        "score": 81,
+        "estado": "Bueno"
+      }
+    },
+    "alertas_activas": 0,
+    "odometro": 343961
+  },
+  {
+    "unidad": "RF-1494",
+    "modelo": "Mercedes-Benz Atego",
+    "score_general": 64.0,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
+      },
+      "frenos": {
+        "score": 77,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 62,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 77,
+        "estado": "Bueno"
+      }
+    },
+    "alertas_activas": 4,
+    "odometro": 419694
+  },
+  {
+    "unidad": "RF-1507",
+    "modelo": "Volvo FH",
+    "score_general": 72.2,
+    "componentes": {
+      "motor": {
+        "score": 40,
+        "estado": "Atención"
+      },
+      "frenos": {
+        "score": 76,
+        "estado": "Bueno"
+      },
+      "llantas": {
+        "score": 86,
+        "estado": "Bueno"
+      },
+      "sistema_electrico": {
+        "score": 87,
+        "estado": "Bueno"
+      }
+    },
+    "alertas_activas": 2,
+    "odometro": 122096
+  }
+]

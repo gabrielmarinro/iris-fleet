@@ -1,174 +1,177 @@
 {
-  "_meta": {
-    "fuente": "Google Maps API + Iris Fleet IA + SSP",
-    "actualizado": "2026-03-06T01:00:00-06:00"
-  },
   "sugeridas_por_ia": [
     {
-      "id": 1,
-      "nombre": "CEDIS Oriente",
-      "tipo": "critical",
-      "riesgo_score": 67,
-      "confianza_pct": 89,
-      "descripcion": "Patrón de detenciones recurrentes sugiere operaciones de carga/descarga.",
-      "poligono": [
-        {
-          "lat": 28.63,
-          "lng": -106.1
-        },
-        {
-          "lat": 28.64,
-          "lng": -106.08
-        },
-        {
-          "lat": 28.62,
-          "lng": -106.08
-        },
-        {
-          "lat": 28.62,
-          "lng": -106.1
-        }
-      ],
+      "id": "GEO-001",
+      "nombre": "CEDIS Bimbo Azcapotzalco",
+      "tipo": "CEDIS",
+      "descripcion": "Zona segura de descarga y carga",
+      "lat": 19.455863,
+      "lng": -99.170712,
+      "radio_metros": 1000,
+      "riesgo_score": 33,
+      "confianza_pct": 82,
       "impacto_economico": {
-        "ahorro_riesgo": 420000,
-        "ahorro_sla": 180000,
-        "ahorro_combustible": 95000
+        "ahorro_riesgo": 21729,
+        "ahorro_sla": 98134,
+        "ahorro_combustible": 68436
       },
-      "imagen_mapa": "./screenshots/Sugerencia-en-tiempo-real-de-creacion-de-Geocerca-4.jpg"
+      "activa": true
     },
     {
-      "id": 2,
-      "nombre": "Zona Alto Riesgo Poniente",
-      "tipo": "critical",
-      "riesgo_score": 87,
+      "id": "GEO-002",
+      "nombre": "Zona Huachicoleo Puebla-Tlaxcala",
+      "tipo": "Alto Riesgo",
+      "descripcion": "Zona con alto índice de robo de combustible",
+      "lat": 25.605183,
+      "lng": -100.25563,
+      "radio_metros": 3000,
+      "riesgo_score": 94,
+      "confianza_pct": 72,
+      "impacto_economico": {
+        "ahorro_riesgo": 291902,
+        "ahorro_sla": 81039,
+        "ahorro_combustible": 27274
+      },
+      "activa": true
+    },
+    {
+      "id": "GEO-003",
+      "nombre": "CEDIS Barcel Lerma",
+      "tipo": "CEDIS",
+      "descripcion": "Centro de distribución Barcel",
+      "lat": 20.606039,
+      "lng": -103.404841,
+      "radio_metros": 5000,
+      "riesgo_score": 23,
+      "confianza_pct": 84,
+      "impacto_economico": {
+        "ahorro_riesgo": 30341,
+        "ahorro_sla": 81000,
+        "ahorro_combustible": 71675
+      },
+      "activa": true
+    },
+    {
+      "id": "GEO-004",
+      "nombre": "Tramo Peligroso Autopista del Sol",
+      "tipo": "Alto Riesgo",
+      "descripcion": "Derrumbes y asaltos frecuentes",
+      "lat": 19.099156,
+      "lng": -98.129819,
+      "radio_metros": 3000,
+      "riesgo_score": 76,
+      "confianza_pct": 81,
+      "impacto_economico": {
+        "ahorro_riesgo": 152780,
+        "ahorro_sla": 44032,
+        "ahorro_combustible": 53296
+      },
+      "activa": true
+    },
+    {
+      "id": "GEO-005",
+      "nombre": "Zona Industrial Querétaro",
+      "tipo": "Control",
+      "descripcion": "Geocerca de monitoreo para entregas",
+      "lat": 20.559088,
+      "lng": -100.397652,
+      "radio_metros": 1000,
+      "riesgo_score": 35,
+      "confianza_pct": 70,
+      "impacto_economico": {
+        "ahorro_riesgo": 14283,
+        "ahorro_sla": 82303,
+        "ahorro_combustible": 24796
+      },
+      "activa": true
+    },
+    {
+      "id": "GEO-006",
+      "nombre": "Caseta Palmillas",
+      "tipo": "Control",
+      "descripcion": "Punto de control caseta México-Querétaro",
+      "lat": 21.12369,
+      "lng": -101.700963,
+      "radio_metros": 500,
+      "riesgo_score": 29,
+      "confianza_pct": 94,
+      "impacto_economico": {
+        "ahorro_riesgo": 32846,
+        "ahorro_sla": 99225,
+        "ahorro_combustible": 26697
+      },
+      "activa": true
+    },
+    {
+      "id": "GEO-007",
+      "nombre": "CEDIS Bimbo Monterrey",
+      "tipo": "CEDIS",
+      "descripcion": "Centro distribución norte",
+      "lat": 19.274795,
+      "lng": -99.637593,
+      "radio_metros": 1000,
+      "riesgo_score": 30,
+      "confianza_pct": 87,
+      "impacto_economico": {
+        "ahorro_riesgo": 14648,
+        "ahorro_sla": 59599,
+        "ahorro_combustible": 79828
+      },
+      "activa": true
+    },
+    {
+      "id": "GEO-008",
+      "nombre": "Tramo Inseguro Matehuala-SLP",
+      "tipo": "Alto Riesgo",
+      "descripcion": "Reportes frecuentes de asalto",
+      "lat": 25.336412,
+      "lng": -101.053652,
+      "radio_metros": 5000,
+      "riesgo_score": 75,
+      "confianza_pct": 87,
+      "impacto_economico": {
+        "ahorro_riesgo": 91686,
+        "ahorro_sla": 83225,
+        "ahorro_combustible": 60307
+      },
+      "activa": true
+    },
+    {
+      "id": "GEO-009",
+      "nombre": "Puerto Interior León",
+      "tipo": "Control",
+      "descripcion": "Zona logística León",
+      "lat": 19.182705,
+      "lng": -96.186969,
+      "radio_metros": 500,
+      "riesgo_score": 33,
+      "confianza_pct": 95,
+      "impacto_economico": {
+        "ahorro_riesgo": 38531,
+        "ahorro_sla": 94345,
+        "ahorro_combustible": 54852
+      },
+      "activa": true
+    },
+    {
+      "id": "GEO-010",
+      "nombre": "Planta Marinela CDMX",
+      "tipo": "CEDIS",
+      "descripcion": "Planta producción Marinela",
+      "lat": 20.985833,
+      "lng": -89.600018,
+      "radio_metros": 5000,
+      "riesgo_score": 43,
       "confianza_pct": 92,
-      "descripcion": "3 incidentes reportados. 8 vehículos expuestos en horario nocturno.",
-      "poligono": [
-        {
-          "lat": 28.68,
-          "lng": -106.15
-        },
-        {
-          "lat": 28.7,
-          "lng": -106.12
-        },
-        {
-          "lat": 28.67,
-          "lng": -106.11
-        },
-        {
-          "lat": 28.66,
-          "lng": -106.14
-        }
-      ],
       "impacto_economico": {
-        "ahorro_riesgo": 1200000,
-        "ahorro_sla": 890000,
-        "ahorro_combustible": 340000
+        "ahorro_riesgo": 47630,
+        "ahorro_sla": 83783,
+        "ahorro_combustible": 24984
       },
-      "imagen_mapa": "./screenshots/Sugerencia-en-tiempo-real-de-creacion-de-Geocerca-8.jpg"
-    },
-    {
-      "id": 3,
-      "nombre": "Corredor Carga Valiosa Norte",
-      "tipo": "critical",
-      "riesgo_score": 73,
-      "confianza_pct": 85,
-      "descripcion": "Ruta crítica: 20 unidades con carga >$500K MXN y 4 clientes Tier-1.",
-      "poligono": [
-        {
-          "lat": 28.73,
-          "lng": -106.2
-        },
-        {
-          "lat": 28.75,
-          "lng": -106.05
-        },
-        {
-          "lat": 28.74,
-          "lng": -106.04
-        },
-        {
-          "lat": 28.72,
-          "lng": -106.19
-        }
-      ],
-      "impacto_economico": {
-        "ahorro_riesgo": 680000,
-        "ahorro_sla": 520000,
-        "ahorro_combustible": 180000
-      },
-      "imagen_mapa": "./screenshots/Sugerencia-en-tiempo-real-de-creacion-de-Geocerca-6.jpg"
-    },
-    {
-      "id": 4,
-      "nombre": "Zona Sospecha Huachicoleo Sur",
-      "tipo": "emerging",
-      "riesgo_score": 54,
-      "confianza_pct": 71,
-      "descripcion": "Detenciones aleatorias correlacionadas con caída anómala de combustible.",
-      "poligono": [
-        {
-          "lat": 28.58,
-          "lng": -106.12
-        },
-        {
-          "lat": 28.6,
-          "lng": -106.09
-        },
-        {
-          "lat": 28.57,
-          "lng": -106.08
-        },
-        {
-          "lat": 28.56,
-          "lng": -106.11
-        }
-      ],
-      "impacto_economico": {
-        "ahorro_riesgo": 0,
-        "ahorro_sla": 0,
-        "ahorro_combustible": 520000
-      },
-      "imagen_mapa": "./screenshots/zona-huachicoleo-horizontal.jpg"
+      "activa": true
     }
   ],
-  "activas": [
-    {
-      "id": "GEO-A01",
-      "nombre": "CEDIS CDMX Norte",
-      "tipo": "cedis",
-      "lat": 19.4326,
-      "lng": -99.1332,
-      "radio_m": 200,
-      "activa": true
-    },
-    {
-      "id": "GEO-A02",
-      "nombre": "CEDIS Monterrey",
-      "tipo": "cedis",
-      "lat": 25.6866,
-      "lng": -100.3161,
-      "radio_m": 250,
-      "activa": true
-    },
-    {
-      "id": "GEO-A03",
-      "nombre": "CEDIS GDL",
-      "tipo": "cedis",
-      "lat": 20.6597,
-      "lng": -103.3496,
-      "radio_m": 200,
-      "activa": true
-    },
-    {
-      "id": "GEO-A04",
-      "nombre": "Planta Bimbo MTY",
-      "tipo": "planta",
-      "lat": 25.72,
-      "lng": -100.28,
-      "radio_m": 300,
-      "activa": true
-    }
-  ]
+  "_meta": {
+    "fuente": "Kaggle Vehicle Telemetry + Análisis IA"
+  }
 }

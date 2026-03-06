@@ -1,251 +1,114 @@
-{
-  "_meta": {
-    "fuente": "IAVE + OTM + GPS validación",
-    "actualizado": "2026-03-06T01:00:00-06:00",
-    "total_registros": 15,
-    "total_pagado_mxn": 2745,
-    "total_estimado_mxn": 3695
+[
+  {
+    "id": "CST-001",
+    "nombre": "Caseta Tepotzotlán",
+    "ubicacion": {
+      "lat": 19.7167,
+      "lng": -99.2167
+    },
+    "ruta": "México-Querétaro",
+    "costo_autobus": 139,
+    "costo_trailer": 389.2,
+    "costo_torton": 250.2,
+    "forma_pago": "Efectivo",
+    "horario": "24/7"
   },
-  "casetas": [
-    {
-      "_fuente": "TAG IAVE + TMS + GPS",
-      "ruta_id": "RTA-001",
-      "unidad": "MX-3012",
-      "caseta_nombre": "Caseta Tepotzotlán",
-      "lat": 19.715,
-      "lng": -99.2239,
-      "monto_mxn": 156,
-      "tag_id": "IAVE-77201",
-      "metodo_pago": "TAG",
-      "pagada": true,
-      "validada_gps": true,
-      "hora_planeada": "08:45",
-      "hora_real": "08:52",
-      "status": "completada"
+  {
+    "id": "CST-002",
+    "nombre": "Caseta Palmillas",
+    "ubicacion": {
+      "lat": 20.35,
+      "lng": -100.15
     },
-    {
-      "_fuente": "TAG IAVE + TMS + GPS",
-      "ruta_id": "RTA-001",
-      "unidad": "MX-3012",
-      "caseta_nombre": "Caseta Palmillas",
-      "lat": 20.38,
-      "lng": -99.54,
-      "monto_mxn": 320,
-      "tag_id": "IAVE-77201",
-      "metodo_pago": "TAG",
-      "pagada": true,
-      "validada_gps": true,
-      "hora_planeada": "10:30",
-      "hora_real": "10:50",
-      "status": "completada"
+    "ruta": "México-Querétaro",
+    "costo_autobus": 398,
+    "costo_trailer": 1114.4,
+    "costo_torton": 716.4,
+    "forma_pago": "TAG",
+    "horario": "24/7"
+  },
+  {
+    "id": "CST-003",
+    "nombre": "Caseta San Marcos",
+    "ubicacion": {
+      "lat": 19.25,
+      "lng": -98.85
     },
-    {
-      "_fuente": "TAG IAVE + TMS + GPS",
-      "ruta_id": "RTA-001",
-      "unidad": "MX-3012",
-      "caseta_nombre": "Caseta San Luis Potosí",
-      "lat": 22.15,
-      "lng": -100.98,
-      "monto_mxn": 410,
-      "tag_id": "IAVE-77201",
-      "metodo_pago": "TAG",
-      "pagada": true,
-      "validada_gps": true,
-      "hora_planeada": "11:40",
-      "hora_real": "12:05",
-      "status": "completada"
+    "ruta": "México-Puebla",
+    "costo_autobus": 133,
+    "costo_trailer": 372.4,
+    "costo_torton": 239.4,
+    "forma_pago": "TAG",
+    "horario": "24/7"
+  },
+  {
+    "id": "CST-004",
+    "nombre": "Caseta Amozoc",
+    "ubicacion": {
+      "lat": 19.05,
+      "lng": -98.05
     },
-    {
-      "_fuente": "TAG IAVE + TMS + GPS",
-      "ruta_id": "RTA-001",
-      "unidad": "MX-3012",
-      "caseta_nombre": "Caseta Huizache",
-      "lat": 22.35,
-      "lng": -100.97,
-      "monto_mxn": 280,
-      "tag_id": null,
-      "metodo_pago": "pendiente",
-      "pagada": false,
-      "validada_gps": false,
-      "hora_planeada": "12:15",
-      "hora_real": null,
-      "status": "proximo"
+    "ruta": "México-Puebla",
+    "costo_autobus": 93,
+    "costo_trailer": 260.4,
+    "costo_torton": 167.4,
+    "forma_pago": "IAVE",
+    "horario": "24/7"
+  },
+  {
+    "id": "CST-005",
+    "nombre": "Caseta Santa Ana",
+    "ubicacion": {
+      "lat": 25.55,
+      "lng": -100.6
     },
-    {
-      "_fuente": "TAG IAVE + TMS + GPS",
-      "ruta_id": "RTA-001",
-      "unidad": "MX-3012",
-      "caseta_nombre": "Caseta Saltillo",
-      "lat": 25.42,
-      "lng": -100.99,
-      "monto_mxn": 350,
-      "tag_id": null,
-      "metodo_pago": "pendiente",
-      "pagada": false,
-      "validada_gps": false,
-      "hora_planeada": "13:20",
-      "hora_real": null,
-      "status": "pendiente"
+    "ruta": "Monterrey-Saltillo",
+    "costo_autobus": 82,
+    "costo_trailer": 229.6,
+    "costo_torton": 147.6,
+    "forma_pago": "TAG",
+    "horario": "24/7"
+  },
+  {
+    "id": "CST-006",
+    "nombre": "Caseta La Marquesa",
+    "ubicacion": {
+      "lat": 19.32,
+      "lng": -99.38
     },
-    {
-      "_fuente": "TAG IAVE + TMS + GPS",
-      "ruta_id": "RTA-002",
-      "unidad": "MX-2478",
-      "caseta_nombre": "Caseta Zapotlanejo",
-      "lat": 20.6227,
-      "lng": -103.0681,
-      "monto_mxn": 198,
-      "tag_id": "IAVE-55102",
-      "metodo_pago": "TAG",
-      "pagada": true,
-      "validada_gps": true,
-      "hora_planeada": "12:40",
-      "hora_real": "12:38",
-      "status": "completada"
+    "ruta": "CDMX-Toluca",
+    "costo_autobus": 95,
+    "costo_trailer": 266.0,
+    "costo_torton": 171.0,
+    "forma_pago": "TAG",
+    "horario": "24/7"
+  },
+  {
+    "id": "CST-007",
+    "nombre": "Caseta Zapotlanejo",
+    "ubicacion": {
+      "lat": 20.62,
+      "lng": -103.06
     },
-    {
-      "_fuente": "TAG IAVE + TMS + GPS",
-      "ruta_id": "RTA-002",
-      "unidad": "MX-2478",
-      "caseta_nombre": "Caseta La Piedad",
-      "lat": 20.346,
-      "lng": -102.031,
-      "monto_mxn": 245,
-      "tag_id": "IAVE-55102",
-      "metodo_pago": "TAG",
-      "pagada": true,
-      "validada_gps": true,
-      "hora_planeada": "13:45",
-      "hora_real": "13:50",
-      "status": "completada"
-    },
-    {
-      "_fuente": "TAG IAVE + TMS + GPS",
-      "ruta_id": "RTA-002",
-      "unidad": "MX-2478",
-      "caseta_nombre": "Caseta Palmillas",
-      "lat": 20.38,
-      "lng": -99.54,
-      "monto_mxn": 320,
-      "tag_id": null,
-      "metodo_pago": "pendiente",
-      "pagada": false,
-      "validada_gps": false,
-      "hora_planeada": "15:00",
-      "hora_real": null,
-      "status": "proximo"
-    },
-    {
-      "_fuente": "TAG IAVE + TMS + GPS",
-      "ruta_id": "RTA-003",
-      "unidad": "MX-4045",
-      "caseta_nombre": "Caseta Fortín",
-      "lat": 18.9,
-      "lng": -96.99,
-      "monto_mxn": 185,
-      "tag_id": "IAVE-33890",
-      "metodo_pago": "TAG",
-      "pagada": true,
-      "validada_gps": true,
-      "hora_planeada": "11:30",
-      "hora_real": "11:28",
-      "status": "completada"
-    },
-    {
-      "_fuente": "TAG IAVE + TMS + GPS",
-      "ruta_id": "RTA-003",
-      "unidad": "MX-4045",
-      "caseta_nombre": "Caseta Maltrata",
-      "lat": 18.81,
-      "lng": -97.27,
-      "monto_mxn": 220,
-      "tag_id": "IAVE-33890",
-      "metodo_pago": "TAG",
-      "pagada": true,
-      "validada_gps": true,
-      "hora_planeada": "12:00",
-      "hora_real": "12:05",
-      "status": "completada"
-    },
-    {
-      "_fuente": "TAG IAVE + TMS + GPS",
-      "ruta_id": "RTA-004",
-      "unidad": "MX-3178",
-      "caseta_nombre": "Caseta MTY-Reynosa",
-      "lat": 25.78,
-      "lng": -99.85,
-      "monto_mxn": 195,
-      "tag_id": "IAVE-41002",
-      "metodo_pago": "TAG",
-      "pagada": true,
-      "validada_gps": true,
-      "hora_planeada": "11:00",
-      "hora_real": "11:05",
-      "status": "completada"
-    },
-    {
-      "_fuente": "TAG IAVE + TMS + GPS",
-      "ruta_id": "RTA-005",
-      "unidad": "MX-2456",
-      "caseta_nombre": "Caseta La Rumorosa",
-      "lat": 32.54,
-      "lng": -116.05,
-      "monto_mxn": 275,
-      "tag_id": "IAVE-86501",
-      "metodo_pago": "TAG",
-      "pagada": true,
-      "validada_gps": true,
-      "hora_planeada": "15:00",
-      "hora_real": "15:10",
-      "status": "completada"
-    },
-    {
-      "_fuente": "TAG IAVE + TMS + GPS",
-      "ruta_id": "RTA-006",
-      "unidad": "MX-4067",
-      "caseta_nombre": "Caseta Kantunil",
-      "lat": 20.6333,
-      "lng": -89.0333,
-      "monto_mxn": 165,
-      "tag_id": "IAVE-24780",
-      "metodo_pago": "TAG",
-      "pagada": true,
-      "validada_gps": true,
-      "hora_planeada": "11:15",
-      "hora_real": "11:12",
-      "status": "completada"
-    },
-    {
-      "_fuente": "TAG IAVE + TMS + GPS",
-      "ruta_id": "RTA-007",
-      "unidad": "MX-4089",
-      "caseta_nombre": "Caseta León-AGS",
+    "ruta": "Guadalajara-León",
+    "costo_autobus": 198,
+    "costo_trailer": 554.4,
+    "costo_torton": 356.4,
+    "forma_pago": "IAVE",
+    "horario": "24/7"
+  },
+  {
+    "id": "CST-008",
+    "nombre": "Caseta Lagos de Moreno",
+    "ubicacion": {
       "lat": 21.35,
-      "lng": -101.89,
-      "monto_mxn": 178,
-      "tag_id": "IAVE-25021",
-      "metodo_pago": "TAG",
-      "pagada": true,
-      "validada_gps": true,
-      "hora_planeada": "10:30",
-      "hora_real": "10:28",
-      "status": "completada"
+      "lng": -101.93
     },
-    {
-      "_fuente": "TAG IAVE + TMS + GPS",
-      "ruta_id": "RTA-008",
-      "unidad": "EXT-4501",
-      "caseta_nombre": "Caseta Toluca",
-      "lat": 19.2826,
-      "lng": -99.6557,
-      "monto_mxn": 198,
-      "tag_id": "IAVE-EXT-101",
-      "metodo_pago": "TAG",
-      "pagada": true,
-      "validada_gps": true,
-      "hora_planeada": "08:00",
-      "hora_real": "08:20",
-      "status": "completada"
-    }
-  ]
-}
+    "ruta": "Guadalajara-León",
+    "costo_autobus": 275,
+    "costo_trailer": 770.0,
+    "costo_torton": 495.0,
+    "forma_pago": "IAVE",
+    "horario": "24/7"
+  }
+]

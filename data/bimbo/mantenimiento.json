@@ -1,108 +1,222 @@
-{
-  "_meta": {
-    "fuente": "CMMS + ERP + Geotab diagnósticos",
-    "actualizado": "2026-03-06T01:00:00-06:00"
+[
+  {
+    "id": "MNT-001",
+    "unidad": "MX-3555",
+    "tipo": "Revisión de Frenos",
+    "estado": "Completado",
+    "fecha": "2026-02-05",
+    "taller": "Taller Central CDMX",
+    "costo": 9406.71,
+    "km": 340607,
+    "observaciones": "Requiere seguimiento"
   },
-  "en_taller": [
-    {
-      "unidad": "MX-5012",
-      "tipo_servicio": "correctivo",
-      "descripcion": "Reparación de turbo",
-      "ingreso": "2026-03-04T10:00:00-06:00",
-      "eta_salida": "2026-03-07T14:00:00-06:00",
-      "costo_estimado_mxn": 45000,
-      "prioridad": "alta",
-      "taller": "Taller Central CDMX",
-      "tecnico": "Ing. Martín Rojas",
-      "avance_pct": 65
-    },
-    {
-      "unidad": "MX-5034",
-      "tipo_servicio": "preventivo",
-      "descripcion": "Servicio 200,000 km — cambio aceite, filtros, balatas",
-      "ingreso": "2026-03-05T08:00:00-06:00",
-      "eta_salida": "2026-03-06T16:00:00-06:00",
-      "costo_estimado_mxn": 18500,
-      "prioridad": "media",
-      "taller": "Taller GDL Norte",
-      "tecnico": "Ing. Laura Soto",
-      "avance_pct": 80
-    },
-    {
-      "unidad": "MX-5067",
-      "tipo_servicio": "correctivo",
-      "descripcion": "Falla en sensor de temperatura + cambio de radiador",
-      "ingreso": "2026-03-03T14:00:00-06:00",
-      "eta_salida": "2026-03-08T10:00:00-06:00",
-      "costo_estimado_mxn": 62000,
-      "prioridad": "alta",
-      "taller": "Taller MTY",
-      "tecnico": "Ing. Pedro Salinas",
-      "avance_pct": 40
-    },
-    {
-      "unidad": "MX-5089",
-      "tipo_servicio": "preventivo",
-      "descripcion": "Cambio de llantas (6 posiciones) + alineación",
-      "ingreso": "2026-03-05T14:00:00-06:00",
-      "eta_salida": "2026-03-06T12:00:00-06:00",
-      "costo_estimado_mxn": 95000,
-      "prioridad": "media",
-      "taller": "Taller QRO",
-      "tecnico": "Ing. Ana Beltrán",
-      "avance_pct": 90
-    }
-  ],
-  "programados_proximos_7d": [
-    {
-      "unidad": "MX-2341",
-      "tipo": "preventivo",
-      "descripcion": "Servicio 100,000 km",
-      "fecha_programada": "2026-03-08",
-      "km_restantes": 2400,
-      "taller": "Taller CDMX"
-    },
-    {
-      "unidad": "EXT-4501",
-      "tipo": "verificacion",
-      "descripcion": "Verificación vehicular — vence en 7 días",
-      "fecha_programada": "2026-03-13",
-      "km_restantes": null,
-      "taller": "Centro de verificación CDMX"
-    },
-    {
-      "unidad": "MX-3102",
-      "tipo": "preventivo",
-      "descripcion": "Cambio de balatas traseras",
-      "fecha_programada": "2026-03-10",
-      "km_restantes": 5200,
-      "taller": "Taller GDL"
-    },
-    {
-      "unidad": "RF-1002",
-      "tipo": "preventivo",
-      "descripcion": "Servicio unidad refrigeración ThermoKing",
-      "fecha_programada": "2026-03-09",
-      "km_restantes": null,
-      "taller": "Taller especializado GDL"
-    },
-    {
-      "unidad": "MX-4001",
-      "tipo": "preventivo",
-      "descripcion": "Cambio de aceite + filtros",
-      "fecha_programada": "2026-03-12",
-      "km_restantes": 8100,
-      "taller": "Taller MTY"
-    }
-  ],
-  "resumen_mensual": {
-    "correctivos_mes": 8,
-    "preventivos_mes": 15,
-    "costo_total_mes_mxn": 485000,
-    "pct_preventivo_vs_correctivo": 65,
-    "meta_pct_preventivo": 80,
-    "mtbf_horas": 720,
-    "mttr_horas": 18,
-    "disponibilidad_flota_pct": 90.6
+  {
+    "id": "MNT-002",
+    "unidad": "MX-3222",
+    "tipo": "Revisión de Frenos",
+    "estado": "Completado",
+    "fecha": "2026-02-20",
+    "taller": "Taller Central CDMX",
+    "costo": 37165.41,
+    "km": 109836,
+    "observaciones": "Sin observaciones"
+  },
+  {
+    "id": "MNT-003",
+    "unidad": "MX-4147",
+    "tipo": "Cambio de Llantas",
+    "estado": "Completado",
+    "fecha": "2026-02-11",
+    "taller": "Taller Central CDMX",
+    "costo": 36591.5,
+    "km": 426302,
+    "observaciones": "Requiere seguimiento"
+  },
+  {
+    "id": "MNT-004",
+    "unidad": "MX-3925",
+    "tipo": "Cambio de Aceite",
+    "estado": "Completado",
+    "fecha": "2026-03-01",
+    "taller": "Taller MTY Norte",
+    "costo": 15828.37,
+    "km": 189501,
+    "observaciones": "Sin observaciones"
+  },
+  {
+    "id": "MNT-005",
+    "unidad": "RF-1481",
+    "tipo": "Revisión Eléctrica",
+    "estado": "Programado",
+    "fecha": "2026-03-10",
+    "taller": "Taller Central CDMX",
+    "costo": 7192.06,
+    "km": 342804,
+    "observaciones": "Pieza importada pendiente"
+  },
+  {
+    "id": "MNT-006",
+    "unidad": "MX-3370",
+    "tipo": "Revisión Eléctrica",
+    "estado": "Completado",
+    "fecha": "2026-02-05",
+    "taller": "Taller MTY Norte",
+    "costo": 20862.43,
+    "km": 365495,
+    "observaciones": "Sin observaciones"
+  },
+  {
+    "id": "MNT-007",
+    "unidad": "MX-3296",
+    "tipo": "Cambio de Filtros",
+    "estado": "Programado",
+    "fecha": "2026-03-15",
+    "taller": "Taller MTY Norte",
+    "costo": 2672.1,
+    "km": 344301,
+    "observaciones": "Sin observaciones"
+  },
+  {
+    "id": "MNT-008",
+    "unidad": "MX-3000",
+    "tipo": "Revisión de Frenos",
+    "estado": "Programado",
+    "fecha": "2026-03-21",
+    "taller": "Taller Central CDMX",
+    "costo": 32389.87,
+    "km": 373984,
+    "observaciones": "Requiere seguimiento"
+  },
+  {
+    "id": "MNT-009",
+    "unidad": "MX-3962",
+    "tipo": "Inspección General",
+    "estado": "Completado",
+    "fecha": "2026-02-05",
+    "taller": "Taller MTY Norte",
+    "costo": 10864.89,
+    "km": 438162,
+    "observaciones": "Pieza importada pendiente"
+  },
+  {
+    "id": "MNT-010",
+    "unidad": "MX-3962",
+    "tipo": "Revisión de Frenos",
+    "estado": "En Proceso",
+    "fecha": "2026-03-06",
+    "taller": "Taller Central CDMX",
+    "costo": 27639.69,
+    "km": 436286,
+    "observaciones": "Sin observaciones"
+  },
+  {
+    "id": "MNT-011",
+    "unidad": "MX-3703",
+    "tipo": "Cambio de Filtros",
+    "estado": "Completado",
+    "fecha": "2026-02-27",
+    "taller": "Taller Central CDMX",
+    "costo": 25981.55,
+    "km": 123250,
+    "observaciones": "Sin observaciones"
+  },
+  {
+    "id": "MNT-012",
+    "unidad": "RF-1429",
+    "tipo": "Revisión Eléctrica",
+    "estado": "Programado",
+    "fecha": "2026-03-15",
+    "taller": "Taller MTY Norte",
+    "costo": 21961.29,
+    "km": 135752,
+    "observaciones": "Requiere seguimiento"
+  },
+  {
+    "id": "MNT-013",
+    "unidad": "MX-3111",
+    "tipo": "Cambio de Aceite",
+    "estado": "Programado",
+    "fecha": "2026-03-09",
+    "taller": "Taller MTY Norte",
+    "costo": 31465.48,
+    "km": 59459,
+    "observaciones": "Pieza importada pendiente"
+  },
+  {
+    "id": "MNT-014",
+    "unidad": "MX-3407",
+    "tipo": "Servicio Mayor",
+    "estado": "Programado",
+    "fecha": "2026-03-11",
+    "taller": "Taller Central CDMX",
+    "costo": 29729.02,
+    "km": 117223,
+    "observaciones": "Desgaste normal"
+  },
+  {
+    "id": "MNT-015",
+    "unidad": "MX-3999",
+    "tipo": "Revisión Eléctrica",
+    "estado": "Completado",
+    "fecha": "2026-03-05",
+    "taller": "Taller Propio Toluca",
+    "costo": 3862.65,
+    "km": 137080,
+    "observaciones": "Desgaste normal"
+  },
+  {
+    "id": "MNT-016",
+    "unidad": "MX-3370",
+    "tipo": "Inspección General",
+    "estado": "Programado",
+    "fecha": "2026-03-20",
+    "taller": "Taller Central CDMX",
+    "costo": 5046.96,
+    "km": 368335,
+    "observaciones": "Pieza importada pendiente"
+  },
+  {
+    "id": "MNT-017",
+    "unidad": "RF-1481",
+    "tipo": "Revisión Eléctrica",
+    "estado": "Completado",
+    "fecha": "2026-02-12",
+    "taller": "Taller Propio Toluca",
+    "costo": 10546.31,
+    "km": 341293,
+    "observaciones": "Desgaste normal"
+  },
+  {
+    "id": "MNT-018",
+    "unidad": "MX-3259",
+    "tipo": "Cambio de Llantas",
+    "estado": "Completado",
+    "fecha": "2026-03-01",
+    "taller": "Taller Central CDMX",
+    "costo": 12196.09,
+    "km": 93284,
+    "observaciones": "Desgaste normal"
+  },
+  {
+    "id": "MNT-019",
+    "unidad": "MX-3888",
+    "tipo": "Cambio de Aceite",
+    "estado": "En Proceso",
+    "fecha": "2026-03-07",
+    "taller": "Taller Propio Toluca",
+    "costo": 27158.97,
+    "km": 403875,
+    "observaciones": "Pieza importada pendiente"
+  },
+  {
+    "id": "MNT-020",
+    "unidad": "MX-3333",
+    "tipo": "Inspección General",
+    "estado": "En Proceso",
+    "fecha": "2026-03-08",
+    "taller": "Taller MTY Norte",
+    "costo": 18655.2,
+    "km": 194717,
+    "observaciones": "Pieza importada pendiente"
   }
-}
+]
