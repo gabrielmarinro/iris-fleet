@@ -6,9 +6,9 @@
     "severidad": "Alta",
     "conductor": "Fernando Cruz Martínez",
     "conductor_id": "DRV-007",
-    "timestamp": "2026-03-04T23:00:00",
+    "timestamp": "2026-03-06T07:18:20",
     "duracion_segundos": 11,
-    "video_url": null,
+    "video_url": "videos/FV063174_cabina_fatiga.mp4",
     "video_placeholder": "lytx_event_001.mp4",
     "dispositivo": "Lytx DriveCam SF400",
     "dispositivo_id": "LYTX-99849",
@@ -17,7 +17,11 @@
       "lng": -100.538762
     },
     "revisado": true,
-    "accion_tomada": "Coaching realizado"
+    "accion_tomada": "Coaching realizado",
+    "video_cabina": "videos/FV063174_cabina_fatiga.mp4",
+    "video_trafico": "videos/FV063174_trafico_fatiga.mp4",
+    "vehiculo_camara": "FV063174",
+    "tiene_video_real": true
   },
   {
     "id": "CAM-002",
@@ -46,9 +50,9 @@
     "severidad": "Media",
     "conductor": "Alejandro Torres Vega",
     "conductor_id": "DRV-009",
-    "timestamp": "2026-03-05T08:00:00",
-    "duracion_segundos": 29,
-    "video_url": null,
+    "timestamp": "2026-03-06T02:13:11",
+    "duracion_segundos": 11,
+    "video_url": "videos/FV063713_cabina_distraccion.mp4",
     "video_placeholder": "lytx_event_003.mp4",
     "dispositivo": "Lytx DriveCam SF400",
     "dispositivo_id": "LYTX-94922",
@@ -57,7 +61,11 @@
       "lng": -103.111999
     },
     "revisado": true,
-    "accion_tomada": "Notificación enviada"
+    "accion_tomada": "Notificación enviada",
+    "video_cabina": "videos/FV063713_cabina_distraccion.mp4",
+    "video_trafico": "videos/FV063713_trafico_distraccion.mp4",
+    "vehiculo_camara": "FV063713",
+    "tiene_video_real": true
   },
   {
     "id": "CAM-004",
@@ -106,9 +114,9 @@
     "severidad": "Alta",
     "conductor": "Jesús Maldonado Ochoa",
     "conductor_id": "DRV-029",
-    "timestamp": "2026-03-06T04:00:00",
-    "duracion_segundos": 23,
-    "video_url": null,
+    "timestamp": "2026-03-06T06:40:34",
+    "duracion_segundos": 11,
+    "video_url": "videos/FV044548_cabina_fatiga.mp4",
     "video_placeholder": "lytx_event_006.mp4",
     "dispositivo": "Lytx DriveCam SF400",
     "dispositivo_id": "LYTX-36302",
@@ -117,7 +125,11 @@
       "lng": -101.230242
     },
     "revisado": false,
-    "accion_tomada": "Pendiente revisión"
+    "accion_tomada": "Pendiente revisión",
+    "video_cabina": "videos/FV044548_cabina_fatiga.mp4",
+    "video_trafico": "videos/FV044548_trafico_fatiga.mp4",
+    "vehiculo_camara": "FV044548",
+    "tiene_video_real": true
   },
   {
     "id": "CAM-007",
