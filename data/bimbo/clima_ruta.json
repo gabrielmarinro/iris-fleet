@@ -1,182 +1,182 @@
 [
   {
-    "ruta_id": "RUT-001",
-    "ruta_nombre": "CDMX Norte → Querétaro",
-    "ubicacion": {
-      "lat": 20.0107,
-      "lng": -99.7615
-    },
-    "condicion": "Nublado",
-    "temperatura": 8,
-    "humedad": 50,
-    "viento_kmh": 29.3,
-    "visibilidad": "Moderada",
-    "alerta_climatica": null,
-    "actualizacion": "2026-03-06T09:00:00"
-  },
-  {
-    "ruta_id": "RUT-002",
-    "ruta_nombre": "CDMX → Puebla",
-    "ubicacion": {
-      "lat": 19.237,
-      "lng": -98.6697
-    },
-    "condicion": "Lluvia Fuerte",
-    "temperatura": 28,
-    "humedad": 53,
-    "viento_kmh": 23.8,
-    "visibilidad": "Moderada",
-    "alerta_climatica": "Neblina densa en puerto",
-    "actualizacion": "2026-03-06T09:00:00"
-  },
-  {
-    "ruta_id": "RUT-003",
-    "ruta_nombre": "Monterrey → Saltillo",
-    "ubicacion": {
-      "lat": 25.5549,
-      "lng": -100.6557
-    },
-    "condicion": "Despejado",
-    "temperatura": 13,
-    "humedad": 53,
-    "viento_kmh": 6.8,
-    "visibilidad": "Buena",
-    "alerta_climatica": "Neblina densa en puerto",
-    "actualizacion": "2026-03-06T09:00:00"
-  },
-  {
-    "ruta_id": "RUT-004",
-    "ruta_nombre": "Guadalajara → León",
-    "ubicacion": {
-      "lat": 20.8909,
-      "lng": -102.5159
-    },
-    "condicion": "Despejado",
-    "temperatura": 11,
-    "humedad": 68,
-    "viento_kmh": 13.5,
-    "visibilidad": "Moderada",
-    "alerta_climatica": "Neblina densa en puerto",
-    "actualizacion": "2026-03-06T09:00:00"
-  },
-  {
-    "ruta_id": "RUT-005",
-    "ruta_nombre": "CDMX Sur → Cuernavaca",
-    "ubicacion": {
-      "lat": 19.1398,
-      "lng": -99.181
-    },
-    "condicion": "Viento Fuerte",
-    "temperatura": 32,
-    "humedad": 77,
-    "viento_kmh": 25.3,
-    "visibilidad": "Reducida",
-    "alerta_climatica": null,
-    "actualizacion": "2026-03-06T09:00:00"
-  },
-  {
-    "ruta_id": "RUT-006",
-    "ruta_nombre": "Toluca → CDMX Centro",
-    "ubicacion": {
-      "lat": 19.3576,
-      "lng": -99.3945
-    },
-    "condicion": "Nublado",
-    "temperatura": 20,
-    "humedad": 83,
-    "viento_kmh": 28.3,
-    "visibilidad": "Reducida",
-    "alerta_climatica": null,
-    "actualizacion": "2026-03-06T09:00:00"
-  },
-  {
-    "ruta_id": "RUT-007",
-    "ruta_nombre": "Veracruz → Xalapa",
-    "ubicacion": {
-      "lat": 19.3588,
-      "lng": -96.5308
-    },
-    "condicion": "Lluvia Fuerte",
-    "temperatura": 32,
-    "humedad": 71,
-    "viento_kmh": 8.1,
-    "visibilidad": "Buena",
-    "alerta_climatica": null,
-    "actualizacion": "2026-03-06T09:00:00"
-  },
-  {
-    "ruta_id": "RUT-008",
-    "ruta_nombre": "Monterrey → Laredo (Export)",
-    "ubicacion": {
-      "lat": 26.5933,
-      "lng": -99.9081
-    },
-    "condicion": "Neblina",
-    "temperatura": 24,
-    "humedad": 66,
-    "viento_kmh": 30.2,
-    "visibilidad": "Reducida",
-    "alerta_climatica": "Lluvia en tramo km 80-120",
-    "actualizacion": "2026-03-06T09:00:00"
-  },
-  {
-    "ruta_id": "RUT-009",
-    "ruta_nombre": "Puebla → Oaxaca",
-    "ubicacion": {
-      "lat": 18.0573,
-      "lng": -97.4665
-    },
-    "condicion": "Neblina",
+    "ruta_id": "RT-001",
+    "ruta_nombre": "CDMX → QRO",
+    "ubicacion": "Tramo CDMX-QRO",
+    "condicion": "Lluvia ligera",
     "temperatura": 31,
-    "humedad": 37,
-    "viento_kmh": 38.9,
-    "visibilidad": "Reducida",
-    "alerta_climatica": null,
-    "actualizacion": "2026-03-06T09:00:00"
-  },
-  {
-    "ruta_id": "RUT-010",
-    "ruta_nombre": "CDMX → Pachuca (Barcel)",
-    "ubicacion": {
-      "lat": 19.7668,
-      "lng": -98.9462
-    },
-    "condicion": "Neblina",
-    "temperatura": 23,
-    "humedad": 72,
-    "viento_kmh": 26.0,
-    "visibilidad": "Moderada",
-    "alerta_climatica": null,
-    "actualizacion": "2026-03-06T09:00:00"
-  },
-  {
-    "ruta_id": "RUT-011",
-    "ruta_nombre": "Mérida → Cancún",
-    "ubicacion": {
-      "lat": 21.0647,
-      "lng": -88.222
-    },
-    "condicion": "Lluvia Ligera",
-    "temperatura": 14,
-    "humedad": 83,
-    "viento_kmh": 28.0,
+    "humedad": 66,
+    "viento_kmh": 49,
     "visibilidad": "Buena",
-    "alerta_climatica": null,
-    "actualizacion": "2026-03-06T09:00:00"
+    "alerta_climatica": false,
+    "actualizacion": "2026-03-06T11:00:00"
   },
   {
-    "ruta_id": "RUT-012",
-    "ruta_nombre": "CDMX Oriente → Tlaxcala",
-    "ubicacion": {
-      "lat": 19.3754,
-      "lng": -98.6853
-    },
+    "ruta_id": "RT-002",
+    "ruta_nombre": "CDMX → GDL",
+    "ubicacion": "Tramo CDMX-GDL",
     "condicion": "Nublado",
-    "temperatura": 32,
-    "humedad": 53,
-    "viento_kmh": 14.2,
+    "temperatura": 24,
+    "humedad": 41,
+    "viento_kmh": 12,
+    "visibilidad": "Baja",
+    "alerta_climatica": true,
+    "actualizacion": "2026-03-06T11:00:00"
+  },
+  {
+    "ruta_id": "RT-003",
+    "ruta_nombre": "MTY → GDL",
+    "ubicacion": "Tramo MTY-GDL",
+    "condicion": "Neblina",
+    "temperatura": 11,
+    "humedad": 79,
+    "viento_kmh": 27,
+    "visibilidad": "Buena",
+    "alerta_climatica": false,
+    "actualizacion": "2026-03-06T11:00:00"
+  },
+  {
+    "ruta_id": "RT-004",
+    "ruta_nombre": "MTY → CDMX",
+    "ubicacion": "Tramo MTY-CDMX",
+    "condicion": "Lluvia ligera",
+    "temperatura": 34,
+    "humedad": 66,
+    "viento_kmh": 53,
+    "visibilidad": "Buena",
+    "alerta_climatica": false,
+    "actualizacion": "2026-03-06T11:00:00"
+  },
+  {
+    "ruta_id": "RT-005",
+    "ruta_nombre": "CDMX → PUE",
+    "ubicacion": "Tramo CDMX-PUE",
+    "condicion": "Lluvia moderada",
+    "temperatura": 13,
+    "humedad": 51,
+    "viento_kmh": 43,
+    "visibilidad": "Buena",
+    "alerta_climatica": true,
+    "actualizacion": "2026-03-06T11:00:00"
+  },
+  {
+    "ruta_id": "RT-006",
+    "ruta_nombre": "CDMX → VER",
+    "ubicacion": "Tramo CDMX-VER",
+    "condicion": "Lluvia moderada",
+    "temperatura": 27,
+    "humedad": 93,
+    "viento_kmh": 8,
+    "visibilidad": "Buena",
+    "alerta_climatica": false,
+    "actualizacion": "2026-03-06T11:00:00"
+  },
+  {
+    "ruta_id": "RT-007",
+    "ruta_nombre": "GDL → CDMX",
+    "ubicacion": "Tramo GDL-CDMX",
+    "condicion": "Lluvia moderada",
+    "temperatura": 8,
+    "humedad": 60,
+    "viento_kmh": 56,
     "visibilidad": "Moderada",
-    "alerta_climatica": null,
-    "actualizacion": "2026-03-06T09:00:00"
+    "alerta_climatica": true,
+    "actualizacion": "2026-03-06T11:00:00"
+  },
+  {
+    "ruta_id": "RT-008",
+    "ruta_nombre": "MTY → SLP",
+    "ubicacion": "Tramo MTY-SLP",
+    "condicion": "Lluvia moderada",
+    "temperatura": 34,
+    "humedad": 47,
+    "viento_kmh": 24,
+    "visibilidad": "Baja",
+    "alerta_climatica": false,
+    "actualizacion": "2026-03-06T11:00:00"
+  },
+  {
+    "ruta_id": "RT-009",
+    "ruta_nombre": "QRO → CDMX",
+    "ubicacion": "Tramo QRO-CDMX",
+    "condicion": "Lluvia moderada",
+    "temperatura": 8,
+    "humedad": 67,
+    "viento_kmh": 33,
+    "visibilidad": "Buena",
+    "alerta_climatica": false,
+    "actualizacion": "2026-03-06T11:00:00"
+  },
+  {
+    "ruta_id": "RT-010",
+    "ruta_nombre": "PUE → CDMX",
+    "ubicacion": "Tramo PUE-CDMX",
+    "condicion": "Lluvia moderada",
+    "temperatura": 8,
+    "humedad": 46,
+    "viento_kmh": 17,
+    "visibilidad": "Buena",
+    "alerta_climatica": false,
+    "actualizacion": "2026-03-06T11:00:00"
+  },
+  {
+    "ruta_id": "RT-011",
+    "ruta_nombre": "VER → CDMX",
+    "ubicacion": "Tramo VER-CDMX",
+    "condicion": "Despejado",
+    "temperatura": 19,
+    "humedad": 94,
+    "viento_kmh": 28,
+    "visibilidad": "Buena",
+    "alerta_climatica": true,
+    "actualizacion": "2026-03-06T11:00:00"
+  },
+  {
+    "ruta_id": "RT-012",
+    "ruta_nombre": "CDMX → LEO",
+    "ubicacion": "Tramo CDMX-LEO",
+    "condicion": "Nublado",
+    "temperatura": 29,
+    "humedad": 30,
+    "viento_kmh": 9,
+    "visibilidad": "Moderada",
+    "alerta_climatica": false,
+    "actualizacion": "2026-03-06T11:00:00"
+  },
+  {
+    "ruta_id": "RT-013",
+    "ruta_nombre": "SLP → MTY",
+    "ubicacion": "Tramo SLP-MTY",
+    "condicion": "Viento fuerte",
+    "temperatura": 28,
+    "humedad": 41,
+    "viento_kmh": 32,
+    "visibilidad": "Moderada",
+    "alerta_climatica": false,
+    "actualizacion": "2026-03-06T11:00:00"
+  },
+  {
+    "ruta_id": "RT-014",
+    "ruta_nombre": "GDL → MTY",
+    "ubicacion": "Tramo GDL-MTY",
+    "condicion": "Lluvia ligera",
+    "temperatura": 21,
+    "humedad": 36,
+    "viento_kmh": 27,
+    "visibilidad": "Baja",
+    "alerta_climatica": false,
+    "actualizacion": "2026-03-06T11:00:00"
+  },
+  {
+    "ruta_id": "RT-015",
+    "ruta_nombre": "MTY → NVO_LAREDO",
+    "ubicacion": "Tramo MTY-NVO_LAREDO",
+    "condicion": "Despejado",
+    "temperatura": 19,
+    "humedad": 46,
+    "viento_kmh": 16,
+    "visibilidad": "Buena",
+    "alerta_climatica": false,
+    "actualizacion": "2026-03-06T11:00:00"
   }
 ]

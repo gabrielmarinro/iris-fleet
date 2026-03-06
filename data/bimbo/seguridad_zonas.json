@@ -1,106 +1,132 @@
 [
   {
-    "id": "ZR-001",
-    "nombre": "Zona Huachicoleo Puebla-Tlaxcala",
-    "tipo": "Alto Riesgo",
+    "id": "SZ-001",
+    "nombre": "Zona Riesgo Gómez Palacio",
+    "tipo": "alto_riesgo",
     "centro": {
-      "lat": 19.25,
-      "lng": -98.35
-    },
-    "radio_km": 15,
-    "incidentes_30dias": 1,
-    "recomendacion": "Evitar tránsito nocturno",
-    "activa": true
-  },
-  {
-    "id": "ZR-002",
-    "nombre": "Tramo Peligroso Autopista del Sol",
-    "tipo": "Alto Riesgo",
-    "centro": {
-      "lat": 18.5,
-      "lng": -99.5
-    },
-    "radio_km": 20,
-    "incidentes_30dias": 4,
-    "recomendacion": "Evitar tránsito nocturno",
-    "activa": true
-  },
-  {
-    "id": "ZR-003",
-    "nombre": "Zona Industrial Querétaro",
-    "tipo": "Zona Segura",
-    "centro": {
-      "lat": 20.62,
-      "lng": -100.41
+      "lat": 25.54,
+      "lng": -103.4
     },
     "radio_km": 5,
-    "incidentes_30dias": 1,
-    "recomendacion": "Zona monitoreada",
+    "incidentes_30dias": 8,
+    "recomendacion": "Evitar tránsito nocturno. Escoltas obligatorias.",
     "activa": true
   },
   {
-    "id": "ZR-004",
-    "nombre": "CEDIS Bimbo CDMX Norte",
-    "tipo": "Zona Segura",
-    "centro": {
-      "lat": 19.53,
-      "lng": -99.18
-    },
-    "radio_km": 2,
-    "incidentes_30dias": 2,
-    "recomendacion": "Zona monitoreada",
-    "activa": true
-  },
-  {
-    "id": "ZR-005",
-    "nombre": "Caseta Palmillas",
-    "tipo": "Control",
-    "centro": {
-      "lat": 20.35,
-      "lng": -100.15
-    },
-    "radio_km": 1,
-    "incidentes_30dias": 0,
-    "recomendacion": "Zona monitoreada",
-    "activa": true
-  },
-  {
-    "id": "ZR-006",
-    "nombre": "Tramo Inseguro Matehuala-SLP",
-    "tipo": "Alto Riesgo",
+    "id": "SZ-002",
+    "nombre": "Zona Riesgo Carretera 57",
+    "tipo": "alto_riesgo",
     "centro": {
       "lat": 23.65,
       "lng": -100.65
     },
-    "radio_km": 25,
-    "incidentes_30dias": 15,
-    "recomendacion": "Evitar tránsito nocturno",
+    "radio_km": 15,
+    "incidentes_30dias": 5,
+    "recomendacion": "Convoy mínimo 2 unidades. Comunicación constante.",
     "activa": true
   },
   {
-    "id": "ZR-007",
-    "nombre": "CEDIS Barcel Toluca",
-    "tipo": "Zona Segura",
+    "id": "SZ-003",
+    "nombre": "Zona Riesgo Puebla Oriente",
+    "tipo": "medio_riesgo",
+    "centro": {
+      "lat": 19.1,
+      "lng": -98.1
+    },
+    "radio_km": 8,
+    "incidentes_30dias": 3,
+    "recomendacion": "Precaución en horario nocturno.",
+    "activa": true
+  },
+  {
+    "id": "SZ-004",
+    "nombre": "Zona Riesgo Libramiento Norte GDL",
+    "tipo": "medio_riesgo",
+    "centro": {
+      "lat": 20.75,
+      "lng": -103.3
+    },
+    "radio_km": 6,
+    "incidentes_30dias": 4,
+    "recomendacion": "Velocidad reducida. Zona de asaltos.",
+    "activa": true
+  },
+  {
+    "id": "SZ-005",
+    "nombre": "Zona Riesgo Arco Norte",
+    "tipo": "medio_riesgo",
+    "centro": {
+      "lat": 19.8,
+      "lng": -99.4
+    },
+    "radio_km": 10,
+    "incidentes_30dias": 2,
+    "recomendacion": "Paradas solo en zonas autorizadas.",
+    "activa": true
+  },
+  {
+    "id": "SZ-006",
+    "nombre": "Zona Riesgo Cd. Valles",
+    "tipo": "alto_riesgo",
+    "centro": {
+      "lat": 21.99,
+      "lng": -99.01
+    },
+    "radio_km": 12,
+    "incidentes_30dias": 6,
+    "recomendacion": "No transitar de noche. Reportar presencia sospechosa.",
+    "activa": true
+  },
+  {
+    "id": "SZ-007",
+    "nombre": "Zona Riesgo Saltillo-MTY",
+    "tipo": "medio_riesgo",
+    "centro": {
+      "lat": 25.45,
+      "lng": -100.7
+    },
+    "radio_km": 8,
+    "incidentes_30dias": 3,
+    "recomendacion": "Convoy recomendado tramo nocturno.",
+    "activa": true
+  },
+  {
+    "id": "SZ-008",
+    "nombre": "Zona Riesgo Durango",
+    "tipo": "alto_riesgo",
+    "centro": {
+      "lat": 24.02,
+      "lng": -104.65
+    },
+    "radio_km": 20,
+    "incidentes_30dias": 7,
+    "recomendacion": "Ruta alternativa preferida. Escoltas en caso necesario.",
+    "activa": true
+  },
+  {
+    "id": "SZ-009",
+    "nombre": "Zona Riesgo Nuevo Laredo",
+    "tipo": "alto_riesgo",
+    "centro": {
+      "lat": 27.48,
+      "lng": -99.52
+    },
+    "radio_km": 10,
+    "incidentes_30dias": 9,
+    "recomendacion": "Solo tránsito diurno. Protocolo frontera activo.",
+    "activa": true
+  },
+  {
+    "id": "SZ-010",
+    "nombre": "Zona Riesgo Texmelucan",
+    "tipo": "medio_riesgo",
     "centro": {
       "lat": 19.28,
-      "lng": -99.68
+      "lng": -98.44
     },
-    "radio_km": 3,
-    "incidentes_30dias": 2,
-    "recomendacion": "Zona monitoreada",
-    "activa": true
-  },
-  {
-    "id": "ZR-008",
-    "nombre": "Puerto Interior León",
-    "tipo": "Zona Segura",
-    "centro": {
-      "lat": 21.08,
-      "lng": -101.62
-    },
-    "radio_km": 4,
-    "incidentes_30dias": 0,
-    "recomendacion": "Zona monitoreada",
+    "radio_km": 5,
+    "incidentes_30dias": 4,
+    "recomendacion": "Robo de combustible frecuente. Monitoreo GPS constante.",
     "activa": true
   }
 ]
