@@ -1,0 +1,75 @@
+{
+  "ultima_actualizacion": "2026-03-06T11:00:00",
+  "periodo": "Marzo 2026",
+  "general": {
+    "total_unidades": 120,
+    "conductores_activos": 115,
+    "vehiculos_operativos": 104,
+    "vehiculos_en_ruta": 69,
+    "vehiculos_en_taller": 13,
+    "vehiculos_detenidos": 11,
+    "vehiculos_no_ubicables": 3,
+    "rutas_activas": 11,
+    "alertas_sin_atender": 17,
+    "eventos_camara_24h": 25,
+    "score_flota": 72.3
+  },
+  "seguridad": {
+    "incidentes_mes": 38,
+    "conductores_seguro": 57,
+    "conductores_atencion": 41,
+    "conductores_riesgo": 22,
+    "frenados_bruscos_semana": 763,
+    "exceso_velocidad_semana": 276,
+    "uso_telefono_semana": 179,
+    "fatiga_detectada_semana": 11,
+    "dias_sin_accidentes": 23,
+    "tasa_siniestralidad_pct": 2.1
+  },
+  "operaciones": {
+    "entregas_a_tiempo_pct": 84.2,
+    "km_recorridos_mes": 14973,
+    "combustible_consumido_mes": 434977.0,
+    "costo_operativo_mes": 1395580.0,
+    "costo_por_km": 14.85
+  },
+  "mantenimiento": {
+    "vehiculos_en_taller": 13,
+    "servicios_programados": 28,
+    "costo_mantenimiento_mes": 892450,
+    "uptime_pct": 86.7,
+    "mtbf_horas": 680,
+    "mttr_horas": 4.8,
+    "cumplimiento_preventivo_pct": 82,
+    "backlog_ordenes": 12,
+    "downtime_programado": 9,
+    "downtime_no_programado": 4,
+    "mix_preventivo_pct": 65,
+    "mix_correctivo_pct": 35,
+    "tasa_fallas_recurrentes_pct": 14,
+    "costo_mant_por_km": 2.15
+  },
+  "torre_control": {
+    "uptime_flota_pct": 86.7,
+    "mtbf_horas": 680,
+    "dias_sin_accidentes": 23,
+    "activos_criticos": 4,
+    "costo_por_km_mxn": 2.15,
+    "roi_por_activo_pct": 18.5
+  },
+  "financiero": {
+    "ingresos_mes_mxn": 18500000,
+    "costos_operativos_mes_mxn": 12800000,
+    "margen_operativo_pct": 30.8,
+    "costo_por_km_total": 14.85,
+    "ebitda_por_activo": 285000,
+    "roi_promedio_unidad_pct": 18.5,
+    "variabilidad_costos_pct": 8.3,
+    "capex_ejecutado_pct": 72,
+    "utilizacion_real_pct": 76,
+    "edad_promedio_flota_anios": 3.2
+  },
+  "compliance": {
+    "pct_cumplimiento_nom087": 85
+  }
+}

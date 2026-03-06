@@ -1,0 +1,112 @@
+[
+  {
+    "id": "CAS-001",
+    "nombre": "Caseta Palmillas",
+    "ubicacion": "Autopista CDMX-QRO km 110",
+    "ruta": "CDMX→QRO",
+    "costo_autobus": 150,
+    "costo_trailer": 468,
+    "costo_torton": 310,
+    "forma_pago": "IAVE/Efectivo",
+    "horario": "24 horas"
+  },
+  {
+    "id": "CAS-002",
+    "nombre": "Caseta Tepotzotlán",
+    "ubicacion": "Autopista CDMX-QRO km 42",
+    "ruta": "CDMX→QRO",
+    "costo_autobus": 85,
+    "costo_trailer": 265,
+    "costo_torton": 175,
+    "forma_pago": "IAVE/Efectivo",
+    "horario": "24 horas"
+  },
+  {
+    "id": "CAS-003",
+    "nombre": "Caseta Zapotlanejo",
+    "ubicacion": "Autopista GDL-CDMX km 45",
+    "ruta": "GDL→CDMX",
+    "costo_autobus": 120,
+    "costo_trailer": 380,
+    "costo_torton": 250,
+    "forma_pago": "IAVE/Efectivo",
+    "horario": "24 horas"
+  },
+  {
+    "id": "CAS-004",
+    "nombre": "Caseta Cuota Saltillo",
+    "ubicacion": "Autopista MTY-SLT km 30",
+    "ruta": "MTY→SALTILLO",
+    "costo_autobus": 95,
+    "costo_trailer": 295,
+    "costo_torton": 195,
+    "forma_pago": "IAVE/Efectivo",
+    "horario": "24 horas"
+  },
+  {
+    "id": "CAS-005",
+    "nombre": "Caseta Orizaba",
+    "ubicacion": "Autopista VER-CDMX km 180",
+    "ruta": "VER→CDMX",
+    "costo_autobus": 110,
+    "costo_trailer": 345,
+    "costo_torton": 230,
+    "forma_pago": "IAVE/Efectivo",
+    "horario": "24 horas"
+  },
+  {
+    "id": "CAS-006",
+    "nombre": "Caseta Peñón",
+    "ubicacion": "Autopista CDMX-PUE km 35",
+    "ruta": "CDMX→PUE",
+    "costo_autobus": 75,
+    "costo_trailer": 235,
+    "costo_torton": 155,
+    "forma_pago": "IAVE/Efectivo",
+    "horario": "24 horas"
+  },
+  {
+    "id": "CAS-007",
+    "nombre": "Caseta Huichapan",
+    "ubicacion": "Autopista Arco Norte km 88",
+    "ruta": "QRO→CDMX",
+    "costo_autobus": 130,
+    "costo_trailer": 410,
+    "costo_torton": 270,
+    "forma_pago": "IAVE/Efectivo",
+    "horario": "24 horas"
+  },
+  {
+    "id": "CAS-008",
+    "nombre": "Caseta Santa Rosa",
+    "ubicacion": "Autopista MTY-NVO_LAREDO km 45",
+    "ruta": "MTY→NVO_LAREDO",
+    "costo_autobus": 65,
+    "costo_trailer": 205,
+    "costo_torton": 135,
+    "forma_pago": "IAVE/Efectivo",
+    "horario": "24 horas"
+  },
+  {
+    "id": "CAS-009",
+    "nombre": "Caseta León",
+    "ubicacion": "Autopista CDMX-LEO km 350",
+    "ruta": "CDMX→LEO",
+    "costo_autobus": 185,
+    "costo_trailer": 580,
+    "costo_torton": 385,
+    "forma_pago": "IAVE/Efectivo",
+    "horario": "24 horas"
+  },
+  {
+    "id": "CAS-010",
+    "nombre": "Caseta Ciénega de Flores",
+    "ubicacion": "Autopista MTY-SLP km 25",
+    "ruta": "MTY→SLP",
+    "costo_autobus": 55,
+    "costo_trailer": 175,
+    "costo_torton": 115,
+    "forma_pago": "IAVE/Efectivo",
+    "horario": "24 horas"
+  }
+]

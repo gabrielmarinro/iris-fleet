@@ -1,0 +1,169 @@
+{
+  "zonas": [
+    {
+      "id": "ZS-001",
+      "nombre": "Base Bimbo CDMX Norte",
+      "tipo": "base_operativa",
+      "lat": 19.492,
+      "lng": -99.151,
+      "servicios": [
+        "Estacionamiento",
+        "Comedor",
+        "Dormitorios",
+        "Taller"
+      ],
+      "capacidad_camiones": 50,
+      "ocupacion_actual": 32,
+      "horario": "24 horas",
+      "activa": true
+    },
+    {
+      "id": "ZS-002",
+      "nombre": "CEDIS Bimbo Monterrey",
+      "tipo": "cedis",
+      "lat": 25.68,
+      "lng": -100.31,
+      "servicios": [
+        "Estacionamiento",
+        "Carga/Descarga",
+        "Comedor"
+      ],
+      "capacidad_camiones": 40,
+      "ocupacion_actual": 28,
+      "horario": "24 horas",
+      "activa": true
+    },
+    {
+      "id": "ZS-003",
+      "nombre": "Gasolinera BP km 158 QRO",
+      "tipo": "gasolinera_segura",
+      "lat": 20.38,
+      "lng": -100.01,
+      "servicios": [
+        "Diesel",
+        "Tienda",
+        "Baños",
+        "Vigilancia"
+      ],
+      "capacidad_camiones": 15,
+      "ocupacion_actual": 8,
+      "horario": "24 horas",
+      "activa": true
+    },
+    {
+      "id": "ZS-004",
+      "nombre": "Estacionamiento Seguro GDL",
+      "tipo": "estacionamiento",
+      "lat": 20.67,
+      "lng": -103.34,
+      "servicios": [
+        "Vigilancia 24h",
+        "Cámaras",
+        "Baños",
+        "WiFi"
+      ],
+      "capacidad_camiones": 25,
+      "ocupacion_actual": 18,
+      "horario": "24 horas",
+      "activa": true
+    },
+    {
+      "id": "ZS-005",
+      "nombre": "CEDIS Bimbo Querétaro",
+      "tipo": "cedis",
+      "lat": 20.59,
+      "lng": -100.39,
+      "servicios": [
+        "Estacionamiento",
+        "Carga/Descarga",
+        "Taller"
+      ],
+      "capacidad_camiones": 30,
+      "ocupacion_actual": 22,
+      "horario": "06:00-22:00",
+      "activa": true
+    },
+    {
+      "id": "ZS-006",
+      "nombre": "Parador Seguro Matehuala",
+      "tipo": "estacionamiento",
+      "lat": 23.65,
+      "lng": -100.64,
+      "servicios": [
+        "Vigilancia",
+        "Comedor",
+        "Diesel",
+        "Baños"
+      ],
+      "capacidad_camiones": 20,
+      "ocupacion_actual": 12,
+      "horario": "24 horas",
+      "activa": true
+    },
+    {
+      "id": "ZS-007",
+      "nombre": "Base Bimbo Puebla",
+      "tipo": "base_operativa",
+      "lat": 19.05,
+      "lng": -98.2,
+      "servicios": [
+        "Estacionamiento",
+        "Taller",
+        "Dormitorios"
+      ],
+      "capacidad_camiones": 25,
+      "ocupacion_actual": 15,
+      "horario": "24 horas",
+      "activa": true
+    },
+    {
+      "id": "ZS-008",
+      "nombre": "CEDIS Bimbo León",
+      "tipo": "cedis",
+      "lat": 21.12,
+      "lng": -101.68,
+      "servicios": [
+        "Carga/Descarga",
+        "Estacionamiento",
+        "Comedor"
+      ],
+      "capacidad_camiones": 20,
+      "ocupacion_actual": 14,
+      "horario": "06:00-22:00",
+      "activa": true
+    },
+    {
+      "id": "ZS-009",
+      "nombre": "Gasolinera Pemex km 380 AGS",
+      "tipo": "gasolinera_segura",
+      "lat": 21.88,
+      "lng": -102.29,
+      "servicios": [
+        "Diesel",
+        "Tienda",
+        "Baños"
+      ],
+      "capacidad_camiones": 10,
+      "ocupacion_actual": 5,
+      "horario": "24 horas",
+      "activa": true
+    },
+    {
+      "id": "ZS-010",
+      "nombre": "CEDIS Bimbo Veracruz",
+      "tipo": "cedis",
+      "lat": 19.18,
+      "lng": -96.92,
+      "servicios": [
+        "Carga/Descarga",
+        "Estacionamiento",
+        "Comedor",
+        "Taller"
+      ],
+      "capacidad_camiones": 20,
+      "ocupacion_actual": 11,
+      "horario": "24 horas",
+      "activa": true
+    }
+  ]
+}
