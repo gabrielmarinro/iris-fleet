@@ -3,7 +3,7 @@
     "id": "CAM-001",
     "unidad": "MX-3022",
     "tipoEvento": "Cabeceo/Fatiga",
-    "severidad": "Alta",
+    "severidad": "alta",
     "conductor": "Fernando Cruz Martínez",
     "conductor_id": "DRV-007",
     "timestamp": "2026-03-06T07:18:20",
@@ -20,13 +20,14 @@
     "video_cabina": "videos/FV063174_cabina_fatiga.mp4",
     "video_trafico": "videos/FV063174_trafico_fatiga.mp4",
     "vehiculo_camara": "FV063174",
-    "tiene_video_real": true
+    "tiene_video_real": true,
+    "tipo": "cabeceo_fatiga"
   },
   {
     "id": "CAM-002",
     "unidad": "MX-3048",
     "tipoEvento": "Distracción Visual",
-    "severidad": "Media",
+    "severidad": "media",
     "conductor": "Alejandro Torres Vega",
     "conductor_id": "DRV-009",
     "timestamp": "2026-03-06T02:13:11",
@@ -43,13 +44,14 @@
     "video_cabina": "videos/FV063713_cabina_distraccion.mp4",
     "video_trafico": "videos/FV063713_trafico_distraccion.mp4",
     "vehiculo_camara": "FV063713",
-    "tiene_video_real": true
+    "tiene_video_real": true,
+    "tipo": "distraccion_visual"
   },
   {
     "id": "CAM-003",
     "unidad": "MX-3085",
     "tipoEvento": "Cabeceo/Fatiga",
-    "severidad": "Alta",
+    "severidad": "alta",
     "conductor": "Jesús Maldonado Ochoa",
     "conductor_id": "DRV-020",
     "timestamp": "2026-03-06T06:40:34",
@@ -66,13 +68,14 @@
     "video_cabina": "videos/FV044548_cabina_fatiga.mp4",
     "video_trafico": "videos/FV044548_trafico_fatiga.mp4",
     "vehiculo_camara": "FV044548",
-    "tiene_video_real": true
+    "tiene_video_real": true,
+    "tipo": "cabeceo_fatiga"
   },
   {
     "id": "CAM-004",
     "unidad": "MX-3100",
     "tipoEvento": "Frenado Agresivo",
-    "severidad": "Media",
+    "severidad": "media",
     "conductor": "Conductor 101",
     "conductor_id": "DRV-101",
     "timestamp": "2026-03-06T00:38:15",
@@ -85,13 +88,14 @@
       "lng": -101.422726
     },
     "revisado": true,
-    "accion_tomada": "Coaching realizado"
+    "accion_tomada": "Coaching realizado",
+    "tipo": "frenado_agresivo"
   },
   {
     "id": "CAM-005",
     "unidad": "MX-3087",
     "tipoEvento": "Cabeceo/Fatiga",
-    "severidad": "Media",
+    "severidad": "media",
     "conductor": "Lucio Juárez Abundis",
     "conductor_id": "DRV-088",
     "timestamp": "2026-03-06T01:21:40",
@@ -104,13 +108,14 @@
       "lng": -99.115771
     },
     "revisado": false,
-    "accion_tomada": "Pendiente revisión"
+    "accion_tomada": "Pendiente revisión",
+    "tipo": "cabeceo_fatiga"
   },
   {
     "id": "CAM-006",
     "unidad": "MX-3018",
     "tipoEvento": "Neblina Detectada",
-    "severidad": "Alta",
+    "severidad": "alta",
     "conductor": "Antonio Romero Núñez",
     "conductor_id": "DRV-019",
     "timestamp": "2026-03-06T04:00:06",
@@ -123,13 +128,14 @@
       "lng": -98.914854
     },
     "revisado": true,
-    "accion_tomada": "Coaching realizado"
+    "accion_tomada": "Coaching realizado",
+    "tipo": "neblina_detectada"
   },
   {
     "id": "CAM-007",
     "unidad": "MX-3100",
     "tipoEvento": "Microsueño",
-    "severidad": "Alta",
+    "severidad": "alta",
     "conductor": "Conductor 101",
     "conductor_id": "DRV-101",
     "timestamp": "2026-03-06T08:46:56",
@@ -142,13 +148,14 @@
       "lng": -101.422726
     },
     "revisado": false,
-    "accion_tomada": "Suspensión temporal"
+    "accion_tomada": "Suspensión temporal",
+    "tipo": "microsueño"
   },
   {
     "id": "CAM-008",
     "unidad": "MX-3012",
     "tipoEvento": "Cabeceo/Fatiga",
-    "severidad": "Media",
+    "severidad": "media",
     "conductor": "Ricardo Sánchez Flores",
     "conductor_id": "DRV-013",
     "timestamp": "2026-03-06T09:55:18",
@@ -161,13 +168,14 @@
       "lng": -100.21621
     },
     "revisado": false,
-    "accion_tomada": "Coaching realizado"
+    "accion_tomada": "Coaching realizado",
+    "tipo": "cabeceo_fatiga"
   },
   {
     "id": "CAM-009",
     "unidad": "MX-3021",
     "tipoEvento": "Distracción Visual",
-    "severidad": "Media",
+    "severidad": "media",
     "conductor": "Arturo Medina Contreras",
     "conductor_id": "DRV-022",
     "timestamp": "2026-03-06T02:22:51",
@@ -180,13 +188,14 @@
       "lng": -99.45134
     },
     "revisado": false,
-    "accion_tomada": "Suspensión temporal"
+    "accion_tomada": "Suspensión temporal",
+    "tipo": "distraccion_visual"
   },
   {
     "id": "CAM-010",
     "unidad": "MX-3061",
     "tipoEvento": "Cabeceo/Fatiga",
-    "severidad": "Alta",
+    "severidad": "alta",
     "conductor": "Saúl Ibáñez Rangel",
     "conductor_id": "DRV-062",
     "timestamp": "2026-03-06T04:00:43",
@@ -199,13 +208,14 @@
       "lng": -101.264047
     },
     "revisado": false,
-    "accion_tomada": "Notificación enviada"
+    "accion_tomada": "Notificación enviada",
+    "tipo": "cabeceo_fatiga"
   },
   {
     "id": "CAM-011",
     "unidad": "MX-3048",
     "tipoEvento": "Cabeceo/Fatiga",
-    "severidad": "Baja",
+    "severidad": "baja",
     "conductor": "Benjamín Ochoa Galván",
     "conductor_id": "DRV-049",
     "timestamp": "2026-03-06T04:03:58",
@@ -218,13 +228,14 @@
       "lng": -100.302767
     },
     "revisado": false,
-    "accion_tomada": "Notificación enviada"
+    "accion_tomada": "Notificación enviada",
+    "tipo": "cabeceo_fatiga"
   },
   {
     "id": "CAM-012",
     "unidad": "MX-3086",
     "tipoEvento": "Cabeceo/Fatiga",
-    "severidad": "Media",
+    "severidad": "media",
     "conductor": "Kevin Iturbe Vergara",
     "conductor_id": "DRV-087",
     "timestamp": "2026-03-06T07:11:28",
@@ -237,13 +248,14 @@
       "lng": -98.896966
     },
     "revisado": false,
-    "accion_tomada": "Pendiente revisión"
+    "accion_tomada": "Pendiente revisión",
+    "tipo": "cabeceo_fatiga"
   },
   {
     "id": "CAM-013",
     "unidad": "MX-3054",
     "tipoEvento": "Cabeceo/Fatiga",
-    "severidad": "Baja",
+    "severidad": "baja",
     "conductor": "Emilio Parra Mora",
     "conductor_id": "DRV-055",
     "timestamp": "2026-03-06T03:19:40",
@@ -256,13 +268,14 @@
       "lng": -100.340187
     },
     "revisado": false,
-    "accion_tomada": "Pendiente revisión"
+    "accion_tomada": "Pendiente revisión",
+    "tipo": "cabeceo_fatiga"
   },
   {
     "id": "CAM-014",
     "unidad": "MX-3108",
     "tipoEvento": "Microsueño",
-    "severidad": "Baja",
+    "severidad": "baja",
     "conductor": "Conductor 109",
     "conductor_id": "DRV-109",
     "timestamp": "2026-03-06T01:04:46",
@@ -275,13 +288,14 @@
       "lng": -103.076754
     },
     "revisado": true,
-    "accion_tomada": "Coaching realizado"
+    "accion_tomada": "Coaching realizado",
+    "tipo": "microsueño"
   },
   {
     "id": "CAM-015",
     "unidad": "MX-3010",
     "tipoEvento": "Cinturón No Puesto",
-    "severidad": "Media",
+    "severidad": "media",
     "conductor": "Miguel Ángel Ramírez",
     "conductor_id": "DRV-011",
     "timestamp": "2026-03-06T08:59:31",
@@ -294,13 +308,14 @@
       "lng": -99.134423
     },
     "revisado": false,
-    "accion_tomada": "Notificación enviada"
+    "accion_tomada": "Notificación enviada",
+    "tipo": "cinturon_no_puesto"
   },
   {
     "id": "CAM-016",
     "unidad": "MX-3061",
     "tipoEvento": "Frenado Agresivo",
-    "severidad": "Baja",
+    "severidad": "baja",
     "conductor": "Saúl Ibáñez Rangel",
     "conductor_id": "DRV-062",
     "timestamp": "2026-03-06T10:43:56",
@@ -313,13 +328,14 @@
       "lng": -101.264047
     },
     "revisado": false,
-    "accion_tomada": "Notificación enviada"
+    "accion_tomada": "Notificación enviada",
+    "tipo": "frenado_agresivo"
   },
   {
     "id": "CAM-017",
     "unidad": "MX-3116",
     "tipoEvento": "Neblina Detectada",
-    "severidad": "Baja",
+    "severidad": "baja",
     "conductor": "Conductor 117",
     "conductor_id": "DRV-117",
     "timestamp": "2026-03-06T00:45:27",
@@ -332,13 +348,14 @@
       "lng": -100.867081
     },
     "revisado": true,
-    "accion_tomada": "Coaching realizado"
+    "accion_tomada": "Coaching realizado",
+    "tipo": "neblina_detectada"
   },
   {
     "id": "CAM-018",
     "unidad": "MX-3077",
     "tipoEvento": "Frenado Agresivo",
-    "severidad": "Alta",
+    "severidad": "alta",
     "conductor": "Braulio Serrano Delfín",
     "conductor_id": "DRV-078",
     "timestamp": "2026-03-06T10:59:56",
@@ -351,13 +368,14 @@
       "lng": -99.118614
     },
     "revisado": true,
-    "accion_tomada": "Pendiente revisión"
+    "accion_tomada": "Pendiente revisión",
+    "tipo": "frenado_agresivo"
   },
   {
     "id": "CAM-019",
     "unidad": "MX-3107",
     "tipoEvento": "Celular en Mano",
-    "severidad": "Baja",
+    "severidad": "baja",
     "conductor": "Conductor 108",
     "conductor_id": "DRV-108",
     "timestamp": "2026-03-06T05:03:27",
@@ -370,13 +388,14 @@
       "lng": -99.290184
     },
     "revisado": true,
-    "accion_tomada": "Coaching realizado"
+    "accion_tomada": "Coaching realizado",
+    "tipo": "celular_en_mano"
   },
   {
     "id": "CAM-020",
     "unidad": "MX-3043",
     "tipoEvento": "Cinturón No Puesto",
-    "severidad": "Alta",
+    "severidad": "alta",
     "conductor": "Ignacio Salazar Villegas",
     "conductor_id": "DRV-044",
     "timestamp": "2026-03-06T08:54:49",
@@ -389,13 +408,14 @@
       "lng": -99.5891
     },
     "revisado": true,
-    "accion_tomada": "Pendiente revisión"
+    "accion_tomada": "Pendiente revisión",
+    "tipo": "cinturon_no_puesto"
   },
   {
     "id": "CAM-021",
     "unidad": "MX-3033",
     "tipoEvento": "Celular en Mano",
-    "severidad": "Alta",
+    "severidad": "alta",
     "conductor": "Mario Castro Treviño",
     "conductor_id": "DRV-034",
     "timestamp": "2026-03-06T10:36:25",
@@ -408,13 +428,14 @@
       "lng": -100.486367
     },
     "revisado": false,
-    "accion_tomada": "Coaching realizado"
+    "accion_tomada": "Coaching realizado",
+    "tipo": "celular_en_mano"
   },
   {
     "id": "CAM-022",
     "unidad": "MX-3119",
     "tipoEvento": "Frenado Agresivo",
-    "severidad": "Baja",
+    "severidad": "baja",
     "conductor": "Conductor 120",
     "conductor_id": "DRV-120",
     "timestamp": "2026-03-06T07:03:22",
@@ -427,13 +448,14 @@
       "lng": -103.355791
     },
     "revisado": false,
-    "accion_tomada": "Pendiente revisión"
+    "accion_tomada": "Pendiente revisión",
+    "tipo": "frenado_agresivo"
   },
   {
     "id": "CAM-023",
     "unidad": "MX-3045",
     "tipoEvento": "Microsueño",
-    "severidad": "Alta",
+    "severidad": "alta",
     "conductor": "Ramón Campos Lozano",
     "conductor_id": "DRV-046",
     "timestamp": "2026-03-06T05:56:46",
@@ -446,13 +468,14 @@
       "lng": -97.85261
     },
     "revisado": true,
-    "accion_tomada": "Coaching realizado"
+    "accion_tomada": "Coaching realizado",
+    "tipo": "microsueño"
   },
   {
     "id": "CAM-024",
     "unidad": "MX-3055",
     "tipoEvento": "Frenado Agresivo",
-    "severidad": "Alta",
+    "severidad": "alta",
     "conductor": "Gerardo Almanza Romo",
     "conductor_id": "DRV-056",
     "timestamp": "2026-03-06T01:33:32",
@@ -465,13 +488,14 @@
       "lng": -100.323054
     },
     "revisado": true,
-    "accion_tomada": "Suspensión temporal"
+    "accion_tomada": "Suspensión temporal",
+    "tipo": "frenado_agresivo"
   },
   {
     "id": "CAM-025",
     "unidad": "MX-3000",
     "tipoEvento": "Celular en Mano",
-    "severidad": "Baja",
+    "severidad": "baja",
     "conductor": "Manuel Ortiz García",
     "conductor_id": "DRV-001",
     "timestamp": "2026-03-06T04:14:30",
@@ -484,6 +508,7 @@
       "lng": 0
     },
     "revisado": true,
-    "accion_tomada": "Suspensión temporal"
+    "accion_tomada": "Suspensión temporal",
+    "tipo": "celular_en_mano"
   }
 ]
