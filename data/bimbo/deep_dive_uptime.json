@@ -1,0 +1,297 @@
+{
+  "kpi": "uptime_flota",
+  "valor_actual": 90.6,
+  "meta": 95.0,
+  "gap_pct": 9.4,
+  "total_unidades": 120,
+  "operativas": 109,
+  "no_disponibles": 11,
+
+  "historico": {
+    "diario": [
+      {"fecha": "2026-02-04", "uptime": 91.2},
+      {"fecha": "2026-02-05", "uptime": 90.8},
+      {"fecha": "2026-02-06", "uptime": 89.5},
+      {"fecha": "2026-02-07", "uptime": 88.3},
+      {"fecha": "2026-02-08", "uptime": 88.9},
+      {"fecha": "2026-02-09", "uptime": 89.1},
+      {"fecha": "2026-02-10", "uptime": 90.0},
+      {"fecha": "2026-02-11", "uptime": 90.4},
+      {"fecha": "2026-02-12", "uptime": 91.0},
+      {"fecha": "2026-02-13", "uptime": 90.7},
+      {"fecha": "2026-02-14", "uptime": 89.8},
+      {"fecha": "2026-02-15", "uptime": 88.6},
+      {"fecha": "2026-02-16", "uptime": 87.9},
+      {"fecha": "2026-02-17", "uptime": 88.4},
+      {"fecha": "2026-02-18", "uptime": 89.2},
+      {"fecha": "2026-02-19", "uptime": 90.1},
+      {"fecha": "2026-02-20", "uptime": 90.5},
+      {"fecha": "2026-02-21", "uptime": 91.3},
+      {"fecha": "2026-02-22", "uptime": 91.7},
+      {"fecha": "2026-02-23", "uptime": 91.0},
+      {"fecha": "2026-02-24", "uptime": 90.2},
+      {"fecha": "2026-02-25", "uptime": 89.4},
+      {"fecha": "2026-02-26", "uptime": 89.8},
+      {"fecha": "2026-02-27", "uptime": 90.3},
+      {"fecha": "2026-02-28", "uptime": 90.9},
+      {"fecha": "2026-03-01", "uptime": 91.1},
+      {"fecha": "2026-03-02", "uptime": 90.5},
+      {"fecha": "2026-03-03", "uptime": 90.0},
+      {"fecha": "2026-03-04", "uptime": 89.7},
+      {"fecha": "2026-03-05", "uptime": 90.2},
+      {"fecha": "2026-03-06", "uptime": 90.6}
+    ],
+    "semanal": [
+      {"semana": "Sem 1 Ene", "uptime": 93.1},
+      {"semana": "Sem 2 Ene", "uptime": 92.8},
+      {"semana": "Sem 3 Ene", "uptime": 92.4},
+      {"semana": "Sem 4 Ene", "uptime": 91.9},
+      {"semana": "Sem 1 Feb", "uptime": 91.2},
+      {"semana": "Sem 2 Feb", "uptime": 90.4},
+      {"semana": "Sem 3 Feb", "uptime": 88.6},
+      {"semana": "Sem 4 Feb", "uptime": 90.1},
+      {"semana": "Sem 1 Mar", "uptime": 90.6}
+    ],
+    "mensual": [
+      {"mes": "Abr 2025", "uptime": 94.2},
+      {"mes": "May 2025", "uptime": 93.8},
+      {"mes": "Jun 2025", "uptime": 93.5},
+      {"mes": "Jul 2025", "uptime": 93.1},
+      {"mes": "Ago 2025", "uptime": 92.7},
+      {"mes": "Sep 2025", "uptime": 92.3},
+      {"mes": "Oct 2025", "uptime": 92.0},
+      {"mes": "Nov 2025", "uptime": 91.5},
+      {"mes": "Dic 2025", "uptime": 91.1},
+      {"mes": "Ene 2026", "uptime": 91.8},
+      {"mes": "Feb 2026", "uptime": 90.1},
+      {"mes": "Mar 2026", "uptime": 90.6}
+    ]
+  },
+
+  "descomposicion_gap": {
+    "total_gap_pct": 9.4,
+    "total_unidades_afectadas": 11,
+    "categorias": [
+      {
+        "id": "taller",
+        "label": "Unidades en taller",
+        "pct_del_gap": 6.5,
+        "unidades": 8,
+        "color": "#ef4444",
+        "icono": "🔧",
+        "severidad": "critica"
+      },
+      {
+        "id": "siniestro",
+        "label": "Siniestros en proceso",
+        "pct_del_gap": 1.7,
+        "unidades": 2,
+        "color": "#f59e0b",
+        "icono": "💥",
+        "severidad": "media"
+      },
+      {
+        "id": "documentacion",
+        "label": "Documentación vencida",
+        "pct_del_gap": 1.2,
+        "unidades": 1,
+        "color": "#8b5cf6",
+        "icono": "📋",
+        "severidad": "baja"
+      }
+    ]
+  },
+
+  "unidades_criticas_taller": [
+    {
+      "unidad": "MX-3055",
+      "modelo": "Kenworth T680",
+      "tipo": "Tractocamión",
+      "dias_en_taller": 34,
+      "dias_estandar": 12,
+      "exceso_pct": 183,
+      "ot": "OT-002",
+      "falla": "Soldadura chasis — fractura por fatiga en travesaño central",
+      "taller": "Taller MTY Norte",
+      "causa_raiz": "sin_inventario",
+      "causa_detalle": "Refacción travesaño Kenworth P/N KW-4821 sin stock desde 18-Feb. OC #4521 levantada el 20-Feb → proveedor Kenworth Nacional reporta lead time 3 semanas (entrega estimada 13-Mar). No se buscó proveedor alterno.",
+      "correlaciones": [
+        {"fuente": "SAP MM", "dato": "OC #4521 estado: 'Pendiente proveedor' desde 20-Feb"},
+        {"fuente": "SAP PM", "dato": "OT-002 sin movimiento desde 22-Feb"},
+        {"fuente": "Inventario refacciones", "dato": "Stock KW-4821: 0 unidades. Última compra: Sep 2025"},
+        {"fuente": "Planeación rutas", "dato": "MX-3055 retirada de ruta MTY→CDMX, sustituida por MX-3072 (rendimiento -14%)"}
+      ],
+      "impacto_financiero": {
+        "costo_dia_parado": 28500,
+        "dias_exceso": 22,
+        "total_perdido": 627000,
+        "desglose": {
+          "capacidad_entrega_perdida": 418000,
+          "costo_sustitucion": 127600,
+          "penalizaciones_sla": 81400
+        }
+      }
+    },
+    {
+      "unidad": "MX-3012",
+      "modelo": "Freightliner Cascadia",
+      "tipo": "Tractocamión",
+      "dias_en_taller": 28,
+      "dias_estandar": 8,
+      "exceso_pct": 250,
+      "ot": "OT-017",
+      "falla": "Reemplazo de turbo — falla recurrente (3ra vez en 6 meses)",
+      "taller": "Taller QRO Industrial",
+      "causa_raiz": "sin_visibilidad",
+      "causa_detalle": "Unidad ingresó a taller el 6-Feb. La OT fue cerrada por error el 12-Feb pero la unidad NO salió. Desde entonces, NO aparece en ningún plan de rutas, NO tiene conductor asignado, y NO fue reportada como disponible. Literalmente 'olvidada' en el patio del taller.",
+      "correlaciones": [
+        {"fuente": "SAP PM", "dato": "OT-017 estado: 'Cerrada' el 12-Feb — pero sin firma de conformidad"},
+        {"fuente": "GPS/Telemática", "dato": "Ignición OFF desde 6-Feb. Última ubicación: patio Taller QRO (20.5831, -100.3899)"},
+        {"fuente": "TMS Rutas", "dato": "MX-3012 no asignada a NINGUNA ruta desde 6-Feb. Sin solicitud de reingreso."},
+        {"fuente": "RH/Nómina", "dato": "Conductor Roberto Mendoza reasignado a MX-3045 el 8-Feb. MX-3012 sin conductor desde entonces."},
+        {"fuente": "Inventario refacciones", "dato": "Turbo BorgWarner P/N BW-178 — stock actual: 2 unidades. Refacción SÍ disponible."}
+      ],
+      "impacto_financiero": {
+        "costo_dia_parado": 31200,
+        "dias_exceso": 20,
+        "total_perdido": 624000,
+        "desglose": {
+          "capacidad_entrega_perdida": 462000,
+          "costo_sustitucion": 98400,
+          "penalizaciones_sla": 63600
+        }
+      }
+    },
+    {
+      "unidad": "MX-3041",
+      "modelo": "International LT",
+      "tipo": "Tractocamión",
+      "dias_en_taller": 19,
+      "dias_estandar": 10,
+      "exceso_pct": 90,
+      "ot": "OT-023",
+      "falla": "Reemplazo embrague completo + volante de inercia",
+      "taller": "Taller CDMX Sur",
+      "causa_raiz": "capacidad_taller",
+      "causa_detalle": "Refacción disponible desde día 3. El taller tiene solo 2 bahías para trabajo pesado y ambas están ocupadas con OTs más antiguas. Falta de priorización: esta unidad genera $34K/día y las otras dos $22K/día cada una.",
+      "correlaciones": [
+        {"fuente": "SAP PM", "dato": "OT-023 estado: 'En espera de bahía' desde 25-Feb"},
+        {"fuente": "Taller capacidad", "dato": "2/2 bahías pesadas ocupadas (OT-019 y OT-021, ambas desde 20-Feb)"},
+        {"fuente": "Facturación", "dato": "MX-3041 genera $34,200/día vs OT-019 ($22,100/día) y OT-021 ($21,800/día)"},
+        {"fuente": "Planeación rutas", "dato": "Ruta CDMX→GDL sin asignar desde 17-Feb, 3 entregas reagendadas por cliente"}
+      ],
+      "impacto_financiero": {
+        "costo_dia_parado": 34200,
+        "dias_exceso": 9,
+        "total_perdido": 307800,
+        "desglose": {
+          "capacidad_entrega_perdida": 245000,
+          "costo_sustitucion": 42800,
+          "penalizaciones_sla": 20000
+        }
+      }
+    },
+    {
+      "unidad": "MX-3067",
+      "modelo": "Kenworth T370",
+      "tipo": "Torton",
+      "dias_en_taller": 15,
+      "dias_estandar": 7,
+      "exceso_pct": 114,
+      "ot": "OT-028",
+      "falla": "Sistema de frenos ABS — módulo electrónico dañado",
+      "taller": "Taller GDL Centro",
+      "causa_raiz": "diagnostico_erroneo",
+      "causa_detalle": "Primer diagnóstico (2-Mar): 'Sensor ABS rueda trasera izq.' Cambio de sensor el 3-Mar. Mismo código de falla persistió. Segundo diagnóstico (5-Mar): módulo ABS completo. Refacción no disponible en taller, solicitada el 5-Mar. Lead time: 5 días hábiles.",
+      "correlaciones": [
+        {"fuente": "SAP PM", "dato": "OT-028: 2 líneas de diagnóstico, primera marcada como 'no resuelve'"},
+        {"fuente": "Historial unidad", "dato": "MX-3067: alerta ABS registrada por telemática desde 15-Feb — 15 días antes de ingreso a taller"},
+        {"fuente": "Telemática Geotab", "dato": "Código DTC: C1288 (módulo ABS) activo desde 15-Feb. No fue atendido."},
+        {"fuente": "Inventario", "dato": "Módulo ABS Wabco P/N WB-4455 — stock: 0. Proveedor: llegada estimada 10-Mar"}
+      ],
+      "impacto_financiero": {
+        "costo_dia_parado": 22800,
+        "dias_exceso": 8,
+        "total_perdido": 182400,
+        "desglose": {
+          "capacidad_entrega_perdida": 138000,
+          "costo_sustitucion": 31200,
+          "penalizaciones_sla": 13200
+        }
+      }
+    }
+  ],
+
+  "resumen_financiero": {
+    "total_perdido_acumulado": 1741200,
+    "costo_por_hora_actual": 4836,
+    "proyeccion_30_dias_sin_accion": 3482400,
+    "ahorro_potencial_con_acciones": 2190000,
+    "moneda": "MXN"
+  },
+
+  "acciones": [
+    {
+      "prioridad": 1,
+      "tipo": "inmediata",
+      "unidad": "MX-3012",
+      "accion": "Reactivar MX-3012 — unidad reparada y olvidada en patio",
+      "detalle": "OT-017 fue cerrada el 12-Feb. La unidad tiene turbo nuevo y refacción instalada. Solo requiere: (1) inspección de salida, (2) asignar conductor, (3) meter a plan de rutas. Puede estar operativa en 4 horas.",
+      "ahorro_estimado": 31200,
+      "ahorro_unidad": "por día",
+      "responsable": "Jefe de Taller QRO + Planeación de Rutas",
+      "contacto": "Ing. Ramón Vega — ext. 4402"
+    },
+    {
+      "prioridad": 2,
+      "tipo": "inmediata",
+      "unidad": "MX-3041",
+      "accion": "Repriorizar bahías en Taller CDMX Sur",
+      "detalle": "MX-3041 genera $34,200/día vs $22,100 y $21,800 de las OTs que ocupan las bahías. Mover OT-019 a bahía ligera (solo requiere ajuste de suspensión, no trabajo pesado). Libera bahía para MX-3041 hoy.",
+      "ahorro_estimado": 34200,
+      "ahorro_unidad": "por día",
+      "responsable": "Jefe de Taller CDMX Sur",
+      "contacto": "Lic. Patricia Sánchez — ext. 3108"
+    },
+    {
+      "prioridad": 3,
+      "tipo": "escalamiento",
+      "unidad": "MX-3055",
+      "accion": "Escalar OC #4521 a compras urgentes + buscar proveedor alterno",
+      "detalle": "Kenworth Nacional tiene lead time 3 semanas. Iris identificó 2 proveedores alternos: (1) Auto Partes Regio MTY — P/N compatible, entrega 3 días, +18% costo. (2) Importadora Houston — entrega 5 días, mismo precio. Diferencia de costo vs tener unidad parada: $28,500/día vs +$8,200 por refacción alterna.",
+      "ahorro_estimado": 28500,
+      "ahorro_unidad": "por día desde que llegue refacción",
+      "responsable": "Compras + Gerente de Flota",
+      "contacto": "Ing. Carlos Medina — ext. 2201"
+    },
+    {
+      "prioridad": 4,
+      "tipo": "preventiva",
+      "unidad": "SISTEMA",
+      "accion": "Crear alerta automática: unidad >120% tiempo estándar en taller",
+      "detalle": "Iris puede configurar un trigger: si una unidad excede 120% del tiempo estándar de su OT sin movimiento, alerta a Jefe de Taller + Gerente de Flota + Planeación. Incluir: días en taller, costo acumulado, y si tiene conductor asignado. Esto habría detectado MX-3012 desde el día 10.",
+      "ahorro_estimado": 450000,
+      "ahorro_unidad": "estimado mensual evitando recurrencia",
+      "responsable": "Iris Fleet (configuración automática)",
+      "contacto": "Sistema — se activa con un click"
+    },
+    {
+      "prioridad": 5,
+      "tipo": "preventiva",
+      "unidad": "SISTEMA",
+      "accion": "Stock mínimo inteligente de refacciones críticas",
+      "detalle": "Iris analizó 12 meses de OTs: 3 refacciones causan el 68% de los retrasos por inventario. Recomendación: mantener stock mínimo de 1 unidad de cada una: Travesaño KW-4821, Módulo ABS WB-4455, Turbo BW-178. Inversión: $187,000 MXN. Payback: 6.5 días de uptime recuperado.",
+      "ahorro_estimado": 870000,
+      "ahorro_unidad": "estimado anual",
+      "responsable": "Compras + Jefe de Taller",
+      "contacto": "Sistema genera OC automática"
+    }
+  ],
+
+  "iris_narrativa": {
+    "apertura": "Tu flota opera al 90.6%, pero el 9.4% inactivo te cuesta $1.74M acumulados. Encontré exactamente dónde está el problema.",
+    "hallazgo_principal": "De las 11 unidades inactivas, 4 llevan entre 90% y 250% más tiempo del que deberían en taller. Dos de ellas tienen solución inmediata — una ya está reparada y nadie se dio cuenta.",
+    "revelacion": "MX-3012 lleva 28 días en taller con la OT cerrada. El turbo ya fue reemplazado. Pero como la OT se cerró sin firma de conformidad, nadie la incluyó en planeación de rutas. Lleva 20 días 'perdida'. Eso son $624,000 MXN tirados.",
+    "cierre": "Con 3 acciones inmediatas hoy, puedes recuperar $93,900/día. Con las 2 preventivas, evitas que esto vuelva a pasar. Yo monitoreo el cumplimiento."
+  }
+}
