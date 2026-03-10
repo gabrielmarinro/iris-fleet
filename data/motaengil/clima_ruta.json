@@ -1,0 +1,46 @@
+{
+  "zonas": [
+    {
+      "zona": "Cancún-Tulum",
+      "temp_c": 32,
+      "condicion": "Soleado",
+      "viento_kmh": 18,
+      "alerta": null
+    },
+    {
+      "zona": "Monterrey-Saltillo",
+      "temp_c": 28,
+      "condicion": "Parcialmente nublado",
+      "viento_kmh": 12,
+      "alerta": null
+    },
+    {
+      "zona": "CDMX-Toluca",
+      "temp_c": 15,
+      "condicion": "Neblina matutina",
+      "viento_kmh": 8,
+      "alerta": "Precaución: visibilidad reducida"
+    },
+    {
+      "zona": "GDL-Puerto Vallarta",
+      "temp_c": 30,
+      "condicion": "Lluvias vespertinas",
+      "viento_kmh": 22,
+      "alerta": "Lluvias 60% después de 15:00"
+    },
+    {
+      "zona": "Campeche-Mérida",
+      "temp_c": 34,
+      "condicion": "Soleado",
+      "viento_kmh": 15,
+      "alerta": "Calor extremo"
+    },
+    {
+      "zona": "Veracruz",
+      "temp_c": 29,
+      "condicion": "Nublado",
+      "viento_kmh": 25,
+      "alerta": "Norte esperado 18:00"
+    }
+  ]
+}

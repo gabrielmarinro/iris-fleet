@@ -1,0 +1,5714 @@
+{
+  "vehiculos": [
+    {
+      "unidad": "ME-H001",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2023,
+      "placa": "FAD-617",
+      "estado": "en_ruta",
+      "conductor": "Andrés Martínez Ortiz",
+      "rol": "Almacenista",
+      "certificaciones": [
+        "NOM-009"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Monterrey",
+      "destino": "Frente Autopista MTY-Saltillo",
+      "frente_obra": "Autopista MTY-Saltillo",
+      "odometro_km": 79196,
+      "rendimiento_kml": 9.1,
+      "combustible_pct": 33,
+      "velocidad_kmh": 91,
+      "salud_motor_pct": 96,
+      "salud_frenos_pct": 94,
+      "salud_general_pct": 76,
+      "horas_conduccion_hoy": 2.2,
+      "ubicacion": {
+        "lat": 25.4736,
+        "lng": -100.1243
+      },
+      "eta_original": "7:15",
+      "eta_ai": "18:45",
+      "avance_pct": 43,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Manejo agresivo detectado"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-03",
+        "proximo_servicio": "2026-06-04"
+      },
+      "seguro": {
+        "poliza": "POL-ME-57052",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-H002",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2024,
+      "placa": "MJN-691",
+      "estado": "en_ruta",
+      "conductor": "Gabriel Gómez López",
+      "rol": "Jefe de Frente",
+      "certificaciones": [
+        "Seguridad Industrial",
+        "ISO 45001",
+        "Trabajos en Altura"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Campeche-Mérida",
+      "destino": "Frente Tren Maya Tramo 3",
+      "frente_obra": "Tren Maya Tramo 3",
+      "odometro_km": 155568,
+      "rendimiento_kml": 8.8,
+      "combustible_pct": 45,
+      "velocidad_kmh": 10,
+      "salud_motor_pct": 69,
+      "salud_frenos_pct": 66,
+      "salud_general_pct": 74,
+      "horas_conduccion_hoy": 2.8,
+      "ubicacion": {
+        "lat": 19.9214,
+        "lng": -90.6111
+      },
+      "eta_original": "12:30",
+      "eta_ai": "10:30",
+      "avance_pct": 89,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-18",
+        "proximo_servicio": "2026-04-06"
+      },
+      "seguro": {
+        "poliza": "POL-ME-70589",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-H003",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2022,
+      "placa": "MFA-680",
+      "estado": "por_asignar",
+      "conductor": "Gerardo Hernández Sánchez",
+      "rol": "Supervisor de Seguridad",
+      "certificaciones": [
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Campeche-Mérida",
+      "destino": null,
+      "frente_obra": "Tren Maya Tramo 3",
+      "odometro_km": 194467,
+      "rendimiento_kml": 9.3,
+      "combustible_pct": 71,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 80,
+      "salud_frenos_pct": 89,
+      "salud_general_pct": 59,
+      "horas_conduccion_hoy": 2.6,
+      "ubicacion": {
+        "lat": 19.688,
+        "lng": -90.4932
+      },
+      "eta_original": "11:45",
+      "eta_ai": "16:45",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-03",
+        "proximo_servicio": "2026-03-28"
+      },
+      "seguro": {
+        "poliza": "POL-ME-24371",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-H004",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2024,
+      "placa": "PNA-838",
+      "estado": "por_asignar",
+      "conductor": "Raúl Chávez Cruz",
+      "rol": "Ingeniero Residente",
+      "certificaciones": [
+        "NOM-009",
+        "Manejo Defensivo",
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX-Toluca",
+      "destino": null,
+      "frente_obra": "Tren Interurbano Méx-Toluca",
+      "odometro_km": 171345,
+      "rendimiento_kml": 8.7,
+      "combustible_pct": 22,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 73,
+      "salud_frenos_pct": 87,
+      "salud_general_pct": 60,
+      "horas_conduccion_hoy": 4.5,
+      "ubicacion": {
+        "lat": 19.5623,
+        "lng": -99.3545
+      },
+      "eta_original": "11:15",
+      "eta_ai": "15:00",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-05",
+        "proximo_servicio": "2026-05-25"
+      },
+      "seguro": {
+        "poliza": "POL-ME-31174",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-H005",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2021,
+      "placa": "NPB-597",
+      "estado": "en_ruta",
+      "conductor": "Manuel Torres Sánchez",
+      "rol": "Ingeniero Residente",
+      "certificaciones": [
+        "Trabajos en Altura",
+        "ISO 45001",
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": "Frente Nuevo Aeropuerto Tulum",
+      "frente_obra": "Nuevo Aeropuerto Tulum",
+      "odometro_km": 44325,
+      "rendimiento_kml": 10.8,
+      "combustible_pct": 78,
+      "velocidad_kmh": 21,
+      "salud_motor_pct": 71,
+      "salud_frenos_pct": 93,
+      "salud_general_pct": 88,
+      "horas_conduccion_hoy": 4.2,
+      "ubicacion": {
+        "lat": 20.0771,
+        "lng": -87.4064
+      },
+      "eta_original": "18:15",
+      "eta_ai": "18:30",
+      "avance_pct": 51,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Manejo agresivo detectado"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-04",
+        "proximo_servicio": "2026-04-08"
+      },
+      "seguro": {
+        "poliza": "POL-ME-18392",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-H006",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2022,
+      "placa": "AEH-385",
+      "estado": "en_taller",
+      "conductor": "Fernando Hernández Sánchez",
+      "rol": "Inspector de Calidad",
+      "certificaciones": [
+        "NOM-009"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Cancún-Tulum",
+      "destino": null,
+      "frente_obra": "Tren Maya Tramo 5",
+      "odometro_km": 169256,
+      "rendimiento_kml": 9.1,
+      "combustible_pct": 24,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 91,
+      "salud_frenos_pct": 96,
+      "salud_general_pct": 80,
+      "horas_conduccion_hoy": 2.4,
+      "ubicacion": {
+        "lat": 20.6138,
+        "lng": -87.1358
+      },
+      "eta_original": "8:00",
+      "eta_ai": "17:45",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Manejo agresivo detectado"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-22",
+        "proximo_servicio": "2026-03-02"
+      },
+      "seguro": {
+        "poliza": "POL-ME-62772",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-H007",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2022,
+      "placa": "DNG-982",
+      "estado": "en_ruta",
+      "conductor": "José Díaz Rodríguez",
+      "rol": "Coordinador de Logística",
+      "certificaciones": [
+        "Seguridad Industrial"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Monterrey",
+      "destino": "Frente Autopista MTY-Saltillo",
+      "frente_obra": "Autopista MTY-Saltillo",
+      "odometro_km": 64862,
+      "rendimiento_kml": 9.8,
+      "combustible_pct": 91,
+      "velocidad_kmh": 69,
+      "salud_motor_pct": 55,
+      "salud_frenos_pct": 65,
+      "salud_general_pct": 98,
+      "horas_conduccion_hoy": 8.5,
+      "ubicacion": {
+        "lat": 25.2198,
+        "lng": -100.3186
+      },
+      "eta_original": "10:45",
+      "eta_ai": "7:15",
+      "avance_pct": 48,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-10",
+        "proximo_servicio": "2026-06-23"
+      },
+      "seguro": {
+        "poliza": "POL-ME-82845",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-H008",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2023,
+      "placa": "AJH-973",
+      "estado": "en_ruta",
+      "conductor": "Javier Ortiz Hernández",
+      "rol": "Coordinador de Logística",
+      "certificaciones": [
+        "Seguridad Industrial"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX-Toluca",
+      "destino": "Frente Tren Interurbano Méx-Toluca",
+      "frente_obra": "Tren Interurbano Méx-Toluca",
+      "odometro_km": 72068,
+      "rendimiento_kml": 10.9,
+      "combustible_pct": 73,
+      "velocidad_kmh": 10,
+      "salud_motor_pct": 66,
+      "salud_frenos_pct": 64,
+      "salud_general_pct": 88,
+      "horas_conduccion_hoy": 0.7,
+      "ubicacion": {
+        "lat": 19.5071,
+        "lng": -99.6377
+      },
+      "eta_original": "16:15",
+      "eta_ai": "16:00",
+      "avance_pct": 79,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-09",
+        "proximo_servicio": "2026-04-22"
+      },
+      "seguro": {
+        "poliza": "POL-ME-51180",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-H009",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2022,
+      "placa": "JHB-650",
+      "estado": "en_ruta",
+      "conductor": "Sergio Flores López",
+      "rol": "Jefe de Frente",
+      "certificaciones": [
+        "Manejo Defensivo",
+        "Trabajos en Altura",
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Campeche-Mérida",
+      "destino": "Frente Tren Maya Tramo 3",
+      "frente_obra": "Tren Maya Tramo 3",
+      "odometro_km": 191079,
+      "rendimiento_kml": 10.1,
+      "combustible_pct": 16,
+      "velocidad_kmh": 112,
+      "salud_motor_pct": 70,
+      "salud_frenos_pct": 83,
+      "salud_general_pct": 68,
+      "horas_conduccion_hoy": 1.6,
+      "ubicacion": {
+        "lat": 20.0402,
+        "lng": -90.4079
+      },
+      "eta_original": "16:00",
+      "eta_ai": "17:30",
+      "avance_pct": 84,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [
+        "Manejo agresivo detectado"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-24",
+        "proximo_servicio": "2026-04-09"
+      },
+      "seguro": {
+        "poliza": "POL-ME-46930",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-H010",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2023,
+      "placa": "MAE-233",
+      "estado": "en_ruta",
+      "conductor": "Manuel Hernández López",
+      "rol": "Administrativo",
+      "certificaciones": [
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": "Frente Nuevo Aeropuerto Tulum",
+      "frente_obra": "Nuevo Aeropuerto Tulum",
+      "odometro_km": 147489,
+      "rendimiento_kml": 9.7,
+      "combustible_pct": 64,
+      "velocidad_kmh": 70,
+      "salud_motor_pct": 82,
+      "salud_frenos_pct": 95,
+      "salud_general_pct": 50,
+      "horas_conduccion_hoy": 1.1,
+      "ubicacion": {
+        "lat": 20.517,
+        "lng": -87.3154
+      },
+      "eta_original": "9:00",
+      "eta_ai": "12:15",
+      "avance_pct": 55,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-12",
+        "proximo_servicio": "2026-04-22"
+      },
+      "seguro": {
+        "poliza": "POL-ME-42706",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-H011",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2024,
+      "placa": "MNA-854",
+      "estado": "no_ubicable",
+      "conductor": "Gabriel Sánchez Rodríguez",
+      "rol": "Supervisor de Seguridad",
+      "certificaciones": [
+        "ISO 45001",
+        "Trabajos en Altura"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": null,
+      "frente_obra": "Nuevo Aeropuerto Tulum",
+      "odometro_km": 177702,
+      "rendimiento_kml": 10.4,
+      "combustible_pct": 42,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 65,
+      "salud_frenos_pct": 66,
+      "salud_general_pct": 74,
+      "horas_conduccion_hoy": 8.7,
+      "ubicacion": {
+        "lat": 20.4652,
+        "lng": -87.5965
+      },
+      "eta_original": "14:30",
+      "eta_ai": "11:15",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": false,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-28",
+        "proximo_servicio": "2026-03-25"
+      },
+      "seguro": {
+        "poliza": "POL-ME-46585",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-H012",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2023,
+      "placa": "DBG-846",
+      "estado": "por_asignar",
+      "conductor": "Ricardo Rodríguez Gutiérrez",
+      "rol": "Supervisor de Seguridad",
+      "certificaciones": [
+        "NOM-009",
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX",
+      "destino": null,
+      "frente_obra": "Puente Vehicular Periférico Norte",
+      "odometro_km": 22235,
+      "rendimiento_kml": 8.8,
+      "combustible_pct": 22,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 79,
+      "salud_frenos_pct": 96,
+      "salud_general_pct": 62,
+      "horas_conduccion_hoy": 2.5,
+      "ubicacion": {
+        "lat": 19.6253,
+        "lng": -99.479
+      },
+      "eta_original": "15:15",
+      "eta_ai": "12:45",
+      "avance_pct": 0,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-22",
+        "proximo_servicio": "2026-03-24"
+      },
+      "seguro": {
+        "poliza": "POL-ME-49363",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-H013",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2024,
+      "placa": "FLC-682",
+      "estado": "en_ruta",
+      "conductor": "José Pérez Díaz",
+      "rol": "Administrativo",
+      "certificaciones": [
+        "NOM-009",
+        "Seguridad Industrial"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX",
+      "destino": "Frente Puente Vehicular Periférico Norte",
+      "frente_obra": "Puente Vehicular Periférico Norte",
+      "odometro_km": 197769,
+      "rendimiento_kml": 9.2,
+      "combustible_pct": 46,
+      "velocidad_kmh": 36,
+      "salud_motor_pct": 68,
+      "salud_frenos_pct": 87,
+      "salud_general_pct": 87,
+      "horas_conduccion_hoy": 6.1,
+      "ubicacion": {
+        "lat": 19.3933,
+        "lng": -99.2149
+      },
+      "eta_original": "17:15",
+      "eta_ai": "15:45",
+      "avance_pct": 94,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-03",
+        "proximo_servicio": "2026-04-22"
+      },
+      "seguro": {
+        "poliza": "POL-ME-50687",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-H014",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2021,
+      "placa": "NJL-493",
+      "estado": "en_ruta",
+      "conductor": "Guillermo Chávez López",
+      "rol": "Inspector de Calidad",
+      "certificaciones": [
+        "Trabajos en Altura",
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Guadalajara",
+      "destino": "Frente Libramiento GDL-PV",
+      "frente_obra": "Libramiento GDL-PV",
+      "odometro_km": 27114,
+      "rendimiento_kml": 9.1,
+      "combustible_pct": 91,
+      "velocidad_kmh": 88,
+      "salud_motor_pct": 55,
+      "salud_frenos_pct": 66,
+      "salud_general_pct": 77,
+      "horas_conduccion_hoy": 2.2,
+      "ubicacion": {
+        "lat": 20.8525,
+        "lng": -103.2325
+      },
+      "eta_original": "14:00",
+      "eta_ai": "15:15",
+      "avance_pct": 15,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-25",
+        "proximo_servicio": "2026-06-20"
+      },
+      "seguro": {
+        "poliza": "POL-ME-76162",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-H015",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2024,
+      "placa": "DGK-340",
+      "estado": "en_ruta",
+      "conductor": "Alejandro Ramírez Reyes",
+      "rol": "Administrativo",
+      "certificaciones": [
+        "Manejo Defensivo",
+        "NOM-009"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": "Frente Ampliación Puerto Veracruz",
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 132983,
+      "rendimiento_kml": 9.1,
+      "combustible_pct": 18,
+      "velocidad_kmh": 17,
+      "salud_motor_pct": 64,
+      "salud_frenos_pct": 74,
+      "salud_general_pct": 74,
+      "horas_conduccion_hoy": 6.9,
+      "ubicacion": {
+        "lat": 19.2939,
+        "lng": -96.3915
+      },
+      "eta_original": "13:30",
+      "eta_ai": "15:45",
+      "avance_pct": 53,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-28",
+        "proximo_servicio": "2026-06-16"
+      },
+      "seguro": {
+        "poliza": "POL-ME-10772",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-H016",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2024,
+      "placa": "HJD-324",
+      "estado": "no_ubicable",
+      "conductor": "Iván Díaz Ortiz",
+      "rol": "Administrativo",
+      "certificaciones": [
+        "Primeros Auxilios",
+        "Seguridad Industrial"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Campeche-Mérida",
+      "destino": null,
+      "frente_obra": "Tren Maya Tramo 3",
+      "odometro_km": 238726,
+      "rendimiento_kml": 10.7,
+      "combustible_pct": 57,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 76,
+      "salud_frenos_pct": 85,
+      "salud_general_pct": 96,
+      "horas_conduccion_hoy": 1.7,
+      "ubicacion": {
+        "lat": 19.8204,
+        "lng": -90.7534
+      },
+      "eta_original": "16:00",
+      "eta_ai": "13:00",
+      "avance_pct": 0,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": false,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-02",
+        "proximo_servicio": "2026-05-13"
+      },
+      "seguro": {
+        "poliza": "POL-ME-52906",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-H017",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2023,
+      "placa": "GLA-458",
+      "estado": "en_ruta",
+      "conductor": "Ricardo Díaz Ramírez",
+      "rol": "Jefe de Frente",
+      "certificaciones": [
+        "Seguridad Industrial",
+        "ISO 45001",
+        "NOM-009"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": "Frente Ampliación Puerto Veracruz",
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 214551,
+      "rendimiento_kml": 10.7,
+      "combustible_pct": 39,
+      "velocidad_kmh": 25,
+      "salud_motor_pct": 56,
+      "salud_frenos_pct": 99,
+      "salud_general_pct": 59,
+      "horas_conduccion_hoy": 2.4,
+      "ubicacion": {
+        "lat": 19.1541,
+        "lng": -96.3614
+      },
+      "eta_original": "10:45",
+      "eta_ai": "18:30",
+      "avance_pct": 98,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-25",
+        "proximo_servicio": "2026-04-10"
+      },
+      "seguro": {
+        "poliza": "POL-ME-24168",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-H018",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2024,
+      "placa": "JBL-970",
+      "estado": "en_taller",
+      "conductor": "Antonio López Gutiérrez",
+      "rol": "Almacenista",
+      "certificaciones": [
+        "NOM-009"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Campeche-Mérida",
+      "destino": null,
+      "frente_obra": "Tren Maya Tramo 3",
+      "odometro_km": 118980,
+      "rendimiento_kml": 10.9,
+      "combustible_pct": 13,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 77,
+      "salud_frenos_pct": 94,
+      "salud_general_pct": 77,
+      "horas_conduccion_hoy": 6.6,
+      "ubicacion": {
+        "lat": 19.5814,
+        "lng": -90.4415
+      },
+      "eta_original": "7:45",
+      "eta_ai": "14:00",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-23",
+        "proximo_servicio": "2026-04-14"
+      },
+      "seguro": {
+        "poliza": "POL-ME-33086",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-H019",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2024,
+      "placa": "BND-575",
+      "estado": "en_ruta",
+      "conductor": "Ricardo Flores Sánchez",
+      "rol": "Almacenista",
+      "certificaciones": [
+        "ISO 45001",
+        "Primeros Auxilios",
+        "Manejo Defensivo"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": "Frente Ampliación Puerto Veracruz",
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 231461,
+      "rendimiento_kml": 10.3,
+      "combustible_pct": 11,
+      "velocidad_kmh": 63,
+      "salud_motor_pct": 75,
+      "salud_frenos_pct": 71,
+      "salud_general_pct": 81,
+      "horas_conduccion_hoy": 2.1,
+      "ubicacion": {
+        "lat": 19.3487,
+        "lng": -96.2258
+      },
+      "eta_original": "16:30",
+      "eta_ai": "15:00",
+      "avance_pct": 66,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-18",
+        "proximo_servicio": "2026-04-23"
+      },
+      "seguro": {
+        "poliza": "POL-ME-72402",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-H020",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2021,
+      "placa": "FHE-863",
+      "estado": "en_ruta",
+      "conductor": "Francisco Sánchez Torres",
+      "rol": "Coordinador de Logística",
+      "certificaciones": [
+        "Manejo Defensivo",
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": "Frente Ampliación Puerto Veracruz",
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 92132,
+      "rendimiento_kml": 9.1,
+      "combustible_pct": 42,
+      "velocidad_kmh": 39,
+      "salud_motor_pct": 71,
+      "salud_frenos_pct": 74,
+      "salud_general_pct": 57,
+      "horas_conduccion_hoy": 7.2,
+      "ubicacion": {
+        "lat": 19.0593,
+        "lng": -95.9843
+      },
+      "eta_original": "18:15",
+      "eta_ai": "10:15",
+      "avance_pct": 94,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-04",
+        "proximo_servicio": "2026-04-10"
+      },
+      "seguro": {
+        "poliza": "POL-ME-39816",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-H021",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2021,
+      "placa": "KBN-602",
+      "estado": "en_ruta",
+      "conductor": "Ricardo Hernández Hernández",
+      "rol": "Ingeniero Residente",
+      "certificaciones": [
+        "NOM-009"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX-Toluca",
+      "destino": "Frente Tren Interurbano Méx-Toluca",
+      "frente_obra": "Tren Interurbano Méx-Toluca",
+      "odometro_km": 200602,
+      "rendimiento_kml": 9.8,
+      "combustible_pct": 44,
+      "velocidad_kmh": 60,
+      "salud_motor_pct": 85,
+      "salud_frenos_pct": 88,
+      "salud_general_pct": 71,
+      "horas_conduccion_hoy": 1.8,
+      "ubicacion": {
+        "lat": 19.0208,
+        "lng": -99.3154
+      },
+      "eta_original": "14:00",
+      "eta_ai": "8:45",
+      "avance_pct": 62,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-26",
+        "proximo_servicio": "2026-05-03"
+      },
+      "seguro": {
+        "poliza": "POL-ME-42530",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-H022",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2022,
+      "placa": "PEJ-724",
+      "estado": "en_taller",
+      "conductor": "Sergio Cruz Torres",
+      "rol": "Ingeniero Residente",
+      "certificaciones": [
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX",
+      "destino": null,
+      "frente_obra": "Puente Vehicular Periférico Norte",
+      "odometro_km": 218343,
+      "rendimiento_kml": 9.8,
+      "combustible_pct": 35,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 71,
+      "salud_frenos_pct": 65,
+      "salud_general_pct": 60,
+      "horas_conduccion_hoy": 2.4,
+      "ubicacion": {
+        "lat": 19.5312,
+        "lng": -99.3861
+      },
+      "eta_original": "13:45",
+      "eta_ai": "18:45",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-03",
+        "proximo_servicio": "2026-04-09"
+      },
+      "seguro": {
+        "poliza": "POL-ME-91927",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-H023",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2022,
+      "placa": "MJM-395",
+      "estado": "en_ruta",
+      "conductor": "Ricardo González López",
+      "rol": "Inspector de Calidad",
+      "certificaciones": [
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX",
+      "destino": "Frente Puente Vehicular Periférico Norte",
+      "frente_obra": "Puente Vehicular Periférico Norte",
+      "odometro_km": 184773,
+      "rendimiento_kml": 8.9,
+      "combustible_pct": 46,
+      "velocidad_kmh": 89,
+      "salud_motor_pct": 80,
+      "salud_frenos_pct": 77,
+      "salud_general_pct": 82,
+      "horas_conduccion_hoy": 5.4,
+      "ubicacion": {
+        "lat": 19.4627,
+        "lng": -99.1212
+      },
+      "eta_original": "13:30",
+      "eta_ai": "16:30",
+      "avance_pct": 3,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [
+        "Manejo agresivo detectado"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-25",
+        "proximo_servicio": "2026-05-19"
+      },
+      "seguro": {
+        "poliza": "POL-ME-15273",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-H024",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2024,
+      "placa": "GFE-207",
+      "estado": "en_taller",
+      "conductor": "Javier Díaz Morales",
+      "rol": "Operador de Campo",
+      "certificaciones": [
+        "Primeros Auxilios",
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": null,
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 255142,
+      "rendimiento_kml": 9.2,
+      "combustible_pct": 44,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 97,
+      "salud_frenos_pct": 85,
+      "salud_general_pct": 98,
+      "horas_conduccion_hoy": 5.5,
+      "ubicacion": {
+        "lat": 19.1429,
+        "lng": -96.2413
+      },
+      "eta_original": "12:00",
+      "eta_ai": "13:00",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-17",
+        "proximo_servicio": "2026-05-20"
+      },
+      "seguro": {
+        "poliza": "POL-ME-75338",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-H025",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2023,
+      "placa": "PJD-262",
+      "estado": "en_ruta",
+      "conductor": "Jorge Cruz Morales",
+      "rol": "Administrativo",
+      "certificaciones": [
+        "Seguridad Industrial",
+        "NOM-009",
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Cancún-Tulum",
+      "destino": "Frente Tren Maya Tramo 5",
+      "frente_obra": "Tren Maya Tramo 5",
+      "odometro_km": 158974,
+      "rendimiento_kml": 8.8,
+      "combustible_pct": 19,
+      "velocidad_kmh": 28,
+      "salud_motor_pct": 62,
+      "salud_frenos_pct": 89,
+      "salud_general_pct": 57,
+      "horas_conduccion_hoy": 6.5,
+      "ubicacion": {
+        "lat": 20.4224,
+        "lng": -86.8204
+      },
+      "eta_original": "11:30",
+      "eta_ai": "13:45",
+      "avance_pct": 60,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-28",
+        "proximo_servicio": "2026-03-09"
+      },
+      "seguro": {
+        "poliza": "POL-ME-64387",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-H026",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2023,
+      "placa": "GGE-881",
+      "estado": "en_ruta",
+      "conductor": "Javier Gutiérrez Morales",
+      "rol": "Coordinador de Logística",
+      "certificaciones": [
+        "Primeros Auxilios",
+        "Manejo Defensivo"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Campeche-Mérida",
+      "destino": "Frente Tren Maya Tramo 3",
+      "frente_obra": "Tren Maya Tramo 3",
+      "odometro_km": 205329,
+      "rendimiento_kml": 9.2,
+      "combustible_pct": 32,
+      "velocidad_kmh": 89,
+      "salud_motor_pct": 70,
+      "salud_frenos_pct": 96,
+      "salud_general_pct": 74,
+      "horas_conduccion_hoy": 2.3,
+      "ubicacion": {
+        "lat": 20.0053,
+        "lng": -90.8038
+      },
+      "eta_original": "18:45",
+      "eta_ai": "18:45",
+      "avance_pct": 49,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-16",
+        "proximo_servicio": "2026-03-05"
+      },
+      "seguro": {
+        "poliza": "POL-ME-75836",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-H027",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2021,
+      "placa": "PBL-371",
+      "estado": "en_ruta",
+      "conductor": "Carlos González Díaz",
+      "rol": "Supervisor de Seguridad",
+      "certificaciones": [
+        "ISO 45001",
+        "Primeros Auxilios",
+        "Seguridad Industrial"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Monterrey",
+      "destino": "Frente Autopista MTY-Saltillo",
+      "frente_obra": "Autopista MTY-Saltillo",
+      "odometro_km": 152874,
+      "rendimiento_kml": 10.8,
+      "combustible_pct": 50,
+      "velocidad_kmh": 109,
+      "salud_motor_pct": 98,
+      "salud_frenos_pct": 94,
+      "salud_general_pct": 74,
+      "horas_conduccion_hoy": 9.5,
+      "ubicacion": {
+        "lat": 25.4961,
+        "lng": -100.0775
+      },
+      "eta_original": "14:00",
+      "eta_ai": "16:00",
+      "avance_pct": 30,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-14",
+        "proximo_servicio": "2026-03-25"
+      },
+      "seguro": {
+        "poliza": "POL-ME-93066",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-H028",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2023,
+      "placa": "GDF-798",
+      "estado": "en_ruta",
+      "conductor": "Arturo Hernández Torres",
+      "rol": "Operador de Campo",
+      "certificaciones": [
+        "Trabajos en Altura"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": "Frente Ampliación Puerto Veracruz",
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 251827,
+      "rendimiento_kml": 8.6,
+      "combustible_pct": 18,
+      "velocidad_kmh": 78,
+      "salud_motor_pct": 79,
+      "salud_frenos_pct": 99,
+      "salud_general_pct": 93,
+      "horas_conduccion_hoy": 2.4,
+      "ubicacion": {
+        "lat": 19.4177,
+        "lng": -96.3441
+      },
+      "eta_original": "14:30",
+      "eta_ai": "14:30",
+      "avance_pct": 85,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-03",
+        "proximo_servicio": "2026-06-12"
+      },
+      "seguro": {
+        "poliza": "POL-ME-87014",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-H029",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2023,
+      "placa": "FFE-816",
+      "estado": "por_asignar",
+      "conductor": "Antonio Gómez Morales",
+      "rol": "Administrativo",
+      "certificaciones": [
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX",
+      "destino": null,
+      "frente_obra": "Puente Vehicular Periférico Norte",
+      "odometro_km": 134756,
+      "rendimiento_kml": 10.6,
+      "combustible_pct": 58,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 72,
+      "salud_frenos_pct": 60,
+      "salud_general_pct": 86,
+      "horas_conduccion_hoy": 8.7,
+      "ubicacion": {
+        "lat": 19.667,
+        "lng": -98.8958
+      },
+      "eta_original": "16:45",
+      "eta_ai": "11:15",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-22",
+        "proximo_servicio": "2026-04-21"
+      },
+      "seguro": {
+        "poliza": "POL-ME-22735",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-H030",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2021,
+      "placa": "FCM-997",
+      "estado": "en_ruta",
+      "conductor": "José López Torres",
+      "rol": "Supervisor de Seguridad",
+      "certificaciones": [
+        "NOM-009",
+        "Manejo Defensivo",
+        "Trabajos en Altura"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Campeche-Mérida",
+      "destino": "Frente Tren Maya Tramo 3",
+      "frente_obra": "Tren Maya Tramo 3",
+      "odometro_km": 166931,
+      "rendimiento_kml": 9.4,
+      "combustible_pct": 40,
+      "velocidad_kmh": 116,
+      "salud_motor_pct": 85,
+      "salud_frenos_pct": 78,
+      "salud_general_pct": 97,
+      "horas_conduccion_hoy": 8.7,
+      "ubicacion": {
+        "lat": 20.0225,
+        "lng": -90.549
+      },
+      "eta_original": "8:15",
+      "eta_ai": "10:45",
+      "avance_pct": 71,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-15",
+        "proximo_servicio": "2026-05-22"
+      },
+      "seguro": {
+        "poliza": "POL-ME-98125",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-H031",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2023,
+      "placa": "HND-164",
+      "estado": "por_asignar",
+      "conductor": "Guillermo García Chávez",
+      "rol": "Inspector de Calidad",
+      "certificaciones": [
+        "Manejo Defensivo",
+        "Primeros Auxilios",
+        "Seguridad Industrial"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX",
+      "destino": null,
+      "frente_obra": "Puente Vehicular Periférico Norte",
+      "odometro_km": 43402,
+      "rendimiento_kml": 10.2,
+      "combustible_pct": 25,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 57,
+      "salud_frenos_pct": 62,
+      "salud_general_pct": 69,
+      "horas_conduccion_hoy": 10.0,
+      "ubicacion": {
+        "lat": 19.2697,
+        "lng": -99.3391
+      },
+      "eta_original": "15:15",
+      "eta_ai": "13:45",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-19",
+        "proximo_servicio": "2026-04-14"
+      },
+      "seguro": {
+        "poliza": "POL-ME-95841",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-H032",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2024,
+      "placa": "DFP-476",
+      "estado": "en_taller",
+      "conductor": "Héctor Pérez Cruz",
+      "rol": "Coordinador de Logística",
+      "certificaciones": [
+        "Manejo Defensivo",
+        "Seguridad Industrial",
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": null,
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 88332,
+      "rendimiento_kml": 8.6,
+      "combustible_pct": 43,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 67,
+      "salud_frenos_pct": 67,
+      "salud_general_pct": 79,
+      "horas_conduccion_hoy": 0.9,
+      "ubicacion": {
+        "lat": 18.9973,
+        "lng": -96.0463
+      },
+      "eta_original": "7:00",
+      "eta_ai": "12:15",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-19",
+        "proximo_servicio": "2026-04-27"
+      },
+      "seguro": {
+        "poliza": "POL-ME-40539",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-H033",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2021,
+      "placa": "CKA-115",
+      "estado": "en_taller",
+      "conductor": "José González Ortiz",
+      "rol": "Supervisor de Seguridad",
+      "certificaciones": [
+        "NOM-009"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX-Toluca",
+      "destino": null,
+      "frente_obra": "Tren Interurbano Méx-Toluca",
+      "odometro_km": 87685,
+      "rendimiento_kml": 10.6,
+      "combustible_pct": 49,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 56,
+      "salud_frenos_pct": 71,
+      "salud_general_pct": 66,
+      "horas_conduccion_hoy": 0.5,
+      "ubicacion": {
+        "lat": 19.435,
+        "lng": -99.5643
+      },
+      "eta_original": "18:00",
+      "eta_ai": "14:45",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-20",
+        "proximo_servicio": "2026-03-24"
+      },
+      "seguro": {
+        "poliza": "POL-ME-96363",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-H034",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2021,
+      "placa": "GNB-182",
+      "estado": "por_asignar",
+      "conductor": "Alberto Gómez Díaz",
+      "rol": "Supervisor de Seguridad",
+      "certificaciones": [
+        "Trabajos en Altura",
+        "Seguridad Industrial",
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": null,
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 30945,
+      "rendimiento_kml": 11.0,
+      "combustible_pct": 43,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 94,
+      "salud_frenos_pct": 97,
+      "salud_general_pct": 85,
+      "horas_conduccion_hoy": 7.1,
+      "ubicacion": {
+        "lat": 19.0985,
+        "lng": -96.0716
+      },
+      "eta_original": "11:45",
+      "eta_ai": "15:45",
+      "avance_pct": 0,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-14",
+        "proximo_servicio": "2026-06-08"
+      },
+      "seguro": {
+        "poliza": "POL-ME-64239",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-H035",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2024,
+      "placa": "CNA-951",
+      "estado": "en_ruta",
+      "conductor": "Eduardo Flores Ramírez",
+      "rol": "Ingeniero Residente",
+      "certificaciones": [
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": "Frente Ampliación Puerto Veracruz",
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 206263,
+      "rendimiento_kml": 8.7,
+      "combustible_pct": 20,
+      "velocidad_kmh": 95,
+      "salud_motor_pct": 78,
+      "salud_frenos_pct": 68,
+      "salud_general_pct": 85,
+      "horas_conduccion_hoy": 0.6,
+      "ubicacion": {
+        "lat": 19.444,
+        "lng": -96.093
+      },
+      "eta_original": "17:00",
+      "eta_ai": "13:30",
+      "avance_pct": 85,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-10",
+        "proximo_servicio": "2026-05-12"
+      },
+      "seguro": {
+        "poliza": "POL-ME-23579",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-H036",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2024,
+      "placa": "DDG-674",
+      "estado": "por_asignar",
+      "conductor": "Héctor Ortiz Rivera",
+      "rol": "Almacenista",
+      "certificaciones": [
+        "ISO 45001",
+        "NOM-009",
+        "Seguridad Industrial"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX-Toluca",
+      "destino": null,
+      "frente_obra": "Tren Interurbano Méx-Toluca",
+      "odometro_km": 73784,
+      "rendimiento_kml": 10.6,
+      "combustible_pct": 85,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 97,
+      "salud_frenos_pct": 77,
+      "salud_general_pct": 51,
+      "horas_conduccion_hoy": 1.8,
+      "ubicacion": {
+        "lat": 19.4116,
+        "lng": -99.6946
+      },
+      "eta_original": "12:30",
+      "eta_ai": "7:15",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-24",
+        "proximo_servicio": "2026-03-03"
+      },
+      "seguro": {
+        "poliza": "POL-ME-79531",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-H037",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2024,
+      "placa": "NCL-150",
+      "estado": "en_ruta",
+      "conductor": "Jorge Flores Gutiérrez",
+      "rol": "Ingeniero Residente",
+      "certificaciones": [
+        "Primeros Auxilios",
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX",
+      "destino": "Frente Puente Vehicular Periférico Norte",
+      "frente_obra": "Puente Vehicular Periférico Norte",
+      "odometro_km": 104363,
+      "rendimiento_kml": 8.9,
+      "combustible_pct": 70,
+      "velocidad_kmh": 77,
+      "salud_motor_pct": 83,
+      "salud_frenos_pct": 86,
+      "salud_general_pct": 67,
+      "horas_conduccion_hoy": 2.2,
+      "ubicacion": {
+        "lat": 19.5074,
+        "lng": -99.2729
+      },
+      "eta_original": "8:30",
+      "eta_ai": "17:45",
+      "avance_pct": 67,
+      "sla_en_riesgo": false,
+      "desvio_activo": true,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-01",
+        "proximo_servicio": "2026-04-10"
+      },
+      "seguro": {
+        "poliza": "POL-ME-37686",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-H038",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2023,
+      "placa": "HDH-784",
+      "estado": "en_ruta",
+      "conductor": "Andrés Díaz Rodríguez",
+      "rol": "Supervisor de Seguridad",
+      "certificaciones": [
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Campeche-Mérida",
+      "destino": "Frente Tren Maya Tramo 3",
+      "frente_obra": "Tren Maya Tramo 3",
+      "odometro_km": 46453,
+      "rendimiento_kml": 8.5,
+      "combustible_pct": 13,
+      "velocidad_kmh": 55,
+      "salud_motor_pct": 56,
+      "salud_frenos_pct": 89,
+      "salud_general_pct": 54,
+      "horas_conduccion_hoy": 8.6,
+      "ubicacion": {
+        "lat": 19.8855,
+        "lng": -90.486
+      },
+      "eta_original": "18:45",
+      "eta_ai": "11:00",
+      "avance_pct": 51,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-27",
+        "proximo_servicio": "2026-05-03"
+      },
+      "seguro": {
+        "poliza": "POL-ME-67240",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-H039",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2024,
+      "placa": "LBJ-643",
+      "estado": "en_ruta",
+      "conductor": "Alberto Torres Flores",
+      "rol": "Coordinador de Logística",
+      "certificaciones": [
+        "Manejo Defensivo"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Guadalajara",
+      "destino": "Frente Libramiento GDL-PV",
+      "frente_obra": "Libramiento GDL-PV",
+      "odometro_km": 152353,
+      "rendimiento_kml": 8.7,
+      "combustible_pct": 52,
+      "velocidad_kmh": 93,
+      "salud_motor_pct": 96,
+      "salud_frenos_pct": 69,
+      "salud_general_pct": 65,
+      "horas_conduccion_hoy": 1.0,
+      "ubicacion": {
+        "lat": 20.5236,
+        "lng": -103.5459
+      },
+      "eta_original": "9:00",
+      "eta_ai": "9:45",
+      "avance_pct": 59,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-28",
+        "proximo_servicio": "2026-05-05"
+      },
+      "seguro": {
+        "poliza": "POL-ME-67640",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-H040",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2023,
+      "placa": "GAF-393",
+      "estado": "en_ruta",
+      "conductor": "Miguel Rivera Reyes",
+      "rol": "Ingeniero Residente",
+      "certificaciones": [
+        "Seguridad Industrial",
+        "NOM-009",
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": "Frente Ampliación Puerto Veracruz",
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 223753,
+      "rendimiento_kml": 9.2,
+      "combustible_pct": 67,
+      "velocidad_kmh": 74,
+      "salud_motor_pct": 90,
+      "salud_frenos_pct": 62,
+      "salud_general_pct": 78,
+      "horas_conduccion_hoy": 9.1,
+      "ubicacion": {
+        "lat": 19.213,
+        "lng": -96.3171
+      },
+      "eta_original": "16:45",
+      "eta_ai": "15:15",
+      "avance_pct": 7,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo",
+        "Manejo agresivo detectado"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-17",
+        "proximo_servicio": "2026-04-02"
+      },
+      "seguro": {
+        "poliza": "POL-ME-42472",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-H041",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2022,
+      "placa": "KAJ-442",
+      "estado": "en_taller",
+      "conductor": "Jorge Gómez Díaz",
+      "rol": "Ingeniero Residente",
+      "certificaciones": [
+        "Seguridad Industrial",
+        "NOM-009"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": null,
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 110393,
+      "rendimiento_kml": 9.4,
+      "combustible_pct": 94,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 79,
+      "salud_frenos_pct": 78,
+      "salud_general_pct": 66,
+      "horas_conduccion_hoy": 7.2,
+      "ubicacion": {
+        "lat": 19.2639,
+        "lng": -95.8862
+      },
+      "eta_original": "9:30",
+      "eta_ai": "8:15",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-05",
+        "proximo_servicio": "2026-03-10"
+      },
+      "seguro": {
+        "poliza": "POL-ME-83259",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-H042",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2021,
+      "placa": "CCP-597",
+      "estado": "en_ruta",
+      "conductor": "Óscar Rivera García",
+      "rol": "Jefe de Frente",
+      "certificaciones": [
+        "Trabajos en Altura"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": "Frente Nuevo Aeropuerto Tulum",
+      "frente_obra": "Nuevo Aeropuerto Tulum",
+      "odometro_km": 184351,
+      "rendimiento_kml": 10.2,
+      "combustible_pct": 27,
+      "velocidad_kmh": 9,
+      "salud_motor_pct": 73,
+      "salud_frenos_pct": 66,
+      "salud_general_pct": 82,
+      "horas_conduccion_hoy": 7.7,
+      "ubicacion": {
+        "lat": 20.4511,
+        "lng": -87.1998
+      },
+      "eta_original": "7:30",
+      "eta_ai": "16:15",
+      "avance_pct": 76,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-24",
+        "proximo_servicio": "2026-06-02"
+      },
+      "seguro": {
+        "poliza": "POL-ME-63852",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-H043",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2023,
+      "placa": "PLN-298",
+      "estado": "en_ruta",
+      "conductor": "Sergio Sánchez Ortiz",
+      "rol": "Supervisor de Seguridad",
+      "certificaciones": [
+        "NOM-009",
+        "Primeros Auxilios",
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Guadalajara",
+      "destino": "Frente Libramiento GDL-PV",
+      "frente_obra": "Libramiento GDL-PV",
+      "odometro_km": 212234,
+      "rendimiento_kml": 10.4,
+      "combustible_pct": 44,
+      "velocidad_kmh": 99,
+      "salud_motor_pct": 79,
+      "salud_frenos_pct": 92,
+      "salud_general_pct": 83,
+      "horas_conduccion_hoy": 4.2,
+      "ubicacion": {
+        "lat": 20.4672,
+        "lng": -103.5302
+      },
+      "eta_original": "16:15",
+      "eta_ai": "11:00",
+      "avance_pct": 82,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-10",
+        "proximo_servicio": "2026-03-25"
+      },
+      "seguro": {
+        "poliza": "POL-ME-31012",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-H044",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2022,
+      "placa": "PFF-482",
+      "estado": "en_taller",
+      "conductor": "Gabriel Sánchez Cruz",
+      "rol": "Jefe de Frente",
+      "certificaciones": [
+        "Seguridad Industrial",
+        "Manejo Defensivo"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": null,
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 232853,
+      "rendimiento_kml": 9.6,
+      "combustible_pct": 36,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 56,
+      "salud_frenos_pct": 80,
+      "salud_general_pct": 56,
+      "horas_conduccion_hoy": 8.4,
+      "ubicacion": {
+        "lat": 19.26,
+        "lng": -95.9552
+      },
+      "eta_original": "9:00",
+      "eta_ai": "11:45",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-20",
+        "proximo_servicio": "2026-03-03"
+      },
+      "seguro": {
+        "poliza": "POL-ME-12490",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-H045",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2024,
+      "placa": "FMG-213",
+      "estado": "en_ruta",
+      "conductor": "Alejandro Torres Martínez",
+      "rol": "Inspector de Calidad",
+      "certificaciones": [
+        "NOM-009",
+        "Seguridad Industrial",
+        "Trabajos en Altura"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Guadalajara",
+      "destino": "Frente Libramiento GDL-PV",
+      "frente_obra": "Libramiento GDL-PV",
+      "odometro_km": 44146,
+      "rendimiento_kml": 10.4,
+      "combustible_pct": 26,
+      "velocidad_kmh": 37,
+      "salud_motor_pct": 82,
+      "salud_frenos_pct": 60,
+      "salud_general_pct": 89,
+      "horas_conduccion_hoy": 3.5,
+      "ubicacion": {
+        "lat": 20.7124,
+        "lng": -103.5376
+      },
+      "eta_original": "17:00",
+      "eta_ai": "15:30",
+      "avance_pct": 8,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Manejo agresivo detectado"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-13",
+        "proximo_servicio": "2026-06-02"
+      },
+      "seguro": {
+        "poliza": "POL-ME-93318",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-H046",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2021,
+      "placa": "LEA-659",
+      "estado": "en_ruta",
+      "conductor": "Héctor Sánchez Martínez",
+      "rol": "Supervisor de Seguridad",
+      "certificaciones": [
+        "Trabajos en Altura",
+        "Primeros Auxilios",
+        "NOM-009"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": "Frente Nuevo Aeropuerto Tulum",
+      "frente_obra": "Nuevo Aeropuerto Tulum",
+      "odometro_km": 108610,
+      "rendimiento_kml": 10.5,
+      "combustible_pct": 88,
+      "velocidad_kmh": 23,
+      "salud_motor_pct": 63,
+      "salud_frenos_pct": 64,
+      "salud_general_pct": 95,
+      "horas_conduccion_hoy": 7.8,
+      "ubicacion": {
+        "lat": 20.2246,
+        "lng": -87.5539
+      },
+      "eta_original": "7:15",
+      "eta_ai": "7:30",
+      "avance_pct": 39,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-02",
+        "proximo_servicio": "2026-04-10"
+      },
+      "seguro": {
+        "poliza": "POL-ME-56789",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-H047",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2021,
+      "placa": "FPG-609",
+      "estado": "en_ruta",
+      "conductor": "Manuel Gómez Cruz",
+      "rol": "Supervisor de Seguridad",
+      "certificaciones": [
+        "Manejo Defensivo",
+        "Seguridad Industrial",
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": "Frente Nuevo Aeropuerto Tulum",
+      "frente_obra": "Nuevo Aeropuerto Tulum",
+      "odometro_km": 224542,
+      "rendimiento_kml": 9.4,
+      "combustible_pct": 18,
+      "velocidad_kmh": 55,
+      "salud_motor_pct": 93,
+      "salud_frenos_pct": 71,
+      "salud_general_pct": 84,
+      "horas_conduccion_hoy": 2.9,
+      "ubicacion": {
+        "lat": 20.0116,
+        "lng": -87.5332
+      },
+      "eta_original": "11:30",
+      "eta_ai": "14:45",
+      "avance_pct": 21,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-20",
+        "proximo_servicio": "2026-06-09"
+      },
+      "seguro": {
+        "poliza": "POL-ME-93816",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-H048",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2024,
+      "placa": "JLA-168",
+      "estado": "por_asignar",
+      "conductor": "Andrés Rodríguez García",
+      "rol": "Jefe de Frente",
+      "certificaciones": [
+        "Manejo Defensivo",
+        "ISO 45001",
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Monterrey",
+      "destino": null,
+      "frente_obra": "Autopista MTY-Saltillo",
+      "odometro_km": 110239,
+      "rendimiento_kml": 9.8,
+      "combustible_pct": 80,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 57,
+      "salud_frenos_pct": 98,
+      "salud_general_pct": 59,
+      "horas_conduccion_hoy": 6.8,
+      "ubicacion": {
+        "lat": 25.6893,
+        "lng": -100.3868
+      },
+      "eta_original": "8:15",
+      "eta_ai": "15:30",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-01",
+        "proximo_servicio": "2026-04-16"
+      },
+      "seguro": {
+        "poliza": "POL-ME-77861",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-H049",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2023,
+      "placa": "BBC-830",
+      "estado": "en_ruta",
+      "conductor": "Mario Torres Morales",
+      "rol": "Inspector de Calidad",
+      "certificaciones": [
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Monterrey",
+      "destino": "Frente Autopista MTY-Saltillo",
+      "frente_obra": "Autopista MTY-Saltillo",
+      "odometro_km": 199559,
+      "rendimiento_kml": 9.6,
+      "combustible_pct": 48,
+      "velocidad_kmh": 85,
+      "salud_motor_pct": 77,
+      "salud_frenos_pct": 64,
+      "salud_general_pct": 85,
+      "horas_conduccion_hoy": 5.4,
+      "ubicacion": {
+        "lat": 25.6548,
+        "lng": -100.0992
+      },
+      "eta_original": "18:15",
+      "eta_ai": "12:15",
+      "avance_pct": 15,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-01",
+        "proximo_servicio": "2026-05-18"
+      },
+      "seguro": {
+        "poliza": "POL-ME-85009",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-H050",
+      "modelo": "Toyota Hilux",
+      "tipo": "Pickup de Obra",
+      "anio": 2022,
+      "placa": "LHL-943",
+      "estado": "en_taller",
+      "conductor": "Fernando Torres Gómez",
+      "rol": "Almacenista",
+      "certificaciones": [
+        "Trabajos en Altura"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": null,
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 175418,
+      "rendimiento_kml": 10.7,
+      "combustible_pct": 48,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 96,
+      "salud_frenos_pct": 64,
+      "salud_general_pct": 78,
+      "horas_conduccion_hoy": 4.7,
+      "ubicacion": {
+        "lat": 19.1804,
+        "lng": -96.353
+      },
+      "eta_original": "15:15",
+      "eta_ai": "9:45",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-10",
+        "proximo_servicio": "2026-04-06"
+      },
+      "seguro": {
+        "poliza": "POL-ME-52291",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-F051",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2022,
+      "placa": "EHH-272",
+      "estado": "en_taller",
+      "conductor": "Antonio Ortiz Ramírez",
+      "rol": "Almacenista",
+      "certificaciones": [
+        "Trabajos en Altura",
+        "ISO 45001",
+        "Manejo Defensivo"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": null,
+      "frente_obra": "Nuevo Aeropuerto Tulum",
+      "odometro_km": 236756,
+      "rendimiento_kml": 8.2,
+      "combustible_pct": 80,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 57,
+      "salud_frenos_pct": 61,
+      "salud_general_pct": 55,
+      "horas_conduccion_hoy": 0.5,
+      "ubicacion": {
+        "lat": 20.3349,
+        "lng": -87.3839
+      },
+      "eta_original": "17:15",
+      "eta_ai": "16:45",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": true,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-21",
+        "proximo_servicio": "2026-05-16"
+      },
+      "seguro": {
+        "poliza": "POL-ME-42096",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-F052",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2020,
+      "placa": "ECN-426",
+      "estado": "en_ruta",
+      "conductor": "Sergio Díaz Morales",
+      "rol": "Supervisor de Seguridad",
+      "certificaciones": [
+        "Trabajos en Altura",
+        "Manejo Defensivo"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Campeche-Mérida",
+      "destino": "Frente Tren Maya Tramo 3",
+      "frente_obra": "Tren Maya Tramo 3",
+      "odometro_km": 195515,
+      "rendimiento_kml": 8.1,
+      "combustible_pct": 73,
+      "velocidad_kmh": 71,
+      "salud_motor_pct": 61,
+      "salud_frenos_pct": 80,
+      "salud_general_pct": 65,
+      "horas_conduccion_hoy": 4.7,
+      "ubicacion": {
+        "lat": 19.7005,
+        "lng": -90.6812
+      },
+      "eta_original": "8:00",
+      "eta_ai": "11:45",
+      "avance_pct": 78,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-19",
+        "proximo_servicio": "2026-05-07"
+      },
+      "seguro": {
+        "poliza": "POL-ME-30885",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-F053",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2022,
+      "placa": "DEA-606",
+      "estado": "en_ruta",
+      "conductor": "Raúl Reyes Cruz",
+      "rol": "Almacenista",
+      "certificaciones": [
+        "ISO 45001",
+        "Primeros Auxilios",
+        "Manejo Defensivo"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": "Frente Ampliación Puerto Veracruz",
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 145382,
+      "rendimiento_kml": 8.1,
+      "combustible_pct": 76,
+      "velocidad_kmh": 1,
+      "salud_motor_pct": 61,
+      "salud_frenos_pct": 87,
+      "salud_general_pct": 58,
+      "horas_conduccion_hoy": 8.8,
+      "ubicacion": {
+        "lat": 19.3065,
+        "lng": -95.9717
+      },
+      "eta_original": "12:00",
+      "eta_ai": "13:00",
+      "avance_pct": 72,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-17",
+        "proximo_servicio": "2026-06-25"
+      },
+      "seguro": {
+        "poliza": "POL-ME-82070",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-F054",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2020,
+      "placa": "CHH-146",
+      "estado": "en_ruta",
+      "conductor": "Arturo Ortiz Rivera",
+      "rol": "Supervisor de Obra",
+      "certificaciones": [
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Monterrey",
+      "destino": "Frente Autopista MTY-Saltillo",
+      "frente_obra": "Autopista MTY-Saltillo",
+      "odometro_km": 118259,
+      "rendimiento_kml": 8.9,
+      "combustible_pct": 50,
+      "velocidad_kmh": 102,
+      "salud_motor_pct": 85,
+      "salud_frenos_pct": 93,
+      "salud_general_pct": 79,
+      "horas_conduccion_hoy": 1.5,
+      "ubicacion": {
+        "lat": 25.6559,
+        "lng": -100.5261
+      },
+      "eta_original": "16:30",
+      "eta_ai": "9:45",
+      "avance_pct": 78,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-23",
+        "proximo_servicio": "2026-05-16"
+      },
+      "seguro": {
+        "poliza": "POL-ME-12180",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-F055",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2020,
+      "placa": "PLL-691",
+      "estado": "por_asignar",
+      "conductor": "Víctor García Chávez",
+      "rol": "Jefe de Frente",
+      "certificaciones": [
+        "Seguridad Industrial",
+        "NOM-009",
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": null,
+      "frente_obra": "Nuevo Aeropuerto Tulum",
+      "odometro_km": 124193,
+      "rendimiento_kml": 9.5,
+      "combustible_pct": 29,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 88,
+      "salud_frenos_pct": 99,
+      "salud_general_pct": 74,
+      "horas_conduccion_hoy": 1.5,
+      "ubicacion": {
+        "lat": 20.3584,
+        "lng": -87.7111
+      },
+      "eta_original": "18:00",
+      "eta_ai": "10:00",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-14",
+        "proximo_servicio": "2026-06-28"
+      },
+      "seguro": {
+        "poliza": "POL-ME-18163",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-F056",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2022,
+      "placa": "HHK-988",
+      "estado": "en_taller",
+      "conductor": "Raúl Flores Rodríguez",
+      "rol": "Administrativo",
+      "certificaciones": [
+        "Primeros Auxilios",
+        "Trabajos en Altura",
+        "NOM-009"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Guadalajara",
+      "destino": null,
+      "frente_obra": "Libramiento GDL-PV",
+      "odometro_km": 188598,
+      "rendimiento_kml": 9.2,
+      "combustible_pct": 43,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 90,
+      "salud_frenos_pct": 79,
+      "salud_general_pct": 64,
+      "horas_conduccion_hoy": 9.4,
+      "ubicacion": {
+        "lat": 20.9594,
+        "lng": -103.1873
+      },
+      "eta_original": "18:15",
+      "eta_ai": "18:45",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-10",
+        "proximo_servicio": "2026-03-19"
+      },
+      "seguro": {
+        "poliza": "POL-ME-98686",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-F057",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2021,
+      "placa": "KLC-947",
+      "estado": "en_ruta",
+      "conductor": "Francisco López Rivera",
+      "rol": "Coordinador de Logística",
+      "certificaciones": [
+        "NOM-009",
+        "Manejo Defensivo"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX",
+      "destino": "Frente Puente Vehicular Periférico Norte",
+      "frente_obra": "Puente Vehicular Periférico Norte",
+      "odometro_km": 91140,
+      "rendimiento_kml": 8.1,
+      "combustible_pct": 25,
+      "velocidad_kmh": 13,
+      "salud_motor_pct": 94,
+      "salud_frenos_pct": 97,
+      "salud_general_pct": 65,
+      "horas_conduccion_hoy": 2.4,
+      "ubicacion": {
+        "lat": 19.6019,
+        "lng": -99.1614
+      },
+      "eta_original": "17:15",
+      "eta_ai": "7:00",
+      "avance_pct": 52,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-01",
+        "proximo_servicio": "2026-04-14"
+      },
+      "seguro": {
+        "poliza": "POL-ME-95575",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-F058",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2021,
+      "placa": "BJH-840",
+      "estado": "por_asignar",
+      "conductor": "Arturo Torres Hernández",
+      "rol": "Supervisor de Obra",
+      "certificaciones": [
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": null,
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 213157,
+      "rendimiento_kml": 10.4,
+      "combustible_pct": 30,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 57,
+      "salud_frenos_pct": 85,
+      "salud_general_pct": 81,
+      "horas_conduccion_hoy": 1.9,
+      "ubicacion": {
+        "lat": 19.3194,
+        "lng": -95.9066
+      },
+      "eta_original": "11:00",
+      "eta_ai": "7:30",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-15",
+        "proximo_servicio": "2026-06-05"
+      },
+      "seguro": {
+        "poliza": "POL-ME-76088",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-F059",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2020,
+      "placa": "EEK-297",
+      "estado": "en_ruta",
+      "conductor": "Sergio Ramírez Rodríguez",
+      "rol": "Operador de Campo",
+      "certificaciones": [
+        "ISO 45001",
+        "Primeros Auxilios",
+        "NOM-009"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Campeche-Mérida",
+      "destino": "Frente Tren Maya Tramo 3",
+      "frente_obra": "Tren Maya Tramo 3",
+      "odometro_km": 101686,
+      "rendimiento_kml": 8.4,
+      "combustible_pct": 73,
+      "velocidad_kmh": 41,
+      "salud_motor_pct": 60,
+      "salud_frenos_pct": 85,
+      "salud_general_pct": 92,
+      "horas_conduccion_hoy": 1.0,
+      "ubicacion": {
+        "lat": 20.129,
+        "lng": -90.5435
+      },
+      "eta_original": "10:00",
+      "eta_ai": "11:45",
+      "avance_pct": 30,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Manejo agresivo detectado"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-09",
+        "proximo_servicio": "2026-05-23"
+      },
+      "seguro": {
+        "poliza": "POL-ME-40972",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-F060",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2022,
+      "placa": "PFD-236",
+      "estado": "en_ruta",
+      "conductor": "Óscar Torres Martínez",
+      "rol": "Inspector de Calidad",
+      "certificaciones": [
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Monterrey",
+      "destino": "Frente Autopista MTY-Saltillo",
+      "frente_obra": "Autopista MTY-Saltillo",
+      "odometro_km": 56868,
+      "rendimiento_kml": 9.0,
+      "combustible_pct": 85,
+      "velocidad_kmh": 47,
+      "salud_motor_pct": 81,
+      "salud_frenos_pct": 95,
+      "salud_general_pct": 80,
+      "horas_conduccion_hoy": 7.6,
+      "ubicacion": {
+        "lat": 25.6012,
+        "lng": -100.1146
+      },
+      "eta_original": "10:00",
+      "eta_ai": "15:45",
+      "avance_pct": 67,
+      "sla_en_riesgo": false,
+      "desvio_activo": true,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-27",
+        "proximo_servicio": "2026-04-19"
+      },
+      "seguro": {
+        "poliza": "POL-ME-80341",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-F061",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2023,
+      "placa": "HMG-625",
+      "estado": "en_ruta",
+      "conductor": "Francisco Gutiérrez Morales",
+      "rol": "Topógrafo",
+      "certificaciones": [
+        "NOM-009",
+        "Seguridad Industrial"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX-Toluca",
+      "destino": "Frente Tren Interurbano Méx-Toluca",
+      "frente_obra": "Tren Interurbano Méx-Toluca",
+      "odometro_km": 45471,
+      "rendimiento_kml": 9.7,
+      "combustible_pct": 79,
+      "velocidad_kmh": 59,
+      "salud_motor_pct": 98,
+      "salud_frenos_pct": 79,
+      "salud_general_pct": 96,
+      "horas_conduccion_hoy": 0.2,
+      "ubicacion": {
+        "lat": 19.1427,
+        "lng": -99.8782
+      },
+      "eta_original": "10:00",
+      "eta_ai": "7:45",
+      "avance_pct": 44,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Manejo agresivo detectado"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-16",
+        "proximo_servicio": "2026-03-10"
+      },
+      "seguro": {
+        "poliza": "POL-ME-63591",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-F062",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2023,
+      "placa": "KKH-769",
+      "estado": "no_ubicable",
+      "conductor": "Raúl Cruz Gómez",
+      "rol": "Supervisor de Seguridad",
+      "certificaciones": [
+        "Trabajos en Altura"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX-Toluca",
+      "destino": null,
+      "frente_obra": "Tren Interurbano Méx-Toluca",
+      "odometro_km": 113162,
+      "rendimiento_kml": 10.5,
+      "combustible_pct": 76,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 80,
+      "salud_frenos_pct": 93,
+      "salud_general_pct": 58,
+      "horas_conduccion_hoy": 7.3,
+      "ubicacion": {
+        "lat": 19.1236,
+        "lng": -99.8779
+      },
+      "eta_original": "7:30",
+      "eta_ai": "14:45",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": false,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-05",
+        "proximo_servicio": "2026-05-07"
+      },
+      "seguro": {
+        "poliza": "POL-ME-24790",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-F063",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2020,
+      "placa": "KND-145",
+      "estado": "en_taller",
+      "conductor": "Roberto Chávez Hernández",
+      "rol": "Topógrafo",
+      "certificaciones": [
+        "Trabajos en Altura",
+        "NOM-009"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX",
+      "destino": null,
+      "frente_obra": "Puente Vehicular Periférico Norte",
+      "odometro_km": 78089,
+      "rendimiento_kml": 8.5,
+      "combustible_pct": 35,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 58,
+      "salud_frenos_pct": 68,
+      "salud_general_pct": 82,
+      "horas_conduccion_hoy": 9.9,
+      "ubicacion": {
+        "lat": 19.3405,
+        "lng": -98.9302
+      },
+      "eta_original": "16:30",
+      "eta_ai": "16:30",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-14",
+        "proximo_servicio": "2026-05-09"
+      },
+      "seguro": {
+        "poliza": "POL-ME-17989",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-F064",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2023,
+      "placa": "FCF-872",
+      "estado": "en_taller",
+      "conductor": "Rafael Gómez Reyes",
+      "rol": "Coordinador de Logística",
+      "certificaciones": [
+        "Trabajos en Altura",
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX",
+      "destino": null,
+      "frente_obra": "Puente Vehicular Periférico Norte",
+      "odometro_km": 27290,
+      "rendimiento_kml": 10.4,
+      "combustible_pct": 46,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 64,
+      "salud_frenos_pct": 89,
+      "salud_general_pct": 53,
+      "horas_conduccion_hoy": 5.6,
+      "ubicacion": {
+        "lat": 19.7807,
+        "lng": -99.1456
+      },
+      "eta_original": "9:45",
+      "eta_ai": "10:30",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-03",
+        "proximo_servicio": "2026-04-02"
+      },
+      "seguro": {
+        "poliza": "POL-ME-45187",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-F065",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2021,
+      "placa": "NEP-115",
+      "estado": "en_ruta",
+      "conductor": "Andrés Ortiz Pérez",
+      "rol": "Jefe de Frente",
+      "certificaciones": [
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Cancún-Tulum",
+      "destino": "Frente Tren Maya Tramo 5",
+      "frente_obra": "Tren Maya Tramo 5",
+      "odometro_km": 225934,
+      "rendimiento_kml": 9.9,
+      "combustible_pct": 23,
+      "velocidad_kmh": 95,
+      "salud_motor_pct": 85,
+      "salud_frenos_pct": 75,
+      "salud_general_pct": 94,
+      "horas_conduccion_hoy": 6.0,
+      "ubicacion": {
+        "lat": 20.4527,
+        "lng": -86.8309
+      },
+      "eta_original": "15:30",
+      "eta_ai": "11:45",
+      "avance_pct": 59,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-15",
+        "proximo_servicio": "2026-03-26"
+      },
+      "seguro": {
+        "poliza": "POL-ME-71537",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-F066",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2022,
+      "placa": "HJL-402",
+      "estado": "en_ruta",
+      "conductor": "Alberto Sánchez González",
+      "rol": "Operador de Campo",
+      "certificaciones": [
+        "Manejo Defensivo"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Guadalajara",
+      "destino": "Frente Libramiento GDL-PV",
+      "frente_obra": "Libramiento GDL-PV",
+      "odometro_km": 123509,
+      "rendimiento_kml": 8.1,
+      "combustible_pct": 37,
+      "velocidad_kmh": 48,
+      "salud_motor_pct": 91,
+      "salud_frenos_pct": 75,
+      "salud_general_pct": 81,
+      "horas_conduccion_hoy": 5.5,
+      "ubicacion": {
+        "lat": 20.9361,
+        "lng": -103.4475
+      },
+      "eta_original": "14:45",
+      "eta_ai": "14:15",
+      "avance_pct": 93,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Manejo agresivo detectado"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-06",
+        "proximo_servicio": "2026-03-17"
+      },
+      "seguro": {
+        "poliza": "POL-ME-14433",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-F067",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2020,
+      "placa": "AHF-732",
+      "estado": "no_ubicable",
+      "conductor": "Rafael Sánchez López",
+      "rol": "Almacenista",
+      "certificaciones": [
+        "ISO 45001",
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Cancún-Tulum",
+      "destino": null,
+      "frente_obra": "Tren Maya Tramo 5",
+      "odometro_km": 123106,
+      "rendimiento_kml": 8.3,
+      "combustible_pct": 10,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 55,
+      "salud_frenos_pct": 94,
+      "salud_general_pct": 85,
+      "horas_conduccion_hoy": 4.1,
+      "ubicacion": {
+        "lat": 20.34,
+        "lng": -86.9467
+      },
+      "eta_original": "15:30",
+      "eta_ai": "7:45",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": false,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-17",
+        "proximo_servicio": "2026-04-08"
+      },
+      "seguro": {
+        "poliza": "POL-ME-35156",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-F068",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2023,
+      "placa": "KEM-182",
+      "estado": "en_ruta",
+      "conductor": "Raúl Cruz Gutiérrez",
+      "rol": "Supervisor de Obra",
+      "certificaciones": [
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": "Frente Nuevo Aeropuerto Tulum",
+      "frente_obra": "Nuevo Aeropuerto Tulum",
+      "odometro_km": 35714,
+      "rendimiento_kml": 8.9,
+      "combustible_pct": 56,
+      "velocidad_kmh": 48,
+      "salud_motor_pct": 90,
+      "salud_frenos_pct": 90,
+      "salud_general_pct": 53,
+      "horas_conduccion_hoy": 6.4,
+      "ubicacion": {
+        "lat": 20.3717,
+        "lng": -87.6804
+      },
+      "eta_original": "13:30",
+      "eta_ai": "16:00",
+      "avance_pct": 67,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-09",
+        "proximo_servicio": "2026-03-03"
+      },
+      "seguro": {
+        "poliza": "POL-ME-99709",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-F069",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2022,
+      "placa": "EHH-969",
+      "estado": "en_ruta",
+      "conductor": "Javier González Gómez",
+      "rol": "Topógrafo",
+      "certificaciones": [
+        "NOM-009",
+        "Manejo Defensivo",
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Cancún-Tulum",
+      "destino": "Frente Tren Maya Tramo 5",
+      "frente_obra": "Tren Maya Tramo 5",
+      "odometro_km": 19104,
+      "rendimiento_kml": 10.4,
+      "combustible_pct": 25,
+      "velocidad_kmh": 101,
+      "salud_motor_pct": 99,
+      "salud_frenos_pct": 65,
+      "salud_general_pct": 82,
+      "horas_conduccion_hoy": 7.5,
+      "ubicacion": {
+        "lat": 20.5375,
+        "lng": -87.3214
+      },
+      "eta_original": "10:00",
+      "eta_ai": "12:45",
+      "avance_pct": 99,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-16",
+        "proximo_servicio": "2026-04-12"
+      },
+      "seguro": {
+        "poliza": "POL-ME-82487",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-F070",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2023,
+      "placa": "CKJ-857",
+      "estado": "en_ruta",
+      "conductor": "Jorge Sánchez López",
+      "rol": "Topógrafo",
+      "certificaciones": [
+        "Manejo Defensivo",
+        "Seguridad Industrial"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX",
+      "destino": "Frente Puente Vehicular Periférico Norte",
+      "frente_obra": "Puente Vehicular Periférico Norte",
+      "odometro_km": 37464,
+      "rendimiento_kml": 9.9,
+      "combustible_pct": 19,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 74,
+      "salud_frenos_pct": 88,
+      "salud_general_pct": 73,
+      "horas_conduccion_hoy": 7.6,
+      "ubicacion": {
+        "lat": 19.2613,
+        "lng": -99.4276
+      },
+      "eta_original": "13:45",
+      "eta_ai": "15:45",
+      "avance_pct": 13,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [
+        "Manejo agresivo detectado"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-28",
+        "proximo_servicio": "2026-06-01"
+      },
+      "seguro": {
+        "poliza": "POL-ME-48253",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-F071",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2020,
+      "placa": "KCD-374",
+      "estado": "no_ubicable",
+      "conductor": "Manuel Sánchez Gutiérrez",
+      "rol": "Inspector de Calidad",
+      "certificaciones": [
+        "Seguridad Industrial"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX",
+      "destino": null,
+      "frente_obra": "Puente Vehicular Periférico Norte",
+      "odometro_km": 205013,
+      "rendimiento_kml": 10.3,
+      "combustible_pct": 29,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 82,
+      "salud_frenos_pct": 77,
+      "salud_general_pct": 76,
+      "horas_conduccion_hoy": 3.0,
+      "ubicacion": {
+        "lat": 19.6696,
+        "lng": -99.2633
+      },
+      "eta_original": "10:45",
+      "eta_ai": "16:15",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": false,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-11",
+        "proximo_servicio": "2026-06-26"
+      },
+      "seguro": {
+        "poliza": "POL-ME-53193",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-F072",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2021,
+      "placa": "PPE-811",
+      "estado": "en_ruta",
+      "conductor": "Francisco Pérez Morales",
+      "rol": "Inspector de Calidad",
+      "certificaciones": [
+        "Trabajos en Altura",
+        "Manejo Defensivo",
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": "Frente Nuevo Aeropuerto Tulum",
+      "frente_obra": "Nuevo Aeropuerto Tulum",
+      "odometro_km": 93757,
+      "rendimiento_kml": 8.8,
+      "combustible_pct": 43,
+      "velocidad_kmh": 104,
+      "salud_motor_pct": 80,
+      "salud_frenos_pct": 83,
+      "salud_general_pct": 57,
+      "horas_conduccion_hoy": 9.3,
+      "ubicacion": {
+        "lat": 20.0699,
+        "lng": -87.1316
+      },
+      "eta_original": "9:00",
+      "eta_ai": "18:45",
+      "avance_pct": 90,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-27",
+        "proximo_servicio": "2026-06-22"
+      },
+      "seguro": {
+        "poliza": "POL-ME-75444",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-F073",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2022,
+      "placa": "JJH-990",
+      "estado": "en_ruta",
+      "conductor": "Eduardo Gómez López",
+      "rol": "Topógrafo",
+      "certificaciones": [
+        "Seguridad Industrial",
+        "Manejo Defensivo",
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Campeche-Mérida",
+      "destino": "Frente Tren Maya Tramo 3",
+      "frente_obra": "Tren Maya Tramo 3",
+      "odometro_km": 187664,
+      "rendimiento_kml": 8.4,
+      "combustible_pct": 21,
+      "velocidad_kmh": 98,
+      "salud_motor_pct": 70,
+      "salud_frenos_pct": 82,
+      "salud_general_pct": 60,
+      "horas_conduccion_hoy": 6.5,
+      "ubicacion": {
+        "lat": 19.5666,
+        "lng": -90.2398
+      },
+      "eta_original": "17:45",
+      "eta_ai": "12:45",
+      "avance_pct": 13,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-15",
+        "proximo_servicio": "2026-05-13"
+      },
+      "seguro": {
+        "poliza": "POL-ME-70694",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-F074",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2023,
+      "placa": "LEE-903",
+      "estado": "en_ruta",
+      "conductor": "Gabriel López Martínez",
+      "rol": "Jefe de Frente",
+      "certificaciones": [
+        "Primeros Auxilios",
+        "Manejo Defensivo",
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": "Frente Nuevo Aeropuerto Tulum",
+      "frente_obra": "Nuevo Aeropuerto Tulum",
+      "odometro_km": 42406,
+      "rendimiento_kml": 8.7,
+      "combustible_pct": 20,
+      "velocidad_kmh": 56,
+      "salud_motor_pct": 99,
+      "salud_frenos_pct": 88,
+      "salud_general_pct": 70,
+      "horas_conduccion_hoy": 0.7,
+      "ubicacion": {
+        "lat": 19.9768,
+        "lng": -87.3035
+      },
+      "eta_original": "7:30",
+      "eta_ai": "17:00",
+      "avance_pct": 86,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-18",
+        "proximo_servicio": "2026-04-11"
+      },
+      "seguro": {
+        "poliza": "POL-ME-83380",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-F075",
+      "modelo": "Nissan Frontier",
+      "tipo": "Supervisión de Frentes",
+      "anio": 2023,
+      "placa": "JCJ-498",
+      "estado": "en_ruta",
+      "conductor": "Rafael Díaz Gómez",
+      "rol": "Supervisor de Obra",
+      "certificaciones": [
+        "Trabajos en Altura",
+        "ISO 45001",
+        "Manejo Defensivo"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": "Frente Ampliación Puerto Veracruz",
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 180087,
+      "rendimiento_kml": 8.5,
+      "combustible_pct": 16,
+      "velocidad_kmh": 73,
+      "salud_motor_pct": 61,
+      "salud_frenos_pct": 94,
+      "salud_general_pct": 61,
+      "horas_conduccion_hoy": 3.7,
+      "ubicacion": {
+        "lat": 18.9882,
+        "lng": -96.3616
+      },
+      "eta_original": "17:45",
+      "eta_ai": "15:30",
+      "avance_pct": 76,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Manejo agresivo detectado"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-28",
+        "proximo_servicio": "2026-06-20"
+      },
+      "seguro": {
+        "poliza": "POL-ME-32613",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-Y076",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2022,
+      "placa": "BFJ-688",
+      "estado": "por_asignar",
+      "conductor": "Jorge Martínez Rodríguez",
+      "rol": "Topógrafo",
+      "certificaciones": [
+        "Trabajos en Altura",
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Monterrey",
+      "destino": null,
+      "frente_obra": "Autopista MTY-Saltillo",
+      "odometro_km": 97099,
+      "rendimiento_kml": 14.4,
+      "combustible_pct": 89,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 89,
+      "salud_frenos_pct": 71,
+      "salud_general_pct": 85,
+      "horas_conduccion_hoy": 1.7,
+      "ubicacion": {
+        "lat": 25.2933,
+        "lng": -100.4977
+      },
+      "eta_original": "14:00",
+      "eta_ai": "12:00",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-14",
+        "proximo_servicio": "2026-06-14"
+      },
+      "seguro": {
+        "poliza": "POL-ME-68176",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-Y077",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2024,
+      "placa": "HCG-860",
+      "estado": "en_ruta",
+      "conductor": "Alejandro Torres Hernández",
+      "rol": "Inspector de Calidad",
+      "certificaciones": [
+        "NOM-009",
+        "Seguridad Industrial",
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX-Toluca",
+      "destino": "Frente Tren Interurbano Méx-Toluca",
+      "frente_obra": "Tren Interurbano Méx-Toluca",
+      "odometro_km": 23089,
+      "rendimiento_kml": 16.4,
+      "combustible_pct": 42,
+      "velocidad_kmh": 99,
+      "salud_motor_pct": 89,
+      "salud_frenos_pct": 83,
+      "salud_general_pct": 84,
+      "horas_conduccion_hoy": 8.2,
+      "ubicacion": {
+        "lat": 19.015,
+        "lng": -99.4486
+      },
+      "eta_original": "15:15",
+      "eta_ai": "13:00",
+      "avance_pct": 94,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-15",
+        "proximo_servicio": "2026-05-12"
+      },
+      "seguro": {
+        "poliza": "POL-ME-21401",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-Y078",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2022,
+      "placa": "CBC-311",
+      "estado": "no_ubicable",
+      "conductor": "Javier Rivera Chávez",
+      "rol": "Supervisor de Obra",
+      "certificaciones": [
+        "Manejo Defensivo",
+        "NOM-009",
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Monterrey",
+      "destino": null,
+      "frente_obra": "Autopista MTY-Saltillo",
+      "odometro_km": 70018,
+      "rendimiento_kml": 16.4,
+      "combustible_pct": 84,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 89,
+      "salud_frenos_pct": 70,
+      "salud_general_pct": 70,
+      "horas_conduccion_hoy": 9.8,
+      "ubicacion": {
+        "lat": 25.2956,
+        "lng": -100.2664
+      },
+      "eta_original": "15:00",
+      "eta_ai": "9:45",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": false,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-23",
+        "proximo_servicio": "2026-04-08"
+      },
+      "seguro": {
+        "poliza": "POL-ME-29168",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-Y079",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2024,
+      "placa": "BML-512",
+      "estado": "no_ubicable",
+      "conductor": "Javier Ramírez Díaz",
+      "rol": "Coordinador de Logística",
+      "certificaciones": [
+        "Manejo Defensivo",
+        "ISO 45001",
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Guadalajara",
+      "destino": null,
+      "frente_obra": "Libramiento GDL-PV",
+      "odometro_km": 117944,
+      "rendimiento_kml": 15.5,
+      "combustible_pct": 70,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 75,
+      "salud_frenos_pct": 97,
+      "salud_general_pct": 50,
+      "horas_conduccion_hoy": 8.7,
+      "ubicacion": {
+        "lat": 20.8783,
+        "lng": -103.5941
+      },
+      "eta_original": "14:30",
+      "eta_ai": "8:45",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": false,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-11",
+        "proximo_servicio": "2026-05-11"
+      },
+      "seguro": {
+        "poliza": "POL-ME-81737",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-Y080",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2024,
+      "placa": "NGA-538",
+      "estado": "en_ruta",
+      "conductor": "Roberto Cruz García",
+      "rol": "Jefe de Frente",
+      "certificaciones": [
+        "Trabajos en Altura",
+        "Manejo Defensivo",
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": "Frente Ampliación Puerto Veracruz",
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 214820,
+      "rendimiento_kml": 14.1,
+      "combustible_pct": 43,
+      "velocidad_kmh": 11,
+      "salud_motor_pct": 96,
+      "salud_frenos_pct": 83,
+      "salud_general_pct": 66,
+      "horas_conduccion_hoy": 0.8,
+      "ubicacion": {
+        "lat": 19.2687,
+        "lng": -96.0407
+      },
+      "eta_original": "7:45",
+      "eta_ai": "17:30",
+      "avance_pct": 92,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-01",
+        "proximo_servicio": "2026-04-16"
+      },
+      "seguro": {
+        "poliza": "POL-ME-20215",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-Y081",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2024,
+      "placa": "FBA-492",
+      "estado": "en_taller",
+      "conductor": "Francisco Flores Martínez",
+      "rol": "Ingeniero Residente",
+      "certificaciones": [
+        "Seguridad Industrial",
+        "ISO 45001",
+        "Manejo Defensivo"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Guadalajara",
+      "destino": null,
+      "frente_obra": "Libramiento GDL-PV",
+      "odometro_km": 131671,
+      "rendimiento_kml": 14.0,
+      "combustible_pct": 55,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 74,
+      "salud_frenos_pct": 68,
+      "salud_general_pct": 74,
+      "horas_conduccion_hoy": 7.7,
+      "ubicacion": {
+        "lat": 20.8219,
+        "lng": -103.5701
+      },
+      "eta_original": "17:15",
+      "eta_ai": "8:00",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-21",
+        "proximo_servicio": "2026-04-14"
+      },
+      "seguro": {
+        "poliza": "POL-ME-90750",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-Y082",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2022,
+      "placa": "EBD-186",
+      "estado": "en_ruta",
+      "conductor": "Javier Gómez Rivera",
+      "rol": "Jefe de Frente",
+      "certificaciones": [
+        "NOM-009",
+        "ISO 45001",
+        "Manejo Defensivo"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Guadalajara",
+      "destino": "Frente Libramiento GDL-PV",
+      "frente_obra": "Libramiento GDL-PV",
+      "odometro_km": 51703,
+      "rendimiento_kml": 16.3,
+      "combustible_pct": 11,
+      "velocidad_kmh": 108,
+      "salud_motor_pct": 97,
+      "salud_frenos_pct": 79,
+      "salud_general_pct": 63,
+      "horas_conduccion_hoy": 5.2,
+      "ubicacion": {
+        "lat": 20.6757,
+        "lng": -103.2013
+      },
+      "eta_original": "11:00",
+      "eta_ai": "10:45",
+      "avance_pct": 49,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-12",
+        "proximo_servicio": "2026-05-05"
+      },
+      "seguro": {
+        "poliza": "POL-ME-60703",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-Y083",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2024,
+      "placa": "ADN-908",
+      "estado": "en_taller",
+      "conductor": "Gerardo López García",
+      "rol": "Topógrafo",
+      "certificaciones": [
+        "Manejo Defensivo",
+        "NOM-009",
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": null,
+      "frente_obra": "Nuevo Aeropuerto Tulum",
+      "odometro_km": 60290,
+      "rendimiento_kml": 16.3,
+      "combustible_pct": 62,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 99,
+      "salud_frenos_pct": 85,
+      "salud_general_pct": 55,
+      "horas_conduccion_hoy": 6.4,
+      "ubicacion": {
+        "lat": 20.2726,
+        "lng": -87.6384
+      },
+      "eta_original": "8:30",
+      "eta_ai": "8:15",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-10",
+        "proximo_servicio": "2026-06-24"
+      },
+      "seguro": {
+        "poliza": "POL-ME-41278",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-Y084",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2023,
+      "placa": "KCA-240",
+      "estado": "en_ruta",
+      "conductor": "Mario Hernández Torres",
+      "rol": "Supervisor de Obra",
+      "certificaciones": [
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Guadalajara",
+      "destino": "Frente Libramiento GDL-PV",
+      "frente_obra": "Libramiento GDL-PV",
+      "odometro_km": 45405,
+      "rendimiento_kml": 15.4,
+      "combustible_pct": 52,
+      "velocidad_kmh": 66,
+      "salud_motor_pct": 88,
+      "salud_frenos_pct": 76,
+      "salud_general_pct": 60,
+      "horas_conduccion_hoy": 3.7,
+      "ubicacion": {
+        "lat": 20.8199,
+        "lng": -103.1259
+      },
+      "eta_original": "18:00",
+      "eta_ai": "7:30",
+      "avance_pct": 54,
+      "sla_en_riesgo": false,
+      "desvio_activo": true,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-16",
+        "proximo_servicio": "2026-06-17"
+      },
+      "seguro": {
+        "poliza": "POL-ME-57202",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-Y085",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2022,
+      "placa": "BLA-979",
+      "estado": "en_taller",
+      "conductor": "Gerardo Martínez Gutiérrez",
+      "rol": "Supervisor de Obra",
+      "certificaciones": [
+        "Seguridad Industrial"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": null,
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 111387,
+      "rendimiento_kml": 14.5,
+      "combustible_pct": 68,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 78,
+      "salud_frenos_pct": 84,
+      "salud_general_pct": 59,
+      "horas_conduccion_hoy": 1.8,
+      "ubicacion": {
+        "lat": 19.4462,
+        "lng": -96.4088
+      },
+      "eta_original": "18:45",
+      "eta_ai": "10:30",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-19",
+        "proximo_servicio": "2026-05-04"
+      },
+      "seguro": {
+        "poliza": "POL-ME-75803",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-Y086",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2024,
+      "placa": "EBG-477",
+      "estado": "en_ruta",
+      "conductor": "Fernando Cruz Torres",
+      "rol": "Jefe de Frente",
+      "certificaciones": [
+        "NOM-009",
+        "Manejo Defensivo"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX-Toluca",
+      "destino": "Frente Tren Interurbano Méx-Toluca",
+      "frente_obra": "Tren Interurbano Méx-Toluca",
+      "odometro_km": 27039,
+      "rendimiento_kml": 16.9,
+      "combustible_pct": 87,
+      "velocidad_kmh": 31,
+      "salud_motor_pct": 84,
+      "salud_frenos_pct": 83,
+      "salud_general_pct": 87,
+      "horas_conduccion_hoy": 9.7,
+      "ubicacion": {
+        "lat": 19.5887,
+        "lng": -99.4145
+      },
+      "eta_original": "18:15",
+      "eta_ai": "9:00",
+      "avance_pct": 52,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-11",
+        "proximo_servicio": "2026-03-25"
+      },
+      "seguro": {
+        "poliza": "POL-ME-96154",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-Y087",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2022,
+      "placa": "BDA-337",
+      "estado": "en_ruta",
+      "conductor": "Eduardo Morales Hernández",
+      "rol": "Coordinador de Logística",
+      "certificaciones": [
+        "ISO 45001",
+        "Manejo Defensivo"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Campeche-Mérida",
+      "destino": "Frente Tren Maya Tramo 3",
+      "frente_obra": "Tren Maya Tramo 3",
+      "odometro_km": 153887,
+      "rendimiento_kml": 16.9,
+      "combustible_pct": 66,
+      "velocidad_kmh": 95,
+      "salud_motor_pct": 60,
+      "salud_frenos_pct": 97,
+      "salud_general_pct": 56,
+      "horas_conduccion_hoy": 5.1,
+      "ubicacion": {
+        "lat": 19.9223,
+        "lng": -90.5934
+      },
+      "eta_original": "16:00",
+      "eta_ai": "13:15",
+      "avance_pct": 30,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-23",
+        "proximo_servicio": "2026-05-11"
+      },
+      "seguro": {
+        "poliza": "POL-ME-69343",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-Y088",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2022,
+      "placa": "GEB-466",
+      "estado": "en_ruta",
+      "conductor": "Javier Martínez González",
+      "rol": "Jefe de Frente",
+      "certificaciones": [
+        "Manejo Defensivo",
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Guadalajara",
+      "destino": "Frente Libramiento GDL-PV",
+      "frente_obra": "Libramiento GDL-PV",
+      "odometro_km": 50680,
+      "rendimiento_kml": 16.3,
+      "combustible_pct": 41,
+      "velocidad_kmh": 109,
+      "salud_motor_pct": 62,
+      "salud_frenos_pct": 65,
+      "salud_general_pct": 60,
+      "horas_conduccion_hoy": 8.1,
+      "ubicacion": {
+        "lat": 20.5525,
+        "lng": -103.2272
+      },
+      "eta_original": "16:00",
+      "eta_ai": "10:30",
+      "avance_pct": 18,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-22",
+        "proximo_servicio": "2026-05-09"
+      },
+      "seguro": {
+        "poliza": "POL-ME-32789",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-Y089",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2024,
+      "placa": "BAM-327",
+      "estado": "en_ruta",
+      "conductor": "Roberto Cruz Martínez",
+      "rol": "Operador de Campo",
+      "certificaciones": [
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX",
+      "destino": "Frente Puente Vehicular Periférico Norte",
+      "frente_obra": "Puente Vehicular Periférico Norte",
+      "odometro_km": 211104,
+      "rendimiento_kml": 15.7,
+      "combustible_pct": 55,
+      "velocidad_kmh": 87,
+      "salud_motor_pct": 95,
+      "salud_frenos_pct": 65,
+      "salud_general_pct": 87,
+      "horas_conduccion_hoy": 5.9,
+      "ubicacion": {
+        "lat": 19.7505,
+        "lng": -99.435
+      },
+      "eta_original": "8:15",
+      "eta_ai": "17:45",
+      "avance_pct": 16,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-02",
+        "proximo_servicio": "2026-06-02"
+      },
+      "seguro": {
+        "poliza": "POL-ME-32018",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-Y090",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2022,
+      "placa": "DGC-728",
+      "estado": "en_ruta",
+      "conductor": "Luis Rivera Pérez",
+      "rol": "Almacenista",
+      "certificaciones": [
+        "Trabajos en Altura",
+        "Manejo Defensivo",
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX",
+      "destino": "Frente Puente Vehicular Periférico Norte",
+      "frente_obra": "Puente Vehicular Periférico Norte",
+      "odometro_km": 115330,
+      "rendimiento_kml": 16.0,
+      "combustible_pct": 60,
+      "velocidad_kmh": 112,
+      "salud_motor_pct": 90,
+      "salud_frenos_pct": 90,
+      "salud_general_pct": 53,
+      "horas_conduccion_hoy": 0.9,
+      "ubicacion": {
+        "lat": 19.4298,
+        "lng": -99.2285
+      },
+      "eta_original": "17:15",
+      "eta_ai": "17:00",
+      "avance_pct": 48,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-12",
+        "proximo_servicio": "2026-05-13"
+      },
+      "seguro": {
+        "poliza": "POL-ME-45446",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-Y091",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2024,
+      "placa": "GFJ-338",
+      "estado": "en_ruta",
+      "conductor": "Víctor Ramírez Hernández",
+      "rol": "Operador de Campo",
+      "certificaciones": [
+        "Trabajos en Altura"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Cancún-Tulum",
+      "destino": "Frente Tren Maya Tramo 5",
+      "frente_obra": "Tren Maya Tramo 5",
+      "odometro_km": 72414,
+      "rendimiento_kml": 14.1,
+      "combustible_pct": 92,
+      "velocidad_kmh": 30,
+      "salud_motor_pct": 72,
+      "salud_frenos_pct": 94,
+      "salud_general_pct": 97,
+      "horas_conduccion_hoy": 0.6,
+      "ubicacion": {
+        "lat": 20.9278,
+        "lng": -87.2484
+      },
+      "eta_original": "13:30",
+      "eta_ai": "9:15",
+      "avance_pct": 30,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-23",
+        "proximo_servicio": "2026-05-19"
+      },
+      "seguro": {
+        "poliza": "POL-ME-83873",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-Y092",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2024,
+      "placa": "DHA-728",
+      "estado": "en_ruta",
+      "conductor": "Miguel López Hernández",
+      "rol": "Jefe de Frente",
+      "certificaciones": [
+        "Manejo Defensivo"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Guadalajara",
+      "destino": "Frente Libramiento GDL-PV",
+      "frente_obra": "Libramiento GDL-PV",
+      "odometro_km": 96016,
+      "rendimiento_kml": 14.5,
+      "combustible_pct": 30,
+      "velocidad_kmh": 117,
+      "salud_motor_pct": 75,
+      "salud_frenos_pct": 63,
+      "salud_general_pct": 51,
+      "horas_conduccion_hoy": 1.5,
+      "ubicacion": {
+        "lat": 20.7928,
+        "lng": -103.565
+      },
+      "eta_original": "8:30",
+      "eta_ai": "8:30",
+      "avance_pct": 90,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-11",
+        "proximo_servicio": "2026-04-06"
+      },
+      "seguro": {
+        "poliza": "POL-ME-67261",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-Y093",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2024,
+      "placa": "JCE-805",
+      "estado": "en_ruta",
+      "conductor": "Gabriel Chávez Rivera",
+      "rol": "Administrativo",
+      "certificaciones": [
+        "Trabajos en Altura"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": "Frente Nuevo Aeropuerto Tulum",
+      "frente_obra": "Nuevo Aeropuerto Tulum",
+      "odometro_km": 162318,
+      "rendimiento_kml": 16.1,
+      "combustible_pct": 8,
+      "velocidad_kmh": 89,
+      "salud_motor_pct": 91,
+      "salud_frenos_pct": 85,
+      "salud_general_pct": 86,
+      "horas_conduccion_hoy": 0.3,
+      "ubicacion": {
+        "lat": 20.3114,
+        "lng": -87.1774
+      },
+      "eta_original": "16:15",
+      "eta_ai": "17:00",
+      "avance_pct": 63,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-06",
+        "proximo_servicio": "2026-03-27"
+      },
+      "seguro": {
+        "poliza": "POL-ME-97821",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-Y094",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2023,
+      "placa": "LAG-529",
+      "estado": "en_ruta",
+      "conductor": "Fernando Rivera Ramírez",
+      "rol": "Operador de Campo",
+      "certificaciones": [
+        "Primeros Auxilios",
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": "Frente Ampliación Puerto Veracruz",
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 69967,
+      "rendimiento_kml": 14.7,
+      "combustible_pct": 52,
+      "velocidad_kmh": 69,
+      "salud_motor_pct": 79,
+      "salud_frenos_pct": 66,
+      "salud_general_pct": 80,
+      "horas_conduccion_hoy": 7.9,
+      "ubicacion": {
+        "lat": 19.2168,
+        "lng": -95.9751
+      },
+      "eta_original": "10:15",
+      "eta_ai": "14:00",
+      "avance_pct": 4,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-11",
+        "proximo_servicio": "2026-04-13"
+      },
+      "seguro": {
+        "poliza": "POL-ME-31090",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-Y095",
+      "modelo": "Toyota Yaris",
+      "tipo": "Ejecutivos/Ingenieros",
+      "anio": 2024,
+      "placa": "CNC-203",
+      "estado": "en_ruta",
+      "conductor": "Francisco García Díaz",
+      "rol": "Supervisor de Seguridad",
+      "certificaciones": [
+        "Trabajos en Altura"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Monterrey",
+      "destino": "Frente Autopista MTY-Saltillo",
+      "frente_obra": "Autopista MTY-Saltillo",
+      "odometro_km": 175863,
+      "rendimiento_kml": 16.7,
+      "combustible_pct": 60,
+      "velocidad_kmh": 89,
+      "salud_motor_pct": 90,
+      "salud_frenos_pct": 94,
+      "salud_general_pct": 66,
+      "horas_conduccion_hoy": 6.6,
+      "ubicacion": {
+        "lat": 25.2984,
+        "lng": -100.5525
+      },
+      "eta_original": "13:45",
+      "eta_ai": "9:00",
+      "avance_pct": 46,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-07",
+        "proximo_servicio": "2026-03-01"
+      },
+      "seguro": {
+        "poliza": "POL-ME-37125",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-N096",
+      "modelo": "Nissan NV350",
+      "tipo": "Transporte de Personal",
+      "anio": 2022,
+      "placa": "KBH-289",
+      "estado": "en_ruta",
+      "conductor": "Víctor Gómez Morales",
+      "rol": "Supervisor de Seguridad",
+      "certificaciones": [
+        "Manejo Defensivo",
+        "Trabajos en Altura"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Campeche-Mérida",
+      "destino": "Frente Tren Maya Tramo 3",
+      "frente_obra": "Tren Maya Tramo 3",
+      "odometro_km": 236189,
+      "rendimiento_kml": 7.8,
+      "combustible_pct": 65,
+      "velocidad_kmh": 5,
+      "salud_motor_pct": 71,
+      "salud_frenos_pct": 88,
+      "salud_general_pct": 79,
+      "horas_conduccion_hoy": 2.6,
+      "ubicacion": {
+        "lat": 20.0422,
+        "lng": -90.4915
+      },
+      "eta_original": "9:00",
+      "eta_ai": "8:30",
+      "avance_pct": 69,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-27",
+        "proximo_servicio": "2026-06-27"
+      },
+      "seguro": {
+        "poliza": "POL-ME-78495",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-N097",
+      "modelo": "Nissan NV350",
+      "tipo": "Transporte de Personal",
+      "anio": 2021,
+      "placa": "HJP-250",
+      "estado": "en_taller",
+      "conductor": "Raúl Hernández Reyes",
+      "rol": "Ingeniero Residente",
+      "certificaciones": [
+        "Trabajos en Altura",
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": null,
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 139849,
+      "rendimiento_kml": 8.2,
+      "combustible_pct": 35,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 67,
+      "salud_frenos_pct": 68,
+      "salud_general_pct": 52,
+      "horas_conduccion_hoy": 4.2,
+      "ubicacion": {
+        "lat": 19.463,
+        "lng": -96.1688
+      },
+      "eta_original": "17:15",
+      "eta_ai": "16:30",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-13",
+        "proximo_servicio": "2026-06-18"
+      },
+      "seguro": {
+        "poliza": "POL-ME-52746",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-N098",
+      "modelo": "Nissan NV350",
+      "tipo": "Transporte de Personal",
+      "anio": 2023,
+      "placa": "CJL-202",
+      "estado": "en_ruta",
+      "conductor": "Víctor Díaz Martínez",
+      "rol": "Ingeniero Residente",
+      "certificaciones": [
+        "Seguridad Industrial",
+        "Manejo Defensivo",
+        "NOM-009"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": "Frente Ampliación Puerto Veracruz",
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 178330,
+      "rendimiento_kml": 9.0,
+      "combustible_pct": 60,
+      "velocidad_kmh": 33,
+      "salud_motor_pct": 79,
+      "salud_frenos_pct": 91,
+      "salud_general_pct": 86,
+      "horas_conduccion_hoy": 6.1,
+      "ubicacion": {
+        "lat": 18.8925,
+        "lng": -96.2648
+      },
+      "eta_original": "9:45",
+      "eta_ai": "7:45",
+      "avance_pct": 42,
+      "sla_en_riesgo": false,
+      "desvio_activo": true,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-12",
+        "proximo_servicio": "2026-03-11"
+      },
+      "seguro": {
+        "poliza": "POL-ME-49722",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-N099",
+      "modelo": "Nissan NV350",
+      "tipo": "Transporte de Personal",
+      "anio": 2023,
+      "placa": "LLE-846",
+      "estado": "en_ruta",
+      "conductor": "Alberto Sánchez González",
+      "rol": "Topógrafo",
+      "certificaciones": [
+        "ISO 45001",
+        "Seguridad Industrial",
+        "Trabajos en Altura"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Campeche-Mérida",
+      "destino": "Frente Tren Maya Tramo 3",
+      "frente_obra": "Tren Maya Tramo 3",
+      "odometro_km": 194529,
+      "rendimiento_kml": 7.7,
+      "combustible_pct": 64,
+      "velocidad_kmh": 27,
+      "salud_motor_pct": 81,
+      "salud_frenos_pct": 91,
+      "salud_general_pct": 98,
+      "horas_conduccion_hoy": 5.2,
+      "ubicacion": {
+        "lat": 19.7643,
+        "lng": -90.7963
+      },
+      "eta_original": "9:00",
+      "eta_ai": "11:45",
+      "avance_pct": 17,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-07",
+        "proximo_servicio": "2026-04-27"
+      },
+      "seguro": {
+        "poliza": "POL-ME-17553",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-N100",
+      "modelo": "Nissan NV350",
+      "tipo": "Transporte de Personal",
+      "anio": 2021,
+      "placa": "HJB-131",
+      "estado": "en_ruta",
+      "conductor": "Antonio Ramírez Rivera",
+      "rol": "Jefe de Frente",
+      "certificaciones": [
+        "Primeros Auxilios",
+        "NOM-009"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Cancún-Tulum",
+      "destino": "Frente Tren Maya Tramo 5",
+      "frente_obra": "Tren Maya Tramo 5",
+      "odometro_km": 255656,
+      "rendimiento_kml": 8.4,
+      "combustible_pct": 65,
+      "velocidad_kmh": 22,
+      "salud_motor_pct": 85,
+      "salud_frenos_pct": 97,
+      "salud_general_pct": 85,
+      "horas_conduccion_hoy": 3.5,
+      "ubicacion": {
+        "lat": 20.4281,
+        "lng": -86.8433
+      },
+      "eta_original": "18:00",
+      "eta_ai": "11:00",
+      "avance_pct": 49,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-28",
+        "proximo_servicio": "2026-04-21"
+      },
+      "seguro": {
+        "poliza": "POL-ME-39505",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-N101",
+      "modelo": "Nissan NV350",
+      "tipo": "Transporte de Personal",
+      "anio": 2022,
+      "placa": "KJA-358",
+      "estado": "por_asignar",
+      "conductor": "Gerardo García Morales",
+      "rol": "Almacenista",
+      "certificaciones": [
+        "ISO 45001",
+        "Manejo Defensivo"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Campeche-Mérida",
+      "destino": null,
+      "frente_obra": "Tren Maya Tramo 3",
+      "odometro_km": 149553,
+      "rendimiento_kml": 7.6,
+      "combustible_pct": 62,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 79,
+      "salud_frenos_pct": 82,
+      "salud_general_pct": 79,
+      "horas_conduccion_hoy": 2.5,
+      "ubicacion": {
+        "lat": 19.82,
+        "lng": -90.4237
+      },
+      "eta_original": "16:45",
+      "eta_ai": "16:00",
+      "avance_pct": 0,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-18",
+        "proximo_servicio": "2026-05-10"
+      },
+      "seguro": {
+        "poliza": "POL-ME-99707",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-N102",
+      "modelo": "Nissan NV350",
+      "tipo": "Transporte de Personal",
+      "anio": 2022,
+      "placa": "PKC-629",
+      "estado": "en_ruta",
+      "conductor": "Alberto Ramírez Ramírez",
+      "rol": "Jefe de Frente",
+      "certificaciones": [
+        "NOM-009"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": "Frente Ampliación Puerto Veracruz",
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 87478,
+      "rendimiento_kml": 9.1,
+      "combustible_pct": 59,
+      "velocidad_kmh": 84,
+      "salud_motor_pct": 75,
+      "salud_frenos_pct": 68,
+      "salud_general_pct": 96,
+      "horas_conduccion_hoy": 0.3,
+      "ubicacion": {
+        "lat": 19.1684,
+        "lng": -96.2526
+      },
+      "eta_original": "13:45",
+      "eta_ai": "13:00",
+      "avance_pct": 74,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-22",
+        "proximo_servicio": "2026-06-22"
+      },
+      "seguro": {
+        "poliza": "POL-ME-56988",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-N103",
+      "modelo": "Nissan NV350",
+      "tipo": "Transporte de Personal",
+      "anio": 2023,
+      "placa": "HNP-443",
+      "estado": "por_asignar",
+      "conductor": "Guillermo González Ramírez",
+      "rol": "Ingeniero Residente",
+      "certificaciones": [
+        "Manejo Defensivo"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX-Toluca",
+      "destino": null,
+      "frente_obra": "Tren Interurbano Méx-Toluca",
+      "odometro_km": 62483,
+      "rendimiento_kml": 8.2,
+      "combustible_pct": 36,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 74,
+      "salud_frenos_pct": 86,
+      "salud_general_pct": 71,
+      "horas_conduccion_hoy": 3.7,
+      "ubicacion": {
+        "lat": 19.3413,
+        "lng": -99.6017
+      },
+      "eta_original": "8:45",
+      "eta_ai": "7:00",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-17",
+        "proximo_servicio": "2026-05-14"
+      },
+      "seguro": {
+        "poliza": "POL-ME-17086",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-N104",
+      "modelo": "Nissan NV350",
+      "tipo": "Transporte de Personal",
+      "anio": 2022,
+      "placa": "LLG-746",
+      "estado": "en_ruta",
+      "conductor": "Manuel Cruz González",
+      "rol": "Operador de Campo",
+      "certificaciones": [
+        "ISO 45001",
+        "Seguridad Industrial"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX-Toluca",
+      "destino": "Frente Tren Interurbano Méx-Toluca",
+      "frente_obra": "Tren Interurbano Méx-Toluca",
+      "odometro_km": 122267,
+      "rendimiento_kml": 10.0,
+      "combustible_pct": 8,
+      "velocidad_kmh": 57,
+      "salud_motor_pct": 72,
+      "salud_frenos_pct": 73,
+      "salud_general_pct": 98,
+      "horas_conduccion_hoy": 7.7,
+      "ubicacion": {
+        "lat": 19.3358,
+        "lng": -99.7849
+      },
+      "eta_original": "8:15",
+      "eta_ai": "16:45",
+      "avance_pct": 81,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-02",
+        "proximo_servicio": "2026-04-24"
+      },
+      "seguro": {
+        "poliza": "POL-ME-58903",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-N105",
+      "modelo": "Nissan NV350",
+      "tipo": "Transporte de Personal",
+      "anio": 2023,
+      "placa": "EBF-702",
+      "estado": "no_ubicable",
+      "conductor": "Carlos Sánchez Sánchez",
+      "rol": "Administrativo",
+      "certificaciones": [
+        "Seguridad Industrial"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": null,
+      "frente_obra": "Nuevo Aeropuerto Tulum",
+      "odometro_km": 64958,
+      "rendimiento_kml": 7.5,
+      "combustible_pct": 13,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 74,
+      "salud_frenos_pct": 78,
+      "salud_general_pct": 79,
+      "horas_conduccion_hoy": 7.3,
+      "ubicacion": {
+        "lat": 20.3078,
+        "lng": -87.5273
+      },
+      "eta_original": "17:15",
+      "eta_ai": "12:45",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": false,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-01",
+        "proximo_servicio": "2026-04-08"
+      },
+      "seguro": {
+        "poliza": "POL-ME-27197",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-N106",
+      "modelo": "Nissan NV350",
+      "tipo": "Transporte de Personal",
+      "anio": 2023,
+      "placa": "DHA-149",
+      "estado": "en_taller",
+      "conductor": "Francisco Hernández Gómez",
+      "rol": "Ingeniero Residente",
+      "certificaciones": [
+        "Seguridad Industrial",
+        "ISO 45001",
+        "NOM-009"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Cancún-Tulum",
+      "destino": null,
+      "frente_obra": "Tren Maya Tramo 5",
+      "odometro_km": 59298,
+      "rendimiento_kml": 7.8,
+      "combustible_pct": 61,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 83,
+      "salud_frenos_pct": 84,
+      "salud_general_pct": 57,
+      "horas_conduccion_hoy": 5.5,
+      "ubicacion": {
+        "lat": 20.6146,
+        "lng": -87.2881
+      },
+      "eta_original": "18:00",
+      "eta_ai": "11:45",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-14",
+        "proximo_servicio": "2026-03-17"
+      },
+      "seguro": {
+        "poliza": "POL-ME-90962",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-N107",
+      "modelo": "Nissan NV350",
+      "tipo": "Transporte de Personal",
+      "anio": 2021,
+      "placa": "FFC-661",
+      "estado": "en_ruta",
+      "conductor": "Antonio Ramírez Reyes",
+      "rol": "Inspector de Calidad",
+      "certificaciones": [
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Campeche-Mérida",
+      "destino": "Frente Tren Maya Tramo 3",
+      "frente_obra": "Tren Maya Tramo 3",
+      "odometro_km": 145479,
+      "rendimiento_kml": 8.0,
+      "combustible_pct": 69,
+      "velocidad_kmh": 42,
+      "salud_motor_pct": 70,
+      "salud_frenos_pct": 60,
+      "salud_general_pct": 50,
+      "horas_conduccion_hoy": 6.7,
+      "ubicacion": {
+        "lat": 20.0841,
+        "lng": -90.3289
+      },
+      "eta_original": "17:45",
+      "eta_ai": "9:00",
+      "avance_pct": 99,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-21",
+        "proximo_servicio": "2026-04-15"
+      },
+      "seguro": {
+        "poliza": "POL-ME-48800",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-N108",
+      "modelo": "Nissan NV350",
+      "tipo": "Transporte de Personal",
+      "anio": 2021,
+      "placa": "ELB-876",
+      "estado": "en_ruta",
+      "conductor": "Miguel Torres Rivera",
+      "rol": "Supervisor de Obra",
+      "certificaciones": [
+        "Trabajos en Altura"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": "Frente Ampliación Puerto Veracruz",
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 228169,
+      "rendimiento_kml": 7.9,
+      "combustible_pct": 92,
+      "velocidad_kmh": 82,
+      "salud_motor_pct": 65,
+      "salud_frenos_pct": 81,
+      "salud_general_pct": 72,
+      "horas_conduccion_hoy": 8.9,
+      "ubicacion": {
+        "lat": 19.4431,
+        "lng": -96.269
+      },
+      "eta_original": "18:00",
+      "eta_ai": "12:30",
+      "avance_pct": 23,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-23",
+        "proximo_servicio": "2026-06-26"
+      },
+      "seguro": {
+        "poliza": "POL-ME-65278",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-N109",
+      "modelo": "Nissan NV350",
+      "tipo": "Transporte de Personal",
+      "anio": 2023,
+      "placa": "JMK-285",
+      "estado": "en_ruta",
+      "conductor": "Alberto Rodríguez Martínez",
+      "rol": "Almacenista",
+      "certificaciones": [
+        "Manejo Defensivo",
+        "NOM-009"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Monterrey",
+      "destino": "Frente Autopista MTY-Saltillo",
+      "frente_obra": "Autopista MTY-Saltillo",
+      "odometro_km": 205424,
+      "rendimiento_kml": 7.6,
+      "combustible_pct": 11,
+      "velocidad_kmh": 110,
+      "salud_motor_pct": 98,
+      "salud_frenos_pct": 68,
+      "salud_general_pct": 80,
+      "horas_conduccion_hoy": 9.2,
+      "ubicacion": {
+        "lat": 25.1878,
+        "lng": -100.3632
+      },
+      "eta_original": "7:00",
+      "eta_ai": "11:30",
+      "avance_pct": 1,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [
+        "Kilometraje alto — evaluar reemplazo"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-22",
+        "proximo_servicio": "2026-05-17"
+      },
+      "seguro": {
+        "poliza": "POL-ME-78564",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-N110",
+      "modelo": "Nissan NV350",
+      "tipo": "Transporte de Personal",
+      "anio": 2023,
+      "placa": "HPA-758",
+      "estado": "por_asignar",
+      "conductor": "Daniel Gómez González",
+      "rol": "Operador de Campo",
+      "certificaciones": [
+        "Primeros Auxilios",
+        "ISO 45001",
+        "Trabajos en Altura"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX",
+      "destino": null,
+      "frente_obra": "Puente Vehicular Periférico Norte",
+      "odometro_km": 80162,
+      "rendimiento_kml": 8.7,
+      "combustible_pct": 17,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 86,
+      "salud_frenos_pct": 80,
+      "salud_general_pct": 65,
+      "horas_conduccion_hoy": 3.3,
+      "ubicacion": {
+        "lat": 19.3669,
+        "lng": -99.1758
+      },
+      "eta_original": "15:45",
+      "eta_ai": "13:15",
+      "avance_pct": 0,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-28",
+        "proximo_servicio": "2026-06-15"
+      },
+      "seguro": {
+        "poliza": "POL-ME-51426",
+        "aseguradora": "Qualitas"
+      }
+    },
+    {
+      "unidad": "ME-S111",
+      "modelo": "Mercedes Sprinter",
+      "tipo": "Logística y Equipo",
+      "anio": 2024,
+      "placa": "MMP-752",
+      "estado": "no_ubicable",
+      "conductor": "Eduardo Hernández Ortiz",
+      "rol": "Administrativo",
+      "certificaciones": [
+        "NOM-009",
+        "Trabajos en Altura",
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": null,
+      "frente_obra": "Ampliación Puerto Veracruz",
+      "odometro_km": 19658,
+      "rendimiento_kml": 7.3,
+      "combustible_pct": 51,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 78,
+      "salud_frenos_pct": 63,
+      "salud_general_pct": 64,
+      "horas_conduccion_hoy": 8.4,
+      "ubicacion": {
+        "lat": 19.0692,
+        "lng": -95.9696
+      },
+      "eta_original": "16:45",
+      "eta_ai": "18:30",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": false,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-01",
+        "proximo_servicio": "2026-05-12"
+      },
+      "seguro": {
+        "poliza": "POL-ME-93055",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-S112",
+      "modelo": "Mercedes Sprinter",
+      "tipo": "Logística y Equipo",
+      "anio": 2022,
+      "placa": "JCP-502",
+      "estado": "por_asignar",
+      "conductor": "Guillermo González Díaz",
+      "rol": "Jefe de Frente",
+      "certificaciones": [
+        "Trabajos en Altura",
+        "Manejo Defensivo"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": null,
+      "frente_obra": "Nuevo Aeropuerto Tulum",
+      "odometro_km": 27000,
+      "rendimiento_kml": 9.2,
+      "combustible_pct": 21,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 81,
+      "salud_frenos_pct": 62,
+      "salud_general_pct": 90,
+      "horas_conduccion_hoy": 8.4,
+      "ubicacion": {
+        "lat": 20.3033,
+        "lng": -87.2667
+      },
+      "eta_original": "14:45",
+      "eta_ai": "17:15",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": true,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-27",
+        "proximo_servicio": "2026-06-17"
+      },
+      "seguro": {
+        "poliza": "POL-ME-33226",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-S113",
+      "modelo": "Mercedes Sprinter",
+      "tipo": "Logística y Equipo",
+      "anio": 2023,
+      "placa": "FJK-354",
+      "estado": "en_ruta",
+      "conductor": "Manuel Flores Reyes",
+      "rol": "Administrativo",
+      "certificaciones": [
+        "Manejo Defensivo",
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX-Toluca",
+      "destino": "Frente Tren Interurbano Méx-Toluca",
+      "frente_obra": "Tren Interurbano Méx-Toluca",
+      "odometro_km": 187365,
+      "rendimiento_kml": 8.5,
+      "combustible_pct": 65,
+      "velocidad_kmh": 103,
+      "salud_motor_pct": 63,
+      "salud_frenos_pct": 68,
+      "salud_general_pct": 76,
+      "horas_conduccion_hoy": 6.0,
+      "ubicacion": {
+        "lat": 19.5219,
+        "lng": -99.5726
+      },
+      "eta_original": "18:30",
+      "eta_ai": "18:15",
+      "avance_pct": 25,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-23",
+        "proximo_servicio": "2026-04-17"
+      },
+      "seguro": {
+        "poliza": "POL-ME-81105",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-S114",
+      "modelo": "Mercedes Sprinter",
+      "tipo": "Logística y Equipo",
+      "anio": 2023,
+      "placa": "MMH-125",
+      "estado": "no_ubicable",
+      "conductor": "Javier Díaz Ortiz",
+      "rol": "Topógrafo",
+      "certificaciones": [
+        "Seguridad Industrial"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Monterrey",
+      "destino": null,
+      "frente_obra": "Autopista MTY-Saltillo",
+      "odometro_km": 162398,
+      "rendimiento_kml": 8.2,
+      "combustible_pct": 93,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 58,
+      "salud_frenos_pct": 72,
+      "salud_general_pct": 67,
+      "horas_conduccion_hoy": 7.5,
+      "ubicacion": {
+        "lat": 25.2166,
+        "lng": -100.438
+      },
+      "eta_original": "11:15",
+      "eta_ai": "7:30",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": false,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-04",
+        "proximo_servicio": "2026-04-24"
+      },
+      "seguro": {
+        "poliza": "POL-ME-94819",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-S115",
+      "modelo": "Mercedes Sprinter",
+      "tipo": "Logística y Equipo",
+      "anio": 2024,
+      "placa": "MKP-155",
+      "estado": "en_taller",
+      "conductor": "Miguel Gómez Gómez",
+      "rol": "Supervisor de Obra",
+      "certificaciones": [
+        "Manejo Defensivo",
+        "Trabajos en Altura",
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Guadalajara",
+      "destino": null,
+      "frente_obra": "Libramiento GDL-PV",
+      "odometro_km": 90402,
+      "rendimiento_kml": 8.7,
+      "combustible_pct": 36,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 95,
+      "salud_frenos_pct": 83,
+      "salud_general_pct": 98,
+      "horas_conduccion_hoy": 5.9,
+      "ubicacion": {
+        "lat": 20.8131,
+        "lng": -103.5321
+      },
+      "eta_original": "18:15",
+      "eta_ai": "11:45",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-24",
+        "proximo_servicio": "2026-03-13"
+      },
+      "seguro": {
+        "poliza": "POL-ME-15326",
+        "aseguradora": "HDI"
+      }
+    },
+    {
+      "unidad": "ME-S116",
+      "modelo": "Mercedes Sprinter",
+      "tipo": "Logística y Equipo",
+      "anio": 2023,
+      "placa": "KCC-430",
+      "estado": "en_taller",
+      "conductor": "Alberto Ramírez García",
+      "rol": "Almacenista",
+      "certificaciones": [
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Campeche-Mérida",
+      "destino": null,
+      "frente_obra": "Tren Maya Tramo 3",
+      "odometro_km": 49096,
+      "rendimiento_kml": 7.4,
+      "combustible_pct": 86,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 97,
+      "salud_frenos_pct": 79,
+      "salud_general_pct": 81,
+      "horas_conduccion_hoy": 7.9,
+      "ubicacion": {
+        "lat": 19.8701,
+        "lng": -90.7863
+      },
+      "eta_original": "18:30",
+      "eta_ai": "15:15",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-01-14",
+        "proximo_servicio": "2026-06-03"
+      },
+      "seguro": {
+        "poliza": "POL-ME-55796",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-S117",
+      "modelo": "Mercedes Sprinter",
+      "tipo": "Logística y Equipo",
+      "anio": 2023,
+      "placa": "HLK-217",
+      "estado": "por_asignar",
+      "conductor": "Antonio Chávez Reyes",
+      "rol": "Supervisor de Seguridad",
+      "certificaciones": [
+        "Trabajos en Altura",
+        "NOM-009"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Guadalajara",
+      "destino": null,
+      "frente_obra": "Libramiento GDL-PV",
+      "odometro_km": 101787,
+      "rendimiento_kml": 7.9,
+      "combustible_pct": 87,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 70,
+      "salud_frenos_pct": 62,
+      "salud_general_pct": 93,
+      "horas_conduccion_hoy": 8.9,
+      "ubicacion": {
+        "lat": 20.5988,
+        "lng": -103.1723
+      },
+      "eta_original": "8:45",
+      "eta_ai": "11:30",
+      "avance_pct": 0,
+      "sla_en_riesgo": true,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-16",
+        "proximo_servicio": "2026-03-10"
+      },
+      "seguro": {
+        "poliza": "POL-ME-95397",
+        "aseguradora": "GNP"
+      }
+    },
+    {
+      "unidad": "ME-S118",
+      "modelo": "Mercedes Sprinter",
+      "tipo": "Logística y Equipo",
+      "anio": 2022,
+      "placa": "AKL-985",
+      "estado": "en_taller",
+      "conductor": "Gerardo Ortiz Ortiz",
+      "rol": "Topógrafo",
+      "certificaciones": [
+        "Trabajos en Altura"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": null,
+      "frente_obra": "Nuevo Aeropuerto Tulum",
+      "odometro_km": 40154,
+      "rendimiento_kml": 7.4,
+      "combustible_pct": 76,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 99,
+      "salud_frenos_pct": 87,
+      "salud_general_pct": 91,
+      "horas_conduccion_hoy": 8.2,
+      "ubicacion": {
+        "lat": 19.9933,
+        "lng": -87.3184
+      },
+      "eta_original": "7:45",
+      "eta_ai": "18:30",
+      "avance_pct": 0,
+      "sla_en_riesgo": true,
+      "desvio_activo": true,
+      "alertas": [
+        "Manejo agresivo detectado"
+      ],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": true,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-18",
+        "proximo_servicio": "2026-03-19"
+      },
+      "seguro": {
+        "poliza": "POL-ME-39837",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-S119",
+      "modelo": "Mercedes Sprinter",
+      "tipo": "Logística y Equipo",
+      "anio": 2023,
+      "placa": "HJJ-874",
+      "estado": "en_ruta",
+      "conductor": "Arturo García Gómez",
+      "rol": "Almacenista",
+      "certificaciones": [
+        "ISO 45001"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base CDMX",
+      "destino": "Frente Puente Vehicular Periférico Norte",
+      "frente_obra": "Puente Vehicular Periférico Norte",
+      "odometro_km": 180207,
+      "rendimiento_kml": 8.0,
+      "combustible_pct": 17,
+      "velocidad_kmh": 45,
+      "salud_motor_pct": 87,
+      "salud_frenos_pct": 66,
+      "salud_general_pct": 68,
+      "horas_conduccion_hoy": 7.9,
+      "ubicacion": {
+        "lat": 19.3808,
+        "lng": -99.4281
+      },
+      "eta_original": "14:45",
+      "eta_ai": "13:00",
+      "avance_pct": 60,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-21",
+        "proximo_servicio": "2026-04-10"
+      },
+      "seguro": {
+        "poliza": "POL-ME-98773",
+        "aseguradora": "AXA"
+      }
+    },
+    {
+      "unidad": "ME-S120",
+      "modelo": "Mercedes Sprinter",
+      "tipo": "Logística y Equipo",
+      "anio": 2024,
+      "placa": "HBC-859",
+      "estado": "en_taller",
+      "conductor": "Carlos Gutiérrez Chávez",
+      "rol": "Supervisor de Seguridad",
+      "certificaciones": [
+        "Primeros Auxilios"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Cancún-Tulum",
+      "destino": null,
+      "frente_obra": "Tren Maya Tramo 5",
+      "odometro_km": 52060,
+      "rendimiento_kml": 7.3,
+      "combustible_pct": 90,
+      "velocidad_kmh": 0,
+      "salud_motor_pct": 87,
+      "salud_frenos_pct": 69,
+      "salud_general_pct": 60,
+      "horas_conduccion_hoy": 1.8,
+      "ubicacion": {
+        "lat": 20.7001,
+        "lng": -87.2284
+      },
+      "eta_original": "8:15",
+      "eta_ai": "17:00",
+      "avance_pct": 0,
+      "sla_en_riesgo": false,
+      "desvio_activo": false,
+      "alertas": [],
+      "cadena_frio": false,
+      "gps": true,
+      "dashcam": false,
+      "mantenimiento": {
+        "ultimo_servicio": "2026-02-21",
+        "proximo_servicio": "2026-03-10"
+      },
+      "seguro": {
+        "poliza": "POL-ME-98039",
+        "aseguradora": "Qualitas"
+      }
+    }
+  ]
+}

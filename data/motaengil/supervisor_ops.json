@@ -1,0 +1,42 @@
+{
+  "monitoristas": [
+    "Carlos Méndez",
+    "Ana Reyes",
+    "Jorge Hernández",
+    "Lucía Torres"
+  ],
+  "alertas_criticas": [
+    {
+      "id": "AC-1",
+      "tipo": "Corralón",
+      "unit": "ME-H008",
+      "prioridad": 95,
+      "status": "siendo_atendido",
+      "monitorista": "Carlos Méndez"
+    },
+    {
+      "id": "AC-2",
+      "tipo": "Falla mecánica",
+      "unit": "ME-F032",
+      "prioridad": 88,
+      "status": "siendo_atendido",
+      "monitorista": "Ana Reyes"
+    }
+  ],
+  "mantenimiento_urgente": [
+    {
+      "unidad": "ME-H019",
+      "razon": "Motor inyector recurrente",
+      "status": "siendo_atendido"
+    }
+  ],
+  "viajes_criticos": [
+    {
+      "unidad": "ME-N012",
+      "categoria": "En taller",
+      "icono": "🔧",
+      "detalle": "Suspensión — refacción importada",
+      "status": "siendo_atendido"
+    }
+  ]
+}

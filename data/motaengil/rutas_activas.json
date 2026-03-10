@@ -1,0 +1,114 @@
+{
+  "rutas": [
+    {
+      "id": "MR-001",
+      "nombre": "CDMX → Tulum (Tren Maya Tramo 5)",
+      "tipo": "primary",
+      "frecuencia_viajes_mes": 85,
+      "km": 1500,
+      "casetas": 8,
+      "tiempo_est": "16h 00min",
+      "color": "22c55e",
+      "frente": "Tren Maya Tramo 5"
+    },
+    {
+      "id": "MR-002",
+      "nombre": "MTY → Saltillo (Autopista Ampliación)",
+      "tipo": "primary",
+      "frecuencia_viajes_mes": 62,
+      "km": 87,
+      "casetas": 1,
+      "tiempo_est": "1h 30min",
+      "color": "22c55e",
+      "frente": "Autopista MTY-Saltillo"
+    },
+    {
+      "id": "MR-003",
+      "nombre": "CDMX → Toluca (Tren Interurbano)",
+      "tipo": "primary",
+      "frecuencia_viajes_mes": 95,
+      "km": 64,
+      "casetas": 1,
+      "tiempo_est": "1h 15min",
+      "color": "22c55e",
+      "frente": "Tren Interurbano Méx-Toluca"
+    },
+    {
+      "id": "MR-004",
+      "nombre": "GDL → Puerto Vallarta (Libramiento)",
+      "tipo": "primary",
+      "frecuencia_viajes_mes": 45,
+      "km": 334,
+      "casetas": 3,
+      "tiempo_est": "4h 30min",
+      "color": "22c55e",
+      "frente": "Libramiento GDL-PV"
+    },
+    {
+      "id": "MR-005",
+      "nombre": "Campeche → Mérida (Tren Maya Tramo 3)",
+      "tipo": "primary",
+      "frecuencia_viajes_mes": 72,
+      "km": 180,
+      "casetas": 0,
+      "tiempo_est": "2h 30min",
+      "color": "22c55e",
+      "frente": "Tren Maya Tramo 3"
+    },
+    {
+      "id": "MR-006",
+      "nombre": "Cancún → Tulum (Aeropuerto)",
+      "tipo": "alternate",
+      "frecuencia_viajes_mes": 55,
+      "km": 130,
+      "casetas": 0,
+      "tiempo_est": "1h 45min",
+      "color": "f59e0b",
+      "frente": "Nuevo Aeropuerto Tulum"
+    },
+    {
+      "id": "MR-007",
+      "nombre": "CDMX Periférico Norte (Puente)",
+      "tipo": "alternate",
+      "frecuencia_viajes_mes": 110,
+      "km": 25,
+      "casetas": 0,
+      "tiempo_est": "0h 45min",
+      "color": "f59e0b",
+      "frente": "Puente Vehicular Periférico Norte"
+    },
+    {
+      "id": "MR-008",
+      "nombre": "CDMX → Veracruz (Puerto)",
+      "tipo": "primary",
+      "frecuencia_viajes_mes": 38,
+      "km": 420,
+      "casetas": 5,
+      "tiempo_est": "5h 00min",
+      "color": "22c55e",
+      "frente": "Ampliación Puerto Veracruz"
+    },
+    {
+      "id": "MR-009",
+      "nombre": "Ruta Interna Almacén → Frentes CDMX",
+      "tipo": "alternate",
+      "frecuencia_viajes_mes": 150,
+      "km": 45,
+      "casetas": 0,
+      "tiempo_est": "1h 00min",
+      "color": "8b5cf6",
+      "frente": "Varios"
+    },
+    {
+      "id": "MR-010",
+      "nombre": "MTY → Torreón (Apoyo logístico)",
+      "tipo": "alternate",
+      "frecuencia_viajes_mes": 28,
+      "km": 305,
+      "casetas": 3,
+      "tiempo_est": "3h 45min",
+      "color": "f59e0b",
+      "frente": "Autopista MTY-Saltillo"
+    }
+  ]
+}

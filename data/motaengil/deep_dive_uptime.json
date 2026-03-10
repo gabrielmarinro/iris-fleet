@@ -1,0 +1,126 @@
+{
+  "kpi": "uptime",
+  "titulo": "Uptime — Días Operativos",
+  "total_unidades": 120,
+  "uptime_actual_dias": 22.3,
+  "uptime_meta_dias": 26,
+  "gap_dias": 3.7,
+  "descomposicion_gap": {
+    "total_unidades_afectadas": 18,
+    "en_taller_programado": 6,
+    "en_taller_correctivo": 7,
+    "en_corralon": 5
+  },
+  "unidades_criticas": [
+    {
+      "unidad": "ME-H019",
+      "modelo": "Hilux 2019",
+      "km": 245000,
+      "dias_inactiva": 22,
+      "causa_detalle": "Hilux 2019 con 245K km. 3 ingresos a taller en 60 días por falla de inyector. Costo acumulado $89K.",
+      "costo_inactividad_dia": 15000,
+      "costo_acumulado": 330000,
+      "recomendacion": "REEMPLAZAR"
+    },
+    {
+      "unidad": "ME-F032",
+      "modelo": "Frontier 2020",
+      "km": 210000,
+      "dias_inactiva": 18,
+      "causa_detalle": "Transmisión con fallas recurrentes — 4 visitas. Taller externo NL no resuelve.",
+      "costo_inactividad_dia": 18000,
+      "costo_acumulado": 324000,
+      "recomendacion": "CAMBIAR TALLER"
+    },
+    {
+      "unidad": "ME-H008",
+      "modelo": "Hilux 2021",
+      "km": 178000,
+      "dias_inactiva": 12,
+      "causa_detalle": "En corralón municipal CDMX — verificación vencida. Cuadrilla de 6 sin transporte.",
+      "costo_inactividad_dia": 25000,
+      "costo_acumulado": 300000,
+      "recomendacion": "LIBERAR HOY"
+    },
+    {
+      "unidad": "ME-N012",
+      "modelo": "NV350 2021",
+      "km": 165000,
+      "dias_inactiva": 15,
+      "causa_detalle": "Suspensión colapsada por terracería Tren Maya. Refacción importada ETA 10 días.",
+      "costo_inactividad_dia": 22000,
+      "costo_acumulado": 330000,
+      "recomendacion": "RENTAR TEMPORAL"
+    },
+    {
+      "unidad": "ME-S003",
+      "modelo": "Sprinter 2022",
+      "km": 92000,
+      "dias_inactiva": 8,
+      "causa_detalle": "Falla eléctrica intermitente. Equipo topográfico de $2.5M varado.",
+      "costo_inactividad_dia": 28000,
+      "costo_acumulado": 224000,
+      "recomendacion": "SERVICIO EXPRESS"
+    }
+  ],
+  "resumen_financiero": {
+    "total_perdido_acumulado": 5550000,
+    "costo_por_hora_actual": 7700,
+    "ahorro_potencial_mes": 3200000
+  },
+  "acciones": [
+    {
+      "prioridad": 1,
+      "accion": "Liberar ME-H008 de corralón HOY",
+      "tipo": "inmediata",
+      "ahorro_mensual": 750000
+    },
+    {
+      "prioridad": 2,
+      "accion": "Rentar NV350 temporal para Tramo 3",
+      "tipo": "inmediata",
+      "ahorro_mensual": 606000
+    },
+    {
+      "prioridad": 3,
+      "accion": "Servicio express Mercedes ME-S003",
+      "tipo": "inmediata",
+      "ahorro_mensual": 560000
+    },
+    {
+      "prioridad": 4,
+      "accion": "Reemplazar ME-H019",
+      "tipo": "programada",
+      "ahorro_mensual": 450000
+    },
+    {
+      "prioridad": 5,
+      "accion": "Cambiar taller ME-F032",
+      "tipo": "programada",
+      "ahorro_mensual": 324000
+    }
+  ],
+  "iris_narrativa": {
+    "hallazgo_principal": "Tu flota opera 22.3 días/mes vs meta de 26. Esos 3.7 días perdidos cuestan $5.5M/mes."
+  },
+  "historico": {
+    "diario": [
+      {
+        "fecha": "2026-02-01",
+        "valor": 23.1
+      },
+      {
+        "fecha": "2026-02-15",
+        "valor": 21.9
+      },
+      {
+        "fecha": "2026-03-01",
+        "valor": 22.1
+      },
+      {
+        "fecha": "2026-03-10",
+        "valor": 22.3
+      }
+    ]
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "sugeridas_por_ia": [
+    {
+      "id": 1,
+      "nombre": "Frente de Obra Tren Maya Tramo 5",
+      "tipo": "zona_carga_descarga",
+      "centro": {
+        "lat": 20.6308,
+        "lng": -87.0803
+      },
+      "radio_metros": 2000,
+      "activa": true,
+      "descripcion": "Zona activa de construcción Tramo 5. 35 vehículos asignados.",
+      "riesgo_score": 42,
+      "confianza_pct": 94,
+      "eventos_historicos": 580,
+      "impacto_economico": {
+        "ahorro_riesgo": 320000,
+        "ahorro_sla": 180000,
+        "ahorro_combustible": 95000
+      }
+    },
+    {
+      "id": 2,
+      "nombre": "Frente Autopista MTY-Saltillo km 45",
+      "tipo": "punto_inspeccion",
+      "centro": {
+        "lat": 25.42,
+        "lng": -100.31
+      },
+      "radio_metros": 1500,
+      "activa": true,
+      "descripcion": "Ampliación autopista. Control acceso y seguridad.",
+      "riesgo_score": 58,
+      "confianza_pct": 88,
+      "eventos_historicos": 320,
+      "impacto_economico": {
+        "ahorro_riesgo": 450000,
+        "ahorro_sla": 220000,
+        "ahorro_combustible": 65000
+      }
+    },
+    {
+      "id": 3,
+      "nombre": "Almacén Central Materiales CDMX",
+      "tipo": "zona_carga_descarga",
+      "centro": {
+        "lat": 19.4926,
+        "lng": -99.1332
+      },
+      "radio_metros": 500,
+      "activa": true,
+      "descripcion": "Almacén principal. Controla salidas de inventario.",
+      "riesgo_score": 35,
+      "confianza_pct": 96,
+      "eventos_historicos": 1240,
+      "impacto_economico": {
+        "ahorro_riesgo": 180000,
+        "ahorro_sla": 95000,
+        "ahorro_combustible": 42000
+      }
+    },
+    {
+      "id": 4,
+      "nombre": "Campamento de Obra Campeche",
+      "tipo": "zona_carga_descarga",
+      "centro": {
+        "lat": 19.84,
+        "lng": -90.53
+      },
+      "radio_metros": 1200,
+      "activa": true,
+      "descripcion": "Campamento operativo Tramo 3 Tren Maya.",
+      "riesgo_score": 45,
+      "confianza_pct": 91,
+      "eventos_historicos": 410,
+      "impacto_economico": {
+        "ahorro_riesgo": 290000,
+        "ahorro_sla": 150000,
+        "ahorro_combustible": 78000
+      }
+    },
+    {
+      "id": 5,
+      "nombre": "Corralón Municipal CDMX",
+      "tipo": "zona_riesgo",
+      "centro": {
+        "lat": 19.36,
+        "lng": -99.08
+      },
+      "radio_metros": 300,
+      "activa": true,
+      "descripcion": "12 vehículos detenidos. $850/día por unidad.",
+      "riesgo_score": 78,
+      "confianza_pct": 99,
+      "eventos_historicos": 89,
+      "impacto_economico": {
+        "ahorro_riesgo": 0,
+        "ahorro_sla": 0,
+        "ahorro_combustible": 0
+      }
+    },
+    {
+      "id": 6,
+      "nombre": "Taller Flotillas NL",
+      "tipo": "punto_inspeccion",
+      "centro": {
+        "lat": 25.75,
+        "lng": -100.28
+      },
+      "radio_metros": 400,
+      "activa": true,
+      "descripcion": "Taller externo mantenimiento flota NL.",
+      "riesgo_score": 30,
+      "confianza_pct": 95,
+      "eventos_historicos": 670,
+      "impacto_economico": {
+        "ahorro_riesgo": 120000,
+        "ahorro_sla": 340000,
+        "ahorro_combustible": 28000
+      }
+    }
+  ]
+}

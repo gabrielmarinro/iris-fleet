@@ -1,0 +1,377 @@
+[
+  {
+    "id": 1,
+    "priority": 92,
+    "unit": "ME-Y047",
+    "conductor": "Andrés Gómez",
+    "type": "GPS sin señal",
+    "time": "15:30",
+    "route": "MTY→Saltillo",
+    "direccion": "Frente Nuevo Aeropuerto Tulum",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 44
+      },
+      "momento": {
+        "score": 65
+      },
+      "dinero": {
+        "texto": "Herramienta $427K"
+      },
+      "impacto_financiero": {
+        "valor_carga": 411382,
+        "total": 640834
+      }
+    }
+  },
+  {
+    "id": 2,
+    "priority": 60,
+    "unit": "ME-S061",
+    "conductor": "Ricardo Rodríguez",
+    "type": "Verificación vencida",
+    "time": "12:32",
+    "route": "MTY→Toluca",
+    "direccion": "Frente Tren Maya Tramo 3",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 64
+      },
+      "momento": {
+        "score": 77
+      },
+      "dinero": {
+        "texto": "Herramienta $155K"
+      },
+      "impacto_financiero": {
+        "valor_carga": 718153,
+        "total": 677496
+      }
+    }
+  },
+  {
+    "id": 3,
+    "priority": 88,
+    "unit": "ME-Y102",
+    "conductor": "Héctor Rivera",
+    "type": "Corralón",
+    "time": "10:27",
+    "route": "CDMX→Saltillo",
+    "direccion": "Frente Tren Maya Tramo 5",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 58
+      },
+      "momento": {
+        "score": 40
+      },
+      "dinero": {
+        "texto": "Herramienta $458K"
+      },
+      "impacto_financiero": {
+        "valor_carga": 501648,
+        "total": 732230
+      }
+    }
+  },
+  {
+    "id": 4,
+    "priority": 92,
+    "unit": "ME-Y032",
+    "conductor": "Manuel Gutiérrez",
+    "type": "Falla mecánica",
+    "time": "12:30",
+    "route": "MTY→Toluca",
+    "direccion": "Frente Tren Maya Tramo 5",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 58
+      },
+      "momento": {
+        "score": 90
+      },
+      "dinero": {
+        "texto": "Herramienta $185K"
+      },
+      "impacto_financiero": {
+        "valor_carga": 577975,
+        "total": 611624
+      }
+    }
+  },
+  {
+    "id": 5,
+    "priority": 65,
+    "unit": "ME-S055",
+    "conductor": "Alejandro Pérez",
+    "type": "Exceso horas",
+    "time": "18:57",
+    "route": "MTY→Saltillo",
+    "direccion": "Frente Nuevo Aeropuerto Tulum",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 88
+      },
+      "momento": {
+        "score": 48
+      },
+      "dinero": {
+        "texto": "Herramienta $64K"
+      },
+      "impacto_financiero": {
+        "valor_carga": 733330,
+        "total": 264438
+      }
+    }
+  },
+  {
+    "id": 6,
+    "priority": 70,
+    "unit": "ME-Y110",
+    "conductor": "Carlos Cruz",
+    "type": "Falla mecánica",
+    "time": "12:20",
+    "route": "CDMX→Saltillo",
+    "direccion": "Frente Autopista MTY-Saltillo",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 50
+      },
+      "momento": {
+        "score": 45
+      },
+      "dinero": {
+        "texto": "Herramienta $220K"
+      },
+      "impacto_financiero": {
+        "valor_carga": 125520,
+        "total": 185834
+      }
+    }
+  },
+  {
+    "id": 7,
+    "priority": 60,
+    "unit": "ME-F064",
+    "conductor": "Javier López",
+    "type": "GPS sin señal",
+    "time": "10:20",
+    "route": "CDMX→Toluca",
+    "direccion": "Frente Puente Vehicular Periférico Norte",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 49
+      },
+      "momento": {
+        "score": 69
+      },
+      "dinero": {
+        "texto": "Herramienta $157K"
+      },
+      "impacto_financiero": {
+        "valor_carga": 362982,
+        "total": 1152501
+      }
+    }
+  },
+  {
+    "id": 8,
+    "priority": 82,
+    "unit": "ME-H046",
+    "conductor": "Andrés Chávez",
+    "type": "GPS sin señal",
+    "time": "07:20",
+    "route": "CDMX→Toluca",
+    "direccion": "Frente Nuevo Aeropuerto Tulum",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 64
+      },
+      "momento": {
+        "score": 61
+      },
+      "dinero": {
+        "texto": "Herramienta $157K"
+      },
+      "impacto_financiero": {
+        "valor_carga": 286771,
+        "total": 934606
+      }
+    }
+  },
+  {
+    "id": 9,
+    "priority": 78,
+    "unit": "ME-N023",
+    "conductor": "Guillermo Gutiérrez",
+    "type": "Verificación vencida",
+    "time": "06:49",
+    "route": "CDMX→Saltillo",
+    "direccion": "Frente Tren Maya Tramo 3",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 58
+      },
+      "momento": {
+        "score": 63
+      },
+      "dinero": {
+        "texto": "Herramienta $282K"
+      },
+      "impacto_financiero": {
+        "valor_carga": 417255,
+        "total": 918165
+      }
+    }
+  },
+  {
+    "id": 10,
+    "priority": 82,
+    "unit": "ME-N111",
+    "conductor": "Daniel Flores",
+    "type": "Verificación vencida",
+    "time": "15:49",
+    "route": "MTY→Tulum",
+    "direccion": "Frente Libramiento GDL-PV",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 94
+      },
+      "momento": {
+        "score": 49
+      },
+      "dinero": {
+        "texto": "Herramienta $208K"
+      },
+      "impacto_financiero": {
+        "valor_carga": 132017,
+        "total": 1119575
+      }
+    }
+  },
+  {
+    "id": 11,
+    "priority": 75,
+    "unit": "ME-Y001",
+    "conductor": "Raúl Hernández",
+    "type": "Verificación vencida",
+    "time": "09:56",
+    "route": "MTY→Toluca",
+    "direccion": "Frente Nuevo Aeropuerto Tulum",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 80
+      },
+      "momento": {
+        "score": 93
+      },
+      "dinero": {
+        "texto": "Herramienta $301K"
+      },
+      "impacto_financiero": {
+        "valor_carga": 742008,
+        "total": 1059996
+      }
+    }
+  },
+  {
+    "id": 12,
+    "priority": 88,
+    "unit": "ME-S036",
+    "conductor": "Óscar Ramírez",
+    "type": "Falla mecánica",
+    "time": "10:42",
+    "route": "MTY→Tulum",
+    "direccion": "Frente Tren Maya Tramo 3",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 53
+      },
+      "momento": {
+        "score": 56
+      },
+      "dinero": {
+        "texto": "Herramienta $62K"
+      },
+      "impacto_financiero": {
+        "valor_carga": 118801,
+        "total": 1058979
+      }
+    }
+  },
+  {
+    "id": 13,
+    "priority": 82,
+    "unit": "ME-N013",
+    "conductor": "José Cruz",
+    "type": "GPS sin señal",
+    "time": "21:16",
+    "route": "CDMX→Tulum",
+    "direccion": "Frente Tren Interurbano Méx-Toluca",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 92
+      },
+      "momento": {
+        "score": 94
+      },
+      "dinero": {
+        "texto": "Herramienta $479K"
+      },
+      "impacto_financiero": {
+        "valor_carga": 416317,
+        "total": 990215
+      }
+    }
+  },
+  {
+    "id": 14,
+    "priority": 65,
+    "unit": "ME-N012",
+    "conductor": "Gabriel Torres",
+    "type": "Manejo agresivo",
+    "time": "19:33",
+    "route": "MTY→Tulum",
+    "direccion": "Frente Tren Interurbano Méx-Toluca",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 96
+      },
+      "momento": {
+        "score": 46
+      },
+      "dinero": {
+        "texto": "Herramienta $148K"
+      },
+      "impacto_financiero": {
+        "valor_carga": 75467,
+        "total": 208009
+      }
+    }
+  },
+  {
+    "id": 15,
+    "priority": 78,
+    "unit": "ME-S110",
+    "conductor": "Daniel Chávez",
+    "type": "Verificación vencida",
+    "time": "16:03",
+    "route": "CDMX→Toluca",
+    "direccion": "Frente Puente Vehicular Periférico Norte",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 53
+      },
+      "momento": {
+        "score": 77
+      },
+      "dinero": {
+        "texto": "Herramienta $121K"
+      },
+      "impacto_financiero": {
+        "valor_carga": 634360,
+        "total": 344923
+      }
+    }
+  }
+]

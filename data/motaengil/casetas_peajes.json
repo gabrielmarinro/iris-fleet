@@ -1,0 +1,23 @@
+{
+  "resumen": {
+    "total_mensual": 145000,
+    "promedio_diario": 4833
+  },
+  "casetas_frecuentes": [
+    {
+      "nombre": "Tlalpan",
+      "frecuencia_mes": 180,
+      "costo_promedio": 52
+    },
+    {
+      "nombre": "Palmillas",
+      "frecuencia_mes": 85,
+      "costo_promedio": 210
+    },
+    {
+      "nombre": "Tepotzotlán",
+      "frecuencia_mes": 150,
+      "costo_promedio": 85
+    }
+  ]
+}
