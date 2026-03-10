@@ -1,0 +1,64 @@
+{
+  "kpi": "costo_km",
+  "titulo": "Costo/Km — Flota Ligera",
+  "total_unidades": 120,
+  "costo_km_actual": 4.2,
+  "costo_km_benchmark": 3.8,
+  "exceso_pct": 10.5,
+  "unidades_criticas": [
+    {
+      "unidad": "ME-H019",
+      "modelo": "Hilux 2019",
+      "costo_km_actual": 6.2,
+      "benchmark": 3.8,
+      "causa_detalle": "Correctivos excesivos. 245K km.",
+      "exceso_mensual": 48000,
+      "recomendacion": "REEMPLAZAR"
+    },
+    {
+      "unidad": "ME-F017",
+      "modelo": "Frontier 2020",
+      "costo_km_actual": 5.8,
+      "benchmark": 3.8,
+      "causa_detalle": "Ruta 65% terracería. Rendimiento 6.2 vs 10.5 km/L en pavimento.",
+      "exceso_mensual": 38000,
+      "recomendacion": "REASIGNAR RUTA"
+    },
+    {
+      "unidad": "ME-H041",
+      "modelo": "Hilux 2022",
+      "costo_km_actual": 5.4,
+      "benchmark": 3.8,
+      "causa_detalle": "Conductor con 18 eventos manejo agresivo/semana.",
+      "exceso_mensual": 32000,
+      "recomendacion": "CAPACITACIÓN"
+    }
+  ],
+  "resumen_financiero": {
+    "exceso_total_mensual": 154000,
+    "ahorro_potencial_mensual": 118000
+  },
+  "iris_narrativa": {
+    "hallazgo_principal": "Costo/km de $4.20 está 10.5% sobre benchmark de $3.80. Solo 3 unidades generan el 76% del problema."
+  },
+  "historico": {
+    "diario": [
+      {
+        "fecha": "2026-02-01",
+        "valor": 4.05
+      },
+      {
+        "fecha": "2026-02-15",
+        "valor": 4.22
+      },
+      {
+        "fecha": "2026-03-01",
+        "valor": 4.19
+      },
+      {
+        "fecha": "2026-03-10",
+        "valor": 4.2
+      }
+    ]
+  }
+}

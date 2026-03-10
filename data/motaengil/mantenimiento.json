@@ -1,0 +1,227 @@
+[
+  {
+    "id": "OT-ME-001",
+    "unidad": "ME-Y052",
+    "tipo": "Cambio aceite",
+    "status": "en_proceso",
+    "costo_estimado": 10526,
+    "taller": "Agencia Nissan MTY",
+    "prioridad": "alta"
+  },
+  {
+    "id": "OT-ME-002",
+    "unidad": "ME-Y016",
+    "tipo": "Suspensión",
+    "status": "en_proceso",
+    "costo_estimado": 37330,
+    "taller": "Taller NL",
+    "prioridad": "alta"
+  },
+  {
+    "id": "OT-ME-003",
+    "unidad": "ME-Y057",
+    "tipo": "Cambio aceite",
+    "status": "pendiente",
+    "costo_estimado": 49825,
+    "taller": "Taller Central CDMX",
+    "prioridad": "baja"
+  },
+  {
+    "id": "OT-ME-004",
+    "unidad": "ME-S101",
+    "tipo": "Frenos",
+    "status": "programado",
+    "costo_estimado": 69875,
+    "taller": "Taller Central CDMX",
+    "prioridad": "media"
+  },
+  {
+    "id": "OT-ME-005",
+    "unidad": "ME-F088",
+    "tipo": "Transmisión",
+    "status": "completado",
+    "costo_estimado": 71824,
+    "taller": "Taller NL",
+    "prioridad": "media"
+  },
+  {
+    "id": "OT-ME-006",
+    "unidad": "ME-S029",
+    "tipo": "Transmisión",
+    "status": "programado",
+    "costo_estimado": 70744,
+    "taller": "Agencia Nissan MTY",
+    "prioridad": "alta"
+  },
+  {
+    "id": "OT-ME-007",
+    "unidad": "ME-N111",
+    "tipo": "Servicio mayor",
+    "status": "pendiente",
+    "costo_estimado": 36443,
+    "taller": "Agencia Toyota",
+    "prioridad": "baja"
+  },
+  {
+    "id": "OT-ME-008",
+    "unidad": "ME-F012",
+    "tipo": "Suspensión",
+    "status": "completado",
+    "costo_estimado": 21646,
+    "taller": "Taller NL",
+    "prioridad": "alta"
+  },
+  {
+    "id": "OT-ME-009",
+    "unidad": "ME-S112",
+    "tipo": "Transmisión",
+    "status": "pendiente",
+    "costo_estimado": 83647,
+    "taller": "Agencia Nissan MTY",
+    "prioridad": "baja"
+  },
+  {
+    "id": "OT-ME-010",
+    "unidad": "ME-N057",
+    "tipo": "Neumáticos",
+    "status": "programado",
+    "costo_estimado": 2709,
+    "taller": "Taller Central CDMX",
+    "prioridad": "baja"
+  },
+  {
+    "id": "OT-ME-011",
+    "unidad": "ME-S031",
+    "tipo": "Eléctrico",
+    "status": "pendiente",
+    "costo_estimado": 28302,
+    "taller": "Taller NL",
+    "prioridad": "baja"
+  },
+  {
+    "id": "OT-ME-012",
+    "unidad": "ME-F066",
+    "tipo": "Cambio aceite",
+    "status": "pendiente",
+    "costo_estimado": 75614,
+    "taller": "Taller Central CDMX",
+    "prioridad": "media"
+  },
+  {
+    "id": "OT-ME-013",
+    "unidad": "ME-F037",
+    "tipo": "Cambio aceite",
+    "status": "completado",
+    "costo_estimado": 83013,
+    "taller": "Agencia Toyota",
+    "prioridad": "baja"
+  },
+  {
+    "id": "OT-ME-014",
+    "unidad": "ME-N111",
+    "tipo": "Suspensión",
+    "status": "programado",
+    "costo_estimado": 24517,
+    "taller": "Agencia Toyota",
+    "prioridad": "baja"
+  },
+  {
+    "id": "OT-ME-015",
+    "unidad": "ME-S086",
+    "tipo": "Transmisión",
+    "status": "en_proceso",
+    "costo_estimado": 75642,
+    "taller": "Agencia Nissan MTY",
+    "prioridad": "alta"
+  },
+  {
+    "id": "OT-ME-016",
+    "unidad": "ME-H070",
+    "tipo": "Transmisión",
+    "status": "en_proceso",
+    "costo_estimado": 21258,
+    "taller": "Taller Central CDMX",
+    "prioridad": "media"
+  },
+  {
+    "id": "OT-ME-017",
+    "unidad": "ME-F074",
+    "tipo": "Eléctrico",
+    "status": "programado",
+    "costo_estimado": 36205,
+    "taller": "Agencia Toyota",
+    "prioridad": "alta"
+  },
+  {
+    "id": "OT-ME-018",
+    "unidad": "ME-N042",
+    "tipo": "Transmisión",
+    "status": "pendiente",
+    "costo_estimado": 39215,
+    "taller": "Agencia Nissan MTY",
+    "prioridad": "alta"
+  },
+  {
+    "id": "OT-ME-019",
+    "unidad": "ME-H036",
+    "tipo": "Transmisión",
+    "status": "en_proceso",
+    "costo_estimado": 6547,
+    "taller": "Agencia Nissan MTY",
+    "prioridad": "alta"
+  },
+  {
+    "id": "OT-ME-020",
+    "unidad": "ME-N002",
+    "tipo": "Suspensión",
+    "status": "en_proceso",
+    "costo_estimado": 71705,
+    "taller": "Taller Central CDMX",
+    "prioridad": "alta"
+  },
+  {
+    "id": "OT-ME-021",
+    "unidad": "ME-Y019",
+    "tipo": "Neumáticos",
+    "status": "en_proceso",
+    "costo_estimado": 9981,
+    "taller": "Agencia Toyota",
+    "prioridad": "alta"
+  },
+  {
+    "id": "OT-ME-022",
+    "unidad": "ME-F098",
+    "tipo": "Eléctrico",
+    "status": "completado",
+    "costo_estimado": 38637,
+    "taller": "Agencia Nissan MTY",
+    "prioridad": "alta"
+  },
+  {
+    "id": "OT-ME-023",
+    "unidad": "ME-Y094",
+    "tipo": "Servicio mayor",
+    "status": "completado",
+    "costo_estimado": 36392,
+    "taller": "Taller Central CDMX",
+    "prioridad": "alta"
+  },
+  {
+    "id": "OT-ME-024",
+    "unidad": "ME-Y117",
+    "tipo": "Servicio mayor",
+    "status": "programado",
+    "costo_estimado": 52095,
+    "taller": "Agencia Toyota",
+    "prioridad": "media"
+  },
+  {
+    "id": "OT-ME-025",
+    "unidad": "ME-S087",
+    "tipo": "Frenos",
+    "status": "en_proceso",
+    "costo_estimado": 65514,
+    "taller": "Taller Central CDMX",
+    "prioridad": "media"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "zona": "Cancún-Tulum",
+    "nivel_riesgo": "medio",
+    "score": 55,
+    "incidentes_90d": 3
+  },
+  {
+    "zona": "MTY-Saltillo",
+    "nivel_riesgo": "bajo",
+    "score": 25,
+    "incidentes_90d": 1
+  },
+  {
+    "zona": "CDMX Periférico",
+    "nivel_riesgo": "alto",
+    "score": 72,
+    "incidentes_90d": 8
+  },
+  {
+    "zona": "Campeche rural",
+    "nivel_riesgo": "medio",
+    "score": 48,
+    "incidentes_90d": 2
+  }
+]

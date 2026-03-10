@@ -1,0 +1,68 @@
+{
+  "kpi": "activos_criticos",
+  "titulo": "Activos Críticos — Vehículos en Riesgo",
+  "total_unidades": 120,
+  "activos_criticos": 3,
+  "unidades_criticas": [
+    {
+      "unidad": "ME-H019",
+      "modelo": "Hilux 2019",
+      "km": 245000,
+      "edad_anios": 7,
+      "valor_residual": 120000,
+      "costo_mantenimiento_acumulado": 890000,
+      "roi_pct": -34.8,
+      "salud_pct": 38,
+      "recomendacion": "REEMPLAZAR"
+    },
+    {
+      "unidad": "ME-F032",
+      "modelo": "Frontier 2020",
+      "km": 210000,
+      "edad_anios": 6,
+      "valor_residual": 155000,
+      "costo_mantenimiento_acumulado": 620000,
+      "roi_pct": -22.5,
+      "salud_pct": 52,
+      "recomendacion": "ESCALAR A AGENCIA"
+    },
+    {
+      "unidad": "ME-N012",
+      "modelo": "NV350 2021",
+      "km": 165000,
+      "edad_anios": 5,
+      "valor_residual": 195000,
+      "costo_mantenimiento_acumulado": 480000,
+      "roi_pct": 8.2,
+      "salud_pct": 45,
+      "recomendacion": "RENTAR + REFORZAR"
+    }
+  ],
+  "resumen_financiero": {
+    "costo_inactividad_mensual": 1650000,
+    "ahorro_anual_reemplazo": 8400000
+  },
+  "iris_narrativa": {
+    "hallazgo_principal": "3 vehículos concentran el 78% del costo de inactividad."
+  },
+  "historico": {
+    "diario": [
+      {
+        "fecha": "2026-02-01",
+        "valor": 2
+      },
+      {
+        "fecha": "2026-02-15",
+        "valor": 3
+      },
+      {
+        "fecha": "2026-03-01",
+        "valor": 3
+      },
+      {
+        "fecha": "2026-03-10",
+        "valor": 3
+      }
+    ]
+  }
+}

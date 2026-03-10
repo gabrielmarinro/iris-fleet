@@ -1,0 +1,40 @@
+{
+  "asset_lifecycle": [
+    {
+      "unidad": "ME-H019",
+      "conductor": "Roberto García",
+      "edad_anios": 7,
+      "km_totales": 245000,
+      "costo_acumulado": 890000,
+      "ingreso_generado": 1200000,
+      "roi_pct": -34.8,
+      "valor_residual": 120000,
+      "salud_pct": 38,
+      "recomendacion": "REEMPLAZAR"
+    },
+    {
+      "unidad": "ME-F032",
+      "conductor": "Luis Hernández",
+      "edad_anios": 6,
+      "km_totales": 210000,
+      "costo_acumulado": 620000,
+      "ingreso_generado": 980000,
+      "roi_pct": -22.5,
+      "valor_residual": 155000,
+      "salud_pct": 52,
+      "recomendacion": "Escalar a agencia"
+    },
+    {
+      "unidad": "ME-N012",
+      "conductor": "Fernando Pérez",
+      "edad_anios": 5,
+      "km_totales": 165000,
+      "costo_acumulado": 480000,
+      "ingreso_generado": 1100000,
+      "roi_pct": 8.2,
+      "valor_residual": 195000,
+      "salud_pct": 45,
+      "recomendacion": "Reforzar suspensión"
+    }
+  ]
+}

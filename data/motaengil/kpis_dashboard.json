@@ -1,0 +1,23 @@
+{
+  "total_unidades": 120,
+  "vehiculos_ligeros": 120,
+  "vehiculos_en_corralon": 12,
+  "dias_promedio_en_taller": 8.5,
+  "eventos_manejo_agresivo_semana": 47,
+  "costo_inactividad_diario": 185000,
+  "uptime_dias_mes": 22.3,
+  "uptime_meta": 26,
+  "costo_por_km": 4.2,
+  "benchmark_costo_km": 3.8,
+  "rendimiento_promedio_kml": 10.2,
+  "dias_sin_accidentes": 18,
+  "frentes_activos": 8,
+  "unidades_en_ruta": 78,
+  "unidades_en_taller": 18,
+  "unidades_por_asignar": 14,
+  "unidades_no_ubicables": 10,
+  "cumplimiento_preventivo_pct": 62,
+  "mtbf_horas": 480,
+  "mttr_horas": 14,
+  "gasto_diesel_mensual": 890000
+}

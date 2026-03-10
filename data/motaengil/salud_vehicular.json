@@ -1,0 +1,962 @@
+[
+  {
+    "unidad": "ME-S001",
+    "salud_general_pct": 48,
+    "motor_pct": 77,
+    "frenos_pct": 94,
+    "suspension_pct": 32,
+    "llantas_pct": 49
+  },
+  {
+    "unidad": "ME-N002",
+    "salud_general_pct": 80,
+    "motor_pct": 53,
+    "frenos_pct": 52,
+    "suspension_pct": 40,
+    "llantas_pct": 21
+  },
+  {
+    "unidad": "ME-S003",
+    "salud_general_pct": 90,
+    "motor_pct": 64,
+    "frenos_pct": 67,
+    "suspension_pct": 88,
+    "llantas_pct": 47
+  },
+  {
+    "unidad": "ME-Y004",
+    "salud_general_pct": 66,
+    "motor_pct": 86,
+    "frenos_pct": 83,
+    "suspension_pct": 46,
+    "llantas_pct": 56
+  },
+  {
+    "unidad": "ME-H005",
+    "salud_general_pct": 45,
+    "motor_pct": 45,
+    "frenos_pct": 59,
+    "suspension_pct": 36,
+    "llantas_pct": 55
+  },
+  {
+    "unidad": "ME-S006",
+    "salud_general_pct": 86,
+    "motor_pct": 80,
+    "frenos_pct": 60,
+    "suspension_pct": 73,
+    "llantas_pct": 28
+  },
+  {
+    "unidad": "ME-N007",
+    "salud_general_pct": 96,
+    "motor_pct": 80,
+    "frenos_pct": 60,
+    "suspension_pct": 97,
+    "llantas_pct": 23
+  },
+  {
+    "unidad": "ME-S008",
+    "salud_general_pct": 80,
+    "motor_pct": 93,
+    "frenos_pct": 47,
+    "suspension_pct": 54,
+    "llantas_pct": 93
+  },
+  {
+    "unidad": "ME-H009",
+    "salud_general_pct": 79,
+    "motor_pct": 97,
+    "frenos_pct": 91,
+    "suspension_pct": 44,
+    "llantas_pct": 36
+  },
+  {
+    "unidad": "ME-F010",
+    "salud_general_pct": 90,
+    "motor_pct": 81,
+    "frenos_pct": 74,
+    "suspension_pct": 84,
+    "llantas_pct": 33
+  },
+  {
+    "unidad": "ME-F011",
+    "salud_general_pct": 96,
+    "motor_pct": 60,
+    "frenos_pct": 58,
+    "suspension_pct": 89,
+    "llantas_pct": 95
+  },
+  {
+    "unidad": "ME-N012",
+    "salud_general_pct": 65,
+    "motor_pct": 98,
+    "frenos_pct": 98,
+    "suspension_pct": 52,
+    "llantas_pct": 93
+  },
+  {
+    "unidad": "ME-F013",
+    "salud_general_pct": 84,
+    "motor_pct": 90,
+    "frenos_pct": 86,
+    "suspension_pct": 92,
+    "llantas_pct": 43
+  },
+  {
+    "unidad": "ME-S014",
+    "salud_general_pct": 49,
+    "motor_pct": 71,
+    "frenos_pct": 64,
+    "suspension_pct": 45,
+    "llantas_pct": 90
+  },
+  {
+    "unidad": "ME-H015",
+    "salud_general_pct": 67,
+    "motor_pct": 84,
+    "frenos_pct": 51,
+    "suspension_pct": 34,
+    "llantas_pct": 24
+  },
+  {
+    "unidad": "ME-N016",
+    "salud_general_pct": 62,
+    "motor_pct": 76,
+    "frenos_pct": 65,
+    "suspension_pct": 53,
+    "llantas_pct": 38
+  },
+  {
+    "unidad": "ME-N017",
+    "salud_general_pct": 69,
+    "motor_pct": 50,
+    "frenos_pct": 74,
+    "suspension_pct": 70,
+    "llantas_pct": 83
+  },
+  {
+    "unidad": "ME-N018",
+    "salud_general_pct": 48,
+    "motor_pct": 89,
+    "frenos_pct": 47,
+    "suspension_pct": 66,
+    "llantas_pct": 72
+  },
+  {
+    "unidad": "ME-H019",
+    "salud_general_pct": 78,
+    "motor_pct": 74,
+    "frenos_pct": 55,
+    "suspension_pct": 95,
+    "llantas_pct": 49
+  },
+  {
+    "unidad": "ME-Y020",
+    "salud_general_pct": 96,
+    "motor_pct": 45,
+    "frenos_pct": 82,
+    "suspension_pct": 34,
+    "llantas_pct": 78
+  },
+  {
+    "unidad": "ME-N021",
+    "salud_general_pct": 78,
+    "motor_pct": 60,
+    "frenos_pct": 56,
+    "suspension_pct": 39,
+    "llantas_pct": 24
+  },
+  {
+    "unidad": "ME-H022",
+    "salud_general_pct": 55,
+    "motor_pct": 52,
+    "frenos_pct": 46,
+    "suspension_pct": 60,
+    "llantas_pct": 24
+  },
+  {
+    "unidad": "ME-F023",
+    "salud_general_pct": 68,
+    "motor_pct": 40,
+    "frenos_pct": 79,
+    "suspension_pct": 76,
+    "llantas_pct": 76
+  },
+  {
+    "unidad": "ME-Y024",
+    "salud_general_pct": 39,
+    "motor_pct": 81,
+    "frenos_pct": 77,
+    "suspension_pct": 39,
+    "llantas_pct": 39
+  },
+  {
+    "unidad": "ME-Y025",
+    "salud_general_pct": 43,
+    "motor_pct": 59,
+    "frenos_pct": 60,
+    "suspension_pct": 64,
+    "llantas_pct": 73
+  },
+  {
+    "unidad": "ME-Y026",
+    "salud_general_pct": 93,
+    "motor_pct": 40,
+    "frenos_pct": 86,
+    "suspension_pct": 58,
+    "llantas_pct": 88
+  },
+  {
+    "unidad": "ME-N027",
+    "salud_general_pct": 96,
+    "motor_pct": 47,
+    "frenos_pct": 79,
+    "suspension_pct": 86,
+    "llantas_pct": 63
+  },
+  {
+    "unidad": "ME-S028",
+    "salud_general_pct": 77,
+    "motor_pct": 77,
+    "frenos_pct": 63,
+    "suspension_pct": 90,
+    "llantas_pct": 82
+  },
+  {
+    "unidad": "ME-S029",
+    "salud_general_pct": 97,
+    "motor_pct": 85,
+    "frenos_pct": 68,
+    "suspension_pct": 84,
+    "llantas_pct": 99
+  },
+  {
+    "unidad": "ME-H030",
+    "salud_general_pct": 37,
+    "motor_pct": 93,
+    "frenos_pct": 60,
+    "suspension_pct": 98,
+    "llantas_pct": 56
+  },
+  {
+    "unidad": "ME-F031",
+    "salud_general_pct": 95,
+    "motor_pct": 44,
+    "frenos_pct": 68,
+    "suspension_pct": 49,
+    "llantas_pct": 24
+  },
+  {
+    "unidad": "ME-S032",
+    "salud_general_pct": 49,
+    "motor_pct": 99,
+    "frenos_pct": 96,
+    "suspension_pct": 73,
+    "llantas_pct": 25
+  },
+  {
+    "unidad": "ME-H033",
+    "salud_general_pct": 91,
+    "motor_pct": 85,
+    "frenos_pct": 51,
+    "suspension_pct": 91,
+    "llantas_pct": 91
+  },
+  {
+    "unidad": "ME-Y034",
+    "salud_general_pct": 94,
+    "motor_pct": 74,
+    "frenos_pct": 67,
+    "suspension_pct": 72,
+    "llantas_pct": 78
+  },
+  {
+    "unidad": "ME-N035",
+    "salud_general_pct": 48,
+    "motor_pct": 42,
+    "frenos_pct": 76,
+    "suspension_pct": 88,
+    "llantas_pct": 58
+  },
+  {
+    "unidad": "ME-H036",
+    "salud_general_pct": 69,
+    "motor_pct": 71,
+    "frenos_pct": 64,
+    "suspension_pct": 59,
+    "llantas_pct": 44
+  },
+  {
+    "unidad": "ME-Y037",
+    "salud_general_pct": 90,
+    "motor_pct": 92,
+    "frenos_pct": 59,
+    "suspension_pct": 51,
+    "llantas_pct": 53
+  },
+  {
+    "unidad": "ME-N038",
+    "salud_general_pct": 83,
+    "motor_pct": 42,
+    "frenos_pct": 47,
+    "suspension_pct": 39,
+    "llantas_pct": 56
+  },
+  {
+    "unidad": "ME-H039",
+    "salud_general_pct": 60,
+    "motor_pct": 98,
+    "frenos_pct": 66,
+    "suspension_pct": 31,
+    "llantas_pct": 80
+  },
+  {
+    "unidad": "ME-H040",
+    "salud_general_pct": 55,
+    "motor_pct": 61,
+    "frenos_pct": 98,
+    "suspension_pct": 76,
+    "llantas_pct": 32
+  },
+  {
+    "unidad": "ME-F041",
+    "salud_general_pct": 64,
+    "motor_pct": 53,
+    "frenos_pct": 52,
+    "suspension_pct": 79,
+    "llantas_pct": 67
+  },
+  {
+    "unidad": "ME-S042",
+    "salud_general_pct": 97,
+    "motor_pct": 73,
+    "frenos_pct": 93,
+    "suspension_pct": 54,
+    "llantas_pct": 74
+  },
+  {
+    "unidad": "ME-F043",
+    "salud_general_pct": 36,
+    "motor_pct": 57,
+    "frenos_pct": 57,
+    "suspension_pct": 48,
+    "llantas_pct": 69
+  },
+  {
+    "unidad": "ME-S044",
+    "salud_general_pct": 92,
+    "motor_pct": 49,
+    "frenos_pct": 89,
+    "suspension_pct": 80,
+    "llantas_pct": 94
+  },
+  {
+    "unidad": "ME-S045",
+    "salud_general_pct": 80,
+    "motor_pct": 75,
+    "frenos_pct": 59,
+    "suspension_pct": 95,
+    "llantas_pct": 91
+  },
+  {
+    "unidad": "ME-S046",
+    "salud_general_pct": 59,
+    "motor_pct": 57,
+    "frenos_pct": 94,
+    "suspension_pct": 35,
+    "llantas_pct": 68
+  },
+  {
+    "unidad": "ME-N047",
+    "salud_general_pct": 50,
+    "motor_pct": 97,
+    "frenos_pct": 57,
+    "suspension_pct": 42,
+    "llantas_pct": 81
+  },
+  {
+    "unidad": "ME-N048",
+    "salud_general_pct": 65,
+    "motor_pct": 54,
+    "frenos_pct": 95,
+    "suspension_pct": 40,
+    "llantas_pct": 49
+  },
+  {
+    "unidad": "ME-S049",
+    "salud_general_pct": 44,
+    "motor_pct": 41,
+    "frenos_pct": 70,
+    "suspension_pct": 91,
+    "llantas_pct": 86
+  },
+  {
+    "unidad": "ME-S050",
+    "salud_general_pct": 60,
+    "motor_pct": 51,
+    "frenos_pct": 48,
+    "suspension_pct": 79,
+    "llantas_pct": 40
+  },
+  {
+    "unidad": "ME-S051",
+    "salud_general_pct": 73,
+    "motor_pct": 58,
+    "frenos_pct": 95,
+    "suspension_pct": 48,
+    "llantas_pct": 49
+  },
+  {
+    "unidad": "ME-F052",
+    "salud_general_pct": 49,
+    "motor_pct": 48,
+    "frenos_pct": 97,
+    "suspension_pct": 51,
+    "llantas_pct": 89
+  },
+  {
+    "unidad": "ME-S053",
+    "salud_general_pct": 85,
+    "motor_pct": 90,
+    "frenos_pct": 93,
+    "suspension_pct": 80,
+    "llantas_pct": 66
+  },
+  {
+    "unidad": "ME-Y054",
+    "salud_general_pct": 86,
+    "motor_pct": 77,
+    "frenos_pct": 66,
+    "suspension_pct": 69,
+    "llantas_pct": 66
+  },
+  {
+    "unidad": "ME-H055",
+    "salud_general_pct": 69,
+    "motor_pct": 47,
+    "frenos_pct": 61,
+    "suspension_pct": 86,
+    "llantas_pct": 61
+  },
+  {
+    "unidad": "ME-N056",
+    "salud_general_pct": 81,
+    "motor_pct": 75,
+    "frenos_pct": 79,
+    "suspension_pct": 67,
+    "llantas_pct": 56
+  },
+  {
+    "unidad": "ME-N057",
+    "salud_general_pct": 66,
+    "motor_pct": 62,
+    "frenos_pct": 52,
+    "suspension_pct": 78,
+    "llantas_pct": 88
+  },
+  {
+    "unidad": "ME-S058",
+    "salud_general_pct": 51,
+    "motor_pct": 93,
+    "frenos_pct": 95,
+    "suspension_pct": 61,
+    "llantas_pct": 44
+  },
+  {
+    "unidad": "ME-S059",
+    "salud_general_pct": 74,
+    "motor_pct": 98,
+    "frenos_pct": 89,
+    "suspension_pct": 68,
+    "llantas_pct": 37
+  },
+  {
+    "unidad": "ME-H060",
+    "salud_general_pct": 61,
+    "motor_pct": 86,
+    "frenos_pct": 84,
+    "suspension_pct": 54,
+    "llantas_pct": 25
+  },
+  {
+    "unidad": "ME-S061",
+    "salud_general_pct": 70,
+    "motor_pct": 64,
+    "frenos_pct": 57,
+    "suspension_pct": 83,
+    "llantas_pct": 51
+  },
+  {
+    "unidad": "ME-N062",
+    "salud_general_pct": 77,
+    "motor_pct": 86,
+    "frenos_pct": 60,
+    "suspension_pct": 60,
+    "llantas_pct": 25
+  },
+  {
+    "unidad": "ME-N063",
+    "salud_general_pct": 84,
+    "motor_pct": 71,
+    "frenos_pct": 88,
+    "suspension_pct": 98,
+    "llantas_pct": 55
+  },
+  {
+    "unidad": "ME-Y064",
+    "salud_general_pct": 76,
+    "motor_pct": 87,
+    "frenos_pct": 58,
+    "suspension_pct": 94,
+    "llantas_pct": 96
+  },
+  {
+    "unidad": "ME-N065",
+    "salud_general_pct": 84,
+    "motor_pct": 48,
+    "frenos_pct": 53,
+    "suspension_pct": 90,
+    "llantas_pct": 39
+  },
+  {
+    "unidad": "ME-F066",
+    "salud_general_pct": 57,
+    "motor_pct": 56,
+    "frenos_pct": 96,
+    "suspension_pct": 79,
+    "llantas_pct": 97
+  },
+  {
+    "unidad": "ME-Y067",
+    "salud_general_pct": 49,
+    "motor_pct": 56,
+    "frenos_pct": 58,
+    "suspension_pct": 79,
+    "llantas_pct": 21
+  },
+  {
+    "unidad": "ME-Y068",
+    "salud_general_pct": 88,
+    "motor_pct": 79,
+    "frenos_pct": 70,
+    "suspension_pct": 56,
+    "llantas_pct": 85
+  },
+  {
+    "unidad": "ME-H069",
+    "salud_general_pct": 84,
+    "motor_pct": 53,
+    "frenos_pct": 54,
+    "suspension_pct": 85,
+    "llantas_pct": 40
+  },
+  {
+    "unidad": "ME-F070",
+    "salud_general_pct": 90,
+    "motor_pct": 53,
+    "frenos_pct": 50,
+    "suspension_pct": 93,
+    "llantas_pct": 23
+  },
+  {
+    "unidad": "ME-S071",
+    "salud_general_pct": 74,
+    "motor_pct": 40,
+    "frenos_pct": 48,
+    "suspension_pct": 95,
+    "llantas_pct": 26
+  },
+  {
+    "unidad": "ME-F072",
+    "salud_general_pct": 58,
+    "motor_pct": 97,
+    "frenos_pct": 77,
+    "suspension_pct": 91,
+    "llantas_pct": 59
+  },
+  {
+    "unidad": "ME-H073",
+    "salud_general_pct": 53,
+    "motor_pct": 64,
+    "frenos_pct": 80,
+    "suspension_pct": 94,
+    "llantas_pct": 96
+  },
+  {
+    "unidad": "ME-N074",
+    "salud_general_pct": 68,
+    "motor_pct": 86,
+    "frenos_pct": 87,
+    "suspension_pct": 73,
+    "llantas_pct": 92
+  },
+  {
+    "unidad": "ME-H075",
+    "salud_general_pct": 41,
+    "motor_pct": 44,
+    "frenos_pct": 87,
+    "suspension_pct": 50,
+    "llantas_pct": 46
+  },
+  {
+    "unidad": "ME-F076",
+    "salud_general_pct": 51,
+    "motor_pct": 80,
+    "frenos_pct": 92,
+    "suspension_pct": 88,
+    "llantas_pct": 36
+  },
+  {
+    "unidad": "ME-N077",
+    "salud_general_pct": 97,
+    "motor_pct": 58,
+    "frenos_pct": 57,
+    "suspension_pct": 75,
+    "llantas_pct": 78
+  },
+  {
+    "unidad": "ME-H078",
+    "salud_general_pct": 55,
+    "motor_pct": 49,
+    "frenos_pct": 59,
+    "suspension_pct": 40,
+    "llantas_pct": 26
+  },
+  {
+    "unidad": "ME-N079",
+    "salud_general_pct": 46,
+    "motor_pct": 90,
+    "frenos_pct": 54,
+    "suspension_pct": 56,
+    "llantas_pct": 97
+  },
+  {
+    "unidad": "ME-H080",
+    "salud_general_pct": 52,
+    "motor_pct": 50,
+    "frenos_pct": 98,
+    "suspension_pct": 73,
+    "llantas_pct": 78
+  },
+  {
+    "unidad": "ME-Y081",
+    "salud_general_pct": 49,
+    "motor_pct": 70,
+    "frenos_pct": 87,
+    "suspension_pct": 74,
+    "llantas_pct": 21
+  },
+  {
+    "unidad": "ME-H082",
+    "salud_general_pct": 67,
+    "motor_pct": 95,
+    "frenos_pct": 77,
+    "suspension_pct": 32,
+    "llantas_pct": 47
+  },
+  {
+    "unidad": "ME-S083",
+    "salud_general_pct": 51,
+    "motor_pct": 95,
+    "frenos_pct": 55,
+    "suspension_pct": 87,
+    "llantas_pct": 48
+  },
+  {
+    "unidad": "ME-F084",
+    "salud_general_pct": 88,
+    "motor_pct": 46,
+    "frenos_pct": 57,
+    "suspension_pct": 96,
+    "llantas_pct": 48
+  },
+  {
+    "unidad": "ME-Y085",
+    "salud_general_pct": 98,
+    "motor_pct": 87,
+    "frenos_pct": 72,
+    "suspension_pct": 42,
+    "llantas_pct": 46
+  },
+  {
+    "unidad": "ME-Y086",
+    "salud_general_pct": 61,
+    "motor_pct": 69,
+    "frenos_pct": 45,
+    "suspension_pct": 91,
+    "llantas_pct": 76
+  },
+  {
+    "unidad": "ME-S087",
+    "salud_general_pct": 96,
+    "motor_pct": 40,
+    "frenos_pct": 60,
+    "suspension_pct": 41,
+    "llantas_pct": 44
+  },
+  {
+    "unidad": "ME-F088",
+    "salud_general_pct": 49,
+    "motor_pct": 59,
+    "frenos_pct": 66,
+    "suspension_pct": 94,
+    "llantas_pct": 97
+  },
+  {
+    "unidad": "ME-Y089",
+    "salud_general_pct": 56,
+    "motor_pct": 87,
+    "frenos_pct": 89,
+    "suspension_pct": 65,
+    "llantas_pct": 69
+  },
+  {
+    "unidad": "ME-Y090",
+    "salud_general_pct": 93,
+    "motor_pct": 73,
+    "frenos_pct": 95,
+    "suspension_pct": 84,
+    "llantas_pct": 20
+  },
+  {
+    "unidad": "ME-H091",
+    "salud_general_pct": 55,
+    "motor_pct": 74,
+    "frenos_pct": 61,
+    "suspension_pct": 61,
+    "llantas_pct": 97
+  },
+  {
+    "unidad": "ME-Y092",
+    "salud_general_pct": 36,
+    "motor_pct": 78,
+    "frenos_pct": 69,
+    "suspension_pct": 48,
+    "llantas_pct": 77
+  },
+  {
+    "unidad": "ME-N093",
+    "salud_general_pct": 92,
+    "motor_pct": 84,
+    "frenos_pct": 68,
+    "suspension_pct": 91,
+    "llantas_pct": 45
+  },
+  {
+    "unidad": "ME-Y094",
+    "salud_general_pct": 35,
+    "motor_pct": 53,
+    "frenos_pct": 49,
+    "suspension_pct": 47,
+    "llantas_pct": 42
+  },
+  {
+    "unidad": "ME-Y095",
+    "salud_general_pct": 76,
+    "motor_pct": 69,
+    "frenos_pct": 75,
+    "suspension_pct": 89,
+    "llantas_pct": 49
+  },
+  {
+    "unidad": "ME-N096",
+    "salud_general_pct": 54,
+    "motor_pct": 44,
+    "frenos_pct": 98,
+    "suspension_pct": 79,
+    "llantas_pct": 70
+  },
+  {
+    "unidad": "ME-F097",
+    "salud_general_pct": 38,
+    "motor_pct": 96,
+    "frenos_pct": 64,
+    "suspension_pct": 92,
+    "llantas_pct": 23
+  },
+  {
+    "unidad": "ME-Y098",
+    "salud_general_pct": 79,
+    "motor_pct": 65,
+    "frenos_pct": 91,
+    "suspension_pct": 34,
+    "llantas_pct": 71
+  },
+  {
+    "unidad": "ME-Y099",
+    "salud_general_pct": 75,
+    "motor_pct": 53,
+    "frenos_pct": 74,
+    "suspension_pct": 98,
+    "llantas_pct": 29
+  },
+  {
+    "unidad": "ME-Y100",
+    "salud_general_pct": 69,
+    "motor_pct": 72,
+    "frenos_pct": 96,
+    "suspension_pct": 31,
+    "llantas_pct": 26
+  },
+  {
+    "unidad": "ME-Y101",
+    "salud_general_pct": 51,
+    "motor_pct": 88,
+    "frenos_pct": 67,
+    "suspension_pct": 71,
+    "llantas_pct": 53
+  },
+  {
+    "unidad": "ME-S102",
+    "salud_general_pct": 71,
+    "motor_pct": 46,
+    "frenos_pct": 88,
+    "suspension_pct": 84,
+    "llantas_pct": 95
+  },
+  {
+    "unidad": "ME-Y103",
+    "salud_general_pct": 63,
+    "motor_pct": 55,
+    "frenos_pct": 59,
+    "suspension_pct": 85,
+    "llantas_pct": 36
+  },
+  {
+    "unidad": "ME-S104",
+    "salud_general_pct": 54,
+    "motor_pct": 89,
+    "frenos_pct": 93,
+    "suspension_pct": 36,
+    "llantas_pct": 78
+  },
+  {
+    "unidad": "ME-S105",
+    "salud_general_pct": 83,
+    "motor_pct": 48,
+    "frenos_pct": 50,
+    "suspension_pct": 75,
+    "llantas_pct": 70
+  },
+  {
+    "unidad": "ME-S106",
+    "salud_general_pct": 87,
+    "motor_pct": 64,
+    "frenos_pct": 85,
+    "suspension_pct": 54,
+    "llantas_pct": 40
+  },
+  {
+    "unidad": "ME-F107",
+    "salud_general_pct": 57,
+    "motor_pct": 99,
+    "frenos_pct": 67,
+    "suspension_pct": 74,
+    "llantas_pct": 41
+  },
+  {
+    "unidad": "ME-H108",
+    "salud_general_pct": 75,
+    "motor_pct": 77,
+    "frenos_pct": 73,
+    "suspension_pct": 74,
+    "llantas_pct": 96
+  },
+  {
+    "unidad": "ME-H109",
+    "salud_general_pct": 86,
+    "motor_pct": 56,
+    "frenos_pct": 77,
+    "suspension_pct": 38,
+    "llantas_pct": 91
+  },
+  {
+    "unidad": "ME-F110",
+    "salud_general_pct": 39,
+    "motor_pct": 74,
+    "frenos_pct": 49,
+    "suspension_pct": 91,
+    "llantas_pct": 29
+  },
+  {
+    "unidad": "ME-S111",
+    "salud_general_pct": 96,
+    "motor_pct": 72,
+    "frenos_pct": 88,
+    "suspension_pct": 81,
+    "llantas_pct": 68
+  },
+  {
+    "unidad": "ME-H112",
+    "salud_general_pct": 98,
+    "motor_pct": 58,
+    "frenos_pct": 92,
+    "suspension_pct": 31,
+    "llantas_pct": 78
+  },
+  {
+    "unidad": "ME-N113",
+    "salud_general_pct": 65,
+    "motor_pct": 77,
+    "frenos_pct": 93,
+    "suspension_pct": 79,
+    "llantas_pct": 83
+  },
+  {
+    "unidad": "ME-Y114",
+    "salud_general_pct": 89,
+    "motor_pct": 96,
+    "frenos_pct": 58,
+    "suspension_pct": 34,
+    "llantas_pct": 59
+  },
+  {
+    "unidad": "ME-S115",
+    "salud_general_pct": 61,
+    "motor_pct": 40,
+    "frenos_pct": 48,
+    "suspension_pct": 58,
+    "llantas_pct": 96
+  },
+  {
+    "unidad": "ME-H116",
+    "salud_general_pct": 86,
+    "motor_pct": 58,
+    "frenos_pct": 82,
+    "suspension_pct": 62,
+    "llantas_pct": 94
+  },
+  {
+    "unidad": "ME-N117",
+    "salud_general_pct": 85,
+    "motor_pct": 85,
+    "frenos_pct": 95,
+    "suspension_pct": 57,
+    "llantas_pct": 70
+  },
+  {
+    "unidad": "ME-S118",
+    "salud_general_pct": 61,
+    "motor_pct": 72,
+    "frenos_pct": 50,
+    "suspension_pct": 53,
+    "llantas_pct": 52
+  },
+  {
+    "unidad": "ME-S119",
+    "salud_general_pct": 69,
+    "motor_pct": 99,
+    "frenos_pct": 92,
+    "suspension_pct": 99,
+    "llantas_pct": 59
+  },
+  {
+    "unidad": "ME-N120",
+    "salud_general_pct": 89,
+    "motor_pct": 45,
+    "frenos_pct": 81,
+    "suspension_pct": 95,
+    "llantas_pct": 87
+  }
+]

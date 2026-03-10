@@ -1,0 +1,1562 @@
+[
+  {
+    "unidad": "ME-N001",
+    "timestamp": "2026-03-10T12:50:00",
+    "velocidad_kmh": 36,
+    "rpm": 3455,
+    "temp_motor_c": 84,
+    "combustible_pct": 20,
+    "odometro_km": 150865,
+    "ubicacion": {
+      "lat": 17.824,
+      "lng": -90.1681
+    }
+  },
+  {
+    "unidad": "ME-S002",
+    "timestamp": "2026-03-10T13:33:00",
+    "velocidad_kmh": 89,
+    "rpm": 1969,
+    "temp_motor_c": 75,
+    "combustible_pct": 74,
+    "odometro_km": 255574,
+    "ubicacion": {
+      "lat": 19.2973,
+      "lng": -100.862
+    }
+  },
+  {
+    "unidad": "ME-N003",
+    "timestamp": "2026-03-10T06:47:00",
+    "velocidad_kmh": 46,
+    "rpm": 3733,
+    "temp_motor_c": 81,
+    "combustible_pct": 88,
+    "odometro_km": 144866,
+    "ubicacion": {
+      "lat": 22.7026,
+      "lng": -99.1938
+    }
+  },
+  {
+    "unidad": "ME-F004",
+    "timestamp": "2026-03-10T13:02:00",
+    "velocidad_kmh": 22,
+    "rpm": 1361,
+    "temp_motor_c": 107,
+    "combustible_pct": 63,
+    "odometro_km": 141894,
+    "ubicacion": {
+      "lat": 21.6902,
+      "lng": -100.9503
+    }
+  },
+  {
+    "unidad": "ME-H005",
+    "timestamp": "2026-03-10T11:23:00",
+    "velocidad_kmh": 48,
+    "rpm": 4031,
+    "temp_motor_c": 104,
+    "combustible_pct": 27,
+    "odometro_km": 250676,
+    "ubicacion": {
+      "lat": 21.4075,
+      "lng": -91.1719
+    }
+  },
+  {
+    "unidad": "ME-Y006",
+    "timestamp": "2026-03-10T14:32:00",
+    "velocidad_kmh": 114,
+    "rpm": 733,
+    "temp_motor_c": 90,
+    "combustible_pct": 37,
+    "odometro_km": 199467,
+    "ubicacion": {
+      "lat": 18.308,
+      "lng": -95.2518
+    }
+  },
+  {
+    "unidad": "ME-N007",
+    "timestamp": "2026-03-10T09:29:00",
+    "velocidad_kmh": 12,
+    "rpm": 3240,
+    "temp_motor_c": 85,
+    "combustible_pct": 6,
+    "odometro_km": 29290,
+    "ubicacion": {
+      "lat": 19.197,
+      "lng": -89.0713
+    }
+  },
+  {
+    "unidad": "ME-N008",
+    "timestamp": "2026-03-10T09:45:00",
+    "velocidad_kmh": 100,
+    "rpm": 2130,
+    "temp_motor_c": 78,
+    "combustible_pct": 75,
+    "odometro_km": 188883,
+    "ubicacion": {
+      "lat": 20.9898,
+      "lng": -98.8906
+    }
+  },
+  {
+    "unidad": "ME-N009",
+    "timestamp": "2026-03-10T13:37:00",
+    "velocidad_kmh": 108,
+    "rpm": 2438,
+    "temp_motor_c": 102,
+    "combustible_pct": 13,
+    "odometro_km": 106205,
+    "ubicacion": {
+      "lat": 23.109,
+      "lng": -98.8317
+    }
+  },
+  {
+    "unidad": "ME-Y010",
+    "timestamp": "2026-03-10T10:46:00",
+    "velocidad_kmh": 21,
+    "rpm": 3670,
+    "temp_motor_c": 97,
+    "combustible_pct": 24,
+    "odometro_km": 98512,
+    "ubicacion": {
+      "lat": 25.1348,
+      "lng": -98.2917
+    }
+  },
+  {
+    "unidad": "ME-S011",
+    "timestamp": "2026-03-10T13:21:00",
+    "velocidad_kmh": 18,
+    "rpm": 2942,
+    "temp_motor_c": 89,
+    "combustible_pct": 42,
+    "odometro_km": 240619,
+    "ubicacion": {
+      "lat": 21.0755,
+      "lng": -95.3614
+    }
+  },
+  {
+    "unidad": "ME-S012",
+    "timestamp": "2026-03-10T07:08:00",
+    "velocidad_kmh": 4,
+    "rpm": 1398,
+    "temp_motor_c": 81,
+    "combustible_pct": 11,
+    "odometro_km": 107264,
+    "ubicacion": {
+      "lat": 24.149,
+      "lng": -99.3092
+    }
+  },
+  {
+    "unidad": "ME-N013",
+    "timestamp": "2026-03-10T09:39:00",
+    "velocidad_kmh": 87,
+    "rpm": 4178,
+    "temp_motor_c": 99,
+    "combustible_pct": 19,
+    "odometro_km": 142581,
+    "ubicacion": {
+      "lat": 21.5102,
+      "lng": -101.2551
+    }
+  },
+  {
+    "unidad": "ME-Y014",
+    "timestamp": "2026-03-10T13:37:00",
+    "velocidad_kmh": 0,
+    "rpm": 729,
+    "temp_motor_c": 82,
+    "combustible_pct": 79,
+    "odometro_km": 45123,
+    "ubicacion": {
+      "lat": 24.4035,
+      "lng": -98.8774
+    }
+  },
+  {
+    "unidad": "ME-F015",
+    "timestamp": "2026-03-10T12:14:00",
+    "velocidad_kmh": 90,
+    "rpm": 619,
+    "temp_motor_c": 82,
+    "combustible_pct": 49,
+    "odometro_km": 51627,
+    "ubicacion": {
+      "lat": 19.8188,
+      "lng": -90.979
+    }
+  },
+  {
+    "unidad": "ME-F016",
+    "timestamp": "2026-03-10T13:43:00",
+    "velocidad_kmh": 96,
+    "rpm": 4436,
+    "temp_motor_c": 106,
+    "combustible_pct": 66,
+    "odometro_km": 114138,
+    "ubicacion": {
+      "lat": 20.1959,
+      "lng": -87.9582
+    }
+  },
+  {
+    "unidad": "ME-Y017",
+    "timestamp": "2026-03-10T09:49:00",
+    "velocidad_kmh": 61,
+    "rpm": 2409,
+    "temp_motor_c": 81,
+    "combustible_pct": 44,
+    "odometro_km": 220489,
+    "ubicacion": {
+      "lat": 20.8435,
+      "lng": -89.8948
+    }
+  },
+  {
+    "unidad": "ME-F018",
+    "timestamp": "2026-03-10T12:57:00",
+    "velocidad_kmh": 31,
+    "rpm": 4364,
+    "temp_motor_c": 108,
+    "combustible_pct": 95,
+    "odometro_km": 28133,
+    "ubicacion": {
+      "lat": 24.3234,
+      "lng": -90.128
+    }
+  },
+  {
+    "unidad": "ME-Y019",
+    "timestamp": "2026-03-10T06:30:00",
+    "velocidad_kmh": 39,
+    "rpm": 1872,
+    "temp_motor_c": 100,
+    "combustible_pct": 56,
+    "odometro_km": 167974,
+    "ubicacion": {
+      "lat": 22.6482,
+      "lng": -90.91
+    }
+  },
+  {
+    "unidad": "ME-F020",
+    "timestamp": "2026-03-10T06:06:00",
+    "velocidad_kmh": 27,
+    "rpm": 2348,
+    "temp_motor_c": 92,
+    "combustible_pct": 49,
+    "odometro_km": 70411,
+    "ubicacion": {
+      "lat": 22.6474,
+      "lng": -102.0128
+    }
+  },
+  {
+    "unidad": "ME-S021",
+    "timestamp": "2026-03-10T06:08:00",
+    "velocidad_kmh": 17,
+    "rpm": 3682,
+    "temp_motor_c": 86,
+    "combustible_pct": 31,
+    "odometro_km": 85699,
+    "ubicacion": {
+      "lat": 23.0494,
+      "lng": -98.8919
+    }
+  },
+  {
+    "unidad": "ME-Y022",
+    "timestamp": "2026-03-10T09:23:00",
+    "velocidad_kmh": 94,
+    "rpm": 3535,
+    "temp_motor_c": 107,
+    "combustible_pct": 9,
+    "odometro_km": 246301,
+    "ubicacion": {
+      "lat": 17.4486,
+      "lng": -91.7301
+    }
+  },
+  {
+    "unidad": "ME-F023",
+    "timestamp": "2026-03-10T10:39:00",
+    "velocidad_kmh": 49,
+    "rpm": 2606,
+    "temp_motor_c": 80,
+    "combustible_pct": 87,
+    "odometro_km": 145742,
+    "ubicacion": {
+      "lat": 21.7227,
+      "lng": -91.2493
+    }
+  },
+  {
+    "unidad": "ME-F024",
+    "timestamp": "2026-03-10T08:02:00",
+    "velocidad_kmh": 113,
+    "rpm": 3155,
+    "temp_motor_c": 106,
+    "combustible_pct": 14,
+    "odometro_km": 64959,
+    "ubicacion": {
+      "lat": 21.4316,
+      "lng": -94.7949
+    }
+  },
+  {
+    "unidad": "ME-Y025",
+    "timestamp": "2026-03-10T12:24:00",
+    "velocidad_kmh": 84,
+    "rpm": 2458,
+    "temp_motor_c": 103,
+    "combustible_pct": 89,
+    "odometro_km": 205783,
+    "ubicacion": {
+      "lat": 19.0008,
+      "lng": -95.2297
+    }
+  },
+  {
+    "unidad": "ME-S026",
+    "timestamp": "2026-03-10T14:37:00",
+    "velocidad_kmh": 108,
+    "rpm": 1470,
+    "temp_motor_c": 81,
+    "combustible_pct": 25,
+    "odometro_km": 17510,
+    "ubicacion": {
+      "lat": 21.0406,
+      "lng": -98.1237
+    }
+  },
+  {
+    "unidad": "ME-N027",
+    "timestamp": "2026-03-10T13:23:00",
+    "velocidad_kmh": 34,
+    "rpm": 633,
+    "temp_motor_c": 88,
+    "combustible_pct": 47,
+    "odometro_km": 164848,
+    "ubicacion": {
+      "lat": 19.6831,
+      "lng": -100.319
+    }
+  },
+  {
+    "unidad": "ME-S028",
+    "timestamp": "2026-03-10T07:28:00",
+    "velocidad_kmh": 102,
+    "rpm": 1861,
+    "temp_motor_c": 89,
+    "combustible_pct": 87,
+    "odometro_km": 226275,
+    "ubicacion": {
+      "lat": 25.203,
+      "lng": -101.1152
+    }
+  },
+  {
+    "unidad": "ME-Y029",
+    "timestamp": "2026-03-10T12:04:00",
+    "velocidad_kmh": 61,
+    "rpm": 4113,
+    "temp_motor_c": 92,
+    "combustible_pct": 10,
+    "odometro_km": 256206,
+    "ubicacion": {
+      "lat": 22.3319,
+      "lng": -96.5809
+    }
+  },
+  {
+    "unidad": "ME-Y030",
+    "timestamp": "2026-03-10T09:09:00",
+    "velocidad_kmh": 120,
+    "rpm": 2104,
+    "temp_motor_c": 94,
+    "combustible_pct": 71,
+    "odometro_km": 107495,
+    "ubicacion": {
+      "lat": 21.258,
+      "lng": -97.9541
+    }
+  },
+  {
+    "unidad": "ME-H031",
+    "timestamp": "2026-03-10T09:34:00",
+    "velocidad_kmh": 35,
+    "rpm": 1250,
+    "temp_motor_c": 101,
+    "combustible_pct": 40,
+    "odometro_km": 85409,
+    "ubicacion": {
+      "lat": 20.6323,
+      "lng": -97.7564
+    }
+  },
+  {
+    "unidad": "ME-H032",
+    "timestamp": "2026-03-10T10:59:00",
+    "velocidad_kmh": 49,
+    "rpm": 1930,
+    "temp_motor_c": 75,
+    "combustible_pct": 8,
+    "odometro_km": 185891,
+    "ubicacion": {
+      "lat": 22.1651,
+      "lng": -101.1308
+    }
+  },
+  {
+    "unidad": "ME-F033",
+    "timestamp": "2026-03-10T14:37:00",
+    "velocidad_kmh": 52,
+    "rpm": 1363,
+    "temp_motor_c": 95,
+    "combustible_pct": 86,
+    "odometro_km": 165966,
+    "ubicacion": {
+      "lat": 21.9246,
+      "lng": -95.4379
+    }
+  },
+  {
+    "unidad": "ME-N034",
+    "timestamp": "2026-03-10T07:09:00",
+    "velocidad_kmh": 13,
+    "rpm": 2900,
+    "temp_motor_c": 90,
+    "combustible_pct": 27,
+    "odometro_km": 232997,
+    "ubicacion": {
+      "lat": 22.1544,
+      "lng": -89.45
+    }
+  },
+  {
+    "unidad": "ME-F035",
+    "timestamp": "2026-03-10T11:47:00",
+    "velocidad_kmh": 120,
+    "rpm": 4284,
+    "temp_motor_c": 88,
+    "combustible_pct": 25,
+    "odometro_km": 105337,
+    "ubicacion": {
+      "lat": 25.3178,
+      "lng": -91.1801
+    }
+  },
+  {
+    "unidad": "ME-H036",
+    "timestamp": "2026-03-10T11:49:00",
+    "velocidad_kmh": 88,
+    "rpm": 3753,
+    "temp_motor_c": 107,
+    "combustible_pct": 83,
+    "odometro_km": 117627,
+    "ubicacion": {
+      "lat": 20.1449,
+      "lng": -91.0447
+    }
+  },
+  {
+    "unidad": "ME-H037",
+    "timestamp": "2026-03-10T07:25:00",
+    "velocidad_kmh": 85,
+    "rpm": 1366,
+    "temp_motor_c": 78,
+    "combustible_pct": 95,
+    "odometro_km": 230932,
+    "ubicacion": {
+      "lat": 17.8965,
+      "lng": -99.7194
+    }
+  },
+  {
+    "unidad": "ME-S038",
+    "timestamp": "2026-03-10T11:43:00",
+    "velocidad_kmh": 109,
+    "rpm": 2063,
+    "temp_motor_c": 83,
+    "combustible_pct": 45,
+    "odometro_km": 83657,
+    "ubicacion": {
+      "lat": 18.0619,
+      "lng": -98.2772
+    }
+  },
+  {
+    "unidad": "ME-F039",
+    "timestamp": "2026-03-10T06:48:00",
+    "velocidad_kmh": 75,
+    "rpm": 3528,
+    "temp_motor_c": 80,
+    "combustible_pct": 50,
+    "odometro_km": 148852,
+    "ubicacion": {
+      "lat": 20.9002,
+      "lng": -90.8217
+    }
+  },
+  {
+    "unidad": "ME-Y040",
+    "timestamp": "2026-03-10T13:25:00",
+    "velocidad_kmh": 47,
+    "rpm": 4354,
+    "temp_motor_c": 99,
+    "combustible_pct": 14,
+    "odometro_km": 194312,
+    "ubicacion": {
+      "lat": 22.7014,
+      "lng": -98.217
+    }
+  },
+  {
+    "unidad": "ME-N041",
+    "timestamp": "2026-03-10T09:37:00",
+    "velocidad_kmh": 37,
+    "rpm": 4065,
+    "temp_motor_c": 92,
+    "combustible_pct": 12,
+    "odometro_km": 54635,
+    "ubicacion": {
+      "lat": 21.5041,
+      "lng": -87.1247
+    }
+  },
+  {
+    "unidad": "ME-Y042",
+    "timestamp": "2026-03-10T14:41:00",
+    "velocidad_kmh": 117,
+    "rpm": 3127,
+    "temp_motor_c": 108,
+    "combustible_pct": 41,
+    "odometro_km": 193920,
+    "ubicacion": {
+      "lat": 24.3512,
+      "lng": -92.1844
+    }
+  },
+  {
+    "unidad": "ME-Y043",
+    "timestamp": "2026-03-10T08:17:00",
+    "velocidad_kmh": 104,
+    "rpm": 1771,
+    "temp_motor_c": 104,
+    "combustible_pct": 44,
+    "odometro_km": 69721,
+    "ubicacion": {
+      "lat": 21.4017,
+      "lng": -97.1442
+    }
+  },
+  {
+    "unidad": "ME-F044",
+    "timestamp": "2026-03-10T11:33:00",
+    "velocidad_kmh": 26,
+    "rpm": 2885,
+    "temp_motor_c": 103,
+    "combustible_pct": 95,
+    "odometro_km": 63240,
+    "ubicacion": {
+      "lat": 22.3288,
+      "lng": -97.8747
+    }
+  },
+  {
+    "unidad": "ME-S045",
+    "timestamp": "2026-03-10T14:37:00",
+    "velocidad_kmh": 51,
+    "rpm": 3760,
+    "temp_motor_c": 77,
+    "combustible_pct": 93,
+    "odometro_km": 54137,
+    "ubicacion": {
+      "lat": 23.9437,
+      "lng": -98.6502
+    }
+  },
+  {
+    "unidad": "ME-H046",
+    "timestamp": "2026-03-10T06:23:00",
+    "velocidad_kmh": 20,
+    "rpm": 1643,
+    "temp_motor_c": 82,
+    "combustible_pct": 79,
+    "odometro_km": 109589,
+    "ubicacion": {
+      "lat": 25.2386,
+      "lng": -101.2283
+    }
+  },
+  {
+    "unidad": "ME-Y047",
+    "timestamp": "2026-03-10T07:40:00",
+    "velocidad_kmh": 102,
+    "rpm": 2078,
+    "temp_motor_c": 83,
+    "combustible_pct": 71,
+    "odometro_km": 105482,
+    "ubicacion": {
+      "lat": 23.1953,
+      "lng": -95.5892
+    }
+  },
+  {
+    "unidad": "ME-Y048",
+    "timestamp": "2026-03-10T11:15:00",
+    "velocidad_kmh": 87,
+    "rpm": 3232,
+    "temp_motor_c": 89,
+    "combustible_pct": 60,
+    "odometro_km": 29179,
+    "ubicacion": {
+      "lat": 21.466,
+      "lng": -90.2819
+    }
+  },
+  {
+    "unidad": "ME-H049",
+    "timestamp": "2026-03-10T06:31:00",
+    "velocidad_kmh": 118,
+    "rpm": 2292,
+    "temp_motor_c": 89,
+    "combustible_pct": 61,
+    "odometro_km": 203784,
+    "ubicacion": {
+      "lat": 24.1442,
+      "lng": -97.6999
+    }
+  },
+  {
+    "unidad": "ME-N050",
+    "timestamp": "2026-03-10T14:27:00",
+    "velocidad_kmh": 26,
+    "rpm": 678,
+    "temp_motor_c": 107,
+    "combustible_pct": 69,
+    "odometro_km": 100545,
+    "ubicacion": {
+      "lat": 20.3793,
+      "lng": -101.9866
+    }
+  },
+  {
+    "unidad": "ME-F051",
+    "timestamp": "2026-03-10T08:03:00",
+    "velocidad_kmh": 28,
+    "rpm": 2143,
+    "temp_motor_c": 104,
+    "combustible_pct": 91,
+    "odometro_km": 174340,
+    "ubicacion": {
+      "lat": 24.4796,
+      "lng": -101.9916
+    }
+  },
+  {
+    "unidad": "ME-Y052",
+    "timestamp": "2026-03-10T06:44:00",
+    "velocidad_kmh": 114,
+    "rpm": 1997,
+    "temp_motor_c": 77,
+    "combustible_pct": 34,
+    "odometro_km": 220924,
+    "ubicacion": {
+      "lat": 17.4969,
+      "lng": -88.9141
+    }
+  },
+  {
+    "unidad": "ME-F053",
+    "timestamp": "2026-03-10T06:55:00",
+    "velocidad_kmh": 22,
+    "rpm": 3022,
+    "temp_motor_c": 79,
+    "combustible_pct": 40,
+    "odometro_km": 43482,
+    "ubicacion": {
+      "lat": 25.0582,
+      "lng": -90.4372
+    }
+  },
+  {
+    "unidad": "ME-F054",
+    "timestamp": "2026-03-10T08:30:00",
+    "velocidad_kmh": 83,
+    "rpm": 3262,
+    "temp_motor_c": 86,
+    "combustible_pct": 30,
+    "odometro_km": 132542,
+    "ubicacion": {
+      "lat": 24.8449,
+      "lng": -98.0006
+    }
+  },
+  {
+    "unidad": "ME-F055",
+    "timestamp": "2026-03-10T12:44:00",
+    "velocidad_kmh": 60,
+    "rpm": 3893,
+    "temp_motor_c": 88,
+    "combustible_pct": 30,
+    "odometro_km": 94693,
+    "ubicacion": {
+      "lat": 22.245,
+      "lng": -91.5711
+    }
+  },
+  {
+    "unidad": "ME-F056",
+    "timestamp": "2026-03-10T10:21:00",
+    "velocidad_kmh": 23,
+    "rpm": 3824,
+    "temp_motor_c": 85,
+    "combustible_pct": 16,
+    "odometro_km": 99737,
+    "ubicacion": {
+      "lat": 20.184,
+      "lng": -92.8703
+    }
+  },
+  {
+    "unidad": "ME-F057",
+    "timestamp": "2026-03-10T11:53:00",
+    "velocidad_kmh": 52,
+    "rpm": 3340,
+    "temp_motor_c": 90,
+    "combustible_pct": 18,
+    "odometro_km": 57471,
+    "ubicacion": {
+      "lat": 17.8683,
+      "lng": -95.4536
+    }
+  },
+  {
+    "unidad": "ME-S058",
+    "timestamp": "2026-03-10T08:33:00",
+    "velocidad_kmh": 98,
+    "rpm": 1362,
+    "temp_motor_c": 101,
+    "combustible_pct": 42,
+    "odometro_km": 230543,
+    "ubicacion": {
+      "lat": 21.7801,
+      "lng": -91.0294
+    }
+  },
+  {
+    "unidad": "ME-F059",
+    "timestamp": "2026-03-10T13:46:00",
+    "velocidad_kmh": 106,
+    "rpm": 2259,
+    "temp_motor_c": 84,
+    "combustible_pct": 5,
+    "odometro_km": 172944,
+    "ubicacion": {
+      "lat": 23.0129,
+      "lng": -100.4465
+    }
+  },
+  {
+    "unidad": "ME-H060",
+    "timestamp": "2026-03-10T06:10:00",
+    "velocidad_kmh": 80,
+    "rpm": 3041,
+    "temp_motor_c": 108,
+    "combustible_pct": 72,
+    "odometro_km": 258926,
+    "ubicacion": {
+      "lat": 22.7185,
+      "lng": -88.2499
+    }
+  },
+  {
+    "unidad": "ME-N061",
+    "timestamp": "2026-03-10T11:32:00",
+    "velocidad_kmh": 30,
+    "rpm": 3914,
+    "temp_motor_c": 89,
+    "combustible_pct": 31,
+    "odometro_km": 84799,
+    "ubicacion": {
+      "lat": 21.21,
+      "lng": -94.4496
+    }
+  },
+  {
+    "unidad": "ME-H062",
+    "timestamp": "2026-03-10T13:28:00",
+    "velocidad_kmh": 38,
+    "rpm": 811,
+    "temp_motor_c": 100,
+    "combustible_pct": 86,
+    "odometro_km": 184713,
+    "ubicacion": {
+      "lat": 25.0562,
+      "lng": -93.3218
+    }
+  },
+  {
+    "unidad": "ME-F063",
+    "timestamp": "2026-03-10T12:52:00",
+    "velocidad_kmh": 74,
+    "rpm": 2108,
+    "temp_motor_c": 80,
+    "combustible_pct": 57,
+    "odometro_km": 199526,
+    "ubicacion": {
+      "lat": 21.9657,
+      "lng": -88.321
+    }
+  },
+  {
+    "unidad": "ME-S064",
+    "timestamp": "2026-03-10T12:17:00",
+    "velocidad_kmh": 64,
+    "rpm": 3793,
+    "temp_motor_c": 80,
+    "combustible_pct": 61,
+    "odometro_km": 186792,
+    "ubicacion": {
+      "lat": 25.0028,
+      "lng": -97.8637
+    }
+  },
+  {
+    "unidad": "ME-Y065",
+    "timestamp": "2026-03-10T09:21:00",
+    "velocidad_kmh": 62,
+    "rpm": 1909,
+    "temp_motor_c": 81,
+    "combustible_pct": 72,
+    "odometro_km": 200248,
+    "ubicacion": {
+      "lat": 21.4164,
+      "lng": -93.5458
+    }
+  },
+  {
+    "unidad": "ME-N066",
+    "timestamp": "2026-03-10T07:59:00",
+    "velocidad_kmh": 64,
+    "rpm": 753,
+    "temp_motor_c": 100,
+    "combustible_pct": 77,
+    "odometro_km": 96903,
+    "ubicacion": {
+      "lat": 21.6494,
+      "lng": -94.2433
+    }
+  },
+  {
+    "unidad": "ME-H067",
+    "timestamp": "2026-03-10T14:59:00",
+    "velocidad_kmh": 43,
+    "rpm": 707,
+    "temp_motor_c": 78,
+    "combustible_pct": 80,
+    "odometro_km": 34922,
+    "ubicacion": {
+      "lat": 21.4636,
+      "lng": -91.6332
+    }
+  },
+  {
+    "unidad": "ME-N068",
+    "timestamp": "2026-03-10T13:33:00",
+    "velocidad_kmh": 109,
+    "rpm": 2304,
+    "temp_motor_c": 97,
+    "combustible_pct": 83,
+    "odometro_km": 77205,
+    "ubicacion": {
+      "lat": 20.186,
+      "lng": -95.3719
+    }
+  },
+  {
+    "unidad": "ME-N069",
+    "timestamp": "2026-03-10T09:59:00",
+    "velocidad_kmh": 57,
+    "rpm": 3767,
+    "temp_motor_c": 85,
+    "combustible_pct": 76,
+    "odometro_km": 107468,
+    "ubicacion": {
+      "lat": 22.5819,
+      "lng": -97.1658
+    }
+  },
+  {
+    "unidad": "ME-N070",
+    "timestamp": "2026-03-10T10:07:00",
+    "velocidad_kmh": 80,
+    "rpm": 2746,
+    "temp_motor_c": 84,
+    "combustible_pct": 49,
+    "odometro_km": 175869,
+    "ubicacion": {
+      "lat": 22.8801,
+      "lng": -99.2243
+    }
+  },
+  {
+    "unidad": "ME-F071",
+    "timestamp": "2026-03-10T10:22:00",
+    "velocidad_kmh": 42,
+    "rpm": 1082,
+    "temp_motor_c": 101,
+    "combustible_pct": 32,
+    "odometro_km": 134957,
+    "ubicacion": {
+      "lat": 19.1287,
+      "lng": -94.2364
+    }
+  },
+  {
+    "unidad": "ME-N072",
+    "timestamp": "2026-03-10T06:53:00",
+    "velocidad_kmh": 107,
+    "rpm": 3081,
+    "temp_motor_c": 88,
+    "combustible_pct": 53,
+    "odometro_km": 167974,
+    "ubicacion": {
+      "lat": 19.1314,
+      "lng": -91.963
+    }
+  },
+  {
+    "unidad": "ME-H073",
+    "timestamp": "2026-03-10T08:46:00",
+    "velocidad_kmh": 109,
+    "rpm": 2240,
+    "temp_motor_c": 81,
+    "combustible_pct": 47,
+    "odometro_km": 138516,
+    "ubicacion": {
+      "lat": 24.1828,
+      "lng": -93.3208
+    }
+  },
+  {
+    "unidad": "ME-H074",
+    "timestamp": "2026-03-10T10:43:00",
+    "velocidad_kmh": 88,
+    "rpm": 4331,
+    "temp_motor_c": 105,
+    "combustible_pct": 43,
+    "odometro_km": 137721,
+    "ubicacion": {
+      "lat": 19.24,
+      "lng": -87.9995
+    }
+  },
+  {
+    "unidad": "ME-S075",
+    "timestamp": "2026-03-10T10:56:00",
+    "velocidad_kmh": 51,
+    "rpm": 3616,
+    "temp_motor_c": 75,
+    "combustible_pct": 80,
+    "odometro_km": 212488,
+    "ubicacion": {
+      "lat": 19.1613,
+      "lng": -101.4042
+    }
+  },
+  {
+    "unidad": "ME-F076",
+    "timestamp": "2026-03-10T06:07:00",
+    "velocidad_kmh": 118,
+    "rpm": 3182,
+    "temp_motor_c": 88,
+    "combustible_pct": 94,
+    "odometro_km": 208284,
+    "ubicacion": {
+      "lat": 24.4448,
+      "lng": -92.8011
+    }
+  },
+  {
+    "unidad": "ME-S077",
+    "timestamp": "2026-03-10T14:13:00",
+    "velocidad_kmh": 8,
+    "rpm": 2839,
+    "temp_motor_c": 86,
+    "combustible_pct": 21,
+    "odometro_km": 47842,
+    "ubicacion": {
+      "lat": 20.4951,
+      "lng": -87.3719
+    }
+  },
+  {
+    "unidad": "ME-N078",
+    "timestamp": "2026-03-10T11:17:00",
+    "velocidad_kmh": 98,
+    "rpm": 3051,
+    "temp_motor_c": 80,
+    "combustible_pct": 8,
+    "odometro_km": 46519,
+    "ubicacion": {
+      "lat": 24.6247,
+      "lng": -91.2017
+    }
+  },
+  {
+    "unidad": "ME-S079",
+    "timestamp": "2026-03-10T11:25:00",
+    "velocidad_kmh": 65,
+    "rpm": 2783,
+    "temp_motor_c": 102,
+    "combustible_pct": 67,
+    "odometro_km": 109853,
+    "ubicacion": {
+      "lat": 24.2712,
+      "lng": -95.5297
+    }
+  },
+  {
+    "unidad": "ME-Y080",
+    "timestamp": "2026-03-10T08:33:00",
+    "velocidad_kmh": 48,
+    "rpm": 2013,
+    "temp_motor_c": 88,
+    "combustible_pct": 7,
+    "odometro_km": 161254,
+    "ubicacion": {
+      "lat": 22.5582,
+      "lng": -88.1103
+    }
+  },
+  {
+    "unidad": "ME-H081",
+    "timestamp": "2026-03-10T12:47:00",
+    "velocidad_kmh": 61,
+    "rpm": 3826,
+    "temp_motor_c": 86,
+    "combustible_pct": 37,
+    "odometro_km": 224580,
+    "ubicacion": {
+      "lat": 22.5999,
+      "lng": -91.4042
+    }
+  },
+  {
+    "unidad": "ME-Y082",
+    "timestamp": "2026-03-10T12:48:00",
+    "velocidad_kmh": 87,
+    "rpm": 4107,
+    "temp_motor_c": 86,
+    "combustible_pct": 34,
+    "odometro_km": 226316,
+    "ubicacion": {
+      "lat": 21.9137,
+      "lng": -90.1363
+    }
+  },
+  {
+    "unidad": "ME-N083",
+    "timestamp": "2026-03-10T13:52:00",
+    "velocidad_kmh": 41,
+    "rpm": 3244,
+    "temp_motor_c": 87,
+    "combustible_pct": 89,
+    "odometro_km": 158714,
+    "ubicacion": {
+      "lat": 19.5318,
+      "lng": -97.8676
+    }
+  },
+  {
+    "unidad": "ME-H084",
+    "timestamp": "2026-03-10T13:52:00",
+    "velocidad_kmh": 79,
+    "rpm": 3730,
+    "temp_motor_c": 91,
+    "combustible_pct": 55,
+    "odometro_km": 220571,
+    "ubicacion": {
+      "lat": 22.8984,
+      "lng": -99.9875
+    }
+  },
+  {
+    "unidad": "ME-S085",
+    "timestamp": "2026-03-10T10:29:00",
+    "velocidad_kmh": 14,
+    "rpm": 2453,
+    "temp_motor_c": 86,
+    "combustible_pct": 64,
+    "odometro_km": 22596,
+    "ubicacion": {
+      "lat": 23.5838,
+      "lng": -88.2548
+    }
+  },
+  {
+    "unidad": "ME-F086",
+    "timestamp": "2026-03-10T10:47:00",
+    "velocidad_kmh": 60,
+    "rpm": 3366,
+    "temp_motor_c": 84,
+    "combustible_pct": 16,
+    "odometro_km": 56755,
+    "ubicacion": {
+      "lat": 20.4142,
+      "lng": -94.0929
+    }
+  },
+  {
+    "unidad": "ME-S087",
+    "timestamp": "2026-03-10T14:14:00",
+    "velocidad_kmh": 53,
+    "rpm": 2833,
+    "temp_motor_c": 91,
+    "combustible_pct": 32,
+    "odometro_km": 77261,
+    "ubicacion": {
+      "lat": 20.4537,
+      "lng": -90.1642
+    }
+  },
+  {
+    "unidad": "ME-N088",
+    "timestamp": "2026-03-10T06:49:00",
+    "velocidad_kmh": 1,
+    "rpm": 1639,
+    "temp_motor_c": 103,
+    "combustible_pct": 54,
+    "odometro_km": 171762,
+    "ubicacion": {
+      "lat": 22.2539,
+      "lng": -97.0426
+    }
+  },
+  {
+    "unidad": "ME-F089",
+    "timestamp": "2026-03-10T06:27:00",
+    "velocidad_kmh": 84,
+    "rpm": 1523,
+    "temp_motor_c": 78,
+    "combustible_pct": 15,
+    "odometro_km": 180603,
+    "ubicacion": {
+      "lat": 22.3013,
+      "lng": -101.1946
+    }
+  },
+  {
+    "unidad": "ME-Y090",
+    "timestamp": "2026-03-10T12:03:00",
+    "velocidad_kmh": 37,
+    "rpm": 2680,
+    "temp_motor_c": 101,
+    "combustible_pct": 95,
+    "odometro_km": 31082,
+    "ubicacion": {
+      "lat": 22.2983,
+      "lng": -92.552
+    }
+  },
+  {
+    "unidad": "ME-Y091",
+    "timestamp": "2026-03-10T12:48:00",
+    "velocidad_kmh": 88,
+    "rpm": 1716,
+    "temp_motor_c": 87,
+    "combustible_pct": 72,
+    "odometro_km": 235838,
+    "ubicacion": {
+      "lat": 20.5869,
+      "lng": -96.0434
+    }
+  },
+  {
+    "unidad": "ME-F092",
+    "timestamp": "2026-03-10T10:58:00",
+    "velocidad_kmh": 0,
+    "rpm": 1544,
+    "temp_motor_c": 89,
+    "combustible_pct": 32,
+    "odometro_km": 187908,
+    "ubicacion": {
+      "lat": 24.4834,
+      "lng": -88.2832
+    }
+  },
+  {
+    "unidad": "ME-F093",
+    "timestamp": "2026-03-10T09:42:00",
+    "velocidad_kmh": 72,
+    "rpm": 3777,
+    "temp_motor_c": 76,
+    "combustible_pct": 84,
+    "odometro_km": 247653,
+    "ubicacion": {
+      "lat": 23.6035,
+      "lng": -93.824
+    }
+  },
+  {
+    "unidad": "ME-F094",
+    "timestamp": "2026-03-10T10:16:00",
+    "velocidad_kmh": 62,
+    "rpm": 4260,
+    "temp_motor_c": 96,
+    "combustible_pct": 72,
+    "odometro_km": 236267,
+    "ubicacion": {
+      "lat": 18.8901,
+      "lng": -95.406
+    }
+  },
+  {
+    "unidad": "ME-N095",
+    "timestamp": "2026-03-10T07:10:00",
+    "velocidad_kmh": 85,
+    "rpm": 720,
+    "temp_motor_c": 82,
+    "combustible_pct": 81,
+    "odometro_km": 114125,
+    "ubicacion": {
+      "lat": 18.8356,
+      "lng": -89.6417
+    }
+  },
+  {
+    "unidad": "ME-H096",
+    "timestamp": "2026-03-10T09:07:00",
+    "velocidad_kmh": 42,
+    "rpm": 1647,
+    "temp_motor_c": 88,
+    "combustible_pct": 57,
+    "odometro_km": 173173,
+    "ubicacion": {
+      "lat": 20.0007,
+      "lng": -88.0134
+    }
+  },
+  {
+    "unidad": "ME-H097",
+    "timestamp": "2026-03-10T14:56:00",
+    "velocidad_kmh": 115,
+    "rpm": 2455,
+    "temp_motor_c": 77,
+    "combustible_pct": 68,
+    "odometro_km": 110960,
+    "ubicacion": {
+      "lat": 22.0524,
+      "lng": -93.2545
+    }
+  },
+  {
+    "unidad": "ME-H098",
+    "timestamp": "2026-03-10T13:36:00",
+    "velocidad_kmh": 87,
+    "rpm": 1647,
+    "temp_motor_c": 106,
+    "combustible_pct": 6,
+    "odometro_km": 139390,
+    "ubicacion": {
+      "lat": 24.7282,
+      "lng": -89.0627
+    }
+  },
+  {
+    "unidad": "ME-N099",
+    "timestamp": "2026-03-10T09:06:00",
+    "velocidad_kmh": 35,
+    "rpm": 3057,
+    "temp_motor_c": 82,
+    "combustible_pct": 53,
+    "odometro_km": 145070,
+    "ubicacion": {
+      "lat": 24.0394,
+      "lng": -96.1546
+    }
+  },
+  {
+    "unidad": "ME-H100",
+    "timestamp": "2026-03-10T12:15:00",
+    "velocidad_kmh": 74,
+    "rpm": 3310,
+    "temp_motor_c": 79,
+    "combustible_pct": 36,
+    "odometro_km": 52328,
+    "ubicacion": {
+      "lat": 24.3328,
+      "lng": -90.2613
+    }
+  },
+  {
+    "unidad": "ME-F101",
+    "timestamp": "2026-03-10T10:18:00",
+    "velocidad_kmh": 9,
+    "rpm": 1146,
+    "temp_motor_c": 105,
+    "combustible_pct": 55,
+    "odometro_km": 192026,
+    "ubicacion": {
+      "lat": 20.2758,
+      "lng": -88.1564
+    }
+  },
+  {
+    "unidad": "ME-F102",
+    "timestamp": "2026-03-10T08:31:00",
+    "velocidad_kmh": 16,
+    "rpm": 1983,
+    "temp_motor_c": 104,
+    "combustible_pct": 18,
+    "odometro_km": 100000,
+    "ubicacion": {
+      "lat": 19.8985,
+      "lng": -88.9847
+    }
+  },
+  {
+    "unidad": "ME-N103",
+    "timestamp": "2026-03-10T12:25:00",
+    "velocidad_kmh": 76,
+    "rpm": 4150,
+    "temp_motor_c": 88,
+    "combustible_pct": 17,
+    "odometro_km": 215690,
+    "ubicacion": {
+      "lat": 25.1946,
+      "lng": -95.6227
+    }
+  },
+  {
+    "unidad": "ME-N104",
+    "timestamp": "2026-03-10T06:03:00",
+    "velocidad_kmh": 72,
+    "rpm": 1012,
+    "temp_motor_c": 96,
+    "combustible_pct": 47,
+    "odometro_km": 234261,
+    "ubicacion": {
+      "lat": 19.367,
+      "lng": -100.1918
+    }
+  },
+  {
+    "unidad": "ME-S105",
+    "timestamp": "2026-03-10T12:17:00",
+    "velocidad_kmh": 32,
+    "rpm": 4059,
+    "temp_motor_c": 99,
+    "combustible_pct": 10,
+    "odometro_km": 115964,
+    "ubicacion": {
+      "lat": 23.4656,
+      "lng": -101.4683
+    }
+  },
+  {
+    "unidad": "ME-F106",
+    "timestamp": "2026-03-10T09:33:00",
+    "velocidad_kmh": 35,
+    "rpm": 4330,
+    "temp_motor_c": 100,
+    "combustible_pct": 89,
+    "odometro_km": 92847,
+    "ubicacion": {
+      "lat": 25.1109,
+      "lng": -97.0493
+    }
+  },
+  {
+    "unidad": "ME-S107",
+    "timestamp": "2026-03-10T12:42:00",
+    "velocidad_kmh": 13,
+    "rpm": 2497,
+    "temp_motor_c": 79,
+    "combustible_pct": 70,
+    "odometro_km": 108263,
+    "ubicacion": {
+      "lat": 18.8592,
+      "lng": -99.8235
+    }
+  },
+  {
+    "unidad": "ME-S108",
+    "timestamp": "2026-03-10T10:53:00",
+    "velocidad_kmh": 90,
+    "rpm": 3595,
+    "temp_motor_c": 86,
+    "combustible_pct": 82,
+    "odometro_km": 183430,
+    "ubicacion": {
+      "lat": 18.1114,
+      "lng": -88.1365
+    }
+  },
+  {
+    "unidad": "ME-N109",
+    "timestamp": "2026-03-10T08:06:00",
+    "velocidad_kmh": 108,
+    "rpm": 759,
+    "temp_motor_c": 102,
+    "combustible_pct": 75,
+    "odometro_km": 45149,
+    "ubicacion": {
+      "lat": 21.3636,
+      "lng": -93.2261
+    }
+  },
+  {
+    "unidad": "ME-S110",
+    "timestamp": "2026-03-10T10:27:00",
+    "velocidad_kmh": 94,
+    "rpm": 934,
+    "temp_motor_c": 106,
+    "combustible_pct": 30,
+    "odometro_km": 239441,
+    "ubicacion": {
+      "lat": 23.9026,
+      "lng": -88.9226
+    }
+  },
+  {
+    "unidad": "ME-H111",
+    "timestamp": "2026-03-10T09:33:00",
+    "velocidad_kmh": 16,
+    "rpm": 1620,
+    "temp_motor_c": 101,
+    "combustible_pct": 77,
+    "odometro_km": 64009,
+    "ubicacion": {
+      "lat": 20.1529,
+      "lng": -100.8619
+    }
+  },
+  {
+    "unidad": "ME-Y112",
+    "timestamp": "2026-03-10T14:58:00",
+    "velocidad_kmh": 78,
+    "rpm": 3632,
+    "temp_motor_c": 79,
+    "combustible_pct": 59,
+    "odometro_km": 129071,
+    "ubicacion": {
+      "lat": 20.1788,
+      "lng": -87.4394
+    }
+  },
+  {
+    "unidad": "ME-N113",
+    "timestamp": "2026-03-10T06:02:00",
+    "velocidad_kmh": 81,
+    "rpm": 3452,
+    "temp_motor_c": 82,
+    "combustible_pct": 87,
+    "odometro_km": 105585,
+    "ubicacion": {
+      "lat": 23.4904,
+      "lng": -90.6334
+    }
+  },
+  {
+    "unidad": "ME-F114",
+    "timestamp": "2026-03-10T06:44:00",
+    "velocidad_kmh": 62,
+    "rpm": 3269,
+    "temp_motor_c": 103,
+    "combustible_pct": 20,
+    "odometro_km": 180193,
+    "ubicacion": {
+      "lat": 22.2935,
+      "lng": -96.269
+    }
+  },
+  {
+    "unidad": "ME-H115",
+    "timestamp": "2026-03-10T10:44:00",
+    "velocidad_kmh": 87,
+    "rpm": 2734,
+    "temp_motor_c": 99,
+    "combustible_pct": 58,
+    "odometro_km": 249434,
+    "ubicacion": {
+      "lat": 18.8759,
+      "lng": -88.7477
+    }
+  },
+  {
+    "unidad": "ME-F116",
+    "timestamp": "2026-03-10T06:48:00",
+    "velocidad_kmh": 28,
+    "rpm": 1431,
+    "temp_motor_c": 87,
+    "combustible_pct": 35,
+    "odometro_km": 17246,
+    "ubicacion": {
+      "lat": 22.8195,
+      "lng": -101.3416
+    }
+  },
+  {
+    "unidad": "ME-Y117",
+    "timestamp": "2026-03-10T09:08:00",
+    "velocidad_kmh": 58,
+    "rpm": 2520,
+    "temp_motor_c": 87,
+    "combustible_pct": 19,
+    "odometro_km": 73668,
+    "ubicacion": {
+      "lat": 18.8254,
+      "lng": -91.4379
+    }
+  },
+  {
+    "unidad": "ME-Y118",
+    "timestamp": "2026-03-10T10:13:00",
+    "velocidad_kmh": 38,
+    "rpm": 2128,
+    "temp_motor_c": 86,
+    "combustible_pct": 37,
+    "odometro_km": 93128,
+    "ubicacion": {
+      "lat": 18.2149,
+      "lng": -91.8772
+    }
+  },
+  {
+    "unidad": "ME-S119",
+    "timestamp": "2026-03-10T10:23:00",
+    "velocidad_kmh": 83,
+    "rpm": 798,
+    "temp_motor_c": 76,
+    "combustible_pct": 20,
+    "odometro_km": 107671,
+    "ubicacion": {
+      "lat": 20.0704,
+      "lng": -101.4096
+    }
+  },
+  {
+    "unidad": "ME-Y120",
+    "timestamp": "2026-03-10T11:21:00",
+    "velocidad_kmh": 109,
+    "rpm": 3958,
+    "temp_motor_c": 104,
+    "combustible_pct": 68,
+    "odometro_km": 194911,
+    "ubicacion": {
+      "lat": 19.5403,
+      "lng": -97.6123
+    }
+  }
+]

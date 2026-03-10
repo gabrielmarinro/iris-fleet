@@ -1,0 +1,92 @@
+{
+  "zonas": [
+    {
+      "id": "ZS-ME-01",
+      "nombre": "Base Operativa CDMX Norte",
+      "tipo": "base",
+      "lat": 19.4926,
+      "lng": -99.1332,
+      "servicios": [
+        "Estacionamiento",
+        "Taller",
+        "Almacén",
+        "Comedor"
+      ],
+      "capacidad_vehiculos": 80,
+      "ocupacion_actual": 45,
+      "horario": "24/7"
+    },
+    {
+      "id": "ZS-ME-02",
+      "nombre": "Base Operativa Monterrey",
+      "tipo": "base",
+      "lat": 25.6866,
+      "lng": -100.3161,
+      "servicios": [
+        "Estacionamiento",
+        "Taller menor",
+        "Almacén"
+      ],
+      "capacidad_vehiculos": 40,
+      "ocupacion_actual": 28,
+      "horario": "24/7"
+    },
+    {
+      "id": "ZS-ME-03",
+      "nombre": "Campamento Tren Maya T5",
+      "tipo": "campamento",
+      "lat": 20.6308,
+      "lng": -87.0803,
+      "servicios": [
+        "Estacionamiento",
+        "Dormitorios",
+        "Comedor"
+      ],
+      "capacidad_vehiculos": 50,
+      "ocupacion_actual": 35,
+      "horario": "24/7"
+    },
+    {
+      "id": "ZS-ME-04",
+      "nombre": "Campamento Tren Maya T3",
+      "tipo": "campamento",
+      "lat": 19.84,
+      "lng": -90.53,
+      "servicios": [
+        "Estacionamiento",
+        "Dormitorios"
+      ],
+      "capacidad_vehiculos": 35,
+      "ocupacion_actual": 22,
+      "horario": "24/7"
+    },
+    {
+      "id": "ZS-ME-05",
+      "nombre": "Almacén Regional GDL",
+      "tipo": "almacen",
+      "lat": 20.67,
+      "lng": -103.35,
+      "servicios": [
+        "Estacionamiento",
+        "Carga"
+      ],
+      "capacidad_vehiculos": 25,
+      "ocupacion_actual": 12,
+      "horario": "06:00-22:00"
+    },
+    {
+      "id": "ZS-ME-06",
+      "nombre": "Patio Veracruz Puerto",
+      "tipo": "patio",
+      "lat": 19.17,
+      "lng": -96.13,
+      "servicios": [
+        "Estacionamiento",
+        "Vigilancia"
+      ],
+      "capacidad_vehiculos": 20,
+      "ocupacion_actual": 8,
+      "horario": "24/7"
+    }
+  ]
+}

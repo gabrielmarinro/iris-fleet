@@ -1,0 +1,2193 @@
+[
+  {
+    "id": "OP-001",
+    "nombre": "Víctor Ramírez Flores",
+    "rol": "Jefe de Frente",
+    "frente_asignado": "Libramiento GDL-PV",
+    "certificaciones": [
+      "Seguridad Industrial",
+      "Manejo Defensivo"
+    ],
+    "licencia_vence": "2026-10-18",
+    "antiguedad_anios": 18.0,
+    "score_seguridad": 70,
+    "eventos_manejo_agresivo_mes": 4,
+    "horas_conduccion_semana": 35.0,
+    "km_recorridos_mes": 6215,
+    "status": "activo",
+    "unidad_asignada": "ME-H109"
+  },
+  {
+    "id": "OP-002",
+    "nombre": "Ricardo García Morales",
+    "rol": "Operador de Campo",
+    "frente_asignado": "Libramiento GDL-PV",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "Trabajos en Altura",
+      "Manejo Defensivo",
+      "NOM-009"
+    ],
+    "licencia_vence": "2026-04-03",
+    "antiguedad_anios": 10.1,
+    "score_seguridad": 71,
+    "eventos_manejo_agresivo_mes": 17,
+    "horas_conduccion_semana": 31.1,
+    "km_recorridos_mes": 2648,
+    "status": "activo",
+    "unidad_asignada": "ME-H011"
+  },
+  {
+    "id": "OP-003",
+    "nombre": "Alberto Pérez Ortiz",
+    "rol": "Inspector de Calidad",
+    "frente_asignado": "Autopista MTY-Saltillo",
+    "certificaciones": [
+      "ISO 45001",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-08-28",
+    "antiguedad_anios": 2.0,
+    "score_seguridad": 91,
+    "eventos_manejo_agresivo_mes": 14,
+    "horas_conduccion_semana": 47.2,
+    "km_recorridos_mes": 5207,
+    "status": "activo",
+    "unidad_asignada": "ME-Y057"
+  },
+  {
+    "id": "OP-004",
+    "nombre": "Rafael Ortiz Martínez",
+    "rol": "Supervisor de Seguridad",
+    "frente_asignado": "Tren Maya Tramo 5",
+    "certificaciones": [
+      "NOM-009",
+      "ISO 45001",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-06-19",
+    "antiguedad_anios": 8.8,
+    "score_seguridad": 63,
+    "eventos_manejo_agresivo_mes": 12,
+    "horas_conduccion_semana": 10.6,
+    "km_recorridos_mes": 1087,
+    "status": "activo",
+    "unidad_asignada": "ME-N081"
+  },
+  {
+    "id": "OP-005",
+    "nombre": "Miguel Rivera Díaz",
+    "rol": "Ingeniero Residente",
+    "frente_asignado": "Tren Maya Tramo 3",
+    "certificaciones": [
+      "NOM-009",
+      "Primeros Auxilios",
+      "Seguridad Industrial",
+      "Manejo Defensivo"
+    ],
+    "licencia_vence": "2026-10-27",
+    "antiguedad_anios": 12.6,
+    "score_seguridad": 61,
+    "eventos_manejo_agresivo_mes": 4,
+    "horas_conduccion_semana": 23.4,
+    "km_recorridos_mes": 1552,
+    "status": "activo",
+    "unidad_asignada": "ME-N118"
+  },
+  {
+    "id": "OP-006",
+    "nombre": "Héctor Díaz Gutiérrez",
+    "rol": "Supervisor de Obra",
+    "frente_asignado": "Tren Maya Tramo 5",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "Seguridad Industrial",
+      "NOM-009"
+    ],
+    "licencia_vence": "2026-06-03",
+    "antiguedad_anios": 12.2,
+    "score_seguridad": 84,
+    "eventos_manejo_agresivo_mes": 3,
+    "horas_conduccion_semana": 48.9,
+    "km_recorridos_mes": 4698,
+    "status": "activo",
+    "unidad_asignada": "ME-F031"
+  },
+  {
+    "id": "OP-007",
+    "nombre": "Ricardo Pérez López",
+    "rol": "Operador de Campo",
+    "frente_asignado": "Tren Interurbano Méx-Toluca",
+    "certificaciones": [
+      "Seguridad Industrial",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-06-22",
+    "antiguedad_anios": 9.3,
+    "score_seguridad": 79,
+    "eventos_manejo_agresivo_mes": 18,
+    "horas_conduccion_semana": 42.0,
+    "km_recorridos_mes": 5724,
+    "status": "activo",
+    "unidad_asignada": "ME-N065"
+  },
+  {
+    "id": "OP-008",
+    "nombre": "Ricardo Chávez Martínez",
+    "rol": "Inspector de Calidad",
+    "frente_asignado": "Puente Vehicular Periférico Norte",
+    "certificaciones": [
+      "NOM-009",
+      "Manejo Defensivo",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-10-28",
+    "antiguedad_anios": 3.8,
+    "score_seguridad": 92,
+    "eventos_manejo_agresivo_mes": 15,
+    "horas_conduccion_semana": 13.2,
+    "km_recorridos_mes": 954,
+    "status": "activo",
+    "unidad_asignada": "ME-H012"
+  },
+  {
+    "id": "OP-009",
+    "nombre": "Daniel Martínez Reyes",
+    "rol": "Jefe de Frente",
+    "frente_asignado": "Autopista MTY-Saltillo",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "Seguridad Industrial",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-07-15",
+    "antiguedad_anios": 15.9,
+    "score_seguridad": 89,
+    "eventos_manejo_agresivo_mes": 22,
+    "horas_conduccion_semana": 46.8,
+    "km_recorridos_mes": 4095,
+    "status": "activo",
+    "unidad_asignada": "ME-N109"
+  },
+  {
+    "id": "OP-010",
+    "nombre": "Ricardo Torres López",
+    "rol": "Coordinador de Logística",
+    "frente_asignado": "Nuevo Aeropuerto Tulum",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "Manejo Defensivo",
+      "NOM-009"
+    ],
+    "licencia_vence": "2026-10-24",
+    "antiguedad_anios": 13.9,
+    "score_seguridad": 96,
+    "eventos_manejo_agresivo_mes": 16,
+    "horas_conduccion_semana": 27.7,
+    "km_recorridos_mes": 5178,
+    "status": "activo",
+    "unidad_asignada": "ME-Y049"
+  },
+  {
+    "id": "OP-011",
+    "nombre": "Andrés Ortiz Torres",
+    "rol": "Ingeniero Residente",
+    "frente_asignado": "Tren Maya Tramo 3",
+    "certificaciones": [
+      "Seguridad Industrial",
+      "Trabajos en Altura",
+      "NOM-009",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-03-07",
+    "antiguedad_anios": 16.4,
+    "score_seguridad": 92,
+    "eventos_manejo_agresivo_mes": 19,
+    "horas_conduccion_semana": 35.2,
+    "km_recorridos_mes": 6346,
+    "status": "vacaciones",
+    "unidad_asignada": "ME-H068"
+  },
+  {
+    "id": "OP-012",
+    "nombre": "Carlos Gutiérrez Martínez",
+    "rol": "Operador de Campo",
+    "frente_asignado": "Tren Maya Tramo 3",
+    "certificaciones": [
+      "ISO 45001",
+      "Manejo Defensivo"
+    ],
+    "licencia_vence": "2026-03-22",
+    "antiguedad_anios": 9.5,
+    "score_seguridad": 94,
+    "eventos_manejo_agresivo_mes": 18,
+    "horas_conduccion_semana": 53.0,
+    "km_recorridos_mes": 1509,
+    "status": "activo",
+    "unidad_asignada": "ME-H047"
+  },
+  {
+    "id": "OP-013",
+    "nombre": "Sergio Chávez García",
+    "rol": "Supervisor de Obra",
+    "frente_asignado": "Ampliación Puerto Veracruz",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "Primeros Auxilios",
+      "NOM-009",
+      "Manejo Defensivo"
+    ],
+    "licencia_vence": "2026-04-14",
+    "antiguedad_anios": 0.6,
+    "score_seguridad": 57,
+    "eventos_manejo_agresivo_mes": 12,
+    "horas_conduccion_semana": 45.1,
+    "km_recorridos_mes": 1114,
+    "status": "activo",
+    "unidad_asignada": "ME-S120"
+  },
+  {
+    "id": "OP-014",
+    "nombre": "Ricardo Rodríguez Ortiz",
+    "rol": "Ingeniero Residente",
+    "frente_asignado": "Autopista MTY-Saltillo",
+    "certificaciones": [
+      "NOM-009",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-11-23",
+    "antiguedad_anios": 1.8,
+    "score_seguridad": 85,
+    "eventos_manejo_agresivo_mes": 6,
+    "horas_conduccion_semana": 34.4,
+    "km_recorridos_mes": 3441,
+    "status": "activo",
+    "unidad_asignada": "ME-N030"
+  },
+  {
+    "id": "OP-015",
+    "nombre": "Antonio Morales Gutiérrez",
+    "rol": "Topógrafo",
+    "frente_asignado": "Puente Vehicular Periférico Norte",
+    "certificaciones": [
+      "ISO 45001",
+      "NOM-009",
+      "Trabajos en Altura",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-04-07",
+    "antiguedad_anios": 14.3,
+    "score_seguridad": 96,
+    "eventos_manejo_agresivo_mes": 20,
+    "horas_conduccion_semana": 23.8,
+    "km_recorridos_mes": 6277,
+    "status": "activo",
+    "unidad_asignada": "ME-Y083"
+  },
+  {
+    "id": "OP-016",
+    "nombre": "Eduardo Pérez Reyes",
+    "rol": "Coordinador de Logística",
+    "frente_asignado": "Nuevo Aeropuerto Tulum",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "Manejo Defensivo",
+      "NOM-009",
+      "Seguridad Industrial"
+    ],
+    "licencia_vence": "2026-05-12",
+    "antiguedad_anios": 12.2,
+    "score_seguridad": 71,
+    "eventos_manejo_agresivo_mes": 16,
+    "horas_conduccion_semana": 53.0,
+    "km_recorridos_mes": 3195,
+    "status": "activo",
+    "unidad_asignada": "ME-N031"
+  },
+  {
+    "id": "OP-017",
+    "nombre": "Francisco Martínez Morales",
+    "rol": "Almacenista",
+    "frente_asignado": "Autopista MTY-Saltillo",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "Trabajos en Altura",
+      "Seguridad Industrial"
+    ],
+    "licencia_vence": "2026-07-19",
+    "antiguedad_anios": 7.8,
+    "score_seguridad": 88,
+    "eventos_manejo_agresivo_mes": 16,
+    "horas_conduccion_semana": 37.8,
+    "km_recorridos_mes": 6462,
+    "status": "activo",
+    "unidad_asignada": "ME-H088"
+  },
+  {
+    "id": "OP-018",
+    "nombre": "Sergio Ortiz Rivera",
+    "rol": "Inspector de Calidad",
+    "frente_asignado": "Ampliación Puerto Veracruz",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "Primeros Auxilios",
+      "NOM-009"
+    ],
+    "licencia_vence": "2026-11-14",
+    "antiguedad_anios": 11.2,
+    "score_seguridad": 71,
+    "eventos_manejo_agresivo_mes": 0,
+    "horas_conduccion_semana": 53.5,
+    "km_recorridos_mes": 3299,
+    "status": "activo",
+    "unidad_asignada": "ME-N066"
+  },
+  {
+    "id": "OP-019",
+    "nombre": "Alberto Cruz Gutiérrez",
+    "rol": "Supervisor de Obra",
+    "frente_asignado": "Autopista MTY-Saltillo",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "ISO 45001",
+      "NOM-009"
+    ],
+    "licencia_vence": "2026-12-28",
+    "antiguedad_anios": 2.4,
+    "score_seguridad": 77,
+    "eventos_manejo_agresivo_mes": 4,
+    "horas_conduccion_semana": 15.5,
+    "km_recorridos_mes": 1977,
+    "status": "activo",
+    "unidad_asignada": "ME-H064"
+  },
+  {
+    "id": "OP-020",
+    "nombre": "Javier Torres Flores",
+    "rol": "Supervisor de Seguridad",
+    "frente_asignado": "Autopista MTY-Saltillo",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "Trabajos en Altura",
+      "NOM-009",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-09-23",
+    "antiguedad_anios": 0.9,
+    "score_seguridad": 92,
+    "eventos_manejo_agresivo_mes": 3,
+    "horas_conduccion_semana": 32.9,
+    "km_recorridos_mes": 4336,
+    "status": "activo",
+    "unidad_asignada": "ME-F093"
+  },
+  {
+    "id": "OP-021",
+    "nombre": "Rafael Gutiérrez Hernández",
+    "rol": "Inspector de Calidad",
+    "frente_asignado": "Autopista MTY-Saltillo",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "Seguridad Industrial",
+      "NOM-009",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-03-24",
+    "antiguedad_anios": 6.8,
+    "score_seguridad": 84,
+    "eventos_manejo_agresivo_mes": 8,
+    "horas_conduccion_semana": 28.3,
+    "km_recorridos_mes": 1429,
+    "status": "activo",
+    "unidad_asignada": "ME-S047"
+  },
+  {
+    "id": "OP-022",
+    "nombre": "Óscar Sánchez Gutiérrez",
+    "rol": "Supervisor de Obra",
+    "frente_asignado": "Tren Interurbano Méx-Toluca",
+    "certificaciones": [
+      "NOM-009",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-07-12",
+    "antiguedad_anios": 17.1,
+    "score_seguridad": 58,
+    "eventos_manejo_agresivo_mes": 17,
+    "horas_conduccion_semana": 34.1,
+    "km_recorridos_mes": 5075,
+    "status": "activo",
+    "unidad_asignada": "ME-Y082"
+  },
+  {
+    "id": "OP-023",
+    "nombre": "Sergio Morales Sánchez",
+    "rol": "Ingeniero Residente",
+    "frente_asignado": "Ampliación Puerto Veracruz",
+    "certificaciones": [
+      "ISO 45001",
+      "Primeros Auxilios",
+      "NOM-009"
+    ],
+    "licencia_vence": "2026-12-15",
+    "antiguedad_anios": 2.2,
+    "score_seguridad": 65,
+    "eventos_manejo_agresivo_mes": 3,
+    "horas_conduccion_semana": 38.8,
+    "km_recorridos_mes": 2713,
+    "status": "activo",
+    "unidad_asignada": "ME-S041"
+  },
+  {
+    "id": "OP-024",
+    "nombre": "Andrés Ramírez Flores",
+    "rol": "Inspector de Calidad",
+    "frente_asignado": "Nuevo Aeropuerto Tulum",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "Trabajos en Altura",
+      "Seguridad Industrial",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-03-18",
+    "antiguedad_anios": 4.9,
+    "score_seguridad": 93,
+    "eventos_manejo_agresivo_mes": 0,
+    "horas_conduccion_semana": 29.0,
+    "km_recorridos_mes": 1545,
+    "status": "activo",
+    "unidad_asignada": "ME-N030"
+  },
+  {
+    "id": "OP-025",
+    "nombre": "Mario Morales Sánchez",
+    "rol": "Administrativo",
+    "frente_asignado": "Nuevo Aeropuerto Tulum",
+    "certificaciones": [
+      "Seguridad Industrial",
+      "Manejo Defensivo"
+    ],
+    "licencia_vence": "2026-10-20",
+    "antiguedad_anios": 10.6,
+    "score_seguridad": 66,
+    "eventos_manejo_agresivo_mes": 12,
+    "horas_conduccion_semana": 31.8,
+    "km_recorridos_mes": 4151,
+    "status": "activo",
+    "unidad_asignada": "ME-F004"
+  },
+  {
+    "id": "OP-026",
+    "nombre": "Iván Hernández Hernández",
+    "rol": "Operador de Campo",
+    "frente_asignado": "Tren Maya Tramo 5",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "Manejo Defensivo",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-11-03",
+    "antiguedad_anios": 15.0,
+    "score_seguridad": 82,
+    "eventos_manejo_agresivo_mes": 17,
+    "horas_conduccion_semana": 14.3,
+    "km_recorridos_mes": 4638,
+    "status": "activo",
+    "unidad_asignada": "ME-F119"
+  },
+  {
+    "id": "OP-027",
+    "nombre": "Héctor Cruz Rodríguez",
+    "rol": "Ingeniero Residente",
+    "frente_asignado": "Tren Interurbano Méx-Toluca",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "ISO 45001",
+      "Seguridad Industrial",
+      "NOM-009"
+    ],
+    "licencia_vence": "2026-08-27",
+    "antiguedad_anios": 9.6,
+    "score_seguridad": 55,
+    "eventos_manejo_agresivo_mes": 5,
+    "horas_conduccion_semana": 23.1,
+    "km_recorridos_mes": 4420,
+    "status": "activo",
+    "unidad_asignada": "ME-N033"
+  },
+  {
+    "id": "OP-028",
+    "nombre": "Andrés Flores Rodríguez",
+    "rol": "Supervisor de Obra",
+    "frente_asignado": "Ampliación Puerto Veracruz",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "Seguridad Industrial",
+      "NOM-009",
+      "Manejo Defensivo"
+    ],
+    "licencia_vence": "2026-09-21",
+    "antiguedad_anios": 7.3,
+    "score_seguridad": 80,
+    "eventos_manejo_agresivo_mes": 4,
+    "horas_conduccion_semana": 15.6,
+    "km_recorridos_mes": 3334,
+    "status": "activo",
+    "unidad_asignada": "ME-Y118"
+  },
+  {
+    "id": "OP-029",
+    "nombre": "Jorge Pérez Gutiérrez",
+    "rol": "Inspector de Calidad",
+    "frente_asignado": "Libramiento GDL-PV",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "Primeros Auxilios",
+      "Seguridad Industrial",
+      "NOM-009"
+    ],
+    "licencia_vence": "2026-03-04",
+    "antiguedad_anios": 9.5,
+    "score_seguridad": 56,
+    "eventos_manejo_agresivo_mes": 4,
+    "horas_conduccion_semana": 23.9,
+    "km_recorridos_mes": 1698,
+    "status": "activo",
+    "unidad_asignada": "ME-Y080"
+  },
+  {
+    "id": "OP-030",
+    "nombre": "José Sánchez Reyes",
+    "rol": "Operador de Campo",
+    "frente_asignado": "Ampliación Puerto Veracruz",
+    "certificaciones": [
+      "ISO 45001",
+      "Manejo Defensivo"
+    ],
+    "licencia_vence": "2026-12-24",
+    "antiguedad_anios": 9.6,
+    "score_seguridad": 100,
+    "eventos_manejo_agresivo_mes": 13,
+    "horas_conduccion_semana": 27.9,
+    "km_recorridos_mes": 4055,
+    "status": "activo",
+    "unidad_asignada": "ME-F027"
+  },
+  {
+    "id": "OP-031",
+    "nombre": "Miguel Chávez Pérez",
+    "rol": "Topógrafo",
+    "frente_asignado": "Puente Vehicular Periférico Norte",
+    "certificaciones": [
+      "Seguridad Industrial",
+      "NOM-009"
+    ],
+    "licencia_vence": "2026-05-17",
+    "antiguedad_anios": 15.8,
+    "score_seguridad": 77,
+    "eventos_manejo_agresivo_mes": 19,
+    "horas_conduccion_semana": 51.2,
+    "km_recorridos_mes": 5481,
+    "status": "activo",
+    "unidad_asignada": "ME-F022"
+  },
+  {
+    "id": "OP-032",
+    "nombre": "Jorge Cruz González",
+    "rol": "Ingeniero Residente",
+    "frente_asignado": "Autopista MTY-Saltillo",
+    "certificaciones": [
+      "Seguridad Industrial",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-07-13",
+    "antiguedad_anios": 5.7,
+    "score_seguridad": 88,
+    "eventos_manejo_agresivo_mes": 7,
+    "horas_conduccion_semana": 43.1,
+    "km_recorridos_mes": 4525,
+    "status": "activo",
+    "unidad_asignada": "ME-N110"
+  },
+  {
+    "id": "OP-033",
+    "nombre": "Sergio Díaz Gómez",
+    "rol": "Administrativo",
+    "frente_asignado": "Nuevo Aeropuerto Tulum",
+    "certificaciones": [
+      "ISO 45001",
+      "Seguridad Industrial",
+      "NOM-009",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-07-02",
+    "antiguedad_anios": 9.8,
+    "score_seguridad": 61,
+    "eventos_manejo_agresivo_mes": 9,
+    "horas_conduccion_semana": 46.9,
+    "km_recorridos_mes": 1572,
+    "status": "activo",
+    "unidad_asignada": "ME-N028"
+  },
+  {
+    "id": "OP-034",
+    "nombre": "Iván Díaz Flores",
+    "rol": "Ingeniero Residente",
+    "frente_asignado": "Tren Maya Tramo 5",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "Manejo Defensivo",
+      "NOM-009"
+    ],
+    "licencia_vence": "2026-07-01",
+    "antiguedad_anios": 5.8,
+    "score_seguridad": 96,
+    "eventos_manejo_agresivo_mes": 8,
+    "horas_conduccion_semana": 26.1,
+    "km_recorridos_mes": 2461,
+    "status": "activo",
+    "unidad_asignada": "ME-N065"
+  },
+  {
+    "id": "OP-035",
+    "nombre": "Guillermo Martínez Flores",
+    "rol": "Topógrafo",
+    "frente_asignado": "Tren Maya Tramo 5",
+    "certificaciones": [
+      "NOM-009",
+      "Primeros Auxilios",
+      "Manejo Defensivo",
+      "Seguridad Industrial"
+    ],
+    "licencia_vence": "2026-11-23",
+    "antiguedad_anios": 3.3,
+    "score_seguridad": 69,
+    "eventos_manejo_agresivo_mes": 0,
+    "horas_conduccion_semana": 27.6,
+    "km_recorridos_mes": 4777,
+    "status": "activo",
+    "unidad_asignada": "ME-N085"
+  },
+  {
+    "id": "OP-036",
+    "nombre": "Raúl Rivera Chávez",
+    "rol": "Administrativo",
+    "frente_asignado": "Autopista MTY-Saltillo",
+    "certificaciones": [
+      "Seguridad Industrial",
+      "NOM-009"
+    ],
+    "licencia_vence": "2026-06-13",
+    "antiguedad_anios": 9.4,
+    "score_seguridad": 73,
+    "eventos_manejo_agresivo_mes": 0,
+    "horas_conduccion_semana": 21.2,
+    "km_recorridos_mes": 3829,
+    "status": "activo",
+    "unidad_asignada": "ME-S044"
+  },
+  {
+    "id": "OP-037",
+    "nombre": "Andrés Gómez Reyes",
+    "rol": "Almacenista",
+    "frente_asignado": "Tren Maya Tramo 5",
+    "certificaciones": [
+      "ISO 45001",
+      "NOM-009",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-09-07",
+    "antiguedad_anios": 0.6,
+    "score_seguridad": 58,
+    "eventos_manejo_agresivo_mes": 3,
+    "horas_conduccion_semana": 14.2,
+    "km_recorridos_mes": 4677,
+    "status": "activo",
+    "unidad_asignada": "ME-F044"
+  },
+  {
+    "id": "OP-038",
+    "nombre": "Arturo Ramírez Sánchez",
+    "rol": "Inspector de Calidad",
+    "frente_asignado": "Tren Interurbano Méx-Toluca",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "NOM-009",
+      "Manejo Defensivo"
+    ],
+    "licencia_vence": "2026-08-20",
+    "antiguedad_anios": 16.2,
+    "score_seguridad": 58,
+    "eventos_manejo_agresivo_mes": 5,
+    "horas_conduccion_semana": 28.8,
+    "km_recorridos_mes": 4265,
+    "status": "activo",
+    "unidad_asignada": "ME-N024"
+  },
+  {
+    "id": "OP-039",
+    "nombre": "Miguel Gutiérrez Ortiz",
+    "rol": "Ingeniero Residente",
+    "frente_asignado": "Puente Vehicular Periférico Norte",
+    "certificaciones": [
+      "ISO 45001",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-12-18",
+    "antiguedad_anios": 15.5,
+    "score_seguridad": 63,
+    "eventos_manejo_agresivo_mes": 12,
+    "horas_conduccion_semana": 15.5,
+    "km_recorridos_mes": 2072,
+    "status": "activo",
+    "unidad_asignada": "ME-H089"
+  },
+  {
+    "id": "OP-040",
+    "nombre": "Héctor Pérez Sánchez",
+    "rol": "Topógrafo",
+    "frente_asignado": "Tren Maya Tramo 5",
+    "certificaciones": [
+      "Seguridad Industrial",
+      "NOM-009",
+      "Primeros Auxilios",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-11-16",
+    "antiguedad_anios": 8.7,
+    "score_seguridad": 57,
+    "eventos_manejo_agresivo_mes": 18,
+    "horas_conduccion_semana": 24.0,
+    "km_recorridos_mes": 4704,
+    "status": "activo",
+    "unidad_asignada": "ME-H008"
+  },
+  {
+    "id": "OP-041",
+    "nombre": "Roberto Gutiérrez Rodríguez",
+    "rol": "Inspector de Calidad",
+    "frente_asignado": "Autopista MTY-Saltillo",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "Seguridad Industrial",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-03-17",
+    "antiguedad_anios": 11.2,
+    "score_seguridad": 63,
+    "eventos_manejo_agresivo_mes": 2,
+    "horas_conduccion_semana": 15.0,
+    "km_recorridos_mes": 3690,
+    "status": "vacaciones",
+    "unidad_asignada": "ME-H033"
+  },
+  {
+    "id": "OP-042",
+    "nombre": "Ricardo Díaz Morales",
+    "rol": "Supervisor de Seguridad",
+    "frente_asignado": "Tren Maya Tramo 3",
+    "certificaciones": [
+      "Seguridad Industrial",
+      "Primeros Auxilios",
+      "NOM-009",
+      "Manejo Defensivo"
+    ],
+    "licencia_vence": "2026-04-05",
+    "antiguedad_anios": 15.2,
+    "score_seguridad": 74,
+    "eventos_manejo_agresivo_mes": 3,
+    "horas_conduccion_semana": 10.3,
+    "km_recorridos_mes": 3415,
+    "status": "activo",
+    "unidad_asignada": "ME-N012"
+  },
+  {
+    "id": "OP-043",
+    "nombre": "Pedro Cruz Sánchez",
+    "rol": "Almacenista",
+    "frente_asignado": "Libramiento GDL-PV",
+    "certificaciones": [
+      "ISO 45001",
+      "Primeros Auxilios",
+      "NOM-009"
+    ],
+    "licencia_vence": "2026-08-04",
+    "antiguedad_anios": 9.7,
+    "score_seguridad": 57,
+    "eventos_manejo_agresivo_mes": 17,
+    "horas_conduccion_semana": 16.8,
+    "km_recorridos_mes": 2311,
+    "status": "activo",
+    "unidad_asignada": "ME-S064"
+  },
+  {
+    "id": "OP-044",
+    "nombre": "Óscar Pérez Gutiérrez",
+    "rol": "Ingeniero Residente",
+    "frente_asignado": "Tren Interurbano Méx-Toluca",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "ISO 45001",
+      "Manejo Defensivo"
+    ],
+    "licencia_vence": "2026-12-10",
+    "antiguedad_anios": 1.4,
+    "score_seguridad": 57,
+    "eventos_manejo_agresivo_mes": 12,
+    "horas_conduccion_semana": 26.6,
+    "km_recorridos_mes": 2262,
+    "status": "activo",
+    "unidad_asignada": "ME-S073"
+  },
+  {
+    "id": "OP-045",
+    "nombre": "Pedro Sánchez Hernández",
+    "rol": "Supervisor de Seguridad",
+    "frente_asignado": "Puente Vehicular Periférico Norte",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "Seguridad Industrial"
+    ],
+    "licencia_vence": "2026-08-11",
+    "antiguedad_anios": 16.4,
+    "score_seguridad": 58,
+    "eventos_manejo_agresivo_mes": 1,
+    "horas_conduccion_semana": 37.9,
+    "km_recorridos_mes": 809,
+    "status": "activo",
+    "unidad_asignada": "ME-F071"
+  },
+  {
+    "id": "OP-046",
+    "nombre": "Manuel Rivera Hernández",
+    "rol": "Supervisor de Obra",
+    "frente_asignado": "Ampliación Puerto Veracruz",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "Manejo Defensivo"
+    ],
+    "licencia_vence": "2026-05-04",
+    "antiguedad_anios": 5.1,
+    "score_seguridad": 86,
+    "eventos_manejo_agresivo_mes": 2,
+    "horas_conduccion_semana": 51.0,
+    "km_recorridos_mes": 4722,
+    "status": "incapacidad",
+    "unidad_asignada": "ME-F087"
+  },
+  {
+    "id": "OP-047",
+    "nombre": "Miguel Cruz Gómez",
+    "rol": "Coordinador de Logística",
+    "frente_asignado": "Autopista MTY-Saltillo",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "Seguridad Industrial"
+    ],
+    "licencia_vence": "2026-10-06",
+    "antiguedad_anios": 15.9,
+    "score_seguridad": 76,
+    "eventos_manejo_agresivo_mes": 17,
+    "horas_conduccion_semana": 22.6,
+    "km_recorridos_mes": 1888,
+    "status": "capacitación",
+    "unidad_asignada": "ME-N052"
+  },
+  {
+    "id": "OP-048",
+    "nombre": "Guillermo Reyes Cruz",
+    "rol": "Coordinador de Logística",
+    "frente_asignado": "Tren Interurbano Méx-Toluca",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "NOM-009",
+      "Manejo Defensivo"
+    ],
+    "licencia_vence": "2026-05-19",
+    "antiguedad_anios": 8.8,
+    "score_seguridad": 69,
+    "eventos_manejo_agresivo_mes": 8,
+    "horas_conduccion_semana": 50.2,
+    "km_recorridos_mes": 2230,
+    "status": "activo",
+    "unidad_asignada": "ME-S068"
+  },
+  {
+    "id": "OP-049",
+    "nombre": "Arturo Chávez García",
+    "rol": "Ingeniero Residente",
+    "frente_asignado": "Tren Maya Tramo 3",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "Trabajos en Altura",
+      "NOM-009",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-12-21",
+    "antiguedad_anios": 9.7,
+    "score_seguridad": 60,
+    "eventos_manejo_agresivo_mes": 15,
+    "horas_conduccion_semana": 17.4,
+    "km_recorridos_mes": 2266,
+    "status": "activo",
+    "unidad_asignada": "ME-H105"
+  },
+  {
+    "id": "OP-050",
+    "nombre": "Víctor Flores Sánchez",
+    "rol": "Inspector de Calidad",
+    "frente_asignado": "Puente Vehicular Periférico Norte",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "Trabajos en Altura",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-12-26",
+    "antiguedad_anios": 3.1,
+    "score_seguridad": 96,
+    "eventos_manejo_agresivo_mes": 14,
+    "horas_conduccion_semana": 47.8,
+    "km_recorridos_mes": 844,
+    "status": "vacaciones",
+    "unidad_asignada": "ME-Y002"
+  },
+  {
+    "id": "OP-051",
+    "nombre": "Javier Morales Ortiz",
+    "rol": "Administrativo",
+    "frente_asignado": "Tren Maya Tramo 3",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "Trabajos en Altura",
+      "Primeros Auxilios",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-09-27",
+    "antiguedad_anios": 1.7,
+    "score_seguridad": 67,
+    "eventos_manejo_agresivo_mes": 13,
+    "horas_conduccion_semana": 46.1,
+    "km_recorridos_mes": 6455,
+    "status": "activo",
+    "unidad_asignada": "ME-S055"
+  },
+  {
+    "id": "OP-052",
+    "nombre": "Alberto Hernández Sánchez",
+    "rol": "Operador de Campo",
+    "frente_asignado": "Tren Maya Tramo 5",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "Trabajos en Altura",
+      "Seguridad Industrial"
+    ],
+    "licencia_vence": "2026-09-18",
+    "antiguedad_anios": 1.9,
+    "score_seguridad": 55,
+    "eventos_manejo_agresivo_mes": 5,
+    "horas_conduccion_semana": 40.3,
+    "km_recorridos_mes": 3064,
+    "status": "activo",
+    "unidad_asignada": "ME-H042"
+  },
+  {
+    "id": "OP-053",
+    "nombre": "Héctor Gómez Reyes",
+    "rol": "Operador de Campo",
+    "frente_asignado": "Nuevo Aeropuerto Tulum",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "Seguridad Industrial",
+      "Primeros Auxilios",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-10-03",
+    "antiguedad_anios": 5.1,
+    "score_seguridad": 81,
+    "eventos_manejo_agresivo_mes": 2,
+    "horas_conduccion_semana": 48.7,
+    "km_recorridos_mes": 3217,
+    "status": "activo",
+    "unidad_asignada": "ME-Y071"
+  },
+  {
+    "id": "OP-054",
+    "nombre": "Óscar Martínez Flores",
+    "rol": "Ingeniero Residente",
+    "frente_asignado": "Libramiento GDL-PV",
+    "certificaciones": [
+      "NOM-009",
+      "Seguridad Industrial"
+    ],
+    "licencia_vence": "2026-06-02",
+    "antiguedad_anios": 16.8,
+    "score_seguridad": 98,
+    "eventos_manejo_agresivo_mes": 15,
+    "horas_conduccion_semana": 29.1,
+    "km_recorridos_mes": 5943,
+    "status": "incapacidad",
+    "unidad_asignada": "ME-Y058"
+  },
+  {
+    "id": "OP-055",
+    "nombre": "Sergio Gómez Martínez",
+    "rol": "Administrativo",
+    "frente_asignado": "Ampliación Puerto Veracruz",
+    "certificaciones": [
+      "NOM-009",
+      "Trabajos en Altura",
+      "Manejo Defensivo"
+    ],
+    "licencia_vence": "2026-05-10",
+    "antiguedad_anios": 4.4,
+    "score_seguridad": 62,
+    "eventos_manejo_agresivo_mes": 4,
+    "horas_conduccion_semana": 16.6,
+    "km_recorridos_mes": 4278,
+    "status": "activo",
+    "unidad_asignada": "ME-Y051"
+  },
+  {
+    "id": "OP-056",
+    "nombre": "Daniel Morales Sánchez",
+    "rol": "Coordinador de Logística",
+    "frente_asignado": "Puente Vehicular Periférico Norte",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "NOM-009",
+      "Manejo Defensivo",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-08-03",
+    "antiguedad_anios": 11.4,
+    "score_seguridad": 94,
+    "eventos_manejo_agresivo_mes": 0,
+    "horas_conduccion_semana": 39.6,
+    "km_recorridos_mes": 1258,
+    "status": "activo",
+    "unidad_asignada": "ME-F073"
+  },
+  {
+    "id": "OP-057",
+    "nombre": "Sergio Pérez Sánchez",
+    "rol": "Operador de Campo",
+    "frente_asignado": "Autopista MTY-Saltillo",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "Seguridad Industrial",
+      "NOM-009",
+      "Manejo Defensivo"
+    ],
+    "licencia_vence": "2026-07-11",
+    "antiguedad_anios": 15.5,
+    "score_seguridad": 76,
+    "eventos_manejo_agresivo_mes": 8,
+    "horas_conduccion_semana": 20.1,
+    "km_recorridos_mes": 5743,
+    "status": "activo",
+    "unidad_asignada": "ME-F032"
+  },
+  {
+    "id": "OP-058",
+    "nombre": "Iván Martínez Gómez",
+    "rol": "Supervisor de Seguridad",
+    "frente_asignado": "Libramiento GDL-PV",
+    "certificaciones": [
+      "NOM-009",
+      "Trabajos en Altura",
+      "ISO 45001",
+      "Seguridad Industrial"
+    ],
+    "licencia_vence": "2026-12-06",
+    "antiguedad_anios": 4.7,
+    "score_seguridad": 90,
+    "eventos_manejo_agresivo_mes": 1,
+    "horas_conduccion_semana": 21.4,
+    "km_recorridos_mes": 6295,
+    "status": "activo",
+    "unidad_asignada": "ME-F071"
+  },
+  {
+    "id": "OP-059",
+    "nombre": "Ricardo Rivera Martínez",
+    "rol": "Inspector de Calidad",
+    "frente_asignado": "Tren Maya Tramo 3",
+    "certificaciones": [
+      "Seguridad Industrial",
+      "ISO 45001",
+      "Manejo Defensivo",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-03-09",
+    "antiguedad_anios": 3.9,
+    "score_seguridad": 78,
+    "eventos_manejo_agresivo_mes": 12,
+    "horas_conduccion_semana": 47.7,
+    "km_recorridos_mes": 3073,
+    "status": "activo",
+    "unidad_asignada": "ME-N006"
+  },
+  {
+    "id": "OP-060",
+    "nombre": "Francisco Reyes García",
+    "rol": "Coordinador de Logística",
+    "frente_asignado": "Tren Maya Tramo 5",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "Seguridad Industrial",
+      "ISO 45001",
+      "NOM-009"
+    ],
+    "licencia_vence": "2026-03-25",
+    "antiguedad_anios": 2.5,
+    "score_seguridad": 63,
+    "eventos_manejo_agresivo_mes": 15,
+    "horas_conduccion_semana": 33.5,
+    "km_recorridos_mes": 1172,
+    "status": "activo",
+    "unidad_asignada": "ME-F062"
+  },
+  {
+    "id": "OP-061",
+    "nombre": "Carlos Rodríguez Hernández",
+    "rol": "Administrativo",
+    "frente_asignado": "Libramiento GDL-PV",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "ISO 45001",
+      "NOM-009"
+    ],
+    "licencia_vence": "2026-12-23",
+    "antiguedad_anios": 1.1,
+    "score_seguridad": 62,
+    "eventos_manejo_agresivo_mes": 2,
+    "horas_conduccion_semana": 48.8,
+    "km_recorridos_mes": 1982,
+    "status": "activo",
+    "unidad_asignada": "ME-Y082"
+  },
+  {
+    "id": "OP-062",
+    "nombre": "Arturo López Reyes",
+    "rol": "Almacenista",
+    "frente_asignado": "Tren Interurbano Méx-Toluca",
+    "certificaciones": [
+      "ISO 45001",
+      "Seguridad Industrial",
+      "NOM-009",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-03-06",
+    "antiguedad_anios": 8.7,
+    "score_seguridad": 71,
+    "eventos_manejo_agresivo_mes": 8,
+    "horas_conduccion_semana": 29.9,
+    "km_recorridos_mes": 1216,
+    "status": "capacitación",
+    "unidad_asignada": "ME-S013"
+  },
+  {
+    "id": "OP-063",
+    "nombre": "Miguel López González",
+    "rol": "Ingeniero Residente",
+    "frente_asignado": "Libramiento GDL-PV",
+    "certificaciones": [
+      "ISO 45001",
+      "Manejo Defensivo",
+      "NOM-009"
+    ],
+    "licencia_vence": "2026-08-28",
+    "antiguedad_anios": 10.0,
+    "score_seguridad": 81,
+    "eventos_manejo_agresivo_mes": 12,
+    "horas_conduccion_semana": 21.3,
+    "km_recorridos_mes": 4105,
+    "status": "activo",
+    "unidad_asignada": "ME-Y059"
+  },
+  {
+    "id": "OP-064",
+    "nombre": "Manuel García López",
+    "rol": "Almacenista",
+    "frente_asignado": "Libramiento GDL-PV",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "ISO 45001",
+      "Seguridad Industrial"
+    ],
+    "licencia_vence": "2026-08-21",
+    "antiguedad_anios": 16.7,
+    "score_seguridad": 92,
+    "eventos_manejo_agresivo_mes": 22,
+    "horas_conduccion_semana": 50.4,
+    "km_recorridos_mes": 3408,
+    "status": "activo",
+    "unidad_asignada": "ME-F106"
+  },
+  {
+    "id": "OP-065",
+    "nombre": "Sergio Chávez Martínez",
+    "rol": "Supervisor de Seguridad",
+    "frente_asignado": "Tren Interurbano Méx-Toluca",
+    "certificaciones": [
+      "NOM-009",
+      "ISO 45001",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-08-26",
+    "antiguedad_anios": 11.3,
+    "score_seguridad": 80,
+    "eventos_manejo_agresivo_mes": 18,
+    "horas_conduccion_semana": 21.4,
+    "km_recorridos_mes": 1063,
+    "status": "activo",
+    "unidad_asignada": "ME-S052"
+  },
+  {
+    "id": "OP-066",
+    "nombre": "Iván Gómez Hernández",
+    "rol": "Supervisor de Obra",
+    "frente_asignado": "Tren Maya Tramo 3",
+    "certificaciones": [
+      "Seguridad Industrial",
+      "Manejo Defensivo",
+      "NOM-009",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-07-27",
+    "antiguedad_anios": 15.3,
+    "score_seguridad": 78,
+    "eventos_manejo_agresivo_mes": 5,
+    "horas_conduccion_semana": 54.7,
+    "km_recorridos_mes": 1788,
+    "status": "incapacidad",
+    "unidad_asignada": "ME-S016"
+  },
+  {
+    "id": "OP-067",
+    "nombre": "Roberto Rivera Rodríguez",
+    "rol": "Supervisor de Obra",
+    "frente_asignado": "Nuevo Aeropuerto Tulum",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "Trabajos en Altura",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-11-04",
+    "antiguedad_anios": 2.8,
+    "score_seguridad": 89,
+    "eventos_manejo_agresivo_mes": 9,
+    "horas_conduccion_semana": 26.2,
+    "km_recorridos_mes": 6166,
+    "status": "capacitación",
+    "unidad_asignada": "ME-S043"
+  },
+  {
+    "id": "OP-068",
+    "nombre": "Manuel Ortiz Morales",
+    "rol": "Ingeniero Residente",
+    "frente_asignado": "Tren Maya Tramo 5",
+    "certificaciones": [
+      "NOM-009",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-04-27",
+    "antiguedad_anios": 10.9,
+    "score_seguridad": 72,
+    "eventos_manejo_agresivo_mes": 11,
+    "horas_conduccion_semana": 49.5,
+    "km_recorridos_mes": 3208,
+    "status": "activo",
+    "unidad_asignada": "ME-N086"
+  },
+  {
+    "id": "OP-069",
+    "nombre": "Víctor Sánchez Rodríguez",
+    "rol": "Ingeniero Residente",
+    "frente_asignado": "Ampliación Puerto Veracruz",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "Primeros Auxilios",
+      "NOM-009",
+      "Seguridad Industrial"
+    ],
+    "licencia_vence": "2026-11-18",
+    "antiguedad_anios": 6.2,
+    "score_seguridad": 72,
+    "eventos_manejo_agresivo_mes": 4,
+    "horas_conduccion_semana": 39.5,
+    "km_recorridos_mes": 5599,
+    "status": "activo",
+    "unidad_asignada": "ME-H070"
+  },
+  {
+    "id": "OP-070",
+    "nombre": "Iván García Chávez",
+    "rol": "Supervisor de Seguridad",
+    "frente_asignado": "Tren Maya Tramo 3",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "Seguridad Industrial",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-07-09",
+    "antiguedad_anios": 2.8,
+    "score_seguridad": 68,
+    "eventos_manejo_agresivo_mes": 13,
+    "horas_conduccion_semana": 17.7,
+    "km_recorridos_mes": 1368,
+    "status": "activo",
+    "unidad_asignada": "ME-F053"
+  },
+  {
+    "id": "OP-071",
+    "nombre": "Gerardo Sánchez Pérez",
+    "rol": "Operador de Campo",
+    "frente_asignado": "Autopista MTY-Saltillo",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "Manejo Defensivo",
+      "NOM-009"
+    ],
+    "licencia_vence": "2026-11-22",
+    "antiguedad_anios": 9.2,
+    "score_seguridad": 73,
+    "eventos_manejo_agresivo_mes": 16,
+    "horas_conduccion_semana": 28.8,
+    "km_recorridos_mes": 3090,
+    "status": "activo",
+    "unidad_asignada": "ME-S056"
+  },
+  {
+    "id": "OP-072",
+    "nombre": "Gabriel Pérez Sánchez",
+    "rol": "Coordinador de Logística",
+    "frente_asignado": "Tren Maya Tramo 5",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "ISO 45001",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-05-01",
+    "antiguedad_anios": 0.6,
+    "score_seguridad": 64,
+    "eventos_manejo_agresivo_mes": 10,
+    "horas_conduccion_semana": 32.2,
+    "km_recorridos_mes": 2464,
+    "status": "activo",
+    "unidad_asignada": "ME-H063"
+  },
+  {
+    "id": "OP-073",
+    "nombre": "Luis Gómez Hernández",
+    "rol": "Topógrafo",
+    "frente_asignado": "Puente Vehicular Periférico Norte",
+    "certificaciones": [
+      "NOM-009",
+      "Trabajos en Altura",
+      "Seguridad Industrial"
+    ],
+    "licencia_vence": "2026-10-08",
+    "antiguedad_anios": 11.7,
+    "score_seguridad": 65,
+    "eventos_manejo_agresivo_mes": 2,
+    "horas_conduccion_semana": 41.6,
+    "km_recorridos_mes": 4249,
+    "status": "activo",
+    "unidad_asignada": "ME-H067"
+  },
+  {
+    "id": "OP-074",
+    "nombre": "Ricardo Gutiérrez Rodríguez",
+    "rol": "Coordinador de Logística",
+    "frente_asignado": "Nuevo Aeropuerto Tulum",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "NOM-009",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-12-26",
+    "antiguedad_anios": 3.0,
+    "score_seguridad": 90,
+    "eventos_manejo_agresivo_mes": 3,
+    "horas_conduccion_semana": 27.4,
+    "km_recorridos_mes": 5787,
+    "status": "activo",
+    "unidad_asignada": "ME-Y084"
+  },
+  {
+    "id": "OP-075",
+    "nombre": "Fernando Ramírez Díaz",
+    "rol": "Ingeniero Residente",
+    "frente_asignado": "Autopista MTY-Saltillo",
+    "certificaciones": [
+      "Seguridad Industrial",
+      "NOM-009",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-04-06",
+    "antiguedad_anios": 13.1,
+    "score_seguridad": 83,
+    "eventos_manejo_agresivo_mes": 12,
+    "horas_conduccion_semana": 25.0,
+    "km_recorridos_mes": 5112,
+    "status": "incapacidad",
+    "unidad_asignada": "ME-H006"
+  },
+  {
+    "id": "OP-076",
+    "nombre": "Fernando López Ramírez",
+    "rol": "Supervisor de Seguridad",
+    "frente_asignado": "Puente Vehicular Periférico Norte",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "Seguridad Industrial",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-11-09",
+    "antiguedad_anios": 14.5,
+    "score_seguridad": 82,
+    "eventos_manejo_agresivo_mes": 5,
+    "horas_conduccion_semana": 42.5,
+    "km_recorridos_mes": 3351,
+    "status": "activo",
+    "unidad_asignada": "ME-Y032"
+  },
+  {
+    "id": "OP-077",
+    "nombre": "Luis Gómez Sánchez",
+    "rol": "Supervisor de Seguridad",
+    "frente_asignado": "Autopista MTY-Saltillo",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "Seguridad Industrial",
+      "NOM-009",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-06-28",
+    "antiguedad_anios": 17.4,
+    "score_seguridad": 57,
+    "eventos_manejo_agresivo_mes": 18,
+    "horas_conduccion_semana": 16.4,
+    "km_recorridos_mes": 4597,
+    "status": "activo",
+    "unidad_asignada": "ME-Y076"
+  },
+  {
+    "id": "OP-078",
+    "nombre": "Mario López Martínez",
+    "rol": "Supervisor de Seguridad",
+    "frente_asignado": "Tren Maya Tramo 3",
+    "certificaciones": [
+      "ISO 45001",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-03-14",
+    "antiguedad_anios": 1.7,
+    "score_seguridad": 71,
+    "eventos_manejo_agresivo_mes": 1,
+    "horas_conduccion_semana": 33.5,
+    "km_recorridos_mes": 5998,
+    "status": "activo",
+    "unidad_asignada": "ME-F060"
+  },
+  {
+    "id": "OP-079",
+    "nombre": "Jorge Gómez Ramírez",
+    "rol": "Operador de Campo",
+    "frente_asignado": "Ampliación Puerto Veracruz",
+    "certificaciones": [
+      "ISO 45001",
+      "NOM-009",
+      "Trabajos en Altura",
+      "Manejo Defensivo"
+    ],
+    "licencia_vence": "2026-07-04",
+    "antiguedad_anios": 7.0,
+    "score_seguridad": 85,
+    "eventos_manejo_agresivo_mes": 9,
+    "horas_conduccion_semana": 49.7,
+    "km_recorridos_mes": 5704,
+    "status": "activo",
+    "unidad_asignada": "ME-Y065"
+  },
+  {
+    "id": "OP-080",
+    "nombre": "Raúl Gutiérrez Gómez",
+    "rol": "Ingeniero Residente",
+    "frente_asignado": "Nuevo Aeropuerto Tulum",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "Seguridad Industrial",
+      "Manejo Defensivo"
+    ],
+    "licencia_vence": "2026-08-27",
+    "antiguedad_anios": 4.9,
+    "score_seguridad": 77,
+    "eventos_manejo_agresivo_mes": 3,
+    "horas_conduccion_semana": 40.1,
+    "km_recorridos_mes": 2900,
+    "status": "activo",
+    "unidad_asignada": "ME-H042"
+  },
+  {
+    "id": "OP-081",
+    "nombre": "Miguel Martínez Ortiz",
+    "rol": "Coordinador de Logística",
+    "frente_asignado": "Ampliación Puerto Veracruz",
+    "certificaciones": [
+      "ISO 45001",
+      "Primeros Auxilios",
+      "Manejo Defensivo"
+    ],
+    "licencia_vence": "2026-12-18",
+    "antiguedad_anios": 2.3,
+    "score_seguridad": 61,
+    "eventos_manejo_agresivo_mes": 16,
+    "horas_conduccion_semana": 30.0,
+    "km_recorridos_mes": 1646,
+    "status": "activo",
+    "unidad_asignada": "ME-H013"
+  },
+  {
+    "id": "OP-082",
+    "nombre": "Raúl Torres García",
+    "rol": "Almacenista",
+    "frente_asignado": "Autopista MTY-Saltillo",
+    "certificaciones": [
+      "ISO 45001",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-05-23",
+    "antiguedad_anios": 1.1,
+    "score_seguridad": 65,
+    "eventos_manejo_agresivo_mes": 12,
+    "horas_conduccion_semana": 36.2,
+    "km_recorridos_mes": 4315,
+    "status": "activo",
+    "unidad_asignada": "ME-F035"
+  },
+  {
+    "id": "OP-083",
+    "nombre": "Eduardo Rodríguez Pérez",
+    "rol": "Operador de Campo",
+    "frente_asignado": "Nuevo Aeropuerto Tulum",
+    "certificaciones": [
+      "Seguridad Industrial",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-03-22",
+    "antiguedad_anios": 15.5,
+    "score_seguridad": 100,
+    "eventos_manejo_agresivo_mes": 19,
+    "horas_conduccion_semana": 53.3,
+    "km_recorridos_mes": 3615,
+    "status": "activo",
+    "unidad_asignada": "ME-F057"
+  },
+  {
+    "id": "OP-084",
+    "nombre": "Jorge Díaz Morales",
+    "rol": "Supervisor de Obra",
+    "frente_asignado": "Libramiento GDL-PV",
+    "certificaciones": [
+      "NOM-009",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-05-18",
+    "antiguedad_anios": 16.3,
+    "score_seguridad": 59,
+    "eventos_manejo_agresivo_mes": 14,
+    "horas_conduccion_semana": 48.4,
+    "km_recorridos_mes": 2511,
+    "status": "activo",
+    "unidad_asignada": "ME-Y039"
+  },
+  {
+    "id": "OP-085",
+    "nombre": "Javier Hernández Ortiz",
+    "rol": "Supervisor de Obra",
+    "frente_asignado": "Nuevo Aeropuerto Tulum",
+    "certificaciones": [
+      "NOM-009",
+      "ISO 45001",
+      "Seguridad Industrial",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-10-28",
+    "antiguedad_anios": 8.0,
+    "score_seguridad": 100,
+    "eventos_manejo_agresivo_mes": 15,
+    "horas_conduccion_semana": 28.1,
+    "km_recorridos_mes": 1512,
+    "status": "activo",
+    "unidad_asignada": "ME-S019"
+  },
+  {
+    "id": "OP-086",
+    "nombre": "Pedro López Hernández",
+    "rol": "Almacenista",
+    "frente_asignado": "Tren Maya Tramo 3",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "NOM-009",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-03-10",
+    "antiguedad_anios": 5.3,
+    "score_seguridad": 94,
+    "eventos_manejo_agresivo_mes": 1,
+    "horas_conduccion_semana": 22.1,
+    "km_recorridos_mes": 2725,
+    "status": "activo",
+    "unidad_asignada": "ME-H023"
+  },
+  {
+    "id": "OP-087",
+    "nombre": "Daniel Chávez Morales",
+    "rol": "Inspector de Calidad",
+    "frente_asignado": "Ampliación Puerto Veracruz",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "Seguridad Industrial"
+    ],
+    "licencia_vence": "2026-08-08",
+    "antiguedad_anios": 12.4,
+    "score_seguridad": 95,
+    "eventos_manejo_agresivo_mes": 1,
+    "horas_conduccion_semana": 35.0,
+    "km_recorridos_mes": 3446,
+    "status": "activo",
+    "unidad_asignada": "ME-Y119"
+  },
+  {
+    "id": "OP-088",
+    "nombre": "Javier Pérez Sánchez",
+    "rol": "Topógrafo",
+    "frente_asignado": "Libramiento GDL-PV",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "Manejo Defensivo"
+    ],
+    "licencia_vence": "2026-06-19",
+    "antiguedad_anios": 12.0,
+    "score_seguridad": 68,
+    "eventos_manejo_agresivo_mes": 8,
+    "horas_conduccion_semana": 16.4,
+    "km_recorridos_mes": 3785,
+    "status": "activo",
+    "unidad_asignada": "ME-H049"
+  },
+  {
+    "id": "OP-089",
+    "nombre": "Guillermo Martínez Flores",
+    "rol": "Supervisor de Obra",
+    "frente_asignado": "Nuevo Aeropuerto Tulum",
+    "certificaciones": [
+      "Seguridad Industrial",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-06-17",
+    "antiguedad_anios": 13.4,
+    "score_seguridad": 94,
+    "eventos_manejo_agresivo_mes": 19,
+    "horas_conduccion_semana": 17.2,
+    "km_recorridos_mes": 4469,
+    "status": "activo",
+    "unidad_asignada": "ME-F063"
+  },
+  {
+    "id": "OP-090",
+    "nombre": "Mario Torres Ortiz",
+    "rol": "Jefe de Frente",
+    "frente_asignado": "Tren Maya Tramo 3",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-07-25",
+    "antiguedad_anios": 16.8,
+    "score_seguridad": 95,
+    "eventos_manejo_agresivo_mes": 7,
+    "horas_conduccion_semana": 25.9,
+    "km_recorridos_mes": 2447,
+    "status": "activo",
+    "unidad_asignada": "ME-S074"
+  },
+  {
+    "id": "OP-091",
+    "nombre": "Miguel García Gutiérrez",
+    "rol": "Administrativo",
+    "frente_asignado": "Ampliación Puerto Veracruz",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "Trabajos en Altura",
+      "Primeros Auxilios",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-11-12",
+    "antiguedad_anios": 5.1,
+    "score_seguridad": 57,
+    "eventos_manejo_agresivo_mes": 0,
+    "horas_conduccion_semana": 13.6,
+    "km_recorridos_mes": 1861,
+    "status": "activo",
+    "unidad_asignada": "ME-H025"
+  },
+  {
+    "id": "OP-092",
+    "nombre": "Alejandro Ramírez Cruz",
+    "rol": "Coordinador de Logística",
+    "frente_asignado": "Ampliación Puerto Veracruz",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-09-11",
+    "antiguedad_anios": 10.0,
+    "score_seguridad": 84,
+    "eventos_manejo_agresivo_mes": 15,
+    "horas_conduccion_semana": 44.0,
+    "km_recorridos_mes": 1951,
+    "status": "activo",
+    "unidad_asignada": "ME-F003"
+  },
+  {
+    "id": "OP-093",
+    "nombre": "Mario Gómez Díaz",
+    "rol": "Almacenista",
+    "frente_asignado": "Ampliación Puerto Veracruz",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "Manejo Defensivo",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-06-10",
+    "antiguedad_anios": 5.3,
+    "score_seguridad": 81,
+    "eventos_manejo_agresivo_mes": 18,
+    "horas_conduccion_semana": 30.2,
+    "km_recorridos_mes": 1952,
+    "status": "activo",
+    "unidad_asignada": "ME-N020"
+  },
+  {
+    "id": "OP-094",
+    "nombre": "Antonio Rivera Reyes",
+    "rol": "Coordinador de Logística",
+    "frente_asignado": "Nuevo Aeropuerto Tulum",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "Seguridad Industrial"
+    ],
+    "licencia_vence": "2026-08-21",
+    "antiguedad_anios": 12.2,
+    "score_seguridad": 75,
+    "eventos_manejo_agresivo_mes": 16,
+    "horas_conduccion_semana": 22.1,
+    "km_recorridos_mes": 2488,
+    "status": "activo",
+    "unidad_asignada": "ME-Y076"
+  },
+  {
+    "id": "OP-095",
+    "nombre": "Mario Gómez Hernández",
+    "rol": "Jefe de Frente",
+    "frente_asignado": "Autopista MTY-Saltillo",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "Manejo Defensivo",
+      "Seguridad Industrial",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-08-02",
+    "antiguedad_anios": 1.0,
+    "score_seguridad": 92,
+    "eventos_manejo_agresivo_mes": 15,
+    "horas_conduccion_semana": 20.1,
+    "km_recorridos_mes": 1605,
+    "status": "activo",
+    "unidad_asignada": "ME-N073"
+  },
+  {
+    "id": "OP-096",
+    "nombre": "José Rivera Hernández",
+    "rol": "Ingeniero Residente",
+    "frente_asignado": "Autopista MTY-Saltillo",
+    "certificaciones": [
+      "NOM-009",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-09-18",
+    "antiguedad_anios": 5.1,
+    "score_seguridad": 70,
+    "eventos_manejo_agresivo_mes": 9,
+    "horas_conduccion_semana": 37.5,
+    "km_recorridos_mes": 3095,
+    "status": "activo",
+    "unidad_asignada": "ME-N032"
+  },
+  {
+    "id": "OP-097",
+    "nombre": "Francisco Díaz Pérez",
+    "rol": "Administrativo",
+    "frente_asignado": "Nuevo Aeropuerto Tulum",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "NOM-009",
+      "Manejo Defensivo",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-07-25",
+    "antiguedad_anios": 10.7,
+    "score_seguridad": 90,
+    "eventos_manejo_agresivo_mes": 3,
+    "horas_conduccion_semana": 52.9,
+    "km_recorridos_mes": 6048,
+    "status": "activo",
+    "unidad_asignada": "ME-Y044"
+  },
+  {
+    "id": "OP-098",
+    "nombre": "Andrés Ramírez Reyes",
+    "rol": "Supervisor de Obra",
+    "frente_asignado": "Ampliación Puerto Veracruz",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-12-21",
+    "antiguedad_anios": 11.3,
+    "score_seguridad": 99,
+    "eventos_manejo_agresivo_mes": 17,
+    "horas_conduccion_semana": 19.7,
+    "km_recorridos_mes": 6038,
+    "status": "activo",
+    "unidad_asignada": "ME-F091"
+  },
+  {
+    "id": "OP-099",
+    "nombre": "Roberto García González",
+    "rol": "Coordinador de Logística",
+    "frente_asignado": "Tren Interurbano Méx-Toluca",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "ISO 45001",
+      "NOM-009",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-05-25",
+    "antiguedad_anios": 0.6,
+    "score_seguridad": 81,
+    "eventos_manejo_agresivo_mes": 2,
+    "horas_conduccion_semana": 30.4,
+    "km_recorridos_mes": 1581,
+    "status": "activo",
+    "unidad_asignada": "ME-F107"
+  },
+  {
+    "id": "OP-100",
+    "nombre": "Héctor Gutiérrez Díaz",
+    "rol": "Ingeniero Residente",
+    "frente_asignado": "Puente Vehicular Periférico Norte",
+    "certificaciones": [
+      "Seguridad Industrial",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-07-28",
+    "antiguedad_anios": 6.2,
+    "score_seguridad": 82,
+    "eventos_manejo_agresivo_mes": 13,
+    "horas_conduccion_semana": 28.7,
+    "km_recorridos_mes": 1894,
+    "status": "activo",
+    "unidad_asignada": "ME-Y110"
+  },
+  {
+    "id": "OP-101",
+    "nombre": "Jorge Flores Díaz",
+    "rol": "Administrativo",
+    "frente_asignado": "Libramiento GDL-PV",
+    "certificaciones": [
+      "Seguridad Industrial",
+      "Primeros Auxilios",
+      "NOM-009",
+      "ISO 45001"
+    ],
+    "licencia_vence": "2026-10-18",
+    "antiguedad_anios": 5.7,
+    "score_seguridad": 67,
+    "eventos_manejo_agresivo_mes": 18,
+    "horas_conduccion_semana": 15.7,
+    "km_recorridos_mes": 6106,
+    "status": "vacaciones",
+    "unidad_asignada": "ME-S026"
+  },
+  {
+    "id": "OP-102",
+    "nombre": "Héctor Ramírez Martínez",
+    "rol": "Inspector de Calidad",
+    "frente_asignado": "Tren Interurbano Méx-Toluca",
+    "certificaciones": [
+      "NOM-009",
+      "Primeros Auxilios",
+      "Seguridad Industrial"
+    ],
+    "licencia_vence": "2026-08-13",
+    "antiguedad_anios": 7.1,
+    "score_seguridad": 64,
+    "eventos_manejo_agresivo_mes": 10,
+    "horas_conduccion_semana": 15.2,
+    "km_recorridos_mes": 4639,
+    "status": "activo",
+    "unidad_asignada": "ME-F049"
+  },
+  {
+    "id": "OP-103",
+    "nombre": "Manuel Gutiérrez Martínez",
+    "rol": "Supervisor de Seguridad",
+    "frente_asignado": "Tren Maya Tramo 3",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "ISO 45001",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-09-19",
+    "antiguedad_anios": 5.4,
+    "score_seguridad": 85,
+    "eventos_manejo_agresivo_mes": 16,
+    "horas_conduccion_semana": 20.9,
+    "km_recorridos_mes": 2979,
+    "status": "activo",
+    "unidad_asignada": "ME-N056"
+  },
+  {
+    "id": "OP-104",
+    "nombre": "Víctor Cruz Pérez",
+    "rol": "Supervisor de Obra",
+    "frente_asignado": "Puente Vehicular Periférico Norte",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "Seguridad Industrial",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-03-05",
+    "antiguedad_anios": 11.6,
+    "score_seguridad": 74,
+    "eventos_manejo_agresivo_mes": 10,
+    "horas_conduccion_semana": 44.2,
+    "km_recorridos_mes": 1945,
+    "status": "activo",
+    "unidad_asignada": "ME-S102"
+  },
+  {
+    "id": "OP-105",
+    "nombre": "Víctor Pérez Ortiz",
+    "rol": "Topógrafo",
+    "frente_asignado": "Tren Maya Tramo 3",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "Seguridad Industrial"
+    ],
+    "licencia_vence": "2026-10-14",
+    "antiguedad_anios": 3.5,
+    "score_seguridad": 68,
+    "eventos_manejo_agresivo_mes": 22,
+    "horas_conduccion_semana": 28.1,
+    "km_recorridos_mes": 1695,
+    "status": "activo",
+    "unidad_asignada": "ME-H044"
+  },
+  {
+    "id": "OP-106",
+    "nombre": "Andrés Chávez Ramírez",
+    "rol": "Ingeniero Residente",
+    "frente_asignado": "Libramiento GDL-PV",
+    "certificaciones": [
+      "NOM-009",
+      "Seguridad Industrial",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-11-23",
+    "antiguedad_anios": 1.5,
+    "score_seguridad": 99,
+    "eventos_manejo_agresivo_mes": 3,
+    "horas_conduccion_semana": 52.8,
+    "km_recorridos_mes": 895,
+    "status": "capacitación",
+    "unidad_asignada": "ME-S001"
+  },
+  {
+    "id": "OP-107",
+    "nombre": "Guillermo Rodríguez Sánchez",
+    "rol": "Operador de Campo",
+    "frente_asignado": "Tren Maya Tramo 3",
+    "certificaciones": [
+      "Trabajos en Altura",
+      "Primeros Auxilios",
+      "ISO 45001",
+      "Seguridad Industrial"
+    ],
+    "licencia_vence": "2026-11-11",
+    "antiguedad_anios": 6.0,
+    "score_seguridad": 78,
+    "eventos_manejo_agresivo_mes": 19,
+    "horas_conduccion_semana": 50.7,
+    "km_recorridos_mes": 5004,
+    "status": "activo",
+    "unidad_asignada": "ME-N012"
+  },
+  {
+    "id": "OP-108",
+    "nombre": "Guillermo Cruz Torres",
+    "rol": "Inspector de Calidad",
+    "frente_asignado": "Puente Vehicular Periférico Norte",
+    "certificaciones": [
+      "Seguridad Industrial",
+      "ISO 45001",
+      "Manejo Defensivo",
+      "Primeros Auxilios"
+    ],
+    "licencia_vence": "2026-09-12",
+    "antiguedad_anios": 13.8,
+    "score_seguridad": 80,
+    "eventos_manejo_agresivo_mes": 9,
+    "horas_conduccion_semana": 11.5,
+    "km_recorridos_mes": 3978,
+    "status": "activo",
+    "unidad_asignada": "ME-Y095"
+  },
+  {
+    "id": "OP-109",
+    "nombre": "Daniel Morales Díaz",
+    "rol": "Operador de Campo",
+    "frente_asignado": "Tren Interurbano Méx-Toluca",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "Seguridad Industrial",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-05-28",
+    "antiguedad_anios": 10.5,
+    "score_seguridad": 79,
+    "eventos_manejo_agresivo_mes": 8,
+    "horas_conduccion_semana": 40.6,
+    "km_recorridos_mes": 4342,
+    "status": "activo",
+    "unidad_asignada": "ME-F088"
+  },
+  {
+    "id": "OP-110",
+    "nombre": "Fernando Hernández Rodríguez",
+    "rol": "Almacenista",
+    "frente_asignado": "Puente Vehicular Periférico Norte",
+    "certificaciones": [
+      "Manejo Defensivo",
+      "Primeros Auxilios",
+      "ISO 45001",
+      "NOM-009"
+    ],
+    "licencia_vence": "2026-11-19",
+    "antiguedad_anios": 14.9,
+    "score_seguridad": 58,
+    "eventos_manejo_agresivo_mes": 0,
+    "horas_conduccion_semana": 36.5,
+    "km_recorridos_mes": 5040,
+    "status": "activo",
+    "unidad_asignada": "ME-S032"
+  },
+  {
+    "id": "OP-111",
+    "nombre": "Fernando Chávez Pérez",
+    "rol": "Coordinador de Logística",
+    "frente_asignado": "Tren Interurbano Méx-Toluca",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "Trabajos en Altura",
+      "Seguridad Industrial"
+    ],
+    "licencia_vence": "2026-03-12",
+    "antiguedad_anios": 13.0,
+    "score_seguridad": 80,
+    "eventos_manejo_agresivo_mes": 2,
+    "horas_conduccion_semana": 33.1,
+    "km_recorridos_mes": 6106,
+    "status": "activo",
+    "unidad_asignada": "ME-H040"
+  },
+  {
+    "id": "OP-112",
+    "nombre": "Sergio Reyes Chávez",
+    "rol": "Jefe de Frente",
+    "frente_asignado": "Autopista MTY-Saltillo",
+    "certificaciones": [
+      "NOM-009",
+      "Manejo Defensivo",
+      "Seguridad Industrial"
+    ],
+    "licencia_vence": "2026-12-17",
+    "antiguedad_anios": 7.0,
+    "score_seguridad": 67,
+    "eventos_manejo_agresivo_mes": 8,
+    "horas_conduccion_semana": 39.0,
+    "km_recorridos_mes": 2254,
+    "status": "vacaciones",
+    "unidad_asignada": "ME-F052"
+  },
+  {
+    "id": "OP-113",
+    "nombre": "Pedro Díaz Ortiz",
+    "rol": "Supervisor de Seguridad",
+    "frente_asignado": "Nuevo Aeropuerto Tulum",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-09-05",
+    "antiguedad_anios": 1.8,
+    "score_seguridad": 79,
+    "eventos_manejo_agresivo_mes": 19,
+    "horas_conduccion_semana": 11.4,
+    "km_recorridos_mes": 1518,
+    "status": "activo",
+    "unidad_asignada": "ME-F063"
+  },
+  {
+    "id": "OP-114",
+    "nombre": "Fernando García Sánchez",
+    "rol": "Operador de Campo",
+    "frente_asignado": "Tren Maya Tramo 5",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "Manejo Defensivo"
+    ],
+    "licencia_vence": "2026-04-07",
+    "antiguedad_anios": 13.4,
+    "score_seguridad": 93,
+    "eventos_manejo_agresivo_mes": 19,
+    "horas_conduccion_semana": 23.6,
+    "km_recorridos_mes": 3429,
+    "status": "activo",
+    "unidad_asignada": "ME-Y007"
+  },
+  {
+    "id": "OP-115",
+    "nombre": "Gabriel Rodríguez García",
+    "rol": "Supervisor de Obra",
+    "frente_asignado": "Tren Interurbano Méx-Toluca",
+    "certificaciones": [
+      "Primeros Auxilios",
+      "Manejo Defensivo",
+      "NOM-009",
+      "Trabajos en Altura"
+    ],
+    "licencia_vence": "2026-10-11",
+    "antiguedad_anios": 1.2,
+    "score_seguridad": 89,
+    "eventos_manejo_agresivo_mes": 19,
+    "horas_conduccion_semana": 51.0,
+    "km_recorridos_mes": 6489,
+    "status": "activo",
+    "unidad_asignada": "ME-N014"
+  }
+]
