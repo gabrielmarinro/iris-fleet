@@ -9,7 +9,14 @@
       "casetas": 8,
       "tiempo_est": "16h 00min",
       "color": "22c55e",
-      "frente": "Tren Maya Tramo 5"
+      "frente": "Tren Maya Tramo 5",
+      "nombre_ruta": "CDMX → Tulum (Tren Maya Tramo 5)",
+      "distancia_total_km": 1500,
+      "origen": "CDMX",
+      "destino": "Tulum",
+      "tipo_carga": "Tren Maya Tramo 5",
+      "prioridad": "alta",
+      "unidad": "ME-S007"
     },
     {
       "id": "MR-002",
@@ -20,7 +27,14 @@
       "casetas": 1,
       "tiempo_est": "1h 30min",
       "color": "22c55e",
-      "frente": "Autopista MTY-Saltillo"
+      "frente": "Autopista MTY-Saltillo",
+      "nombre_ruta": "MTY → Saltillo (Autopista Ampliación)",
+      "distancia_total_km": 87,
+      "origen": "MTY",
+      "destino": "Saltillo",
+      "tipo_carga": "Autopista MTY-Saltillo",
+      "prioridad": "alta",
+      "unidad": "ME-F014"
     },
     {
       "id": "MR-003",
@@ -31,7 +45,14 @@
       "casetas": 1,
       "tiempo_est": "1h 15min",
       "color": "22c55e",
-      "frente": "Tren Interurbano Méx-Toluca"
+      "frente": "Tren Interurbano Méx-Toluca",
+      "nombre_ruta": "CDMX → Toluca (Tren Interurbano)",
+      "distancia_total_km": 64,
+      "origen": "CDMX",
+      "destino": "Toluca",
+      "tipo_carga": "Tren Interurbano Méx-Toluca",
+      "prioridad": "alta",
+      "unidad": "ME-H021"
     },
     {
       "id": "MR-004",
@@ -42,7 +63,14 @@
       "casetas": 3,
       "tiempo_est": "4h 30min",
       "color": "22c55e",
-      "frente": "Libramiento GDL-PV"
+      "frente": "Libramiento GDL-PV",
+      "nombre_ruta": "GDL → Puerto Vallarta (Libramiento)",
+      "distancia_total_km": 334,
+      "origen": "GDL",
+      "destino": "Puerto Vallarta",
+      "tipo_carga": "Libramiento GDL-PV",
+      "prioridad": "alta",
+      "unidad": "ME-Y028"
     },
     {
       "id": "MR-005",
@@ -53,7 +81,14 @@
       "casetas": 0,
       "tiempo_est": "2h 30min",
       "color": "22c55e",
-      "frente": "Tren Maya Tramo 3"
+      "frente": "Tren Maya Tramo 3",
+      "nombre_ruta": "Campeche → Mérida (Tren Maya Tramo 3)",
+      "distancia_total_km": 180,
+      "origen": "Campeche",
+      "destino": "Mérida",
+      "tipo_carga": "Tren Maya Tramo 3",
+      "prioridad": "alta",
+      "unidad": "ME-N035"
     },
     {
       "id": "MR-006",
@@ -64,7 +99,14 @@
       "casetas": 0,
       "tiempo_est": "1h 45min",
       "color": "f59e0b",
-      "frente": "Nuevo Aeropuerto Tulum"
+      "frente": "Nuevo Aeropuerto Tulum",
+      "nombre_ruta": "Cancún → Tulum (Aeropuerto)",
+      "distancia_total_km": 130,
+      "origen": "Cancún",
+      "destino": "Tulum",
+      "tipo_carga": "Nuevo Aeropuerto Tulum",
+      "prioridad": "media",
+      "unidad": "ME-S042"
     },
     {
       "id": "MR-007",
@@ -75,7 +117,14 @@
       "casetas": 0,
       "tiempo_est": "0h 45min",
       "color": "f59e0b",
-      "frente": "Puente Vehicular Periférico Norte"
+      "frente": "Puente Vehicular Periférico Norte",
+      "nombre_ruta": "CDMX Periférico Norte (Puente)",
+      "distancia_total_km": 25,
+      "origen": "Puente Vehicular Periférico Norte",
+      "destino": "CDMX Periférico Norte (Puente)",
+      "tipo_carga": "Puente Vehicular Periférico Norte",
+      "prioridad": "media",
+      "unidad": "ME-F049"
     },
     {
       "id": "MR-008",
@@ -86,7 +135,14 @@
       "casetas": 5,
       "tiempo_est": "5h 00min",
       "color": "22c55e",
-      "frente": "Ampliación Puerto Veracruz"
+      "frente": "Ampliación Puerto Veracruz",
+      "nombre_ruta": "CDMX → Veracruz (Puerto)",
+      "distancia_total_km": 420,
+      "origen": "CDMX",
+      "destino": "Veracruz",
+      "tipo_carga": "Ampliación Puerto Veracruz",
+      "prioridad": "alta",
+      "unidad": "ME-H056"
     },
     {
       "id": "MR-009",
@@ -97,7 +153,14 @@
       "casetas": 0,
       "tiempo_est": "1h 00min",
       "color": "8b5cf6",
-      "frente": "Varios"
+      "frente": "Varios",
+      "nombre_ruta": "Ruta Interna Almacén → Frentes CDMX",
+      "distancia_total_km": 45,
+      "origen": "Ruta Interna Almacén",
+      "destino": "Frentes CDMX",
+      "tipo_carga": "Varios",
+      "prioridad": "media",
+      "unidad": "ME-Y063"
     },
     {
       "id": "MR-010",
@@ -108,7 +171,14 @@
       "casetas": 3,
       "tiempo_est": "3h 45min",
       "color": "f59e0b",
-      "frente": "Autopista MTY-Saltillo"
+      "frente": "Autopista MTY-Saltillo",
+      "nombre_ruta": "MTY → Torreón (Apoyo logístico)",
+      "distancia_total_km": 305,
+      "origen": "MTY",
+      "destino": "Torreón",
+      "tipo_carga": "Autopista MTY-Saltillo",
+      "prioridad": "media",
+      "unidad": "ME-N070"
     }
   ]
 }
