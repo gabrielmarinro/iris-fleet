@@ -2,7 +2,7 @@
   "kpi": "uptime",
   "valor_actual": 82.3,
   "meta": 95.0,
-  "gap_pct": -12.7,
+  "gap_pct": 12.7,
   "total_unidades": 120,
   "operativas": 99,
   "no_disponibles": 21,
@@ -172,122 +172,314 @@
     ]
   },
   "descomposicion_gap": {
-    "en_taller": {
-      "unidades": 13,
-      "pct_gap": 7.8,
-      "severidad": "critica"
-    },
-    "siniestros": {
-      "unidades": 5,
-      "pct_gap": 3.2,
-      "severidad": "media"
-    },
-    "documentacion": {
-      "unidades": 3,
-      "pct_gap": 1.7,
-      "severidad": "baja"
-    }
+    "total_gap_pct": 12.7,
+    "total_unidades_afectadas": 21,
+    "categorias": [
+      {
+        "id": "taller",
+        "label": "Unidades en taller",
+        "pct_del_gap": 7.8,
+        "unidades": 13,
+        "color": "#ef4444",
+        "icono": "🔧",
+        "severidad": "critica"
+      },
+      {
+        "id": "corralon",
+        "label": "En corralón/retención",
+        "pct_del_gap": 3.2,
+        "unidades": 5,
+        "color": "#f59e0b",
+        "icono": "⛔",
+        "severidad": "media"
+      },
+      {
+        "id": "documentacion",
+        "label": "Documentación vencida",
+        "pct_del_gap": 1.7,
+        "unidades": 3,
+        "color": "#8b5cf6",
+        "icono": "📋",
+        "severidad": "baja"
+      }
+    ]
   },
   "unidades_criticas_taller": [
     {
       "unidad": "ME-H019",
       "modelo": "Hilux 2019",
-      "tipo_reparacion": "Hilux 2019 con 245K km",
+      "tipo": "Camioneta",
       "dias_en_taller": 22,
-      "estandar_dias": 11,
-      "exceso_pct": 100,
-      "costo_acumulado": 330000,
-      "causa_raiz_tag": "REEMPLAZAR",
-      "iris_detalle": "Hilux 2019 con 245K km. 3 ingresos a taller en 60 días por falla de inyector. Costo acumulado $89K."
+      "dias_estandar": 8,
+      "exceso_pct": 175,
+      "ot": "OT-ME-031",
+      "falla": "Falla de inyector recurrente — 3er ingreso en 60 días",
+      "taller": "Taller CDMX Oriente",
+      "causa_raiz": "sin_inventario",
+      "causa_detalle": "Inyector Denso P/N 23670-30400 sin stock desde 15-Feb. Proveedor Toyota reporta 2 semanas. No se buscó alterno en Monterrey.",
+      "correlaciones": [
+        {
+          "fuente": "SAP PM",
+          "dato": "OT-ME-031 sin movimiento desde 20-Feb"
+        },
+        {
+          "fuente": "GPS",
+          "dato": "Unidad estacionada en taller desde 16-Feb"
+        },
+        {
+          "fuente": "Inventario",
+          "dato": "Stock inyector Denso: 0 unidades"
+        },
+        {
+          "fuente": "Planeación",
+          "dato": "Cuadrilla Tramo 5 operando con 1 vehículo menos"
+        }
+      ],
+      "impacto_financiero": {
+        "costo_dia_parado": 15000,
+        "dias_exceso": 14,
+        "total_perdido": 330000,
+        "desglose": {
+          "capacidad_operativa_perdida": 210000,
+          "costo_renta_temporal": 84000,
+          "penalizaciones_contrato": 36000
+        }
+      }
     },
     {
       "unidad": "ME-F032",
       "modelo": "Frontier 2020",
-      "tipo_reparacion": "Transmisión con fallas recurrentes — 4 visitas",
+      "tipo": "Pickup",
       "dias_en_taller": 18,
-      "estandar_dias": 9,
-      "exceso_pct": 100,
-      "costo_acumulado": 324000,
-      "causa_raiz_tag": "CAMBIAR TALLER",
-      "iris_detalle": "Transmisión con fallas recurrentes — 4 visitas. Taller externo NL no resuelve."
+      "dias_estandar": 7,
+      "exceso_pct": 157,
+      "ot": "OT-ME-028",
+      "falla": "Transmisión con fallas recurrentes — 4ta visita",
+      "taller": "Taller Externo NL",
+      "causa_raiz": "diagnostico_erroneo",
+      "causa_detalle": "Taller externo NL diagnosticó problema de solenoide pero el problema real es en el cuerpo de válvulas. 4 visitas sin resolver. $180K gastados en refacciones incorrectas.",
+      "correlaciones": [
+        {
+          "fuente": "SAP PM",
+          "dato": "4 OTs en 90 días, misma falla"
+        },
+        {
+          "fuente": "GPS",
+          "dato": "Unidad en taller externo Apodaca, NL"
+        },
+        {
+          "fuente": "Compras",
+          "dato": "$180,000 en refacciones de transmisión en 90 días"
+        },
+        {
+          "fuente": "Nómina",
+          "dato": "Operador reasignado a ME-F041 (rendimiento -18%)"
+        }
+      ],
+      "impacto_financiero": {
+        "costo_dia_parado": 18000,
+        "dias_exceso": 11,
+        "total_perdido": 324000,
+        "desglose": {
+          "capacidad_operativa_perdida": 198000,
+          "refacciones_desperdiciadas": 108000,
+          "costo_reasignacion": 18000
+        }
+      }
     },
     {
       "unidad": "ME-H008",
       "modelo": "Hilux 2021",
-      "tipo_reparacion": "En corralón municipal CDMX — verificación vencida",
+      "tipo": "Camioneta",
       "dias_en_taller": 12,
-      "estandar_dias": 6,
-      "exceso_pct": 100,
-      "costo_acumulado": 300000,
-      "causa_raiz_tag": "LIBERAR HOY",
-      "iris_detalle": "En corralón municipal CDMX — verificación vencida. Cuadrilla de 6 sin transporte."
+      "dias_estandar": 2,
+      "exceso_pct": 500,
+      "ot": "OT-ME-025",
+      "falla": "En corralón municipal CDMX — verificación vencida",
+      "taller": "Corralón Municipal Iztapalapa",
+      "causa_raiz": "sin_visibilidad",
+      "causa_detalle": "Verificación venció el 25-Feb. Nadie rastreó. Fue retenida en operativo el 26-Feb. Cuadrilla de 6 topógrafos sin transporte. Multa + arrastre + corralón = $45K además del costo operativo.",
+      "correlaciones": [
+        {
+          "fuente": "SAP PM",
+          "dato": "Alerta de verificación vencida ignorada el 20-Feb"
+        },
+        {
+          "fuente": "GPS",
+          "dato": "Última posición: Corralón Iztapalapa desde 26-Feb"
+        },
+        {
+          "fuente": "Nómina",
+          "dato": "6 topógrafos sin asignación de vehículo"
+        },
+        {
+          "fuente": "Contrato ME",
+          "dato": "Penalización por retraso en mediciones Tramo 5"
+        }
+      ],
+      "impacto_financiero": {
+        "costo_dia_parado": 25000,
+        "dias_exceso": 10,
+        "total_perdido": 300000,
+        "desglose": {
+          "cuadrilla_parada": 180000,
+          "multa_y_corralon": 45000,
+          "penalizacion_contrato": 75000
+        }
+      }
     },
     {
       "unidad": "ME-N012",
       "modelo": "NV350 2021",
-      "tipo_reparacion": "Suspensión colapsada por terracería Tren Maya",
+      "tipo": "Van",
       "dias_en_taller": 15,
-      "estandar_dias": 7,
+      "dias_estandar": 7,
       "exceso_pct": 114,
-      "costo_acumulado": 330000,
-      "causa_raiz_tag": "RENTAR TEMPORAL",
-      "iris_detalle": "Suspensión colapsada por terracería Tren Maya. Refacción importada ETA 10 días."
+      "ot": "OT-ME-029",
+      "falla": "Suspensión colapsada por terracería Tren Maya",
+      "taller": "Taller CDMX Sur",
+      "causa_raiz": "sin_inventario",
+      "causa_detalle": "Amortiguador reforzado Nissan P/N 56210-3LN0A importado de Japón. ETA original 10 días, ahora reportan 5 más por aduana. No se consideró renta temporal.",
+      "correlaciones": [
+        {
+          "fuente": "SAP MM",
+          "dato": "OC #ME-782 en aduana desde 5-Mar"
+        },
+        {
+          "fuente": "GPS",
+          "dato": "Unidad en taller sur desde 23-Feb"
+        },
+        {
+          "fuente": "Planeación",
+          "dato": "Van de traslado de personal Tramo 3 sin reemplazo"
+        },
+        {
+          "fuente": "Operaciones",
+          "dato": "Personal usando transporte público (+2hrs/día)"
+        }
+      ],
+      "impacto_financiero": {
+        "costo_dia_parado": 22000,
+        "dias_exceso": 8,
+        "total_perdido": 330000,
+        "desglose": {
+          "productividad_perdida": 220000,
+          "transporte_alterno": 66000,
+          "penalizacion_retraso": 44000
+        }
+      }
     },
     {
       "unidad": "ME-S003",
       "modelo": "Sprinter 2022",
-      "tipo_reparacion": "Falla eléctrica intermitente",
+      "tipo": "Van",
       "dias_en_taller": 8,
-      "estandar_dias": 5,
+      "dias_estandar": 5,
       "exceso_pct": 60,
-      "costo_acumulado": 224000,
-      "causa_raiz_tag": "SERVICIO EXPRESS",
-      "iris_detalle": "Falla eléctrica intermitente. Equipo topográfico de $2.5M varado."
+      "ot": "OT-ME-033",
+      "falla": "Falla eléctrica intermitente — equipo topográfico de $2.5M varado",
+      "taller": "Mercedes Benz Servicio Autorizado",
+      "causa_raiz": "capacidad_taller",
+      "causa_detalle": "Mercedes servicio autorizado tiene 3 bahías ocupadas. ME-S003 en cola desde hace 3 días. Equipo topográfico Leica de $2.5M no puede usarse sin esta van (alimentación eléctrica 12V especializada).",
+      "correlaciones": [
+        {
+          "fuente": "SAP PM",
+          "dato": "OT-ME-033 estado: 'En espera de bahía'"
+        },
+        {
+          "fuente": "Inventario equipos",
+          "dato": "Estación total Leica TS16 ($2.5M) sin uso"
+        },
+        {
+          "fuente": "Contrato ME",
+          "dato": "Tramo 7 mediciones retrasadas 5 días"
+        },
+        {
+          "fuente": "Nómina",
+          "dato": "2 topógrafos senior en standby"
+        }
+      ],
+      "impacto_financiero": {
+        "costo_dia_parado": 28000,
+        "dias_exceso": 3,
+        "total_perdido": 224000,
+        "desglose": {
+          "equipo_inactivo": 140000,
+          "personal_standby": 56000,
+          "penalizacion_retraso": 28000
+        }
+      }
     }
   ],
   "resumen_financiero": {
-    "perdida_acumulada": 2508000,
-    "perdida_por_hora": 6950,
-    "proyeccion_30d_sin_accion": 5200000,
-    "ahorro_potencial": 3400000,
-    "costo_dia_sin_actuar": 173000
+    "total_perdido_acumulado": 2508000,
+    "costo_por_hora_actual": 6950,
+    "proyeccion_30_dias_sin_accion": 5200000,
+    "ahorro_potencial_con_acciones": 3400000,
+    "moneda": "MXN"
   },
   "acciones": [
     {
       "prioridad": 1,
-      "accion": "Liberar ME-H008 de corralón HOY",
       "tipo": "inmediata",
-      "ahorro_mensual": 750000
+      "unidad": "ME-H008",
+      "accion": "Liberar ME-H008 de corralón HOY",
+      "detalle": "Pagar multa + arrastre ($45K) y sacar la unidad hoy. La cuadrilla de 6 topógrafos lleva 12 días sin transporte. Costo de tenerla ahí: $25,000/día. Se recupera la inversión en 2 días.",
+      "ahorro_estimado": 25000,
+      "ahorro_unidad": "por día",
+      "responsable": "Gerente de Flota + Jurídico",
+      "contacto": "Lic. Andrea Ruiz — ext. 2205"
     },
     {
       "prioridad": 2,
-      "accion": "Rentar NV350 temporal para Tramo 3",
       "tipo": "inmediata",
-      "ahorro_mensual": 606000
+      "unidad": "ME-N012",
+      "accion": "Rentar NV350 temporal para Tramo 3",
+      "detalle": "Mientras llega la refacción de Japón (ETA 15 días), rentar van equivalente. Costo renta: $8,000/día vs $22,000/día de pérdida por inactividad. ROI inmediato.",
+      "ahorro_estimado": 14000,
+      "ahorro_unidad": "por día (neto)",
+      "responsable": "Compras + Operaciones Tramo 3",
+      "contacto": "Ing. Roberto Fuentes — ext. 3301"
     },
     {
       "prioridad": 3,
-      "accion": "Servicio express Mercedes ME-S003",
       "tipo": "inmediata",
-      "ahorro_mensual": 560000
+      "unidad": "ME-S003",
+      "accion": "Servicio express Mercedes ME-S003",
+      "detalle": "Solicitar servicio express en Mercedes autorizado ($12K adicional). Equipo Leica de $2.5M lleva 3 días sin uso. El costo del express se recupera en 10 horas.",
+      "ahorro_estimado": 28000,
+      "ahorro_unidad": "por día",
+      "responsable": "Jefe de Taller + Compras",
+      "contacto": "Ing. Carlos Medina — ext. 2201"
     },
     {
       "prioridad": 4,
-      "accion": "Reemplazar ME-H019",
       "tipo": "programada",
-      "ahorro_mensual": 450000
+      "unidad": "ME-H019",
+      "accion": "Reemplazar ME-H019 — unidad con falla crónica",
+      "detalle": "3 ingresos en 60 días por mismo inyector. Hilux 2019 con 245K km. Costo acumulado en reparaciones: $89K. Incluir en programa de renovación Q2. Mientras tanto, renta temporal.",
+      "ahorro_estimado": 15000,
+      "ahorro_unidad": "por día",
+      "responsable": "Gerente de Flota + Dirección",
+      "contacto": "Ing. Patricia Sánchez — ext. 3108"
     },
     {
       "prioridad": 5,
-      "accion": "Cambiar taller ME-F032",
       "tipo": "programada",
-      "ahorro_mensual": 324000
+      "unidad": "SISTEMA",
+      "accion": "Alerta automática: verificación vencida + documentos por vencer",
+      "detalle": "Crear trigger en Iris: 15 días antes de vencimiento de verificación/póliza/licencia → alerta a Gerente de Flota + Operador. Esto habría detectado ME-H008. Previene corralones futuros.",
+      "ahorro_estimado": 450000,
+      "ahorro_unidad": "estimado mensual",
+      "responsable": "Iris Fleet (configuración automática)",
+      "contacto": "Sistema — se activa con un click"
     }
   ],
   "iris_narrativa": {
-    "hallazgo": "De las 21 unidades inactivas, 5 llevan entre 80% y 250% más tiempo del que deberían en taller. 3 tienen solución inmediata — una está en corralón por verificación vencida.",
-    "causa_raiz": "Iris dice: ME-H008 lleva 12 días en corralón municipal CDMX por verificación vencida. La cuadrilla de 6 lleva sin transporte. Eso son $300,000 MXN tirados.",
+    "apertura": "Tu flota opera al 82.3%, pero el 12.7% inactivo te cuesta $2.5M acumulados. Encontré exactamente dónde está el problema.",
+    "hallazgo_principal": "De las 21 unidades inactivas, 5 llevan entre 60% y 500% más tiempo del que deberían fuera de operación. 3 tienen solución inmediata — una está en corralón por verificación vencida que nadie rastreó.",
+    "revelacion": "ME-H008 lleva 12 días en corralón municipal Iztapalapa por verificación vencida. La alerta de SAP PM fue ignorada el 20-Feb. Una cuadrilla de 6 topógrafos lleva sin transporte. Eso son $300,000 MXN y un contrato de Tren Maya en riesgo.",
     "impacto": "Cada hora que pasa, pierdes $6,950 MXN. Total acumulado creciendo.",
-    "acciones": "Con 3 acciones inmediatas hoy, puedes recuperar $135,000/día. Con las 2 preventivas, evitas que esto vuelva a pasar."
+    "cierre": "Con 3 acciones inmediatas hoy, puedes recuperar $67,000/día. Con las 2 programadas, evitas que esto vuelva a pasar. Yo monitoreo el cumplimiento."
   }
 }
