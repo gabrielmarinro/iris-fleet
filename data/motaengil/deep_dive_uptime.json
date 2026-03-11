@@ -1,72 +1,256 @@
 {
   "kpi": "uptime",
-  "titulo": "Uptime — Días Operativos",
+  "valor_actual": 82.3,
+  "meta": 95.0,
+  "gap_pct": -12.7,
   "total_unidades": 120,
-  "uptime_actual_dias": 22.3,
-  "uptime_meta_dias": 26,
-  "gap_dias": 3.7,
-  "descomposicion_gap": {
-    "total_unidades_afectadas": 18,
-    "en_taller_programado": 6,
-    "en_taller_correctivo": 7,
-    "en_corralon": 5
+  "operativas": 99,
+  "no_disponibles": 21,
+  "historico": {
+    "diario": [
+      {
+        "fecha": "2026-02-04",
+        "uptime": 83.0
+      },
+      {
+        "fecha": "2026-02-05",
+        "uptime": 79.0
+      },
+      {
+        "fecha": "2026-02-06",
+        "uptime": 80.6
+      },
+      {
+        "fecha": "2026-02-07",
+        "uptime": 80.3
+      },
+      {
+        "fecha": "2026-02-08",
+        "uptime": 83.7
+      },
+      {
+        "fecha": "2026-02-09",
+        "uptime": 83.3
+      },
+      {
+        "fecha": "2026-02-10",
+        "uptime": 84.7
+      },
+      {
+        "fecha": "2026-02-11",
+        "uptime": 79.5
+      },
+      {
+        "fecha": "2026-02-12",
+        "uptime": 81.7
+      },
+      {
+        "fecha": "2026-02-13",
+        "uptime": 79.2
+      },
+      {
+        "fecha": "2026-02-14",
+        "uptime": 80.4
+      },
+      {
+        "fecha": "2026-02-15",
+        "uptime": 82.3
+      },
+      {
+        "fecha": "2026-02-16",
+        "uptime": 79.2
+      },
+      {
+        "fecha": "2026-02-17",
+        "uptime": 80.4
+      },
+      {
+        "fecha": "2026-02-18",
+        "uptime": 83.3
+      },
+      {
+        "fecha": "2026-02-19",
+        "uptime": 82.6
+      },
+      {
+        "fecha": "2026-02-20",
+        "uptime": 80.6
+      },
+      {
+        "fecha": "2026-02-21",
+        "uptime": 83.0
+      },
+      {
+        "fecha": "2026-02-22",
+        "uptime": 84.4
+      },
+      {
+        "fecha": "2026-02-23",
+        "uptime": 79.2
+      },
+      {
+        "fecha": "2026-02-24",
+        "uptime": 84.4
+      },
+      {
+        "fecha": "2026-02-25",
+        "uptime": 83.8
+      },
+      {
+        "fecha": "2026-02-26",
+        "uptime": 81.5
+      },
+      {
+        "fecha": "2026-02-27",
+        "uptime": 80.3
+      },
+      {
+        "fecha": "2026-02-28",
+        "uptime": 85.5
+      },
+      {
+        "fecha": "2026-03-01",
+        "uptime": 81.5
+      },
+      {
+        "fecha": "2026-03-02",
+        "uptime": 79.9
+      },
+      {
+        "fecha": "2026-03-03",
+        "uptime": 80.0
+      },
+      {
+        "fecha": "2026-03-04",
+        "uptime": 84.9
+      },
+      {
+        "fecha": "2026-03-05",
+        "uptime": 83.3
+      },
+      {
+        "fecha": "2026-03-06",
+        "uptime": 82.3
+      }
+    ],
+    "semanal": [
+      {
+        "semana": "Sem 1",
+        "fecha_inicio": "2026-02-04",
+        "uptime": 82.1
+      },
+      {
+        "semana": "Sem 2",
+        "fecha_inicio": "2026-02-11",
+        "uptime": 80.4
+      },
+      {
+        "semana": "Sem 3",
+        "fecha_inicio": "2026-02-18",
+        "uptime": 82.5
+      },
+      {
+        "semana": "Sem 4",
+        "fecha_inicio": "2026-02-25",
+        "uptime": 81.8
+      },
+      {
+        "semana": "Sem 5",
+        "fecha_inicio": "2026-03-04",
+        "uptime": 83.5
+      }
+    ],
+    "mensual": [
+      {
+        "mes": "Febrero",
+        "uptime": 81.7
+      },
+      {
+        "mes": "Marzo",
+        "uptime": 82.5
+      }
+    ]
   },
-  "unidades_criticas": [
+  "descomposicion_gap": {
+    "en_taller": {
+      "unidades": 13,
+      "pct_gap": 7.8,
+      "severidad": "critica"
+    },
+    "siniestros": {
+      "unidades": 5,
+      "pct_gap": 3.2,
+      "severidad": "media"
+    },
+    "documentacion": {
+      "unidades": 3,
+      "pct_gap": 1.7,
+      "severidad": "baja"
+    }
+  },
+  "unidades_criticas_taller": [
     {
       "unidad": "ME-H019",
       "modelo": "Hilux 2019",
-      "km": 245000,
-      "dias_inactiva": 22,
-      "causa_detalle": "Hilux 2019 con 245K km. 3 ingresos a taller en 60 días por falla de inyector. Costo acumulado $89K.",
-      "costo_inactividad_dia": 15000,
+      "tipo_reparacion": "Hilux 2019 con 245K km",
+      "dias_en_taller": 22,
+      "estandar_dias": 11,
+      "exceso_pct": 100,
       "costo_acumulado": 330000,
-      "recomendacion": "REEMPLAZAR"
+      "causa_raiz_tag": "REEMPLAZAR",
+      "iris_detalle": "Hilux 2019 con 245K km. 3 ingresos a taller en 60 días por falla de inyector. Costo acumulado $89K."
     },
     {
       "unidad": "ME-F032",
       "modelo": "Frontier 2020",
-      "km": 210000,
-      "dias_inactiva": 18,
-      "causa_detalle": "Transmisión con fallas recurrentes — 4 visitas. Taller externo NL no resuelve.",
-      "costo_inactividad_dia": 18000,
+      "tipo_reparacion": "Transmisión con fallas recurrentes — 4 visitas",
+      "dias_en_taller": 18,
+      "estandar_dias": 9,
+      "exceso_pct": 100,
       "costo_acumulado": 324000,
-      "recomendacion": "CAMBIAR TALLER"
+      "causa_raiz_tag": "CAMBIAR TALLER",
+      "iris_detalle": "Transmisión con fallas recurrentes — 4 visitas. Taller externo NL no resuelve."
     },
     {
       "unidad": "ME-H008",
       "modelo": "Hilux 2021",
-      "km": 178000,
-      "dias_inactiva": 12,
-      "causa_detalle": "En corralón municipal CDMX — verificación vencida. Cuadrilla de 6 sin transporte.",
-      "costo_inactividad_dia": 25000,
+      "tipo_reparacion": "En corralón municipal CDMX — verificación vencida",
+      "dias_en_taller": 12,
+      "estandar_dias": 6,
+      "exceso_pct": 100,
       "costo_acumulado": 300000,
-      "recomendacion": "LIBERAR HOY"
+      "causa_raiz_tag": "LIBERAR HOY",
+      "iris_detalle": "En corralón municipal CDMX — verificación vencida. Cuadrilla de 6 sin transporte."
     },
     {
       "unidad": "ME-N012",
       "modelo": "NV350 2021",
-      "km": 165000,
-      "dias_inactiva": 15,
-      "causa_detalle": "Suspensión colapsada por terracería Tren Maya. Refacción importada ETA 10 días.",
-      "costo_inactividad_dia": 22000,
+      "tipo_reparacion": "Suspensión colapsada por terracería Tren Maya",
+      "dias_en_taller": 15,
+      "estandar_dias": 7,
+      "exceso_pct": 114,
       "costo_acumulado": 330000,
-      "recomendacion": "RENTAR TEMPORAL"
+      "causa_raiz_tag": "RENTAR TEMPORAL",
+      "iris_detalle": "Suspensión colapsada por terracería Tren Maya. Refacción importada ETA 10 días."
     },
     {
       "unidad": "ME-S003",
       "modelo": "Sprinter 2022",
-      "km": 92000,
-      "dias_inactiva": 8,
-      "causa_detalle": "Falla eléctrica intermitente. Equipo topográfico de $2.5M varado.",
-      "costo_inactividad_dia": 28000,
+      "tipo_reparacion": "Falla eléctrica intermitente",
+      "dias_en_taller": 8,
+      "estandar_dias": 5,
+      "exceso_pct": 60,
       "costo_acumulado": 224000,
-      "recomendacion": "SERVICIO EXPRESS"
+      "causa_raiz_tag": "SERVICIO EXPRESS",
+      "iris_detalle": "Falla eléctrica intermitente. Equipo topográfico de $2.5M varado."
     }
   ],
   "resumen_financiero": {
-    "total_perdido_acumulado": 5550000,
-    "costo_por_hora_actual": 7700,
-    "ahorro_potencial_mes": 3200000
+    "perdida_acumulada": 2508000,
+    "perdida_por_hora": 6950,
+    "proyeccion_30d_sin_accion": 5200000,
+    "ahorro_potencial": 3400000,
+    "costo_dia_sin_actuar": 173000
   },
   "acciones": [
     {
@@ -101,26 +285,9 @@
     }
   ],
   "iris_narrativa": {
-    "hallazgo_principal": "Tu flota opera 22.3 días/mes vs meta de 26. Esos 3.7 días perdidos cuestan $5.5M/mes."
-  },
-  "historico": {
-    "diario": [
-      {
-        "fecha": "2026-02-01",
-        "valor": 23.1
-      },
-      {
-        "fecha": "2026-02-15",
-        "valor": 21.9
-      },
-      {
-        "fecha": "2026-03-01",
-        "valor": 22.1
-      },
-      {
-        "fecha": "2026-03-10",
-        "valor": 22.3
-      }
-    ]
+    "hallazgo": "De las 21 unidades inactivas, 5 llevan entre 80% y 250% más tiempo del que deberían en taller. 3 tienen solución inmediata — una está en corralón por verificación vencida.",
+    "causa_raiz": "Iris dice: ME-H008 lleva 12 días en corralón municipal CDMX por verificación vencida. La cuadrilla de 6 lleva sin transporte. Eso son $300,000 MXN tirados.",
+    "impacto": "Cada hora que pasa, pierdes $6,950 MXN. Total acumulado creciendo.",
+    "acciones": "Con 3 acciones inmediatas hoy, puedes recuperar $135,000/día. Con las 2 preventivas, evitas que esto vuelva a pasar."
   }
 }

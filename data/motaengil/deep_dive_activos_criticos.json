@@ -1,9 +1,176 @@
 {
   "kpi": "activos_criticos",
-  "titulo": "Activos Críticos — Vehículos en Riesgo",
-  "total_unidades": 120,
-  "activos_criticos": 3,
-  "unidades_criticas": [
+  "valor_actual": 3,
+  "meta": 0,
+  "unidad": "unidades",
+  "total_flota": 120,
+  "pct_criticos": 2.5,
+  "historico": {
+    "diario": [
+      {
+        "fecha": "2026-02-04",
+        "criticos": 9
+      },
+      {
+        "fecha": "2026-02-05",
+        "criticos": 9
+      },
+      {
+        "fecha": "2026-02-06",
+        "criticos": 9
+      },
+      {
+        "fecha": "2026-02-07",
+        "criticos": 9
+      },
+      {
+        "fecha": "2026-02-08",
+        "criticos": 6
+      },
+      {
+        "fecha": "2026-02-09",
+        "criticos": 10
+      },
+      {
+        "fecha": "2026-02-10",
+        "criticos": 7
+      },
+      {
+        "fecha": "2026-02-11",
+        "criticos": 8
+      },
+      {
+        "fecha": "2026-02-12",
+        "criticos": 9
+      },
+      {
+        "fecha": "2026-02-13",
+        "criticos": 7
+      },
+      {
+        "fecha": "2026-02-14",
+        "criticos": 7
+      },
+      {
+        "fecha": "2026-02-15",
+        "criticos": 9
+      },
+      {
+        "fecha": "2026-02-16",
+        "criticos": 9
+      },
+      {
+        "fecha": "2026-02-17",
+        "criticos": 6
+      },
+      {
+        "fecha": "2026-02-18",
+        "criticos": 8
+      },
+      {
+        "fecha": "2026-02-19",
+        "criticos": 7
+      },
+      {
+        "fecha": "2026-02-20",
+        "criticos": 7
+      },
+      {
+        "fecha": "2026-02-21",
+        "criticos": 8
+      },
+      {
+        "fecha": "2026-02-22",
+        "criticos": 7
+      },
+      {
+        "fecha": "2026-02-23",
+        "criticos": 9
+      },
+      {
+        "fecha": "2026-02-24",
+        "criticos": 10
+      },
+      {
+        "fecha": "2026-02-25",
+        "criticos": 10
+      },
+      {
+        "fecha": "2026-02-26",
+        "criticos": 10
+      },
+      {
+        "fecha": "2026-02-27",
+        "criticos": 9
+      },
+      {
+        "fecha": "2026-02-28",
+        "criticos": 8
+      },
+      {
+        "fecha": "2026-03-01",
+        "criticos": 7
+      },
+      {
+        "fecha": "2026-03-02",
+        "criticos": 10
+      },
+      {
+        "fecha": "2026-03-03",
+        "criticos": 6
+      },
+      {
+        "fecha": "2026-03-04",
+        "criticos": 8
+      },
+      {
+        "fecha": "2026-03-05",
+        "criticos": 8
+      },
+      {
+        "fecha": "2026-03-06",
+        "criticos": 3
+      }
+    ],
+    "semanal": [
+      {
+        "semana": "Sem 1",
+        "fecha_inicio": "2026-02-04",
+        "criticos": 8.4
+      },
+      {
+        "semana": "Sem 2",
+        "fecha_inicio": "2026-02-11",
+        "criticos": 7.9
+      },
+      {
+        "semana": "Sem 3",
+        "fecha_inicio": "2026-02-18",
+        "criticos": 8.0
+      },
+      {
+        "semana": "Sem 4",
+        "fecha_inicio": "2026-02-25",
+        "criticos": 8.6
+      },
+      {
+        "semana": "Sem 5",
+        "fecha_inicio": "2026-03-04",
+        "criticos": 6.3
+      }
+    ],
+    "mensual": [
+      {
+        "mes": "Febrero",
+        "criticos": 7.5
+      },
+      {
+        "mes": "Marzo",
+        "criticos": 8
+      }
+    ]
+  },
+  "clasificacion_criticos": [
     {
       "unidad": "ME-H019",
       "modelo": "Hilux 2019",
@@ -42,27 +209,8 @@
     "costo_inactividad_mensual": 1650000,
     "ahorro_anual_reemplazo": 8400000
   },
+  "acciones": [],
   "iris_narrativa": {
     "hallazgo_principal": "3 vehículos concentran el 78% del costo de inactividad."
-  },
-  "historico": {
-    "diario": [
-      {
-        "fecha": "2026-02-01",
-        "valor": 2
-      },
-      {
-        "fecha": "2026-02-15",
-        "valor": 3
-      },
-      {
-        "fecha": "2026-03-01",
-        "valor": 3
-      },
-      {
-        "fecha": "2026-03-10",
-        "valor": 3
-      }
-    ]
   }
 }

@@ -1,11 +1,178 @@
 {
   "kpi": "costo_km",
-  "titulo": "Costo/Km — Flota Ligera",
+  "valor_actual": 4.2,
+  "meta": 3.85,
+  "benchmark_industria": 3.85,
+  "unidad_moneda": "MXN",
+  "gap_pct": 9.1,
   "total_unidades": 120,
-  "costo_km_actual": 4.2,
-  "costo_km_benchmark": 3.8,
-  "exceso_pct": 10.5,
-  "unidades_criticas": [
+  "flota_km_mes": 850000,
+  "historico": {
+    "diario": [
+      {
+        "fecha": "2026-02-04",
+        "costo": 3.97
+      },
+      {
+        "fecha": "2026-02-05",
+        "costo": 3.99
+      },
+      {
+        "fecha": "2026-02-06",
+        "costo": 4.14
+      },
+      {
+        "fecha": "2026-02-07",
+        "costo": 4.01
+      },
+      {
+        "fecha": "2026-02-08",
+        "costo": 4.37
+      },
+      {
+        "fecha": "2026-02-09",
+        "costo": 3.98
+      },
+      {
+        "fecha": "2026-02-10",
+        "costo": 4.21
+      },
+      {
+        "fecha": "2026-02-11",
+        "costo": 4.12
+      },
+      {
+        "fecha": "2026-02-12",
+        "costo": 4.36
+      },
+      {
+        "fecha": "2026-02-13",
+        "costo": 4.05
+      },
+      {
+        "fecha": "2026-02-14",
+        "costo": 4.13
+      },
+      {
+        "fecha": "2026-02-15",
+        "costo": 4.13
+      },
+      {
+        "fecha": "2026-02-16",
+        "costo": 4.1
+      },
+      {
+        "fecha": "2026-02-17",
+        "costo": 3.99
+      },
+      {
+        "fecha": "2026-02-18",
+        "costo": 4.19
+      },
+      {
+        "fecha": "2026-02-19",
+        "costo": 4.03
+      },
+      {
+        "fecha": "2026-02-20",
+        "costo": 4.27
+      },
+      {
+        "fecha": "2026-02-21",
+        "costo": 4.03
+      },
+      {
+        "fecha": "2026-02-22",
+        "costo": 4.15
+      },
+      {
+        "fecha": "2026-02-23",
+        "costo": 4.21
+      },
+      {
+        "fecha": "2026-02-24",
+        "costo": 4.42
+      },
+      {
+        "fecha": "2026-02-25",
+        "costo": 4.05
+      },
+      {
+        "fecha": "2026-02-26",
+        "costo": 4.08
+      },
+      {
+        "fecha": "2026-02-27",
+        "costo": 4.37
+      },
+      {
+        "fecha": "2026-02-28",
+        "costo": 4.03
+      },
+      {
+        "fecha": "2026-03-01",
+        "costo": 4.44
+      },
+      {
+        "fecha": "2026-03-02",
+        "costo": 4.29
+      },
+      {
+        "fecha": "2026-03-03",
+        "costo": 4.15
+      },
+      {
+        "fecha": "2026-03-04",
+        "costo": 4.41
+      },
+      {
+        "fecha": "2026-03-05",
+        "costo": 4.38
+      },
+      {
+        "fecha": "2026-03-06",
+        "costo": 4.2
+      }
+    ],
+    "semanal": [
+      {
+        "semana": "Sem 1",
+        "fecha_inicio": "2026-02-04",
+        "costo": 4.1
+      },
+      {
+        "semana": "Sem 2",
+        "fecha_inicio": "2026-02-11",
+        "costo": 4.13
+      },
+      {
+        "semana": "Sem 3",
+        "fecha_inicio": "2026-02-18",
+        "costo": 4.19
+      },
+      {
+        "semana": "Sem 4",
+        "fecha_inicio": "2026-02-25",
+        "costo": 4.2
+      },
+      {
+        "semana": "Sem 5",
+        "fecha_inicio": "2026-03-04",
+        "costo": 4.33
+      }
+    ],
+    "mensual": [
+      {
+        "mes": "Febrero",
+        "costo": 4.15
+      },
+      {
+        "mes": "Marzo",
+        "costo": 4.2
+      }
+    ]
+  },
+  "top_unidades_exceso": [
     {
       "unidad": "ME-H019",
       "modelo": "Hilux 2019",
@@ -34,31 +201,34 @@
       "recomendacion": "CAPACITACIÓN"
     }
   ],
+  "descomposicion_costo": {
+    "combustible": {
+      "pct": 42,
+      "valor_km": 1.76
+    },
+    "mantenimiento": {
+      "pct": 28,
+      "valor_km": 1.18
+    },
+    "llantas": {
+      "pct": 15,
+      "valor_km": 0.63
+    },
+    "casetas": {
+      "pct": 10,
+      "valor_km": 0.42
+    },
+    "otros": {
+      "pct": 5,
+      "valor_km": 0.21
+    }
+  },
   "resumen_financiero": {
     "exceso_total_mensual": 154000,
     "ahorro_potencial_mensual": 118000
   },
+  "acciones": [],
   "iris_narrativa": {
     "hallazgo_principal": "Costo/km de $4.20 está 10.5% sobre benchmark de $3.80. Solo 3 unidades generan el 76% del problema."
-  },
-  "historico": {
-    "diario": [
-      {
-        "fecha": "2026-02-01",
-        "valor": 4.05
-      },
-      {
-        "fecha": "2026-02-15",
-        "valor": 4.22
-      },
-      {
-        "fecha": "2026-03-01",
-        "valor": 4.19
-      },
-      {
-        "fecha": "2026-03-10",
-        "valor": 4.2
-      }
-    ]
   }
 }
