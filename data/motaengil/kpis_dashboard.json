@@ -1,5 +1,5 @@
 {
-  "total_unidades": 120,
+  "total_unidades": 144,
   "vehiculos_ligeros": 120,
   "vehiculos_en_corralon": 12,
   "dias_promedio_en_taller": 8.5,
@@ -19,5 +19,19 @@
   "cumplimiento_preventivo_pct": 62,
   "mtbf_horas": 480,
   "mttr_horas": 14,
-  "gasto_diesel_mensual": 890000
+  "gasto_diesel_mensual": 890000,
+  "vehiculos_pesados": 24,
+  "pesados_en_sitio": 14,
+  "pesados_en_taller": 4,
+  "pesados_idle": 3,
+  "disponibilidad_pesados_pct": 78.5,
+  "costo_por_hora_pesados": 1850,
+  "mttr_pesados_hrs": 14,
+  "idle_time_pesados_pct": 23,
+  "tco_por_tonelada": 42.5,
+  "trifr": 2.8,
+  "mtbf_pesados_hrs": 920,
+  "utilizacion_pesados_pct": 72,
+  "near_miss_ratio": 6.2,
+  "cumplimiento_ambiental_pct": 91
 }

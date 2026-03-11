@@ -36,5 +36,52 @@
       "salud_pct": 45,
       "recomendacion": "Reforzar suspensión"
     }
-  ]
+  ],
+  "asset_lifecycle_pesados": [
+    {
+      "unidad": "ME-EX04",
+      "tipo": "Excavadora",
+      "modelo": "Komatsu PC360",
+      "horometro_hrs": 12000,
+      "roi_pct": -42.0,
+      "mtbf_hrs": 380,
+      "recomendacion": "REEMPLAZAR"
+    },
+    {
+      "unidad": "ME-VQ01",
+      "tipo": "Camión de Acarreo",
+      "modelo": "Komatsu HD325-8",
+      "horometro_hrs": 9800,
+      "roi_pct": -8.2,
+      "mtbf_hrs": 420,
+      "recomendacion": "OVERHAUL"
+    },
+    {
+      "unidad": "ME-GR01",
+      "tipo": "Grúa Móvil",
+      "modelo": "Liebherr LTM 1100",
+      "horometro_hrs": 6500,
+      "roi_pct": 32.1,
+      "mtbf_hrs": 1200,
+      "recomendacion": "MANTENER"
+    }
+  ],
+  "compliance_pesados": {
+    "trifr": 2.8,
+    "certificaciones_vigentes_pct": 88,
+    "inspecciones_geotecnicas": {
+      "cumplidas": 18,
+      "programadas": 20
+    },
+    "near_miss_ratio": 6.2,
+    "cumplimiento_ambiental_pct": 91,
+    "turnos_excedidos_14h": 2
+  },
+  "fuel_pesados": {
+    "costo_por_hora_promedio": 1850,
+    "consumo_promedio_lph": 28.5,
+    "consumo_estandar_lph": 25.0,
+    "diesel_consumido_hoy_mxn": 105000,
+    "unidades_idle_excesivo": 3
+  }
 }

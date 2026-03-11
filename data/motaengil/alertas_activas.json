@@ -9,7 +9,8 @@
     "fecha": "2026-03-03",
     "status": "activa",
     "lat": 18.1081,
-    "lng": -88.3603
+    "lng": -88.3603,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-002",
@@ -21,7 +22,8 @@
     "fecha": "2026-03-06",
     "status": "en_atencion",
     "lat": 25.3161,
-    "lng": -90.5055
+    "lng": -90.5055,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-003",
@@ -33,7 +35,8 @@
     "fecha": "2026-03-01",
     "status": "resuelta",
     "lat": 21.1162,
-    "lng": -98.744
+    "lng": -98.744,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-004",
@@ -45,7 +48,8 @@
     "fecha": "2026-03-04",
     "status": "en_atencion",
     "lat": 18.7607,
-    "lng": -97.1456
+    "lng": -97.1456,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-005",
@@ -57,7 +61,8 @@
     "fecha": "2026-03-06",
     "status": "resuelta",
     "lat": 19.0246,
-    "lng": -95.0802
+    "lng": -95.0802,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-006",
@@ -69,7 +74,8 @@
     "fecha": "2026-03-05",
     "status": "activa",
     "lat": 24.0183,
-    "lng": -91.3235
+    "lng": -91.3235,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-007",
@@ -81,7 +87,8 @@
     "fecha": "2026-03-02",
     "status": "activa",
     "lat": 17.8485,
-    "lng": -91.5864
+    "lng": -91.5864,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-008",
@@ -93,7 +100,8 @@
     "fecha": "2026-03-10",
     "status": "en_atencion",
     "lat": 23.723,
-    "lng": -94.6484
+    "lng": -94.6484,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-009",
@@ -105,7 +113,8 @@
     "fecha": "2026-03-04",
     "status": "en_atencion",
     "lat": 21.8732,
-    "lng": -95.0141
+    "lng": -95.0141,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-010",
@@ -117,7 +126,8 @@
     "fecha": "2026-03-06",
     "status": "en_atencion",
     "lat": 19.9836,
-    "lng": -96.8007
+    "lng": -96.8007,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-011",
@@ -129,7 +139,8 @@
     "fecha": "2026-03-08",
     "status": "resuelta",
     "lat": 19.7316,
-    "lng": -94.1609
+    "lng": -94.1609,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-012",
@@ -141,7 +152,8 @@
     "fecha": "2026-03-04",
     "status": "activa",
     "lat": 20.9636,
-    "lng": -92.3933
+    "lng": -92.3933,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-013",
@@ -153,7 +165,8 @@
     "fecha": "2026-03-05",
     "status": "activa",
     "lat": 21.2407,
-    "lng": -92.4625
+    "lng": -92.4625,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-014",
@@ -165,7 +178,8 @@
     "fecha": "2026-03-04",
     "status": "resuelta",
     "lat": 17.6248,
-    "lng": -92.7213
+    "lng": -92.7213,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-015",
@@ -177,7 +191,8 @@
     "fecha": "2026-03-06",
     "status": "en_atencion",
     "lat": 19.5847,
-    "lng": -95.7064
+    "lng": -95.7064,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-016",
@@ -189,7 +204,8 @@
     "fecha": "2026-03-03",
     "status": "en_atencion",
     "lat": 18.5784,
-    "lng": -100.741
+    "lng": -100.741,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-017",
@@ -201,7 +217,8 @@
     "fecha": "2026-03-06",
     "status": "activa",
     "lat": 24.2721,
-    "lng": -87.1216
+    "lng": -87.1216,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-018",
@@ -213,7 +230,8 @@
     "fecha": "2026-03-09",
     "status": "en_atencion",
     "lat": 18.0509,
-    "lng": -96.7647
+    "lng": -96.7647,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-019",
@@ -225,7 +243,8 @@
     "fecha": "2026-03-03",
     "status": "resuelta",
     "lat": 23.408,
-    "lng": -91.5972
+    "lng": -91.5972,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-020",
@@ -237,7 +256,8 @@
     "fecha": "2026-03-02",
     "status": "en_atencion",
     "lat": 21.1947,
-    "lng": -101.7627
+    "lng": -101.7627,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-021",
@@ -249,7 +269,8 @@
     "fecha": "2026-03-01",
     "status": "activa",
     "lat": 17.9755,
-    "lng": -88.3797
+    "lng": -88.3797,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-022",
@@ -261,7 +282,8 @@
     "fecha": "2026-03-02",
     "status": "en_atencion",
     "lat": 17.9014,
-    "lng": -93.8852
+    "lng": -93.8852,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-023",
@@ -273,7 +295,8 @@
     "fecha": "2026-03-02",
     "status": "activa",
     "lat": 17.8985,
-    "lng": -93.6344
+    "lng": -93.6344,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-024",
@@ -285,7 +308,8 @@
     "fecha": "2026-03-10",
     "status": "en_atencion",
     "lat": 23.2275,
-    "lng": -89.241
+    "lng": -89.241,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-025",
@@ -297,7 +321,8 @@
     "fecha": "2026-03-03",
     "status": "activa",
     "lat": 23.1944,
-    "lng": -93.2507
+    "lng": -93.2507,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-026",
@@ -309,7 +334,8 @@
     "fecha": "2026-03-10",
     "status": "activa",
     "lat": 22.668,
-    "lng": -95.2548
+    "lng": -95.2548,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-027",
@@ -321,7 +347,8 @@
     "fecha": "2026-03-06",
     "status": "activa",
     "lat": 18.3137,
-    "lng": -92.8637
+    "lng": -92.8637,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-028",
@@ -333,7 +360,8 @@
     "fecha": "2026-03-09",
     "status": "activa",
     "lat": 22.4397,
-    "lng": -100.4871
+    "lng": -100.4871,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-029",
@@ -345,7 +373,8 @@
     "fecha": "2026-03-01",
     "status": "activa",
     "lat": 17.4224,
-    "lng": -93.2558
+    "lng": -93.2558,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-030",
@@ -357,7 +386,8 @@
     "fecha": "2026-03-09",
     "status": "activa",
     "lat": 20.3343,
-    "lng": -93.8707
+    "lng": -93.8707,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-031",
@@ -369,7 +399,8 @@
     "fecha": "2026-03-06",
     "status": "en_atencion",
     "lat": 21.4813,
-    "lng": -92.8301
+    "lng": -92.8301,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-032",
@@ -381,7 +412,8 @@
     "fecha": "2026-03-05",
     "status": "activa",
     "lat": 23.6894,
-    "lng": -91.4469
+    "lng": -91.4469,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-033",
@@ -393,7 +425,8 @@
     "fecha": "2026-03-03",
     "status": "activa",
     "lat": 19.7168,
-    "lng": -100.6459
+    "lng": -100.6459,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-034",
@@ -405,7 +438,8 @@
     "fecha": "2026-03-06",
     "status": "en_atencion",
     "lat": 19.7703,
-    "lng": -95.8033
+    "lng": -95.8033,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-035",
@@ -417,7 +451,8 @@
     "fecha": "2026-03-07",
     "status": "activa",
     "lat": 19.4315,
-    "lng": -100.3544
+    "lng": -100.3544,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-036",
@@ -429,7 +464,8 @@
     "fecha": "2026-03-06",
     "status": "resuelta",
     "lat": 19.124,
-    "lng": -96.846
+    "lng": -96.846,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-037",
@@ -441,7 +477,8 @@
     "fecha": "2026-03-05",
     "status": "activa",
     "lat": 25.1589,
-    "lng": -101.0959
+    "lng": -101.0959,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-038",
@@ -453,7 +490,8 @@
     "fecha": "2026-03-05",
     "status": "en_atencion",
     "lat": 24.0271,
-    "lng": -93.3488
+    "lng": -93.3488,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-039",
@@ -465,7 +503,8 @@
     "fecha": "2026-03-07",
     "status": "en_atencion",
     "lat": 22.2018,
-    "lng": -96.456
+    "lng": -96.456,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-040",
@@ -477,7 +516,8 @@
     "fecha": "2026-03-01",
     "status": "en_atencion",
     "lat": 24.1549,
-    "lng": -95.3057
+    "lng": -95.3057,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-041",
@@ -489,7 +529,8 @@
     "fecha": "2026-03-02",
     "status": "activa",
     "lat": 18.9908,
-    "lng": -100.6297
+    "lng": -100.6297,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-042",
@@ -501,7 +542,8 @@
     "fecha": "2026-03-06",
     "status": "resuelta",
     "lat": 22.9092,
-    "lng": -100.1156
+    "lng": -100.1156,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-043",
@@ -513,7 +555,8 @@
     "fecha": "2026-03-05",
     "status": "activa",
     "lat": 19.6809,
-    "lng": -99.4276
+    "lng": -99.4276,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-044",
@@ -525,7 +568,8 @@
     "fecha": "2026-03-10",
     "status": "activa",
     "lat": 23.2009,
-    "lng": -98.388
+    "lng": -98.388,
+    "tipo_flota": "ligero"
   },
   {
     "id": "AL-ME-045",
@@ -537,6 +581,152 @@
     "fecha": "2026-03-03",
     "status": "en_atencion",
     "lat": 19.6185,
-    "lng": -88.7538
+    "lng": -88.7538,
+    "tipo_flota": "ligero"
+  },
+  {
+    "id": "ALE-H001",
+    "unit": "ME-EX04",
+    "conductor": "Miguel Á. Soto Cruz",
+    "type": "Vibración anómala hidráulicos",
+    "category": "Crítico",
+    "priority": 94,
+    "status": "pendiente",
+    "direccion": "Frente Tren Maya Tramo 5",
+    "tipo_flota": "pesado",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 92,
+        "texto": "Vibración anómala en sistema hidráulico. 80% probabilidad falla en 2 hrs."
+      },
+      "momento": {
+        "score": 95,
+        "texto": "Tramo 5, zona excavación activa. 3 operadores a pie en perímetro."
+      },
+      "dinero": {
+        "score": 89,
+        "texto": "Komatsu PC360 valor $8.5M. Reparación catastrófica: $2.8M."
+      },
+      "impacto_financiero": {
+        "valor_carga": 1200000,
+        "total": 1850000
+      }
+    }
+  },
+  {
+    "id": "ALE-H002",
+    "unit": "ME-GR02",
+    "conductor": "Guillermo Reyes Acosta",
+    "type": "Cable principal desgaste >15%",
+    "category": "Crítico",
+    "priority": 95,
+    "status": "pendiente",
+    "direccion": "Frente Nuevo Aeropuerto Tulum",
+    "tipo_flota": "pesado",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 98,
+        "texto": "Cable principal grúa desgaste >15%. Riesgo rotura durante izado. Potencialmente fatal."
+      },
+      "momento": {
+        "score": 93,
+        "texto": "Aeropuerto Tulum. Izado vigas 40 ton. Zona con personal."
+      },
+      "dinero": {
+        "score": 88,
+        "texto": "Vigas $3.2M. Grúa Tadano $12M."
+      },
+      "impacto_financiero": {
+        "valor_carga": 3200000,
+        "total": 3200000
+      }
+    }
+  },
+  {
+    "id": "ALE-H003",
+    "unit": "ME-VQ01",
+    "conductor": "Carlos Ramírez Luna",
+    "type": "Transmisión — pérdida de potencia",
+    "category": "Crítico",
+    "priority": 88,
+    "status": "pendiente",
+    "direccion": "Frente Autopista MTY-Saltillo",
+    "tipo_flota": "pesado",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 75,
+        "texto": "Pérdida potencia transmisión en subida. Riesgo retroceso en pendiente."
+      },
+      "momento": {
+        "score": 90,
+        "texto": "MTY-Saltillo km 42. Pendiente 8%."
+      },
+      "dinero": {
+        "score": 82,
+        "texto": "Komatsu HD325 $6M. Transmisión nueva: $1.8M."
+      },
+      "impacto_financiero": {
+        "valor_carga": 800000,
+        "total": 2100000
+      }
+    }
+  },
+  {
+    "id": "ALE-H004",
+    "unit": "ME-BD01",
+    "conductor": "Roberto Salazar Núñez",
+    "type": "Cadena orugas tensión desajustada",
+    "category": "Alto",
+    "priority": 78,
+    "status": "pendiente",
+    "direccion": "Frente Tren Maya Tramo 3",
+    "tipo_flota": "pesado",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 65,
+        "texto": "Tensión cadena orugas bajo estándar. Riesgo descarrilamiento."
+      },
+      "momento": {
+        "score": 80,
+        "texto": "Nivelación terreno irregular. Lluvia en 3 hrs."
+      },
+      "dinero": {
+        "score": 70,
+        "texto": "CAT D6 $4M. Cadena $85K. Si daña sprocket: $350K."
+      },
+      "impacto_financiero": {
+        "valor_carga": 0,
+        "total": 890000
+      }
+    }
+  },
+  {
+    "id": "ALE-H005",
+    "unit": "ME-CF02",
+    "conductor": "Eduardo Vázquez Romero",
+    "type": "TPMS — neumático delantero 62 PSI",
+    "category": "Alto",
+    "priority": 82,
+    "status": "pendiente",
+    "direccion": "Frente Libramiento GDL-PV",
+    "tipo_flota": "pesado",
+    "razonamiento_ia": {
+      "seguridad": {
+        "score": 70,
+        "texto": "Presión 62 PSI (estándar 95). Riesgo reventón bajo carga."
+      },
+      "momento": {
+        "score": 85,
+        "texto": "GDL-PV zona carga. Cucharón lleno 3.8 m³."
+      },
+      "dinero": {
+        "score": 78,
+        "texto": "Llanta Michelin 23.5R25 $28K USD. Si revienta: +$12K rin."
+      },
+      "impacto_financiero": {
+        "valor_carga": 500000,
+        "total": 1200000
+      }
+    }
   }
 ]
