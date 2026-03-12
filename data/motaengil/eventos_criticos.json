@@ -8,20 +8,14 @@
     "time": "15:30",
     "route": "MTY→Saltillo",
     "direccion": "Frente Nuevo Aeropuerto Tulum",
+    "severity": "moderado",
+    "tipo_flota": "ligero",
+    "lat": 20.2,
+    "lng": -87.4,
     "razonamiento_ia": {
-      "seguridad": {
-        "score": 44
-      },
-      "momento": {
-        "score": 65
-      },
-      "dinero": {
-        "texto": "Herramienta $427K"
-      },
-      "impacto_financiero": {
-        "valor_carga": 411382,
-        "total": 640834
-      }
+      "seguridad": { "score": 44 },
+      "momento": { "score": 65 },
+      "dinero": { "texto": "Herramienta $427K", "impacto": 640834 }
     }
   },
   {
@@ -33,20 +27,14 @@
     "time": "12:32",
     "route": "MTY→Toluca",
     "direccion": "Frente Tren Maya Tramo 3",
+    "severity": "bajo",
+    "tipo_flota": "ligero",
+    "lat": 20.5,
+    "lng": -87.3,
     "razonamiento_ia": {
-      "seguridad": {
-        "score": 64
-      },
-      "momento": {
-        "score": 77
-      },
-      "dinero": {
-        "texto": "Herramienta $155K"
-      },
-      "impacto_financiero": {
-        "valor_carga": 718153,
-        "total": 677496
-      }
+      "seguridad": { "score": 64 },
+      "momento": { "score": 77 },
+      "dinero": { "texto": "Herramienta $155K", "impacto": 677496 }
     }
   },
   {
@@ -58,20 +46,14 @@
     "time": "10:27",
     "route": "CDMX→Saltillo",
     "direccion": "Frente Tren Maya Tramo 5",
+    "severity": "moderado",
+    "tipo_flota": "ligero",
+    "lat": 20.6,
+    "lng": -87.1,
     "razonamiento_ia": {
-      "seguridad": {
-        "score": 58
-      },
-      "momento": {
-        "score": 40
-      },
-      "dinero": {
-        "texto": "Herramienta $458K"
-      },
-      "impacto_financiero": {
-        "valor_carga": 501648,
-        "total": 732230
-      }
+      "seguridad": { "score": 58 },
+      "momento": { "score": 40 },
+      "dinero": { "texto": "Herramienta $458K", "impacto": 732230 }
     }
   },
   {
@@ -83,20 +65,14 @@
     "time": "12:30",
     "route": "MTY→Toluca",
     "direccion": "Frente Tren Maya Tramo 5",
+    "severity": "critico",
+    "tipo_flota": "ligero",
+    "lat": 20.63,
+    "lng": -87.08,
     "razonamiento_ia": {
-      "seguridad": {
-        "score": 58
-      },
-      "momento": {
-        "score": 90
-      },
-      "dinero": {
-        "texto": "Herramienta $185K"
-      },
-      "impacto_financiero": {
-        "valor_carga": 577975,
-        "total": 611624
-      }
+      "seguridad": { "score": 58 },
+      "momento": { "score": 90 },
+      "dinero": { "texto": "Herramienta $185K", "impacto": 611624 }
     }
   },
   {
@@ -108,20 +84,14 @@
     "time": "18:57",
     "route": "MTY→Saltillo",
     "direccion": "Frente Nuevo Aeropuerto Tulum",
+    "severity": "bajo",
+    "tipo_flota": "ligero",
+    "lat": 20.2,
+    "lng": -87.4,
     "razonamiento_ia": {
-      "seguridad": {
-        "score": 88
-      },
-      "momento": {
-        "score": 48
-      },
-      "dinero": {
-        "texto": "Herramienta $64K"
-      },
-      "impacto_financiero": {
-        "valor_carga": 733330,
-        "total": 264438
-      }
+      "seguridad": { "score": 88 },
+      "momento": { "score": 48 },
+      "dinero": { "texto": "Herramienta $64K", "impacto": 264438 }
     }
   },
   {
@@ -133,20 +103,14 @@
     "time": "12:20",
     "route": "CDMX→Saltillo",
     "direccion": "Frente Autopista MTY-Saltillo",
+    "severity": "bajo",
+    "tipo_flota": "ligero",
+    "lat": 25.4,
+    "lng": -100.9,
     "razonamiento_ia": {
-      "seguridad": {
-        "score": 50
-      },
-      "momento": {
-        "score": 45
-      },
-      "dinero": {
-        "texto": "Herramienta $220K"
-      },
-      "impacto_financiero": {
-        "valor_carga": 125520,
-        "total": 185834
-      }
+      "seguridad": { "score": 50 },
+      "momento": { "score": 45 },
+      "dinero": { "texto": "Herramienta $220K", "impacto": 185834 }
     }
   },
   {
@@ -158,20 +122,14 @@
     "time": "10:20",
     "route": "CDMX→Toluca",
     "direccion": "Frente Puente Vehicular Periférico Norte",
+    "severity": "bajo",
+    "tipo_flota": "ligero",
+    "lat": 19.5,
+    "lng": -99.2,
     "razonamiento_ia": {
-      "seguridad": {
-        "score": 49
-      },
-      "momento": {
-        "score": 69
-      },
-      "dinero": {
-        "texto": "Herramienta $157K"
-      },
-      "impacto_financiero": {
-        "valor_carga": 362982,
-        "total": 1152501
-      }
+      "seguridad": { "score": 49 },
+      "momento": { "score": 69 },
+      "dinero": { "texto": "Herramienta $157K", "impacto": 1152501 }
     }
   },
   {
@@ -183,20 +141,14 @@
     "time": "07:20",
     "route": "CDMX→Toluca",
     "direccion": "Frente Nuevo Aeropuerto Tulum",
+    "severity": "moderado",
+    "tipo_flota": "ligero",
+    "lat": 20.2,
+    "lng": -87.4,
     "razonamiento_ia": {
-      "seguridad": {
-        "score": 64
-      },
-      "momento": {
-        "score": 61
-      },
-      "dinero": {
-        "texto": "Herramienta $157K"
-      },
-      "impacto_financiero": {
-        "valor_carga": 286771,
-        "total": 934606
-      }
+      "seguridad": { "score": 64 },
+      "momento": { "score": 61 },
+      "dinero": { "texto": "Herramienta $157K", "impacto": 934606 }
     }
   },
   {
@@ -208,20 +160,14 @@
     "time": "06:49",
     "route": "CDMX→Saltillo",
     "direccion": "Frente Tren Maya Tramo 3",
+    "severity": "bajo",
+    "tipo_flota": "ligero",
+    "lat": 20.5,
+    "lng": -87.3,
     "razonamiento_ia": {
-      "seguridad": {
-        "score": 58
-      },
-      "momento": {
-        "score": 63
-      },
-      "dinero": {
-        "texto": "Herramienta $282K"
-      },
-      "impacto_financiero": {
-        "valor_carga": 417255,
-        "total": 918165
-      }
+      "seguridad": { "score": 58 },
+      "momento": { "score": 63 },
+      "dinero": { "texto": "Herramienta $282K", "impacto": 918165 }
     }
   },
   {
@@ -233,20 +179,14 @@
     "time": "15:49",
     "route": "MTY→Tulum",
     "direccion": "Frente Libramiento GDL-PV",
+    "severity": "moderado",
+    "tipo_flota": "ligero",
+    "lat": 20.7,
+    "lng": -103.3,
     "razonamiento_ia": {
-      "seguridad": {
-        "score": 94
-      },
-      "momento": {
-        "score": 49
-      },
-      "dinero": {
-        "texto": "Herramienta $208K"
-      },
-      "impacto_financiero": {
-        "valor_carga": 132017,
-        "total": 1119575
-      }
+      "seguridad": { "score": 94 },
+      "momento": { "score": 49 },
+      "dinero": { "texto": "Herramienta $208K", "impacto": 1119575 }
     }
   },
   {
@@ -258,20 +198,14 @@
     "time": "09:56",
     "route": "MTY→Toluca",
     "direccion": "Frente Nuevo Aeropuerto Tulum",
+    "severity": "bajo",
+    "tipo_flota": "ligero",
+    "lat": 20.2,
+    "lng": -87.4,
     "razonamiento_ia": {
-      "seguridad": {
-        "score": 80
-      },
-      "momento": {
-        "score": 93
-      },
-      "dinero": {
-        "texto": "Herramienta $301K"
-      },
-      "impacto_financiero": {
-        "valor_carga": 742008,
-        "total": 1059996
-      }
+      "seguridad": { "score": 80 },
+      "momento": { "score": 93 },
+      "dinero": { "texto": "Herramienta $301K", "impacto": 1059996 }
     }
   },
   {
@@ -283,20 +217,14 @@
     "time": "10:42",
     "route": "MTY→Tulum",
     "direccion": "Frente Tren Maya Tramo 3",
+    "severity": "moderado",
+    "tipo_flota": "ligero",
+    "lat": 20.5,
+    "lng": -87.3,
     "razonamiento_ia": {
-      "seguridad": {
-        "score": 53
-      },
-      "momento": {
-        "score": 56
-      },
-      "dinero": {
-        "texto": "Herramienta $62K"
-      },
-      "impacto_financiero": {
-        "valor_carga": 118801,
-        "total": 1058979
-      }
+      "seguridad": { "score": 53 },
+      "momento": { "score": 56 },
+      "dinero": { "texto": "Herramienta $62K", "impacto": 1058979 }
     }
   },
   {
@@ -308,20 +236,14 @@
     "time": "21:16",
     "route": "CDMX→Tulum",
     "direccion": "Frente Tren Interurbano Méx-Toluca",
+    "severity": "moderado",
+    "tipo_flota": "ligero",
+    "lat": 19.4,
+    "lng": -99.4,
     "razonamiento_ia": {
-      "seguridad": {
-        "score": 92
-      },
-      "momento": {
-        "score": 94
-      },
-      "dinero": {
-        "texto": "Herramienta $479K"
-      },
-      "impacto_financiero": {
-        "valor_carga": 416317,
-        "total": 990215
-      }
+      "seguridad": { "score": 92 },
+      "momento": { "score": 94 },
+      "dinero": { "texto": "Herramienta $479K", "impacto": 990215 }
     }
   },
   {
@@ -333,20 +255,14 @@
     "time": "19:33",
     "route": "MTY→Tulum",
     "direccion": "Frente Tren Interurbano Méx-Toluca",
+    "severity": "bajo",
+    "tipo_flota": "ligero",
+    "lat": 19.4,
+    "lng": -99.4,
     "razonamiento_ia": {
-      "seguridad": {
-        "score": 96
-      },
-      "momento": {
-        "score": 46
-      },
-      "dinero": {
-        "texto": "Herramienta $148K"
-      },
-      "impacto_financiero": {
-        "valor_carga": 75467,
-        "total": 208009
-      }
+      "seguridad": { "score": 96 },
+      "momento": { "score": 46 },
+      "dinero": { "texto": "Herramienta $148K", "impacto": 208009 }
     }
   },
   {
@@ -358,20 +274,232 @@
     "time": "16:03",
     "route": "CDMX→Toluca",
     "direccion": "Frente Puente Vehicular Periférico Norte",
+    "severity": "bajo",
+    "tipo_flota": "ligero",
+    "lat": 19.5,
+    "lng": -99.2,
     "razonamiento_ia": {
-      "seguridad": {
-        "score": 53
-      },
-      "momento": {
-        "score": 77
-      },
-      "dinero": {
-        "texto": "Herramienta $121K"
-      },
-      "impacto_financiero": {
-        "valor_carga": 634360,
-        "total": 344923
-      }
+      "seguridad": { "score": 53 },
+      "momento": { "score": 77 },
+      "dinero": { "texto": "Herramienta $121K", "impacto": 344923 }
+    }
+  },
+  {
+    "id": 101,
+    "priority": 95,
+    "unit": "ME-EX04",
+    "conductor": "Héctor Zavala",
+    "type": "Volcadura inminente (34°)",
+    "time": "14:22",
+    "route": "",
+    "direccion": "Talud Norte · Tren Maya T5",
+    "severity": "critico",
+    "tipo_flota": "pesado",
+    "lat": 20.21,
+    "lng": -87.46,
+    "tipo_maquina": "Excavadora CAT 320",
+    "razonamiento_ia": {
+      "seguridad": { "score": 95, "texto": "Inclinación 34° en talud (límite 30°). Operador con 11.5h turno continuo. Lluvia en zona: 32mm/h." },
+      "momento": { "score": 93, "texto": "Talud Norte Tren Maya. 2 accidentes en radio 5km últimos 90 días. Sin grúa de rescate <40km." },
+      "dinero": { "score": 89, "texto": "Excavadora CAT 320 valor $8.2M. Costo de pérdida total + paro obra: $12.4M. Seguro cubre 70%.", "impacto": 12400000 },
+      "flujo_respuesta": [
+        "Detener operación inmediata (señal remota) — 2 seg",
+        "Evacuar perímetro 50m — notificación a todo personal en sitio — 5 seg",
+        "Evaluación geotécnica de emergencia — 15 min",
+        "Solicitar grúa de estabilización más cercana — ETA 2h",
+        "Notificar supervisor de obra + seguridad industrial",
+        "Activar protocolo de preservación de evidencia"
+      ]
+    }
+  },
+  {
+    "id": 102,
+    "priority": 92,
+    "unit": "ME-VQ03",
+    "conductor": "Ramón Fuentes",
+    "type": "Ordeña diésel (-68L en 90seg)",
+    "time": "03:15",
+    "route": "",
+    "direccion": "Campamento Tulum",
+    "severity": "critico",
+    "tipo_flota": "pesado",
+    "lat": 20.21,
+    "lng": -87.43,
+    "tipo_maquina": "Volquete Kenworth T880",
+    "razonamiento_ia": {
+      "seguridad": { "score": 40, "texto": "Zona campamento sin personal nocturno. Cámaras detectan movimiento no autorizado junto al tanque." },
+      "momento": { "score": 88, "texto": "Tercer evento de ordeña en campamento Tulum en 30 días. Patrón: madrugada 2-4 AM, turno vigilancia reducido." },
+      "dinero": { "score": 92, "texto": "68L diésel = $1,700 MXN. Proyección mensual si no se atiende: $51K. Riesgo: contaminación de combustible = daño motor $380K.", "impacto": 380000 },
+      "flujo_respuesta": [
+        "Activar alarma sonora en unidad — inmediato",
+        "Notificar vigilancia campamento — 30 seg",
+        "Bloquear arranque remoto de ME-VQ03",
+        "Revisar cámaras perímetro últimas 2h",
+        "Reportar a coordinador de seguridad patrimonial"
+      ]
+    }
+  },
+  {
+    "id": 103,
+    "priority": 90,
+    "unit": "ME-GR01",
+    "conductor": "Sergio Delgado",
+    "type": "Sobrecarga +12% límite",
+    "time": "11:45",
+    "route": "",
+    "direccion": "Frente Aeropuerto Tulum",
+    "severity": "critico",
+    "tipo_flota": "pesado",
+    "lat": 20.24,
+    "lng": -87.41,
+    "tipo_maquina": "Grúa Liebherr LTM 1100",
+    "razonamiento_ia": {
+      "seguridad": { "score": 90, "texto": "Carga 112% capacidad nominal. Viento 25 km/h. Riesgo de colapso de pluma en maniobra de izaje." },
+      "momento": { "score": 85, "texto": "Frente Aeropuerto con 34 trabajadores en radio 100m. Última inspección de eslingas: hace 15 días." },
+      "dinero": { "score": 88, "texto": "Grúa valor $22M. Costo de colapso + paro + responsabilidad civil: $45M estimados.", "impacto": 45000000 },
+      "flujo_respuesta": [
+        "Suspender izaje inmediatamente — señal remota",
+        "Asegurar carga en posición actual",
+        "Evacuación de personal en radio 50m",
+        "Inspección de eslingas y cables de acero",
+        "Recalcular plan de izaje con carga correcta",
+        "Reanudar solo con autorización de supervisor"
+      ]
+    }
+  },
+  {
+    "id": 104,
+    "priority": 88,
+    "unit": "ME-EX02",
+    "conductor": "Antonio Ríos",
+    "type": "Microsueño operador",
+    "time": "16:30",
+    "route": "",
+    "direccion": "Frente Periférico Norte",
+    "severity": "critico",
+    "tipo_flota": "pesado",
+    "lat": 20.99,
+    "lng": -89.62,
+    "tipo_maquina": "Excavadora CAT 336",
+    "razonamiento_ia": {
+      "seguridad": { "score": 88, "texto": "Cámara cabina detectó 3 microsueños en 20 min. Operador con 10h turno. Última pausa hace 4.5h." },
+      "momento": { "score": 82, "texto": "Excavadora operando junto a zanja de 6m profundidad. 4 trabajadores en zona adyacente." },
+      "dinero": { "score": 78, "texto": "Excavadora $12M. Riesgo caída a zanja: reparación $3.2M + paro 15 días = $1.8M adicional.", "impacto": 5000000 },
+      "flujo_respuesta": [
+        "Activar alarma de cabina — inmediato",
+        "Detener operación del equipo",
+        "Relevar operador — descanso obligatorio 2h",
+        "Registrar en bitácora de fatiga",
+        "Revisar programación de turnos del frente"
+      ]
+    }
+  },
+  {
+    "id": 105,
+    "priority": 85,
+    "unit": "ME-BZ01",
+    "conductor": "Juan Pablo Vega",
+    "type": "Proximidad persona zona ciega",
+    "time": "09:12",
+    "route": "",
+    "direccion": "Frente Tren Maya T3",
+    "severity": "critico",
+    "tipo_flota": "pesado",
+    "lat": 18.51,
+    "lng": -88.36,
+    "tipo_maquina": "Bulldozer CAT D8T",
+    "razonamiento_ia": {
+      "seguridad": { "score": 95, "texto": "Sensor de proximidad detectó persona a 2.1m en punto ciego trasero. Bulldozer en reversa." },
+      "momento": { "score": 80, "texto": "Zona de despalme con visibilidad reducida por polvo. 12 trabajadores registrados en frente." },
+      "dinero": { "score": 70, "texto": "Responsabilidad por accidente fatal: $8-15M. Paro de obra por investigación: 30-60 días.", "impacto": 15000000 },
+      "flujo_respuesta": [
+        "PARADA DE EMERGENCIA automática activada",
+        "Verificar integridad de persona detectada",
+        "Activar banderillero permanente en zona",
+        "Revisar protocolos de señalización del frente",
+        "Capacitación emergente: zonas ciegas maquinaria"
+      ]
+    }
+  },
+  {
+    "id": 106,
+    "priority": 82,
+    "unit": "ME-VQ05",
+    "conductor": "Ricardo Lara",
+    "type": "Ralentí excesivo (47min)",
+    "time": "10:08",
+    "route": "",
+    "direccion": "Campamento Puerto VER",
+    "severity": "moderado",
+    "tipo_flota": "pesado",
+    "lat": 19.17,
+    "lng": -96.13,
+    "tipo_maquina": "Volquete Kenworth T880",
+    "razonamiento_ia": {
+      "seguridad": { "score": 25, "texto": "Sin riesgo inmediato. Motor en idle con operador en cabina." },
+      "momento": { "score": 65, "texto": "Volquete asignado a ciclo de acarreo. 3 ciclos pendientes antes de fin de turno." },
+      "dinero": { "score": 82, "texto": "47min idle = 38L diésel desperdiciado = $950 MXN. Proyección mensual: $28.5K. Productividad: -3 ciclos/día.", "impacto": 28500 },
+      "flujo_respuesta": [
+        "Notificar operador vía radio — verificar causa",
+        "Registrar en sistema de productividad",
+        "Si espera por carga: coordinarse con excavadora",
+        "Apagar motor si espera >15min adicionales",
+        "Revisar KPI de idle vs operación del turno"
+      ]
+    }
+  },
+  {
+    "id": 107,
+    "priority": 80,
+    "unit": "ME-CG02",
+    "conductor": "Óscar Navarro",
+    "type": "TPMS presión baja (48 PSI)",
+    "time": "08:30",
+    "route": "",
+    "direccion": "Frente MTY-Saltillo",
+    "severity": "moderado",
+    "tipo_flota": "pesado",
+    "lat": 25.42,
+    "lng": -100.99,
+    "tipo_maquina": "Cargador Frontal CAT 966",
+    "razonamiento_ia": {
+      "seguridad": { "score": 72, "texto": "Presión 48 PSI vs requerido 65 PSI. Riesgo de reventón en operación con carga. Llanta OTR valor $30K USD." },
+      "momento": { "score": 68, "texto": "Cargador operando en frente de trituración. Superficie irregular con roca expuesta." },
+      "dinero": { "score": 80, "texto": "Llanta OTR: $30K USD. Reventón puede dañar rin: +$15K USD. Downtime por cambio: 8h = $120K MXN perdidos.", "impacto": 900000 },
+      "flujo_respuesta": [
+        "Reducir velocidad a 5 km/h máximo — inmediato",
+        "Programar cambio de llanta en próxima pausa",
+        "Verificar presión de las otras 3 llantas",
+        "Solicitar llanta de repuesto al almacén",
+        "Inspección visual de cortes o daño lateral"
+      ]
+    }
+  },
+  {
+    "id": 108,
+    "priority": 78,
+    "unit": "ME-EX06",
+    "conductor": "Enrique Solís",
+    "type": "Vibración hidráulicos anómala",
+    "time": "13:50",
+    "route": "",
+    "direccion": "Frente Tren Maya T5",
+    "severity": "moderado",
+    "tipo_flota": "pesado",
+    "lat": 20.63,
+    "lng": -87.08,
+    "tipo_maquina": "Excavadora CAT 330",
+    "razonamiento_ia": {
+      "seguridad": { "score": 60, "texto": "Vibración 2.3x por encima del baseline en sistema hidráulico. Temperatura aceite: 92°C (límite 95°C)." },
+      "momento": { "score": 72, "texto": "Excavadora es equipo crítico del frente T5. Sin backup disponible <200km." },
+      "dinero": { "score": 78, "texto": "Falla hidráulica = reparación $850K + downtime 5 días = $750K productividad perdida. Total: $1.6M.", "impacto": 1600000 },
+      "flujo_respuesta": [
+        "Reducir carga de trabajo al 60% — inmediato",
+        "Monitorear temperatura aceite cada 15min",
+        "Programar inspección de bombas y válvulas",
+        "Solicitar técnico hidráulico especializado — ETA 4h",
+        "Preparar plan B de asignación de frente"
+      ]
     }
   }
 ]
