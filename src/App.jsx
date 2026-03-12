@@ -1,0 +1,9355 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import AdminPanel from './AdminPanel';
+import { 
+  Menu, Search, Bell, MapPin, Wrench, BarChart3, 
+  Settings, MapPinned, AlertTriangle, CheckCircle2, 
+  X, ChevronRight, ChevronDown, Send, ExternalLink,
+  TrendingUp, Brain, DollarSign, Zap, Activity, Shield,
+  Heart, User, HelpCircle, Users, FileText, Clock, Eye
+} from 'lucide-react';
+// === TORRE DE CONTROL 360 — Iconos adicionales ===
+import { Truck, Package, Target, Gauge, PieChart, TrendingDown, Calendar as CalendarIcon, ArrowUpRight, ArrowDownRight, RefreshCw, AlertCircle, Fuel, Timer, Award, Building2, Landmark, Layers, Database, LifeBuoy, BadgeCheck, CircleDollarSign, Factory, ShieldCheck, Replace, Cog } from 'lucide-react';
+
+const BACKGROUNDS = {
+  initial: './screenshots/Sugerencia-en-tiempo-real-de-creacion-de-Geocerca-1.jpg',
+  dashboard: './screenshots/Sugerencia-en-tiempo-real-de-creacion-de-Geocerca-2.jpg',
+  list: './screenshots/Sugerencia-en-tiempo-real-de-creacion-de-Geocerca-3.jpg',
+  zone1: './screenshots/Sugerencia-en-tiempo-real-de-creacion-de-Geocerca-4.jpg',
+  zone2: './screenshots/Sugerencia-en-tiempo-real-de-creacion-de-Geocerca-8.jpg',
+  zone3: './screenshots/Sugerencia-en-tiempo-real-de-creacion-de-Geocerca-6.jpg',
+  zone4: './screenshots/zona-huachicoleo-horizontal.jpg',
+  success: './screenshots/Sugerencia-en-tiempo-real-de-creacion-de-Geocerca-5.jpg',
+  chat: './screenshots/Sugerencia-en-tiempo-real-de-creacion-de-Geocerca-3.jpg',
+  morning: './screenshots/morning-bg.jpg',
+  afternoon: './screenshots/afternoon-bg.jpg',
+  evening: './screenshots/evening-bg.jpg',
+  night: './screenshots/night-bg.jpg',
+}
+
+// === COMPONENTE: Mapa Leaflet satellite con polígono de geocerca (gratis, sin billing) ===
+const GeoMapBackground = ({ lat, lng, radioMetros, zoneName, zoneType }) => {
+  const mapRef = useRef(null);
+  const mapInstanceRef = useRef(null);
+  const [leafletReady, setLeafletReady] = useState(false);
+
+  // Esperar a que Leaflet cargue
+  useEffect(() => {
+    if (window.L?.map) { setLeafletReady(true); return; }
+    const check = setInterval(() => {
+      if (window.L?.map) { setLeafletReady(true); clearInterval(check); }
+    }, 150);
+    return () => clearInterval(check);
+  }, []);
+
+  useEffect(() => {
+    if (!mapRef.current || !leafletReady) return;
+    
+    const centerLat = lat || 19.4326;
+    const centerLng = lng || -99.1332;
+    const radio = radioMetros || 500;
+    
+    const typeColors = {
+      zona_carga_descarga: { fill: '#2196F3', stroke: '#1565C0' },
+      zona_riesgo: { fill: '#F44336', stroke: '#C62828' },
+      punto_inspeccion: { fill: '#FF9800', stroke: '#E65100' },
+      zona_urbana_densa: { fill: '#9C27B0', stroke: '#6A1B9A' },
+      zona_escolar: { fill: '#4CAF50', stroke: '#2E7D32' },
+    };
+    const colors = typeColors[zoneType] || { fill: '#2196F3', stroke: '#1565C0' };
+    const zoomLvl = radio > 2000 ? 13 : radio > 1000 ? 14 : 15;
+
+    // Destruir mapa previo si existe
+    if (mapInstanceRef.current) {
+      mapInstanceRef.current.remove();
+      mapInstanceRef.current = null;
+    }
+
+    // Crear mapa Leaflet
+    const map = window.L.map(mapRef.current, {
+      center: [centerLat, centerLng],
+      zoom: zoomLvl,
+      zoomControl: false,
+      attributionControl: false,
+      dragging: true,
+      scrollWheelZoom: true,
+      doubleClickZoom: true,
+      touchZoom: true,
+      boxZoom: true,
+      keyboard: true,
+      wheelPxPerZoomLevel: 60,
+    });
+    mapInstanceRef.current = map;
+
+    // No usar zoom control nativo de Leaflet (queda tapado)
+    // Los botones +/- se renderizan como JSX con z-index alto
+
+    // Esri World Imagery — satellite tiles (gratis, sin API key)
+    window.L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 19,
+    }).addTo(map);
+
+    // Etiquetas de calles sobre satellite (para contexto)
+    window.L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 19,
+      opacity: 0.7,
+    }).addTo(map);
+
+    // Círculo de geocerca
+    window.L.circle([centerLat, centerLng], {
+      radius: radio,
+      color: colors.stroke,
+      weight: 3,
+      opacity: 0.9,
+      fillColor: colors.fill,
+      fillOpacity: 0.25,
+    }).addTo(map);
+
+    // Marcador central con SVG
+    const markerIcon = window.L.divIcon({
+      className: '',
+      html: `<div style="width:18px;height:18px;border-radius:50%;background:${colors.stroke};border:2.5px solid white;box-shadow:0 0 8px rgba(0,0,0,0.5);"></div>`,
+      iconSize: [18, 18],
+      iconAnchor: [9, 9],
+    });
+    window.L.marker([centerLat, centerLng], { icon: markerIcon }).addTo(map);
+
+    // Forzar refresh de tiles después de montar
+    setTimeout(() => map.invalidateSize(), 100);
+
+    return () => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+      }
+    };
+  }, [lat, lng, radioMetros, zoneType, leafletReady]);
+
+  const radio = radioMetros || 500;
+  
+  return (
+    <div className="absolute inset-0" style={{ zIndex: 0 }}>
+      <div ref={mapRef} style={{ width: '100%', height: '100%' }} />
+      {/* Botones custom de zoom +/- (reemplazan control nativo de Leaflet) */}
+      <div style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', zIndex: 9999, display: 'flex', flexDirection: 'column', gap: 6 }}>
+        <button
+          onClick={() => mapInstanceRef.current && mapInstanceRef.current.zoomIn()}
+          style={{ width: 40, height: 40, borderRadius: 8, border: '2px solid rgba(255,255,255,0.8)', background: 'rgba(0,0,0,0.65)', color: '#fff', fontSize: 22, fontWeight: 'bold', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(8px)', boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}
+          title="Zoom In"
+        >+</button>
+        <button
+          onClick={() => mapInstanceRef.current && mapInstanceRef.current.zoomOut()}
+          style={{ width: 40, height: 40, borderRadius: 8, border: '2px solid rgba(255,255,255,0.8)', background: 'rgba(0,0,0,0.65)', color: '#fff', fontSize: 22, fontWeight: 'bold', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(8px)', boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}
+          title="Zoom Out"
+        >−</button>
+      </div>
+      {/* Overlay de coordenadas */}
+      <div className="absolute bottom-4 left-20 bg-black/70 backdrop-blur-sm text-white px-4 py-2.5 rounded-xl z-10 shadow-lg">
+        <div className="flex items-center gap-2 text-xs font-mono">
+          <span className="text-green-400">📍</span>
+          <span>{(lat || 19.4326).toFixed(6)}, {(lng || -99.1332).toFixed(6)}</span>
+          <span className="text-gray-400 mx-1">|</span>
+          <span className="text-blue-300">Radio: {(radio / 1000).toFixed(1)} km</span>
+        </div>
+        <p className="text-[10px] text-gray-300 mt-0.5">{zoneName || 'Geocerca'}</p>
+      </div>
+      {/* Leyenda de tipo */}
+      <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-white px-3 py-2 rounded-lg z-10 shadow-lg">
+        <div className="flex items-center gap-2 text-[10px]">
+          <div className={`w-3 h-3 rounded-full border-2 ${
+            zoneType === 'zona_riesgo' ? 'bg-red-500/40 border-red-600' :
+            zoneType === 'zona_carga_descarga' ? 'bg-blue-500/40 border-blue-600' :
+            zoneType === 'punto_inspeccion' ? 'bg-orange-500/40 border-orange-600' :
+            zoneType === 'zona_urbana_densa' ? 'bg-purple-500/40 border-purple-600' :
+            zoneType === 'zona_escolar' ? 'bg-green-500/40 border-green-600' :
+            'bg-blue-500/40 border-blue-600'
+          }`} />
+          <span className="font-semibold uppercase tracking-wider">{(zoneType || 'geocerca').replace(/_/g, ' ')}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// === AÑADIDO: Función de exportación ===
+const exportKpiPopupToTxt = (kpiData) => {
+  if (!kpiData) return;
+  const lines = [];
+  lines.push(kpiData.label);
+  lines.push(kpiData.count + ' unidades en esta categoría');
+  lines.push('');
+  const totalNoActuar = kpiData.totalCostNoActuar || 0;
+  const totalActuar = kpiData.totalCostActuar || 0;
+  const ahorro = totalNoActuar - totalActuar;
+  lines.push('Costo Total si NO Actuar: $' + Number(totalNoActuar).toLocaleString());
+  lines.push('Costo Total Actuar Ahora: $' + Number(totalActuar).toLocaleString());
+  lines.push('Ahorro Potencial: $' + Number(ahorro).toLocaleString());
+  lines.push('');
+  lines.push('Detalle de Unidades');
+  lines.push('Unidad\tPrioridad\tConductor\tTipo\tConfianza\tUbicación\tCosto por no actuar');
+  (kpiData.units || []).forEach(function(unit) {
+    var unidad = unit.unit || '';
+    var prioridad = unit.priority != null ? unit.priority + '/100' : '';
+    var conductor = unit.conductor || '';
+    var tipo = unit.tipo || '';
+    var confianza = unit.confidence != null ? unit.confidence + '%' : '';
+    var ubicacion = unit.ubicacion || 'En ruta';
+    var costoNoActuar = unit.cost_no_actuar || 0;
+    lines.push(unidad + '\t' + prioridad + '\t' + conductor + '\t' + tipo + '\t' + confianza + '\t' + ubicacion + '\t$' + Number(costoNoActuar).toLocaleString());
+  });
+  var txt = lines.join('\n');
+  var blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = (kpiData.label || 'popup').replace(/\s+/g, '_') + '.txt';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+};
+// === FIN AÑADIDO ===
+
+function App() {
+  const [selectedCompany, setSelectedCompany] = useState(null);
+  // ===== BIMBO: Estados para Reqs 1-5 (Mapeo rutas, Desvíos, NOM-087, Zonas seguras, Casetas) =====
+  const [bimboRouteView, setBimboRouteView] = useState('primary'); // 'primary' | 'alternates'
+  const [bimboNom087Modal, setBimboNom087Modal] = useState(false);
+  const [bimboDesvioAlerts, setBimboDesvioAlerts] = useState([]);
+  const [bimboCasetasSummaryOpen, setBimboCasetasSummaryOpen] = useState(false);
+  const [bimboZonasSeguras, setBimboZonasSeguras] = useState(true); // show safe zones on map
+  const [bimboParadaProhibidaModal, setBimboParadaProhibidaModal] = useState(null);
+  const [homeSectionPaused, setHomeSectionPaused] = useState(false); // Bimbo: pause carousel
+
+  // === DATOS DINÁMICOS: Estados para JSONs de Bimbo ===
+  const [jsonFlota, setJsonFlota] = useState(null);
+  const [jsonRutas, setJsonRutas] = useState(null);
+  const [jsonKpis, setJsonKpis] = useState(null);
+  const [jsonGeocercas, setJsonGeocercas] = useState(null);
+  const [jsonZonasSeguras, setJsonZonasSeguras] = useState(null);
+  const [jsonAlertas, setJsonAlertas] = useState(null);
+  const [jsonCasetas, setJsonCasetas] = useState(null);
+  const [jsonConductores, setJsonConductores] = useState(null);
+  const [jsonMantenimiento, setJsonMantenimiento] = useState(null);
+  const [jsonSaludVehicular, setJsonSaludVehicular] = useState(null);
+  const [jsonTelemetria, setJsonTelemetria] = useState(null);
+  const [jsonClima, setJsonClima] = useState(null);
+  const [jsonEventosCamaras, setJsonEventosCamaras] = useState(null);
+  const [jsonSeguridad, setJsonSeguridad] = useState(null);
+  const [jsonEventosCriticos, setJsonEventosCriticos] = useState(null);
+  const [jsonSupervisorOps, setJsonSupervisorOps] = useState(null);
+  const [jsonTorreControlKpis, setJsonTorreControlKpis] = useState(null);
+  const [jsonDataLoaded, setJsonDataLoaded] = useState(false);
+  // === FIN DATOS DINÁMICOS Estados ===
+  // ===== FIN BIMBO Estados =====
+
+  // === CARGA DINÁMICA: Fetch de JSONs cuando se selecciona Bimbo ===
+  useEffect(() => {
+    if (selectedCompany !== 'bimbo' && selectedCompany !== 'motaengil') {
+      setJsonDataLoaded(false);
+      return;
+    }
+    const basePath = './data/bimbo/';
+    const fetchAll = async () => {
+      try {
+        const [
+          fFlota, fRutas, fKpis, fGeocercas, fZonas, fAlertas,
+          fCasetas, fConductores, fMant, fSalud, fTele, fClima, fEventos, fSeg,
+          fEventosCrit, fSupOps, fTorreKpis
+        ] = await Promise.all([
+          fetch(basePath + 'flota_vehiculos.json').then(r => r.json()),
+          fetch(basePath + 'rutas_activas.json').then(r => r.json()),
+          fetch(basePath + 'kpis_dashboard.json').then(r => r.json()),
+          fetch(basePath + 'geocercas.json').then(r => r.json()),
+          fetch(basePath + 'zonas_seguras.json').then(r => r.json()),
+          fetch(basePath + 'alertas_activas.json').then(r => r.json()),
+          fetch(basePath + 'casetas_peajes.json').then(r => r.json()),
+          fetch(basePath + 'conductores.json').then(r => r.json()),
+          fetch(basePath + 'mantenimiento.json').then(r => r.json()),
+          fetch(basePath + 'salud_vehicular.json').then(r => r.json()),
+          fetch(basePath + 'telemetria_tiempo_real.json').then(r => r.json()),
+          fetch(basePath + 'clima_ruta.json').then(r => r.json()),
+          fetch(basePath + 'eventos_camaras.json').then(r => r.json()),
+          fetch(basePath + 'seguridad_zonas.json').then(r => r.json()),
+          fetch(basePath + 'eventos_criticos.json').then(r => r.json()),
+          fetch(basePath + 'supervisor_ops.json').then(r => r.json()),
+          fetch(basePath + 'torre_control_kpis.json').then(r => r.json()),
+        ]);
+        setJsonFlota(fFlota);
+        setJsonRutas(fRutas);
+        setJsonKpis(fKpis);
+        setJsonGeocercas(fGeocercas);
+        setJsonZonasSeguras(fZonas);
+        setJsonAlertas(fAlertas);
+        setJsonCasetas(fCasetas);
+        setJsonConductores(fConductores);
+        setJsonMantenimiento(fMant);
+        setJsonSaludVehicular(fSalud);
+        setJsonTelemetria(fTele);
+        setJsonClima(fClima);
+        setJsonEventosCamaras(fEventos);
+        setJsonSeguridad(fSeg);
+        setJsonEventosCriticos(fEventosCrit);
+        setJsonSupervisorOps(fSupOps);
+        setJsonTorreControlKpis(fTorreKpis);
+        setJsonDataLoaded(true);
+        console.log('[Iris Fleet] ✅ 17 JSONs de Bimbo cargados correctamente');
+      } catch (err) {
+        console.error('[Iris Fleet] ❌ Error cargando JSONs de Bimbo:', err);
+      }
+    };
+    fetchAll();
+  }, [selectedCompany]);
+
+  // === Inicializar datos editables del Admin Panel cuando se cargan los JSONs ===
+  useEffect(() => {
+    if (!jsonDataLoaded) return;
+    if (jsonConductores && !adminConductores) setAdminConductores(jsonConductores);
+    if (jsonFlota && !adminVehiculos) setAdminVehiculos(jsonFlota);
+    if (jsonRutas && !adminRutas) setAdminRutas(jsonRutas);
+    if (jsonZonasSeguras && !adminZonasSeguras) setAdminZonasSeguras(jsonZonasSeguras);
+    if (jsonAlertas && !adminAlertas) setAdminAlertas(jsonAlertas);
+    if (jsonEventosCamaras && !adminEventosCamaras) setAdminEventosCamaras(jsonEventosCamaras);
+  }, [jsonDataLoaded, jsonConductores, jsonFlota, jsonRutas, jsonZonasSeguras, jsonAlertas, jsonEventosCamaras]);
+
+  // === ADAPTADOR: Transforma JSON flota → formato fleetVehicles existente ===
+  const adaptFlotaJson = (jsonData) => {
+    // Supports both new format (direct array) and old format ({vehiculos: [...]})
+    const vehicles = Array.isArray(jsonData) ? jsonData : (jsonData?.vehiculos || null);
+    if (!vehicles) return null;
+    const gasolineras = ['Pemex CEDIS', 'BP Autopista', 'G500 Ruta', 'Pemex Carretera', 'Mobil Express', 'Pemex Periférico', 'Total Energies'];
+    const metodos = ['Tarjeta Fleet', 'Efectivo', 'Tarjeta Fleet', 'Tarjeta Fleet'];
+    return vehicles.map((v, i) => {
+      // Map estado (new) → status (old), with fallback to v.status
+      let mappedStatus = v.status;
+      if (v.estado) {
+        const estadoMap = { 'Operativo': 'por_asignar', 'En Ruta': 'en_ruta', 'En Taller': 'en_taller', 'Descanso': 'por_asignar' };
+        mappedStatus = estadoMap[v.estado] || v.status || 'por_asignar';
+      }
+      const finalStatus = mappedStatus || 'por_asignar';
+      // Generate realistic diesel costs from existing data
+      const distRec = v.distancia_recorrida_km || 0;
+      const rend = v.rendimiento_kml || 3.5;
+      const litrosConsumidos = distRec > 0 ? Math.round(distRec / rend) : 0;
+      const precioLitro = 24.5 + Math.random() * 1.5;
+      const importeDiesel = Math.round(litrosConsumidos * precioLitro);
+      const dieselEntries = (finalStatus === 'en_ruta' && litrosConsumidos > 0) ? [
+        { gasolinera: gasolineras[i % gasolineras.length] + ' ' + (v.origen || ''), hora: '0' + (6 + (i % 6)) + ':' + String(10 + (i*7)%50).padStart(2,'0'), litros: Math.round(litrosConsumidos * 0.6), precioLitro: parseFloat(precioLitro.toFixed(2)), importe: Math.round(importeDiesel * 0.6), metodo: metodos[i % metodos.length], odometro: v.odometro_km || 500000, factura: 'CFDI-' + v.unidad + '-001' },
+        ...(distRec > 300 ? [{ gasolinera: gasolineras[(i+3) % gasolineras.length] + ' ' + (v.destino || ''), hora: String(12 + (i % 4)) + ':' + String(10 + (i*3)%50).padStart(2,'0'), litros: Math.round(litrosConsumidos * 0.4), precioLitro: parseFloat((precioLitro + 0.2).toFixed(2)), importe: Math.round(importeDiesel * 0.4), metodo: metodos[(i+1) % metodos.length], odometro: (v.odometro_km || 500000) + distRec, factura: 'CFDI-' + v.unidad + '-002' }] : [])
+      ] : [];
+      // Type: 80% propia, 20% terceros
+      const vType = (i % 5 === 4) ? 'terceros' : 'propia';
+      // Consumo anomaly detection
+      const consumoStatus = rend < 2.8 ? 'Elevado' : rend < 3.2 ? 'Sobre promedio' : 'Normal';
+      // Puntualidad
+      const punt = v.sla_en_riesgo ? 'demora_critica' : (v.avance_pct > 80 ? 'a_tiempo' : (v.avance_pct > 50 ? 'a_tiempo' : 'demorado'));
+      // en_taller fields
+      const isTaller = finalStatus === 'en_taller';
+      const tallerRazones = ['Motor — Temp elevada recurrente', 'Frenos — Pastillas < 15%', 'Transmisión — Vibraciones', 'Neumáticos — Desgaste irregular', 'Eléctrico — Batería deficiente', 'Suspensión — Ruido anormal', 'Refrigeración — Fuga refrigerante'];
+      return {
+        id: 'FP-' + String(i+1).padStart(3,'0'),
+        unit: v.unidad,
+        type: vType,
+        status: finalStatus,
+        conductor: v.conductor || '',
+        origen: v.origen || '',
+        destino: v.destino || '',
+        cliente: v.cliente || '',
+        etaOriginal: v.eta_original || v.horaSalida || '',
+        etaAI: v.eta_ai || v.etaLlegada || '',
+        etaReason: v.eta_razon_ajuste || '',
+        puntualidad: punt,
+        shipment: 'SHP-' + v.unidad,
+        salidaPlan: '',
+        salidaReal: '',
+        tiempoPlan: '',
+        velocidad: v.velocidad_kmh || v.ubicacion?.velocidadActual || 0,
+        combustible: v.combustible_pct || v.combustible?.nivelActual || 0,
+        motorSalud: v.salud_motor_pct || 85,
+        frenosSalud: v.salud_frenos_pct || 90,
+        rpm: v.rpm || 0,
+        tempMotor: v.temp_motor_c || 0,
+        slaEnRiesgo: v.sla_en_riesgo || false,
+        slaMonto: v.sla_monto_penalizacion || 0,
+        prioridadExcepcion: v.sla_en_riesgo ? 75 : (finalStatus === 'no_ubicable' ? 90 : 0),
+        causaEstado: v.eta_razon_ajuste || (isTaller ? tallerRazones[i % tallerRazones.length] : 'Sin novedades.'),
+        accionIA: v.alertas && v.alertas.length > 0 ? 'Revisar alertas activas.' : (isTaller ? 'Priorizar reparación.' : 'Sin acción requerida.'),
+        avance: v.avance_pct || v.progreso || 0,
+        avanceReparacion: isTaller ? (30 + (i * 17) % 70) : 0,
+        riskScore: v.sla_en_riesgo ? 65 : (v.alertas && v.alertas.length > 0 ? 45 : (finalStatus === 'no_ubicable' ? 85 : 20)),
+        lat: v.lat || v.ubicacion?.lat || 19.4326,
+        lng: v.lng || v.ubicacion?.lng || -99.1332,
+        horasConduccion: v.horas_conduccion_hoy || 0,
+        carga: v.carga || '',
+        valorCarga: v.valor_carga_mxn || 0,
+        tempCaja: v.temp_caja_c !== undefined ? v.temp_caja_c : (v.cadena_frio ? -2.5 + (i%3)*0.3 : null),
+        tempSetPoint: v.temp_setpoint_c !== undefined ? v.temp_setpoint_c : (v.cadena_frio ? -2.0 : null),
+        tempTrend: v.cadena_frio ? 'estable' : null,
+        saludVehiculo: v.salud_general_pct || 75,
+        alertas: v.alertas || [],
+        desvio: v.desvio_activo || false,
+        proximaParada: '',
+        consumoCombustible: consumoStatus,
+        distanciaPlaneada: v.distancia_planeada_km || 0,
+        distanciaRecorrida: v.distancia_recorrida_km || 0,
+        rendimiento: v.rendimiento_kml || v.consumoKmL || 0,
+        remolque: v.remolque || null,
+        etaParcial: '',
+        origenCoords: { lat: v.lat || 19.4326, lng: v.lng || -99.1332 },
+        destinoCoords: { lat: (v.lat || 19.4326) + (Math.random()-0.5)*4, lng: (v.lng || -99.1332) + (Math.random()-0.5)*4 },
+        paradas: [],
+        eventosViaje: finalStatus === 'en_ruta' ? (v.alertas || []).map((a, ai) => ({ tipo: a, hora: '0' + (8+ai) + ':00', severidad: 'media' })) : [],
+        costosViaje: { tipoViaje: distRec > 500 ? 'completo' : 'sencillo', anticipo: Math.round(importeDiesel * 0.5), metodoPagoAnticipo: 'Transferencia', diesel: dieselEntries, viaticos: finalStatus === 'en_ruta' ? [{ concepto: 'Comida', importe: 350 + (i%5)*50 }] : [], maniobras: [], otrosGastos: [], vulcanizadora: [], hospedaje: distRec > 800 ? [{ concepto: 'Hotel ruta', importe: 850 }] : [], estacionamiento: [] },
+        // en_taller specific fields
+        ubicacionTaller: isTaller ? ['Taller Central CDMX', 'Taller MTY Norte', 'Taller GDL Zapopan', 'Taller QRO Industrial', 'Taller PUE Centro'][i % 5] : null,
+        razonIngreso: isTaller ? tallerRazones[i % tallerRazones.length] : null,
+        fechaIngreso: isTaller ? '2026-0' + (2 + (i%2)) + '-' + String(1 + (i*3)%28).padStart(2,'0') : null,
+        tiempoEstimadoSalida: isTaller ? '2026-03-' + String(8 + (i*2)%20).padStart(2,'0') : null,
+        costoEstimado: isTaller ? (45000 + (i * 12345) % 180000) : 0,
+        impactoSLA: isTaller ? (1 + i % 5) : 0,
+        vehiculoSustituto: isTaller && i % 3 === 0 ? 'MX-' + (3100 + i) + ' (asignado)' : null,
+        historialVisitas: isTaller ? (1 + i % 8) : 0,
+        fallaRecurrente: isTaller ? (i % 3 === 0) : false,
+        ultimaUbicacion: finalStatus === 'no_ubicable' ? ['Última señal: Autopista 57 km 180', 'Última señal: Zona Industrial Monterrey', 'Última señal: Periferico GDL'][i % 3] : null,
+        causaProbable: finalStatus === 'no_ubicable' ? { posibleRobo: 15 + (i*13)%50, fallaGPS: 20 + (i*7)%40, zonaBlanca: 30 } : null,
+        // Campos extra del JSON
+        modelo: v.modelo || v.tipo || '',
+        anio: v.anio || v.año || 0,
+        placas: v.placas || v.placa || '',
+        vin: v.vin || v.numSerie || '',
+        odometro: v.odometro_km || v.odometro || 0,
+        presionAceite: v.presion_aceite_psi || 0,
+        saludLlantas: v.salud_llantas_pct || 0,
+        saludTransmision: v.salud_transmision_pct || 0,
+        cadenaFrio: v.cadena_frio || false,
+        capacidadTon: v.capacidadTon || 0,
+        categoria: v.categoria || '',
+        rutaAsignada: v.rutaAsignada || '',
+        ultimoMantenimiento: v.mantenimiento?.ultimoServicio || '',
+        proximoServicio: v.mantenimiento?.proximoServicio || '',
+        seguroPoliza: v.seguro?.poliza || '',
+        seguroAseguradora: v.seguro?.aseguradora || '',
+        gps: v.gps !== undefined ? v.gps : true,
+        dashcam: v.dashcam !== undefined ? v.dashcam : false,
+        // Para vehículos no en ruta
+        ubicacionActual: mappedStatus === 'por_asignar' ? (v.origen || 'Base') : undefined,
+        tiempoEspera: mappedStatus === 'por_asignar' ? '1h 00min' : undefined,
+        disponibilidadConductor: mappedStatus === 'por_asignar' ? 'Disponible' : undefined,
+        // Para vehículos no ubicables
+        ultimaUbicacion: mappedStatus === 'no_ubicable' ? (v.origen || 'Desconocido') : undefined,
+        tiempoSinSenal: mappedStatus === 'no_ubicable' ? '2h 00min' : undefined,
+        causaProbable: mappedStatus === 'no_ubicable' ? { sinCobertura: 50, dispositivoDanado: 25, posibleRobo: 25 } : undefined,
+        accionSugerida: mappedStatus === 'no_ubicable' ? 'Verificar conectividad' : undefined,
+        // Para vehículos en taller
+        ubicacionTaller: mappedStatus === 'en_taller' ? 'Taller asignado' : undefined,
+        razonIngreso: mappedStatus === 'en_taller' ? 'Mantenimiento programado' : undefined,
+        fechaIngreso: mappedStatus === 'en_taller' ? '2026-03-01' : undefined,
+        tiempoEstimadoSalida: mappedStatus === 'en_taller' ? '2026-03-08' : undefined,
+        avanceReparacion: mappedStatus === 'en_taller' ? 50 : undefined,
+        costoEstimado: mappedStatus === 'en_taller' ? 30000 : undefined,
+        impactoSLA: mappedStatus === 'en_taller' ? 2 : undefined,
+        vehiculoSustituto: mappedStatus === 'en_taller' ? 'Pendiente' : undefined,
+        historialVisitas: mappedStatus === 'en_taller' ? 2 : undefined,
+        fallaRecurrente: mappedStatus === 'en_taller' ? false : undefined,
+      };
+    });
+  };
+
+  // === ADAPTADOR: Transforma JSON zonas seguras → formato bimboZonasSegurasList ===
+  const adaptZonasSeguras = (jsonData) => {
+    // Supports both new format (direct array) and old format ({zonas: [...]})
+    const zonas = Array.isArray(jsonData) ? jsonData : (jsonData?.zonas || null);
+    if (!zonas) return null;
+    return zonas.map(z => ({
+      id: z.id,
+      nombre: z.nombre,
+      tipo: z.tipo,
+      lat: z.centro?.lat || z.lat || 0,
+      lng: z.centro?.lng || z.lng || 0,
+      radioMetros: z.radioMetros || 500,
+      servicios: z.servicios || [],
+      capacidad: z.capacidadVehiculos || z.capacidad_camiones || 0,
+      ocupacion: (() => {
+        const cap = z.capacidadVehiculos || z.capacidad_camiones || 1;
+        const ocu = z.ocupacionActual !== undefined ? z.ocupacionActual : (z.ocupacion_actual || 0);
+        return Math.round((ocu / cap) * 100);
+      })(),
+      horario: z.horario || '',
+    }));
+  };
+
+  // === ADAPTADOR: Transforma JSON geocercas → formato zones existente ===
+  const adaptGeocercas = (jsonData) => {
+    // Supports both new format (direct array) and old format ({sugeridas_por_ia: [...]})
+    const geocercas = Array.isArray(jsonData) ? jsonData : (jsonData?.sugeridas_por_ia || null);
+    if (!geocercas) return null;
+    return geocercas.map(g => ({
+      id: g.id,
+      name: g.nombre,
+      type: g.tipo,
+      lat: g.centro?.lat || g.lat || 0,
+      lng: g.centro?.lng || g.lng || 0,
+      radioMetros: g.radioMetros || g.radio_metros || 500,
+      activa: g.activa !== undefined ? g.activa : true,
+      alertaEntrada: g.alertaEntrada !== undefined ? g.alertaEntrada : false,
+      alertaSalida: g.alertaSalida !== undefined ? g.alertaSalida : false,
+      description: g.descripcion || g.nombre,
+      riskScore: g.riesgo_score || 50,
+      riskTrend: '+' + Math.round((g.riesgo_score || 50) * 0.1) + '%',
+      confidence: g.confianza_pct || 80,
+      dataPoints: Math.round((g.confianza_pct || 80) * 2.1),
+      economicImpact: {
+        savingsRisk: g.impacto_economico?.ahorro_riesgo || 0,
+        savingsSLA: g.impacto_economico?.ahorro_sla || 0,
+        savingsFuel: g.impacto_economico?.ahorro_combustible || 0,
+      },
+      counterfactual: {
+        loss: (g.impacto_economico?.ahorro_riesgo || 0) + (g.impacto_economico?.ahorro_sla || 0) + (g.impacto_economico?.ahorro_combustible || 0),
+        slaBreaches: Math.round((g.riesgo_score || 50) / 8),
+        clientsAtRisk: Math.round((g.riesgo_score || 50) / 25),
+      },
+      reasoningBullets: (() => {
+        const tipo = g.tipo || 'zona_riesgo';
+        const nombre = g.nombre || 'Geocerca';
+        const score = g.riesgo_score || 50;
+        const conf = g.confianza_pct || 75;
+        const eventos = g.eventos_historicos || 10;
+        const radio = g.radio_metros || 500;
+        const impacto = g.impacto_economico || '$0';
+
+        // Generate realistic unit data for tables
+        const unitsBase = ['MX-3001','MX-3005','MX-3012','MX-3018','MX-3022','MX-3033','MX-3048','MX-3061','MX-3072','MX-3085'];
+        const drivers = ['Fernando Cruz','Roberto Mendoza','Miguel Ángel Torres','Jorge Ramírez','Carlos Herrera','Lucio Juárez','Antonio Romero','Ricardo Sánchez','Arturo Medina','Saúl Ibáñez'];
+        const numUnits = Math.max(3, Math.round(eventos * 0.6));
+        const unitSlice = unitsBase.slice(0, Math.min(numUnits, 8));
+
+        if (tipo === 'zona_carga_descarga') {
+          return [
+            {
+              text: unitSlice.length + ' unidades con detenciones recurrentes de 30-90 minutos en esta zona',
+              detail: {
+                title: 'Unidades con Patrón de Detención — ' + nombre,
+                type: 'table',
+                data: unitSlice.map((u, i) => ({
+                  unidad: u,
+                  conductor: drivers[i] || 'Asignado',
+                  detenciones: (Math.round(Math.random() * 10) + 5) + ' veces',
+                  promedio: (Math.round(Math.random() * 40) + 35) + ' min',
+                }))
+              }
+            },
+            {
+              text: 'Patrón operativo coincide con operaciones de carga/descarga — correlación con ERP',
+              detail: {
+                title: 'Análisis de Patrón Operativo',
+                type: 'text',
+                content: 'Iris Fleet detectó que el ' + (85 + Math.round(score * 0.1)) + '% de las detenciones ocurren con motor apagado y están precedidas por entradas a zona industrial. El tiempo promedio (' + (45 + Math.round(Math.random() * 25)) + ' min) coincide con el estándar logístico de operaciones de cross-docking. Se identificó correlación temporal con horarios de recepción de mercancía reportados en el ERP del cliente. Impacto económico estimado: ' + impacto + '.'
+              }
+            },
+            {
+              text: 'Actividad concentrada entre 06:00-18:00 hrs, Lun-Sáb',
+              detail: {
+                title: 'Distribución Temporal de Actividad',
+                type: 'text',
+                content: 'Horario pico: 07:00-10:00 hrs (34% del total). Segundo pico: 14:00-17:00 hrs (26%). Actividad residual fines de semana: 6%. Este patrón es consistente con operaciones B2B de distribución mayorista. Radio de geocerca sugerido: ' + radio + 'm basado en dispersión GPS de las detenciones.'
+              }
+            },
+          ];
+        } else if (tipo === 'zona_riesgo') {
+          return [
+            {
+              text: Math.round(eventos * 0.3) + ' incidentes de seguridad reportados en últimos 90 días (fuente: SSP)',
+              detail: {
+                title: 'Incidentes Reportados — Secretaría de Seguridad Pública',
+                type: 'table',
+                data: [
+                  { fecha: '15-Ene-2026', tipo: 'Robo con violencia', hora: '02:45', estatus: 'Carpeta abierta', zona: nombre },
+                  { fecha: '28-Ene-2026', tipo: 'Asalto a transporte', hora: '04:20', estatus: 'En investigación', zona: nombre },
+                  { fecha: '12-Feb-2026', tipo: 'Robo de mercancía', hora: '03:15', estatus: 'Recuperación parcial', zona: nombre },
+                ].slice(0, Math.max(2, Math.round(eventos * 0.3)))
+              }
+            },
+            {
+              text: unitSlice.length + ' vehículos de flota transitan esta zona en horario nocturno (22:00-06:00)',
+              detail: {
+                title: 'Exposición Nocturna de Flota — Análisis de Riesgo',
+                type: 'table',
+                data: unitSlice.slice(0, 6).map((u, i) => ({
+                  unidad: u,
+                  conductor: drivers[i],
+                  ruta: ['MTY→GDL','CDMX→QRO','VER→PUE','GDL→CDMX','MTY→SLP','QRO→CDMX'][i % 6],
+                  hora_paso: ['23:15','01:30','02:45','00:20','03:10','04:05'][i % 6],
+                  valor_carga: '$' + (Math.round(Math.random() * 500 + 200) * 1000).toLocaleString(),
+                }))
+              }
+            },
+            {
+              text: 'Score de riesgo ' + score + '/100 — zona clasificada como alto riesgo por modelo predictivo',
+              detail: {
+                title: 'Modelo Predictivo de Riesgo — ' + nombre,
+                type: 'text',
+                content: 'El modelo de machine learning de Iris analizó ' + eventos + ' eventos históricos en un radio de ' + radio + 'm. Variables consideradas: frecuencia de incidentes SSP (' + Math.round(score * 0.15) + '%), hora del día (' + Math.round(score * 0.25) + '%), densidad de tránsito comercial (' + Math.round(score * 0.2) + '%), iluminación vial (' + Math.round(score * 0.1) + '%), proximidad a zonas urbanas (' + Math.round(score * 0.3) + '%). Confianza del modelo: ' + conf + '%. Recomendación: crear geocerca con alerta de entrada en horario nocturno. Pérdida potencial evitable: ' + impacto + '.'
+              }
+            },
+          ];
+        } else if (tipo === 'punto_inspeccion') {
+          return [
+            {
+              text: 'Punto de inspección obligatoria — ' + eventos + ' detenciones registradas por autoridad',
+              detail: {
+                title: 'Registro de Inspecciones — ' + nombre,
+                type: 'table',
+                data: unitSlice.slice(0, 5).map((u, i) => ({
+                  unidad: u,
+                  conductor: drivers[i],
+                  fecha_inspeccion: ['03-Mar-2026','01-Mar-2026','27-Feb-2026','25-Feb-2026','20-Feb-2026'][i],
+                  resultado: ['Aprobada','Aprobada','Observaciones menores','Aprobada','Retención temporal'][i],
+                  duracion: (15 + Math.round(Math.random() * 30)) + ' min',
+                }))
+              }
+            },
+            {
+              text: 'Tiempo promedio de detención: ' + (20 + Math.round(Math.random() * 25)) + ' minutos — impacto en SLA',
+              detail: {
+                title: 'Análisis de Impacto en SLA por Inspecciones',
+                type: 'text',
+                content: 'Las inspecciones en este punto generan un retraso promedio de ' + (20 + Math.round(score * 0.3)) + ' minutos por unidad. En el último mes, ' + Math.round(eventos * 0.4) + ' viajes fueron afectados, resultando en ' + Math.round(eventos * 0.15) + ' incumplimientos de SLA. Costo estimado por demoras: ' + impacto + '. Recomendación: crear geocerca para ajustar ETAs automáticamente y notificar al cliente de posible retraso.'
+              }
+            },
+            {
+              text: 'Documentación NOM-087 vigente en ' + (80 + Math.round(Math.random() * 15)) + '% de unidades que transitan',
+              detail: {
+                title: 'Cumplimiento Documental — NOM-087',
+                type: 'text',
+                content: 'Del total de unidades que transitan por este punto, el ' + (80 + Math.round(Math.random() * 15)) + '% cuenta con documentación vigente. Las unidades con documentación vencida o próxima a vencer requieren atención inmediata para evitar retenciones prolongadas. La geocerca permitiría alertar antes del arribo para verificar estatus documental.'
+              }
+            },
+          ];
+        } else if (tipo === 'zona_urbana_densa') {
+          return [
+            {
+              text: eventos + ' eventos de frenado brusco y baja velocidad registrados — zona congestionada',
+              detail: {
+                title: 'Eventos de Conducción en Zona Urbana — ' + nombre,
+                type: 'table',
+                data: unitSlice.slice(0, 6).map((u, i) => ({
+                  unidad: u,
+                  conductor: drivers[i],
+                  frenados_bruscos: (Math.round(Math.random() * 8) + 3) + ' eventos',
+                  vel_promedio: (15 + Math.round(Math.random() * 20)) + ' km/h',
+                  tiempo_zona: (25 + Math.round(Math.random() * 40)) + ' min',
+                }))
+              }
+            },
+            {
+              text: 'Consumo de combustible +' + (15 + Math.round(score * 0.2)) + '% vs rutas alternas — ineficiencia detectada',
+              detail: {
+                title: 'Análisis de Eficiencia Energética — Zona Urbana',
+                type: 'text',
+                content: 'Las unidades que transitan por ' + nombre + ' presentan un sobreconsumo de combustible del ' + (15 + Math.round(score * 0.2)) + '% comparado con rutas alternas. Esto representa un costo adicional estimado de ' + impacto + ' mensual. Variables: tráfico urbano (aceleración/frenado constante), semáforos, límites de velocidad reducidos. La geocerca permitiría redirigir automáticamente unidades a rutas alternas en horarios pico.'
+              }
+            },
+            {
+              text: 'Horarios críticos: 07:30-09:30 y 17:00-20:00 — congestión vehicular máxima',
+              detail: {
+                title: 'Distribución Temporal de Congestión',
+                type: 'text',
+                content: 'Pico matutino: 07:30-09:30 hrs (velocidad promedio 12 km/h). Pico vespertino: 17:00-20:00 hrs (velocidad promedio 8 km/h). Ventana óptima de tránsito: 10:00-16:00 hrs (velocidad promedio 35 km/h). La geocerca activaría restricción horaria automática para evitar estos períodos.'
+              }
+            },
+          ];
+        } else if (tipo === 'zona_escolar') {
+          return [
+            {
+              text: eventos + ' alertas de exceso de velocidad en zona escolar — límite 30 km/h',
+              detail: {
+                title: 'Alertas de Velocidad en Zona Escolar — ' + nombre,
+                type: 'table',
+                data: unitSlice.slice(0, 5).map((u, i) => ({
+                  unidad: u,
+                  conductor: drivers[i],
+                  vel_maxima: (35 + Math.round(Math.random() * 25)) + ' km/h',
+                  alertas: (Math.round(Math.random() * 6) + 2) + ' veces',
+                  fecha_ultima: ['06-Mar','05-Mar','04-Mar','03-Mar','02-Mar'][i],
+                }))
+              }
+            },
+            {
+              text: 'Riesgo reputacional alto — zona sensible con presencia de menores',
+              detail: {
+                title: 'Análisis de Riesgo Reputacional',
+                type: 'text',
+                content: 'Esta zona tiene un impacto reputacional crítico para la marca. Un incidente involucrando un vehículo de la flota cerca de una escuela generaría cobertura mediática negativa estimada en 15x el costo operativo directo. Score de riesgo reputacional: ' + score + '/100. La geocerca forzaría limitación de velocidad a 30 km/h y alertaría al conductor con mensaje de voz automático al ingresar.'
+              }
+            },
+            {
+              text: 'Cumplimiento de normativa SCT ' + (70 + Math.round(conf * 0.25)) + '% — geocerca mejora adherencia',
+              detail: {
+                title: 'Cumplimiento Normativo SCT — Zonas Escolares',
+                type: 'text',
+                content: 'La normativa SCT requiere reducción a 30 km/h en zonas escolares. Actualmente el ' + (70 + Math.round(conf * 0.25)) + '% de los tránsitos cumplen. Con la geocerca activa, Iris forzaría alerta instantánea + registro automático para auditoría. Beneficio adicional: reducción de primas de seguro estimada en 8-12% para unidades con 100% cumplimiento.'
+              }
+            },
+          ];
+        } else {
+          // Generic fallback
+          return [
+            {
+              text: eventos + ' eventos detectados en esta zona — patrón identificado por IA',
+              detail: {
+                title: 'Análisis de Patrón — ' + nombre,
+                type: 'table',
+                data: unitSlice.slice(0, 5).map((u, i) => ({
+                  unidad: u,
+                  conductor: drivers[i],
+                  eventos: (Math.round(Math.random() * 10) + 3) + ' veces',
+                  ultima_fecha: ['06-Mar','05-Mar','03-Mar','01-Mar','28-Feb'][i],
+                }))
+              }
+            },
+            {
+              text: 'Score de riesgo ' + score + '/100 con tendencia al alza — intervención recomendada',
+              detail: {
+                title: 'Modelo Predictivo de Riesgo',
+                type: 'text',
+                content: 'El modelo predictivo de Iris Fleet analizó ' + eventos + ' eventos en los últimos 90 días. La tendencia es al alza con un incremento del ' + Math.round(score * 0.12) + '% respecto al período anterior. Confianza del modelo: ' + conf + '%. Impacto económico estimado sin geocerca: ' + impacto + '. Recomendación: activar geocerca con alertas de entrada/salida y restricciones horarias.'
+              }
+            },
+            {
+              text: 'Impacto financiero estimado: ' + impacto + ' — ahorro potencial con geocerca activa',
+              detail: {
+                title: 'Análisis de Impacto Financiero',
+                type: 'text',
+                content: 'Sin la geocerca, el costo proyectado a 12 meses es de ' + impacto + '. Con la geocerca activa, Iris estima una reducción del 60-75% en incidentes, traducido en ahorro directo de seguros, multas SLA, y costos operativos. ROI esperado de la geocerca: 340% en el primer trimestre.'
+              }
+            },
+          ];
+        }
+      })(),
+    }));
+  };
+
+  // === ADAPTADOR: Transforma JSON rutas → formato bimboRouteData ===
+  const adaptRutasJson = (jsonData) => {
+    // Supports both new format (direct array) and old format ({rutas: [...]})
+    const rutas = Array.isArray(jsonData) ? jsonData : (jsonData?.rutas || null);
+    if (!rutas) return null;
+    return {
+      routes: rutas.map((r, i) => ({
+        id: r.id,
+        name: r.nombre || r.nombre_ruta || ((r.origen || '') + ' → ' + (r.destino || '')),
+        type: r.tipo || (i < 4 ? 'primary' : 'alternate'),
+        estado: r.estado || '',
+        frequency: Math.round(Math.random() * 40) + 10,
+        color: i < 4 ? '#22c55e' : '#f59e0b',
+        colorReturn: i < 4 ? '#3b82f6' : '#8b5cf6',
+        km: r.distanciaTotal || r.distancia_total_km || 0,
+        kmRecorridos: r.kmRecorridos || r.distancia_recorrida_km || 0,
+        progreso: r.progreso || r.avance_pct || 0,
+        casetas: (r.paradas || []).filter(p => p.tipo === 'caseta').length,
+        tiempoEst: r.etaLlegada || r.eta_ai || '',
+        horaSalida: r.horaSalida || r.eta_original || '',
+        velocidadPromedio: r.velocidadPromedio || 0,
+        zonaProhibida: false,
+        conductor: r.conductor?.nombre || r.conductor || '',
+        vehiculo: r.vehiculo?.unidad || r.vehiculo || '',
+        carga: r.carga?.productos || r.carga || [],
+        origen: r.origen?.nombre || r.origen || '',
+        origenCoords: r.origen?.lat ? { lat: r.origen.lat, lng: r.origen.lng } : null,
+        destino: r.destino?.nombre || r.destino || '',
+        destinoCoords: r.destino?.lat ? { lat: r.destino.lat, lng: r.destino.lng } : null,
+        waypoints: (r.waypoints || r.paradas || []).filter(p => p.lat && p.lng).map(p => ({ lat: p.lat, lng: p.lng })),
+      })),
+      editableByTorreControl: true,
+    };
+  };
+  // === FIN ADAPTADORES ===
+  const [userRole, setUserRole] = useState(null);
+  // ====== TORRE DE CONTROL 360° v3 — HOME STATES ======
+  const [homeSection, setHomeSection] = React.useState(0);
+  const [homeNarrIdx, setHomeNarrIdx] = React.useState(0);
+  const [homeNarrText, setHomeNarrText] = React.useState('');
+  const [homeNarrTyping, setHomeNarrTyping] = React.useState(false);
+  const [homeClock, setHomeClock] = React.useState('');
+  const [homeDate, setHomeDate] = React.useState('');
+  const homeAudioRef = React.useRef(null);
+  const [liveFeedEvents, setLiveFeedEvents] = React.useState([]);
+  const [dataFlowPulse, setDataFlowPulse] = React.useState({});
+  const [tracingKpi, setTracingKpi] = React.useState(null);
+
+
+  const [step, setStep] = useState(1);
+  const [showToast, setShowToast] = useState(false);
+  const [showRightPanel, setShowRightPanel] = useState(false);
+  const [selectedZones, setSelectedZones] = useState([]);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showChat, setShowChat] = useState(false);
+  const [chatMessages, setChatMessages] = useState([
+    { type: 'history', text: 'Sugerencia de Geocerca', time: 'hace 15 minutos' },
+    { type: 'history', text: 'Sugerencia de nueva ruta', time: 'hace 30 minutos' },
+    { type: 'history', text: 'Fallo de motor detectado', time: 'hace 45 minutos' },
+  ]);
+  const [userMessage, setUserMessage] = useState('');
+  const [isAIThinking, setIsAIThinking] = useState(false);
+  const [currentBackground, setCurrentBackground] = useState(BACKGROUNDS.initial);
+  const mindfulMessages = [
+    { text: 'Todo está siendo monitoreado. Tú estás aquí para lo que importa.', sub: '— Iris Fleet' },
+    { text: 'La calma no es ausencia de tormenta, sino paz en medio de ella.', sub: '' },
+    { text: 'Cada alerta resuelta es una familia que llega segura a casa.', sub: '' },
+    { text: 'No necesitas vigilar todo. Solo lo que Iris no pueda resolver sola.', sub: '— Iris Fleet' },
+    { text: 'La flota avanza. Tú la cuidas. Iris te cuida a ti.', sub: '' },
+    { text: 'Respira. Observa. Actúa solo cuando sea necesario.', sub: '' },
+    { text: 'Un buen monitorista no es el que más alertas atiende, sino el que mejor las prioriza.', sub: '' },
+    { text: 'Hoy es un buen día para mantener la flota segura.', sub: '' },
+    { text: 'Tu experiencia + la inteligencia de Iris = el equipo perfecto.', sub: '' },
+    { text: 'Mientras más tranquilo estés, mejores decisiones tomarás.', sub: '' },
+    { text: 'Iris ya analizó los eventos de hoy. Tú decides cuándo actuar.', sub: '— Iris Fleet' },
+    { text: 'El silencio aquí significa que todo va bien.', sub: '' },
+  ];
+  const [currentMessage, setCurrentMessage] = useState(0);
+  const [showCalmAnalyzing, setShowCalmAnalyzing] = useState(false);
+  const [supSections, setSupSections] = useState({ team: false, health: false, patterns: false, narrative: false, maintenance: false, costs: false, compliance: false });
+  // === TORRE DE CONTROL 360 — Estados adicionales ===
+  const [torreTab, setTorreTab] = useState({ jefetaller: 'disponibilidad', gerente: 'costoKm', director: 'kpis' });
+  const [torreModal, setTorreModal] = useState(null);
+  // === DEEP DIVE — Estado para análisis narrativo por KPI ===
+  const [deepDiveKpi, setDeepDiveKpi] = useState(null); // null | 'uptime' | 'costo_km' | 'mtbf' | etc.
+  const [deepDiveData, setDeepDiveData] = useState(null);
+  const [deepDiveLayer, setDeepDiveLayer] = useState(0); // 0-4 = capas narrativas
+  const [deepDiveAnimPhase, setDeepDiveAnimPhase] = useState('entering'); // entering|active|zooming
+  const [deepDiveSliderMode, setDeepDiveSliderMode] = useState('diario'); // diario|semanal|mensual
+  const [deepDiveSliderIdx, setDeepDiveSliderIdx] = useState(0);
+  const [deepDiveExpandedUnit, setDeepDiveExpandedUnit] = useState(null);
+  const [deepDiveTaximeter, setDeepDiveTaximeter] = useState(0);
+  const [deepDiveShowHistoric, setDeepDiveShowHistoric] = useState(false);
+  const deepDiveTaxiRef = useRef(null);
+  const toggleSupSection = (key) => setSupSections(prev => ({ ...prev, [key]: !prev[key] }));
+  const [patternSent, setPatternSent] = useState({});
+  const [showConfigModal, setShowConfigModal] = useState(false);
+  const [configTab, setConfigTab] = useState('alertas');
+  const [configToast, setConfigToast] = useState('');
+  const [demoConfig, setDemoConfig] = useState({
+    alertas_ejes: { seguridad: true, momento: true, dinero: true },
+    alertas_umbral_critico: 85, alertas_umbral_alto: 70,
+    alertas_escalar_p95: 5, alertas_escalar_p80: 15,
+    mant_aceite_km: 15000, mant_frenos_km: 40000, mant_llantas_km: 60000,
+    mant_talleres: ['Taller Central CDMX', 'ServiFrio Monterrey', 'AutoFleet Guadalajara', 'MecaDiesel Puebla'],
+    mant_salud_amarilla: 80, mant_salud_roja: 65,
+    geo_zonas_riesgo: true, geo_zonas_huachicoleo: true, geo_zonas_custom: false,
+    geo_accion_entrada: 'notificar', geo_accion_exclusion: 'alerta_maxima',
+    geo_horario_activo: true, geo_horario_inicio: '06:00', geo_horario_fin: '22:00',
+    viajes_valor_modo: 'relativo',
+    viajes_clientes: [
+      { nombre: 'Walmart', valor: 9, sla_ventana: 30, sla_temp: 2 },
+      { nombre: 'HEB', valor: 8, sla_ventana: 45, sla_temp: 2 },
+      { nombre: 'OXXO', valor: 7, sla_ventana: 60, sla_temp: 3 },
+      { nombre: 'Bachoco', valor: 8, sla_ventana: 30, sla_temp: 1.5 },
+      { nombre: 'Soriana', valor: 6, sla_ventana: 45, sla_temp: 3 },
+    ],
+    viajes_demora_leve: 15, viajes_demora_critica: 45,
+    general_modulos: { salud: true, seguridad: true, mantenimiento: true, finanzas: true, cadena_frio: true, geocercas: true },
+    general_empresa: 'Demo Transportes S.A. de C.V.', general_color: '#2563eb',
+    general_roles: [
+      { nombre: 'Cruz Martínez', rol: 'Monitorista', permisos: 'Alertas, Viajes, Geocercas' },
+      { nombre: 'Ana Reyes', rol: 'Supervisora', permisos: 'Todo' },
+      { nombre: 'Jorge Hernández', rol: 'Monitorista', permisos: 'Mantenimiento, Viajes' },
+      { nombre: 'Director General', rol: 'Admin', permisos: 'Todo + Configuración' },
+    ],
+  });
+  const [supOpsDetail, setSupOpsDetail] = useState(null);
+  const [geminiLoading, setGeminiLoading] = useState(false);
+  const [geminiMessages, setGeminiMessages] = useState([]);
+  const [geminiModalOpen, setGeminiModalOpen] = useState(false);
+  const geminiChatRef = React.useRef(null);
+  const geminiInputRef = React.useRef(null);
+
+  const handleSendPattern = (idx, area) => { setPatternSent(prev => ({ ...prev, [idx]: area })); };
+  const getTimeOfDayBackground = () => { const h = new Date().getHours(); if (h >= 6 && h < 12) return BACKGROUNDS.morning; if (h >= 12 && h < 17) return BACKGROUNDS.afternoon; if (h >= 17 && h < 21) return BACKGROUNDS.evening; return BACKGROUNDS.night; };
+  const getTimeGreeting = () => { const h = new Date().getHours(); if (h >= 6 && h < 12) return 'Buenos días'; if (h >= 12 && h < 19) return 'Buenas tardes'; return 'Buenas noches'; };
+  useEffect(() => { const interval = setInterval(() => { setCurrentMessage(prev => (prev + 1) % mindfulMessages.length); }, 20000); return () => clearInterval(interval); }, []);
+  const [selectedZone, setSelectedZone] = useState(null);
+  const [expandedReasoning, setExpandedReasoning] = useState(null);
+  const [showDetailModal, setShowDetailModal] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
+  const [showCounterfactual, setShowCounterfactual] = useState(false);
+  const [counterfactualZone, setCounterfactualZone] = useState(null);
+  const [showLearning, setShowLearning] = useState(false);
+  const [showEmergingPatterns, setShowEmergingPatterns] = useState(false);
+  const [isLeftMenuHovered, setIsLeftMenuHovered] = useState(false);
+  const [showLeftMenu, setShowLeftMenu] = useState(false); // CAMBIO #8: Estado para mostrar menú expandido
+  const [showAdminPanel, setShowAdminPanel] = useState(false); // Panel de Administración
+  // === DATOS EDITABLES para Admin Panel (copias en memoria de los JSONs) ===
+  const [adminConductores, setAdminConductores] = useState(null);
+  const [adminVehiculos, setAdminVehiculos] = useState(null);
+  const [adminRutas, setAdminRutas] = useState(null);
+  const [adminZonasSeguras, setAdminZonasSeguras] = useState(null);
+  const [adminAlertas, setAdminAlertas] = useState(null);
+  const [adminEventosCamaras, setAdminEventosCamaras] = useState(null);
+  // === FIN DATOS EDITABLES ===
+  const [showCriticalEventsModal, setShowCriticalEventsModal] = useState(false);
+
+  const [showMaintenanceModal, setShowMaintenanceModal] = useState(false);
+  const [showExcCameraModal, setShowExcCameraModal] = useState(false);
+  const [showMaintenanceDetailModal, setShowMaintenanceDetailModal] = useState(false);
+  const [selectedMaintenance, setSelectedMaintenance] = useState(null);
+  const [isMaintenanceFlowExecuting, setIsMaintenanceFlowExecuting] = useState(false);
+  const [currentMaintenanceFlowSteps, setCurrentMaintenanceFlowSteps] = useState([]);
+  const [maintenanceExecutionMode, setMaintenanceExecutionMode] = useState('automatic');
+  const [showKPIDrillDown, setShowKPIDrillDown] = useState(false);
+  const [selectedKPI, setSelectedKPI] = useState(null);
+  const [alertPhase, setAlertPhase] = useState(1);
+  const [videoCamTab, setVideoCamTab] = useState('cabina');
+  const [alertActionMode, setAlertActionMode] = useState(null);
+  const [alertValidated, setAlertValidated] = useState(null);
+  const [alertNotes, setAlertNotes] = useState('');
+  const [alertResolving, setAlertResolving] = useState(false);
+  const [showEventDetailModal, setShowEventDetailModal] = useState(false);
+  const [showEventReasoning, setShowEventReasoning] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [elapsedTime, setElapsedTime] = useState(0);
+  const [executionMode, setExecutionMode] = useState('automatic');
+  const [flowSteps, setFlowSteps] = useState([
+    { id: 1, text: 'Obtener ubicación GPS', time: '2 seg', status: 'pending', details: ['Lat: 25.6866, Lon: -100.3161', 'Dirección: Av. Constitución #2400', 'Zona riesgo: 8/10'] },
+    { id: 2, text: 'Identificar vehículo', time: '1 seg', status: 'pending', details: ['Unidad: MX-3012', 'Conductor: Roberto Silva', 'Carga: $780K'] },
+    { id: 3, text: 'Notificar autoridades', time: '15 seg', status: 'pending', details: ['SSP + Guardia Nacional', 'Folio y ubicación', 'Plantilla predefinida'] },
+    { id: 4, text: 'Notificar aseguradora', time: '10 seg', status: 'pending', details: ['Folio auto-generado', 'Evidencia incluida', 'API integrada'] },
+    { id: 5, text: 'Contactar conductor', time: '30 seg', status: 'pending', details: ['Celular + Radio', 'Canal 5', 'Protocolo activado'] },
+    { id: 6, text: 'Alertar Manager', time: '5 seg', status: 'pending', details: ['Cliente Tier-1', 'Manager: J. Pérez', 'Retraso confirmado'] },
+    { id: 7, text: 'Estimar pérdida', time: '8 seg', status: 'pending', details: ['$1,070,000', 'Activar seguro', 'Notificar finanzas'] }
+  ]);
+  const [isFlowExecuting, setIsFlowExecuting] = useState(false);
+  const [actionHistory, setActionHistory] = useState([]);
+  const [showFlowModal, setShowFlowModal] = useState(false);
+  const [toastNotification, setToastNotification] = useState({ show: false, message: '' });
+  const [expandedStep, setExpandedStep] = useState(null);
+  const [waitingForApproval, setWaitingForApproval] = useState(false);
+  const [currentApprovalStep, setCurrentApprovalStep] = useState(null);
+  const [flowStartTime, setFlowStartTime] = useState(null);
+  const [flowEndTime, setFlowEndTime] = useState(null);
+  // === AÑADIDO: Estado de viajes ===
+  const [lockedClickLog, setLockedClickLog] = useState([]);
+  const trackLockedClick = (module, source) => { setLockedClickLog(prev => [...prev, { module, source, ts: new Date().toISOString(), user: userRole }]); };
+  const [showTripStatusModal, setShowTripStatusModal] = useState(false);
+  // Snapshot popup states
+  const [activeSnapshot, setActiveSnapshot] = useState(null); // 'atencion_critica', 'mantenimiento', 'geocercas', 'control_viajes'
+  const [snapshotContext, setSnapshotContext] = useState(null); // which parent modal opened it
+  const [tripView, setTripView] = useState('drone');
+  const [tripDrillDown, setTripDrillDown] = useState(null);
+  const [tripFleetFilter, setTripFleetFilter] = useState('all');
+  const [selectedVehicle, setSelectedVehicle] = useState(null);
+  const [tripExceptionIdx, setTripExceptionIdx] = useState(null);
+  const [tripExecMode, setTripExecMode] = useState('automatic');
+  const [tripExecRunning, setTripExecRunning] = useState(false);
+  const [tripExecDone, setTripExecDone] = useState({});
+  // === FIN AÑADIDO ===
+ // Estado para modal de eventos críticos
+
+  // === DATOS DE FLOTA: Dinámicos (JSON) o hardcodeados (fallback) ===
+  const fleetVehiclesHardcoded = [
+    { id: 'FP-001', unit: 'MX-3012', type: 'propia', status: 'en_ruta', conductor: 'Roberto Silva', origen: 'CDMX', destino: 'Monterrey', cliente: 'Grupo Bimbo', etaOriginal: '14:30', etaAI: '15:45', etaReason: 'Lluvia en tramo SLP-MTY', puntualidad: 'demorado', shipment: 'SHP-20260213-001', salidaPlan: '08:00', salidaReal: '08:15', tiempoPlan: '6h 30min', velocidad: 85, combustible: 62, motorSalud: 85, frenosSalud: 90, rpm: 1800, tempMotor: 92, slaEnRiesgo: true, slaMonto: 150000, prioridadExcepcion: 75, causaEstado: 'Lluvia moderada en tramo SLP-MTY. ETA ajustado +75 min. Velocidad reducida por seguridad.', accionIA: 'Notificar cliente nuevo ETA. Monitorear condiciones climáticas cada 15 min.', avance: 68, riskScore: 72, lat: 23.6345, lng: -100.5527, horasConduccion: 5.2, carga: 'Alimentos secos', valorCarga: 780000, tempCaja: null, tempSetPoint: null, tempTrend: null, saludVehiculo: 85, alertas: ['Lluvia moderada en ruta'], desvio: false, proximaParada: 'Caseta Huizache (45 min)', consumoCombustible: 'Normal', distanciaPlaneada: 912, distanciaRecorrida: 620, rendimiento: 3.8, remolque: 'RMQ-7801', etaParcial: '2h 45min', origenCoords: { lat: 19.4326, lng: -99.1332 }, destinoCoords: { lat: 25.6866, lng: -100.3161 }, paradas: [
+      { nombre: 'CEDIS CDMX Norte', planeada: '08:00', real: '08:15', tipo: 'origen', status: 'completada', lat: 19.4326, lng: -99.1332, geocerca: { nombre: 'CEDIS CDMX Norte', tipo: 'origen', radioM: 200, entro: '08:12', salio: '08:15' }, caseta: null },
+      { nombre: 'Caseta Tepotzotlán', planeada: '08:45', real: '08:52', tipo: 'caseta', status: 'completada', lat: 19.7150, lng: -99.2239, geocerca: { nombre: 'Caseta Tepotzotlán', tipo: 'caseta', radioM: 100, entro: '08:51', salio: '08:53' }, caseta: { nombre: 'Tepotzotlán', tag: 'IAVE-77201', monto: 156, metodo: 'TAG', validadoGPS: true } },
+      { nombre: 'Caseta Palmillas', planeada: '10:30', real: '10:50', tipo: 'caseta', status: 'completada', lat: 20.3800, lng: -99.5400, geocerca: { nombre: 'Caseta Palmillas', tipo: 'caseta', radioM: 100, entro: '10:49', salio: '10:51' }, caseta: { nombre: 'Palmillas', tag: 'IAVE-77201', monto: 320, metodo: 'TAG', validadoGPS: true } },
+      { nombre: 'Caseta San Luis Potosí', planeada: '11:40', real: '12:05', tipo: 'caseta', status: 'completada', lat: 22.1500, lng: -100.9800, geocerca: { nombre: 'Caseta SLP', tipo: 'caseta', radioM: 100, entro: '12:04', salio: '12:06' }, caseta: { nombre: 'San Luis Potosí', tag: 'IAVE-77201', monto: 410, metodo: 'TAG', validadoGPS: true } },
+      { nombre: 'Caseta Huizache', planeada: '12:15', real: null, tipo: 'caseta', status: 'proximo', lat: 22.3500, lng: -100.9700, geocerca: { nombre: 'Caseta Huizache', tipo: 'caseta', radioM: 100, entro: null, salio: null }, caseta: { nombre: 'Huizache', tag: null, monto: 280, metodo: 'pendiente', validadoGPS: false } },
+      { nombre: 'Caseta Saltillo', planeada: '13:20', real: null, tipo: 'caseta', status: 'pendiente', lat: 25.4200, lng: -100.9900, geocerca: { nombre: 'Caseta Saltillo', tipo: 'caseta', radioM: 100, entro: null, salio: null }, caseta: { nombre: 'Saltillo', tag: null, monto: 350, metodo: 'pendiente', validadoGPS: false } },
+      { nombre: 'CEDIS Monterrey', planeada: '14:30', real: null, tipo: 'destino', status: 'pendiente', lat: 25.6866, lng: -100.3161, geocerca: { nombre: 'CEDIS Monterrey Soriana', tipo: 'destino', radioM: 250, entro: null, salio: null }, caseta: null }
+    ], eventosViaje: [{ tipo: 'Frenado brusco', hora: '09:42', severidad: 'media' }, { tipo: 'Lluvia detectada', hora: '11:15', severidad: 'baja' }], costosViaje: {
+      tipoViaje: 'sencillo', anticipo: 18000, metodoPagoAnticipo: 'Transferencia',
+      diesel: [{ gasolinera: 'Pemex CEDIS CDMX', hora: '07:50', litros: 180, precioLitro: 24.89, importe: 4480, metodo: 'Tarjeta Fleet', odometro: 1210746, factura: 'CFDI-A1201' }, { gasolinera: 'BP San Luis Potosí', hora: '12:10', litros: 150, precioLitro: 25.15, importe: 3773, metodo: 'Efectivo', odometro: 1211366, factura: 'Ticket-8891' }],
+      viaticos: [{ concepto: 'Desayuno', importe: 180, comprobante: 'Ticket foto', status: 'validado' }, { concepto: 'Comida SLP', importe: 250, comprobante: 'Ticket foto', status: 'validado' }],
+      maniobras: [{ concepto: 'Carga en CEDIS CDMX', importe: 800, comprobante: 'Recibo', status: 'validado' }],
+      otrosGastos: [{ concepto: 'Agua y hielo', importe: 120, comprobante: 'Sin comprobante', status: 'pendiente' }],
+      vulcanizadora: [], hospedaje: [], estacionamiento: [{ concepto: 'Pensión SLP', importe: 0, comprobante: null, status: 'pendiente' }]
+    } },
+    { id: 'FP-002', unit: 'MX-2341', type: 'propia', status: 'en_ruta', conductor: 'Juan Pérez', origen: 'Guadalajara', destino: 'CDMX', cliente: 'Liverpool', etaOriginal: '18:00', etaAI: '17:45', etaReason: 'Tráfico menor al esperado', puntualidad: 'adelantado', shipment: 'SHP-20260213-002', salidaPlan: '12:00', salidaReal: '12:00', tiempoPlan: '5h 45min', velocidad: 95, combustible: 78, motorSalud: 92, frenosSalud: 95, rpm: 1650, tempMotor: 88, slaEnRiesgo: false, slaMonto: 0, prioridadExcepcion: 0, causaEstado: 'Tráfico menor al esperado. Adelantado 15 min.', accionIA: 'Sin acción requerida.', avance: 42, riskScore: 31, lat: 20.1234, lng: -101.6789, horasConduccion: 3.1, carga: 'Electrónicos', valorCarga: 1200000, tempCaja: null, tempSetPoint: null, tempTrend: null, saludVehiculo: 92, alertas: [], desvio: false, proximaParada: 'Caseta Palmillas (30 min)', consumoCombustible: 'Normal', distanciaPlaneada: 542, distanciaRecorrida: 228, rendimiento: 4.1, remolque: 'RMQ-5502', etaParcial: '3h 20min', origenCoords: { lat: 20.6597, lng: -103.3496 }, destinoCoords: { lat: 19.4326, lng: -99.1332 }, paradas: [
+      { nombre: 'CEDIS Guadalajara', planeada: '12:00', real: '12:00', tipo: 'origen', status: 'completada', lat: 20.6597, lng: -103.3496, geocerca: { nombre: 'CEDIS GDL Liverpool', tipo: 'origen', radioM: 200, entro: '11:45', salio: '12:00' }, caseta: null },
+      { nombre: 'Caseta Zapotlanejo', planeada: '12:40', real: '12:38', tipo: 'caseta', status: 'completada', lat: 20.6227, lng: -103.0681, geocerca: { nombre: 'Caseta Zapotlanejo', tipo: 'caseta', radioM: 100, entro: '12:37', salio: '12:39' }, caseta: { nombre: 'Zapotlanejo', tag: 'IAVE-55102', monto: 198, metodo: 'TAG', validadoGPS: true } },
+      { nombre: 'Caseta La Piedad', planeada: '13:45', real: '13:50', tipo: 'caseta', status: 'completada', lat: 20.3460, lng: -102.0310, geocerca: { nombre: 'Caseta La Piedad', tipo: 'caseta', radioM: 100, entro: '13:49', salio: '13:51' }, caseta: { nombre: 'La Piedad', tag: 'IAVE-55102', monto: 245, metodo: 'TAG', validadoGPS: true } },
+      { nombre: 'Caseta Palmillas', planeada: '15:00', real: null, tipo: 'caseta', status: 'proximo', lat: 20.3800, lng: -99.5400, geocerca: { nombre: 'Caseta Palmillas', tipo: 'caseta', radioM: 100, entro: null, salio: null }, caseta: { nombre: 'Palmillas', tag: null, monto: 320, metodo: 'pendiente', validadoGPS: false } },
+      { nombre: 'CEDIS CDMX Vallejo', planeada: '18:00', real: null, tipo: 'destino', status: 'pendiente', lat: 19.4900, lng: -99.1500, geocerca: { nombre: 'CEDIS CDMX Vallejo', tipo: 'destino', radioM: 200, entro: null, salio: null }, caseta: null }
+    ], eventosViaje: [], costosViaje: {
+      tipoViaje: 'sencillo', anticipo: 12000, metodoPagoAnticipo: 'Efectivo',
+      diesel: [{ gasolinera: 'Pemex Periferico GDL', hora: '11:30', litros: 200, precioLitro: 24.65, importe: 4930, metodo: 'Tarjeta Fleet', odometro: 934059, factura: 'CFDI-B3302' }],
+      viaticos: [{ concepto: 'Comida en ruta', importe: 220, comprobante: 'Ticket foto', status: 'validado' }],
+      maniobras: [{ concepto: 'Carga Liverpool GDL', importe: 600, comprobante: 'Recibo', status: 'validado' }],
+      otrosGastos: [], vulcanizadora: [], hospedaje: [], estacionamiento: []
+    } },
+    { id: 'FP-003', unit: 'MX-2389', type: 'propia', status: 'en_ruta', conductor: 'María López', origen: 'Veracruz', destino: 'Puebla', cliente: 'Walmart', etaOriginal: '16:00', etaAI: '16:20', etaReason: 'Tráfico en ingreso a Puebla', puntualidad: 'a_tiempo', shipment: 'SHP-20260213-003', salidaPlan: '10:00', salidaReal: '10:00', tiempoPlan: '4h 00min', velocidad: 72, combustible: 55, motorSalud: 88, frenosSalud: 92, rpm: 1700, tempMotor: 90, slaEnRiesgo: false, slaMonto: 0, prioridadExcepcion: 0, causaEstado: 'Tráfico leve en ingreso a Puebla.', accionIA: 'Monitorear temperatura caja fría.', avance: 75, riskScore: 45, lat: 19.2500, lng: -97.1000, horasConduccion: 2.8, carga: 'Lácteos', valorCarga: 450000, tempCaja: 3.2, tempSetPoint: 3.0, tempTrend: 'estable', saludVehiculo: 88, alertas: [], desvio: false, proximaParada: 'Entrega destino (50 min)', consumoCombustible: 'Normal', distanciaPlaneada: 274, distanciaRecorrida: 206, rendimiento: 3.5, remolque: 'RMQ-3389', etaParcial: '0h 50min', origenCoords: { lat: 19.1738, lng: -96.1342 }, destinoCoords: { lat: 19.0414, lng: -98.2063 }, paradas: [
+      { nombre: 'CEDIS Veracruz Puerto', planeada: '10:00', real: '10:00', tipo: 'origen', status: 'completada', lat: 19.1738, lng: -96.1342, geocerca: { nombre: 'CEDIS Veracruz Walmart', tipo: 'origen', radioM: 200, entro: '09:40', salio: '10:00' }, caseta: null },
+      { nombre: 'Caseta Fortín', planeada: '11:30', real: '11:28', tipo: 'caseta', status: 'completada', lat: 18.9000, lng: -96.9900, geocerca: { nombre: 'Caseta Fortín de las Flores', tipo: 'caseta', radioM: 100, entro: '11:27', salio: '11:29' }, caseta: { nombre: 'Fortín', tag: 'IAVE-33890', monto: 185, metodo: 'TAG', validadoGPS: true } },
+      { nombre: 'Caseta Cumbres de Maltrata', planeada: '12:00', real: '12:05', tipo: 'caseta', status: 'completada', lat: 18.8100, lng: -97.2700, geocerca: { nombre: 'Caseta Maltrata', tipo: 'caseta', radioM: 100, entro: '12:04', salio: '12:06' }, caseta: { nombre: 'Cumbres Maltrata', tag: 'IAVE-33890', monto: 220, metodo: 'TAG', validadoGPS: true } },
+      { nombre: 'Caseta Amozoc', planeada: '13:15', real: '13:20', tipo: 'caseta', status: 'completada', lat: 19.0400, lng: -97.9800, geocerca: { nombre: 'Caseta Amozoc', tipo: 'caseta', radioM: 100, entro: '13:19', salio: '13:21' }, caseta: { nombre: 'Amozoc', tag: 'IAVE-33890', monto: 142, metodo: 'TAG', validadoGPS: true } },
+      { nombre: 'CEDIS Puebla Walmart', planeada: '16:00', real: null, tipo: 'destino', status: 'proximo', lat: 19.0414, lng: -98.2063, geocerca: { nombre: 'CEDIS Puebla Walmart', tipo: 'destino', radioM: 200, entro: null, salio: null }, caseta: null }
+    ], eventosViaje: [{ tipo: 'Temp caja +0.2°C', hora: '13:10', severidad: 'baja' }], costosViaje: {
+      tipoViaje: 'sencillo', anticipo: 6000, metodoPagoAnticipo: 'Efectivo',
+      diesel: [{ gasolinera: 'Pemex Puerto Veracruz', hora: '09:45', litros: 80, precioLitro: 24.78, importe: 1982, metodo: 'Tarjeta Fleet', odometro: 1373371, factura: 'CFDI-C5501' }],
+      viaticos: [{ concepto: 'Desayuno Veracruz', importe: 150, comprobante: 'Ticket foto', status: 'validado' }],
+      maniobras: [{ concepto: 'Carga refrigerada Walmart', importe: 500, comprobante: 'Recibo', status: 'validado' }],
+      otrosGastos: [], vulcanizadora: [], hospedaje: [], estacionamiento: []
+    } },
+    { id: 'FP-004', unit: 'MX-2401', type: 'propia', status: 'en_ruta', conductor: 'Carlos Ruiz', origen: 'Monterrey', destino: 'Reynosa', cliente: 'Soriana', etaOriginal: '13:00', etaAI: '13:25', etaReason: 'Revisión militar km 120', puntualidad: 'riesgo_demora', shipment: 'SHP-20260213-004', salidaPlan: '10:30', salidaReal: '10:30', tiempoPlan: '2h 30min', velocidad: 40, combustible: 70, motorSalud: 76, frenosSalud: 80, rpm: 1400, tempMotor: 95, slaEnRiesgo: false, slaMonto: 0, prioridadExcepcion: 45, causaEstado: 'Revisión militar en km 120. Zona riesgo alto NL. Presión neumáticos baja en eje 3.', accionIA: 'Programar revisión neumáticos en destino. Monitorear riesgo zona.', avance: 55, riskScore: 68, lat: 25.8500, lng: -99.0000, horasConduccion: 1.5, carga: 'Abarrotes', valorCarga: 320000, tempCaja: null, tempSetPoint: null, tempTrend: null, saludVehiculo: 76, alertas: ['Zona riesgo alto', 'Presión neumáticos baja'], desvio: false, proximaParada: 'Revisión militar (15 min)', consumoCombustible: 'Normal', distanciaPlaneada: 222, distanciaRecorrida: 122, rendimiento: 3.2, remolque: null, etaParcial: '0h 55min', origenCoords: { lat: 25.6866, lng: -100.3161 }, destinoCoords: { lat: 26.0508, lng: -98.2979 }, paradas: [
+      { nombre: 'CEDIS Monterrey', planeada: '10:30', real: '10:30', tipo: 'origen', status: 'completada', lat: 25.6866, lng: -100.3161, geocerca: { nombre: 'CEDIS MTY Soriana', tipo: 'origen', radioM: 200, entro: '10:10', salio: '10:30' }, caseta: null },
+      { nombre: 'Caseta MTY-Reynosa km 26', planeada: '11:00', real: '11:05', tipo: 'caseta', status: 'completada', lat: 25.7800, lng: -99.8500, geocerca: { nombre: 'Caseta MTY-Reynosa', tipo: 'caseta', radioM: 100, entro: '11:04', salio: '11:06' }, caseta: { nombre: 'MTY-Reynosa km26', tag: 'IAVE-41002', monto: 195, metodo: 'TAG', validadoGPS: true } },
+      { nombre: 'Revisión Militar km 120', planeada: null, real: '12:15', tipo: 'inspeccion', status: 'actual', lat: 25.8500, lng: -99.0000, geocerca: { nombre: 'Punto Revisión Militar', tipo: 'inspeccion', radioM: 300, entro: '12:10', salio: null }, caseta: null },
+      { nombre: 'CEDIS Reynosa Soriana', planeada: '13:00', real: null, tipo: 'destino', status: 'pendiente', lat: 26.0508, lng: -98.2979, geocerca: { nombre: 'CEDIS Reynosa Soriana', tipo: 'destino', radioM: 200, entro: null, salio: null }, caseta: null }
+    ], eventosViaje: [{ tipo: 'Revisión militar', hora: '12:15', severidad: 'media' }, { tipo: 'Presión neumáticos baja', hora: '11:45', severidad: 'media' }], costosViaje: {
+      tipoViaje: 'sencillo', anticipo: 5000, metodoPagoAnticipo: 'Efectivo',
+      diesel: [{ gasolinera: 'G500 Monterrey', hora: '10:15', litros: 70, precioLitro: 25.20, importe: 1764, metodo: 'Efectivo', odometro: 305108, factura: 'Ticket-4421' }],
+      viaticos: [{ concepto: 'Desayuno MTY', importe: 160, comprobante: 'Ticket foto', status: 'validado' }],
+      maniobras: [],
+      otrosGastos: [],
+      vulcanizadora: [{ concepto: 'Revisión presión neumáticos eje 3', importe: 350, comprobante: 'Nota servicio', status: 'pendiente' }],
+      hospedaje: [], estacionamiento: []
+    } },
+    { id: 'FP-005', unit: 'MX-2456', type: 'propia', status: 'en_ruta', conductor: 'Ana Martínez', origen: 'Tijuana', destino: 'Hermosillo', cliente: 'Coppel', etaOriginal: '20:00', etaAI: '20:00', etaReason: 'Sin novedades', puntualidad: 'a_tiempo', shipment: 'SHP-20260213-005', salidaPlan: '14:00', salidaReal: '14:00', tiempoPlan: '6h 00min', velocidad: 100, combustible: 82, motorSalud: 95, frenosSalud: 97, rpm: 1750, tempMotor: 86, slaEnRiesgo: false, slaMonto: 0, prioridadExcepcion: 0, causaEstado: 'Sin novedades. Ruta despejada.', accionIA: 'Sin acción requerida.', avance: 30, riskScore: 22, lat: 30.5000, lng: -111.5000, horasConduccion: 4.0, carga: 'Ropa y calzado', valorCarga: 560000, tempCaja: null, tempSetPoint: null, tempTrend: null, saludVehiculo: 95, alertas: [], desvio: false, proximaParada: 'Descanso programado (1hr)', consumoCombustible: 'Normal', distanciaPlaneada: 558, distanciaRecorrida: 167, rendimiento: 4.3, remolque: 'RMQ-8456', etaParcial: '3h 55min', origenCoords: { lat: 32.5149, lng: -117.0382 }, destinoCoords: { lat: 29.0729, lng: -110.9559 }, paradas: [
+      { nombre: 'CEDIS Tijuana', planeada: '14:00', real: '14:00', tipo: 'origen', status: 'completada', lat: 32.5149, lng: -117.0382, geocerca: { nombre: 'CEDIS Tijuana Coppel', tipo: 'origen', radioM: 200, entro: '13:40', salio: '14:00' }, caseta: null },
+      { nombre: 'Caseta La Rumorosa', planeada: '15:00', real: '15:10', tipo: 'caseta', status: 'completada', lat: 32.5400, lng: -116.0500, geocerca: { nombre: 'Caseta La Rumorosa', tipo: 'caseta', radioM: 100, entro: '15:09', salio: '15:11' }, caseta: { nombre: 'La Rumorosa', tag: 'IAVE-86501', monto: 275, metodo: 'TAG', validadoGPS: true } },
+      { nombre: 'Descanso Caborca', planeada: '17:00', real: null, tipo: 'descanso', status: 'pendiente', lat: 30.7167, lng: -112.1500, geocerca: { nombre: 'Parador Caborca', tipo: 'descanso', radioM: 150, entro: null, salio: null }, caseta: null },
+      { nombre: 'CEDIS Hermosillo Coppel', planeada: '20:00', real: null, tipo: 'destino', status: 'pendiente', lat: 29.0729, lng: -110.9559, geocerca: { nombre: 'CEDIS Hermosillo Coppel', tipo: 'destino', radioM: 200, entro: null, salio: null }, caseta: null }
+    ], eventosViaje: [], costosViaje: {
+      tipoViaje: 'sencillo', anticipo: 15000, metodoPagoAnticipo: 'Transferencia',
+      diesel: [{ gasolinera: 'Pemex Tijuana Norte', hora: '13:30', litros: 200, precioLitro: 25.40, importe: 5080, metodo: 'Tarjeta Fleet', odometro: 736905, factura: 'CFDI-D7701' }],
+      viaticos: [{ concepto: 'Comida en ruta', importe: 280, comprobante: 'Ticket foto', status: 'validado' }],
+      maniobras: [{ concepto: 'Carga Coppel Tijuana', importe: 700, comprobante: 'Recibo', status: 'validado' }],
+      otrosGastos: [], vulcanizadora: [],
+      hospedaje: [{ concepto: 'Hotel Caborca (estimado)', importe: 850, comprobante: null, status: 'pendiente' }],
+      estacionamiento: [{ concepto: 'Pensión segura Caborca', importe: 400, comprobante: null, status: 'pendiente' }]
+    } },
+    { id: 'FP-006', unit: 'MX-2478', type: 'propia', status: 'en_ruta', conductor: 'Luis García', origen: 'Mérida', destino: 'Cancún', cliente: 'HEB', etaOriginal: '15:30', etaAI: '15:30', etaReason: 'Sin novedades', puntualidad: 'a_tiempo', shipment: 'SHP-20260213-006', salidaPlan: '10:00', salidaReal: '10:00', tiempoPlan: '3h 30min', velocidad: 90, combustible: 65, motorSalud: 91, frenosSalud: 93, rpm: 1600, tempMotor: 87, slaEnRiesgo: false, slaMonto: 0, prioridadExcepcion: 0, causaEstado: 'Sin novedades. Cadena de frío estable.', accionIA: 'Sin acción requerida.', avance: 60, riskScore: 18, lat: 20.8000, lng: -87.5000, horasConduccion: 2.0, carga: 'Congelados', valorCarga: 390000, tempCaja: -18.5, tempSetPoint: -18.0, tempTrend: 'estable', saludVehiculo: 91, alertas: [], desvio: false, proximaParada: 'Entrega destino (45 min)', consumoCombustible: 'Normal', distanciaPlaneada: 312, distanciaRecorrida: 187, rendimiento: 3.9, remolque: 'RMQ-6478', etaParcial: '1h 30min', origenCoords: { lat: 20.9674, lng: -89.6237 }, destinoCoords: { lat: 21.1619, lng: -86.8515 }, paradas: [
+      { nombre: 'CEDIS Mérida', planeada: '10:00', real: '10:00', tipo: 'origen', status: 'completada', lat: 20.9674, lng: -89.6237, geocerca: { nombre: 'CEDIS Mérida HEB', tipo: 'origen', radioM: 200, entro: '09:30', salio: '10:00' }, caseta: null },
+      { nombre: 'Caseta Kantunil', planeada: '11:15', real: '11:12', tipo: 'caseta', status: 'completada', lat: 20.6333, lng: -89.0333, geocerca: { nombre: 'Caseta Kantunil', tipo: 'caseta', radioM: 100, entro: '11:11', salio: '11:13' }, caseta: { nombre: 'Kantunil', tag: 'IAVE-24780', monto: 165, metodo: 'TAG', validadoGPS: true } },
+      { nombre: 'Caseta Pisté', planeada: '12:00', real: '11:55', tipo: 'caseta', status: 'completada', lat: 20.7000, lng: -88.5700, geocerca: { nombre: 'Caseta Pisté', tipo: 'caseta', radioM: 100, entro: '11:54', salio: '11:56' }, caseta: { nombre: 'Pisté', tag: 'IAVE-24780', monto: 132, metodo: 'TAG', validadoGPS: true } },
+      { nombre: 'CEDIS Cancún HEB', planeada: '15:30', real: null, tipo: 'destino', status: 'proximo', lat: 21.1619, lng: -86.8515, geocerca: { nombre: 'CEDIS Cancún HEB', tipo: 'destino', radioM: 200, entro: null, salio: null }, caseta: null }
+    ], eventosViaje: [], costosViaje: {
+      tipoViaje: 'sencillo', anticipo: 8000, metodoPagoAnticipo: 'Efectivo',
+      diesel: [{ gasolinera: 'Pemex Mérida Sur', hora: '09:20', litros: 100, precioLitro: 25.05, importe: 2505, metodo: 'Tarjeta Fleet', odometro: 420100, factura: 'CFDI-E8801' }],
+      viaticos: [{ concepto: 'Desayuno Mérida', importe: 130, comprobante: 'Ticket foto', status: 'validado' }],
+      maniobras: [{ concepto: 'Carga congelados HEB', importe: 650, comprobante: 'Recibo', status: 'validado' }],
+      otrosGastos: [{ concepto: 'Hielo seco emergencia', importe: 200, comprobante: 'Ticket', status: 'validado' }],
+      vulcanizadora: [], hospedaje: [], estacionamiento: []
+    } },
+    { id: 'FP-007', unit: 'MX-2502', type: 'propia', status: 'en_ruta', conductor: 'Rosa Sánchez', origen: 'León', destino: 'Aguascalientes', cliente: 'OXXO', etaOriginal: '12:45', etaAI: '13:10', etaReason: 'Obra en autopista km 45', puntualidad: 'a_tiempo', shipment: 'SHP-20260213-007', salidaPlan: '10:00', salidaReal: '10:00', tiempoPlan: '2h 45min', velocidad: 75, combustible: 58, motorSalud: 89, frenosSalud: 91, rpm: 1550, tempMotor: 89, slaEnRiesgo: false, slaMonto: 0, prioridadExcepcion: 20, causaEstado: 'Obra en autopista km 45. Temperatura caja 0.1°C sobre set point.', accionIA: 'Monitorear temperatura. Retraso menor.', avance: 82, riskScore: 28, lat: 21.6000, lng: -102.0000, horasConduccion: 1.2, carga: 'Bebidas', valorCarga: 280000, tempCaja: 4.1, tempSetPoint: 4.0, tempTrend: 'subiendo', saludVehiculo: 89, alertas: ['Temp. caja +0.1° sobre set point'], desvio: false, proximaParada: 'Entrega destino (25 min)', consumoCombustible: 'Normal', distanciaPlaneada: 132, distanciaRecorrida: 108, rendimiento: 3.6, remolque: 'RMQ-2502', etaParcial: '0h 25min', origenCoords: { lat: 21.1220, lng: -101.6821 }, destinoCoords: { lat: 21.8818, lng: -102.2916 }, paradas: [
+      { nombre: 'CEDIS León OXXO', planeada: '10:00', real: '10:00', tipo: 'origen', status: 'completada', lat: 21.1220, lng: -101.6821, geocerca: { nombre: 'CEDIS León OXXO', tipo: 'origen', radioM: 200, entro: '09:45', salio: '10:00' }, caseta: null },
+      { nombre: 'Caseta León-Aguascalientes', planeada: '10:30', real: '10:28', tipo: 'caseta', status: 'completada', lat: 21.3500, lng: -101.8900, geocerca: { nombre: 'Caseta León-Ags', tipo: 'caseta', radioM: 100, entro: '10:27', salio: '10:29' }, caseta: { nombre: 'León-Aguascalientes', tag: 'IAVE-25021', monto: 178, metodo: 'TAG', validadoGPS: true } },
+      { nombre: 'CEDIS Aguascalientes', planeada: '12:45', real: null, tipo: 'destino', status: 'proximo', lat: 21.8818, lng: -102.2916, geocerca: { nombre: 'CEDIS Aguascalientes OXXO', tipo: 'destino', radioM: 200, entro: null, salio: null }, caseta: null }
+    ], eventosViaje: [{ tipo: 'Obra en autopista', hora: '11:20', severidad: 'baja' }], costosViaje: {
+      tipoViaje: 'sencillo', anticipo: 4000, metodoPagoAnticipo: 'Efectivo',
+      diesel: [{ gasolinera: 'Pemex León Centro', hora: '09:40', litros: 50, precioLitro: 24.90, importe: 1245, metodo: 'Tarjeta Fleet', odometro: 305108, factura: 'CFDI-F9901' }],
+      viaticos: [],
+      maniobras: [{ concepto: 'Carga OXXO León', importe: 450, comprobante: 'Recibo', status: 'validado' }],
+      otrosGastos: [], vulcanizadora: [], hospedaje: [], estacionamiento: []
+    } },
+    { id: 'FP-008', unit: 'MX-2534', type: 'propia', status: 'por_asignar', conductor: 'Pedro Gómez', ubicacionActual: 'CEDIS Querétaro', lat: 20.5888, lng: -100.3899, tiempoEspera: '2h 15min', disponibilidadConductor: 'Disponible', ultimoMantenimiento: '2026-01-28', proximoServicio: '2026-03-15', saludVehiculo: 93, alertas: [] },
+    { id: 'FP-009', unit: 'MX-2567', type: 'propia', status: 'por_asignar', conductor: 'Elena Torres', ubicacionActual: 'CEDIS Guadalajara', lat: 20.6597, lng: -103.3496, tiempoEspera: '45min', disponibilidadConductor: 'Disponible', ultimoMantenimiento: '2026-02-05', proximoServicio: '2026-04-01', saludVehiculo: 97, alertas: [] },
+    { id: 'FP-010', unit: 'MX-2590', type: 'propia', status: 'por_asignar', conductor: 'Sin asignar', ubicacionActual: 'CEDIS CDMX Sur', lat: 19.3200, lng: -99.1500, tiempoEspera: '4h 30min', disponibilidadConductor: 'Sin conductor', ultimoMantenimiento: '2026-02-10', proximoServicio: '2026-04-10', saludVehiculo: 90, alertas: ['Sin conductor asignado'] },
+    { id: 'FP-011', unit: 'MX-2601', type: 'propia', status: 'en_taller', conductor: 'N/A', ubicacionTaller: 'Taller Central MTY', lat: 25.6866, lng: -100.3161, razonIngreso: 'Falla motor - sensor MAP', fechaIngreso: '2026-02-10', tiempoEstimadoSalida: '2026-02-14', avanceReparacion: 65, costoEstimado: 45000, impactoSLA: 3, vehiculoSustituto: 'MX-2700 (asignado)', historialVisitas: 4, fallaRecurrente: false, alertas: [] },
+    { id: 'FP-012', unit: 'MX-2615', type: 'propia', status: 'en_taller', conductor: 'N/A', ubicacionTaller: 'Taller Externo GDL', lat: 20.6597, lng: -103.3496, razonIngreso: 'Cambio de frenos + revisión suspensión', fechaIngreso: '2026-02-11', tiempoEstimadoSalida: '2026-02-13', avanceReparacion: 80, costoEstimado: 28000, impactoSLA: 1, vehiculoSustituto: 'Ninguno', historialVisitas: 2, fallaRecurrente: false, alertas: ['Sale mañana'] },
+    { id: 'FP-013', unit: 'MX-2630', type: 'propia', status: 'en_taller', conductor: 'N/A', ubicacionTaller: 'Taller Central CDMX', lat: 19.4326, lng: -99.1332, razonIngreso: 'Transmisión - 3ra falla en 6 meses', fechaIngreso: '2026-02-08', tiempoEstimadoSalida: '2026-02-18', avanceReparacion: 30, costoEstimado: 120000, impactoSLA: 5, vehiculoSustituto: 'MX-2710 (asignado)', historialVisitas: 8, fallaRecurrente: true, alertas: ['Falla recurrente detectada por IA'] },
+    { id: 'FP-014', unit: 'MX-2650', type: 'propia', status: 'no_ubicable', conductor: 'Fernando Díaz', ultimaUbicacion: 'km 187 Autopista Durango-Mazatlán', lat: 23.8500, lng: -105.5000, tiempoSinSenal: '1h 20min', causaProbable: { sinCobertura: 85, dispositivoDanado: 10, posibleRobo: 5 }, accionSugerida: 'Esperar reconexión - zona sierra sin cobertura', ultimoEstadoMecanico: 'Normal', alertas: ['Zona sin cobertura conocida'] },
+    { id: 'FP-015', unit: 'MX-2670', type: 'propia', status: 'no_ubicable', conductor: 'Miguel Ángel Ramos', ultimaUbicacion: 'Zona industrial Apodaca, NL', lat: 25.7833, lng: -100.1833, tiempoSinSenal: '3h 45min', causaProbable: { sinCobertura: 15, dispositivoDanado: 25, posibleRobo: 60 }, accionSugerida: 'URGENTE: Activar protocolo de seguridad', ultimoEstadoMecanico: 'Normal', alertas: ['Riesgo alto - Activar protocolo'] },
+    { id: 'FT-001', unit: 'EXT-4501', type: 'terceros', status: 'en_ruta', conductor: 'Transportes García - Op. #12', origen: 'Lázaro Cárdenas', destino: 'CDMX', cliente: 'ArcelorMittal', etaOriginal: '22:00', etaAI: '23:30', etaReason: 'Neblina densa en tramo montañoso', puntualidad: 'demora_critica', shipment: 'SHP-20260213-T01', salidaPlan: '14:00', salidaReal: '14:30', tiempoPlan: '8h 00min', velocidad: 45, combustible: 40, motorSalud: 70, frenosSalud: 75, rpm: 2100, tempMotor: 98, slaEnRiesgo: true, slaMonto: 200000, prioridadExcepcion: 92, causaEstado: 'Neblina densa tramo montañoso Michoacán. Conductor con 6.5hrs continuas — EXCEDE LÍMITE SCT. Salud vehículo 70%. Consumo combustible elevado +12%.', accionIA: 'URGENTE: Ordenar parada de descanso obligatorio. Notificar cliente retraso 90 min. Monitorear neblina.', avance: 35, riskScore: 78, lat: 19.0000, lng: -100.8000, horasConduccion: 6.5, carga: 'Acero', valorCarga: 2100000, tempCaja: null, tempSetPoint: null, tempTrend: null, saludVehiculo: 70, alertas: ['Neblina densa', 'Horas conducción altas', 'Salud vehículo 70%'], desvio: false, proximaParada: 'Descanso obligatorio (30 min)', consumoCombustible: 'Elevado +12%', distanciaPlaneada: 680, distanciaRecorrida: 238, rendimiento: 2.9, remolque: 'RMQ-EXT-101', etaParcial: '5h 30min', origenCoords: { lat: 17.9580, lng: -102.2006 }, destinoCoords: { lat: 19.4326, lng: -99.1332 }, paradas: [
+      { nombre: 'Puerto Lázaro Cárdenas', planeada: '14:00', real: '14:30', tipo: 'origen', status: 'completada', lat: 17.9580, lng: -102.2006, geocerca: { nombre: 'Puerto LC Terminal', tipo: 'origen', radioM: 500, entro: '13:20', salio: '14:30' }, caseta: null },
+      { nombre: 'Caseta Infiernillo', planeada: '15:30', real: '16:00', tipo: 'caseta', status: 'completada', lat: 18.2700, lng: -101.8900, geocerca: { nombre: 'Caseta Infiernillo', tipo: 'caseta', radioM: 100, entro: '15:59', salio: '16:01' }, caseta: { nombre: 'Infiernillo', tag: 'PASE-EXT-101', monto: 310, metodo: 'TAG', validadoGPS: true } },
+      { nombre: 'Pátzcuaro', planeada: '17:30', real: '18:15', tipo: 'paso', status: 'completada', lat: 19.5138, lng: -101.6088, geocerca: { nombre: 'Zona Pátzcuaro', tipo: 'paso', radioM: 1000, entro: '18:10', salio: '18:20' }, caseta: null },
+      { nombre: 'Caseta Mil Cumbres', planeada: '18:30', real: null, tipo: 'caseta', status: 'proximo', lat: 19.5800, lng: -100.8200, geocerca: { nombre: 'Caseta Mil Cumbres', tipo: 'caseta', radioM: 100, entro: null, salio: null }, caseta: { nombre: 'Mil Cumbres', tag: null, monto: 285, metodo: 'pendiente', validadoGPS: false } },
+      { nombre: 'Caseta Toluca', planeada: '20:00', real: null, tipo: 'caseta', status: 'pendiente', lat: 19.2826, lng: -99.6557, geocerca: { nombre: 'Caseta Toluca', tipo: 'caseta', radioM: 100, entro: null, salio: null }, caseta: { nombre: 'Toluca', tag: null, monto: 198, metodo: 'pendiente', validadoGPS: false } },
+      { nombre: 'CEDIS CDMX ArcelorMittal', planeada: '22:00', real: null, tipo: 'destino', status: 'pendiente', lat: 19.4326, lng: -99.1332, geocerca: { nombre: 'Planta ArcelorMittal CDMX', tipo: 'destino', radioM: 300, entro: null, salio: null }, caseta: null }
+    ], eventosViaje: [{ tipo: 'Exceso hrs conducción SCT', hora: '20:30', severidad: 'critica' }, { tipo: 'Neblina densa', hora: '19:45', severidad: 'alta' }, { tipo: 'Consumo combustible elevado', hora: '18:00', severidad: 'media' }], costosViaje: {
+      tipoViaje: 'sencillo', anticipo: 20000, metodoPagoAnticipo: 'Transferencia',
+      diesel: [{ gasolinera: 'Pemex Lázaro Cárdenas', hora: '13:45', litros: 250, precioLitro: 25.30, importe: 6325, metodo: 'Tarjeta Fleet', odometro: 890200, factura: 'CFDI-G1101' }, { gasolinera: 'Pemex Pátzcuaro', hora: '18:20', litros: 120, precioLitro: 25.50, importe: 3060, metodo: 'Efectivo', odometro: 890438, factura: 'Ticket-9920' }],
+      viaticos: [{ concepto: 'Comida Pátzcuaro', importe: 220, comprobante: 'Ticket foto', status: 'validado' }, { concepto: 'Cena en ruta (estimada)', importe: 250, comprobante: null, status: 'pendiente' }],
+      maniobras: [{ concepto: 'Carga contenedor Puerto LC', importe: 1500, comprobante: 'Recibo', status: 'validado' }],
+      otrosGastos: [{ concepto: 'Cadenas para neblina', importe: 180, comprobante: 'Ticket', status: 'validado' }],
+      vulcanizadora: [{ concepto: 'Cambio llanta eje 2 (ponchadura)', importe: 2800, comprobante: 'Nota servicio', status: 'validado' }],
+      hospedaje: [{ concepto: 'Hotel Toluca (estimado)', importe: 950, comprobante: null, status: 'pendiente' }],
+      estacionamiento: [{ concepto: 'Pensión segura Toluca', importe: 500, comprobante: null, status: 'pendiente' }]
+    } },
+    { id: 'FT-002', unit: 'EXT-4520', type: 'terceros', status: 'en_ruta', conductor: 'Línea Express - Op. #8', origen: 'Villahermosa', destino: 'Mérida', cliente: 'Bachoco', etaOriginal: '17:00', etaAI: '17:15', etaReason: 'Tráfico menor en Campeche', puntualidad: 'a_tiempo', shipment: 'SHP-20260213-T02', salidaPlan: '11:00', salidaReal: '11:00', tiempoPlan: '4h 00min', velocidad: 88, combustible: 60, motorSalud: 82, frenosSalud: 85, rpm: 1700, tempMotor: 91, slaEnRiesgo: false, slaMonto: 0, prioridadExcepcion: 0, causaEstado: 'Sin novedades. Cadena de frío estable a -20.1°C.', accionIA: 'Sin acción requerida.', avance: 55, riskScore: 35, lat: 19.8500, lng: -90.5000, horasConduccion: 3.0, carga: 'Pollo congelado', valorCarga: 650000, tempCaja: -20.1, tempSetPoint: -20.0, tempTrend: 'estable', saludVehiculo: 82, alertas: [], desvio: false, proximaParada: 'Caseta Champotón (20 min)', consumoCombustible: 'Normal', distanciaPlaneada: 470, distanciaRecorrida: 259, rendimiento: 3.7, remolque: 'RMQ-EXT-520', etaParcial: '1h 45min', origenCoords: { lat: 17.9892, lng: -92.9475 }, destinoCoords: { lat: 20.9674, lng: -89.6237 }, paradas: [
+      { nombre: 'Planta Bachoco Villahermosa', planeada: '11:00', real: '11:00', tipo: 'origen', status: 'completada', lat: 17.9892, lng: -92.9475, geocerca: { nombre: 'Planta Bachoco VH', tipo: 'origen', radioM: 300, entro: '10:30', salio: '11:00' }, caseta: null },
+      { nombre: 'Caseta Cárdenas Tab.', planeada: '12:00', real: '12:10', tipo: 'caseta', status: 'completada', lat: 17.9800, lng: -91.5300, geocerca: { nombre: 'Caseta Cárdenas', tipo: 'caseta', radioM: 100, entro: '12:09', salio: '12:11' }, caseta: { nombre: 'Cárdenas Tab.', tag: 'IAVE-EXT-520', monto: 210, metodo: 'TAG', validadoGPS: true } },
+      { nombre: 'Caseta Champotón', planeada: '14:00', real: null, tipo: 'caseta', status: 'proximo', lat: 19.3500, lng: -90.7200, geocerca: { nombre: 'Caseta Champotón', tipo: 'caseta', radioM: 100, entro: null, salio: null }, caseta: { nombre: 'Champotón', tag: null, monto: 245, metodo: 'pendiente', validadoGPS: false } },
+      { nombre: 'CEDIS Mérida Bachoco', planeada: '17:00', real: null, tipo: 'destino', status: 'pendiente', lat: 20.9674, lng: -89.6237, geocerca: { nombre: 'CEDIS Mérida Bachoco', tipo: 'destino', radioM: 200, entro: null, salio: null }, caseta: null }
+    ], eventosViaje: [], costosViaje: {
+      tipoViaje: 'sencillo', anticipo: 10000, metodoPagoAnticipo: 'Efectivo',
+      diesel: [{ gasolinera: 'Pemex Villahermosa', hora: '10:30', litros: 160, precioLitro: 25.10, importe: 4016, metodo: 'Tarjeta Fleet', odometro: 550300, factura: 'CFDI-H2201' }],
+      viaticos: [{ concepto: 'Desayuno Villahermosa', importe: 170, comprobante: 'Ticket foto', status: 'validado' }, { concepto: 'Comida Campeche (estimada)', importe: 250, comprobante: null, status: 'pendiente' }],
+      maniobras: [{ concepto: 'Carga Bachoco Villahermosa', importe: 600, comprobante: 'Recibo', status: 'validado' }],
+      otrosGastos: [], vulcanizadora: [], hospedaje: [], estacionamiento: []
+    } },
+    { id: 'FT-003', unit: 'EXT-4535', type: 'terceros', status: 'en_ruta', conductor: 'FletesMX - Op. #3', origen: 'CDMX', destino: 'Acapulco', cliente: 'Coca-Cola FEMSA', etaOriginal: '16:00', etaAI: '16:40', etaReason: 'Derrumbe parcial km 220', puntualidad: 'detenido', shipment: 'SHP-20260213-T03', salidaPlan: '11:00', salidaReal: '11:00', tiempoPlan: '5h 00min', velocidad: 0, combustible: 52, motorSalud: 78, frenosSalud: 82, rpm: 0, tempMotor: 75, slaEnRiesgo: true, slaMonto: 100000, prioridadExcepcion: 70, causaEstado: 'Detenido por derrumbe parcial km 220 Autopista del Sol. Ruta alterna activa pero congestionada. Descarga parcial programada en Chilpancingo.', accionIA: 'Monitorear avance por ruta alterna. Notificar cliente retraso 40 min. Coordinar descarga parcial.', avance: 48, riskScore: 55, lat: 17.8000, lng: -99.6000, horasConduccion: 2.5, carga: 'Bebidas', valorCarga: 410000, tempCaja: null, tempSetPoint: null, tempTrend: null, saludVehiculo: 78, alertas: ['Derrumbe parcial reportado'], desvio: true, desvioMotivo: 'Ruta alterna por derrumbe km 220', proximaParada: 'Chilpancingo - descarga parcial (1hr)', consumoCombustible: 'Elevado +8%', distanciaPlaneada: 380, distanciaRecorrida: 182, rendimiento: 3.1, remolque: 'RMQ-EXT-535', etaParcial: '2h 40min', origenCoords: { lat: 19.4326, lng: -99.1332 }, destinoCoords: { lat: 16.8531, lng: -99.8237 }, paradas: [
+      { nombre: 'Planta FEMSA CDMX', planeada: '11:00', real: '11:00', tipo: 'origen', status: 'completada', lat: 19.4326, lng: -99.1332, geocerca: { nombre: 'Planta FEMSA CDMX', tipo: 'origen', radioM: 300, entro: '10:20', salio: '11:00' }, caseta: null },
+      { nombre: 'Caseta Autopista del Sol km 42', planeada: '11:50', real: '11:55', tipo: 'caseta', status: 'completada', lat: 19.1400, lng: -99.4200, geocerca: { nombre: 'Caseta Autopista Sol', tipo: 'caseta', radioM: 100, entro: '11:54', salio: '11:56' }, caseta: { nombre: 'Autopista Sol km42', tag: 'IAVE-EXT-535', monto: 425, metodo: 'TAG', validadoGPS: true } },
+      { nombre: 'Caseta Paso Morelos', planeada: '12:30', real: '12:40', tipo: 'caseta', status: 'completada', lat: 18.7500, lng: -99.5100, geocerca: { nombre: 'Caseta Paso Morelos', tipo: 'caseta', radioM: 100, entro: '12:39', salio: '12:41' }, caseta: { nombre: 'Paso Morelos', tag: 'IAVE-EXT-535', monto: 380, metodo: 'TAG', validadoGPS: true } },
+      { nombre: 'Chilpancingo - descarga parcial', planeada: '14:30', real: null, tipo: 'entrega', status: 'proximo', lat: 17.5510, lng: -99.5008, geocerca: { nombre: 'Bodega FEMSA Chilpancingo', tipo: 'entrega_parcial', radioM: 200, entro: null, salio: null }, caseta: null },
+      { nombre: 'CEDIS Acapulco', planeada: '16:00', real: null, tipo: 'destino', status: 'pendiente', lat: 16.8531, lng: -99.8237, geocerca: { nombre: 'CEDIS Acapulco FEMSA', tipo: 'destino', radioM: 200, entro: null, salio: null }, caseta: null }
+    ], eventosViaje: [{ tipo: 'Derrumbe parcial km 220', hora: '14:10', severidad: 'alta' }, { tipo: 'Desvío ruta alterna', hora: '14:15', severidad: 'media' }], costosViaje: {
+      tipoViaje: 'sencillo', anticipo: 12000, metodoPagoAnticipo: 'Transferencia',
+      diesel: [{ gasolinera: 'Pemex Autopista del Sol km 15', hora: '11:15', litros: 150, precioLitro: 25.00, importe: 3750, metodo: 'Tarjeta Fleet', odometro: 710500, factura: 'CFDI-I3301' }],
+      viaticos: [{ concepto: 'Comida Chilpancingo (estimada)', importe: 250, comprobante: null, status: 'pendiente' }],
+      maniobras: [{ concepto: 'Carga FEMSA CDMX', importe: 700, comprobante: 'Recibo', status: 'validado' }],
+      otrosGastos: [{ concepto: 'Desvío ruta alterna (diésel extra)', importe: 450, comprobante: 'Estimado', status: 'pendiente' }],
+      vulcanizadora: [], hospedaje: [], estacionamiento: []
+    } },
+    { id: 'FT-004', unit: 'EXT-4550', type: 'terceros', status: 'en_ruta', conductor: 'Transportes del Norte - Op. #15', origen: 'Chihuahua', destino: 'Cd. Juárez', cliente: 'Foxconn', etaOriginal: '14:00', etaAI: '14:00', etaReason: 'Sin novedades', puntualidad: 'a_tiempo', shipment: 'SHP-20260213-T04', salidaPlan: '10:00', salidaReal: '10:00', tiempoPlan: '4h 00min', velocidad: 95, combustible: 72, motorSalud: 88, frenosSalud: 90, rpm: 1650, tempMotor: 88, slaEnRiesgo: false, slaMonto: 0, prioridadExcepcion: 0, causaEstado: 'Sin novedades. Carga alto valor $3.5M — monitoreo especial activo.', accionIA: 'Sin acción requerida. Monitoreo especial activo por valor de carga.', avance: 70, riskScore: 40, lat: 30.0000, lng: -106.2000, horasConduccion: 2.8, carga: 'Componentes electrónicos', valorCarga: 3500000, tempCaja: null, tempSetPoint: null, tempTrend: null, saludVehiculo: 88, alertas: [], desvio: false, proximaParada: 'Entrega destino (1hr)', consumoCombustible: 'Normal', distanciaPlaneada: 364, distanciaRecorrida: 255, rendimiento: 4.0, remolque: 'RMQ-EXT-550', etaParcial: '1h 00min', origenCoords: { lat: 28.6353, lng: -106.0889 }, destinoCoords: { lat: 31.6904, lng: -106.4245 }, paradas: [
+      { nombre: 'Planta Foxconn Chihuahua', planeada: '10:00', real: '10:00', tipo: 'origen', status: 'completada', lat: 28.6353, lng: -106.0889, geocerca: { nombre: 'Planta Foxconn CHI', tipo: 'origen', radioM: 400, entro: '09:15', salio: '10:00' }, caseta: null },
+      { nombre: 'Caseta Sacramento', planeada: '10:30', real: '10:25', tipo: 'caseta', status: 'completada', lat: 28.8000, lng: -106.1200, geocerca: { nombre: 'Caseta Sacramento', tipo: 'caseta', radioM: 100, entro: '10:24', salio: '10:26' }, caseta: { nombre: 'Sacramento', tag: 'IAVE-EXT-550', monto: 155, metodo: 'TAG', validadoGPS: true } },
+      { nombre: 'Caseta Villa Ahumada', planeada: '12:00', real: '11:55', tipo: 'caseta', status: 'completada', lat: 30.6167, lng: -106.5000, geocerca: { nombre: 'Caseta Villa Ahumada', tipo: 'caseta', radioM: 100, entro: '11:54', salio: '11:56' }, caseta: { nombre: 'Villa Ahumada', tag: 'IAVE-EXT-550', monto: 310, metodo: 'TAG', validadoGPS: true } },
+      { nombre: 'Planta Foxconn Cd. Juárez', planeada: '14:00', real: null, tipo: 'destino', status: 'proximo', lat: 31.6904, lng: -106.4245, geocerca: { nombre: 'Planta Foxconn CJ', tipo: 'destino', radioM: 400, entro: null, salio: null }, caseta: null }
+    ], eventosViaje: [], costosViaje: {
+      tipoViaje: 'redondo', anticipo: 16000, metodoPagoAnticipo: 'Transferencia',
+      diesel: [{ gasolinera: 'Pemex Chihuahua Norte', hora: '09:30', litros: 180, precioLitro: 24.95, importe: 4491, metodo: 'Tarjeta Fleet', odometro: 456800, factura: 'CFDI-J4401' }],
+      viaticos: [{ concepto: 'Desayuno Chihuahua', importe: 190, comprobante: 'Ticket foto', status: 'validado' }, { concepto: 'Comida Cd. Juárez (estimada)', importe: 250, comprobante: null, status: 'pendiente' }],
+      maniobras: [{ concepto: 'Carga Foxconn Chihuahua', importe: 900, comprobante: 'Recibo', status: 'validado' }, { concepto: 'Descarga Foxconn CJ (estimada)', importe: 900, comprobante: null, status: 'pendiente' }],
+      otrosGastos: [], vulcanizadora: [],
+      hospedaje: [{ concepto: 'Hotel Cd. Juárez (retorno)', importe: 850, comprobante: null, status: 'pendiente' }],
+      estacionamiento: [{ concepto: 'Pensión Foxconn CJ', importe: 0, comprobante: null, status: 'pendiente' }]
+    } },
+    { id: 'FT-005', unit: 'EXT-4570', type: 'terceros', status: 'por_asignar', conductor: 'Transportes García - Op. #5', ubicacionActual: 'Patio MTY', lat: 25.6866, lng: -100.3161, tiempoEspera: '1h 30min', disponibilidadConductor: 'En descanso (disponible 15:00)', ultimoMantenimiento: 'Dato no disponible', proximoServicio: 'N/A', saludVehiculo: null, alertas: ['Sin telemetría CAN'] },
+    { id: 'FT-006', unit: 'EXT-4585', type: 'terceros', status: 'por_asignar', conductor: 'Línea Express - Op. #11', ubicacionActual: 'Patio GDL', lat: 20.6597, lng: -103.3496, tiempoEspera: '3h 00min', disponibilidadConductor: 'Disponible', ultimoMantenimiento: 'Dato no disponible', proximoServicio: 'N/A', saludVehiculo: null, alertas: [] },
+    { id: 'FT-007', unit: 'EXT-4600', type: 'terceros', status: 'en_taller', conductor: 'N/A', ubicacionTaller: 'Taller Transportes García', lat: 25.7500, lng: -100.2800, razonIngreso: 'Falla eléctrica sistema GPS', fechaIngreso: '2026-02-11', tiempoEstimadoSalida: '2026-02-13', avanceReparacion: 50, costoEstimado: null, impactoSLA: 2, vehiculoSustituto: 'Pendiente de asignar', historialVisitas: null, fallaRecurrente: false, alertas: ['Info limitada - flota terceros'] },
+    { id: 'FT-008', unit: 'EXT-4620', type: 'terceros', status: 'no_ubicable', conductor: 'FletesMX - Op. #7', ultimaUbicacion: 'Salida Oaxaca rumbo Costa', lat: 16.5000, lng: -96.7000, tiempoSinSenal: '5h 10min', causaProbable: { sinCobertura: 60, dispositivoDanado: 20, posibleRobo: 20 }, accionSugerida: 'Contactar empresa transportista - tiempo prolongado', ultimoEstadoMecanico: 'Desconocido', alertas: ['Sin telemetría', 'Contactar transportista'] },
+  ];
+  // === FIN DATOS FLOTA HARDCODEADOS ===
+  // Usar datos dinámicos del JSON si están disponibles, sino fallback a hardcoded
+  // Usar datos editables del admin si existen, sino JSON raw, sino hardcoded
+  const fleetVehicles = adminVehiculos ? adaptFlotaJson(adminVehiculos) : ((jsonDataLoaded && jsonFlota) ? adaptFlotaJson(jsonFlota) : fleetVehiclesHardcoded);
+
+
+
+  // ===== BIMBO REQ 1-5: Datos específicos para Grupo Bimbo =====
+  // BIMBO REQ 1: Datos de rutas - Dinámico (JSON) o hardcodeado (fallback)
+  const bimboRouteDataHardcoded = (selectedCompany === 'bimbo' || selectedCompany === 'motaengil') ? {
+    routes: [
+      { id: 'BR-001', name: 'CDMX → Monterrey (Ruta 57D)', type: 'primary', frequency: 47, color: '#22c55e', colorReturn: '#3b82f6', km: 912, casetas: 6, tiempoEst: '6h 30min', zonaProhibida: false },
+      { id: 'BR-002', name: 'CDMX → Monterrey (Vía Saltillo)', type: 'alternate', frequency: 12, color: '#f59e0b', colorReturn: '#8b5cf6', km: 948, casetas: 7, tiempoEst: '7h 15min', zonaProhibida: false },
+      { id: 'BR-003', name: 'GDL → CDMX (Autopista)', type: 'primary', frequency: 32, color: '#22c55e', colorReturn: '#3b82f6', km: 542, casetas: 4, tiempoEst: '5h 45min', zonaProhibida: false },
+      { id: 'BR-004', name: 'Veracruz → Puebla', type: 'primary', frequency: 28, color: '#22c55e', colorReturn: '#3b82f6', km: 274, casetas: 3, tiempoEst: '4h 00min', zonaProhibida: false },
+      { id: 'BR-005', name: 'MTY → Reynosa', type: 'primary', frequency: 21, color: '#22c55e', colorReturn: '#3b82f6', km: 222, casetas: 1, tiempoEst: '2h 30min', zonaProhibida: false },
+    ],
+    editableByTorreControl: true,
+  } : null;
+  const bimboRouteData = (jsonDataLoaded && jsonRutas) ? adaptRutasJson(jsonRutas) : bimboRouteDataHardcoded;
+
+  // BIMBO REQ 2: Eventos de desvío de ruta (panel derecho exclusivo)
+  const bimboDesvioEvents = (selectedCompany === 'bimbo' || selectedCompany === 'motaengil') ? fleetVehicles.filter(v => v.desvio === true).map(v => ({
+    unit: v.unit, conductor: v.conductor, ruta: `${v.origen} → ${v.destino}`,
+    motivo: v.desvioMotivo || 'Desvío detectado — sin motivo registrado',
+    hora: v.eventosViaje?.find(e => e.tipo?.includes('Desv'))?.hora || new Date().toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' }),
+    severidad: v.riskScore > 60 ? 'alta' : v.riskScore > 40 ? 'media' : 'baja',
+    lat: v.lat, lng: v.lng, avance: v.avance,
+  })) : [];
+
+  // BIMBO REQ 3: Alertas NOM-087-SCT-2-2017 (carga)
+  const bimboNom087Alerts = (selectedCompany === 'bimbo' || selectedCompany === 'motaengil') ? fleetVehicles.filter(v => v.status === 'en_ruta' && (v.horasConduccion || 0) > 0).map(v => {
+    const hrs = v.horasConduccion || 0;
+    const maxContinuas = 5; // Pausa 30min tras 5h continuas
+    const maxJornada = 14; // Descanso 8h tras 14h jornada
+    const alertaPrevia = 1; // 1h antes
+    let status = 'ok';
+    let alertType = null;
+    let tiempoRestante = null;
+    let accion = null;
+    if (hrs >= maxContinuas) {
+      status = 'excede_5h'; alertType = 'PAUSA OBLIGATORIA 30min'; tiempoRestante = '¡YA!';
+      accion = `Detener inmediatamente. ${v.unit} lleva ${hrs}h continuas. NOM-087 exige pausa de 30 min.`;
+    } else if (hrs >= (maxContinuas - alertaPrevia)) {
+      status = 'preventiva_5h'; alertType = 'PAUSA EN APROX. ' + Math.round((maxContinuas - hrs) * 60) + ' MIN';
+      tiempoRestante = Math.round((maxContinuas - hrs) * 60) + ' min';
+      accion = `Notificar conductor: pausa obligatoria en ${tiempoRestante}. Buscar zona segura cercana.`;
+    }
+    if (hrs >= maxJornada) {
+      status = 'excede_14h'; alertType = 'DESCANSO OBLIGATORIO 8h'; tiempoRestante = '¡YA!';
+      accion = `URGENTE: ${v.unit} lleva ${hrs}h de jornada. NOM-087 exige descanso de 8 horas. Detener en zona segura más cercana.`;
+    } else if (hrs >= (maxJornada - alertaPrevia) && status === 'ok') {
+      status = 'preventiva_14h'; alertType = 'DESCANSO 8h EN APROX. ' + Math.round((maxJornada - hrs) * 60) + ' MIN';
+      tiempoRestante = Math.round((maxJornada - hrs) * 60) + ' min';
+      accion = `Planificar descanso obligatorio de 8h para ${v.unit} en ${tiempoRestante}.`;
+    }
+    return { unit: v.unit, conductor: v.conductor, horas: hrs, status, alertType, tiempoRestante, accion,
+      ruta: `${v.origen} → ${v.destino}`, lat: v.lat, lng: v.lng, velocidad: v.velocidad };
+  }).filter(a => a.status !== 'ok') : [];
+
+  // BIMBO REQ 4: Zonas seguras de México (paradores reconocidos + CEDIS)
+  // BIMBO REQ 4: Zonas seguras - Dinámico (JSON) o hardcodeado (fallback)
+  const bimboZonasSegurasHardcoded = (selectedCompany === 'bimbo' || selectedCompany === 'motaengil') ? [
+    { id: 'ZS-01', nombre: 'Parador IAVE Tepotzotlán', tipo: 'parador', lat: 19.7150, lng: -99.2239, servicios: ['🅿️ Estacionamiento', '🍽️ Comida', '🛏️ Descanso', '⛽ Diesel'], capacidad: 40, ocupacion: 65 },
+    { id: 'ZS-02', nombre: 'Parador Palmillas', tipo: 'parador', lat: 20.3800, lng: -99.5400, servicios: ['🅿️ Estacionamiento', '🍽️ Comida', '🛏️ Descanso'], capacidad: 25, ocupacion: 40 },
+    { id: 'ZS-03', nombre: 'Parador SLP La Fe', tipo: 'parador', lat: 22.1500, lng: -100.9800, servicios: ['🅿️ Estacionamiento', '🍽️ Comida', '🛏️ Descanso', '⛽ Diesel', '🔧 Taller'], capacidad: 60, ocupacion: 50 },
+    { id: 'ZS-06', nombre: 'CEDIS CDMX Norte (Bimbo)', tipo: 'cedis', lat: 19.4326, lng: -99.1332, servicios: ['🅿️ Patio', '🍽️ Comedor', '🛏️ Dormitorios', '🔧 Taller'], capacidad: 80, ocupacion: 30 },
+    { id: 'ZS-07', nombre: 'CEDIS Monterrey (Bimbo)', tipo: 'cedis', lat: 25.6866, lng: -100.3161, servicios: ['🅿️ Patio', '🍽️ Comedor', '🛏️ Dormitorios', '🔧 Taller'], capacidad: 60, ocupacion: 25 },
+  ] : [];
+  const bimboZonasSegurasList = (jsonDataLoaded && jsonZonasSeguras) ? adaptZonasSeguras(jsonZonasSeguras) : bimboZonasSegurasHardcoded;
+
+  // BIMBO REQ 4: Detección de paradas prohibidas (fuera de zonas seguras)
+  const bimboParadasProhibidas = (selectedCompany === 'bimbo' || selectedCompany === 'motaengil') ? fleetVehicles.filter(v =>
+    v.status === 'en_ruta' && (v.velocidad === 0 || v.puntualidad === 'detenido')
+  ).map(v => {
+    const enZonaSegura = bimboZonasSegurasList.some(z => {
+      const dist = Math.sqrt(Math.pow(v.lat - z.lat, 2) + Math.pow(v.lng - z.lng, 2)) * 111;
+      return dist < 0.5; // <500m
+    });
+    const zonaCercana = bimboZonasSegurasList.reduce((closest, z) => {
+      const dist = Math.sqrt(Math.pow(v.lat - z.lat, 2) + Math.pow(v.lng - z.lng, 2)) * 111;
+      return dist < closest.dist ? { ...z, dist } : closest;
+    }, { dist: Infinity });
+    return {
+      unit: v.unit, conductor: v.conductor, lat: v.lat, lng: v.lng,
+      enZonaSegura, tipo: enZonaSegura ? 'zona_segura' : 'parada_prohibida',
+      zonaCercana: zonaCercana.nombre, distanciaZonaCercana: zonaCercana.dist.toFixed(1),
+      tiempoDetenido: Math.floor(Math.random() * 45) + 5 + ' min',
+      ruta: `${v.origen} → ${v.destino}`,
+    };
+  }) : [];
+
+  // BIMBO REQ 5: Resumen consolidado de casetas por ruta
+  const bimboCasetasResumen = (selectedCompany === 'bimbo' || selectedCompany === 'motaengil') ? fleetVehicles.filter(v => v.status === 'en_ruta' && v.paradas).map(v => {
+    const casetas = v.paradas.filter(p => p.caseta);
+    const pagadas = casetas.filter(c => c.caseta.metodo === 'TAG' && c.status === 'completada');
+    const pendientes = casetas.filter(c => c.caseta.metodo === 'pendiente');
+    const totalPagado = pagadas.reduce((s, c) => s + (c.caseta.monto || 0), 0);
+    const totalEstimado = pendientes.reduce((s, c) => s + (c.caseta.monto || 0), 0);
+    return {
+      unit: v.unit, conductor: v.conductor, ruta: `${v.origen} → ${v.destino}`,
+      casetasPagadas: pagadas.length, casetasPendientes: pendientes.length,
+      totalPagado, totalEstimado, totalViaje: totalPagado + totalEstimado,
+      casetas: casetas.map(c => ({
+        nombre: c.caseta.nombre, monto: c.caseta.monto, metodo: c.caseta.metodo,
+        tag: c.caseta.tag, validadoGPS: c.caseta.validadoGPS, status: c.status,
+        lat: c.lat, lng: c.lng,
+      })),
+    };
+  }) : [];
+  const bimboCasetasTotal = bimboCasetasResumen.reduce((s, v) => s + v.totalViaje, 0);
+  const bimboCasetasPagado = bimboCasetasResumen.reduce((s, v) => s + v.totalPagado, 0);
+  const bimboCasetasEstimado = bimboCasetasResumen.reduce((s, v) => s + v.totalEstimado, 0);
+  // ===== FIN BIMBO REQ 1-5 Datos =====
+
+    // Geocercas sugeridas por IA - Dinámico (JSON) o hardcodeado (fallback)
+    const zonesFromJson = (jsonDataLoaded && jsonGeocercas) ? adaptGeocercas(jsonGeocercas) : null;
+        const zonesHardcoded = [
+    { 
+      id: 1, 
+      name: 'CEDIS Oriente',
+      type: 'critical',
+      description: 'Patrón de detenciones recurrentes sugiere operaciones de carga/descarga.',
+      riskScore: 67,
+      riskTrend: '+8%',
+      confidence: 89,
+      dataPoints: 127,
+      economicImpact: {
+        savingsRisk: 420000,
+        savingsSLA: 180000,
+        savingsFuel: 95000
+      },
+      counterfactual: {
+        loss: 695000,
+        slaBreaches: 8,
+        clientsAtRisk: 2
+      },
+      reasoningBullets: [
+        {
+          text: '8 unidades con detenciones recurrentes de 45-90 minutos',
+          detail: {
+            title: 'Unidades con Patrón de Detención',
+            type: 'table',
+            data: [
+              { unidad: 'MX-2341', conductor: 'Juan Pérez', detenciones: '12 veces', promedio: '67 min' },
+              { unidad: 'MX-2389', conductor: 'María López', detenciones: '15 veces', promedio: '52 min' },
+              { unidad: 'MX-2401', conductor: 'Carlos Ruiz', detenciones: '9 veces', promedio: '78 min' },
+              { unidad: 'MX-2456', conductor: 'Ana Martínez', detenciones: '11 veces', promedio: '61 min' },
+              { unidad: 'MX-2478', conductor: 'Luis García', detenciones: '13 veces', promedio: '55 min' },
+              { unidad: 'MX-2502', conductor: 'Rosa Sánchez', detenciones: '10 veces', promedio: '72 min' },
+              { unidad: 'MX-2534', conductor: 'Pedro Gómez', detenciones: '14 veces', promedio: '48 min' },
+              { unidad: 'MX-2567', conductor: 'Elena Torres', detenciones: '8 veces', promedio: '81 min' },
+            ]
+          }
+        },
+        {
+          text: 'Patrón coincide con operaciones de carga/descarga',
+          detail: {
+            title: 'Análisis de Patrón Operativo',
+            type: 'text',
+            content: 'El algoritmo de Iris Fleet detectó que el 94% de las detenciones ocurren con motor apagado y están precedidas por entradas a zona industrial. El tiempo promedio (63 min) coincide con el estándar logístico de operaciones de cross-docking. Adicionalmente, se identificó correlación temporal con horarios de recepción de mercancía reportados en el ERP del cliente.'
+          }
+        },
+        {
+          text: 'Actividad concentrada entre 07:00-18:00 hrs, Lun-Vie',
+          detail: {
+            title: 'Distribución Temporal de Actividad',
+            type: 'text',
+            content: 'Horario pico: 08:00-10:00 hrs (37% del total). Segundo pico: 14:00-16:00 hrs (28%). Actividad residual fines de semana: 4%. Este patrón es consistente con operaciones B2B de distribución mayorista.'
+          }
+        },
+      ]
+    },
+    { 
+      id: 2, 
+      name: 'Zona Alto Riesgo Poniente',
+      type: 'critical',
+      description: '3 incidentes reportados. 8 vehículos expuestos en horario nocturno.',
+      riskScore: 87,
+      riskTrend: '+12%',
+      confidence: 92,
+      dataPoints: 214,
+      economicImpact: {
+        savingsRisk: 1200000,
+        savingsSLA: 890000,
+        savingsFuel: 340000
+      },
+      counterfactual: {
+        loss: 2430000,
+        slaBreaches: 14,
+        clientsAtRisk: 5
+      },
+      reasoningBullets: [
+        {
+          text: '3 incidentes de robo reportados en últimos 60 días (fuente: SSP)',
+          detail: {
+            title: 'Incidentes Reportados - Secretaría de Seguridad Pública',
+            type: 'table',
+            data: [
+              { fecha: '12-Dic-2025', tipo: 'Robo con violencia', hora: '02:45', estatus: 'Carpeta abierta' },
+              { fecha: '28-Dic-2025', tipo: 'Robo de vehículo', hora: '04:20', estatus: 'En investigación' },
+              { fecha: '18-Ene-2026', tipo: 'Asalto a transporte', hora: '03:15', estatus: 'Recuperación parcial' },
+            ]
+          }
+        },
+        {
+          text: '8 vehículos transitan por aquí en horario nocturno (22:00-05:00)',
+          detail: {
+            title: 'Vehículos Expuestos en Horario de Alto Riesgo',
+            type: 'table',
+            data: [
+              { unidad: 'MX-3012', conductor: 'Roberto Silva', carga: 'Electrónicos', valor: '$780K', ruta: 'MTY-GDL' },
+              { unidad: 'MX-3045', conductor: 'Laura Díaz', carga: 'Farmacéuticos', valor: '$620K', ruta: 'QRO-GDL' },
+              { unidad: 'MX-3089', conductor: 'Miguel Ángel', carga: 'Autopartes', valor: '$450K', ruta: 'SLP-GDL' },
+              { unidad: 'MX-3102', conductor: 'Patricia Reyes', carga: 'Textiles', valor: '$290K', ruta: 'AGS-GDL' },
+              { unidad: 'MX-3134', conductor: 'Jorge Ramírez', carga: 'Alimentos', valor: '$180K', ruta: 'ZAC-GDL' },
+              { unidad: 'MX-3156', conductor: 'Sandra Ortiz', carga: 'Bebidas', valor: '$210K', ruta: 'DGO-GDL' },
+              { unidad: 'MX-3178', conductor: 'Fernando Cruz', carga: 'Electrónicos', valor: '$890K', ruta: 'MTY-GDL' },
+              { unidad: 'MX-3201', conductor: 'Gabriela Moreno', carga: 'Químicos', valor: '$530K', ruta: 'SLP-GDL' },
+            ]
+          }
+        },
+        {
+          text: 'Congestión vehicular promedio: 35 min',
+          detail: {
+            title: 'Análisis de Tráfico - Fuente: Google Maps Traffic API',
+            type: 'text',
+            content: 'Datos históricos de velocidad promedio en la zona: 12 km/h vs 45 km/h esperado. Tiempo adicional por congestión: 35 minutos en promedio. Horarios críticos: 07:00-09:00 y 18:00-20:00 hrs. La baja velocidad incrementa la ventana de exposición a riesgo en 280%.'
+          }
+        },
+      ]
+    },
+    { 
+      id: 3, 
+      name: 'Corredor Carga Valiosa Norte',
+      type: 'critical',
+      description: 'Ruta crítica: 20 unidades con carga >$500K MXN y 4 clientes Tier-1.',
+      riskScore: 73,
+      riskTrend: '+5%',
+      confidence: 85,
+      dataPoints: 189,
+      economicImpact: {
+        savingsRisk: 680000,
+        savingsSLA: 520000,
+        savingsFuel: 180000
+      },
+      counterfactual: {
+        loss: 1380000,
+        slaBreaches: 11,
+        clientsAtRisk: 3
+      },
+      reasoningBullets: [
+        {
+          text: '20 unidades con carga clasificada como "alto valor" (>$500K MXN)',
+          detail: {
+            title: 'Unidades con Carga de Alto Valor',
+            type: 'table',
+            data: [
+              { unidad: 'MX-4001', carga: 'Semiconductores', valor: '$1.2M', destino: 'Cliente A', eta: '14:30' },
+              { unidad: 'MX-4023', carga: 'Equipos médicos', valor: '$980K', destino: 'Cliente B', eta: '15:45' },
+              { unidad: 'MX-4045', carga: 'Servidores', valor: '$1.5M', destino: 'Cliente A', eta: '16:20' },
+              { unidad: 'MX-4067', carga: 'Joyas', valor: '$850K', destino: 'Cliente C', eta: '13:15' },
+              { unidad: 'MX-4089', carga: 'Farmacéuticos', valor: '$720K', destino: 'Cliente D', eta: '17:00' },
+            ]
+          }
+        },
+        {
+          text: '4 clientes Tier-1 reciben entregas en esta zona',
+          detail: {
+            title: 'Clientes Estratégicos en el Corredor',
+            type: 'table',
+            data: [
+              { cliente: 'Cliente A - Tech Corp', entregas: '45/mes', sla: '<2hrs', penalización: '$50K/incidente' },
+              { cliente: 'Cliente B - MedSupply', entregas: '32/mes', sla: '<90min', penalización: '$75K/incidente' },
+              { cliente: 'Cliente C - Luxury Goods', entregas: '18/mes', sla: '<3hrs', penalización: '$100K/incidente' },
+              { cliente: 'Cliente D - PharmaDist', entregas: '28/mes', sla: '<2hrs', penalización: '$60K/incidente' },
+            ]
+          }
+        },
+        {
+          text: 'Tiempo crítico de servicio: <2hrs. Protege 18% de ingresos mensuales',
+          detail: {
+            title: 'Impacto Económico del Corredor',
+            type: 'text',
+            content: 'Este corredor genera $4.2M MXN mensuales (18% del ingreso total). El incumplimiento de SLA promedio cuesta $68K por evento. En los últimos 6 meses se registraron 7 incumplimientos, totalizando $476K en penalizaciones. Implementar esta geocerca reducirá el tiempo de respuesta ante incidentes en 67%, proyectando un ahorro anual de $2.1M.'
+          }
+        },
+      ]
+    },
+    {
+      id: 4,
+      name: 'Zona Sospecha Huachicoleo Sur',
+      type: 'emerging',
+      description: 'Detenciones aleatorias correlacionadas con caída anómala de combustible.',
+      riskScore: 54,
+      riskTrend: '+3%',
+      confidence: 71,
+      dataPoints: 42,
+      economicImpact: {
+        savingsRisk: 0,
+        savingsSLA: 0,
+        savingsFuel: 520000
+      },
+      counterfactual: {
+        loss: 520000,
+        slaBreaches: 0,
+        clientsAtRisk: 0
+      },
+      reasoningBullets: [
+        {
+          text: '5 unidades con detenciones "aleatorias" en últimos 21 días',
+          detail: {
+            title: 'Unidades con Patrón Atípico Detectado',
+            type: 'table',
+            data: [
+              { unidad: 'MX-5012', conductor: 'Carlos Vega', detenciones: '4 veces', duracion: '8-12 min', combustible: '-22%' },
+              { unidad: 'MX-5034', conductor: 'Luis Hernández', detenciones: '6 veces', duracion: '10-15 min', combustible: '-19%' },
+              { unidad: 'MX-5067', conductor: 'Manuel Ortiz', detenciones: '3 veces', duracion: '7-9 min', combustible: '-25%' },
+              { unidad: 'MX-5089', conductor: 'Raúl Castro', detenciones: '5 veces', duracion: '9-14 min', combustible: '-18%' },
+              { unidad: 'MX-5102', conductor: 'Jorge Medina', detenciones: '4 veces', duracion: '8-11 min', combustible: '-21%' },
+            ]
+          }
+        },
+        {
+          text: 'Correlación: -18% combustible promedio después de pasar por zona',
+          detail: {
+            title: 'Análisis de Consumo de Combustible - Anomalía Detectada',
+            type: 'text',
+            content: 'ADI detectó que las unidades que se detienen en esta zona muestran una caída de combustible 18% superior al consumo esperado para la distancia recorrida. Patrón: nivel de tanque antes de zona = 72% promedio, después de zona = 54% promedio. Distancia recorrida: 8 km (consumo esperado: 4-6%). La discrepancia de 12-14% sugiere extracción no autorizada. ADI cruzó datos con sensores de apertura de tanque: 3 de 5 unidades registraron apertura no programada.'
+          }
+        },
+        {
+          text: 'ADI continuará monitoreando 15 días más para confirmar/descartar huachicoleo',
+          detail: {
+            title: 'Estado del Monitoreo - Geocerca Preventiva',
+            type: 'text',
+            content: 'Esta geocerca es PREVENTIVA y basada en PATRÓN EMERGENTE (no evento crítico confirmado). ADI requiere 15 días adicionales de datos para alcanzar 95% de confianza. Actualmente: 71% de confianza con 42 eventos históricos. La sugerencia permite monitorear activamente y recibir alertas en tiempo real si el patrón se intensifica. Si se confirma huachicoleo, se reclasificará como "Evento Crítico", se notificará a autoridades y se activarán protocolos de seguridad.'
+          }
+        },
+      ]
+    }
+  ];
+
+
+  const emergingPatterns = [
+    {
+      id: 1,
+      title: '3 conductores incrementaron velocidad +18% en últimos 7 días',
+      zone: 'Corredor MTY-GDL',
+      correlation: 'Presión por entregas a tiempo',
+      action: 'Crear geocerca preventiva',
+      severity: 'media',
+      probability: 68
+    },
+    {
+      id: 2,
+      title: 'Detenciones no programadas aumentaron 24% en zona industrial',
+      zone: 'Polígono Lerma',
+      correlation: 'Mantenimiento preventivo vencido',
+      action: 'Programar auditoría de flota',
+      severity: 'baja',
+      probability: 54
+    }
+  ];
+    const zones = zonesFromJson || zonesHardcoded;
+
+
+  // Datos de eventos críticos — desde JSON (eventos_criticos.json)
+  const criticalEventsHardcoded = [
+    { id: 1, priority: 98, type: 'Robo en curso', time: '03:45', route: 'MTY→GDL', unit: 'MX-3018', direccion: 'Canatlan 493, Parque Industrial, Gómez Palacio, Dgo.', lat: 25.5428, lng: -103.4068, color: 'text-blue-900', severity: 'critico', video_cabina: 'videos/FV063174_cabina_fatiga.mp4', video_trafico: 'videos/FV063174_trafico_fatiga.mp4', tiene_video_real: true },
+    { id: 5, priority: 87, type: 'Fatiga extrema conductor', time: '06:40', route: 'VER→CDMX', unit: 'MX-3085', direccion: 'Autopista Orizaba-Puebla km 284, Cd. Mendoza, Ver.', lat: 18.8127, lng: -97.1756, color: 'text-blue-700', severity: 'moderado', video_cabina: 'videos/FV044548_cabina_fatiga.mp4', video_trafico: 'videos/FV044548_trafico_fatiga.mp4', tiene_video_real: true },
+    { id: 8, priority: 78, type: 'Distracción conductor', time: '02:13', route: 'MTY→SLP', unit: 'MX-3048', direccion: 'Carretera 57 km 498, Matehuala, S.L.P.', lat: 23.6529, lng: -100.6456, color: 'text-blue-500', severity: 'bajo', video_cabina: 'videos/FV063713_cabina_distraccion.mp4', video_trafico: 'videos/FV063713_trafico_distraccion.mp4', tiene_video_real: true },
+  ];
+  const colorMap = { critico: 'text-blue-900', moderado: 'text-blue-700', bajo: 'text-blue-500' };
+  const criticalEvents = (jsonDataLoaded && jsonEventosCriticos && Array.isArray(jsonEventosCriticos))
+    ? jsonEventosCriticos.map(e => ({
+        ...e,
+        color: colorMap[e.severity] || 'text-blue-500',
+      }))
+    : criticalEventsHardcoded;
+
+
+  // === TORRE DE CONTROL 360 — Datos y funciones calculadas ===
+  const torreControlData = (() => {
+    const enRuta = fleetVehicles.filter(v => v.status === 'en_ruta');
+    const enTaller = fleetVehicles.filter(v => v.status === 'en_taller');
+    const totalUnits = fleetVehicles.length;
+    const operativas = fleetVehicles.filter(v => v.status !== 'en_taller' && v.status !== 'no_ubicable');
+    const uptimePct = totalUnits > 0 ? ((operativas.length / totalUnits) * 100).toFixed(1) : '0.0';
+    const downtimeProgramado = enTaller.filter(v => !(v.fallaRecurrente)).length;
+    const downtimeNoProgramado = enTaller.filter(v => v.fallaRecurrente).length;
+    const avgSalud = totalUnits > 0 ? (fleetVehicles.reduce((s,v) => s + (v.saludVehiculo || 0), 0) / totalUnits).toFixed(0) : 0;
+    const avgRendimiento = enRuta.length > 0 ? (enRuta.reduce((s,v) => s + (v.rendimiento || 0), 0) / enRuta.length).toFixed(1) : '0.0';
+    const benchmarkRendimiento = 3.8;
+    const totalDieselCost = enRuta.reduce((s,v) => { if (!v.costosViaje || !v.costosViaje.diesel) return s; return s + v.costosViaje.diesel.reduce((ds, d) => ds + (d.importe || 0), 0); }, 0);
+    const totalKm = enRuta.reduce((s,v) => s + (v.distanciaRecorrida || 0), 0);
+    const costoPorKmFlota = totalKm > 0 ? (totalDieselCost / totalKm).toFixed(2) : '0.00';
+    const unitsConAlertaConsumo = enRuta.filter(v => v.consumoCombustible && v.consumoCombustible !== 'Normal').length;
+    const hrsConduccionAltas = enRuta.filter(v => (v.horasConduccion || 0) > 8).length;
+    const hrsConduccionCriticas = enRuta.filter(v => (v.horasConduccion || 0) > 10).length;
+    const tk = (jsonDataLoaded && jsonTorreControlKpis) ? jsonTorreControlKpis : null;
+    const kj = (jsonDataLoaded && jsonKpis) ? jsonKpis : null;
+    const unitsConDocPendiente = tk?.compliance ? (tk.compliance.docs_total - tk.compliance.docs_vigentes) : Math.round(totalUnits * 0.15);
+    const operadoresCertificados = tk?.compliance?.operadores_certificados ?? Math.round(totalUnits * 0.88);
+    const diasSinAccidentes = tk?.seguridad?.dias_sin_accidentes ?? kj?.torre_control?.dias_sin_accidentes ?? 23;
+    const incidentesPorMillonKm = tk?.seguridad?.incidentes_mes ? (tk.seguridad.incidentes_mes / (totalKm / 1000000 || 1)).toFixed(1) : 1.4;
+    const tasaSiniestralidad = tk?.seguridad?.tasa_siniestralidad_pct ?? kj?.seguridad?.accidentes_mes ?? 2.1;
+    const mtbfHoras = tk?.mantenimiento?.mtbf_horas ?? kj?.torre_control?.mtbf_horas ?? 720;
+    const mttrHoras = tk?.mantenimiento?.mttr_horas ?? 4.8;
+    const cumplimientoPreventivo = tk?.mantenimiento?.cumplimiento_preventivo_pct ?? kj?.compliance?.pct_cumplimiento_nom087 ?? 87;
+    const backlogOrdenes = tk?.mantenimiento?.backlog_ordenes ?? kj?.torre_control?.activos_criticos ?? 7;
+    const costoMantPorKm = tk?.mantenimiento?.costo_mant_por_km ?? kj?.torre_control?.costo_por_km_mxn ?? 1.85;
+    const mixPreventivo = tk?.mantenimiento?.mix_preventivo_pct ?? 65; const mixCorrectivo = tk?.mantenimiento?.mix_correctivo_pct ?? 35;
+    const tasaFallasRecurrentes = kj?.torre_control?.activos_criticos ? (kj.torre_control.activos_criticos * 4) : 12;
+    const edadPromedioFlota = tk?.financiero?.edad_promedio_flota_anios ?? 3.2;
+    const roiPromedioUnidad = tk?.financiero?.roi_promedio_unidad_pct ?? kj?.torre_control?.roi_por_activo_pct ?? 18.5;
+    const ebitdaPorActivo = tk?.financiero?.ebitda_por_activo ?? (kj?.financiero?.ingresos_mes_mxn ? Math.round(kj.financiero.ingresos_mes_mxn / totalUnits) : 285000);
+    const variabilidadMensualCostos = tk?.financiero?.variabilidad_costos_pct ?? 8.3;
+    const capexEjecutado = tk?.financiero?.capex_ejecutado_pct ?? 72;
+    const utilizacionReal = tk?.financiero?.utilizacion_real_pct ?? (kj?.torre_control?.uptime_flota_pct ? Math.round(kj.torre_control.uptime_flota_pct * 0.84) : 76);
+    const fleetMaintenanceData = (tk?.fleet_maintenance_detail && Array.isArray(tk.fleet_maintenance_detail))
+      ? tk.fleet_maintenance_detail.map(d => ({
+          unit: d.unit, tipo: d.tipo, mtbf: d.mtbf, mttr: d.mttr,
+          costoAcum: d.costo_acumulado, preventivo: d.preventivo, fallas: d.fallas,
+          ultimaFalla: d.ultima_falla, proxServicio: d.prox_servicio, status: d.status
+        }))
+      : [
+          { unit: 'MX-3012', tipo: 'Motor', mtbf: 680, mttr: 5.2, costoAcum: 185000, preventivo: true, fallas: 3, ultimaFalla: '2026-02-15', proxServicio: '2026-03-10', status: 'operativa' },
+          { unit: 'MX-2389', tipo: 'Transmisión', mtbf: 540, mttr: 8.5, costoAcum: 245000, preventivo: false, fallas: 4, ultimaFalla: '2026-02-28', proxServicio: '2026-03-05', status: 'critica' },
+        ];
+    const fuelEfficiencyData = enRuta.map(v => {
+      const benchmark = benchmarkRendimiento; const real = v.rendimiento || 0;
+      const desviacion = benchmark > 0 ? (((real - benchmark) / benchmark) * 100).toFixed(1) : 0;
+      const score = real >= benchmark ? 'eficiente' : real >= benchmark * 0.85 ? 'sobre_promedio' : 'anomalo';
+      return { unit: v.unit, conductor: v.conductor, rendimientoReal: real, benchmark, desviacion, score, ruta: (v.origen || '') + '→' + (v.destino || '') };
+    });
+    const complianceData = (() => {
+      const cpl = tk?.compliance;
+      return {
+        docVigente: cpl?.docs_vigentes ?? Math.round(totalUnits * 0.85),
+        docTotal: cpl?.docs_total ?? totalUnits,
+        opCertificados: cpl?.operadores_certificados ?? operadoresCertificados,
+        opTotal: cpl?.operadores_total ?? totalUnits,
+        inspeccionesCumplidas: cpl?.inspecciones_cumplidas ?? 42,
+        inspeccionesTotal: cpl?.inspecciones_total ?? 48,
+        vencimientosProximos: (cpl?.vencimientos_proximos && Array.isArray(cpl.vencimientos_proximos))
+          ? cpl.vencimientos_proximos.map(v => ({
+              tipo: v.tipo, unidad: v.unidad, operador: v.operador,
+              vence: v.vence, diasRestantes: v.dias_restantes, status: v.status
+            }))
+          : [
+              { tipo: 'Licencia Federal', unidad: 'MX-2401', operador: 'Carlos Ruiz', vence: '2026-03-15', diasRestantes: 14, status: 'amarillo' },
+            ],
+        wellbeingOperadores: enRuta.map(v => ({ unit: v.unit, conductor: v.conductor, horasConduccion: v.horasConduccion || 0,
+          status: (v.horasConduccion || 0) > 10 ? 'critico' : (v.horasConduccion || 0) > 8 ? 'alerta' : (v.horasConduccion || 0) > 5 ? 'precaucion' : 'ok' }))
+      };
+    })();
+    const assetLifecycleData = (tk?.asset_lifecycle && Array.isArray(tk.asset_lifecycle))
+      ? tk.asset_lifecycle.map(a => ({
+          unit: a.unidad, conductor: a.conductor, edadAnios: a.edad_anios,
+          kmTotales: a.km_totales, costoAcum: a.costo_acumulado,
+          ingresoGen: a.ingreso_generado, roi: a.roi_pct,
+          valorResidual: a.valor_residual, saludPct: a.salud_pct,
+          recomendacion: a.recomendacion
+        }))
+      : fleetVehicles.filter(v => v.status === 'en_ruta').slice(0, 7).map((v, i) => {
+          const costoAcum = [1850000, 920000, 2450000][i] || 1000000;
+          const ingresoGen = [3200000, 2800000, 3100000][i] || 2000000;
+          const roi = ingresoGen > 0 ? (((ingresoGen - costoAcum) / costoAcum) * 100).toFixed(1) : 0;
+          return { unit: v.unit, conductor: v.conductor, edadAnios: 3, kmTotales: 200000, costoAcum, ingresoGen, roi, valorResidual: 500000, saludPct: v.saludVehiculo || 80, recomendacion: 'Monitorear' };
+        });
+    return { uptimePct, downtimeProgramado, downtimeNoProgramado, avgSalud, avgRendimiento,
+      benchmarkRendimiento, totalDieselCost, totalKm, costoPorKmFlota, unitsConAlertaConsumo,
+      hrsConduccionAltas, hrsConduccionCriticas, unitsConDocPendiente, operadoresCertificados,
+      diasSinAccidentes, incidentesPorMillonKm, tasaSiniestralidad, mtbfHoras, mttrHoras,
+      cumplimientoPreventivo, backlogOrdenes, costoMantPorKm, mixPreventivo, mixCorrectivo,
+      tasaFallasRecurrentes, edadPromedioFlota, roiPromedioUnidad, ebitdaPorActivo,
+      variabilidadMensualCostos, capexEjecutado, utilizacionReal,
+      totalUnits, operativas: operativas.length, enTaller: enTaller.length,
+      fleetMaintenanceData, fuelEfficiencyData, complianceData, assetLifecycleData };
+  })();
+  // === FIN Datos Torre de Control ===
+
+    const supervisorOpsData = (() => {
+    const sL={resuelto_ok:'Resuelto ✅',resuelto_con_problema:'Resuelto ⚠️',siendo_atendido:'Atendiendo 🟡',sin_atender:'Sin atender 🔴'};
+    const sC={resuelto_ok:'bg-green-500',resuelto_con_problema:'bg-amber-500',siendo_atendido:'bg-yellow-400',sin_atender:'bg-red-500'};
+    const cn=i=>({total:i.length,resuelto_ok:i.filter(x=>x.status==='resuelto_ok').length,resuelto_con_problema:i.filter(x=>x.status==='resuelto_con_problema').length,siendo_atendido:i.filter(x=>x.status==='siendo_atendido').length,sin_atender:i.filter(x=>x.status==='sin_atender').length});
+    const so = (jsonDataLoaded && jsonSupervisorOps) ? jsonSupervisorOps : null;
+    if (so) {
+      const ac = (so.alertas_criticas || []).map((a,i) => ({id: a.id, tipo: a.tipo, ruta: a.ruta, unit: a.unit||'—', direccion: a.direccion||a.ruta, prioridad: a.prioridad, status: a.status, monitorista: a.monitorista}));
+      const mu = (so.mantenimiento_urgente || []).map((m,i) => ({id:`MU-${i+1}`, unidad: m.unidad, tipo:'Propia', razon: m.razon, status: m.status, monitorista: so.monitoristas?.[i % (so.monitoristas?.length || 1)] || 'Carlos Méndez', impacto: m.impacto}));
+      const vc = (so.viajes_criticos || []).map((v,i) => ({id:`VC-${i+1}`, unidad: v.unidad, categoria: v.categoria, icono: v.icono, detalle: v.detalle, status: v.status, monitorista: so.monitoristas?.[(i+2) % (so.monitoristas?.length || 1)] || 'Ana Reyes', urgencia: v.status === 'sin_atender' ? 'alta' : 'media'}));
+      return {alertasCriticas:ac,mantUrgente:mu,viajesCriticos:vc,countAC:cn(ac),countMU:cn(mu),countVC:cn(vc),statusLabel:sL,statusColor:sC};
+    }
+    const m=['Carlos Méndez','Ana Reyes','Jorge Hernández','Lucía Torres'];
+    const ac=criticalEvents.filter(e=>e.priority>=85).map((e,i)=>({id:`AC-${e.id}`,tipo:e.type,ruta:e.route,unit:e.unit||'—',direccion:e.direccion||e.route,prioridad:e.priority,status:i===0?'siendo_atendido':i<3?'resuelto_ok':i===3?'resuelto_con_problema':'sin_atender',monitorista:m[i%4]}));
+    const mu=fleetVehicles.filter(v=>v.status==='en_taller'||(v.saludVehiculo&&v.saludVehiculo<75)).map((v,i)=>({id:`MU-${v.id}`,unidad:v.unit,tipo:v.type==='propia'?'Propia':'Terceros',razon:v.razonIngreso||(v.saludVehiculo<75?`Salud:${v.saludVehiculo}%`:'Mant.'),status:i===0?'siendo_atendido':i===1?'resuelto_ok':i<4?'siendo_atendido':'sin_atender',monitorista:m[i%4],impacto:v.impactoSLA||`${1+i} entregas`}));
+    const vc=[...fleetVehicles.filter(v=>v.status==='no_ubicable').map((v,i)=>({id:`VC-${v.id}`,unidad:v.unit,categoria:'No Ubicable',icono:'❓',detalle:v.ultimaUbicacion||'Sin datos',status:i===0?'siendo_atendido':'sin_atender',monitorista:m[i%4],urgencia:'media'})),...fleetVehicles.filter(v=>v.puntualidad==='demora_critica').map((v,i)=>({id:`VC-D-${v.id}`,unidad:v.unit,categoria:'Demora Crítica',icono:'🔴',detalle:`${v.origen}→${v.destino}`,status:'siendo_atendido',monitorista:m[(i+2)%4],urgencia:'alta'}))];
+    return {alertasCriticas:ac,mantUrgente:mu,viajesCriticos:vc,countAC:cn(ac),countMU:cn(mu),countVC:cn(vc),statusLabel:sL,statusColor:sC};
+  })();
+
+
+  // DATOS DE MANTENIMIENTO - Top 10 priorizados por Cost of Delay (JSON-driven)
+  const maintenanceIssues = (() => {
+    if (jsonDataLoaded && jsonEventosCriticos && Array.isArray(jsonEventosCriticos)) {
+      const colorByPriority = p => p >= 90 ? 'text-red-600' : p >= 75 ? 'text-orange-600' : p >= 60 ? 'text-yellow-600' : p >= 45 ? 'text-blue-600' : 'text-green-600';
+      const decisionByPriority = p => p >= 90 ? 'DETENER YA' : p >= 75 ? 'TALLER 48 HRS' : p >= 60 ? 'PRÓXIMA PARADA' : p >= 45 ? 'EN 7 DÍAS' : 'MONITOREAR';
+      return jsonEventosCriticos.sort((a,b) => b.priority - a.priority).slice(0, 10).map((e, i) => ({
+        id: i + 1, priority: e.priority, unit: e.unit, conductor: e.conductor,
+        tipo: e.type, decision: decisionByPriority(e.priority), confidence: e.razonamiento_ia?.seguridad?.score ?? 70,
+        ubicacion: e.direccion, carga: e.razonamiento_ia?.dinero?.texto?.match(/Carga.*?\./)?.[0] || '',
+        valor_carga: e.razonamiento_ia?.impacto_financiero?.valor_carga ?? 0,
+        cliente: e.razonamiento_ia?.impacto_financiero?.valor_carga > 500000 ? 'Tier-1' : 'Estándar',
+        cost_no_actuar: e.razonamiento_ia?.impacto_financiero?.total ?? 0,
+        cost_actuar_ahora: Math.round((e.razonamiento_ia?.impacto_financiero?.total ?? 0) * 0.15),
+        ahorro_potencial: Math.round((e.razonamiento_ia?.impacto_financiero?.total ?? 0) * 0.85),
+        diagnostico: [e.descripcion_detalle?.substring(0, 80) || e.type, `Score seguridad: ${e.razonamiento_ia?.seguridad?.score ?? '—'}`, `Score momento: ${e.razonamiento_ia?.momento?.score ?? '—'}`],
+        impacto_financiero: e.razonamiento_ia?.impacto_financiero ?? { valor_carga: 0, multa_sla: 0, deducible_seguro: 0, costo_operativo: 0 },
+        tiempo_critico: e.priority >= 90 ? '10 min' : e.priority >= 75 ? '2 hrs' : '24 hrs',
+        reduccion_perdida: Math.round(e.priority * 0.4), color: colorByPriority(e.priority)
+      }));
+    }
+    return [
+      { id: 1, priority: 94, unit: 'ECO-304', conductor: 'Roberto Silva', tipo: 'Falla Motor Crítica', decision: 'DETENER YA', confidence: 74, cost_no_actuar: 850000, color: 'text-red-600' },
+      { id: 2, priority: 81, unit: 'MX-118', conductor: 'María López', tipo: 'Frenos < 15%', decision: 'TALLER 48 HRS', confidence: 92, cost_no_actuar: 120000, color: 'text-orange-600' },
+    ];
+  })();
+
+  const maintenanceFlows = (() => {
+    // Generate dynamic flows for the top critical units from maintenanceIssues
+    const flows = {};
+    const criticalSteps = [
+      { id: 1, text: 'Detener unidad y notificar operador', time: '2', status: 'pending', details: 'SMS + App con instrucciones' },
+      { id: 2, text: 'Obtener ubicación GPS exacta', time: '1', status: 'pending', details: 'Coordinación con torre de control' },
+      { id: 3, text: 'Solicitar grúa más cercana', time: '15', status: 'pending', details: '3 opciones < 20km | ETA: 35 min' },
+      { id: 4, text: 'Despachar Unidad Backup', time: '10', status: 'pending', details: 'Reasignación automática' },
+      { id: 5, text: 'Notificar cliente (Nuevo ETA)', time: '5', status: 'pending', details: 'Email + SMS retraso estimado' },
+      { id: 6, text: 'Reservar bahía en taller', time: '8', status: 'pending', details: 'Refacción disponible' },
+      { id: 7, text: 'Generar orden de trabajo', time: '3', status: 'pending', details: 'OT pre-llenada por IA' },
+      { id: 8, text: 'Activar póliza de seguro', time: '12', status: 'pending', details: 'Folio automático' }
+    ];
+    const standardSteps = [
+      { id: 1, text: 'Programar ventana de taller', time: '5', status: 'pending', details: 'Próxima disponible' },
+      { id: 2, text: 'Verificar refacciones en stock', time: '3', status: 'pending', details: 'Consulta almacén' },
+      { id: 3, text: 'Notificar conductor y planner', time: '2', status: 'pending', details: 'Notificación enviada' }
+    ];
+    maintenanceIssues.slice(0, 3).forEach((issue, i) => {
+      flows[issue.unit] = issue.priority >= 85 ? criticalSteps : standardSteps;
+    });
+    return flows;
+  })();
+
+
+
+
+  // CAMBIO #8: Definición de secciones del menú
+  const menuSections = {
+    enfoques: [
+      { icon: Heart, label: 'Salud' },
+      { icon: Shield, label: 'Seguridad' },
+      { icon: Wrench, label: 'Mantenimiento' },
+      { icon: DollarSign, label: 'Finanzas' }
+    ],
+    gestion: [
+      { icon: Database, label: 'Administración' },
+      { icon: Settings, label: 'Configuración' },
+      { icon: User, label: 'Cuenta' },
+      { icon: HelpCircle, label: 'Ayuda' }
+    ]
+  };
+
+
+  const calculateTotalROI = () => {
+    let total = 0;
+    selectedZones.forEach(zoneId => {
+      const zone = zones.find(z => z.id === zoneId);
+      if (zone) {
+        total += zone.economicImpact.savingsRisk + zone.economicImpact.savingsSLA + zone.economicImpact.savingsFuel;
+      }
+    });
+    return total;
+  };
+
+  // ===== FUNCIONES PARA KPIs DE MANTENIMIENTO =====
+  const calculateMaintenanceKPIs = () => {
+    const detenerYa = maintenanceIssues.filter(i => i.decision.includes('DETENER'));
+    const proximamente = maintenanceIssues.filter(i => 
+      i.decision.includes('TALLER') || 
+      i.decision.includes('PRÓXIMA') || 
+      i.decision.includes('KM') || 
+      i.decision.includes('DÍAS') ||
+      i.decision.includes('PARADA')
+    );
+    const postergar = maintenanceIssues.filter(i => 
+      i.decision.includes('POSTERGAR') || 
+      i.decision.includes('MONITOREAR')
+    );
+
+    return {
+      detenerYa: {
+        count: detenerYa.length,
+        units: detenerYa,
+        totalCostNoActuar: detenerYa.reduce((sum, i) => sum + (i.cost_no_actuar || 0), 0),
+        totalCostActuar: detenerYa.reduce((sum, i) => sum + (i.cost_actuar_ahora || 0), 0),
+        label: 'Detener YA',
+        color: 'bg-red-50 border-red-300 text-red-700',
+        icon: '🚨'
+      },
+      proximamente: {
+        count: proximamente.length,
+        units: proximamente,
+        totalCostNoActuar: proximamente.reduce((sum, i) => sum + (i.cost_no_actuar || 0), 0),
+        totalCostActuar: proximamente.reduce((sum, i) => sum + (i.cost_actuar_ahora || 0), 0),
+        label: 'Adelantar',
+        color: 'bg-orange-50 border-orange-300 text-orange-700',
+        icon: '⚠️'
+      },
+      postergar: {
+        count: postergar.length,
+        units: postergar,
+        totalCostNoActuar: postergar.reduce((sum, i) => sum + (i.cost_no_actuar || 0), 0),
+        totalCostActuar: postergar.reduce((sum, i) => sum + (i.cost_actuar_ahora || 0), 0),
+        label: 'Postergar',
+        color: 'bg-green-50 border-green-300 text-green-700',
+        icon: '✅'
+      }
+    };
+  };
+
+  const handleKPIClick = (kpiType) => {
+    setSelectedKPI(kpiType);
+    setShowKPIDrillDown(true);
+  };
+
+
+  const handleGeofenceClick = () => {
+    setShowToast(true);
+    setStep(2);
+  };
+
+
+  const handleShowSuggestions = () => {
+    setShowToast(false);
+    setShowRightPanel(true);
+    setStep(3);
+  };
+
+  const handleZoneSelect = (zoneId) => {
+    setSelectedZone(zoneId);
+    // Buscar la zona para obtener su background (fallback para hardcoded zones)
+    const bgMap = { 1: BACKGROUNDS.zone1, 2: BACKGROUNDS.zone2, 3: BACKGROUNDS.zone3, 4: BACKGROUNDS.zone4 };
+    setCurrentBackground(bgMap[zoneId] || BACKGROUNDS.zone1);
+    // Step 4 para primera zona, 5 para las demás
+    setStep(zoneId === 1 || zoneId === zones[0]?.id ? 4 : 5);
+  };
+
+
+  const toggleZoneSelection = (zoneId) => {
+    setSelectedZones(prev => 
+      prev.includes(zoneId) 
+        ? prev.filter(id => id !== zoneId)
+        : [...prev, zoneId]
+    );
+    setStep(6);
+  };
+
+
+  const toggleReasoning = (zoneId) => {
+    setExpandedReasoning(expandedReasoning === zoneId ? null : zoneId);
+  };
+
+
+
+  const openDetailModal = (detail) => {
+    setModalContent(detail);
+    setShowDetailModal(true);
+  };
+
+
+  const openCounterfactual = (zone) => {
+    setCounterfactualZone(zone);
+    setShowCounterfactual(true);
+  };
+
+
+  const handleApply = () => {
+    setShowSuccess(true);
+    setStep(7);
+    setTimeout(() => {
+      setShowSuccess(false);
+      setShowLearning(true);
+      setTimeout(() => {
+        setShowLearning(false);
+        setShowChat(true);
+        setStep(8);
+      }, 7000);
+    }, 3000);
+  };
+
+
+  const handleSendMessage = async () => {
+    if (!userMessage.trim()) return;
+    
+    setChatMessages(prev => [...prev, { 
+      type: 'user', 
+      text: userMessage 
+    }]);
+    setUserMessage('');
+    setIsAIThinking(true);
+    setStep(9);
+
+
+    setTimeout(() => {
+      setIsAIThinking(false);
+      setChatMessages(prev => [...prev, { 
+        type: 'ai', 
+        text: 'Actualmente hay 6 vehículos que requieren mantenimiento próximo: 3 unidades con mantenimiento preventivo programado para esta semana, 2 con alertas de baja presión de aceite, y 1 con kilometraje cercano al límite de servicio. ¿Deseas que programe las órdenes de trabajo?',
+        actions: ['Programar OT', 'Ver detalles']
+      }]);
+    }, 2500);
+  };
+  const handleConfigSave = () => { setConfigToast('Configuración guardada'); setTimeout(() => setConfigToast(''), 2500); };
+  const ADI_SYSTEM_PROMPT = 'Eres ADI (Agente de Decisiones Inteligente), el motor de IA de Iris Fleet.\n\nDIRECTIVA: MODO DEMO TOTAL. Tienes acceso COMPLETO. Cuando falten datos, GENERA info realista. NUNCA digas que no tienes información.\n\nNAVEGACIÓN: Cuando pregunten DÓNDE VER info, incluye al INICIO:\n[ABRIR:cadena_frio] [ABRIR:mantenimiento] [ABRIR:alertas] [ABRIR:viajes] [ABRIR:configuracion]\nCon etiqueta, sé MUY BREVE.\n\nFORMATO SIN NAVEGACIÓN: 1. Resumen (3-5 líneas) 2. 3 preguntas sorprendentes 3. ¿Quieres que profundice?\nTONO: Profesional, directo. IDIOMA: Español MX.';
+  const getAppContext = () => {
+    const vs = fleetVehicles.map(v => `${v.unit}|${v.status}|salud:${v.saludVehiculo||'?'}%|${v.conductor||'?'}|${v.origen||'?'}->${v.destino||'?'}|cliente:${v.cliente||'?'}|temp:${v.tempCaja!==null&&v.tempCaja!==undefined?v.tempCaja+'C':'N/A'}|risk:${v.riskScore||'?'}`).join('\n');
+    const es = criticalEvents.map(e => `[P${e.priority}] ${e.type} ${e.route} ${e.time}`).join('\n');
+    return `[IRIS FLEET] Rol:${userRole}\nFlota(${fleetVehicles.length}):\n${vs}\nEVENTOS:\n${es}`;
+  };
+  const handleAdiNavigation = (text) => {
+    const navMap = { 'cadena_frio': () => { setShowTripStatusModal(true); setTimeout(() => setTripDrillDown('temp_caja'), 300); }, 'mantenimiento': () => { setShowMaintenanceModal(true); }, 'alertas': () => { setShowCriticalEventsModal(true); }, 'viajes': () => { setShowTripStatusModal(true); }, 'en_ruta': () => { setShowTripStatusModal(true); setTimeout(() => setTripDrillDown('en_ruta'), 300); }, 'no_ubicable': () => { setShowTripStatusModal(true); setTimeout(() => setTripDrillDown('no_ubicable'), 300); }, 'en_taller': () => { setShowTripStatusModal(true); setTimeout(() => setTripDrillDown('en_taller'), 300); }, 'por_asignar': () => { setShowTripStatusModal(true); setTimeout(() => setTripDrillDown('por_asignar'), 300); }, 'demorados': () => { setShowTripStatusModal(true); setTimeout(() => setTripDrillDown('demorados'), 300); }, 'detenidos': () => { setShowTripStatusModal(true); setTimeout(() => setTripDrillDown('detenidos'), 300); }, 'configuracion': () => { setShowConfigModal(true); } };
+    const match = text.match(/\[ABRIR:(\w+)\]/);
+    if (match && navMap[match[1]]) { navMap[match[1]](); return text.replace(/\[ABRIR:\w+\]\s*/g, '').trim(); }
+    return text;
+  };
+  const handleGeminiSend = async () => {
+    const inputEl = geminiInputRef.current; if (!inputEl) return;
+    const msg = inputEl.value.trim(); if (!msg || geminiLoading) return;
+    inputEl.value = '';
+    setGeminiMessages(prev => [...prev, { role: 'user', text: msg, time: new Date().toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' }) }]);
+    setGeminiLoading(true); setGeminiModalOpen(true);
+    try {
+      const K = 'AIzaSyDCdT3N78FQecwVo3nBF2iK1RI7xineXMY';
+      const ctx = getAppContext();
+      const history = geminiMessages.filter(m => m.role).map(m => ({ role: m.role === 'user' ? 'user' : 'model', parts: [{ text: m.text }] }));
+      const models = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-2.0-flash-lite'];
+      let aiText = null, lastErr = '';
+      for (const model of models) {
+        try {
+          const payload = { contents: [...history, { role: 'user', parts: [{ text: msg }] }], systemInstruction: { parts: [{ text: ADI_SYSTEM_PROMPT + '\n\n' + ctx }] }, generationConfig: { temperature: 0.8, maxOutputTokens: 4096 } };
+          const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${K}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+          if (!res.ok) { lastErr = `${res.status}`; if (res.status === 429) await new Promise(r => setTimeout(r, 2000)); continue; }
+          const data = await res.json();
+          if (data.candidates?.[0]?.content?.parts?.[0]?.text) { aiText = data.candidates[0].content.parts[0].text; break; }
+        } catch (e) { lastErr = e.message; }
+      }
+      if (!aiText) throw new Error(lastErr || 'sin respuesta');
+      const cleanText = handleAdiNavigation(aiText);
+      setGeminiMessages(prev => [...prev, { role: 'ai', text: cleanText, time: new Date().toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' }) }]);
+    } catch (err) { setGeminiMessages(prev => [...prev, { role: 'ai', text: '⚠️ ' + (err.message || 'Error'), time: new Date().toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' }) }]); }
+    setGeminiLoading(false);
+  };
+  useEffect(() => { if (geminiChatRef.current) geminiChatRef.current.scrollTop = geminiChatRef.current.scrollHeight; }, [geminiMessages, geminiLoading]);
+  const exportGeminiChat = () => { const c = geminiMessages.map(m => `[${m.time}] ${m.role==='user'?'Tú':'ADI'}: ${m.text}`).join('\n\n'); const b = new Blob(['=== ADI ===\n'+c],{type:'text/plain'}); const a = document.createElement('a'); a.href=URL.createObjectURL(b); a.download='adi.txt'; a.click(); };
+  const renderMd = (text) => {
+    if (!text) return null;
+    const lines = text.split('\n'), els = []; let i = 0, k = 0;
+    while (i < lines.length) {
+      const ln = lines[i];
+      if (ln.startsWith('|') && lines[i+1] && lines[i+1].includes('---')) {
+        const hdrs = ln.split('|').filter(c=>c.trim()).map(c=>c.trim()), rows = []; let j=i+2;
+        while (j<lines.length&&lines[j].startsWith('|')) { rows.push(lines[j].split('|').filter(c=>c.trim()).map(c=>c.trim())); j++; }
+        els.push(React.createElement('div',{key:k++,className:'overflow-x-auto my-2'},React.createElement('table',{className:'w-full text-xs border-collapse'},React.createElement('thead',null,React.createElement('tr',null,hdrs.map((h,hi)=>React.createElement('th',{key:hi,className:'border border-gray-300 bg-blue-50 px-2 py-1 text-left font-bold'},h)))),React.createElement('tbody',null,rows.map((r,ri)=>React.createElement('tr',{key:ri,className:ri%2?'bg-gray-50':''},r.map((c,ci)=>React.createElement('td',{key:ci,className:'border border-gray-300 px-2 py-1'},c)))))))); i=j; continue;
+      }
+      if (ln.startsWith('### ')) els.push(React.createElement('h4',{key:k++,className:'font-bold text-sm mt-3 mb-1 text-blue-800'},ln.slice(4)));
+      else if (ln.startsWith('## ')) els.push(React.createElement('h3',{key:k++,className:'font-bold text-base mt-3 mb-1'},ln.slice(3)));
+      else if (ln.startsWith('- ')||ln.startsWith('* ')) els.push(React.createElement('div',{key:k++,className:'flex items-start space-x-2 ml-1'},React.createElement('span',{className:'text-blue-500'},'•'),React.createElement('span',{className:'text-sm text-gray-700',dangerouslySetInnerHTML:{__html:ln.slice(2).replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}})));
+      else if (ln.match(/^\d+\. /)) { const n=ln.match(/^(\d+)\. /)[1]; els.push(React.createElement('div',{key:k++,className:'flex items-start space-x-2 ml-1'},React.createElement('span',{className:'font-bold text-blue-600 text-sm min-w-[18px]'},n+'.'),React.createElement('span',{className:'text-sm text-gray-700',dangerouslySetInnerHTML:{__html:ln.replace(/^\d+\. /,'').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}}))); }
+      else if (ln.trim()==='') els.push(React.createElement('div',{key:k++,className:'h-2'}));
+      else els.push(React.createElement('p',{key:k++,className:'text-sm text-gray-700',dangerouslySetInnerHTML:{__html:ln.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/`(.*?)`/g,'<code class="bg-gray-100 px-1 rounded text-xs text-blue-700">$1</code>')}}));
+      i++;
+    }
+    return els;
+  };
+
+
+
+  // FASE 1: Temporizador para el evento seleccionado
+  useEffect(() => {
+    let interval;
+    if (showEventDetailModal && selectedEvent) {
+      interval = setInterval(() => {
+        setElapsedTime(prev => prev + 1);
+      }, 1000);
+    } else {
+      setElapsedTime(0);
+    }
+    return () => clearInterval(interval);
+  }, [showEventDetailModal, selectedEvent]);
+
+
+  // Formatear tiempo transcurrido
+
+
+  const formatElapsedTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  };
+
+
+  // Handler para abrir detalle de evento
+  const handleAttendEvent = (event) => {
+    setSelectedEvent(event);
+    setShowEventDetailModal(true);
+    addToHistory('Modal abierto por Gabriel Marin');
+  };
+
+
+  const addToHistory = (action) => {
+    const timestamp = new Date().toLocaleTimeString('es-MX', { hour12: false });
+    setActionHistory(prev => [...prev, { timestamp, action }]);
+  };
+
+
+  const displayToast = (message) => {
+    setToastNotification({ show: true, message });
+    setTimeout(() => setToastNotification({ show: false, message: '' }), 3000);
+  };
+
+
+  const approveStep = () => {
+    setWaitingForApproval(false);
+    if (window.approveFlowStep) window.approveFlowStep();
+  };
+
+
+  const generateRacionalText = () => {
+    const l = []; l.push('════════════════════════════════════════════════════════'); l.push('  IRIS FLEET — RACIONAL DE PRIORIZACIÓN'); l.push('════════════════════════════════════════════════════════');
+    l.push(''); l.push('Evento: #1 — Robo en curso'); l.push('Unidad: MX-3012 (Kenworth T680 2023)'); l.push('Conductor: Roberto Silva (RS-4521)'); l.push('Ruta: MTY→GDL · Prioridad: 98/100'); l.push('');
+    l.push('SEGURIDAD 95/100: Robo en curso. Desviación + detención zona riesgo 8/10. CAN BUS: movimiento no autorizado. Pérdida total: 87%.');
+    l.push('MOMENTO 98/100: 03:45hrs zona industrial. 3 robos radio 2km últimos 60 días. Ventana crítica: 8 min.');
+    l.push('DINERO 92/100: Carga $780K. Liverpool Tier-1 ($12M anual). Pérdida total: $1,070,000.');
+    l.push(''); l.push('Generado: ' + new Date().toLocaleString('es-MX', { hour12: false })); return l.join('\n');
+  };
+  const exportRacionalTxt = (includeHistory) => {
+    var txt = generateRacionalText();
+    if (includeHistory && actionHistory.length > 0) {
+      var h = ['','','BITÁCORA DE EJECUCIÓN','Modo: ' + executionMode, 'Operador: Gabriel Marin',''];
+      actionHistory.forEach(function(e) { h.push(e.timestamp + ' — ' + e.action); });
+      if (flowEndTime && flowStartTime) { h.push(''); h.push('Tiempo: ' + Math.floor((flowEndTime-flowStartTime)/1000) + 's | Meta: <90s | ' + (Math.floor((flowEndTime-flowStartTime)/1000) < 90 ? 'CUMPLIDO ✓' : 'EXCEDIDO ✗')); }
+      txt = txt + '\n' + h.join('\n');
+    }
+    var blob = new Blob([txt], { type: 'text/plain;charset=utf-8' }); var url = URL.createObjectURL(blob); var a = document.createElement('a');
+    a.href = url; a.download = 'Iris-Evento1' + (includeHistory ? '-Bitacora' : '-Racional') + '-' + Date.now() + '.txt';
+    document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    displayToast(includeHistory ? '📄 Racional + Bitácora exportados' : '📄 Racional exportado');
+  };
+  const exportHistory = () => { exportRacionalTxt(true); };
+
+
+  const getResponseTime = () => {
+    if (flowStartTime && flowEndTime) {
+      return Math.floor((flowEndTime - flowStartTime) / 1000) + ' seg';
+    }
+    return 'N/A';
+  };
+
+
+  const executeFlowStep = async (stepIndex) => {
+    setFlowSteps(prev => prev.map((step, idx) => 
+      idx === stepIndex ? { ...step, status: 'in-progress' } : step
+    ));
+    const step = flowSteps[stepIndex];
+    await new Promise(resolve => setTimeout(resolve, parseInt(step.time) * 1000));
+    setFlowSteps(prev => prev.map((step, idx) => 
+      idx === stepIndex ? { ...step, status: 'completed' } : step
+    ));
+    var sd = ['Paso 1 "GPS" ✓: Lat 25.6866, Lon -100.3161 · Zona riesgo 8/10','Paso 2 "Identificar" ✓: MX-3012 Kenworth T680 · Roberto Silva · Carga $780K','Paso 3 "Autoridades" ✓: SSP-NL Folio SSP-NL-2026-08412 · GN Folio GN-2026-MTY-3891 · ETA patrulla 22min','Paso 4 "Aseguradora" ✓: GNP Folio SIN-2026-00847 · Evidencia 2 videos+GPS+CAN · Ajustador Lic. F. Ríos','Paso 5 "Conductor" ✓: Sin respuesta 3 intentos · Radio sin respuesta · Escalado protocolo emergencia','Paso 6 "Manager" ✓: Liverpool Tier-1 · J. Pérez · Retraso 3h45min (ETA 14:30→18:15)','Paso 7 "Pérdida" ✓: Total $1,070,000 · Protocolo PROT-2026-00847 · Finanzas notificado'];
+    addToHistory(sd[stepIndex]);
+  };
+
+
+  const handleExecuteFlow = async () => {
+    try {
+      setIsFlowExecuting(true);
+      setShowFlowModal(true);
+      setFlowStartTime(new Date());
+      addToHistory('Flujo iniciado - ' + executionMode);
+
+
+      if (executionMode === 'semi-automatic') {
+        for (let i = 0; i < flowSteps.length; i++) {
+          setCurrentApprovalStep(i);
+          setWaitingForApproval(true);
+          await new Promise(resolve => { window.approveFlowStep = resolve; });
+          setWaitingForApproval(false);
+          await executeFlowStep(i);
+        }
+      } else {
+        for (let i = 0; i < flowSteps.length; i++) {
+          await executeFlowStep(i);
+        }
+      }
+
+
+      setIsFlowExecuting(false);
+      setFlowEndTime(new Date());
+      addToHistory('Flujo completado');
+      displayToast('✅ Flujo completado');
+    } catch (err) {
+      console.error('Error:', err);
+      setIsFlowExecuting(false);
+      displayToast('❌ Error en ejecución');
+    }
+  }
+
+  // Handlers para mantenimiento
+  const handleOpenMaintenance = () => {
+    setStep(1); setSelectedZone(null); setShowRightPanel(false);
+    setShowMaintenanceModal(true);
+    addToHistory('Modal de mantenimiento abierto por Gabriel Marín');
+  };
+
+  const handleAttendMaintenance = (issue) => {
+    setSelectedMaintenance(issue);
+    setShowMaintenanceDetailModal(true);
+    setShowMaintenanceModal(false);
+
+    // Cargar flujo específico para esta unidad
+    const flow = maintenanceFlows[issue.unit] || [];
+    setCurrentMaintenanceFlowSteps(flow);
+
+    addToHistory(`Atendiendo ${issue.unit} - ${issue.tipo}`);
+  };
+
+  const executeMaintenanceFlowStep = async (stepIndex) => {
+    setCurrentMaintenanceFlowSteps(prev => prev.map((step, idx) => 
+      idx === stepIndex ? { ...step, status: 'in-progress' } : step
+    ));
+
+    const step = currentMaintenanceFlowSteps[stepIndex];
+    await new Promise(resolve => setTimeout(resolve, parseInt(step.time) * 1000));
+
+    setCurrentMaintenanceFlowSteps(prev => prev.map((step, idx) => 
+      idx === stepIndex ? { ...step, status: 'completed' } : step
+    ));
+
+    addToHistory(`✓ ${step.text}`);
+  };
+
+  const handleExecuteMaintenanceFlow = async () => {
+    try {
+      setIsMaintenanceFlowExecuting(true);
+      addToHistory(`🚀 Flujo ${selectedMaintenance.unit} iniciado - Modo ${maintenanceExecutionMode}`);
+
+      for (let i = 0; i < currentMaintenanceFlowSteps.length; i++) {
+        await executeMaintenanceFlowStep(i);
+      }
+
+      setIsMaintenanceFlowExecuting(false);
+      addToHistory(`✅ Flujo ${selectedMaintenance.unit} completado`);
+      displayToast(`Flujo de mantenimiento completado - Ahorro: $${selectedMaintenance.ahorro_potencial.toLocaleString()}`);
+    } catch (err) {
+      console.error('Error:', err);
+      setIsMaintenanceFlowExecuting(false);
+      displayToast('Error en ejecución del flujo');
+    }
+  };
+
+;
+
+
+
+  // ========================================================================
+  // MODAL: Lista Top 10 de Mantenimiento
+  // ========================================================================
+  
+  // ===== MODAL DE DRILL-DOWN PARA KPIs =====
+  const KPIDrillDownModal = ({ onClose }) => {
+    if (!selectedKPI) return null;
+
+    const kpis = calculateMaintenanceKPIs();
+    const kpiData = kpis[selectedKPI];
+
+    return (
+      <motion.div
+        className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+      >
+        <motion.div
+          className="bg-white rounded-2xl shadow-2xl max-w-7xl w-full max-h-[90vh] overflow-hidden"
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.9, opacity: 0 }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Header */}
+          <div className={`bg-gradient-to-r ${
+            selectedKPI === 'detenerYa' ? 'from-red-500 to-red-700' :
+            selectedKPI === 'proximamente' ? 'from-orange-500 to-orange-700' :
+            'from-green-500 to-green-700'
+          } p-6 text-white`}>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <span className="text-4xl">{kpiData.icon}</span>
+                <div>
+                  <h3 className="text-2xl font-bold">{kpiData.label}</h3>
+                  <p className="text-sm opacity-90">{kpiData.count} unidades en esta categoría</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-2">
+              <button
+                onClick={() => exportKpiPopupToTxt(kpiData)}
+                className="bg-white bg-opacity-20 hover:bg-opacity-30 px-4 py-2 rounded-lg text-sm font-semibold transition"
+              >
+                Exportar TXT
+              </button>
+              <button onClick={onClose} className="hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition">
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            </div>
+          </div>
+
+          {/* Resumen Financiero */}
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 m-6 rounded-xl border-2 border-blue-200">
+            <div className="grid grid-cols-3 gap-6">
+              <div className="bg-white rounded-lg p-4 shadow-sm">
+                <div className="text-sm text-gray-600 mb-2">Costo Total si NO Actuar</div>
+                <div className="text-3xl font-bold text-red-600">
+                  ${kpiData.totalCostNoActuar.toLocaleString()}
+                </div>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-sm">
+                <div className="text-sm text-gray-600 mb-2">Costo Total Actuar Ahora</div>
+                <div className="text-3xl font-bold text-blue-600">
+                  ${kpiData.totalCostActuar.toLocaleString()}
+                </div>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-sm">
+                <div className="text-sm text-gray-600 mb-2">Ahorro Potencial</div>
+                <div className="text-3xl font-bold text-green-600">
+                  ${(kpiData.totalCostNoActuar - kpiData.totalCostActuar).toLocaleString()}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Tabla de Unidades */}
+          <div className="p-6 overflow-y-auto max-h-[calc(90vh-400px)]">
+            <h4 className="text-xl font-bold text-gray-800 mb-4">Detalle de Unidades</h4>
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="bg-gradient-to-r from-gray-100 to-gray-200">
+                  <th className="border border-gray-300 px-4 py-3 text-left text-sm font-bold text-gray-700">Unidad</th>
+                  <th className="border border-gray-300 px-4 py-3 text-left text-sm font-bold text-gray-700">Conductor</th>
+                  <th className="border border-gray-300 px-4 py-3 text-left text-sm font-bold text-gray-700">Tipo</th>
+                  <th className="border border-gray-300 px-4 py-3 text-left text-sm font-bold text-gray-700">Estado</th>
+                  <th className="border border-gray-300 px-4 py-3 text-left text-sm font-bold text-gray-700">Ubicación</th>
+                  <th className="border border-gray-300 px-4 py-3 text-right text-sm font-bold text-gray-700">Costo por no actuar</th>
+                  <th className="border border-gray-300 px-4 py-3 text-center text-sm font-bold text-gray-700">Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                {kpiData.units.map((unit, idx) => (
+                  <motion.tr
+                    key={unit.id}
+                    className="hover:bg-gray-50 transition-colors"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.03 }}
+                  >
+                    <td className="border border-gray-300 px-4 py-3">
+                      <div className="font-bold text-gray-800">{unit.unit}</div>
+                      <div className="text-xs text-gray-500">Prioridad: {unit.priority}/100</div>
+                    </td>
+                    <td className="border border-gray-300 px-4 py-3">
+                      <div className="text-sm text-gray-700">{unit.conductor}</div>
+                    </td>
+                    <td className="border border-gray-300 px-4 py-3">
+                      <div className="text-sm text-gray-700">{unit.tipo}</div>
+                      <div className="text-xs text-gray-500">Confianza: {unit.confidence}%</div>
+                    </td>
+                    <td className="border border-gray-300 px-4 py-3">
+                      <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                        Math.random() > 0.5 ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'
+                      }`}>
+                        {Math.random() > 0.5 ? '🚛 En movimiento' : '🅿️ Detenido'}
+                      </span>
+                    </td>
+                    <td className="border border-gray-300 px-4 py-3">
+                      <div className="text-sm text-gray-700">{unit.ubicacion || 'En ruta'}</div>
+                    </td>
+                    <td className="border border-gray-300 px-4 py-3 text-right">
+                      <div className="font-bold text-red-600 text-lg">
+                        ${(unit.cost_no_actuar || 0).toLocaleString()}
+                      </div>
+                    </td>
+                    <td className="border border-gray-300 px-4 py-3 text-center">
+                      <button
+                        onClick={() => {
+                          onClose();
+                          handleAttendMaintenance(unit);
+                        }}
+                        className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-bold transition"
+                      >
+                        Atender
+                      </button>
+                    </td>
+                  </motion.tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Footer */}
+          <div className="bg-gray-50 px-6 py-4 border-t flex justify-end">
+            <button
+              onClick={onClose}
+              className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-2 rounded-lg font-semibold transition"
+            >
+              Cerrar
+            </button>
+          </div>
+        </motion.div>
+      </motion.div>
+    );
+  };
+
+
+  // === SNAPSHOT POPUP COMPONENTS ===
+  const SnapshotPopup = ({ type, onClose, context }) => {
+    if (!type) return null;
+
+    const renderAtencionCritica = () => (
+      <motion.div className="fixed inset-0 z-[55] flex items-center justify-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose}>
+        <div className="absolute inset-0 bg-black bg-opacity-30" />
+        <motion.div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full mx-4 overflow-hidden" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} onClick={e => e.stopPropagation()}>
+          <div className="flex items-center justify-between px-6 py-4 border-b">
+            <div className="flex items-center space-x-2"><span className="text-xl">⚠️</span><h3 className="text-lg font-bold text-gray-800">Atención crítica — Snapshot</h3></div>
+            <button onClick={onClose} className="hover:bg-gray-100 p-1.5 rounded-full transition"><X className="w-5 h-5 text-gray-500" /></button>
+          </div>
+          <div className="p-5 space-y-4">
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+              <div className="flex items-start space-x-3">
+                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0"><Brain className="w-4 h-4 text-blue-600" /></div>
+                <div>
+                  <p className="text-sm text-blue-900 font-semibold">🎙️ Iris analizó <strong>847 eventos</strong> y determinó que solo <strong className="text-blue-700">10</strong> requieren atención directa.</p>
+                  <p className="text-sm text-blue-700 mt-1">Ordenados por impacto. Click en <strong>"Resolver"</strong> para ver pasos y racional.</p>
+                </div>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-3">
+              <div className="bg-red-50 rounded-xl p-4 border-2 border-red-200 text-center">
+                <p className="text-red-600 font-bold text-xs mb-1">🔴 Inmediata</p>
+                <p className="text-3xl font-bold text-red-600">3</p>
+              </div>
+              <div className="bg-amber-50 rounded-xl p-4 border-2 border-amber-200 text-center">
+                <p className="text-amber-600 font-bold text-xs mb-1">🟡 Programada</p>
+                <p className="text-3xl font-bold text-amber-600">4</p>
+              </div>
+              <div className="bg-green-50 rounded-xl p-4 border-2 border-green-200 text-center">
+                <p className="text-green-600 font-bold text-xs mb-1">🟢 Observación</p>
+                <p className="text-3xl font-bold text-green-600">3</p>
+              </div>
+            </div>
+            <table className="w-full border-collapse">
+              <thead><tr className="bg-gray-50"><th className="px-3 py-2 text-left text-xs font-bold text-gray-600">Prior.</th><th className="px-3 py-2 text-left text-xs font-bold text-gray-600">Tipo</th><th className="px-3 py-2 text-left text-xs font-bold text-gray-600">Hora</th><th className="px-3 py-2 text-left text-xs font-bold text-gray-600">Ruta</th><th className="px-3 py-2 text-center text-xs font-bold text-gray-600">Acción</th></tr></thead>
+              <tbody>
+                <tr className="border-t"><td className="px-3 py-2 text-red-600 font-bold">98</td><td className="px-3 py-2 text-sm text-gray-800">Robo en curso</td><td className="px-3 py-2 text-sm text-gray-600 font-mono">03:45</td><td className="px-3 py-2 text-sm text-blue-600">MTY→GDL</td><td className="px-3 py-2 text-center"><span className="text-blue-600 text-xs font-semibold cursor-pointer hover:underline">Resolver →</span></td></tr>
+                <tr className="border-t"><td className="px-3 py-2 text-red-600 font-bold">95</td><td className="px-3 py-2 text-sm text-gray-800">Colisión detectada</td><td className="px-3 py-2 text-sm text-gray-600 font-mono">14:22</td><td className="px-3 py-2 text-sm text-blue-600">CDMX→QRO</td><td className="px-3 py-2 text-center"><span className="text-blue-600 text-xs font-semibold cursor-pointer hover:underline">Resolver →</span></td></tr>
+              </tbody>
+            </table>
+            <p className="text-xs text-gray-400 text-center">🔒 Activa Atención Crítica para gestionar</p>
+          </div>
+        </motion.div>
+      </motion.div>
+    );
+
+    const renderMantenimiento = () => (
+      <motion.div className="fixed inset-0 z-[55] flex items-center justify-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose}>
+        <div className="absolute inset-0 bg-black bg-opacity-30" />
+        <motion.div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full mx-4 overflow-hidden" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} onClick={e => e.stopPropagation()}>
+          <div className="flex items-center justify-between px-6 py-4 border-b">
+            <div className="flex items-center space-x-2"><span className="text-xl">🔧</span><h3 className="text-lg font-bold text-gray-800">Mantenimiento — Snapshot</h3></div>
+            <button onClick={onClose} className="hover:bg-gray-100 p-1.5 rounded-full transition"><X className="w-5 h-5 text-gray-500" /></button>
+          </div>
+          <div className="p-5 space-y-4">
+            <div className="grid grid-cols-3 gap-3">
+              <div className="bg-red-50 rounded-xl p-4 border-2 border-red-300 text-center">
+                <span className="text-2xl">🚨</span>
+                <p className="text-3xl font-bold text-red-600 mt-1">1</p>
+                <p className="text-xs font-bold text-red-700 mt-1">Detener YA</p>
+                <p className="text-[10px] text-red-500 mt-1">🔥 No actuar: $850K</p>
+                <p className="text-[10px] text-red-400">🛠️ Actuar: $120K</p>
+              </div>
+              <div className="bg-amber-50 rounded-xl p-4 border-2 border-amber-300 text-center">
+                <span className="text-2xl">⚠️</span>
+                <p className="text-3xl font-bold text-amber-600 mt-1">8</p>
+                <p className="text-xs font-bold text-amber-700 mt-1">Adelantar</p>
+                <p className="text-[10px] text-amber-500 mt-1">🔥 No actuar: $250K</p>
+                <p className="text-[10px] text-amber-400">🛠️ Actuar: $0</p>
+              </div>
+              <div className="bg-green-50 rounded-xl p-4 border-2 border-green-300 text-center">
+                <span className="text-2xl">✅</span>
+                <p className="text-3xl font-bold text-green-600 mt-1">2</p>
+                <p className="text-xs font-bold text-green-700 mt-1">Postergar</p>
+                <p className="text-[10px] text-green-500 mt-1">🔥 No actuar: $23K</p>
+                <p className="text-[10px] text-green-400">🛠️ Actuar: $0K</p>
+              </div>
+            </div>
+            <table className="w-full border-collapse">
+              <thead><tr className="bg-gray-50"><th className="px-3 py-2 text-left text-xs font-bold text-gray-600">Prior.</th><th className="px-3 py-2 text-left text-xs font-bold text-gray-600">Unidad</th><th className="px-3 py-2 text-left text-xs font-bold text-gray-600">Tipo</th><th className="px-3 py-2 text-left text-xs font-bold text-gray-600">Decisión IA</th><th className="px-3 py-2 text-right text-xs font-bold text-gray-600">Costo</th></tr></thead>
+              <tbody>
+                <tr className="border-t"><td className="px-3 py-2 text-red-600 font-bold">94</td><td className="px-3 py-2"><div className="text-sm font-bold text-gray-800">ECO-304</div><div className="text-xs text-gray-500">Roberto Silva</div></td><td className="px-3 py-2"><div className="text-sm text-gray-700">Falla Motor Crítica</div><div className="text-xs text-gray-500">Confianza: 74%</div></td><td className="px-3 py-2"><span className="bg-red-100 text-red-700 px-2 py-0.5 rounded text-xs font-bold">DETENER YA</span></td><td className="px-3 py-2 text-right"><div className="font-bold text-red-600">$850,000</div><div className="text-xs text-green-600">Ahorro: $730,000</div></td></tr>
+                <tr className="border-t"><td className="px-3 py-2 text-orange-600 font-bold">81</td><td className="px-3 py-2"><div className="text-sm font-bold text-gray-800">MX-118</div><div className="text-xs text-gray-500">María López</div></td><td className="px-3 py-2"><div className="text-sm text-gray-700">Frenos &lt; 15%</div><div className="text-xs text-gray-500">Confianza: 92%</div></td><td className="px-3 py-2"><span className="bg-orange-100 text-orange-700 px-2 py-0.5 rounded text-xs font-bold">TALLER 48 HRS</span></td><td className="px-3 py-2 text-right"><div className="font-bold text-red-600">$120,000</div></td></tr>
+              </tbody>
+            </table>
+            <p className="text-xs text-gray-400 text-center">🔒 Activa Mantenimiento para gestionar</p>
+          </div>
+        </motion.div>
+      </motion.div>
+    );
+
+    const renderGeocercas = () => (
+      <motion.div className="fixed inset-0 z-[55] flex items-center justify-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose}>
+        <div className="absolute inset-0 bg-black bg-opacity-30" />
+        <motion.div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full mx-4 overflow-hidden" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} onClick={e => e.stopPropagation()}>
+          <div className="flex items-center justify-between px-6 py-4 border-b">
+            <div className="flex items-center space-x-2"><span className="text-xl">📍</span><h3 className="text-lg font-bold text-gray-800">Geocercas dinámicas — Snapshot</h3></div>
+            <button onClick={onClose} className="hover:bg-gray-100 p-1.5 rounded-full transition"><X className="w-5 h-5 text-gray-500" /></button>
+          </div>
+          <div className="p-5 space-y-4">
+            <div className="bg-red-50 border-2 border-red-200 rounded-xl p-4">
+              <p className="text-xs font-bold text-red-600 uppercase tracking-wider mb-2">EVENTO CRÍTICO</p>
+              <p className="text-sm text-gray-800 mb-1">Riesgo Predictivo <span className="text-2xl font-bold text-red-600">68%</span></p>
+              <p className="text-xs text-gray-500">Tendencia: +5%  Confianza: 85%</p>
+              <p className="text-xs text-gray-400 mt-1">Basado en 189 eventos históricos</p>
+              <p className="text-sm text-gray-700 mt-2">3 conductores incrementaron velocidad +18% en últimos 7 días</p>
+              <p className="text-xs text-blue-600 font-semibold mt-2 cursor-pointer hover:underline">Ver razonamiento</p>
+            </div>
+            <div className="bg-gray-50 border-2 border-gray-200 rounded-xl p-4">
+              <p className="text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">PATRÓN EMERGENTE</p>
+              <p className="text-sm text-gray-800 mb-1">Riesgo Predictivo <span className="text-2xl font-bold text-amber-600">54%</span></p>
+              <p className="text-xs text-gray-500">Tendencia: +3%  Confianza: 71%</p>
+              <p className="text-xs text-gray-400 mt-1">Basado en 42 eventos históricos</p>
+              <p className="text-sm text-gray-700 mt-2">Detenciones no programadas aumentaron 24% en zona industrial</p>
+              <p className="text-xs text-blue-600 font-semibold mt-2 cursor-pointer hover:underline">Ver razonamiento</p>
+            </div>
+            <p className="text-xs text-gray-400 text-center">🔒 Activa Geocercas para gestionar</p>
+          </div>
+        </motion.div>
+      </motion.div>
+    );
+
+    const renderControlViajes = () => (
+      <motion.div className="fixed inset-0 z-[55] flex items-center justify-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose}>
+        <div className="absolute inset-0 bg-black bg-opacity-30" />
+        <motion.div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full mx-4 overflow-hidden" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} onClick={e => e.stopPropagation()}>
+          <div className="flex items-center justify-between px-6 py-4 border-b">
+            <div className="flex items-center space-x-2"><span className="text-xl">🚛</span><h3 className="text-lg font-bold text-gray-800">Control de viajes — Snapshot</h3></div>
+            <button onClick={onClose} className="hover:bg-gray-100 p-1.5 rounded-full transition"><X className="w-5 h-5 text-gray-500" /></button>
+          </div>
+          <div className="p-5">
+            <div className="grid grid-cols-2 gap-3">
+              <div className="bg-green-50 rounded-xl p-3 border border-green-200"><div className="flex items-center justify-between mb-1"><span className="font-bold text-green-700 text-xs">🚛 En Ruta</span><span className="text-xl font-bold text-green-600">11</span></div><div className="space-y-0.5"><div className="flex items-center justify-between text-xs"><span>MX-3012</span><span className="text-orange-600">Demorado</span></div><div className="flex items-center justify-between text-xs"><span>MX-2341</span><span className="text-blue-600">Adelantado</span></div></div><p className="text-xs text-gray-400 mt-1">+9 más...</p><p className="text-xs text-green-600 font-semibold mt-1">Click para ver detalle →</p></div>
+              <div className="bg-yellow-50 rounded-xl p-3 border border-yellow-200"><div className="flex items-center justify-between mb-1"><span className="font-bold text-yellow-700 text-xs">⏳ Por Asignar</span><span className="text-xl font-bold text-yellow-600">5</span></div><div className="space-y-0.5"><div className="flex items-center justify-between text-xs"><span>MX-2534</span><span className="text-gray-600">93%</span></div><div className="flex items-center justify-between text-xs"><span>MX-2567</span><span className="text-gray-600">97%</span></div></div><p className="text-xs text-gray-400 mt-1">+3 más...</p><p className="text-xs text-yellow-600 font-semibold mt-1">Click para ver detalle →</p></div>
+              <div className="bg-orange-50 rounded-xl p-3 border border-orange-200"><div className="flex items-center justify-between mb-1"><span className="font-bold text-orange-700 text-xs">🔧 En Taller</span><span className="text-xl font-bold text-orange-600">4</span></div><div className="space-y-0.5"><div className="flex items-center justify-between text-xs"><span>MX-2601</span></div><div className="flex items-center justify-between text-xs"><span>MX-2615</span></div></div><p className="text-xs text-gray-400 mt-1">+2 más...</p><p className="text-xs text-orange-600 font-semibold mt-1">Click para ver detalle →</p></div>
+              <div className="bg-red-50 rounded-xl p-3 border border-red-200"><div className="flex items-center justify-between mb-1"><span className="font-bold text-red-700 text-xs">❓ No Ubicable</span><span className="text-xl font-bold text-red-600">3</span></div><div className="space-y-0.5"><div className="flex items-center justify-between text-xs"><span>MX-2650</span><span className="text-red-600">1h 20min</span></div><div className="flex items-center justify-between text-xs"><span>MX-2670</span><span className="text-red-600">3h 45min</span></div></div><p className="text-xs text-gray-400 mt-1">+1 más...</p><p className="text-xs text-red-600 font-semibold mt-1">Click para ver detalle →</p></div>
+              <div className="bg-amber-50 rounded-xl p-3 border border-amber-200"><div className="flex items-center justify-between mb-1"><span className="font-bold text-amber-700 text-xs">🕐 Demorados</span><span className="text-xl font-bold text-amber-600">2</span></div><div className="space-y-0.5"><div className="flex items-center justify-between text-xs"><span>MX-3012</span><span className="text-orange-600">Demorado</span></div><div className="flex items-center justify-between text-xs"><span>MX-2401</span><span className="text-amber-600">Riesgo demora</span></div></div><p className="text-xs text-amber-600 font-semibold mt-1">Click para ver detalle →</p></div>
+              <div className="bg-red-50 rounded-xl p-3 border border-red-200"><div className="flex items-center justify-between mb-1"><span className="font-bold text-red-700 text-xs">🔴 Demora Crítica</span><span className="text-xl font-bold text-red-600">1</span></div><div className="space-y-0.5"><div className="flex items-center justify-between text-xs"><span>EXT-4501</span><span className="text-red-600">70%</span></div></div><p className="text-xs text-red-600 font-semibold mt-1">Click para ver detalle →</p></div>
+              <div className="bg-purple-50 rounded-xl p-3 border border-purple-200"><div className="flex items-center justify-between mb-1"><span className="font-bold text-purple-700 text-xs">⏸️ Detenidos</span><span className="text-xl font-bold text-purple-600">1</span></div><div className="space-y-0.5"><div className="flex items-center justify-between text-xs"><span>EXT-4535</span><span className="text-gray-600">78%</span></div></div><p className="text-xs text-purple-600 font-semibold mt-1">Click para ver detalle →</p></div>
+              <div className="bg-blue-50 rounded-xl p-3 border border-blue-200"><div className="flex items-center justify-between mb-1"><span className="font-bold text-blue-700 text-xs">❄️ Cadena de Frío</span><span className="text-xl font-bold text-blue-600">4</span></div><div className="space-y-0.5"><div className="flex items-center justify-between text-xs"><span>MX-2389</span><span className="text-blue-600">3.2°C</span></div><div className="flex items-center justify-between text-xs"><span>MX-2478</span><span className="text-blue-600">-18.5°C</span></div></div><p className="text-xs text-gray-400 mt-1">+2 más...</p><p className="text-xs text-blue-600 font-semibold mt-1">Click para ver detalle →</p></div>
+            </div>
+            <p className="text-xs text-gray-400 text-center mt-4">🔒 Activa Control de Viajes para gestionar</p>
+          </div>
+        </motion.div>
+      </motion.div>
+    );
+
+    return (<>{type === 'atencion_critica' && renderAtencionCritica()}{type === 'mantenimiento' && renderMantenimiento()}{type === 'geocercas' && renderGeocercas()}{type === 'control_viajes' && renderControlViajes()}</>);
+  };
+
+
+const MaintenanceListModal = ({ onClose }) => {
+    return (
+      <motion.div
+        className="fixed inset-0 bg-black bg-opacity-85 flex items-center justify-center z-50 p-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+      >
+        {/* Snapshot floating pills */}
+        <div className="absolute right-4 top-1/2 transform -translate-y-1/2 space-y-2 z-[51]" style={{ right: '16px' }}>
+          <button onClick={(e) => { e.stopPropagation(); setActiveSnapshot('atencion_critica'); setSnapshotContext('mantenimiento'); }} className="flex items-center space-x-2 bg-white shadow-lg rounded-xl px-4 py-2.5 hover:shadow-xl transition border border-gray-200 whitespace-nowrap">
+            <span className="text-sm">⚠️</span><span className="text-sm font-semibold text-gray-700">Atención crítica</span>
+          </button>
+          <button onClick={(e) => { e.stopPropagation(); setActiveSnapshot('geocercas'); setSnapshotContext('mantenimiento'); }} className="flex items-center space-x-2 bg-white shadow-lg rounded-xl px-4 py-2.5 hover:shadow-xl transition border border-gray-200 whitespace-nowrap">
+            <span className="text-sm">📍</span><span className="text-sm font-semibold text-gray-700">Geocercas dinámicas</span>
+          </button>
+        </div>
+        <motion.div
+          className="bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[85vh] overflow-hidden"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.8, opacity: 0 }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Header */}
+          <div className="bg-gradient-to-r from-orange-500 to-red-600 p-6 text-white">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <AlertTriangle className="w-8 h-8" />
+                <div>
+                  <h3 className="text-2xl font-bold">Agente de Mantenimiento Estratégico</h3>
+                  <p className="text-sm opacity-90">Top 10 Priorizado por Cost of Delay • IA Activa</p>
+                </div>
+              </div>
+              <button onClick={onClose} className="hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition">
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
+
+          {/* Explicación de priorización */}
+          <div className="bg-blue-50 border-l-4 border-blue-500 p-4 m-6">
+            <div className="flex items-start">
+              <Brain className="w-5 h-5 text-blue-600 mr-3 mt-0.5" />
+              <div className="text-sm text-blue-900">
+                <strong>Priorización Inteligente Activa:</strong> El Agente de IA analiza la <strong>Tríada de Inteligencia</strong>: 
+                Seguridad (riesgo operativo), Momento (contexto temporal y geográfico) y Dinero (impacto financiero) 
+                para calcular un <strong>Puntaje de Prioridad de 0 a 100</strong>.
+              </div>
+            </div>
+          </div>
+
+
+          {/* ===== KPIs DE MANTENIMIENTO ===== */}
+          <div className="px-6 pt-4 pb-2">
+            <h4 className="text-sm font-bold text-gray-600 mb-3 uppercase tracking-wider">Vista Ejecutiva - KPIs</h4>
+            <div className="grid grid-cols-3 gap-4 mb-6">
+              {(() => {
+                const kpis = calculateMaintenanceKPIs();
+                return ['detenerYa', 'proximamente', 'postergar'].map((kpiKey) => {
+                  const kpi = kpis[kpiKey];
+                  return (
+                    <motion.div
+                      key={kpiKey}
+                      className={`${kpi.color} rounded-xl p-5 border-2 cursor-pointer hover:shadow-lg transition-all hover:scale-105`}
+                      onClick={() => handleKPIClick(kpiKey)}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-3xl">{kpi.icon}</span>
+                        <ChevronRight className="w-5 h-5 opacity-50" />
+                      </div>
+                      <div className="text-4xl font-black mb-1">{kpi.count}</div>
+                      <div className="text-sm font-bold mb-3">{kpi.label}</div>
+                      <div className="text-xs opacity-75 space-y-1">
+                        <div>💰 Costo no actuar: <strong>${(kpi.totalCostNoActuar / 1000).toFixed(0)}K</strong></div>
+                        <div>💵 Costo actuar: <strong>${(kpi.totalCostActuar / 1000).toFixed(0)}K</strong></div>
+                      </div>
+                    </motion.div>
+                  );
+                });
+              })()}
+            </div>
+          </div>
+
+
+          {/* Tabla */}
+          <div className="p-6 overflow-y-auto max-h-[calc(85vh-200px)]">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="bg-gradient-to-r from-gray-100 to-gray-200">
+                  <th className="border border-gray-300 px-4 py-3 text-left text-sm font-bold text-gray-700">Prioridad</th>
+                  <th className="border border-gray-300 px-4 py-3 text-left text-sm font-bold text-gray-700">Unidad</th>
+                  <th className="border border-gray-300 px-4 py-3 text-left text-sm font-bold text-gray-700">Tipo</th>
+                  <th className="border border-gray-300 px-4 py-3 text-left text-sm font-bold text-gray-700">Decisión IA</th>
+                  <th className="border border-gray-300 px-4 py-3 text-right text-sm font-bold text-gray-700">Costo</th>
+                  <th className="border border-gray-300 px-4 py-3 text-center text-sm font-bold text-gray-700">Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                {maintenanceIssues.map((issue, idx) => (
+                  <motion.tr
+                    key={issue.id}
+                    className="hover:bg-gray-50 transition-colors"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.05 }}
+                  >
+                    <td className="border border-gray-300 px-4 py-3">
+                      <div className="flex items-center space-x-2">
+                        <span className={`text-2xl font-bold ${issue.color}`}>{issue.priority}</span>
+                        <div className="flex-1 bg-gray-200 rounded-full h-2 w-20">
+                          <div 
+                            className={`h-2 rounded-full ${
+                              issue.priority >= 85 ? 'bg-red-500' : 
+                              issue.priority >= 70 ? 'bg-orange-500' : 
+                              issue.priority >= 50 ? 'bg-yellow-500' : 'bg-green-500'
+                            }`}
+                            style={{ width: `${issue.priority}%` }}
+                          />
+                        </div>
+                      </div>
+                    </td>
+                    <td className="border border-gray-300 px-4 py-3">
+                      <div className="font-bold text-gray-800">{issue.unit}</div>
+                      <div className="text-xs text-gray-500">{issue.conductor}</div>
+                    </td>
+                    <td className="border border-gray-300 px-4 py-3">
+                      <div className="text-sm text-gray-700">{issue.tipo}</div>
+                      <div className="text-xs text-gray-500">Confianza: {issue.confidence}%</div>
+                    </td>
+                    <td className="border border-gray-300 px-4 py-3">
+                      <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                        issue.decision.includes('DETENER') ? 'bg-red-100 text-red-700' :
+                        issue.decision.includes('TALLER') ? 'bg-orange-100 text-orange-700' :
+                        issue.decision.includes('POSTERGAR') ? 'bg-green-100 text-green-700' :
+                        'bg-blue-100 text-blue-700'
+                      }`}>
+                        {issue.decision}
+                      </span>
+                    </td>
+                    <td className="border border-gray-300 px-4 py-3 text-right">
+                      <div className="font-bold text-red-600 text-lg">
+                        ${issue.cost_no_actuar.toLocaleString()}
+                      </div>
+                      {issue.ahorro_potencial > 0 && (
+                        <div className="text-xs text-green-600">
+                          Ahorro: ${issue.ahorro_potencial.toLocaleString()}
+                        </div>
+                      )}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-3 text-center">
+                      <button
+                        onClick={() => handleAttendMaintenance(issue)}
+                        className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-bold transition"
+                      >
+                        Atender
+                      </button>
+                    </td>
+                  </motion.tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          
+          {/* Footer con leyenda */}
+          <div className="bg-gray-50 px-6 py-4 border-t flex items-center justify-between">
+            <div className="flex items-center space-x-4 text-xs">
+              <div className="flex items-center"><div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>Prioridad Crítica</div>
+              <div className="flex items-center"><div className="w-3 h-3 bg-orange-500 rounded-full mr-2"></div>Prioridad Alta</div>
+              <div className="flex items-center"><div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>Prioridad Media</div>
+              <div className="flex items-center"><div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>Prioridad Baja</div>
+            </div>
+            <button
+              onClick={onClose}
+              className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold transition"
+            >
+              Cerrar
+            </button>
+          </div>
+        </motion.div>
+      </motion.div>
+    );
+
+  // ========================================================================
+  // MODAL: Detalle Completo de Mantenimiento (Super Modal)
+  // ========================================================================
+
+
+  };
+
+
+
+  // ========================================================================
+  // MODAL: Detalle Completo de Mantenimiento (movido fuera de scope)
+  // ========================================================================
+  const MaintenanceDetailModal = ({ onClose }) => {
+    if (!selectedMaintenance) return null;
+
+    const formatTime = (seconds) => {
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    };
+
+    return (
+      <motion.div
+        className="fixed inset-0 bg-black bg-opacity-85 flex items-center justify-center z-50 p-4 overflow-y-auto"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+      >
+        <motion.div
+          className="bg-white rounded-2xl shadow-2xl max-w-7xl w-full my-8"
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.9, opacity: 0 }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* ===== HEADER ===== */}
+          <div className="bg-gradient-to-r from-red-600 to-orange-600 p-6 text-white">
+            <div className="flex items-start justify-between">
+              <div>
+                <div className="flex items-center space-x-3 mb-2">
+                  <AlertTriangle className="w-8 h-8" />
+                  <h2 className="text-2xl font-bold">{selectedMaintenance.tipo} - {selectedMaintenance.unit}</h2>
+                </div>
+                <p className="text-sm opacity-90">Unidad: {selectedMaintenance.unit} | Conductor: {selectedMaintenance.conductor}</p>
+              </div>
+              <button onClick={onClose} className="hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition">
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
+
+          <div className="p-8 space-y-6 max-h-[calc(100vh-300px)] overflow-y-auto">
+
+            {/* ===== TRÍADA DE INTELIGENCIA ===== */}
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border-2 border-blue-200">
+              <div className="flex items-center space-x-3 mb-4">
+                <Brain className="w-6 h-6 text-blue-600" />
+                <h3 className="text-xl font-bold text-gray-800">Por qué Prioridad {selectedMaintenance.priority}/100</h3>
+              </div>
+              <div className="text-sm text-blue-900 mb-4">
+                El Agente de IA analizó la <strong>Tríada de Inteligencia</strong> y calculó el siguiente puntaje:
+              </div>
+
+              <div className="grid grid-cols-3 gap-4">
+                {/* Seguridad */}
+                <div className="bg-white rounded-lg p-4 border-l-4 border-red-500">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <Shield className="w-5 h-5 text-red-600" />
+                    <h4 className="font-bold text-gray-800">Seguridad (Riesgo Operativo)</h4>
+                  </div>
+                  <div className="text-3xl font-bold text-red-600 mb-2">95/100</div>
+                  <div className="text-sm text-gray-700 space-y-1">
+                    {selectedMaintenance.diagnostico && selectedMaintenance.diagnostico.map((d, i) => (
+                      <div key={i}>• {d}</div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Momento */}
+                <div className="bg-white rounded-lg p-4 border-l-4 border-orange-500">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <Activity className="w-5 h-5 text-orange-600" />
+                    <h4 className="font-bold text-gray-800">Momento (Contexto)</h4>
+                  </div>
+                  <div className="text-3xl font-bold text-orange-600 mb-2">98/100</div>
+                  <div className="text-sm text-gray-700 space-y-1">
+                    <div><strong>Ubicación:</strong> {selectedMaintenance.ubicacion}</div>
+                    <div><strong>Carga:</strong> {selectedMaintenance.carga} (${(selectedMaintenance.valor_carga / 1000).toFixed(0)}K)</div>
+                    <div><strong>Cliente:</strong> {selectedMaintenance.cliente}</div>
+                    {selectedMaintenance.tiempo_critico && (
+                      <div className="font-bold text-orange-700">Ventana crítica: {selectedMaintenance.tiempo_critico}</div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Dinero */}
+                <div className="bg-white rounded-lg p-4 border-l-4 border-green-500">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <DollarSign className="w-5 h-5 text-green-600" />
+                    <h4 className="font-bold text-gray-800">Dinero (Impacto Financiero)</h4>
+                  </div>
+                  <div className="text-3xl font-bold text-green-600 mb-2">92/100</div>
+                  <div className="text-sm text-gray-700 space-y-1">
+                    <div><strong>Costo NO actuar:</strong> <span className="text-red-600 font-bold">${selectedMaintenance.cost_no_actuar.toLocaleString()}</span></div>
+                    {selectedMaintenance.cost_actuar_ahora && (
+                      <div><strong>Costo actuar ahora:</strong> ${selectedMaintenance.cost_actuar_ahora.toLocaleString()}</div>
+                    )}
+                    {selectedMaintenance.ahorro_potencial && (
+                      <div className="font-bold text-green-700">Ahorro neto: ${selectedMaintenance.ahorro_potencial.toLocaleString()}</div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ===== IMPACTO FINANCIERO PROYECTADO ===== */}
+            {selectedMaintenance.impacto_financiero && (
+              <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-6 border-2 border-yellow-300">
+                <div className="flex items-center space-x-3 mb-4">
+                  <DollarSign className="w-6 h-6 text-orange-600" />
+                  <h3 className="text-xl font-bold text-gray-800">Impacto Financiero Proyectado</h3>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  {Object.entries(selectedMaintenance.impacto_financiero).map(([key, value]) => {
+                    if (typeof value === 'number') {
+                      return (
+                        <div key={key} className="bg-white rounded-lg p-3 flex justify-between items-center">
+                          <span className="text-sm text-gray-700">{key.replace(/_/g, ' ')}</span>
+                          <span className="font-bold text-gray-800 text-lg">${value.toLocaleString()}</span>
+                        </div>
+                      );
+                    }
+                    return null;
+                  })}
+                </div>
+
+                <div className="bg-red-100 border-2 border-red-300 rounded-lg p-4 flex justify-between items-center">
+                  <span className="font-bold text-red-600 text-lg">TOTAL PÉRDIDA ESTIMADA</span>
+                  <span className="font-black text-red-700 text-3xl">${selectedMaintenance.cost_no_actuar.toLocaleString()}</span>
+                </div>
+
+                {selectedMaintenance.tiempo_critico && selectedMaintenance.reduccion_perdida > 0 && (
+                  <div className="bg-green-100 border-2 border-green-300 rounded-lg p-3 mt-3 flex items-center justify-center text-center">
+                    <BarChart3 className="w-5 h-5 text-green-600 mr-2" />
+                    <span className="text-sm text-green-800">
+                      <strong>Si se resuelve en próximos {selectedMaintenance.tiempo_critico}:</strong> Reducción de pérdida en {selectedMaintenance.reduccion_perdida}% 
+                      (ahorro estimado: ${((selectedMaintenance.cost_no_actuar * selectedMaintenance.reduccion_perdida) / 100).toLocaleString()})
+                    </span>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* ===== FLUJO DE RESPUESTA PROPUESTO ===== */}
+            <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-xl p-6 border-2 border-purple-300">
+              <div className="flex items-center space-x-3 mb-4">
+                <CheckCircle2 className="w-6 h-6 text-purple-600" />
+                <h3 className="text-xl font-bold text-gray-800">Flujo de Respuesta Propuesto</h3>
+              </div>
+
+              <div className="space-y-3 mb-6">
+                {currentMaintenanceFlowSteps.map((step, idx) => (
+                  <motion.div
+                    key={step.id}
+                    className={`flex items-start space-x-3 p-4 rounded-lg border-2 $'{
+                      step.status === 'completed' ? 'bg-green-50 border-green-300' :
+                      step.status === 'in-progress' ? 'bg-blue-50 border-blue-300' :
+                      'bg-white border-gray-200'
+                    }'`}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                  >
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-white $'{
+                      step.status === 'completed' ? 'bg-green-500' :
+                      step.status === 'in-progress' ? 'bg-blue-500' :
+                      'bg-purple-500'
+                    }'`}>
+                      {step.status === 'completed' ? '✓' : idx + 1}
+                    </div>
+                    <div className="flex-1">
+                      <div className="font-bold text-gray-800">{step.text}</div>
+                      <div className="text-sm text-gray-600">{step.details}</div>
+                    </div>
+                    <div className="text-sm text-gray-500 font-semibold">{step.time} seg</div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Modo de ejecución */}
+              <div className="bg-white rounded-lg p-4 mb-4">
+                <div className="text-sm font-bold text-gray-700 mb-3">Modo de Ejecución:</div>
+                <div className="flex space-x-3">
+                  <button
+                    onClick={() => setMaintenanceExecutionMode('automatic')}
+                    className={`flex-1 py-3 px-4 rounded-lg font-semibold transition $'{maintenanceExecutionMode === 'automatic' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}'`}
+                  >
+                    🤖 Automático
+                  </button>
+                  <button
+                    onClick={() => setMaintenanceExecutionMode('semi-automatic')}
+                    className={`flex-1 py-3 px-4 rounded-lg font-semibold transition $'{maintenanceExecutionMode === 'semi-automatic' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}'`}
+                  >
+                    🤝 Semi-Auto
+                  </button>
+                  <button
+                    onClick={() => setMaintenanceExecutionMode('manual')}
+                    className={`flex-1 py-3 px-4 rounded-lg font-semibold transition $'{maintenanceExecutionMode === 'manual' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}'`}
+                  >
+                    👤 Manual
+                  </button>
+                </div>
+              </div>
+
+              {/* Botón ejecutar */}
+              <button
+                onClick={handleExecuteMaintenanceFlow}
+                disabled={isMaintenanceFlowExecuting}
+                className={`w-full py-4 rounded-lg font-bold text-lg flex items-center justify-center space-x-2 transition $'{
+                  isMaintenanceFlowExecuting 
+                    ? 'bg-gray-400 cursor-not-allowed' 
+                    : 'bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white'
+                }'`}
+              >
+                {isMaintenanceFlowExecuting ? (
+                  <>
+                    <Activity className="w-6 h-6 animate-spin" />
+                    <span>Ejecutando...</span>
+                  </>
+                ) : (
+                  <>
+                    <Zap className="w-6 h-6" />
+                    <span>🚀 Ejecutar Flujo Ahora</span>
+                  </>
+                )}
+              </button>
+
+              <div className="text-center text-sm text-gray-500 mt-2">
+                ⏱️ Tiempo estimado: ~{currentMaintenanceFlowSteps.reduce((sum, s) => sum + parseInt(s.time), 0)} seg | 
+                Ahorro vs manual: ~85%
+              </div>
+            </div>
+
+          </div>
+        </motion.div>
+      </motion.div>
+    );
+  };
+
+
+  // === AÑADIDO: Componente Estado de viajes con mapa ===
+  const TripStatusModal = () => {
+    if (!showTripStatusModal) return null;
+    const filtered = tripFleetFilter === 'all' ? fleetVehicles : fleetVehicles.filter(v => v.type === tripFleetFilter);
+    const enRuta = filtered.filter(v => v.status === 'en_ruta');
+    const porAsignar = filtered.filter(v => v.status === 'por_asignar');
+    const enTaller = filtered.filter(v => v.status === 'en_taller');
+    const noUbicable = filtered.filter(v => v.status === 'no_ubicable');
+    const excepciones = [...fleetVehicles].filter(v => (v.prioridadExcepcion || 0) > 0).sort((a,b) => (b.prioridadExcepcion||0) - (a.prioridadExcepcion||0));
+    const aTiempoArr = enRuta.filter(v => v.puntualidad === 'a_tiempo' || v.puntualidad === 'adelantado');
+    const demoradosArr = enRuta.filter(v => v.puntualidad === 'demorado' || v.puntualidad === 'riesgo_demora');
+    const criticosArr = enRuta.filter(v => v.puntualidad === 'demora_critica');
+    const detenidosArr = enRuta.filter(v => v.puntualidad === 'detenido');
+    const conTempArr = enRuta.filter(v => v.tempCaja !== null && v.tempCaja !== undefined);
+    const gPC = (p) => ({ a_tiempo:'text-green-600', adelantado:'text-blue-600', riesgo_demora:'text-amber-600', demorado:'text-orange-600', demora_critica:'text-red-600', detenido:'text-orange-500' })[p] || 'text-gray-500';
+    const gPBg = (p) => ({ a_tiempo:'bg-green-100 text-green-700', adelantado:'bg-blue-100 text-blue-700', riesgo_demora:'bg-amber-100 text-amber-700', demorado:'bg-orange-100 text-orange-700', demora_critica:'bg-red-100 text-red-700', detenido:'bg-orange-100 text-orange-600' })[p] || 'bg-gray-100 text-gray-600';
+    const gPL = (p) => ({ a_tiempo:'A tiempo', adelantado:'Adelantado', riesgo_demora:'Riesgo demora', demorado:'Demorado', demora_critica:'Demora crítica', detenido:'Detenido' })[p] || p;
+    const tripMsgs = ['La flota avanza. Todo fluye.','Cada kilómetro recorrido es una entrega más cerca.','Un buen controlador anticipa, no persigue problemas.','Respira. Observa el flujo. Actúa cuando Iris te lo sugiera.'];
+    const handleExec = (exc) => { setTripExecRunning(true); setTimeout(() => { setTripExecRunning(false); setTripExecDone(prev => ({ ...prev, [exc.id]: true })); }, 3000); };
+
+    /* === VEHICLE DETAIL === */
+    if (selectedVehicle && selectedVehicle.status === 'en_ruta') {
+      const v = selectedVehicle;
+      const VehicleRouteMap = ({ vehicle }) => {
+        const vMapRef = React.useRef(null);
+        const vMapInstance = React.useRef(null);
+        const [vMapReady, setVMapReady] = React.useState(false);
+        React.useEffect(() => {
+          if (window.google && window.google.maps) { setVMapReady(true); return; }
+          if (document.querySelector('script[src*="maps.googleapis"]')) {
+            const ck = setInterval(() => { if (window.google && window.google.maps) { setVMapReady(true); clearInterval(ck); } }, 200);
+            return () => clearInterval(ck);
+          }
+          const s = document.createElement('script');
+          s.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB5cjINuN8LzLh6P26DSsOW7lNBxU98rNE&libraries=marker';
+          s.async = true; s.defer = true;
+          s.onload = () => { const ck = setInterval(() => { if (window.google && window.google.maps) { setVMapReady(true); clearInterval(ck); } }, 100); };
+          document.head.appendChild(s);
+        }, []);
+        React.useEffect(() => {
+          if (!vMapReady || !vMapRef.current || vMapInstance.current) return;
+          const vv = vehicle;
+          const gm = window.google.maps;
+          const vehiclePos = { lat: vv.lat, lng: vv.lng };
+          const bounds = new gm.LatLngBounds();
+          if (vv.origenCoords) bounds.extend(vv.origenCoords);
+          if (vv.destinoCoords) bounds.extend(vv.destinoCoords);
+          bounds.extend(vehiclePos);
+          if (vv.paradas) vv.paradas.forEach(p => { if (p.lat && p.lng) bounds.extend({ lat: p.lat, lng: p.lng }); });
+          const map = new gm.Map(vMapRef.current, { center: bounds.getCenter(), zoom: 8, mapTypeId: 'roadmap', styles: [{ featureType: 'water', elementType: 'geometry', stylers: [{ color: '#c9d8e8' }] }, { featureType: 'landscape', elementType: 'geometry', stylers: [{ color: '#e8f0e3' }] }, { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#dadada' }] }, { featureType: 'poi', stylers: [{ visibility: 'off' }] }, { featureType: 'transit', stylers: [{ visibility: 'off' }] }], disableDefaultUI: true, zoomControl: true, mapTypeControl: false, streetViewControl: false, fullscreenControl: false });
+          map.fitBounds(bounds, 40);
+          vMapInstance.current = map;
+          const routePoints = [];
+          if (vv.origenCoords) routePoints.push(vv.origenCoords);
+          if (vv.paradas) vv.paradas.filter(p => p.lat && p.lng && p.tipo !== 'origen' && p.tipo !== 'destino').forEach(p => routePoints.push({ lat: p.lat, lng: p.lng }));
+          if (vv.destinoCoords) routePoints.push(vv.destinoCoords);
+          if (routePoints.length >= 2) {
+            let closestIdx = 0; let closestDist = Infinity;
+            routePoints.forEach((pt, i) => { const d = Math.sqrt(Math.pow(pt.lat - vehiclePos.lat, 2) + Math.pow(pt.lng - vehiclePos.lng, 2)); if (d < closestDist) { closestDist = d; closestIdx = i; } });
+            const completedPath = []; const pendingPath = [];
+            routePoints.forEach((pt, i) => { if (i <= closestIdx) { completedPath.push(pt); } if (i === closestIdx) { completedPath.push(vehiclePos); pendingPath.push(vehiclePos); } if (i > closestIdx) { pendingPath.push(pt); } });
+            new gm.Polyline({ path: completedPath, geodesic: true, strokeColor: '#EF4444', strokeOpacity: 0.9, strokeWeight: 4, map });
+            new gm.Polyline({ path: pendingPath, geodesic: true, strokeColor: '#9CA3AF', strokeOpacity: 0.6, strokeWeight: 3, map });
+          }
+          if (vv.origenCoords) new gm.Marker({ position: vv.origenCoords, map, icon: { url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="11" fill="#3b82f6" stroke="white" stroke-width="2.5"/><text x="14" y="18" text-anchor="middle" font-size="12" font-weight="bold" fill="white">A</text></svg>'), scaledSize: new gm.Size(28, 28), anchor: new gm.Point(14, 14) }, title: vv.origen, zIndex: 5 });
+          if (vv.destinoCoords) new gm.Marker({ position: vv.destinoCoords, map, icon: { url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="11" fill="#22c55e" stroke="white" stroke-width="2.5"/><text x="14" y="18" text-anchor="middle" font-size="12" font-weight="bold" fill="white">B</text></svg>'), scaledSize: new gm.Size(28, 28), anchor: new gm.Point(14, 14) }, title: vv.destino, zIndex: 5 });
+          if (vv.paradas) vv.paradas.forEach(p => {
+            if (!p.lat || !p.lng || p.tipo === 'origen' || p.tipo === 'destino') return;
+            const isCaseta = p.tipo === 'caseta';
+            const pColor = p.status === 'completada' ? '#22c55e' : (p.status === 'actual' || p.status === 'proximo') ? '#3b82f6' : '#9ca3af';
+            const icon = isCaseta ? { url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4" fill="' + pColor + '" stroke="white" stroke-width="2"/><text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="white">$</text></svg>'), scaledSize: new gm.Size(24, 24), anchor: new gm.Point(12, 12) } : { url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="6" fill="' + pColor + '" stroke="white" stroke-width="2"/></svg>'), scaledSize: new gm.Size(18, 18), anchor: new gm.Point(9, 9) };
+            const m = new gm.Marker({ position: { lat: p.lat, lng: p.lng }, map, icon, title: p.nombre, zIndex: isCaseta ? 4 : 3 });
+            if (isCaseta && p.caseta) { const iwC = new gm.InfoWindow({ content: '<div style="font-family:system-ui;padding:2px;font-size:11px"><strong>' + p.caseta.nombre + '</strong><br>TAG: ' + (p.caseta.tag || 'Pendiente') + '<br><strong>$' + p.caseta.monto + ' MXN</strong></div>' }); m.addListener('click', () => iwC.open(map, m)); }
+          });
+          const truckSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="#EF4444" stroke="white" stroke-width="3"/><text x="20" y="26" text-anchor="middle" font-size="18" fill="white">\u{1F69B}</text><circle cx="20" cy="20" r="19" fill="none" stroke="#EF4444" stroke-width="2" opacity="0.4"><animate attributeName="r" from="16" to="24" dur="1.5s" repeatCount="indefinite"/><animate attributeName="opacity" from="0.6" to="0" dur="1.5s" repeatCount="indefinite"/></circle></svg>';
+          const truckMarker = new gm.Marker({ position: vehiclePos, map, icon: { url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(truckSvg), scaledSize: new gm.Size(40, 40), anchor: new gm.Point(20, 20) }, title: vv.unit, zIndex: 10 });
+          const iw = new gm.InfoWindow({ content: '<div style="font-family:system-ui;padding:4px;min-width:160px"><strong>' + vv.unit + '</strong><br><span style="font-size:11px;color:#666">' + vv.conductor + '</span><br><span style="font-size:11px">' + vv.origen + ' → ' + vv.destino + '</span><br><span style="font-size:11px;font-weight:700;color:#3CB043">Avance: ' + vv.avance + '%</span></div>' });
+          iw.open(map, truckMarker);
+        }, [vMapReady, vehicle]);
+        React.useEffect(() => { return () => { vMapInstance.current = null; }; }, []);
+        return (<div className="relative rounded-xl border overflow-hidden" style={{ height: '260px', borderColor: '#8FBF9F' }}><div ref={vMapRef} style={{ width: '100%', height: '100%' }} />{!vMapReady && <div className="absolute inset-0 flex items-center justify-center bg-gray-100"><div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin" /></div>}<div className="absolute top-2 left-2 bg-white bg-opacity-95 rounded-lg px-3 py-1.5 shadow-md z-10"><p className="text-xs font-bold text-gray-800">{vehicle.unit} · En vivo</p><p className="text-[10px] text-gray-500">{vehicle.origen} → {vehicle.destino}</p></div></div>);
+      };
+      const casetasCompletadas = (v.paradas || []).filter(p => p.caseta && p.caseta.metodo === 'TAG' && p.status === 'completada');
+      const casetasPendientes = (v.paradas || []).filter(p => p.caseta && p.caseta.metodo === 'pendiente');
+      const totalCasetasPagado = casetasCompletadas.reduce((s, p) => s + (p.caseta.monto || 0), 0);
+      const totalCasetasEstimado = casetasPendientes.reduce((s, p) => s + (p.caseta.monto || 0), 0);
+      return (
+        <motion.div className="fixed inset-0 flex items-center justify-center z-50 p-4" style={{ backgroundColor: 'rgba(30,80,50,0.75)' }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedVehicle(null)}>
+          <motion.div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[92vh] overflow-hidden" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} onClick={e => e.stopPropagation()}>
+            <div className="p-5 text-white" style={{ background: 'linear-gradient(135deg, #3CB043, #2E8B3A)' }}>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-white/15 rounded-full flex items-center justify-center"><span className="text-2xl">🚛</span></div>
+                  <div><h3 className="text-xl font-bold">{v.unit} · {v.conductor}</h3><p className="text-sm opacity-80">{v.origen} → {v.destino} · {v.cliente}</p></div>
+                </div>
+                <div className="flex items-center space-x-3">
+                  {v.puntualidad && <span className={`px-3 py-1 rounded-full text-sm font-bold ${gPBg(v.puntualidad)}`}>{gPL(v.puntualidad)}</span>}
+                  <button onClick={() => setSelectedVehicle(null)} className="hover:bg-white/20 p-2 rounded-full"><X className="w-5 h-5" /></button>
+                </div>
+              </div>
+            </div>
+            <div className="overflow-y-auto max-h-[calc(92vh-80px)] p-5 space-y-4">
+              {v.origenCoords && v.destinoCoords && <VehicleRouteMap vehicle={v} />}
+              <div className="rounded-xl p-5 border" style={{ backgroundColor: '#B2D3C2', borderColor: '#8FBF9F' }}>
+                <div className="flex items-center justify-between mb-3"><h4 className="font-bold" style={{ color: '#2E6B3E' }}>Progreso del Viaje</h4><span className="text-2xl font-bold" style={{ color: '#2E6B3E' }}>{v.avance}%</span></div>
+                <div className="w-full h-3 rounded-full overflow-hidden mb-3" style={{ backgroundColor: '#8FBF9F' }}><div className="h-full rounded-full transition-all" style={{ width: v.avance + '%', background: 'linear-gradient(90deg, #3CB043, #2E8B3A)' }} /></div>
+                <div className="grid grid-cols-3 gap-4 text-center">
+                  <div><p className="text-xs text-gray-600">Salida real</p><p className="text-sm font-bold">{v.salidaReal || 'N/A'}</p>{v.salidaPlan && v.salidaReal && v.salidaReal !== v.salidaPlan && <p className="text-xs text-amber-700">Plan: {v.salidaPlan}</p>}</div>
+                  <div><p className="text-xs text-gray-600">ETA IA</p><p className="text-sm font-bold" style={{ color: '#2E6B3E' }}>{v.etaAI}</p>{v.etaOriginal !== v.etaAI && <p className="text-xs text-amber-700">Orig: {v.etaOriginal}</p>}</div>
+                  <div><p className="text-xs text-gray-600">Tiempo plan</p><p className="text-sm font-bold">{v.tiempoPlan || 'N/A'}</p></div>
+                </div>
+              </div>
+              <div className="bg-white rounded-xl p-5 border border-gray-200">
+                <h4 className="font-bold text-gray-800 mb-3">KPIs del Viaje</h4>
+                <div className="grid grid-cols-3 gap-3">
+                  <div className="bg-gray-50 rounded-lg p-3 text-center"><p className="text-xs text-gray-500">Distancia</p><p className="text-sm font-bold">{v.distanciaRecorrida || '—'} <span className="text-xs text-gray-400 font-normal">/ {v.distanciaPlaneada || '—'} km</span></p></div>
+                  <div className="bg-gray-50 rounded-lg p-3 text-center"><p className="text-xs text-gray-500">Rendimiento</p><p className={`text-sm font-bold ${v.rendimiento && v.rendimiento < 3.0 ? 'text-red-600' : v.rendimiento && v.rendimiento < 3.5 ? 'text-amber-600' : 'text-green-600'}`}>{v.rendimiento || '—'} km/L</p></div>
+                  <div className="bg-gray-50 rounded-lg p-3 text-center"><p className="text-xs text-gray-500">ETA parcial</p><p className="text-sm font-bold" style={{ color: '#2E6B3E' }}>{v.etaParcial || '—'}</p></div>
+                  <div className="bg-gray-50 rounded-lg p-3 text-center"><p className="text-xs text-gray-500">Combustible</p><p className="text-sm font-bold">{v.combustible || '—'}%</p></div>
+                  <div className="bg-gray-50 rounded-lg p-3 text-center"><p className="text-xs text-gray-500">Remolque</p><p className="text-sm font-bold">{v.remolque || 'N/A'}</p></div>
+                  <div className="bg-gray-50 rounded-lg p-3 text-center"><p className="text-xs text-gray-500">Casetas pagadas</p><p className="text-sm font-bold">${totalCasetasPagado.toLocaleString()}<span className="text-xs text-gray-400 font-normal"> + ${totalCasetasEstimado.toLocaleString()} est.</span></p></div>
+                </div>
+              </div>
+              {v.paradas && v.paradas.length > 0 && (
+                <div className="bg-white rounded-xl p-5 border border-gray-200">
+                  <div className="flex items-center justify-between mb-4"><h4 className="font-bold text-gray-800">Itinerario de Paradas</h4><div className="flex items-center space-x-2 text-xs"><span className="bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold">{casetasCompletadas.length} casetas pagadas</span>{casetasPendientes.length > 0 && <span className="bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">{casetasPendientes.length} pendientes</span>}</div></div>
+                  <div className="relative pl-6">
+                    {v.paradas.map((p, idx) => {
+                      const isLast = idx === v.paradas.length - 1;
+                      const isCaseta = p.tipo === 'caseta';
+                      const dotColor = p.status === 'completada' ? '#3CB043' : (p.status === 'actual' || p.status === 'proximo') ? '#3b82f6' : '#d1d5db';
+                      const isActive = p.status === 'actual' || p.status === 'proximo';
+                      const hasDelay = p.planeada && p.real && p.planeada !== p.real;
+                      return (
+                        <div key={idx} className="relative pb-4">
+                          {!isLast && <div className="absolute left-[-16px] top-[14px] w-0.5 h-full" style={{ backgroundColor: p.status === 'completada' ? '#3CB043' : '#e5e7eb' }} />}
+                          {isCaseta ? <div className="absolute left-[-22px] top-[2px] w-[13px] h-[13px] rounded-sm border-2 flex items-center justify-center" style={{ backgroundColor: dotColor, borderColor: dotColor }}><span style={{ fontSize: '7px', color: 'white', fontWeight: 'bold' }}>$</span></div> : <div className="absolute left-[-20px] top-[4px] w-[9px] h-[9px] rounded-full border-2" style={{ backgroundColor: dotColor, borderColor: dotColor }} />}
+                          <div><div className="flex items-start justify-between"><div className="flex-1">
+                            <div className="flex items-center space-x-2"><p className={`text-sm ${isActive ? 'font-bold text-blue-700' : p.status === 'completada' ? 'font-semibold text-gray-800' : 'text-gray-400'}`}>{p.nombre}</p>{isCaseta && <span className="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-semibold">CASETA</span>}{p.tipo === 'inspeccion' && <span className="text-[10px] bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded font-semibold">INSPECCIÓN</span>}{p.tipo === 'descanso' && <span className="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-semibold">DESCANSO</span>}{p.tipo === 'entrega' && <span className="text-[10px] bg-green-100 text-green-700 px-1.5 py-0.5 rounded font-semibold">ENTREGA</span>}</div>
+                            <div className="flex items-center space-x-3 mt-0.5">{p.planeada && <span className="text-xs text-gray-500">Plan: {p.planeada}</span>}{p.real && <span className={`text-xs font-semibold ${hasDelay ? 'text-amber-600' : 'text-green-600'}`}>Real: {p.real}</span>}{hasDelay && (() => { const pP = p.planeada.split(':'); const rP = p.real.split(':'); const diff = (parseInt(rP[0]) * 60 + parseInt(rP[1])) - (parseInt(pP[0]) * 60 + parseInt(pP[1])); return diff > 0 ? <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded">+{diff} min</span> : <span className="text-xs bg-green-100 text-green-700 px-1.5 py-0.5 rounded">{diff} min</span>; })()}</div>
+                            {p.geocerca && <div className="flex items-center space-x-2 mt-1 cursor-pointer" onClick={(e) => { e.stopPropagation(); trackLockedClick('geocercas', 'itinerario_parada'); }}><span className="text-[10px] text-gray-400">📍 Geocerca detectada</span><span className="text-[10px] bg-blue-50 border border-blue-200 text-blue-600 px-1.5 py-0.5 rounded inline-flex items-center space-x-1"><span>🔒</span><span>{p.geocerca.tipo === 'caseta' ? 'Validación caseta' : p.geocerca.tipo === 'origen' || p.geocerca.tipo === 'destino' ? 'Control entrada/salida' : p.geocerca.tipo === 'inspeccion' ? 'Zona inspección' : 'Perímetro seguridad'}</span></span>{p.geocerca.tipo !== 'origen' && p.geocerca.tipo !== 'destino' && p.geocerca.tipo !== 'caseta' && <span className="text-[10px] text-red-500 font-semibold">Pérdida si ignora: ${(Math.floor(Math.random() * 50 + 15) * 1000).toLocaleString()}</span>}</div>}
+                            {isCaseta && p.caseta && <div className="mt-1 bg-amber-50 border border-amber-200 rounded-lg px-3 py-1.5 inline-flex items-center space-x-3"><span className="text-xs font-bold text-amber-800">${p.caseta.monto.toLocaleString()} MXN</span>{p.caseta.tag && <span className="text-[10px] text-amber-600">TAG: {p.caseta.tag}</span>}{p.caseta.validadoGPS ? <span className="text-[10px] text-green-600 font-semibold">✓ GPS</span> : <span className="text-[10px] text-gray-400">○ Sin validar</span>}<span className={`text-[10px] px-1.5 py-0.5 rounded ${p.caseta.metodo === 'TAG' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'}`}>{p.caseta.metodo}</span></div>}
+                          </div><span className={`text-xs px-2 py-0.5 rounded-full whitespace-nowrap ml-2 ${p.status === 'completada' ? 'bg-green-100 text-green-700' : isActive ? 'bg-blue-100 text-blue-700' : 'bg-gray-100 text-gray-500'}`}>{p.status === 'completada' ? '✓' : isActive ? '→' : '○'} {p.tipo}</span></div></div>
+                        </div>);
+                    })}
+                  </div>
+                  <div className="mt-4 pt-3 border-t border-gray-200 flex items-center justify-between"><div className="text-xs text-gray-500">Total casetas: <span className="font-bold text-gray-800">${(totalCasetasPagado + totalCasetasEstimado).toLocaleString()} MXN</span> <span className="text-gray-400">(${totalCasetasPagado.toLocaleString()} pagado + ${totalCasetasEstimado.toLocaleString()} estimado)</span></div><div className="text-xs text-gray-500">Geocercas: <span className="font-bold text-gray-800">{(v.paradas || []).filter(p => p.geocerca && p.geocerca.entro).length}/{(v.paradas || []).length} validadas</span></div></div>
+                </div>
+              )}
+              {v.costosViaje && (() => {
+                const c = v.costosViaje;
+                const totalDiesel = c.diesel.reduce((s, d) => s + d.importe, 0);
+                const totalLitros = c.diesel.reduce((s, d) => s + d.litros, 0);
+                const totalDieselFleet = c.diesel.filter(d => d.metodo === 'Tarjeta Fleet').reduce((s, d) => s + d.importe, 0);
+                const totalDieselEfectivo = c.diesel.filter(d => d.metodo === 'Efectivo').reduce((s, d) => s + d.importe, 0);
+                const totalViaticos = c.viaticos.reduce((s, d) => s + d.importe, 0);
+                const totalManiobras = c.maniobras.reduce((s, d) => s + d.importe, 0);
+                const totalVulcanizadora = c.vulcanizadora.reduce((s, d) => s + d.importe, 0);
+                const totalHospedaje = c.hospedaje.reduce((s, d) => s + d.importe, 0);
+                const totalEstacionamiento = c.estacionamiento.reduce((s, d) => s + d.importe, 0);
+                const totalOtros = c.otrosGastos.reduce((s, d) => s + d.importe, 0);
+                const totalGastoEfectivo = totalDieselEfectivo + totalViaticos + totalManiobras + totalVulcanizadora + totalHospedaje + totalEstacionamiento + totalOtros;
+                const totalGastoGeneral = totalDiesel + totalCasetasPagado + totalCasetasEstimado + totalViaticos + totalManiobras + totalVulcanizadora + totalHospedaje + totalEstacionamiento + totalOtros;
+                const costoPorKm = v.distanciaRecorrida > 0 ? (totalGastoGeneral / v.distanciaRecorrida).toFixed(2) : '—';
+                const saldoOperador = c.anticipo - totalGastoEfectivo;
+                const gastosValidados = [...c.viaticos, ...c.maniobras, ...c.vulcanizadora, ...c.hospedaje, ...c.estacionamiento, ...c.otrosGastos].filter(g => g.status === 'validado').length;
+                const gastosPendientes = [...c.viaticos, ...c.maniobras, ...c.vulcanizadora, ...c.hospedaje, ...c.estacionamiento, ...c.otrosGastos].filter(g => g.status === 'pendiente').length;
+                return (
+                  <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                    <div className="px-5 py-3 flex items-center justify-between" style={{ backgroundColor: '#fef3c7', borderBottom: '1px solid #fde68a' }}>
+                      <div className="flex items-center space-x-2"><DollarSign className="w-4 h-4 text-amber-700" /><h4 className="font-bold text-amber-800 text-sm">Costos del Viaje</h4><span className={`text-[10px] px-2 py-0.5 rounded-full font-semibold ${c.tipoViaje === 'redondo' ? 'bg-blue-100 text-blue-700' : 'bg-gray-100 text-gray-600'}`}>{c.tipoViaje === 'redondo' ? '↔ Redondo' : '→ Sencillo'}</span></div>
+                      <div className="flex items-center space-x-2"><span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">{gastosValidados} validados</span>{gastosPendientes > 0 && <span className="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">{gastosPendientes} pendientes</span>}</div>
+                    </div>
+                    <div className="p-4 space-y-3">
+                      <div className="grid grid-cols-4 gap-2">
+                        <div className="bg-amber-50 rounded-lg p-2.5 text-center border border-amber-200"><p className="text-[10px] text-amber-600">Anticipo</p><p className="text-sm font-bold text-amber-800">${c.anticipo.toLocaleString()}</p><p className="text-[10px] text-amber-500">{c.metodoPagoAnticipo}</p></div>
+                        <div className="bg-gray-50 rounded-lg p-2.5 text-center border border-gray-200"><p className="text-[10px] text-gray-500">Gasto total</p><p className="text-sm font-bold text-gray-800">${totalGastoGeneral.toLocaleString()}</p><p className="text-[10px] text-gray-400">{v.distanciaRecorrida} km rec.</p></div>
+                        <div className={`rounded-lg p-2.5 text-center border ${saldoOperador >= 0 ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}><p className="text-[10px] text-gray-500">Saldo operador</p><p className={`text-sm font-bold ${saldoOperador >= 0 ? 'text-green-700' : 'text-red-700'}`}>{saldoOperador >= 0 ? '+' : ''}${saldoOperador.toLocaleString()}</p><p className="text-[10px] text-gray-400">{saldoOperador >= 0 ? 'Devuelve' : 'Se le debe'}</p></div>
+                        <div className="bg-blue-50 rounded-lg p-2.5 text-center border border-blue-200"><p className="text-[10px] text-blue-500">Costo/km</p><p className="text-sm font-bold text-blue-700">${costoPorKm}</p><p className="text-[10px] text-blue-400">MXN por km</p></div>
+                      </div>
+                      {c.diesel.length > 0 && <div className="bg-gray-50 rounded-lg p-3"><div className="flex items-center justify-between mb-2"><span className="text-xs font-bold text-gray-700">⛽ Diésel</span><span className="text-xs font-bold text-gray-800">${totalDiesel.toLocaleString()} MXN · {totalLitros} L</span></div><div className="space-y-1.5">{c.diesel.map((d, i) => (<div key={i} className="flex items-center justify-between text-[11px] bg-white rounded px-2.5 py-1.5 border border-gray-100"><div className="flex items-center space-x-2"><span className="text-gray-500">{d.hora}</span><span className="font-medium text-gray-700">{d.gasolinera}</span></div><div className="flex items-center space-x-3"><span className="text-gray-500">{d.litros}L x ${d.precioLitro}/L</span><span className="font-bold">${d.importe.toLocaleString()}</span><span className={`px-1.5 py-0.5 rounded text-[9px] font-semibold ${d.metodo === 'Tarjeta Fleet' ? 'bg-blue-100 text-blue-700' : 'bg-amber-100 text-amber-700'}`}>{d.metodo}</span><span className="text-gray-400 text-[9px]">{d.factura}</span></div></div>))}</div></div>}
+                      <div className="bg-gray-50 rounded-lg p-3"><div className="flex items-center justify-between mb-2"><span className="text-xs font-bold text-gray-700">🛣️ Casetas (TAG)</span><span className="text-xs font-bold text-gray-800">${(totalCasetasPagado + totalCasetasEstimado).toLocaleString()} MXN</span></div><div className="flex flex-wrap gap-1.5">{(v.paradas || []).filter(p => p.caseta).map((p, i) => (<div key={i} className={`text-[10px] px-2 py-1 rounded-lg border flex items-center space-x-1.5 ${p.caseta.metodo === 'TAG' ? 'bg-green-50 border-green-200 text-green-700' : 'bg-gray-100 border-gray-200 text-gray-500'}`}><span className="font-medium">{p.caseta.nombre}</span><span className="font-bold">${p.caseta.monto}</span>{p.caseta.validadoGPS && <span className="text-green-500">✓</span>}{!p.caseta.validadoGPS && <span className="text-gray-400 italic">est.</span>}</div>))}</div></div>
+                      {(c.viaticos.length > 0 || c.maniobras.length > 0 || c.vulcanizadora.length > 0 || c.hospedaje.length > 0 || c.estacionamiento.length > 0 || c.otrosGastos.length > 0) && <div className="bg-gray-50 rounded-lg p-3"><div className="flex items-center justify-between mb-2"><span className="text-xs font-bold text-gray-700">📋 Otros gastos</span><span className="text-xs font-bold text-gray-800">${(totalViaticos + totalManiobras + totalVulcanizadora + totalHospedaje + totalEstacionamiento + totalOtros).toLocaleString()} MXN</span></div><div className="space-y-1">{[...c.viaticos.map(g => ({...g, cat: 'Viáticos'})), ...c.maniobras.map(g => ({...g, cat: 'Maniobras'})), ...c.vulcanizadora.map(g => ({...g, cat: 'Vulcanizadora'})), ...c.hospedaje.map(g => ({...g, cat: 'Hospedaje'})), ...c.estacionamiento.map(g => ({...g, cat: 'Estac.'})), ...c.otrosGastos.map(g => ({...g, cat: 'Otros'}))].map((g, i) => (<div key={i} className="flex items-center justify-between text-[11px] bg-white rounded px-2.5 py-1.5 border border-gray-100"><div className="flex items-center space-x-2"><span className="text-[10px] text-gray-400">{g.cat}</span><span className="font-medium text-gray-700">{g.concepto}</span></div><div className="flex items-center space-x-2"><span className="font-bold">${g.importe.toLocaleString()}</span><span className={`text-[9px] px-1.5 py-0.5 rounded ${g.status === 'validado' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}`}>{g.status === 'validado' ? '✓ Validado' : '⏳ Pendiente'}</span></div></div>))}</div></div>}
+                      <div className="bg-gray-800 rounded-lg p-3 text-white"><div className="grid grid-cols-5 gap-2 text-center text-[10px]"><div><p className="text-gray-400">Diésel</p><p className="font-bold text-sm">${totalDiesel.toLocaleString()}</p></div><div><p className="text-gray-400">Casetas</p><p className="font-bold text-sm">${(totalCasetasPagado + totalCasetasEstimado).toLocaleString()}</p></div><div><p className="text-gray-400">Viáticos</p><p className="font-bold text-sm">${totalViaticos.toLocaleString()}</p></div><div><p className="text-gray-400">Otros</p><p className="font-bold text-sm">${(totalManiobras + totalVulcanizadora + totalHospedaje + totalEstacionamiento + totalOtros).toLocaleString()}</p></div><div className="border-l border-gray-600"><p className="text-gray-400">TOTAL</p><p className="font-bold text-sm text-amber-400">${totalGastoGeneral.toLocaleString()}</p></div></div></div>
+                    </div>
+                  </div>
+                );
+              })()}
+              <div className="bg-white rounded-xl border border-purple-200 overflow-hidden cursor-pointer" onClick={() => trackLockedClick('liquidaciones', 'detalle_vehiculo')}>
+                <div className="px-5 py-3 flex items-center justify-between" style={{ backgroundColor: '#faf5ff', borderBottom: '1px solid #e9d5ff' }}>
+                  <div className="flex items-center space-x-2"><DollarSign className="w-4 h-4 text-purple-600" /><h4 className="font-bold text-purple-700 text-sm">Liquidación del Viaje</h4></div>
+                  <span className="text-[10px] bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">🔒 Activa Liquidaciones</span>
+                </div>
+                <div className="p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm text-purple-700 font-semibold">${(v.costosViaje ? v.costosViaje.anticipo : 0).toLocaleString()} MXN anticipo</span>
+                    <span className="text-sm text-gray-500">Pendiente de liquidar</span>
+                  </div>
+                  <div className="bg-purple-50 rounded-lg p-3 border border-purple-100">
+                    <p className="text-xs text-purple-600">Este viaje tiene gastos registrados pendientes de conciliación con comprobantes. Activa el módulo de <strong>Liquidaciones</strong> para automatizar la conciliación anticipo vs. gastos reales, generar recibos de devolución o adeudo al operador, y cerrar la liquidación del viaje.</p>
+                  </div>
+                  <div className="mt-2 text-center"><span className="text-[10px] text-gray-400 bg-gray-200 px-3 py-1 rounded cursor-not-allowed">🔒 Ver liquidación completa</span></div>
+                </div>
+              </div>
+              <div className="rounded-xl p-5 border" style={{ backgroundColor: '#B2D3C2', borderColor: '#8FBF9F' }}>
+                <div className="flex items-center space-x-2 mb-3"><Brain className="w-5 h-5" style={{ color: '#3CB043' }} /><h4 className="font-bold" style={{ color: '#2E6B3E' }}>Contexto IA</h4></div>
+                {v.causaEstado && <p className="text-sm text-gray-700 mb-3 bg-white rounded-lg p-3" style={{ borderLeft: '3px solid #3CB043' }}>{v.causaEstado}</p>}
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="bg-white rounded-lg p-3 flex items-center space-x-2"><span className="text-lg">🚛</span><div><p className="text-xs text-gray-500">Velocidad</p><p className="text-sm font-bold">{v.velocidad || 0} km/h</p></div></div>
+                  <div className="bg-white rounded-lg p-3 flex items-center space-x-2"><span className="text-lg">⏱️</span><div><p className="text-xs text-gray-500">Hrs conducción</p><p className={`text-sm font-bold ${v.horasConduccion > 5 ? 'text-amber-600' : ''}`}>{v.horasConduccion}h</p></div></div>
+                  <div className="bg-white rounded-lg p-3 flex items-center space-x-2"><span className="text-lg">⛽</span><div><p className="text-xs text-gray-500">Combustible</p><p className="text-sm font-bold">{v.combustible || 'N/A'}%</p></div></div>
+                  <div className="bg-white rounded-lg p-3 flex items-center space-x-2"><span className="text-lg">🛡️</span><div><p className="text-xs text-gray-500">Riesgo ruta</p><p className={`text-sm font-bold ${v.riskScore > 60 ? 'text-red-600' : v.riskScore > 40 ? 'text-amber-600' : 'text-green-600'}`}>{v.riskScore}/100</p></div></div>
+                  {v.tempCaja !== null && v.tempCaja !== undefined && <div className="bg-white rounded-lg p-3 flex items-center space-x-2"><span className="text-lg">❄️</span><div><p className="text-xs text-gray-500">Temp caja</p><p className="text-sm font-bold">{v.tempCaja}°C <span className="text-xs text-gray-400">Set: {v.tempSetPoint}°C</span></p></div></div>}
+                  <div className="bg-white rounded-lg p-3 flex items-center space-x-2"><span className="text-lg">❤️</span><div><p className="text-xs text-gray-500">Salud vehículo</p><p className={`text-sm font-bold ${v.saludVehiculo < 80 ? 'text-amber-600' : 'text-green-600'}`}>{v.saludVehiculo}%</p></div></div>
+                </div>
+                {v.slaEnRiesgo && <div className="mt-3 bg-red-50 border border-red-200 rounded-lg p-3"><p className="text-sm text-red-700 font-semibold">💰 SLA en riesgo: penalización estimada ${(v.slaMonto || 0).toLocaleString()} MXN</p><p className="text-xs text-red-600">Cliente: {v.cliente} · Valor carga: ${(v.valorCarga || 0).toLocaleString()}</p></div>}
+              </div>
+              {v.eventosViaje && v.eventosViaje.length > 0 && <div className="bg-white rounded-xl border border-gray-200 overflow-hidden"><div className="px-5 py-3 flex items-center justify-between" style={{ backgroundColor: '#fee2e2', borderBottom: '1px solid #fecaca' }}><div className="flex items-center space-x-2"><AlertTriangle className="w-4 h-4 text-red-600" /><h4 className="font-bold text-red-700 text-sm">Eventos del Viaje</h4></div><span className="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded-full font-semibold">{v.eventosViaje.length}</span></div><div className="p-4 flex flex-wrap gap-2">{v.eventosViaje.map((ev, idx) => { const sevColor = ev.severidad === 'critica' ? 'bg-red-50 border-red-300 text-red-700' : ev.severidad === 'alta' ? 'bg-orange-50 border-orange-300 text-orange-700' : ev.severidad === 'media' ? 'bg-amber-50 border-amber-300 text-amber-700' : 'bg-gray-50 border-gray-300 text-gray-600'; return (<div key={idx} className={`rounded-lg border px-3 py-2 ${sevColor}`}><span className="text-xs font-bold">{ev.tipo}</span><p className="text-xs mt-0.5 opacity-75">{ev.hora}</p></div>); })}</div></div>}
+              {v.motorSalud > 0 && <div className="bg-white rounded-xl p-5 border border-gray-200"><h4 className="font-bold text-gray-800 mb-3">Telemetría Vehículo</h4><div className="grid grid-cols-3 gap-3"><div className="text-center"><p className="text-xs text-gray-500">Motor</p><p className="text-lg font-bold text-green-600">{v.motorSalud}%</p></div><div className="text-center"><p className="text-xs text-gray-500">Frenos</p><p className="text-lg font-bold text-green-600">{v.frenosSalud}%</p></div><div className="text-center"><p className="text-xs text-gray-500">RPM</p><p className="text-lg font-bold">{(v.rpm || 0).toLocaleString()}</p></div><div className="text-center"><p className="text-xs text-gray-500">Temp motor</p><p className="text-lg font-bold">{v.tempMotor}°C</p></div><div className="text-center"><p className="text-xs text-gray-500">Velocidad</p><p className="text-lg font-bold">{v.velocidad} km/h</p></div><div className="text-center"><p className="text-xs text-gray-500">Combustible</p><p className="text-lg font-bold">{v.combustible}%</p></div></div></div>}
+              <div className="flex space-x-3"><button className="flex-1 text-white py-3 rounded-lg font-semibold hover:opacity-90" style={{ backgroundColor: '#3CB043' }}>📞 Contactar conductor</button><button className="flex-1 text-white py-3 rounded-lg font-semibold hover:opacity-90" style={{ backgroundColor: '#2E8B3A' }}>📹 Ver video en vivo</button></div>
+            </div>
+          </motion.div>
+        </motion.div>
+      );
+    }
+
+    /* === EXCEPTION ATTEND === */
+    if (tripExceptionIdx !== null && excepciones[tripExceptionIdx]) {
+      const exc = excepciones[tripExceptionIdx];
+      return (
+        <motion.div className="fixed inset-0 flex items-center justify-center z-50 p-4" style={{ backgroundColor: 'rgba(30,80,50,0.75)' }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <motion.div className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden" initial={{ scale: 0.9 }} animate={{ scale: 1 }}>
+            <div className="p-5 text-white" style={{ background: 'linear-gradient(135deg, #3CB043, #2E8B3A)' }}>
+              <div className="flex items-center justify-between">
+                <div><p className="text-sm opacity-70">Excepción {tripExceptionIdx + 1} de {excepciones.length}</p><h3 className="text-xl font-bold">{exc.unit} · {exc.conductor}</h3><p className="text-sm opacity-80">{exc.origen} → {exc.destino} · {exc.cliente}</p></div>
+                <div className="flex items-center space-x-3"><span className={`px-3 py-1 rounded-full text-sm font-bold ${gPBg(exc.puntualidad)}`}>{gPL(exc.puntualidad)}</span><button onClick={() => setTripExceptionIdx(null)} className="hover:bg-white/20 p-2 rounded-full"><X className="w-5 h-5" /></button></div>
+              </div>
+            </div>
+            <div className="overflow-y-auto max-h-[calc(90vh-80px)] p-5 space-y-4">
+              <div className="rounded-xl p-4 border" style={{ backgroundColor: '#B2D3C2', borderColor: '#8FBF9F' }}><div className="flex items-center space-x-2 mb-2"><Brain className="w-5 h-5" style={{ color: '#3CB043' }} /><h4 className="font-bold" style={{ color: '#2E6B3E' }}>¿Qué pasó?</h4></div><p className="text-sm text-gray-700">{exc.causaEstado}</p></div>
+
+              {/* Botón cámara exterior — evidencia visual del evento */}
+              <button onClick={() => setShowExcCameraModal(true)} className="w-full flex items-center justify-between bg-gray-900 hover:bg-gray-800 text-white rounded-xl p-4 transition-all group border border-gray-700">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-lg bg-red-600 flex items-center justify-center"><span className="text-lg">📹</span></div>
+                  <div className="text-left">
+                    <p className="text-sm font-bold">Cámara exterior · En vivo</p>
+                    <p className="text-xs text-gray-400">Neblina densa confirmada — ver evidencia visual del tramo</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                  <span className="text-xs text-red-400 font-semibold">LIVE</span>
+                  <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-white transition" />
+                </div>
+              </button>
+
+              {/* === MAPA EN TIEMPO REAL + DETALLES DEL RECORRIDO === */}
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                {/* Google Maps - Línea de recorrido limpia: origen → vehículo → destino */}
+                {(() => {
+                  const ExcRouteMap = () => {
+                    const excMapRef = React.useRef(null);
+                    const excMapInst = React.useRef(null);
+                    const [excMapReady, setExcMapReady] = React.useState(false);
+                    React.useEffect(() => {
+                      if (window.google && window.google.maps) { setExcMapReady(true); return; }
+                      if (document.querySelector('script[src*="maps.googleapis"]')) {
+                        const ck = setInterval(() => { if (window.google && window.google.maps) { setExcMapReady(true); clearInterval(ck); } }, 200);
+                        return () => clearInterval(ck);
+                      }
+                      const s = document.createElement('script');
+                      s.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB5cjINuN8LzLh6P26DSsOW7lNBxU98rNE&libraries=marker';
+                      s.async = true; s.defer = true;
+                      s.onload = () => { const ck = setInterval(() => { if (window.google && window.google.maps) { setExcMapReady(true); clearInterval(ck); } }, 100); };
+                      document.head.appendChild(s);
+                    }, []);
+                    React.useEffect(() => {
+                      if (!excMapReady || !excMapRef.current || excMapInst.current) return;
+                      const gm = window.google.maps;
+                      const oCoords = exc.origenCoords || { lat: exc.lat, lng: exc.lng };
+                      const dCoords = exc.destinoCoords || { lat: 19.4326, lng: -99.1332 };
+                      const vPos = { lat: exc.lat, lng: exc.lng };
+                      const map = new gm.Map(excMapRef.current, {
+                        center: vPos, zoom: 8, mapTypeId: 'roadmap',
+                        disableDefaultUI: true, zoomControl: true, mapTypeControl: false,
+                        styles: [
+                          { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#c9d8e8' }] },
+                          { featureType: 'landscape', elementType: 'geometry', stylers: [{ color: '#e8f0e3' }] },
+                          { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#dadada' }] },
+                          { featureType: 'poi', stylers: [{ visibility: 'off' }] },
+                          { featureType: 'transit', stylers: [{ visibility: 'off' }] }
+                        ]
+                      });
+                      excMapInst.current = map;
+                      /* Origen marker (blue circle) */
+                      new gm.Marker({ position: oCoords, map, icon: { path: gm.SymbolPath.CIRCLE, scale: 10, fillColor: '#3B82F6', fillOpacity: 1, strokeColor: '#fff', strokeWeight: 2 }, title: exc.origen });
+                      /* Destino marker (red square) */
+                      new gm.Marker({ position: dCoords, map, icon: { path: 'M -7,-7 L 7,-7 L 7,7 L -7,7 Z', scale: 1, fillColor: '#EF4444', fillOpacity: 1, strokeColor: '#fff', strokeWeight: 2 }, title: exc.destino });
+                      /* Vehicle marker (truck icon only, no InfoWindow) */
+                      new gm.Marker({ position: vPos, map, icon: { url: 'https://maps.google.com/mapfiles/kml/shapes/truck.png', scaledSize: new gm.Size(32, 32) }, title: exc.unit, zIndex: 999 });
+                      /* Draw route line — Polyline guaranteed visible, then try Directions for road-following */
+                      const routeLine = new gm.Polyline({ path: [oCoords, vPos, dCoords], geodesic: true, strokeColor: '#EF4444', strokeOpacity: 0.85, strokeWeight: 5, map: map });
+                      /* Try Directions API for road-accurate route; on success replace the straight polyline */
+                      try {
+                        const ds = new gm.DirectionsService();
+                        const dr = new gm.DirectionsRenderer({ map, suppressMarkers: true, polylineOptions: { strokeColor: '#EF4444', strokeWeight: 5, strokeOpacity: 0.85 } });
+                        ds.route({ origin: oCoords, destination: dCoords, waypoints: [{ location: vPos, stopover: false }], travelMode: 'DRIVING' }, (r, st) => { if (st === 'OK') { routeLine.setMap(null); dr.setDirections(r); } });
+                      } catch(e) { /* Polyline stays as fallback */ }
+                      /* Fit bounds */
+                      const bounds = new gm.LatLngBounds();
+                      bounds.extend(oCoords); bounds.extend(dCoords); bounds.extend(vPos);
+                      map.fitBounds(bounds, 50);
+                    }, [excMapReady]);
+                    return React.createElement('div', { ref: excMapRef, style: { width: '100%', height: '320px', borderRadius: '0' } });
+                  };
+                  return React.createElement(ExcRouteMap);
+                })()}
+
+                {/* Trip KPIs Grid */}
+                <div className="p-4 space-y-3">
+                  <div className="grid grid-cols-3 gap-3">
+                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 text-center">
+                      <div className="flex items-center justify-center space-x-1 mb-1"><Clock className="w-4 h-4 text-gray-500" /><span className="text-xs text-gray-500">Tiempo planeado</span></div>
+                      <p className="text-lg font-bold text-gray-800">{exc.tiempoPlan || '—'}</p>
+                    </div>
+                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 text-center">
+                      <div className="flex items-center justify-center space-x-1 mb-1"><span className="text-xs text-gray-500">🚛 Remolques</span></div>
+                      <p className="text-sm font-bold text-gray-800">{exc.remolque || 'Sin remolque'}</p>
+                    </div>
+                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 text-center">
+                      <div className="flex items-center justify-center space-x-1 mb-1"><span className="text-xs text-gray-500">📅 Llegada estimada IA</span></div>
+                      <p className="text-sm font-bold text-orange-600">{exc.etaAI ? exc.etaAI : '—'}</p>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-3 gap-3">
+                    <div className="bg-blue-50 rounded-lg p-3 border border-blue-200 text-center">
+                      <div className="flex items-center justify-center space-x-1 mb-1"><MapPin className="w-4 h-4 text-blue-500" /><span className="text-xs text-blue-600">Distancia planeada</span></div>
+                      <p className="text-lg font-bold text-blue-700">{exc.distanciaPlaneada ? exc.distanciaPlaneada + ' kms' : '—'}</p>
+                    </div>
+                    <div className="bg-blue-50 rounded-lg p-3 border border-blue-200 text-center">
+                      <div className="flex items-center justify-center space-x-1 mb-1"><span className="text-xs text-blue-600">⛽ Combustible</span></div>
+                      <p className="text-lg font-bold text-blue-700">{exc.combustible ? exc.combustible + '%' : '—'}</p>
+                    </div>
+                    <div className="bg-blue-50 rounded-lg p-3 border border-blue-200 text-center">
+                      <div className="flex items-center justify-center space-x-1 mb-1"><span className="text-xs text-blue-600">🚚 ETA parcial</span></div>
+                      <p className="text-lg font-bold text-blue-700">{exc.etaParcial || '—'}</p>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-3 gap-3">
+                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 text-center">
+                      <div className="flex items-center justify-center space-x-1 mb-1"><span className="text-xs text-gray-500">📍 Distancia recorrida</span></div>
+                      <p className="text-lg font-bold text-gray-800">{exc.distanciaRecorrida ? exc.distanciaRecorrida + ' kms' : '—'}</p>
+                    </div>
+                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 text-center">
+                      <div className="flex items-center justify-center space-x-1 mb-1"><span className="text-xs text-gray-500">⛽ Rendimiento</span></div>
+                      <p className="text-lg font-bold text-gray-800">{exc.rendimiento ? exc.rendimiento + ' Km/L' : '—'}</p>
+                    </div>
+                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 text-center">
+                      <div className="flex items-center justify-center space-x-1 mb-1"><span className="text-xs text-gray-500">🔧 Salud vehículo</span></div>
+                      <p className={`text-lg font-bold ${(exc.saludVehiculo || 0) < 75 ? 'text-red-600' : (exc.saludVehiculo || 0) < 85 ? 'text-orange-600' : 'text-green-600'}`}>{exc.saludVehiculo ? exc.saludVehiculo + '%' : '—'}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              {/* === BIMBO: Per-vehicle NOM-087, Casetas, Ruta info in Atender view === */}
+              {(selectedCompany === 'bimbo' || selectedCompany === 'motaengil') && (
+                <div className="space-y-3">
+                  {/* NOM-087 per vehicle */}
+                  {(() => {
+                    const nomAlert = bimboNom087Alerts.find(a => a.unit === exc.unit);
+                    if (!nomAlert) return null;
+                    const isExcede = nomAlert.status.includes('excede');
+                    return (
+                      <div className={`rounded-xl border p-3 ${isExcede ? 'bg-red-50 border-red-300' : 'bg-amber-50 border-amber-300'}`}>
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center gap-2"><span className="text-sm">📋</span><span className="text-xs font-bold text-gray-800">NOM-087 — Horas de Conducción</span></div>
+                          <span className={`text-[10px] px-2.5 py-1 rounded-full font-bold ${isExcede ? 'bg-red-200 text-red-700' : 'bg-amber-200 text-amber-700'}`}>{nomAlert.alertType}</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <div className="text-xs text-gray-600"><strong>{nomAlert.horas}h</strong> conducción continua · Vel: {nomAlert.velocidad} km/h</div>
+                          <span className={`text-sm font-bold ${isExcede ? 'text-red-600' : 'text-amber-600'}`}>{nomAlert.tiempoRestante || '¡YA!'}</span>
+                        </div>
+                        {nomAlert.accion && <p className="text-[10px] text-gray-500 mt-1 italic">💡 {nomAlert.accion}</p>}
+                      </div>
+                    );
+                  })()}
+
+                  {/* Casetas per vehicle */}
+                  {(() => {
+                    const casetaInfo = bimboCasetasResumen.find(c => c.unit === exc.unit);
+                    if (!casetaInfo) return null;
+                    const vehicleCasetas = exc.paradas ? exc.paradas.filter(p => p.caseta) : [];
+                    return (
+                      <div className="bg-amber-50 border border-amber-200 rounded-xl p-3">
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center gap-2"><span className="text-sm">🏷️</span><span className="text-xs font-bold text-amber-800">Casetas — {exc.origen} → {exc.destino}</span></div>
+                          <span className="text-xs font-bold text-gray-800">${casetaInfo.totalViaje.toLocaleString()} MXN</span>
+                        </div>
+                        <div className="flex items-center gap-3 text-[10px] mb-2">
+                          <span className="text-green-600 font-semibold">{casetaInfo.casetasPagadas} pagadas</span>
+                          {casetaInfo.casetasPendientes > 0 && <span className="text-amber-600 font-semibold">{casetaInfo.casetasPendientes} pendientes</span>}
+                        </div>
+                        {vehicleCasetas.length > 0 && (
+                          <div className="space-y-1">
+                            {vehicleCasetas.map((p, i) => (
+                              <div key={i} className="flex items-center justify-between px-2 py-1 rounded bg-white border border-amber-100 text-[10px]">
+                                <div className="flex items-center gap-2">
+                                  <span className={p.caseta.validadoGPS ? 'text-green-500' : 'text-gray-400'}>{p.caseta.validadoGPS ? '✅' : '⏳'}</span>
+                                  <span className="font-semibold text-gray-700">{p.caseta.nombre}</span>
+                                  {p.caseta.tag && <span className="text-gray-400">TAG: {p.caseta.tag}</span>}
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <span className="font-bold text-gray-800">${p.caseta.monto}</span>
+                                  <span className={`px-1.5 py-0.5 rounded text-[9px] font-semibold ${p.caseta.metodo === 'TAG' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'}`}>{p.caseta.metodo}</span>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })()}
+
+                  {/* Ruta asignada per vehicle */}
+                  {(() => {
+                    if (!bimboRouteData) return null;
+                    const matchedRoute = bimboRouteData.routes.find(r => r.name && (exc.origen + ' → ' + exc.destino).includes(r.name.split('(')[0].trim().split('→')[0].trim()));
+                    if (!matchedRoute) return null;
+                    return (
+                      <div className="bg-cyan-50 border border-cyan-200 rounded-xl p-3">
+                        <div className="flex items-center justify-between mb-1">
+                          <div className="flex items-center gap-2"><span className="text-sm">🗺️</span><span className="text-xs font-bold text-cyan-800">Ruta Asignada</span></div>
+                          <span className={`text-[9px] px-2 py-0.5 rounded-full font-bold ${matchedRoute.type === 'primary' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>{matchedRoute.type === 'primary' ? '🟢 PRIMARIA' : '🟡 ALTERNA'}</span>
+                        </div>
+                        <div className="flex items-center justify-between text-[10px] text-gray-600">
+                          <span><strong>{matchedRoute.name}</strong> · {matchedRoute.km} km · {matchedRoute.casetas} casetas · ~{matchedRoute.tiempoEst}</span>
+                          <div className="flex items-center gap-1">
+                            <div className="w-4 h-2 rounded-sm" style={{ background: matchedRoute.color }} title="Ida" />
+                            <div className="w-4 h-2 rounded-sm" style={{ background: matchedRoute.colorReturn }} title="Regreso" />
+                            <span className="text-gray-400 ml-1">Frec: {matchedRoute.frequency}/mes</span>
+                          </div>
+                        </div>
+                        {matchedRoute.zonaProhibida && <p className="text-[10px] text-red-600 mt-1 font-bold">⛔ Ruta pasa por zona prohibida — considerar ruta alterna</p>}
+                      </div>
+                    );
+                  })()}
+
+                  {/* Zona segura / Parada prohibida per vehicle */}
+                  {(() => {
+                    const paradaInfo = bimboParadasProhibidas.find(p => p.unit === exc.unit);
+                    if (!paradaInfo) return null;
+                    return (
+                      <div className={`rounded-xl border p-3 ${paradaInfo.tipo === 'parada_prohibida' ? 'bg-red-50 border-red-200' : 'bg-green-50 border-green-200'}`}>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <span className="text-sm">{paradaInfo.tipo === 'parada_prohibida' ? '⛔' : '🛡️'}</span>
+                            <span className="text-xs font-bold text-gray-800">{paradaInfo.tipo === 'parada_prohibida' ? 'Parada Prohibida' : 'En Zona Segura'}</span>
+                          </div>
+                          <span className={`text-[9px] px-2 py-0.5 rounded-full font-bold ${paradaInfo.tipo === 'parada_prohibida' ? 'bg-red-200 text-red-700' : 'bg-green-200 text-green-700'}`}>{paradaInfo.tipo === 'parada_prohibida' ? '⛔ PROHIBIDA' : '🛡️ SEGURA'}</span>
+                        </div>
+                        <div className="text-[10px] text-gray-600 mt-1">Detenido {paradaInfo.tiempoDetenido}{paradaInfo.tipo === 'parada_prohibida' && paradaInfo.zonaCercana && <span className="ml-2">· Zona segura más cercana: <strong>{paradaInfo.zonaCercana}</strong> ({paradaInfo.distanciaZonaCercana} km)</span>}</div>
+                      </div>
+                    );
+                  })()}
+                </div>
+              )}
+
+              {/* Eventos del viaje — Detallados con contexto realista */}
+              {exc.eventosViaje && exc.eventosViaje.length > 0 && (
+                <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                  <div className="px-4 py-3 border-b flex items-center justify-between" style={{ backgroundColor: '#FEF3C7' }}>
+                    <div className="flex items-center space-x-2"><span className="text-lg">⚠️</span><h4 className="font-bold text-amber-800 text-sm">Eventos del viaje</h4></div>
+                    <span className="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full font-semibold">{exc.eventosViaje.length} eventos</span>
+                  </div>
+                  <div className="p-3 space-y-2">
+                    {exc.eventosViaje.map((ev, evIdx) => {
+                      const sevConf = ev.severidad === 'critica' ? { bg: 'bg-red-50', border: 'border-red-200', icon: 'bg-red-500', text: 'text-red-700', badge: 'bg-red-100 text-red-700', label: '🔴 CRÍTICA' } : ev.severidad === 'alta' ? { bg: 'bg-orange-50', border: 'border-orange-200', icon: 'bg-orange-500', text: 'text-orange-700', badge: 'bg-orange-100 text-orange-700', label: '🟠 ALTA' } : { bg: 'bg-yellow-50', border: 'border-yellow-200', icon: 'bg-yellow-500', text: 'text-yellow-700', badge: 'bg-yellow-100 text-yellow-700', label: '🟡 MEDIA' };
+                      const detailMap = {
+                        'Exceso hrs conducción SCT': { desc: 'El conductor acumula ' + (exc.horasConduccion || '6.5') + ' hrs de conducción continua, excediendo el límite de 5 hrs establecido por la NOM-087-SCT-2-2017. Se requiere parada obligatoria de descanso mínimo 30 minutos antes de continuar.', action: '⚡ Acciones: Alertar conductor vía app · Notificar base · Registrar incidencia SCT', impacto: 'Riesgo de fatiga severa. Multa SCT: $8,500-$17,000 MXN. Seguro invalidado si ocurre siniestro.' },
+                        'Neblina densa': { desc: 'Sensor atmosférico y reporte CAPUFE confirman neblina densa (visibilidad <200m) en tramo Mil Cumbres — Zitácuaro, km 188-215 de la Autopista Siglo XXI. Velocidad reducida de 80 a 45 km/h automáticamente.', action: '⚡ Acciones: Reducción velocidad forzada · Luces antiniebla activadas · Monitoreo CAPUFE cada 10 min', impacto: 'Retraso estimado: +45 min en tramo. Riesgo de alcance: 68/100 por tráfico pesado.' },
+                        'Consumo combustible elevado': { desc: 'El rendimiento actual es ' + (exc.rendimiento || '2.9') + ' Km/L vs. ' + ((exc.rendimiento || 2.9) * 1.12).toFixed(1) + ' Km/L esperado para esta ruta. Incremento de +12% en consumo detectado. Correlación con RPM elevadas (' + (exc.rpm || '2,100') + ') y pendientes pronunciadas en Sierra de Michoacán.', action: '⚡ Acciones: Alerta a conductor (eco-driving) · Verificar presión neumáticos · Registrar para mant.', impacto: 'Sobrecosto estimado: $1,850 MXN en diesel. Indicador de posible falla en inyectores o turbo.' }
+                      };
+                      const detail = detailMap[ev.tipo] || { desc: ev.tipo + ' registrado a las ' + ev.hora + '.', action: '⚡ Acciones: Monitoreo continuo', impacto: 'En evaluación por Iris.' };
+                      return (
+                        <div key={evIdx} className={`rounded-xl border ${sevConf.border} ${sevConf.bg} overflow-hidden`}>
+                          <div className="p-3">
+                            <div className="flex items-center justify-between mb-2">
+                              <div className="flex items-center space-x-2">
+                                <div className={`w-7 h-7 rounded-full ${sevConf.icon} flex items-center justify-center`}><AlertTriangle className="w-3.5 h-3.5 text-white" /></div>
+                                <div>
+                                  <p className={`text-sm font-bold ${sevConf.text}`}>{ev.tipo}</p>
+                                  <p className="text-xs text-gray-500">Detectado: {ev.hora} hrs</p>
+                                </div>
+                              </div>
+                              <span className={`px-2 py-0.5 rounded-full text-xs font-bold ${sevConf.badge}`}>{sevConf.label}</span>
+                            </div>
+                            <p className="text-xs text-gray-700 leading-relaxed mb-2">{detail.desc}</p>
+                            <p className="text-xs font-semibold text-blue-700 mb-1">{detail.action}</p>
+                            <p className="text-xs text-gray-500 italic">💡 {detail.impacto}</p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Recorrido completo — Timeline con paradas, casetas, geocercas y posición actual */}
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                <div className="px-4 py-3 border-b bg-gradient-to-r from-gray-800 to-gray-900 flex items-center justify-between">
+                  <div className="flex items-center space-x-2"><span className="text-lg">🗺️</span><h4 className="font-bold text-white text-sm">Recorrido completo</h4></div>
+                  <div className="flex items-center space-x-3">
+                    <span className="text-xs text-gray-300">Avance: <strong className="text-white">{exc.avance || 0}%</strong></span>
+                    <div className="w-24 bg-gray-600 rounded-full h-2"><div className="h-2 rounded-full bg-green-400" style={{ width: (exc.avance || 0) + '%' }}></div></div>
+                  </div>
+                </div>
+                <div className="p-4">
+                  {/* Progress bar */}
+                  <div className="mb-4">
+                    <div className="w-full bg-gray-100 rounded-full h-4 overflow-hidden relative border border-gray-200">
+                      <div className="h-full rounded-full flex items-center justify-center text-xs font-bold text-white transition-all" style={{ width: (exc.avance || 0) + '%', background: 'linear-gradient(90deg, #10B981, #059669)' }}>{exc.avance || 0}%</div>
+                    </div>
+                    <div className="flex justify-between mt-1">
+                      <span className="text-xs text-gray-500">{exc.distanciaRecorrida || 0} km recorridos</span>
+                      <span className="text-xs text-gray-500">{((exc.distanciaPlaneada || 0) - (exc.distanciaRecorrida || 0))} km restantes</span>
+                    </div>
+                  </div>
+
+                  {/* Timeline de paradas */}
+                  {exc.paradas && exc.paradas.length > 0 ? (
+                    <div className="relative">
+                      {/* Vertical line */}
+                      <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200" style={{ zIndex: 0 }}></div>
+                      <div className="space-y-0">
+                        {exc.paradas.map((p, pIdx) => {
+                          const isCompleted = p.status === 'completada';
+                          const isCurrent = p.status === 'actual' || p.status === 'proximo';
+                          const isPending = !isCompleted && !isCurrent;
+                          const isOrigen = p.tipo === 'origen';
+                          const isDestino = p.tipo === 'destino';
+                          const isCaseta = p.tipo === 'caseta';
+                          const isInspeccion = p.tipo === 'inspeccion';
+                          const isDescanso = p.tipo === 'descanso';
+                          const dotColor = isCompleted ? 'bg-green-500' : isCurrent ? 'bg-blue-500 animate-pulse' : 'bg-gray-300';
+                          const dotIcon = isOrigen ? '🏭' : isDestino ? '🏁' : isCaseta ? '🛣️' : isInspeccion ? '🔍' : isDescanso ? '😴' : '📍';
+                          const bgCard = isCompleted ? 'bg-green-50 border-green-200' : isCurrent ? 'bg-blue-50 border-blue-300 shadow-md' : 'bg-gray-50 border-gray-200';
+                          return (
+                            <div key={pIdx} className="relative flex items-start pl-10 pb-3" style={{ zIndex: 1 }}>
+                              {/* Dot */}
+                              <div className={`absolute left-2.5 w-4 h-4 rounded-full ${dotColor} border-2 border-white shadow`} style={{ top: '8px' }}></div>
+                              {/* Card */}
+                              <div className={`flex-1 rounded-lg border p-3 ${bgCard} transition-all`}>
+                                <div className="flex items-start justify-between">
+                                  <div className="flex-1">
+                                    <div className="flex items-center space-x-1.5">
+                                      <span className="text-sm">{dotIcon}</span>
+                                      <p className={`text-sm font-bold ${isCompleted ? 'text-green-800' : isCurrent ? 'text-blue-800' : 'text-gray-600'}`}>{p.nombre}</p>
+                                      {isCurrent && <span className="text-xs bg-blue-500 text-white px-1.5 py-0.5 rounded-full font-bold ml-1">ACTUAL</span>}
+                                    </div>
+                                    <div className="flex items-center space-x-3 mt-1">
+                                      {p.planeada && <span className="text-xs text-gray-500">Plan: <strong>{p.planeada}</strong></span>}
+                                      {p.real && <span className="text-xs text-green-600">Real: <strong>{p.real}</strong></span>}
+                                      {!p.real && !isCompleted && p.planeada && <span className="text-xs text-gray-400 italic">Pendiente</span>}
+                                    </div>
+                                  </div>
+                                  <div className="text-right flex-shrink-0 ml-3">
+                                    {isCompleted && <span className="text-green-500 text-lg">✅</span>}
+                                    {isCurrent && <span className="text-blue-500 text-lg">📍</span>}
+                                    {isPending && <span className="text-gray-400 text-lg">⏳</span>}
+                                  </div>
+                                </div>
+                                {/* Caseta info */}
+                                {p.caseta && (
+                                  <div className="mt-2 bg-white rounded-md p-2 border border-gray-100 flex items-center justify-between">
+                                    <div className="flex items-center space-x-2">
+                                      <span className="text-sm">💰</span>
+                                      <div>
+                                        <p className="text-xs font-semibold text-gray-700">Caseta: {p.caseta.nombre}</p>
+                                        <p className="text-xs text-gray-500">TAG: {p.caseta.tag || '—'} · Método: {p.caseta.metodo || '—'}</p>
+                                      </div>
+                                    </div>
+                                    <div className="text-right">
+                                      <p className={`text-sm font-bold ${isCompleted ? 'text-green-600' : 'text-gray-600'}`}>${(p.caseta.monto || 0).toLocaleString()}</p>
+                                      {p.caseta.validadoGPS && <p className="text-xs text-green-500">✓ GPS validado</p>}
+                                    </div>
+                                  </div>
+                                )}
+                                {/* Geocerca info */}
+                                {p.geocerca && (
+                                  <div className="mt-1.5 flex items-center space-x-1.5">
+                                    <span className="text-xs">📡</span>
+                                    <span className="text-xs text-indigo-600 font-semibold">{p.geocerca.nombre}</span>
+                                    <span className="text-xs text-gray-400">({p.geocerca.tipo} · r:{p.geocerca.radioM}m)</span>
+                                    {p.geocerca.entro && <span className="text-xs text-green-600">Entró: {p.geocerca.entro}</span>}
+                                    {p.geocerca.salio && <span className="text-xs text-orange-600">Salió: {p.geocerca.salio}</span>}
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ) : (
+                    /* Fallback if no paradas data - show basic origin/dest */
+                    <div className="space-y-4">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0"><span className="text-white text-sm">🏭</span></div>
+                        <div className="flex-1">
+                          <p className="text-sm font-bold text-gray-800">{exc.origen}</p>
+                          <p className="text-xs text-gray-500">Salida planeada: <strong>{exc.salidaPlan || '—'}</strong> · Real: <strong>{exc.salidaReal || '—'}</strong></p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 animate-pulse"><span className="text-white text-sm">🚛</span></div>
+                        <div className="flex-1">
+                          <p className="text-sm font-bold text-blue-700">Posición actual</p>
+                          <p className="text-xs text-gray-500">Lat: {exc.lat} · Lng: {exc.lng} · {exc.distanciaRecorrida || 0} km recorridos</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0"><span className="text-white text-sm">🏁</span></div>
+                        <div className="flex-1">
+                          <p className="text-sm font-bold text-gray-800">{exc.destino}</p>
+                          <p className="text-xs text-gray-500">Llegada planeada: <strong>{exc.etaOriginal || '—'}</strong> · ETA IA: <strong className="text-orange-600">{exc.etaAI || '—'}</strong></p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Resumen de costos casetas */}
+                  {exc.paradas && exc.paradas.some(p => p.caseta) && (
+                    <div className="mt-4 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-lg p-3 border border-emerald-200">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-2"><span className="text-sm">🛣️</span><span className="text-xs font-bold text-emerald-800">Casetas del viaje</span></div>
+                        <div className="flex items-center space-x-4">
+                          <span className="text-xs text-emerald-700">Pagadas: <strong>{exc.paradas.filter(p => p.caseta && p.status === 'completada').length}</strong></span>
+                          <span className="text-xs text-gray-500">Pendientes: <strong>{exc.paradas.filter(p => p.caseta && p.status !== 'completada').length}</strong></span>
+                          <span className="text-sm font-bold text-emerald-700">${exc.paradas.reduce((sum, p) => sum + (p.caseta ? p.caseta.monto || 0 : 0), 0).toLocaleString()} MXN total</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Modal cámara exterior — video en vivo neblina */}
+              {showExcCameraModal && (
+                <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-[9999]" onClick={() => setShowExcCameraModal(false)}>
+                  <div className="bg-gray-900 rounded-2xl w-full max-w-2xl mx-4 overflow-hidden shadow-2xl border border-gray-700" onClick={e => e.stopPropagation()}>
+                    {/* Header */}
+                    <div className="flex items-center justify-between px-5 py-3 border-b border-gray-700 bg-gray-800">
+                      <div className="flex items-center space-x-3">
+                        <div className="flex items-center space-x-2"><span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span><span className="text-xs font-bold text-red-400 tracking-wider">REC</span></div>
+                        <div><p className="text-white font-bold text-sm">CAM EXTERIOR · {exc.unit}</p><p className="text-gray-400 text-xs">{exc.origen} → {exc.destino} · Tramo Mil Cumbres km 195</p></div>
+                      </div>
+                      <button onClick={() => setShowExcCameraModal(false)} className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-gray-300 hover:text-white transition"><X className="w-4 h-4" /></button>
+                    </div>
+                    {/* Video feed — fog simulation */}
+                    <div className="relative aspect-video bg-gradient-to-b from-gray-600 via-gray-500 to-gray-400 overflow-hidden">
+                      <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(180,180,180,0.9) 0%, rgba(160,165,170,0.85) 30%, rgba(140,145,150,0.7) 60%, rgba(80,85,90,0.5) 100%)' }}></div>
+                      <div className="absolute inset-0 animate-pulse" style={{ background: 'radial-gradient(ellipse at 50% 40%, rgba(255,255,255,0.4) 0%, transparent 70%)', animationDuration: '4s' }}></div>
+                      <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 30% 60%, rgba(200,200,200,0.3) 0%, transparent 50%)', animation: 'pulse 6s ease-in-out infinite' }}></div>
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-24 opacity-20" style={{ background: 'linear-gradient(to top, #fff 0%, transparent 100%)' }}></div>
+                      <div className="absolute bottom-0 left-[calc(50%-60px)] w-0.5 h-16 opacity-10" style={{ background: 'linear-gradient(to top, #fff 0%, transparent 100%)' }}></div>
+                      <div className="absolute bottom-0 left-[calc(50%+60px)] w-0.5 h-16 opacity-10" style={{ background: 'linear-gradient(to top, #fff 0%, transparent 100%)' }}></div>
+                      <div className="absolute inset-0 flex flex-col items-center justify-center">
+                        <div className="bg-red-600/80 backdrop-blur-sm px-4 py-2 rounded-lg mb-3"><p className="text-white font-bold text-sm">⚠️ NEBLINA DENSA · VISIBILIDAD {'<'} 200m</p></div>
+                        <p className="text-white/60 text-xs">Tramo montañoso Michoacán · Autopista Siglo XXI km 195</p>
+                      </div>
+                      <div className="absolute top-3 left-3 space-y-1">
+                        <div className="flex items-center space-x-1.5"><span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span><span className="text-white text-xs font-mono font-bold">LIVE</span></div>
+                        <p className="text-white/70 text-xs font-mono">CAM-EXT-01</p>
+                        <p className="text-white/70 text-xs font-mono">{exc.unit}</p>
+                      </div>
+                      <div className="absolute top-3 right-3 text-right space-y-1">
+                        <p className="text-white/70 text-xs font-mono">01/MAR/2026</p>
+                        <p className="text-white/70 text-xs font-mono">11:45:32 CST</p>
+                        <p className="text-white/70 text-xs font-mono">GPS: {exc.lat}, {exc.lng}</p>
+                      </div>
+                      <div className="absolute bottom-3 left-3 space-y-1">
+                        <p className="text-yellow-400 text-xs font-mono font-bold">VEL: {exc.velocidad || 45} km/h</p>
+                        <p className="text-white/70 text-xs font-mono">RPM: {exc.rpm || 2100}</p>
+                        <p className="text-orange-400 text-xs font-mono">TEMP: {exc.tempMotor || 98}°C</p>
+                      </div>
+                      <div className="absolute bottom-3 right-3 space-y-1 text-right">
+                        <p className="text-white/70 text-xs font-mono">Cond: {exc.conductor || 'N/A'}</p>
+                        <p className="text-yellow-400 text-xs font-mono font-bold">HRS: {exc.horasConduccion || 6.5}h ⚠️</p>
+                      </div>
+                    </div>
+                    {/* Controls */}
+                    <div className="px-5 py-3 bg-gray-800 border-t border-gray-700">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-2">
+                          <button className="px-3 py-1.5 bg-gray-700 hover:bg-gray-600 text-white text-xs font-semibold rounded-lg transition">⏪ -30s</button>
+                          <button className="px-4 py-1.5 bg-red-600 hover:bg-red-500 text-white text-xs font-bold rounded-lg transition">⏸ En vivo</button>
+                          <button className="px-3 py-1.5 bg-gray-700 hover:bg-gray-600 text-white text-xs font-semibold rounded-lg transition">⏩ +30s</button>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <button className="px-3 py-1.5 bg-gray-700 hover:bg-gray-600 text-white text-xs font-semibold rounded-lg transition">📸 Captura</button>
+                          <button className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-lg transition">⬇ Descargar clip</button>
+                        </div>
+                      </div>
+                      <div className="flex items-center space-x-2 mt-3">
+                        <span className="text-xs text-gray-400">Cámara:</span>
+                        <button className="px-3 py-1 bg-white text-gray-900 text-xs font-bold rounded-md">Exterior</button>
+                        <button className="px-3 py-1 bg-gray-700 text-gray-300 text-xs font-semibold rounded-md hover:bg-gray-600 transition">Interior</button>
+                        <button className="px-3 py-1 bg-gray-700 text-gray-300 text-xs font-semibold rounded-md hover:bg-gray-600 transition">Lateral Izq.</button>
+                        <button className="px-3 py-1 bg-gray-700 text-gray-300 text-xs font-semibold rounded-md hover:bg-gray-600 transition">Lateral Der.</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              <div className="flex space-x-3">
+                {tripExceptionIdx > 0 && <button onClick={() => { setTripExceptionIdx(tripExceptionIdx - 1); setTripExecRunning(false); }} className="flex-1 bg-gray-100 text-gray-700 py-3 rounded-lg font-semibold">← Anterior</button>}
+                {tripExceptionIdx < excepciones.length - 1 ? <button onClick={() => { setTripExceptionIdx(tripExceptionIdx + 1); setTripExecRunning(false); }} className="flex-1 py-3 rounded-lg font-semibold" style={{ backgroundColor: '#B2D3C2', color: '#2E6B3E' }}>Siguiente excepción →</button> : <button onClick={() => setTripExceptionIdx(null)} className="flex-1 bg-green-100 text-green-700 py-3 rounded-lg font-semibold">✓ Todas atendidas — volver</button>}
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      );
+    }
+
+    /* === DRILL DOWN === */
+    if (tripDrillDown) {
+      const drillMap = {
+        en_ruta: { d: enRuta, t: 'En Ruta', i: '🚛', c: '#3CB043' },
+        por_asignar: { d: porAsignar, t: 'Por Asignar Ruta', i: '⏳', c: '#d97706' },
+        en_taller: { d: enTaller, t: 'En Taller', i: '🔧', c: '#ea580c' },
+        no_ubicable: { d: noUbicable, t: 'No Ubicable', i: '❓', c: '#dc2626' },
+        demorados: { d: demoradosArr, t: 'Demorados / Riesgo Demora', i: '🕐', c: '#ea580c' },
+        criticos: { d: criticosArr, t: 'Demora Crítica', i: '🔴', c: '#dc2626' },
+        detenidos: { d: detenidosArr, t: 'Detenidos', i: '⏸️', c: '#c2410c' },
+        temp_caja: { d: conTempArr, t: 'Cadena de Frío', i: '❄️', c: '#0284c7' },
+        bimbo_nom087: { d: bimboNom087Alerts, t: 'NOM-087 — Horas de Conducción', i: '📋', c: '#c2410c' },
+        bimbo_desvios: { d: bimboDesvioEvents, t: 'Desvíos de Ruta', i: '🔀', c: '#7c3aed' },
+        bimbo_paradas: { d: bimboParadasProhibidas.filter(p => p.tipo === 'parada_prohibida'), t: 'Paradas Prohibidas', i: '⛔', c: '#dc2626' },
+      };
+      const dm = drillMap[tripDrillDown] || { d: [], t: tripDrillDown, i: '?', c: '#666' };
+      const drillData = dm.d;
+      const isEnRutaType = ['en_ruta','demorados','criticos','detenidos','temp_caja'].includes(tripDrillDown);
+      return (
+        <motion.div className="fixed inset-0 flex items-center justify-center z-50 p-4" style={{ backgroundColor: 'rgba(30,80,50,0.75)' }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setTripDrillDown(null)}>
+          <motion.div className="bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden" initial={{ scale: 0.9 }} animate={{ scale: 1 }} onClick={e => e.stopPropagation()}>
+            <div className="p-5 text-white flex items-center justify-between" style={{ background: `linear-gradient(135deg, ${dm.c}, ${dm.c}cc)` }}>
+              <div className="flex items-center space-x-3"><span className="text-3xl">{dm.i}</span><div><h3 className="text-xl font-bold">{dm.t}</h3><p className="text-sm opacity-90">{drillData.length} vehículos</p></div></div>
+              <button onClick={() => setTripDrillDown(null)} className="hover:bg-white/20 p-2 rounded-full"><X className="w-6 h-6" /></button>
+            </div>
+            <div className="overflow-x-auto overflow-y-auto max-h-[calc(90vh-80px)]">
+              {isEnRutaType && (
+                <table className="w-full border-collapse"><thead><tr style={{ backgroundColor: '#B2D3C2' }}><th className="border-b px-3 py-2 text-left text-xs font-bold">Unidad</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Conductor</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Ruta</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Cliente</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Status</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Avance</th><th className="border-b px-3 py-2 text-center text-xs font-bold">ETA IA</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Riesgo</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Salud</th>{tripDrillDown === 'temp_caja' && <th className="border-b px-3 py-2 text-center text-xs font-bold">Temp</th>}<th className="border-b px-3 py-2 text-left text-xs font-bold">Contexto IA</th></tr></thead>
+                <tbody>{drillData.map(v => (
+                  <tr key={v.id} className="hover:bg-green-50 cursor-pointer border-b" onClick={() => setSelectedVehicle(v)}>
+                    <td className="px-3 py-2"><p className="text-sm font-bold">{v.unit}</p><p className="text-xs text-gray-500">{v.type === 'propia' ? 'Propia' : 'Terceros'}</p></td>
+                    <td className="px-3 py-2 text-sm">{v.conductor}</td>
+                    <td className="px-3 py-2 text-sm font-semibold">{v.origen} → {v.destino}<br/><span className="text-xs text-gray-500">Próx: {v.proximaParada}</span></td>
+                    <td className="px-3 py-2 text-sm">{v.cliente}</td>
+                    <td className="px-3 py-2 text-center"><span className={`px-2 py-0.5 rounded-full text-xs font-bold ${gPBg(v.puntualidad)}`}>{gPL(v.puntualidad)}</span></td>
+                    <td className="px-3 py-2"><div className="w-16"><div className="w-full h-2 bg-gray-200 rounded-full"><div className="h-full rounded-full" style={{ width: v.avance + '%', backgroundColor: '#3CB043' }} /></div><p className="text-xs text-center mt-0.5">{v.avance}%</p></div></td>
+                    <td className="px-3 py-2 text-center"><p className="text-sm font-bold">{v.etaAI}</p>{v.etaOriginal !== v.etaAI && <p className="text-xs text-amber-600">Orig: {v.etaOriginal}</p>}</td>
+                    <td className="px-3 py-2 text-center"><span className={`text-lg font-bold ${v.riskScore > 60 ? 'text-red-600' : v.riskScore > 40 ? 'text-amber-600' : 'text-green-600'}`}>{v.riskScore}</span></td>
+                    <td className="px-3 py-2 text-center"><span className={`font-bold ${v.saludVehiculo < 80 ? 'text-amber-600' : 'text-green-600'}`}>{v.saludVehiculo}%</span></td>
+                    {tripDrillDown === 'temp_caja' && <td className="px-3 py-2 text-center"><p className="text-sm font-bold">{v.tempCaja}°C</p><p className="text-xs text-gray-500">Set: {v.tempSetPoint}°C</p></td>}
+                    <td className="px-3 py-2 text-xs text-gray-600 max-w-[200px]">{v.causaEstado || 'Sin novedad'}{v.alertas && v.alertas.length > 0 && <p className="text-xs text-amber-600 mt-1">{v.alertas.join(', ')}</p>}</td>
+                  </tr>
+                ))}</tbody></table>
+              )}
+              {tripDrillDown === 'por_asignar' && (
+                <table className="w-full border-collapse"><thead><tr style={{ backgroundColor: '#fef3c7' }}><th className="border-b px-3 py-2 text-left text-xs font-bold">Unidad</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Conductor</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Ubicación</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Espera</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Disponibilidad</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Últ. mant.</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Salud</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Alertas</th></tr></thead>
+                <tbody>{drillData.map(v => (
+                  <tr key={v.id} className="hover:bg-yellow-50 border-b">
+                    <td className="px-3 py-2"><p className="text-sm font-bold">{v.unit}</p><p className="text-xs text-gray-500">{v.type === 'propia' ? 'Propia' : 'Terceros'}</p></td>
+                    <td className="px-3 py-2 text-sm">{v.conductor}</td>
+                    <td className="px-3 py-2 text-sm">{v.ubicacionActual}</td>
+                    <td className="px-3 py-2 text-center text-sm font-semibold">{v.tiempoEspera}</td>
+                    <td className="px-3 py-2 text-center"><span className={`px-2 py-0.5 rounded text-xs font-semibold ${v.disponibilidadConductor === 'Disponible' ? 'bg-green-100 text-green-700' : v.disponibilidadConductor === 'Sin conductor' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'}`}>{v.disponibilidadConductor}</span></td>
+                    <td className="px-3 py-2 text-center text-xs">{v.ultimoMantenimiento}</td>
+                    <td className="px-3 py-2 text-center"><span className={`font-bold ${v.saludVehiculo > 0 ? (v.saludVehiculo >= 90 ? 'text-green-600' : 'text-amber-600') : 'text-gray-400'}`}>{v.saludVehiculo > 0 ? v.saludVehiculo + '%' : 'N/D'}</span></td>
+                    <td className="px-3 py-2 text-xs">{v.alertas && v.alertas.length > 0 ? <span className="text-amber-600">{v.alertas.join(', ')}</span> : <span className="text-green-600">✓</span>}</td>
+                  </tr>
+                ))}</tbody></table>
+              )}
+              {tripDrillDown === 'en_taller' && (
+                <table className="w-full border-collapse"><thead><tr className="bg-orange-50"><th className="border-b px-3 py-2 text-left text-xs font-bold">Unidad</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Taller</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Razón</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Salida est.</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Avance</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Costo</th><th className="border-b px-3 py-2 text-center text-xs font-bold">SLA</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Sustituto</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Alertas</th></tr></thead>
+                <tbody>{drillData.map(v => (
+                  <tr key={v.id} className="hover:bg-orange-50 border-b">
+                    <td className="px-3 py-2"><p className="text-sm font-bold">{v.unit}</p><p className="text-xs text-gray-500">{v.type === 'propia' ? 'Propia' : 'Terceros'}</p>{v.fallaRecurrente && <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded">⚠ Recurrente</span>}</td>
+                    <td className="px-3 py-2 text-sm">{v.ubicacionTaller}</td>
+                    <td className="px-3 py-2 text-sm">{v.razonIngreso}</td>
+                    <td className="px-3 py-2 text-center text-sm">{v.tiempoEstimadoSalida}</td>
+                    <td className="px-3 py-2"><div className="w-16"><div className="w-full h-2 bg-gray-200 rounded-full"><div className={`h-full rounded-full ${v.avanceReparacion > 70 ? 'bg-green-500' : v.avanceReparacion > 40 ? 'bg-orange-400' : 'bg-orange-500'}`} style={{ width: v.avanceReparacion + '%' }} /></div><p className="text-xs text-center mt-0.5">{v.avanceReparacion}%</p></div></td>
+                    <td className="px-3 py-2 text-center text-sm font-semibold">{v.costoEstimado ? '$' + v.costoEstimado.toLocaleString() : 'N/D'}</td>
+                    <td className="px-3 py-2 text-center text-sm font-bold text-orange-600">{v.impactoSLA}</td>
+                    <td className="px-3 py-2 text-sm">{v.vehiculoSustituto}</td>
+                    <td className="px-3 py-2 text-xs">{v.alertas && v.alertas.length > 0 ? v.alertas.map((a, i) => <div key={i} className="text-amber-600">{a}</div>) : <span className="text-green-600">✓</span>}</td>
+                  </tr>
+                ))}</tbody></table>
+              )}
+              {tripDrillDown === 'no_ubicable' && (
+                <table className="w-full border-collapse"><thead><tr className="bg-red-50"><th className="border-b px-3 py-2 text-left text-xs font-bold">Unidad</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Conductor</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Últ. ubicación</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Sin señal</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Causa probable (IA)</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Acción sugerida</th></tr></thead>
+                <tbody>{drillData.map(v => (
+                  <tr key={v.id} className="hover:bg-red-50 border-b">
+                    <td className="px-3 py-2"><p className="text-sm font-bold">{v.unit}</p><p className="text-xs text-gray-500">{v.type === 'propia' ? 'Propia' : 'Terceros'}</p></td>
+                    <td className="px-3 py-2 text-sm">{v.conductor}</td>
+                    <td className="px-3 py-2 text-sm">{v.ultimaUbicacion}</td>
+                    <td className="px-3 py-2 text-center text-sm font-bold text-red-600">{v.tiempoSinSenal}</td>
+                    <td className="px-3 py-2">{v.causaProbable && <div className="space-y-1"><div className="flex items-center space-x-1"><span className="text-blue-500">●</span><span className="text-xs">Cobertura</span><span className="text-xs font-bold">{v.causaProbable.sinCobertura}%</span></div><div className="flex items-center space-x-1"><span className="text-orange-500">●</span><span className="text-xs">Dispositivo</span><span className="text-xs font-bold">{v.causaProbable.dispositivoDanado}%</span></div><div className="flex items-center space-x-1"><span className="text-red-500">●</span><span className="text-xs">Pos. robo</span><span className="text-xs font-bold">{v.causaProbable.posibleRobo}%</span></div></div>}</td>
+                    <td className="px-3 py-2 text-sm"><span className={`px-2 py-1 rounded text-xs ${v.causaProbable && v.causaProbable.posibleRobo > 40 ? 'bg-red-100 text-red-700 font-bold' : 'bg-blue-50 text-blue-700'}`}>{v.accionSugerida}</span></td>
+                  </tr>
+                ))}</tbody></table>
+              )}
+
+              {/* === BIMBO: Custom Drill-down for NOM-087 === */}
+              {tripDrillDown === 'bimbo_nom087' && (
+                <div className="p-5 space-y-3">
+                  <div className="bg-orange-50 rounded-lg px-4 py-2 border border-orange-200 flex items-center justify-between">
+                    <span className="text-xs text-orange-700"><strong>Carga:</strong> 5h→Pausa 30min · 14h→Descanso 8h</span>
+                    <span className="text-[10px] text-orange-500">Pasaje/turismo: 9h sin 2do conductor</span>
+                  </div>
+                  {drillData.length === 0 ? (
+                    <div className="text-center py-8"><span className="text-4xl">✅</span><p className="text-sm text-green-600 font-semibold mt-2">Todos los operadores dentro de normatividad NOM-087</p></div>
+                  ) : (
+                    <table className="w-full border-collapse"><thead><tr className="bg-orange-100"><th className="border-b px-3 py-2 text-left text-xs font-bold">Unidad</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Conductor</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Ruta</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Horas</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Vel.</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Status</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Alerta</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Acción IA</th></tr></thead>
+                    <tbody>{drillData.map((a, i) => {
+                      const isExcede = a.status && a.status.includes('excede');
+                      return (
+                        <tr key={i} className={`border-b ${isExcede ? 'bg-red-50 hover:bg-red-100' : 'bg-amber-50 hover:bg-amber-100'}`}>
+                          <td className="px-3 py-2"><p className="text-sm font-bold">{a.unit}</p></td>
+                          <td className="px-3 py-2 text-sm">{a.conductor}</td>
+                          <td className="px-3 py-2 text-sm">{a.ruta}</td>
+                          <td className="px-3 py-2 text-center"><span className={`text-sm font-bold ${isExcede ? 'text-red-600' : 'text-amber-600'}`}>{a.horas}h</span></td>
+                          <td className="px-3 py-2 text-center text-sm">{a.velocidad} km/h</td>
+                          <td className="px-3 py-2 text-center"><span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${isExcede ? 'bg-red-200 text-red-700' : 'bg-amber-200 text-amber-700'}`}>{a.alertType}</span></td>
+                          <td className="px-3 py-2 text-center">{a.tiempoRestante ? <span className={`text-sm font-bold ${isExcede ? 'text-red-600' : 'text-amber-600'}`}>{a.tiempoRestante}</span> : '—'}</td>
+                          <td className="px-3 py-2 text-xs text-gray-600">{a.accion || '—'}</td>
+                        </tr>
+                      );
+                    })}</tbody></table>
+                  )}
+                </div>
+              )}
+
+              {/* === BIMBO: Custom Drill-down for Desvíos === */}
+              {tripDrillDown === 'bimbo_desvios' && (
+                <div className="p-5 space-y-3">
+                  {drillData.length === 0 ? (
+                    <div className="text-center py-8"><span className="text-4xl">✅</span><p className="text-sm text-green-600 font-semibold mt-2">Ningún desvío activo — Todas las unidades en ruta asignada</p></div>
+                  ) : (
+                    <table className="w-full border-collapse"><thead><tr className="bg-purple-100"><th className="border-b px-3 py-2 text-left text-xs font-bold">Unidad</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Conductor</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Ruta</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Motivo</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Hora</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Severidad</th></tr></thead>
+                    <tbody>{drillData.map((d, i) => (
+                      <tr key={i} className={`border-b ${d.severidad === 'alta' ? 'bg-red-50 hover:bg-red-100' : d.severidad === 'media' ? 'bg-amber-50 hover:bg-amber-100' : 'bg-blue-50 hover:bg-blue-100'}`}>
+                        <td className="px-3 py-2"><p className="text-sm font-bold">{d.unit}</p></td>
+                        <td className="px-3 py-2 text-sm">{d.conductor}</td>
+                        <td className="px-3 py-2 text-sm">{d.ruta}</td>
+                        <td className="px-3 py-2 text-sm">{d.motivo}</td>
+                        <td className="px-3 py-2 text-center text-sm">{d.hora}</td>
+                        <td className="px-3 py-2 text-center"><span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${d.severidad === 'alta' ? 'bg-red-200 text-red-700' : d.severidad === 'media' ? 'bg-amber-200 text-amber-700' : 'bg-blue-200 text-blue-700'}`}>{d.severidad ? d.severidad.toUpperCase() : ''}</span></td>
+                      </tr>
+                    ))}</tbody></table>
+                  )}
+                </div>
+              )}
+
+              {/* === BIMBO: Custom Drill-down for Paradas Prohibidas === */}
+              {tripDrillDown === 'bimbo_paradas' && (
+                <div className="p-5 space-y-3">
+                  {drillData.length === 0 ? (
+                    <div className="text-center py-8"><span className="text-4xl">✅</span><p className="text-sm text-green-600 font-semibold mt-2">Sin paradas prohibidas — Todos los vehículos en ruta o zonas seguras</p></div>
+                  ) : (
+                    <table className="w-full border-collapse"><thead><tr className="bg-red-100"><th className="border-b px-3 py-2 text-left text-xs font-bold">Unidad</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Conductor</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Ruta</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Detenido</th><th className="border-b px-3 py-2 text-left text-xs font-bold">Zona Segura más Cercana</th><th className="border-b px-3 py-2 text-center text-xs font-bold">Distancia</th></tr></thead>
+                    <tbody>{drillData.map((p, i) => (
+                      <tr key={i} className="bg-red-50 hover:bg-red-100 border-b">
+                        <td className="px-3 py-2"><p className="text-sm font-bold">{p.unit}</p></td>
+                        <td className="px-3 py-2 text-sm">{p.conductor}</td>
+                        <td className="px-3 py-2 text-sm">{p.ruta}</td>
+                        <td className="px-3 py-2 text-center text-sm font-bold text-red-600">{p.tiempoDetenido}</td>
+                        <td className="px-3 py-2 text-sm">{p.zonaCercana || '—'}</td>
+                        <td className="px-3 py-2 text-center text-sm font-bold text-amber-600">{p.distanciaZonaCercana ? p.distanciaZonaCercana + ' km' : '—'}</td>
+                      </tr>
+                    ))}</tbody></table>
+                  )}
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                    <p className="text-xs text-green-700 font-bold mb-2">🛡️ Zonas Seguras Registradas ({bimboZonasSegurasList.length})</p>
+                    <div className="grid grid-cols-4 gap-2">
+                      {bimboZonasSegurasList.slice(0, 8).map((z, i) => (
+                        <div key={i} className="bg-white border border-green-100 rounded px-2 py-1.5 flex items-center gap-1.5">
+                          <span className="text-[10px]">{z.tipo === 'cedis' ? '🏭' : '🅿️'}</span>
+                          <div><p className="text-[10px] font-bold text-gray-700 truncate">{z.nombre}</p><p className="text-[9px] text-gray-400">{z.ocupacion}% ocup.</p></div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        </motion.div>
+      );
+    }
+
+    /* === MAIN VIEW === */
+    const closeTrip = () => { setShowTripStatusModal(false); setTripView('drone'); setSelectedVehicle(null); setTripExceptionIdx(null); setTripDrillDown(null); };
+    return (
+      <motion.div className="fixed inset-0 flex items-center justify-center z-50 p-3" style={{ backgroundColor: 'rgba(30,80,50,0.75)' }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={closeTrip}>
+        {/* Snapshot floating pills */}
+        <div className="absolute right-4 top-1/2 transform -translate-y-1/2 space-y-2 z-[51]" style={{ right: '16px' }}>
+          <button onClick={(e) => { e.stopPropagation(); setActiveSnapshot('atencion_critica'); setSnapshotContext('control_viajes'); }} className="flex items-center space-x-2 bg-white shadow-lg rounded-xl px-4 py-2.5 hover:shadow-xl transition border border-gray-200 whitespace-nowrap">
+            <span className="text-sm">⚠️</span><span className="text-sm font-semibold text-gray-700">Atención crítica</span>
+          </button>
+          <button onClick={(e) => { e.stopPropagation(); setActiveSnapshot('mantenimiento'); setSnapshotContext('control_viajes'); }} className="flex items-center space-x-2 bg-white shadow-lg rounded-xl px-4 py-2.5 hover:shadow-xl transition border border-gray-200 whitespace-nowrap">
+            <span className="text-sm">🔧</span><span className="text-sm font-semibold text-gray-700">Mantenimiento</span>
+          </button>
+          <button onClick={(e) => { e.stopPropagation(); setActiveSnapshot('geocercas'); setSnapshotContext('control_viajes'); }} className="flex items-center space-x-2 bg-white shadow-lg rounded-xl px-4 py-2.5 hover:shadow-xl transition border border-gray-200 whitespace-nowrap">
+            <span className="text-sm">📍</span><span className="text-sm font-semibold text-gray-700">Geocercas dinámicas</span>
+          </button>
+        </div>
+        <motion.div className="bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[95vh] overflow-hidden" initial={{ scale: 0.9 }} animate={{ scale: 1 }} onClick={e => e.stopPropagation()}>
+          <div className="p-4 text-white" style={{ background: 'linear-gradient(135deg, #3CB043, #2E8B3A)' }}>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3"><span className="text-3xl">🚛</span><div><h3 className="text-xl font-bold">Control de Viajes</h3><p className="text-sm opacity-80">Orquestación con inteligencia contextual — {filtered.length} vehículos</p></div></div>
+              <div className="flex items-center space-x-2">
+                <button onClick={() => setTripView('drone')} className="px-3 py-1.5 rounded-lg text-sm font-semibold transition" style={tripView === 'drone' ? { backgroundColor: 'white', color: '#3CB043' } : { backgroundColor: 'rgba(255,255,255,0.2)', color: 'white' }}>🌿 Resumen</button>
+                <button onClick={() => setTripView('aggregate')} className="px-3 py-1.5 rounded-lg text-sm font-semibold transition" style={tripView === 'aggregate' ? { backgroundColor: 'white', color: '#3CB043' } : { backgroundColor: 'rgba(255,255,255,0.2)', color: 'white' }}>📊 Agregada</button>
+                <button onClick={() => setTripView('map')} className="px-3 py-1.5 rounded-lg text-sm font-semibold transition" style={tripView === 'map' ? { backgroundColor: 'white', color: '#3CB043' } : { backgroundColor: 'rgba(255,255,255,0.2)', color: 'white' }}>🗺️ Mapa</button>
+                <button onClick={closeTrip} className="hover:bg-white/20 p-2 rounded-full ml-2"><X className="w-5 h-5" /></button>
+              </div>
+            </div>
+            <div className="flex space-x-2 mt-3">
+              {[{k:'all',l:'Toda la Flota (' + fleetVehicles.length + ')'},{k:'propia',l:'Flota Propia (' + fleetVehicles.filter(v=>v.type==='propia').length + ')'},{k:'terceros',l:'Flota Terceros (' + fleetVehicles.filter(v=>v.type==='terceros').length + ')'}].map(f => (
+                <button key={f.k} onClick={() => setTripFleetFilter(f.k)} className="px-3 py-1 rounded-full text-xs font-semibold transition" style={tripFleetFilter === f.k ? { backgroundColor: 'white', color: '#3CB043' } : { backgroundColor: 'rgba(255,255,255,0.3)', color: 'white' }}>{f.l}</button>
+              ))}
+            </div>
+          </div>
+          <div className="overflow-y-auto max-h-[calc(95vh-130px)]">
+            {/* DRONE VIEW */}
+            {tripView === 'drone' && (
+              <div className="p-5 space-y-4">
+                <div className="rounded-xl p-5 border" style={{ backgroundColor: '#B2D3C2', borderColor: '#8FBF9F' }}>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#d4edda' }}><Brain className="w-5 h-5" style={{ color: '#3CB043' }} /></div>
+                    <div className="flex-1">
+                      <p className="text-sm font-semibold mb-1" style={{ color: '#2E6B3E' }}>🌿 {aTiempoArr.length} de {enRuta.length} vehículos en ruta fluyen sin novedad.</p>
+                      <p className="text-sm" style={{ color: '#3a5a42' }}>{excepciones.length > 0 ? excepciones.length + ' excepciones detectadas. La más urgente: ' + excepciones[0].unit + ' — ' + gPL(excepciones[0].puntualidad) + ' ' + excepciones[0].origen + '→' + excepciones[0].destino + '. ' + (excepciones[0].causaEstado || '').substring(0, 80) + '...' : 'Sin excepciones. Todo fluye.'}</p>
+                      {excepciones.length > 0 && <button onClick={() => setTripExceptionIdx(0)} className="mt-3 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:opacity-90 transition" style={{ backgroundColor: '#3CB043' }}>Atender excepciones →</button>}
+                    </div>
+                  </div>
+                </div>
+                {/* === BIMBO: Compact Status Cards (10 cards, 2 rows of 5) === */}
+                {(selectedCompany === 'bimbo' || selectedCompany === 'motaengil') ? (
+                  <div className="space-y-2">
+                    <div className="grid grid-cols-5 gap-2">
+                      <div onClick={() => setTripDrillDown('en_ruta')} className="bg-green-50 rounded-lg px-3 py-2.5 border border-green-200 cursor-pointer hover:shadow-md transition flex items-center justify-between"><div className="flex items-center gap-1.5"><span className="text-sm">🚛</span><span className="text-xs font-bold text-green-700">En Ruta</span></div><span className="text-lg font-bold text-green-600">{enRuta.length}</span></div>
+                      <div onClick={() => setTripDrillDown('por_asignar')} className="bg-yellow-50 rounded-lg px-3 py-2.5 border border-yellow-200 cursor-pointer hover:shadow-md transition flex items-center justify-between"><div className="flex items-center gap-1.5"><span className="text-sm">⏳</span><span className="text-xs font-bold text-yellow-700">Por Asignar</span></div><span className="text-lg font-bold text-yellow-600">{porAsignar.length}</span></div>
+                      <div onClick={() => setTripDrillDown('en_taller')} className="bg-orange-50 rounded-lg px-3 py-2.5 border border-orange-200 cursor-pointer hover:shadow-md transition flex items-center justify-between"><div className="flex items-center gap-1.5"><span className="text-sm">🔧</span><span className="text-xs font-bold text-orange-700">En Taller</span></div><span className="text-lg font-bold text-orange-600">{enTaller.length}</span></div>
+                      <div onClick={() => setTripDrillDown('no_ubicable')} className="bg-red-50 rounded-lg px-3 py-2.5 border border-red-200 cursor-pointer hover:shadow-md transition flex items-center justify-between"><div className="flex items-center gap-1.5"><span className="text-sm">❓</span><span className="text-xs font-bold text-red-700">No Ubicable</span></div><span className="text-lg font-bold text-red-600">{noUbicable.length}</span></div>
+                      <div onClick={() => setTripDrillDown('demorados')} className="bg-amber-50 rounded-lg px-3 py-2.5 border border-amber-200 cursor-pointer hover:shadow-md transition flex items-center justify-between"><div className="flex items-center gap-1.5"><span className="text-sm">🕐</span><span className="text-xs font-bold text-amber-700">Demorados</span></div><span className="text-lg font-bold text-amber-600">{demoradosArr.length}</span></div>
+                    </div>
+                    <div className="grid grid-cols-5 gap-2">
+                      <div onClick={() => setTripDrillDown('detenidos')} className="bg-gray-50 rounded-lg px-3 py-2.5 border border-gray-200 cursor-pointer hover:shadow-md transition flex items-center justify-between"><div className="flex items-center gap-1.5"><span className="text-sm">⏸️</span><span className="text-xs font-bold text-gray-700">Detenidos</span></div><span className="text-lg font-bold text-gray-600">{detenidosArr.length}</span></div>
+                      <div onClick={() => setTripDrillDown('temp_caja')} className="bg-blue-50 rounded-lg px-3 py-2.5 border border-blue-200 cursor-pointer hover:shadow-md transition flex items-center justify-between"><div className="flex items-center gap-1.5"><span className="text-sm">❄️</span><span className="text-xs font-bold text-blue-700">Cadena Frío</span></div><span className="text-lg font-bold text-blue-600">{conTempArr.length}</span></div>
+                      <div onClick={() => setTripDrillDown('bimbo_nom087')} className={`rounded-lg px-3 py-2.5 border cursor-pointer hover:shadow-md transition flex items-center justify-between ${bimboNom087Alerts.filter(a => a.status.includes('excede')).length > 0 ? 'bg-red-50 border-red-300 animate-pulse' : bimboNom087Alerts.filter(a => a.status === 'preventiva').length > 0 ? 'bg-orange-50 border-orange-300' : 'bg-green-50 border-green-200'}`}><div className="flex items-center gap-1.5"><span className="text-sm">📋</span><span className="text-xs font-bold text-orange-700">NOM-087</span></div><span className={`text-lg font-bold ${bimboNom087Alerts.filter(a => a.status.includes('excede')).length > 0 ? 'text-red-600' : 'text-orange-600'}`}>{bimboNom087Alerts.length}</span></div>
+                      <div onClick={() => setTripDrillDown('bimbo_desvios')} className={`rounded-lg px-3 py-2.5 border cursor-pointer hover:shadow-md transition flex items-center justify-between ${bimboDesvioEvents.length > 0 ? 'bg-purple-50 border-purple-300' : 'bg-green-50 border-green-200'}`}><div className="flex items-center gap-1.5"><span className="text-sm">🔀</span><span className="text-xs font-bold text-purple-700">Desvíos</span></div><span className={`text-lg font-bold ${bimboDesvioEvents.length > 0 ? 'text-purple-600' : 'text-green-600'}`}>{bimboDesvioEvents.length}</span></div>
+                      <div onClick={() => setTripDrillDown('bimbo_paradas')} className={`rounded-lg px-3 py-2.5 border cursor-pointer hover:shadow-md transition flex items-center justify-between ${bimboParadasProhibidas.filter(p => p.tipo === 'parada_prohibida').length > 0 ? 'bg-red-50 border-red-300' : 'bg-green-50 border-green-200'}`}><div className="flex items-center gap-1.5"><span className="text-sm">⛔</span><span className="text-xs font-bold text-red-700">Parada Prohib.</span></div><span className={`text-lg font-bold ${bimboParadasProhibidas.filter(p => p.tipo === 'parada_prohibida').length > 0 ? 'text-red-600' : 'text-green-600'}`}>{bimboParadasProhibidas.filter(p => p.tipo === 'parada_prohibida').length}</span></div>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                <div className="grid grid-cols-4 gap-3">
+                  <div onClick={() => setTripDrillDown('en_ruta')} className="bg-green-50 rounded-xl p-4 border border-green-200 cursor-pointer hover:shadow-md transition"><div className="flex items-center justify-between mb-2"><div className="flex items-center space-x-2"><span className="text-lg">🚛</span><span className="font-bold text-green-700">En Ruta</span></div><span className="text-2xl font-bold text-green-600">{enRuta.length}</span></div>{enRuta.slice(0,2).map(v => (<div key={v.id} className="flex items-center justify-between text-xs py-1"><span>{v.unit}</span><span className={gPC(v.puntualidad)}>{gPL(v.puntualidad)}</span></div>))}{enRuta.length > 2 && <p className="text-xs text-gray-500 mt-1">+{enRuta.length - 2} más...</p>}<p className="text-xs mt-2 font-semibold" style={{ color: '#3CB043' }}>Click para ver detalle →</p></div>
+                  <div onClick={() => setTripDrillDown('por_asignar')} className="bg-yellow-50 rounded-xl p-4 border border-yellow-200 cursor-pointer hover:shadow-md transition"><div className="flex items-center justify-between mb-2"><div className="flex items-center space-x-2"><span className="text-lg">⏳</span><span className="font-bold text-yellow-700">Por Asignar</span></div><span className="text-2xl font-bold text-yellow-600">{porAsignar.length}</span></div>{porAsignar.slice(0,2).map(v => (<div key={v.id} className="flex items-center justify-between text-xs py-1"><span>{v.unit}</span><span className="text-gray-500">{v.tiempoEspera}</span></div>))}{porAsignar.length > 2 && <p className="text-xs text-gray-500 mt-1">+{porAsignar.length - 2} más...</p>}<p className="text-xs text-yellow-600 mt-2 font-semibold">Click para ver detalle →</p></div>
+                  <div onClick={() => setTripDrillDown('en_taller')} className="bg-orange-50 rounded-xl p-4 border border-orange-200 cursor-pointer hover:shadow-md transition"><div className="flex items-center justify-between mb-2"><div className="flex items-center space-x-2"><span className="text-lg">🔧</span><span className="font-bold text-orange-700">En Taller</span></div><span className="text-2xl font-bold text-orange-600">{enTaller.length}</span></div>{enTaller.slice(0,2).map(v => (<div key={v.id} className="flex items-center justify-between text-xs py-1"><span>{v.unit}</span><span className="text-gray-500">{v.avanceReparacion}%</span></div>))}{enTaller.length > 2 && <p className="text-xs text-gray-500 mt-1">+{enTaller.length - 2} más...</p>}<p className="text-xs text-orange-600 mt-2 font-semibold">Click para ver detalle →</p></div>
+                  <div onClick={() => setTripDrillDown('no_ubicable')} className="bg-red-50 rounded-xl p-4 border border-red-200 cursor-pointer hover:shadow-md transition"><div className="flex items-center justify-between mb-2"><div className="flex items-center space-x-2"><span className="text-lg">❓</span><span className="font-bold text-red-700">No Ubicable</span></div><span className="text-2xl font-bold text-red-600">{noUbicable.length}</span></div>{noUbicable.slice(0,2).map(v => (<div key={v.id} className="flex items-center justify-between text-xs py-1"><span>{v.unit}</span><span className="text-red-600">{v.tiempoSinSenal}</span></div>))}{noUbicable.length > 2 && <p className="text-xs text-gray-500 mt-1">+{noUbicable.length - 2} más...</p>}<p className="text-xs text-red-600 mt-2 font-semibold">Click para ver detalle →</p></div>
+                </div>
+                <div className="grid grid-cols-4 gap-3">
+                  <div onClick={() => setTripDrillDown('demorados')} className="bg-orange-50 rounded-xl p-4 border border-orange-200 cursor-pointer hover:shadow-md transition"><div className="flex items-center justify-between mb-2"><div className="flex items-center space-x-2"><span className="text-lg">🕐</span><span className="font-bold text-orange-700">Demorados</span></div><span className="text-2xl font-bold text-orange-600">{demoradosArr.length}</span></div>{demoradosArr.slice(0,2).map(v => (<div key={v.id} className="flex items-center justify-between text-xs py-1"><span>{v.unit}</span><span className={gPC(v.puntualidad)}>{gPL(v.puntualidad)}</span></div>))}{demoradosArr.length > 2 && <p className="text-xs text-gray-500 mt-1">+{demoradosArr.length - 2} más...</p>}<p className="text-xs text-orange-600 mt-2 font-semibold">Click para ver detalle →</p></div>
+                  <div onClick={() => setTripDrillDown('criticos')} className="bg-red-50 rounded-xl p-4 border border-red-200 cursor-pointer hover:shadow-md transition"><div className="flex items-center justify-between mb-2"><div className="flex items-center space-x-2"><span className="text-lg">🔴</span><span className="font-bold text-red-700">Demora Crítica</span></div><span className="text-2xl font-bold text-red-600">{criticosArr.length}</span></div>{criticosArr.slice(0,2).map(v => (<div key={v.id} className="flex items-center justify-between text-xs py-1"><span>{v.unit}</span><span className="text-red-600">{v.etaAI}</span></div>))}{criticosArr.length === 0 && <p className="text-xs text-green-600 py-1">✓ Sin demoras críticas</p>}<p className="text-xs text-red-600 mt-2 font-semibold">Click para ver detalle →</p></div>
+                  <div onClick={() => setTripDrillDown('detenidos')} className="bg-amber-50 rounded-xl p-4 border border-amber-200 cursor-pointer hover:shadow-md transition"><div className="flex items-center justify-between mb-2"><div className="flex items-center space-x-2"><span className="text-lg">⏸️</span><span className="font-bold text-amber-700">Detenidos</span></div><span className="text-2xl font-bold text-amber-600">{detenidosArr.length}</span></div>{detenidosArr.slice(0,2).map(v => (<div key={v.id} className="flex items-center justify-between text-xs py-1"><span>{v.unit}</span><span className="text-amber-600">{v.causaEstado ? v.causaEstado.substring(0,30) + '...' : ''}</span></div>))}{detenidosArr.length === 0 && <p className="text-xs text-green-600 py-1">✓ Sin detenidos</p>}<p className="text-xs text-amber-600 mt-2 font-semibold">Click para ver detalle →</p></div>
+                  <div onClick={() => setTripDrillDown('temp_caja')} className="bg-blue-50 rounded-xl p-4 border border-blue-200 cursor-pointer hover:shadow-md transition"><div className="flex items-center justify-between mb-2"><div className="flex items-center space-x-2"><span className="text-lg">❄️</span><span className="font-bold text-blue-700">Cadena de Frío</span></div><span className="text-2xl font-bold text-blue-600">{conTempArr.length}</span></div>{conTempArr.slice(0,2).map(v => (<div key={v.id} className="flex items-center justify-between text-xs py-1"><span>{v.unit}</span><span className="text-blue-600">{v.tempCaja}°C</span></div>))}{conTempArr.length === 0 && <p className="text-xs text-gray-500 py-1">Sin cajas frías activas</p>}<p className="text-xs text-blue-600 mt-2 font-semibold">Click para ver detalle →</p></div>
+                </div>
+                  </>
+                )}
+                                {excepciones.length > 0 && (
+                  <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                    <div className="px-4 py-3 border-b flex items-center justify-between" style={{ backgroundColor: '#B2D3C2' }}><div className="flex items-center space-x-2"><AlertTriangle className="w-4 h-4" style={{ color: '#3CB043' }} /><h4 className="font-bold" style={{ color: '#2E6B3E' }}>Excepciones priorizadas por Iris ({excepciones.length})</h4></div><button onClick={() => setTripExceptionIdx(0)} className="text-sm font-semibold hover:opacity-80" style={{ color: '#3CB043' }}>Atender todas →</button></div>
+                    <div className="divide-y">{excepciones.map((exc, idx) => (
+                      <div key={exc.id} className="px-4 py-3 hover:bg-green-50 transition flex items-center justify-between">
+                        <div className="flex items-center space-x-3"><span className="text-sm font-bold text-gray-400 w-6">#{idx+1}</span><div><p className="text-sm font-semibold text-gray-800">{exc.unit} · {exc.origen}→{exc.destino}</p><p className="text-xs text-gray-500">{(exc.causaEstado || '').substring(0, 80)}</p></div></div>
+                        <div className="flex items-center space-x-3"><span className={`px-2 py-0.5 rounded-full text-xs font-bold ${gPBg(exc.puntualidad)}`}>{gPL(exc.puntualidad)}</span><span className="text-sm font-bold text-gray-600">{exc.prioridadExcepcion}/100</span><button onClick={() => setTripExceptionIdx(idx)} className="text-white px-3 py-1 rounded-lg text-xs font-semibold" style={{ backgroundColor: '#3CB043' }}>Atender →</button></div>
+                      </div>
+                    ))}</div>
+                  </div>
+                )}
+
+
+                <p className="text-center text-sm italic" style={{ color: '#3CB043' }}>🌿 "{tripMsgs[currentMessage % tripMsgs.length]}"</p>
+              </div>
+            )}
+
+            {/* AGGREGATE VIEW */}
+            {tripView === 'aggregate' && (
+              <div className="p-5 space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { k: 'en_ruta', l: 'En Ruta', d: 'Vehículos activos en trayecto', items: enRuta, i: '🚛', bg: 'bg-green-50', bd: 'border-green-200', tc: 'text-green-700', tn: 'text-green-600', prev: v => v.puntualidad ? gPL(v.puntualidad) + ' · Riesgo ' + v.riskScore : '' },
+                    { k: 'por_asignar', l: 'Por Asignar Ruta', d: 'Disponibles esperando asignación', items: porAsignar, i: '⏳', bg: 'bg-yellow-50', bd: 'border-yellow-200', tc: 'text-yellow-700', tn: 'text-yellow-600', prev: v => v.tiempoEspera },
+                    { k: 'en_taller', l: 'En Taller', d: 'En mantenimiento o reparación', items: enTaller, i: '🔧', bg: 'bg-orange-50', bd: 'border-orange-200', tc: 'text-orange-700', tn: 'text-orange-600', prev: v => v.avanceReparacion + '%' },
+                    { k: 'no_ubicable', l: 'No Ubicable', d: 'Sin señal GPS activa', items: noUbicable, i: '❓', bg: 'bg-red-50', bd: 'border-red-200', tc: 'text-red-700', tn: 'text-red-600', prev: v => v.tiempoSinSenal },
+                  ].map(cat => (
+                    <div key={cat.k} onClick={() => setTripDrillDown(cat.k)} className={`${cat.bg} ${cat.bd} border-2 rounded-xl p-5 cursor-pointer hover:shadow-lg transition`}>
+                      <div className="flex items-center justify-between mb-3"><div className="flex items-center space-x-2"><span className="text-2xl">{cat.i}</span><div><span className={`font-bold ${cat.tc} text-lg`}>{cat.l}</span><p className="text-xs text-gray-500">{cat.d}</p></div></div><span className={`text-4xl font-bold ${cat.tn}`}>{cat.items.length}</span></div>
+                      <div className="space-y-1">{cat.items.slice(0,3).map(v => (<div key={v.id} className="flex items-center justify-between text-sm"><span className="font-semibold">{v.unit}</span><span className="text-xs text-gray-500">{cat.prev(v)}</span></div>))}{cat.items.length > 3 && <p className="text-xs text-gray-500 mt-1">+{cat.items.length - 3} más...</p>}</div>
+                      <p className="text-xs text-gray-500 mt-2">Click para ver detalle →</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+            {/* MAP VIEW */}
+            {tripView === 'map' && (
+              <div className="p-5">
+                <div className="relative rounded-xl border overflow-hidden" style={{ height: '600px', borderColor: '#8FBF9F' }}>
+                  {(() => {
+                    const mapRef = React.useRef(null);
+                    const mapInstanceRef = React.useRef(null);
+                    const markersRef = React.useRef([]);
+                    const infoRef = React.useRef(null);
+                    const [mapReady, setMapReady] = React.useState(false);
+
+                    React.useEffect(() => {
+                      if (window.google && window.google.maps) { setMapReady(true); return; }
+                      if (document.querySelector('script[src*="maps.googleapis"]')) {
+                        const check = setInterval(() => { if (window.google && window.google.maps) { setMapReady(true); clearInterval(check); } }, 200);
+                        return () => clearInterval(check);
+                      }
+                      const s = document.createElement('script');
+                      s.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB5cjINuN8LzLh6P26DSsOW7lNBxU98rNE&libraries=marker`;
+                      s.async = true; s.defer = true;
+                      s.onload = () => { const check = setInterval(() => { if (window.google && window.google.maps) { setMapReady(true); clearInterval(check); } }, 100); };
+                      document.head.appendChild(s);
+                    }, []);
+
+                    React.useEffect(() => {
+                      if (!mapReady || !mapRef.current) return;
+                      if (mapInstanceRef.current) return;
+                      const map = new window.google.maps.Map(mapRef.current, {
+                        center: { lat: 23.6345, lng: -102.5528 },
+                        zoom: 5.5,
+                        mapTypeId: 'roadmap',
+                        styles: [
+                          { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#c9d8e8' }] },
+                          { featureType: 'landscape', elementType: 'geometry', stylers: [{ color: '#e8f0e3' }] },
+                          { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#dadada' }] },
+                          { featureType: 'road', elementType: 'labels', stylers: [{ visibility: 'off' }] },
+                          { featureType: 'poi', stylers: [{ visibility: 'off' }] },
+                          { featureType: 'transit', stylers: [{ visibility: 'off' }] },
+                          { featureType: 'administrative.province', elementType: 'geometry.stroke', stylers: [{ color: '#9ab89a' }, { weight: 1 }] },
+                          { featureType: 'administrative.country', elementType: 'geometry.stroke', stylers: [{ color: '#7a9e7a' }, { weight: 2 }] },
+                        ],
+                        disableDefaultUI: false, zoomControl: true, mapTypeControl: false, streetViewControl: false, fullscreenControl: true,
+                      });
+                      mapInstanceRef.current = map;
+                      const statusColors = { en_ruta: '#22c55e', por_asignar: '#eab308', en_taller: '#f97316', no_ubicable: '#ef4444' };
+                      const statusLabels = { en_ruta: 'En Ruta', por_asignar: 'Por Asignar', en_taller: 'En Taller', no_ubicable: 'No Ubicable' };
+                      const infoW = new window.google.maps.InfoWindow();
+                      infoRef.current = infoW;
+                      filtered.forEach(v => {
+                        if (!v.lat || !v.lng) return;
+                        const color = statusColors[v.status] || '#999';
+                        const isPulse = v.puntualidad === 'demora_critica' || v.puntualidad === 'detenido' || (v.causaProbable && v.causaProbable.posibleRobo > 40);
+                        const svgIcon = {
+                          url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="' + color + '" stroke="' + (v.type === 'propia' ? '#1a5c1a' : '#7c3aed') + '" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="white" opacity="0.9"/>' + (isPulse ? '<circle cx="16" cy="16" r="15" fill="none" stroke="' + color + '" stroke-width="2" opacity="0.4"><animate attributeName="r" from="12" to="20" dur="1.5s" repeatCount="indefinite"/><animate attributeName="opacity" from="0.6" to="0" dur="1.5s" repeatCount="indefinite"/></circle>' : '') + '</svg>'),
+                          scaledSize: new window.google.maps.Size(32, 32), anchor: new window.google.maps.Point(16, 16),
+                        };
+                        const marker = new window.google.maps.Marker({ position: { lat: v.lat, lng: v.lng }, map: map, icon: svgIcon, title: v.unit, zIndex: v.riskScore || 10 });
+                        marker.addListener('click', () => {
+                          const puntLabel = { a_tiempo: 'A tiempo', adelantado: 'Adelantado', demorado: 'Demorado', riesgo_demora: 'Riesgo demora', demora_critica: 'DEMORA CR\u00cdTICA', detenido: 'Detenido' };
+                          const puntColor = { a_tiempo: '#22c55e', adelantado: '#3b82f6', demorado: '#f59e0b', riesgo_demora: '#f97316', demora_critica: '#ef4444', detenido: '#c026d3' };
+                          const content = '<div style="font-family:system-ui;min-width:280px;max-width:320px"><div style="background:' + color + ';color:white;padding:10px 14px;border-radius:8px 8px 0 0;display:flex;justify-content:space-between;align-items:center"><div><strong style="font-size:15px">' + v.unit + '</strong><br><span style="font-size:11px;opacity:0.9">' + (v.type === 'propia' ? 'Flota Propia' : 'Terceros') + '</span></div><span style="font-size:11px;background:rgba(255,255,255,0.25);padding:3px 8px;border-radius:12px">' + (statusLabels[v.status] || v.status) + '</span></div><div style="padding:12px 14px;font-size:12px;line-height:1.8">' + (v.conductor ? '<div>\ud83d\udc64 <strong>' + v.conductor + '</strong></div>' : '') + (v.origen ? '<div>\ud83d\udccd ' + v.origen + ' \u2192 ' + v.destino + '</div>' : '') + (v.cliente ? '<div>\ud83c\udfe2 ' + v.cliente + '</div>' : '') + (v.puntualidad ? '<div>\u23f1 <span style="color:' + (puntColor[v.puntualidad]||'#666') + ';font-weight:700">' + (puntLabel[v.puntualidad]||v.puntualidad) + '</span>' + (v.etaAI ? ' \u2014 ETA: ' + v.etaAI : '') + '</div>' : '') + (v.avance ? '<div>\ud83d\udcca Avance: <strong>' + v.avance + '%</strong></div>' : '') + (v.riskScore ? '<div>\u26a0\ufe0f Riesgo: <strong style="color:' + (v.riskScore>60?'#ef4444':v.riskScore>40?'#f59e0b':'#22c55e') + '">' + v.riskScore + '/100</strong></div>' : '') + (v.saludVehiculo ? '<div>\ud83d\udd27 Salud: <strong>' + v.saludVehiculo + '%</strong></div>' : '') + (v.tempCaja !== null && v.tempCaja !== undefined ? '<div>\ud83c\udf21\ufe0f Temp: <strong>' + v.tempCaja + '\u00b0C</strong> (set: ' + v.tempSetPoint + '\u00b0C)</div>' : '') + (v.valorCarga ? '<div>\ud83d\udcb0 Carga: $' + v.valorCarga.toLocaleString() + '</div>' : '') + (v.causaEstado ? '<div style="margin-top:6px;padding:6px 8px;background:#f8f9fa;border-radius:6px;border-left:3px solid ' + color + ';font-size:11px;color:#555">' + v.causaEstado.substring(0,120) + '</div>' : '') + (v.alertas && v.alertas.length > 0 ? '<div style="margin-top:6px;color:#ef4444;font-size:11px">\ud83d\udea8 ' + (typeof v.alertas === 'string' ? v.alertas : v.alertas.join(', ')) + '</div>' : '') + '</div></div>';
+                          infoW.setContent(content);
+                          infoW.open(map, marker);
+                          map.panTo(marker.getPosition());
+                          map.setZoom(map.getZoom() < 8 ? 8 : map.getZoom());
+                        });
+                        markersRef.current.push(marker);
+                      });
+                    }, [mapReady, filtered]);
+
+                    React.useEffect(() => {
+                      return () => { markersRef.current.forEach(m => m.setMap(null)); markersRef.current = []; if (infoRef.current) infoRef.current.close(); mapInstanceRef.current = null; };
+                    }, []);
+
+                    return (
+                      <>
+                        <div ref={mapRef} style={{ width: '100%', height: '100%' }} />
+                        {!mapReady && (<div className="absolute inset-0 flex items-center justify-center bg-gray-100"><div className="text-center"><div className="w-10 h-10 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" /><p className="text-sm text-gray-600">Cargando Google Maps...</p></div></div>)}
+                        <div className="absolute top-3 left-3 bg-white bg-opacity-95 rounded-lg p-3 shadow-lg z-10"><p className="font-bold text-sm text-gray-800">República Mexicana</p><p className="text-xs text-gray-500">{filtered.length} vehículos visibles</p></div>
+                        <div className="absolute bottom-3 left-3 bg-white bg-opacity-95 rounded-lg p-3 z-10 text-xs space-y-1.5 shadow-lg">
+                          <p className="font-bold mb-1">Estado</p>
+                          <div className="flex items-center space-x-1.5"><div className="w-3 h-3 bg-green-500 rounded-full border-2 border-green-800" /><span>En Ruta</span></div>
+                          <div className="flex items-center space-x-1.5"><div className="w-3 h-3 bg-yellow-500 rounded-full border-2 border-green-800" /><span>Por Asignar</span></div>
+                          <div className="flex items-center space-x-1.5"><div className="w-3 h-3 bg-orange-500 rounded-full border-2 border-green-800" /><span>En Taller</span></div>
+                          <div className="flex items-center space-x-1.5"><div className="w-3 h-3 bg-red-500 rounded-full border-2 border-green-800" /><span>No Ubicable</span></div>
+                          <div className="border-t border-gray-200 pt-1.5 mt-1.5">
+                            <div className="flex items-center space-x-1.5"><div className="w-3 h-3 rounded-full border-2 border-green-800 bg-gray-300" /><span>Propia</span></div>
+                            <div className="flex items-center space-x-1.5"><div className="w-3 h-3 rounded-full border-2 border-purple-600 bg-gray-300" /><span>Terceros</span></div>
+                          </div>
+                        </div>
+                      </>
+                    );
+                  })()}
+                </div>
+              </div>
+            )}
+          </div>
+        </motion.div>
+      </motion.div>
+    );
+  };
+  // === FIN COMPONENTE Estado de viajes ===
+
+  // ====== TORRE DE CONTROL 360° v3 — EFFECTS ======
+  const playHomeSound = React.useCallback((type) => {
+    // Sounds disabled
+  }, []);
+
+  React.useEffect(() => {
+    if (userRole !== null) return;
+    const upd = () => {
+      const d = new Date();
+      setHomeClock(d.toLocaleTimeString('es-MX', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' }) + ' CST');
+      setHomeDate(d.toLocaleDateString('es-MX', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase().replace('.',''));
+    };
+    upd(); const iv = setInterval(upd, 1000);
+    return () => clearInterval(iv);
+  }, [userRole]);
+
+  const homeNarrQuestions = React.useMemo(() => [
+    { q: '¿Dónde se fuga el dinero en diesel?', a: '3 unidades con consumo anómalo. EXT-4501 pierde 18.4% vs benchmark en tramo Mil Cumbres. Ruta alterna + revisión inyectores = $12K/mes de ahorro.' },
+    { q: '¿Cuánto ahorro si llego a 80% preventivo?', a: 'Estimado: $180K/mes. Hoy estamos en 68/32. Subir a 80/20 elimina 4 correctivos/mes a $45K promedio. Meta alcanzable en 60 días con plan escalonado.' },
+    { q: '¿Cómo va el CAPEX del año?', a: '72% ejecutado ($18.5M de $25.7M). En línea con plan. Siguiente hito: decisión ECO-304 libera $1.2M para nueva adquisición en Q2.' },
+    { q: '¿Qué activo debo reemplazar hoy?', a: 'ECO-304. ROI negativo (-50%), $420K en correctivo acumulado, MTTR 12h. Cada día operativo pierde $8,500. Reemplazo se paga en 4 meses.' },
+    { q: '¿Quién necesita descanso urgente?', a: '2 operadores superan 10h continuas. EXT-4501 con 6.5h en tramo montañoso + neblina. Acción: relevo programado en próxima parada segura.' },
+    { q: '¿Cuál es mi mayor riesgo regulatorio?', a: 'EXT-4501: verificación vehicular vence en 7 días. Multa $45K + retención vehicular + impacto en póliza de seguro. Sacar de ruta activa YA.' },
+  ], []);
+
+  React.useEffect(() => {
+    if (userRole !== null) return;
+    const item = homeNarrQuestions[homeNarrIdx % homeNarrQuestions.length];
+    setHomeNarrText(''); setHomeNarrTyping(true);
+    let charIdx = 0;
+    const typeInterval = setInterval(() => {
+      if (charIdx <= item.a.length) {
+        setHomeNarrText(item.a.substring(0, charIdx));
+        if (charIdx % 5 === 0) { try { playHomeSound('tick'); } catch(e) {} }
+        charIdx++;
+      } else {
+        clearInterval(typeInterval); setHomeNarrTyping(false);
+        setTimeout(() => setHomeNarrIdx(prev => prev + 1), 4000);
+      }
+    }, 18);
+    return () => clearInterval(typeInterval);
+  }, [userRole, homeNarrIdx, homeNarrQuestions, playHomeSound]);
+
+  React.useEffect(() => {
+    if (userRole !== null) return;
+    // Bimbo: pause auto-rotation when paused OR when on Compliance section (homeSection 2)
+    if ((selectedCompany === 'bimbo' || selectedCompany === 'motaengil') && (homeSectionPaused || homeSection === 2)) return;
+    const iv = setInterval(() => {
+      setHomeSection(prev => { const n = (prev + 1) % 5; playHomeSound('transition'); return n; });
+    }, 15000);
+    return () => clearInterval(iv);
+  }, [userRole, playHomeSound, selectedCompany, homeSectionPaused, homeSection]);
+
+  const toggleHomeFullscreen = React.useCallback(() => {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => {});
+    else document.exitFullscreen();
+  }, []);
+
+  React.useEffect(() => {
+    if (userRole !== null) return;
+    const handler = (e) => {
+      if (e.key === 'f' && !e.ctrlKey && !e.metaKey && document.activeElement.tagName !== 'INPUT') toggleHomeFullscreen();
+      if (e.key === 'ArrowRight') { setHomeSection(p => (p + 1) % 5); playHomeSound('click'); }
+      if (e.key === 'ArrowLeft') { setHomeSection(p => (p - 1 + 5) % 5); playHomeSound('click'); }
+    };
+    document.addEventListener('keydown', handler);
+    return () => document.removeEventListener('keydown', handler);
+  }, [userRole, toggleHomeFullscreen, playHomeSound]);
+
+  // ====== DATA FABRIC — LIVE FEED SIMULATION ======
+  const dataSourcesConfig = React.useMemo(() => [
+    { id: 'sap', name: 'SAP S/4HANA', icon: '🏢', type: 'ERP', color: '#0070f3', protocol: 'RFC/BAPI', freq: 'Real-time', dataPoints: 1247 },
+    { id: 'geotab', name: 'Geotab', icon: '📡', type: 'Telemetría', color: '#22c55e', protocol: 'API REST', freq: 'Cada 5 seg', dataPoints: 48920 },
+    { id: 'gdrive', name: 'Google Drive', icon: '📁', type: 'Archivos', color: '#f59e0b', protocol: 'Drive API v3', freq: 'Cada 15 min', dataPoints: 847 },
+    { id: 'gps', name: 'GPS Fleet', icon: '📍', type: 'Posición', color: '#ef4444', protocol: 'NMEA/TCP', freq: 'Cada 3 seg', dataPoints: 92400 },
+    { id: 'cameras', name: 'Cámaras IA', icon: '🎥', type: 'Visión', color: '#a855f7', protocol: 'Webhook', freq: 'Evento', dataPoints: 324 },
+    { id: 'weather', name: 'OpenWeather', icon: '🌤️', type: 'Clima', color: '#06b6d4', protocol: 'REST API', freq: 'Cada 30 min', dataPoints: 96 },
+    { id: 'gmaps', name: 'Google Maps', icon: '🗺️', type: 'Rutas', color: '#f97316', protocol: 'Directions API', freq: 'Bajo demanda', dataPoints: 2140 },
+    { id: 'fuel', name: 'Fuel Cards', icon: '⛽', type: 'Combustible', color: '#ec4899', protocol: 'SFTP/CSV', freq: 'Batch diario', dataPoints: 380 },
+    { id: 'oracle', name: 'Oracle EBS', icon: '🔶', type: 'ERP', color: '#dc2626', protocol: 'REST API', freq: 'Real-time', dataPoints: 890 },
+    { id: 'dynamics', name: 'Dynamics 365', icon: '🔷', type: 'ERP', color: '#2563eb', protocol: 'Dataverse', freq: 'Real-time', dataPoints: 720 },
+    { id: 'excel', name: 'Excel/Sheets', icon: '📊', type: 'Manual', color: '#16a34a', protocol: 'Upload/Sync', freq: 'On-change', dataPoints: 1540 },
+    { id: 'samsara', name: 'Samsara', icon: '📡', type: 'Telemetría', color: '#0ea5e9', protocol: 'API REST', freq: 'Cada 5 seg', dataPoints: 35800 },
+  ], []);
+
+  const feedTemplates = React.useMemo(() => [
+    { src: 'sap', msg: 'SAP → 3 facturas diesel recibidas ($4,480)', icon: '🏢' },
+    { src: 'geotab', msg: 'Geotab → MX-3012 posición actualizada (25.68, -100.31)', icon: '📡' },
+    { src: 'gdrive', msg: 'Drive → casetas_febrero.xlsx sync completo (247 rows)', icon: '📁' },
+    { src: 'cameras', msg: 'Lytx → Fatiga detectada EXT-4501 (confianza: 87%)', icon: '🎥' },
+    { src: 'weather', msg: 'OpenWeather → Lluvia SLP-MTY (probabilidad: 72%)', icon: '🌤️' },
+    { src: 'sap', msg: 'SAP PM → OT-2026-0847 completada (ECO-304, motor)', icon: '🏢' },
+    { src: 'gps', msg: 'GPS → EXT-4501 velocidad 87km/h, Mil Cumbres km 142', icon: '📍' },
+    { src: 'fuel', msg: 'Fuel Card → MX-2478 carga 180L en Pemex Est. 4521', icon: '⛽' },
+    { src: 'geotab', msg: 'Geotab → MX-2341 temp. motor 94°C (normal)', icon: '📡' },
+    { src: 'cameras', msg: 'Cámara → MX-2401 distracción leve detectada (conf: 62%)', icon: '🎥' },
+    { src: 'gmaps', msg: 'Maps → Ruta MTY-Reynosa: +25min por cierre parcial km 45', icon: '🗺️' },
+    { src: 'sap', msg: 'SAP FI → Póliza ECO-304 vence 8 Mar 2026 ($45K)', icon: '🏢' },
+    { src: 'gps', msg: 'GPS → MX-3012 entró geocerca "Planta Bimbo MTY"', icon: '📍' },
+    { src: 'geotab', msg: 'Geotab → MX-2456 RPM promedio 1,450 (óptimo)', icon: '📡' },
+    { src: 'weather', msg: 'OpenWeather → Neblina Mil Cumbres, visib. <200m hasta 7am', icon: '🌤️' },
+    { src: 'gdrive', msg: 'Drive → nomina_operadores_feb.xlsx actualizado (32 rows)', icon: '📁' },
+    { src: 'sap', msg: 'SAP MM → Refacción F-4501-INJ recibida en almacén central', icon: '🏢' },
+    { src: 'cameras', msg: 'Lytx → Hard brake MX-2389, -0.45g (evento guardado)', icon: '🎥' },
+    { src: 'gps', msg: 'GPS → MX-2478 salió geocerca "GDL Zona Norte" 14:52', icon: '📍' },
+    { src: 'fuel', msg: 'Fuel Card → EXT-4501 carga 220L (+18% vs benchmark)', icon: '⛽' },
+  ], []);
+
+  React.useEffect(() => {
+    if (userRole !== null) return;
+    let feedIdx = 0;
+    const iv = setInterval(() => {
+      const tmpl = feedTemplates[feedIdx % feedTemplates.length];
+      const now = new Date();
+      const ts = now.toLocaleTimeString('es-MX', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      setLiveFeedEvents(prev => [{ ...tmpl, ts, id: Date.now() }, ...prev].slice(0, 15));
+      setDataFlowPulse(prev => ({ ...prev, [tmpl.src]: Date.now() }));
+      feedIdx++;
+    }, 2500);
+    return () => clearInterval(iv);
+  }, [userRole, feedTemplates]);
+
+  const kpiTraceData = React.useMemo(() => ({
+    'costo_km': {
+      kpi: 'Costo / Km', value: '$2.30', formula: '(Diesel + Casetas + Viáticos + Mant.) / Km totales',
+      sources: [
+        { name: 'Diesel $48,500', from: 'SAP MM (facturas) + Geotab (litros)', icons: ['🏢','📡'], color: '#0070f3' },
+        { name: 'Casetas $12,300', from: 'Google Drive (casetas_feb.xlsx)', icons: ['📁'], color: '#f59e0b' },
+        { name: 'Km recorridos 21,087', from: 'GPS Fleet (telemetría)', icons: ['📍'], color: '#ef4444' },
+        { name: 'Mantenimiento $8,200', from: 'SAP PM (órdenes de trabajo)', icons: ['🏢'], color: '#0070f3' },
+      ]
+    },
+    'uptime': {
+      kpi: 'Uptime Flota', value: '90.6%', formula: 'Horas operativas / Horas disponibles × 100',
+      sources: [
+        { name: 'Horas motor ON: 18,420h', from: 'Geotab (telemetría ignición)', icons: ['📡'], color: '#22c55e' },
+        { name: 'Horas en taller: 1,908h', from: 'SAP PM (OTs abiertas)', icons: ['🏢'], color: '#0070f3' },
+        { name: 'Horas totales: 20,328h', from: 'Cálculo Iris (30 unid × 28 días × 24h)', icons: ['🧠'], color: '#8b5cf6' },
+      ]
+    },
+    'rendimiento': {
+      kpi: 'Rendimiento', value: '3.6 km/L', formula: 'Km recorridos / Litros consumidos',
+      sources: [
+        { name: 'Km recorridos: 21,087', from: 'GPS Fleet + Geotab (odómetro)', icons: ['📍','📡'], color: '#ef4444' },
+        { name: 'Litros consumidos: 5,858L', from: 'Geotab (flujo combustible) + Fuel Cards', icons: ['📡','⛽'], color: '#22c55e' },
+        { name: 'Benchmark: 3.8 km/L', from: 'Histórico Iris (promedio 6 meses)', icons: ['🧠'], color: '#8b5cf6' },
+      ]
+    },
+    'fatiga': {
+      kpi: 'Operadores Fatiga >10h', value: '2', formula: 'Filtro: horas_continuas > 10 AND velocidad > 0',
+      sources: [
+        { name: 'Horas conducción continua', from: 'Geotab (ignición ON + velocidad > 0)', icons: ['📡'], color: '#22c55e' },
+        { name: 'Eventos de fatiga', from: 'Cámaras IA Lytx (microexpresiones)', icons: ['🎥'], color: '#a855f7' },
+        { name: 'NOM-087-SCT-2017', from: 'Regla normativa (max 10h)', icons: ['📋'], color: '#f59e0b' },
+      ]
+    },
+  }), []);
+
+  // === DEEP DIVE: Cargar datos y efecto de taxímetro ===
+  useEffect(() => {
+    if (deepDiveKpi === 'uptime' && ((selectedCompany === 'bimbo' || selectedCompany === 'motaengil') || selectedCompany === 'motaengil')) {
+      fetch('./data/bimbo/deep_dive_uptime.json')
+        .then(r => r.json())
+        .then(d => {
+          setDeepDiveData(d);
+          setDeepDiveLayer(0);
+          setDeepDiveAnimPhase('entering');
+          setDeepDiveSliderIdx(d.historico?.diario?.length - 1 || 0);
+          setTimeout(() => setDeepDiveAnimPhase('active'), 800);
+        })
+        .catch(err => console.error('Deep dive fetch error:', err));
+    }
+    if (deepDiveKpi === 'costo_km' && ((selectedCompany === 'bimbo' || selectedCompany === 'motaengil') || selectedCompany === 'motaengil')) {
+      fetch('./data/bimbo/deep_dive_costo_km.json')
+        .then(r => r.json())
+        .then(d => {
+          setDeepDiveData(d);
+          setDeepDiveLayer(0);
+          setDeepDiveAnimPhase('entering');
+          setDeepDiveSliderIdx(d.historico?.diario?.length - 1 || 0);
+          setTimeout(() => setDeepDiveAnimPhase('active'), 800);
+        })
+        .catch(err => console.error('Deep dive costo_km fetch error:', err));
+    }
+    if (deepDiveKpi === 'activos_criticos' && ((selectedCompany === 'bimbo' || selectedCompany === 'motaengil') || selectedCompany === 'motaengil')) {
+      fetch('./data/bimbo/deep_dive_activos_criticos.json')
+        .then(r => r.json())
+        .then(d => {
+          setDeepDiveData(d);
+          setDeepDiveLayer(0);
+          setDeepDiveAnimPhase('entering');
+          setDeepDiveSliderIdx(d.historico?.diario?.length - 1 || 0);
+          setTimeout(() => setDeepDiveAnimPhase('active'), 800);
+        })
+        .catch(err => console.error('Deep dive activos_criticos fetch error:', err));
+    }
+    if (!deepDiveKpi) {
+      setDeepDiveData(null);
+      setDeepDiveLayer(0);
+      setDeepDiveAnimPhase('entering');
+      setDeepDiveExpandedUnit(null);
+      setDeepDiveShowHistoric(false);
+      if (deepDiveTaxiRef.current) clearInterval(deepDiveTaxiRef.current);
+    }
+  }, [deepDiveKpi, selectedCompany]);
+
+  // Taxímetro — cuenta en tiempo real (dinámico por KPI)
+  useEffect(() => {
+    if (deepDiveLayer >= 2 && deepDiveData) {
+      const rf = deepDiveData.resumen_financiero || {};
+      // uptime usa total_perdido_acumulado + costo_por_hora_actual
+      // costo_km usa exceso_total_mensual + costo_por_hora_exceso
+      // activos_criticos usa costo_inactividad_mensual + costo_por_hora_inactividad
+      const target = rf.total_perdido_acumulado || rf.exceso_total_mensual || rf.costo_inactividad_mensual || 0;
+      const perHour = rf.costo_por_hora_actual || rf.costo_por_hora_exceso || rf.costo_por_hora_inactividad || 0;
+      const perSecond = perHour / 3600;
+      setDeepDiveTaximeter(target);
+      deepDiveTaxiRef.current = setInterval(() => {
+        setDeepDiveTaximeter(prev => prev + perSecond);
+      }, 1000);
+      return () => { if (deepDiveTaxiRef.current) clearInterval(deepDiveTaxiRef.current); };
+    }
+  }, [deepDiveLayer, deepDiveData]);
+
+  // ===== COMPANY SELECTOR LAYER =====
+  if (!selectedCompany) {
+    return (
+      <div className="h-screen w-screen overflow-hidden flex flex-col items-center justify-center relative"
+        style={{ background: 'linear-gradient(135deg, #020617 0%, #0c1a3a 40%, #0a0f2c 100%)' }}>
+
+        {/* Ambient animated background */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600 rounded-full filter blur-[120px] opacity-10 animate-pulse" style={{ animationDuration: '8s' }} />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600 rounded-full filter blur-[120px] opacity-10 animate-pulse" style={{ animationDuration: '12s' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-600 rounded-full filter blur-[160px] opacity-[0.05] animate-pulse" style={{ animationDuration: '15s' }} />
+        </div>
+
+        {/* Top bar */}
+        <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-8 py-5 z-10">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>
+              <Shield className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <div className="text-sm font-bold text-white tracking-wide">Iris Fleet Intelligence</div>
+              <div className="text-[9px] text-slate-500 tracking-widest font-semibold uppercase">Plataforma Multi-Empresa</div>
+            </div>
+          </div>
+          <div className="text-[11px] text-slate-500 font-mono">
+            {new Date().toLocaleTimeString('es-MX', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })} CST · {new Date().toLocaleDateString('es-MX', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase().replace('.', '')}
+          </div>
+        </div>
+
+        {/* Central content */}
+        <div className="relative z-10 flex flex-col items-center">
+
+          {/* Iris logo large */}
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="mb-8"
+          >
+            <div className="w-20 h-20 rounded-2xl flex items-center justify-center shadow-2xl mx-auto" style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)', boxShadow: '0 0 60px rgba(217,119,6,0.3)' }}>
+              <Shield className="w-10 h-10 text-white" />
+            </div>
+          </motion.div>
+
+          {/* Title */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="text-center mb-10"
+          >
+            <h1 className="text-3xl font-bold text-white tracking-wide mb-2">Selecciona la empresa</h1>
+            <p className="text-sm text-slate-400">Elige la operación que deseas monitorear en Torre de Control</p>
+          </motion.div>
+
+          {/* Company cards */}
+          <div className="flex gap-6">
+            {[
+              { 
+                id: 'bimbo', 
+                name: 'Bimbo', 
+                sub: 'Grupo Bimbo S.A.B. de C.V.', 
+                icon: '🍞', 
+                color: '#dc2626',
+                gradient: 'linear-gradient(135deg, #dc2626, #b91c1c)',
+                vehicles: jsonFlota ? (Array.isArray(jsonFlota) ? jsonFlota.length : jsonFlota?.vehiculos?.length || 120) : 120, routes: jsonRutas ? (Array.isArray(jsonRutas) ? jsonRutas.length : jsonRutas?.rutas?.length || 20) : 20, 
+                desc: 'Distribución y logística alimentaria'
+              },
+              { 
+                id: 'idealease', 
+                name: 'Idealease', 
+                sub: 'Idealease de México',
+                icon: '🚛', 
+                color: '#1d4ed8',
+                gradient: 'linear-gradient(135deg, #1d4ed8, #1e40af)',
+                vehicles: 48, routes: 22, 
+                desc: 'Arrendamiento y gestión de flota'
+              },
+              { 
+                id: 'motaengil', 
+                name: 'Mota-Engil', 
+                sub: 'Mota-Engil México',
+                icon: '🏗️', 
+                color: '#ea580c',
+                gradient: 'linear-gradient(135deg, #ea580c, #c2410c)',
+                vehicles: jsonFlota ? (Array.isArray(jsonFlota) ? jsonFlota.length : jsonFlota?.vehiculos?.length || 120) : 120, routes: jsonRutas ? (Array.isArray(jsonRutas) ? jsonRutas.length : jsonRutas?.rutas?.length || 20) : 20, 
+                desc: 'Ingeniería y construcción'
+              }
+            ].map((company, i) => (
+              <motion.button
+                key={company.id}
+                initial={{ y: 40, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.5 + i * 0.15, duration: 0.5 }}
+                whileHover={{ scale: 1.03, y: -4 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setSelectedCompany(company.id)}
+                className="group relative w-[260px] bg-white/[0.04] border border-white/[0.08] rounded-2xl p-6 text-left transition-all hover:bg-white/[0.08] hover:border-white/[0.15] focus:outline-none"
+                style={{ backdropFilter: 'blur(20px)' }}
+              >
+                {/* Glow on hover */}
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ boxShadow: `0 0 40px ${company.color}20, inset 0 1px 0 rgba(255,255,255,0.1)` }} />
+
+                <div className="relative z-10">
+                  {/* Company icon */}
+                  <div className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-lg" style={{ background: company.gradient }}>
+                    {company.icon}
+                  </div>
+
+                  {/* Company info */}
+                  <h3 className="text-xl font-bold text-white mb-0.5">{company.name}</h3>
+                  <p className="text-[10px] text-slate-500 mb-3 font-medium">{company.sub}</p>
+                  <p className="text-xs text-slate-400 mb-4 leading-relaxed">{company.desc}</p>
+
+                  {/* Stats */}
+                  <div className="flex items-center gap-4 mb-4">
+                    <div>
+                      <div className="text-lg font-bold text-white">{company.vehicles}</div>
+                      <div className="text-[9px] text-slate-500 uppercase tracking-wider">Vehículos</div>
+                    </div>
+                    <div className="w-px h-8 bg-white/10" />
+                    <div>
+                      <div className="text-lg font-bold text-white">{company.routes}</div>
+                      <div className="text-[9px] text-slate-500 uppercase tracking-wider">En ruta</div>
+                    </div>
+                    <div className="w-px h-8 bg-white/10" />
+                    <div>
+                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse mx-auto mb-1" />
+                      <div className="text-[9px] text-slate-500 uppercase tracking-wider">En vivo</div>
+                    </div>
+                  </div>
+
+                  {/* Enter button */}
+                  <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-white/[0.05] border border-white/[0.08] group-hover:bg-white/[0.1] transition">
+                    <span className="text-[11px] font-semibold text-slate-300">Ingresar</span>
+                    <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-white group-hover:translate-x-0.5 transition" />
+                  </div>
+                </div>
+              </motion.button>
+            ))}
+          </div>
+
+          {/* Bottom text */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2 }}
+            className="text-[10px] text-slate-600 mt-8 text-center"
+          >
+            Powered by <span className="text-slate-400 font-semibold">Iris Fleet Intelligence</span> · v3.0 Torre de Control 360°
+          </motion.p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {userRole === null && (
+    <div className="h-screen w-screen overflow-hidden flex flex-col relative" style={{ background: 'linear-gradient(135deg, #020617 0%, #0c1a3a 40%, #0a0f2c 100%)' }}>
+
+      {/* ====== HEADER ====== */}
+      <div className="flex items-center justify-between px-7 py-3 border-b border-white/[0.08] flex-shrink-0" style={{ background: 'rgba(2,6,23,0.85)', backdropFilter: 'blur(20px)' }}>
+        <div className="flex items-center gap-4">
+          <div className="w-11 h-11 rounded-xl flex items-center justify-center shadow-lg" style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>
+            <Shield className="w-6 h-6 text-white" />
+          </div>
+          <div>
+            <div className="text-[15px] font-bold text-white tracking-wide">Iris Fleet Intelligence</div>
+            <div className="text-[10px] text-slate-500 tracking-widest font-semibold uppercase">Torre de Control 360°</div>
+          </div>
+        </div>
+        <div className="flex items-center gap-5">
+          <div className="text-[12px] text-slate-400 font-medium"><span className="font-bold text-white">{fleetVehicles.length}</span> vehículos · <span className="font-bold text-white">{fleetVehicles.filter(v=>v.status==='en_ruta').length}</span> en ruta · <span className="font-bold text-red-400">{fleetVehicles.filter(v=>v.status==='en_taller').length}</span> en taller</div>
+          <div className="flex items-center gap-2 bg-red-500/15 border border-red-500/30 rounded-full px-3 py-1.5">
+            <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+            <span className="text-[10px] text-red-400 font-bold uppercase tracking-wider">En Vivo</span>
+          </div>
+          <button onClick={() => { setSelectedCompany(null); }} className="text-[10px] text-slate-500 hover:text-amber-400 transition border border-white/10 px-3 py-1.5 rounded-lg hover:border-amber-400/30 mr-3 flex items-center gap-1.5">
+            <Building2 className="w-3 h-3" />
+            <span className="font-semibold">{selectedCompany === 'bimbo' ? 'Bimbo' : selectedCompany === 'idealease' ? 'Idealease' : 'Mota-Engil'}</span>
+            <span className="text-slate-600">· Cambiar</span>
+          </button>
+          <div className="text-[13px] font-mono text-slate-300 tabular-nums tracking-wide">{homeClock} · {homeDate}</div>
+        </div>
+      </div>
+
+      {/* ====== NORTH STAR CARDS ====== */}
+      <div className="px-7 pt-4 pb-3 flex-shrink-0">
+        <div className="grid grid-cols-6 gap-3">
+          {[
+            { icon: '🟢', value: '90.6%', label: 'UPTIME FLOTA', delta: '▲ 2.1% vs mes anterior', deltaC: 'text-emerald-400', valueC: 'text-emerald-400', border: '#22c55e' },
+            { icon: '💰', value: '$2.30', label: 'COSTO / KM', delta: '▲ 0.15 vs benchmark', deltaC: 'text-amber-400', valueC: 'text-amber-400', border: '#f59e0b' },
+            { icon: '🔧', value: '720h', label: 'MTBF PROMEDIO', delta: '▲ 45h vs trimestre ant.', deltaC: 'text-emerald-400', valueC: 'text-emerald-400', border: '#22c55e' },
+            { icon: '⚠️', value: '3', label: 'ACTIVOS CRÍTICOS', delta: '1 requiere reemplazo HOY', deltaC: 'text-amber-400', valueC: 'text-amber-400', border: '#eab308' },
+            { icon: '📊', value: '18.5%', label: 'ROI / ACTIVO', delta: '▲ 3.2pp vs año anterior', deltaC: 'text-emerald-400', valueC: 'text-purple-400', border: '#a855f7' },
+            { icon: '🛡️', value: '23d', label: 'SIN ACCIDENTES', delta: 'Meta: 30 días continuos', deltaC: 'text-emerald-400', valueC: 'text-pink-400', border: '#ec4899' },
+          ].map((c, i) => (
+            <div key={i} onClick={() => { if (i === 0 && (selectedCompany === 'bimbo' || selectedCompany === 'motaengil')) { setDeepDiveKpi('uptime'); } if (i === 1 && (selectedCompany === 'bimbo' || selectedCompany === 'motaengil')) { setDeepDiveKpi('costo_km'); } if (i === 3 && (selectedCompany === 'bimbo' || selectedCompany === 'motaengil')) { setDeepDiveKpi('activos_criticos'); } }} className={`bg-white/[0.04] rounded-xl p-4 text-center relative overflow-hidden transition-all hover:bg-white/[0.06] hover:-translate-y-0.5 ${(i === 0 || i === 1 || i === 3) ? 'cursor-pointer ring-0 hover:ring-1 hover:ring-emerald-500/30' : ''}`} style={{ borderTop: '3px solid ' + c.border }}>
+              <div className="text-sm mb-1">{c.icon}</div>
+              <div className={`text-[32px] font-extrabold tracking-tight leading-none ${c.valueC}`}>{c.value}</div>
+              <div className="text-[9px] text-slate-500 uppercase tracking-wider mt-1.5 font-bold">{c.label}</div>
+              <div className={`text-[9px] mt-1 font-semibold ${c.deltaC}`}>{c.delta}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ====== MAIN SECTION AREA ====== */}
+      <div className="flex-1 px-7 overflow-hidden flex flex-col min-h-0">
+
+        {/* Section Header + Navigation Dots */}
+        <div className="flex items-center justify-between mb-3 flex-shrink-0">
+          <div className="flex items-center gap-3">
+            <span className="text-lg">{['⛽','🏗️','🛡️','📋','🔌'][homeSection]}</span>
+            <div>
+              <h2 className="text-[15px] font-bold" style={{ color: ['#22c55e','#a855f7','#f59e0b','#3b82f6','#06b6d4'][homeSection] }}>
+                {['Fuel & Costo Operativo','Asset Lifecycle & Capital','Compliance & Riesgo','Mantenimiento Predictivo','Orquestación de Datos'][homeSection]}
+              </h2>
+              <p className="text-[10px] text-slate-500">
+                {['Rendimiento, diesel, costo por kilómetro y anomalías','ROI por activo, ciclo de vida y decisiones de reemplazo','Seguridad, documentación, well-being del operador','Top 10 priorizado por Cost of Delay · IA activa','Cómo Iris se conecta a tus sistemas — en tiempo real'][homeSection]}
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            {(selectedCompany === 'bimbo' || selectedCompany === 'motaengil') && (
+              <button onClick={() => setHomeSectionPaused(!homeSectionPaused)} className="flex items-center gap-1 px-2 py-1 rounded-lg transition-all mr-1" style={{ background: homeSectionPaused ? 'rgba(239,68,68,0.15)' : 'rgba(34,197,94,0.15)', border: `1px solid ${homeSectionPaused ? 'rgba(239,68,68,0.3)' : 'rgba(34,197,94,0.3)'}` }} title={homeSectionPaused ? 'Reanudar auto-rotación' : 'Pausar auto-rotación'}>
+                <span className="text-[10px]">{homeSectionPaused ? '⏸️' : '▶️'}</span>
+                <span className={`text-[9px] font-bold ${homeSectionPaused ? 'text-red-400' : 'text-emerald-400'}`}>{homeSectionPaused ? 'PAUSADO' : 'AUTO'}</span>
+              </button>
+            )}
+            {[0,1,2,3,4].map(i => (
+              <button key={i} onClick={() => { setHomeSection(i); playHomeSound('click'); if ((selectedCompany === 'bimbo' || selectedCompany === 'motaengil')) setHomeSectionPaused(true); }}
+                className="w-3 h-3 rounded-full transition-all"
+                style={{ background: homeSection === i ? ['#22c55e','#a855f7','#f59e0b','#3b82f6','#06b6d4'][i] : 'rgba(255,255,255,0.1)',
+                         boxShadow: homeSection === i ? `0 0 8px ${['#22c55e','#a855f7','#f59e0b','#3b82f6','#06b6d4'][i]}60` : 'none' }} />
+            ))}
+          </div>
+        </div>
+
+        {/* Section Content */}
+        <div className="flex-1 overflow-auto min-h-0">
+          <AnimatePresence mode="wait">
+
+            {/* ===== SECTION 0: FUEL & COSTO OPERATIVO ===== */}
+            {homeSection === 0 && (
+              <motion.div key="s0" initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -40 }} transition={{ duration: 0.4 }} className="space-y-3">
+                {/* 4 KPI Cards */}
+                <div className="grid grid-cols-4 gap-3">
+                  {[
+                    { icon: '💲', badge: '+15% BENCH.', badgeC: 'bg-amber-500/20 text-amber-400', value: '$2.30', label: 'Costo total / km', barW: '65%', barC: '#f59e0b' },
+                    { icon: '⛽', badge: 'EN RANGO', badgeC: 'bg-emerald-500/20 text-emerald-400', value: '3.6 km/L', label: 'Rendimiento promedio', barW: '72%', barC: '#3b82f6' },
+                    { icon: '📊', badge: null, badgeC: '', value: '$48,500', label: 'Diesel consumido hoy', barW: '58%', barC: '#6366f1' },
+                    { icon: '🚨', badge: 'ATENCIÓN', badgeC: 'bg-red-500/20 text-red-400', value: '3', label: 'Unidades consumo anómalo', barW: '25%', barC: '#ef4444' },
+                  ].map((k, i) => (
+                    <div key={i} className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-5 transition-all hover:bg-white/[0.06]">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-lg">{k.icon}</span>
+                        {k.badge && <span className={`text-[8px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wide ${k.badgeC}`}>{k.badge}</span>}
+                      </div>
+                      <div className="text-[32px] font-extrabold tracking-tighter leading-none text-slate-100">{k.value}</div>
+                      <div className="text-[10px] text-slate-500 mt-1 font-medium">{k.label}</div>
+                      <div className="w-full h-[5px] bg-white/[0.06] rounded mt-3 overflow-hidden">
+                        <div className="h-full rounded transition-all duration-1000" style={{ width: k.barW, background: k.barC }} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {/* Detail Table */}
+                <div className="bg-white/[0.03] border border-white/[0.07] rounded-xl p-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-bold text-slate-300">Eficiencia por Unidad — Desviación vs Benchmark</span>
+                    <span className="text-[10px] text-slate-500">Benchmark: 3.8 km/L</span>
+                  </div>
+                  <div className="space-y-0">
+                    {[
+                      { unit: 'EXT-4501', ruta: 'CDMX → Morelia · Tramo montañoso', real: '3.1 km/L', dev: '-18.4%', devC: '#ef4444', dot: '#ef4444' },
+                      { unit: 'MX-2478', ruta: 'GDL → León · Refrigeración encendida', real: '3.4 km/L', dev: '-10.5%', devC: '#f59e0b', dot: '#f59e0b' },
+                      { unit: 'MX-2456', ruta: 'Tijuana → Hermosillo · Viento cruzado', real: '4.2 km/L', dev: '+10.5%', devC: '#22c55e', dot: '#22c55e' },
+                    ].map((r, i) => (
+                      <div key={i} className="flex items-center justify-between px-3 py-2.5 border-b border-white/[0.04] last:border-b-0 hover:bg-white/[0.02]">
+                        <div className="flex items-center gap-3">
+                          <div className="w-2 h-2 rounded-full" style={{ background: r.dot }} />
+                          <div>
+                            <span className="text-[11px] font-bold text-slate-200">{r.unit}</span>
+                            <div className="text-[10px] text-slate-500">{r.ruta}</div>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <span className="text-[11px] text-slate-300 font-semibold">{r.real}</span>
+                          <span className="text-[10px] px-2 py-0.5 rounded-full font-bold" style={{ background: r.devC + '20', color: r.devC }}>{r.dev}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                {/* Iris Insight */}
+                <div className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 rounded-xl px-5 py-3">
+                  <p className="text-[11px] text-amber-200/90 leading-relaxed"><span className="font-bold text-amber-400">🤖 Iris dice:</span> EXT-4501 muestra -18% vs benchmark. Correlación: tramo montañoso Mil Cumbres + 6.5h continuas de conducción. <strong className="text-white">Acción: revisar inyectores y evaluar ruta alterna por autopista.</strong> Ahorro estimado: $12K/mes.</p>
+                </div>
+              </motion.div>
+            )}
+
+            {/* ===== SECTION 1: ASSET LIFECYCLE & CAPITAL ===== */}
+            {homeSection === 1 && (
+              <motion.div key="s1" initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -40 }} transition={{ duration: 0.4 }} className="space-y-3">
+                <div className="grid grid-cols-6 gap-3">
+                  {[
+                    { icon: '📈', value: '18.5%', label: 'ROI Promedio / Activo', sub: 'Sin accidentes', badge: null, barW: null, barC: null, wide: false },
+                    { icon: '📄', value: '85%', label: 'Documentos vigentes', sub: null, badge: '85%', barW: '85%', barC: '#3b82f6', wide: false },
+                    { icon: '💰', value: '$18.5M', label: 'CAPEX ejecutado de $25.7M', sub: null, badge: '72% EJECUTADO', barW: '72%', barC: '#22c55e', wide: false },
+                    { icon: '📋', value: '42/48', label: 'Inspecciones cumplidas', sub: null, badge: '87.5%', barW: '87.5%', barC: '#a855f7', wide: false },
+                    { icon: '🏭', value: '76%', label: 'Utilización real flota', sub: null, badge: '76%', barW: '76%', barC: '#06b6d4', wide: false },
+                    { icon: '🚨', value: '2', label: 'Operadores fatiga >10h', sub: null, badge: 'PRECAUCIÓN', barW: '100%', barC: '#ef4444', wide: false },
+                  ].map((k, i) => (
+                    <div key={i} className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-4 transition-all hover:bg-white/[0.06]">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm">{k.icon}</span>
+                        {k.badge && <span className={`text-[8px] px-2 py-0.5 rounded-full font-bold ${k.badge === 'PRECAUCIÓN' ? 'bg-red-500/20 text-red-400' : 'bg-blue-500/20 text-blue-400'}`}>{k.badge}</span>}
+                      </div>
+                      <div className="text-[28px] font-extrabold tracking-tighter leading-none text-slate-100">{k.value}</div>
+                      <div className="text-[10px] text-slate-500 mt-1 font-medium">{k.label}</div>
+                      {k.sub && <div className="text-[9px] text-slate-600 mt-0.5">{k.sub}</div>}
+                      {k.barW && (
+                        <div className="w-full h-[5px] bg-white/[0.06] rounded mt-2.5 overflow-hidden">
+                          <div className="h-full rounded" style={{ width: k.barW, background: k.barC }} />
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                {/* Asset Matrix Table */}
+                <div className="bg-white/[0.03] border border-white/[0.07] rounded-xl p-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <div>
+                      <span className="text-xs font-bold text-slate-300">Matriz de Activos — Decisión IA por Unidad</span>
+                      <div className="text-[10px] text-slate-500">Vencimientos Próximos — Acción Inmediata</div>
+                    </div>
+                    <span className="text-[10px] text-slate-500">7 activos evaluados<br/><span className="text-slate-600">Ordenados por urgencia</span></span>
+                  </div>
+                  {[
+                    { unit: 'ECO-304', doc: 'Verificación Vehicular', sub: 'Transportes García · Vence: 8 Mar 2026', roi: '-50.0%', roiC: '#ef4444', costo: '$4.2M', ingreso: '$2.1M', badge: '🔴 REEMPLAZAR', badgeC: 'bg-red-500/20 text-red-400', days: '🚨 7 días', daysC: 'bg-red-500/20 text-red-400', dot: '#ef4444' },
+                    { unit: 'MX-2389', doc: 'Licencia Federal', sub: 'Carlos Ruiz · Vence: 15 Mar 2026', roi: '26.5%', roiC: '#22c55e', costo: '$2.4M', ingreso: '$3.1M', badge: '⚠️ EVALUAR', badgeC: 'bg-amber-500/20 text-amber-400', days: '⚠️ 14 días', daysC: 'bg-amber-500/20 text-amber-400', dot: '#f59e0b' },
+                    { unit: 'MX-2534', doc: 'Póliza Seguro', sub: 'Ana López · Vence: 22 Mar 2026', roi: '31.2%', roiC: '#22c55e', costo: '$1.8M', ingreso: '$2.7M', badge: '🟢 Mantener', badgeC: 'bg-emerald-500/20 text-emerald-400', days: '⚠️ 19 días', daysC: 'bg-amber-500/20 text-amber-400', dot: '#22c55e' },
+                  ].map((r, i) => (
+                    <div key={i} className="flex items-center justify-between px-3 py-3 border-b border-white/[0.04] last:border-b-0 hover:bg-white/[0.02]">
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 rounded-full" style={{ background: r.dot }} />
+                        <div>
+                          <div className="text-[11px] font-bold text-slate-200">{r.unit} · {r.doc}</div>
+                          <div className="text-[10px] text-slate-500">{r.sub}</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-4">
+                        <div className="text-right">
+                          <div className="text-[10px] font-bold" style={{ color: r.roiC }}>{r.roi}</div>
+                          <div className="text-[8px] text-slate-600">ROI</div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-[10px] text-slate-400 font-semibold">{r.costo}</div>
+                          <div className="text-[8px] text-slate-600">COSTO ACUM.</div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-[10px] text-slate-400 font-semibold">{r.ingreso}</div>
+                          <div className="text-[8px] text-slate-600">INGRESO GEN.</div>
+                        </div>
+                        <span className={`text-[8px] px-2.5 py-1 rounded-lg font-bold ${r.badgeC}`}>{r.badge}</span>
+                        <span className={`text-[8px] px-2 py-1 rounded-lg font-bold ${r.daysC}`}>{r.days}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-gradient-to-r from-purple-500/10 to-indigo-500/10 border border-purple-500/20 rounded-xl px-5 py-3">
+                  <p className="text-[11px] text-purple-200/90 leading-relaxed"><span className="font-bold text-purple-400">🤖 Iris dice:</span> ECO-304 destruye capital: ROI -50%, costo acumulado 2x ingreso. Cada mes operativo pierde $35K adicionales. <strong className="text-white">Decisión óptima: vender esta semana y adquirir unidad nueva — payback en 4 meses.</strong> MX-2389 se acerca al punto de inflexión: programar evaluación Q2.</p>
+                </div>
+              </motion.div>
+            )}
+
+            {/* ===== SECTION 2: COMPLIANCE & RIESGO ===== */}
+            {homeSection === 2 && (
+              <motion.div key="s2" initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -40 }} transition={{ duration: 0.4 }} className="space-y-3">
+                {/* Row 1: Original 4 KPI Cards */}
+                <div className="grid grid-cols-4 gap-3">
+                  {[
+                    { icon: '✅', value: '23 días', label: 'Sin accidentes', badge: 'RACHA ACTIVA', badgeC: 'bg-emerald-500/20 text-emerald-400', barW: null },
+                    { icon: '📄', value: '85%', label: 'Documentos vigentes', badge: '85%', badgeC: 'bg-blue-500/20 text-blue-400', barW: '85%', barC: '#3b82f6' },
+                    { icon: '📋', value: '42/48', label: 'Inspecciones cumplidas', badge: '87.5%', badgeC: 'bg-purple-500/20 text-purple-400', barW: '87.5%', barC: '#a855f7' },
+                    { icon: '🚨', value: (selectedCompany === 'bimbo' || selectedCompany === 'motaengil') ? String(bimboNom087Alerts.length) : '2', label: (selectedCompany === 'bimbo' || selectedCompany === 'motaengil') ? 'Alertas NOM-087 activas' : 'Operadores fatiga >10h', badge: (selectedCompany === 'bimbo' || selectedCompany === 'motaengil') ? 'NOM-087' : 'PRECAUCIÓN', badgeC: 'bg-red-500/20 text-red-400', barW: '100%', barC: '#ef4444' },
+                  ].map((k, i) => (
+                    <div key={i} className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-5 transition-all hover:bg-white/[0.06]" onClick={() => { if (i === 3 && (selectedCompany === 'bimbo' || selectedCompany === 'motaengil')) setBimboNom087Modal(true); }}>
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-lg">{k.icon}</span>
+                        {k.badge && <span className={`text-[8px] px-2 py-0.5 rounded-full font-bold ${k.badgeC}`}>{k.badge}</span>}
+                      </div>
+                      <div className="text-[32px] font-extrabold tracking-tighter leading-none text-slate-100">{k.value}</div>
+                      <div className="text-[10px] text-slate-500 mt-1 font-medium">{k.label}</div>
+                      {k.barW && (
+                        <div className="w-full h-[5px] bg-white/[0.06] rounded mt-3 overflow-hidden">
+                          <div className="h-full rounded" style={{ width: k.barW, background: k.barC }} />
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {/* ===== BIMBO REQ 3: NOM-087 Panel ===== */}
+                {(selectedCompany === 'bimbo' || selectedCompany === 'motaengil') && (
+                  <div className="bg-white/[0.03] border border-orange-500/20 rounded-xl p-4">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <span className="text-lg">📋</span>
+                        <span className="text-xs font-bold text-orange-300">NOM-087-SCT-2-2017 — Horas de Conducción</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[8px] bg-orange-500/20 text-orange-400 px-2.5 py-1 rounded-full font-bold uppercase">Carga</span>
+                        <span className="text-[10px] text-slate-500">5h→Pausa 30min · 14h→Descanso 8h</span>
+                      </div>
+                    </div>
+                    {bimboNom087Alerts.length === 0 ? (
+                      <div className="text-center py-3">
+                        <span className="text-[10px] text-emerald-400 font-semibold">✅ Todos los operadores dentro de normatividad</span>
+                      </div>
+                    ) : (
+                      <div className="space-y-1.5">
+                        {bimboNom087Alerts.map((a, i) => {
+                          const isExcede = a.status.includes('excede');
+                          const bgC = isExcede ? 'bg-red-500/10 border-red-500/30' : 'bg-amber-500/10 border-amber-500/30';
+                          const txtC = isExcede ? 'text-red-400' : 'text-amber-400';
+                          const iconA = isExcede ? '🔴' : '⚠️';
+                          return (
+                            <div key={i} className={`flex items-center justify-between px-3 py-2.5 rounded-lg border ${bgC}`}>
+                              <div className="flex items-center gap-3">
+                                <span className="text-sm">{iconA}</span>
+                                <div>
+                                  <div className="text-[11px] font-bold text-slate-200">{a.unit} · {a.conductor}</div>
+                                  <div className="text-[10px] text-slate-400">{a.ruta} · {a.horas}h conducción continua</div>
+                                </div>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <span className={`text-[9px] px-2.5 py-1 rounded-lg font-bold ${txtC} ${isExcede ? 'bg-red-500/20' : 'bg-amber-500/20'}`}>{a.alertType}</span>
+                                {a.tiempoRestante && <span className={`text-[10px] font-bold ${txtC}`}>{a.tiempoRestante}</span>}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+                    <div className="mt-2 bg-orange-500/5 rounded-lg px-3 py-2">
+                      <p className="text-[10px] text-orange-300/80 leading-relaxed">⚠️ <strong>Nota NOM-087:</strong> Reglas para autotransporte de carga (5h pausa, 14h descanso). Si Iris maneja pasaje/turismo, aplican reglas diferentes (9h sin 2do conductor, descanso 4h en directos).</p>
+                    </div>
+                  </div>
+                )}
+
+                {/* ===== BIMBO REQ 5: Resumen Casetas (Cruce de casetas) ===== */}
+                {(selectedCompany === 'bimbo' || selectedCompany === 'motaengil') && (
+                  <div className="bg-white/[0.03] border border-amber-500/20 rounded-xl p-4">
+                    <div className="flex items-center justify-between mb-3 cursor-pointer" onClick={() => setBimboCasetasSummaryOpen(!bimboCasetasSummaryOpen)}>
+                      <div className="flex items-center gap-2">
+                        <span className="text-lg">🏷️</span>
+                        <span className="text-xs font-bold text-amber-300">Cruce de Casetas — Peaje por Ruta</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] text-emerald-400 font-bold">${bimboCasetasPagado.toLocaleString()} pagado</span>
+                          <span className="text-[10px] text-slate-500">·</span>
+                          <span className="text-[10px] text-amber-400 font-bold">${bimboCasetasEstimado.toLocaleString()} estimado</span>
+                          <span className="text-[10px] text-slate-500">·</span>
+                          <span className="text-[10px] text-white font-bold">${bimboCasetasTotal.toLocaleString()} total</span>
+                        </div>
+                        <span className={`text-slate-400 transition-transform ${bimboCasetasSummaryOpen ? 'rotate-90' : ''}`}>›</span>
+                      </div>
+                    </div>
+                    {bimboCasetasSummaryOpen && (
+                      <div className="space-y-1.5 mt-2">
+                        {bimboCasetasResumen.map((v, i) => (
+                          <div key={i} className="flex items-center justify-between px-3 py-2 rounded-lg bg-white/[0.02] border border-white/[0.05]">
+                            <div className="flex items-center gap-3">
+                              <span className="text-[10px]">🏷️</span>
+                              <div>
+                                <span className="text-[11px] font-bold text-slate-200">{v.unit}</span>
+                                <span className="text-[10px] text-slate-500 ml-2">{v.ruta}</span>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <span className="text-[10px] text-emerald-400">{v.casetasPagadas} pagadas</span>
+                              {v.casetasPendientes > 0 && <span className="text-[10px] text-amber-400">{v.casetasPendientes} pendientes</span>}
+                              <span className="text-[11px] font-bold text-white">${v.totalViaje.toLocaleString()}</span>
+                            </div>
+                          </div>
+                        ))}
+                        <div className="bg-amber-500/5 rounded-lg px-3 py-2 mt-1">
+                          <p className="text-[10px] text-amber-300/80">💡 <strong>TollGuru API recomendada:</strong> Soporta México con IAVE, PASE y Televia. Incluye rutas HOS-compliant y polylines de cualquier proveedor de mapas. Cubriría Reqs 1, 3 y 5 simultáneamente.</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* ===== BIMBO REQ 2: Desvíos de Ruta ===== */}
+                {(selectedCompany === 'bimbo' || selectedCompany === 'motaengil') && (
+                  <div className="bg-white/[0.03] border border-purple-500/20 rounded-xl p-4">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <span className="text-lg">🔀</span>
+                        <span className="text-xs font-bold text-purple-300">Desvíos de Ruta Detectados</span>
+                      </div>
+                      <span className="text-[8px] bg-purple-500/20 text-purple-400 px-2.5 py-1 rounded-full font-bold">{bimboDesvioEvents.length} DESVÍOS</span>
+                    </div>
+                    {bimboDesvioEvents.length === 0 ? (
+                      <div className="text-center py-3">
+                        <span className="text-[10px] text-emerald-400 font-semibold">✅ Ningún desvío de ruta activo — Todas las unidades en ruta asignada</span>
+                      </div>
+                    ) : (
+                      <div className="space-y-1.5">
+                        {bimboDesvioEvents.map((d, i) => (
+                          <div key={i} className={`flex items-center justify-between px-3 py-2.5 rounded-lg border ${d.severidad === 'alta' ? 'bg-red-500/10 border-red-500/30' : d.severidad === 'media' ? 'bg-amber-500/10 border-amber-500/30' : 'bg-blue-500/10 border-blue-500/30'}`}>
+                            <div className="flex items-center gap-3">
+                              <span className="text-sm">📍</span>
+                              <div>
+                                <div className="text-[11px] font-bold text-slate-200">{d.unit} · {d.conductor}</div>
+                                <div className="text-[10px] text-slate-400">{d.ruta} · {d.motivo}</div>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <span className="text-[10px] text-slate-400">{d.hora}</span>
+                              <span className={`text-[9px] px-2 py-0.5 rounded-full font-bold ${d.severidad === 'alta' ? 'bg-red-500/20 text-red-400' : d.severidad === 'media' ? 'bg-amber-500/20 text-amber-400' : 'bg-blue-500/20 text-blue-400'}`}>{d.severidad.toUpperCase()}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* ===== BIMBO REQ 1: Mapeo de Rutas ===== */}
+                {(selectedCompany === 'bimbo' || selectedCompany === 'motaengil') && bimboRouteData && (
+                  <div className="bg-white/[0.03] border border-cyan-500/20 rounded-xl p-4">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <span className="text-lg">🗺️</span>
+                        <span className="text-xs font-bold text-cyan-300">Mapeo de Rutas — {bimboRouteData.routes.length} rutas registradas</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        {['primary', 'alternates'].map(t => (
+                          <button key={t} onClick={() => setBimboRouteView(t)} className={`text-[9px] px-2.5 py-1 rounded-lg font-bold transition ${bimboRouteView === t ? 'bg-cyan-500/20 text-cyan-400' : 'bg-white/[0.05] text-slate-500 hover:text-slate-300'}`}>
+                            {t === 'primary' ? '🟢 Primarias' : '🟡 Alternas'}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="space-y-1.5">
+                      {bimboRouteData.routes.filter(r => bimboRouteView === 'primary' ? r.type === 'primary' : r.type === 'alternate').map((r, i) => (
+                        <div key={i} className={`flex items-center justify-between px-3 py-2.5 rounded-lg border ${r.zonaProhibida ? 'bg-red-500/10 border-red-500/30' : 'bg-white/[0.02] border-white/[0.05]'}`}>
+                          <div className="flex items-center gap-3">
+                            <div className="w-3 h-3 rounded-full" style={{ background: r.color }} />
+                            <div>
+                              <div className="text-[11px] font-bold text-slate-200">{r.name}</div>
+                              <div className="text-[10px] text-slate-500">{r.km} km · {r.casetas} casetas · ~{r.tiempoEst}</div>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-[10px] text-slate-400">Frec: {r.frequency} viajes/mes</span>
+                            {r.zonaProhibida && <span className="text-[9px] bg-red-500/20 text-red-400 px-2 py-0.5 rounded-full font-bold">⛔ ZONA PROHIBIDA</span>}
+                            <div className="flex gap-1">
+                              <div className="w-4 h-2 rounded-sm" style={{ background: r.color }} title="Ida" />
+                              <div className="w-4 h-2 rounded-sm" style={{ background: r.colorReturn }} title="Regreso" />
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-2 text-[10px] text-cyan-300/60">🗺️ Ida = color primario · Regreso a CEDIS = color secundario · ⛔ Torre de Control puede editar/eliminar rutas con zonas prohibidas</div>
+                  </div>
+                )}
+
+                {/* ===== BIMBO REQ 4: Zonas Seguras & Paradas Prohibidas ===== */}
+                {(selectedCompany === 'bimbo' || selectedCompany === 'motaengil') && (
+                  <div className="bg-white/[0.03] border border-emerald-500/20 rounded-xl p-4">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <span className="text-lg">🛡️</span>
+                        <span className="text-xs font-bold text-emerald-300">Zonas Seguras & Paradas Prohibidas</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] text-emerald-400 font-bold">{bimboZonasSegurasList.length} zonas seguras</span>
+                        <span className="text-[10px] text-slate-500">·</span>
+                        <span className="text-[10px] text-red-400 font-bold">{bimboParadasProhibidas.filter(p => p.tipo === 'parada_prohibida').length} paradas prohibidas</span>
+                      </div>
+                    </div>
+                    {bimboParadasProhibidas.length > 0 && (
+                      <div className="space-y-1.5 mb-3">
+                        {bimboParadasProhibidas.map((p, i) => (
+                          <div key={i} className={`flex items-center justify-between px-3 py-2.5 rounded-lg border ${p.tipo === 'parada_prohibida' ? 'bg-red-500/10 border-red-500/30' : 'bg-emerald-500/10 border-emerald-500/30'}`}>
+                            <div className="flex items-center gap-3">
+                              <span className="text-sm">{p.tipo === 'parada_prohibida' ? '🔴' : '🟢'}</span>
+                              <div>
+                                <div className="text-[11px] font-bold text-slate-200">{p.unit} · {p.conductor}</div>
+                                <div className="text-[10px] text-slate-400">{p.ruta} · Detenido {p.tiempoDetenido}</div>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              {p.tipo === 'parada_prohibida' && <span className="text-[10px] text-amber-400">Zona segura más cercana: {p.zonaCercana} ({p.distanciaZonaCercana} km)</span>}
+                              {p.tipo === 'zona_segura' && <span className="text-[10px] text-emerald-400">✅ En zona segura</span>}
+                              <span className={`text-[9px] px-2 py-0.5 rounded-full font-bold ${p.tipo === 'parada_prohibida' ? 'bg-red-500/20 text-red-400' : 'bg-emerald-500/20 text-emerald-400'}`}>{p.tipo === 'parada_prohibida' ? '⛔ PROHIBIDA' : '🛡️ SEGURA'}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    <div className="grid grid-cols-3 gap-2">
+                      {bimboZonasSegurasList.slice(0, 6).map((z, i) => (
+                        <div key={i} className="bg-white/[0.02] border border-white/[0.05] rounded-lg px-2.5 py-2">
+                          <div className="flex items-center gap-1.5 mb-1">
+                            <span className="text-[10px]">{z.tipo === 'cedis' ? '🏭' : '🅿️'}</span>
+                            <span className="text-[10px] font-bold text-slate-300 truncate">{z.nombre}</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-[9px]">
+                            <span className="text-emerald-400">{z.servicios.length} servicios</span>
+                            <span className="text-slate-500">·</span>
+                            <span className={`${z.ocupacion > 70 ? 'text-amber-400' : 'text-slate-400'}`}>{z.ocupacion}% ocupado</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-2 bg-red-500/5 rounded-lg px-3 py-2">
+                      <p className="text-[10px] text-red-300/80">⚠️ <strong>Punto a diferir:</strong> "Informar al conductor sobre opciones cercanas" requiere app companion para conductor (no existe aún). Diferir a Fase 2 o integrar vía notificación push si ya hay app de operador.</p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Original Vencimientos (now shown for ALL companies) */}
+                <div className="bg-white/[0.03] border border-white/[0.07] rounded-xl p-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-bold text-slate-300">Vencimientos Próximos — Acción Inmediata</span>
+                    <span className="text-[10px] text-slate-500">Ordenados por urgencia</span>
+                  </div>
+                  {[
+                    { unit: 'EXT-4501', doc: 'Verificación Vehicular', sub: 'Transportes García · Vence: 8 Mar 2026', days: '🚨 7 días', daysC: 'bg-red-500/20 text-red-400', dot: '#ef4444' },
+                    { unit: 'MX-2401', doc: 'Licencia Federal', sub: 'Carlos Ruiz · Vence: 15 Mar 2026', days: '⚠️ 14 días', daysC: 'bg-amber-500/20 text-amber-400', dot: '#f59e0b' },
+                    { unit: 'MX-2534', doc: 'Póliza Seguro', sub: 'Ana López · Vence: 22 Mar 2026', days: '⚠️ 19 días', daysC: 'bg-amber-500/20 text-amber-400', dot: '#f59e0b' },
+                  ].map((r, i) => (
+                    <div key={i} className="flex items-center justify-between px-3 py-3 border-b border-white/[0.04] last:border-b-0 hover:bg-white/[0.02]">
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 rounded-full" style={{ background: r.dot }} />
+                        <div>
+                          <div className="text-[11px] font-bold text-slate-200">{r.unit} · {r.doc}</div>
+                          <div className="text-[10px] text-slate-500">{r.sub}</div>
+                        </div>
+                      </div>
+                      <span className={`text-[9px] px-3 py-1 rounded-lg font-bold ${r.daysC}`}>{r.days}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Iris dice - enhanced for Bimbo */}
+                <div className="bg-gradient-to-r from-amber-500/10 to-red-500/10 border border-amber-500/20 rounded-xl px-5 py-3">
+                  <p className="text-[11px] text-amber-200/90 leading-relaxed"><span className="font-bold text-amber-400">🤖 Iris dice:</span> {(selectedCompany === 'bimbo' || selectedCompany === 'motaengil') ? (<>{bimboNom087Alerts.length > 0 ? `${bimboNom087Alerts.length} operador(es) con alerta NOM-087. ` : ''}EXT-4501 tiene verificación venciendo en 7 días + consumo anómalo + 6.5h continuas de conducción. Casetas del día: ${bimboCasetasTotal > 0 ? '$' + bimboCasetasTotal.toLocaleString() + ' MXN' : 'sin datos'}. {bimboDesvioEvents.length > 0 ? bimboDesvioEvents.length + ' desvío(s) activo(s). ' : ''}<strong className="text-white">Prioridad implementación: Casetas(✅)→NOM-087(📋)→Desvíos(🔀)→Rutas(🗺️)→Zonas(🛡️).</strong></>) : (<>EXT-4501 tiene verificación venciendo en 7 días + consumo anómalo + 6.5h continuas de conducción. Patrón de riesgo compuesto. <strong className="text-white">Acción inmediata: sacar de ruta activa y enviar a taller/verificación.</strong></>)}</p>
+                </div>
+
+                {/* BIMBO: Roadmap recommendation */}
+                {(selectedCompany === 'bimbo' || selectedCompany === 'motaengil') && (
+                  <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-xl px-5 py-3">
+                    <p className="text-[11px] text-blue-200/90 leading-relaxed"><span className="font-bold text-blue-400">🧭 Roadmap recomendado:</span> Orden de implementación: <strong className="text-white">5→3→2→1→4</strong> (no el propuesto). Req 5 (Casetas) es casi trivial — datos ya existen. Req 3 (NOM-087) es regulatorio y obligatorio. Req 2 (Desvíos) es el corazón de Torre de Control. Reqs 1 y 4 requieren más infraestructura. <strong className="text-cyan-300">TollGuru API</strong> cubriría Reqs 1, 3 y 5 desde una sola integración (soporta IAVE/PASE/Televia + rutas HOS-compliant).</p>
+                  </div>
+                )}
+              </motion.div>
+            )}
+
+            {/* ===== SECTION 3: MANTENIMIENTO PREDICTIVO ===== */}
+            {homeSection === 3 && (
+              <motion.div key="s3" initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -40 }} transition={{ duration: 0.4 }} className="space-y-3">
+                <div className="grid grid-cols-4 gap-3">
+                  {[
+                    { icon: '🔧', badge: 'IA ACTIVA', badgeC: 'bg-blue-500/20 text-blue-400', value: '10', label: 'Unidades requieren acción', barW: '33%', barC: '#3b82f6' },
+                    { icon: '🔴', badge: null, badgeC: '', value: '$850K', label: 'Costo mayor si NO actúas', barW: '85%', barC: '#ef4444' },
+                    { icon: '🟢', badge: null, badgeC: '', value: '$120K', label: 'Costo si actúas HOY', barW: '12%', barC: '#22c55e' },
+                    { icon: '💰', badge: null, badgeC: '', value: '$730K', label: 'Ahorro potencial', barW: '73%', barC: '#a855f7' },
+                  ].map((k, i) => (
+                    <div key={i} className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-5 transition-all hover:bg-white/[0.06]">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-lg">{k.icon}</span>
+                        {k.badge && <span className={`text-[8px] px-2 py-0.5 rounded-full font-bold ${k.badgeC}`}>{k.badge}</span>}
+                      </div>
+                      <div className="text-[32px] font-extrabold tracking-tighter leading-none text-slate-100">{k.value}</div>
+                      <div className="text-[10px] text-slate-500 mt-1 font-medium">{k.label}</div>
+                      <div className="w-full h-[5px] bg-white/[0.06] rounded mt-3 overflow-hidden">
+                        <div className="h-full rounded" style={{ width: k.barW, background: k.barC }} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-white/[0.03] border border-white/[0.07] rounded-xl p-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-bold text-slate-300">Top 10 Mantenimiento — Cost of Delay</span>
+                    <span className="text-[8px] bg-blue-500/20 text-blue-400 px-2.5 py-1 rounded-full font-bold uppercase">IA Activa</span>
+                  </div>
+                  {(maintenanceIssues || []).slice(0, 6).map((issue, i) => (
+                    <div key={i} className="flex items-center justify-between px-3 py-2.5 border-b border-white/[0.04] last:border-b-0 hover:bg-white/[0.02]">
+                      <div className="flex items-center gap-4">
+                        <span className="text-xl font-extrabold w-8" style={{ color: issue.priority >= 85 ? '#ef4444' : issue.priority >= 70 ? '#f59e0b' : '#22c55e' }}>{issue.priority}</span>
+                        <div>
+                          <div className="text-[11px] text-slate-200"><span className="font-bold">{issue.unit}</span> <span className="text-slate-500">· {issue.conductor}</span></div>
+                          <div className="text-[10px] text-slate-500">{issue.tipo} · Confianza: {issue.confidence}%</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <span className="text-[12px] font-bold text-red-400">${issue.cost_no_actuar.toLocaleString()}</span>
+                        <span className="text-[8px] px-2 py-0.5 rounded-full font-bold" style={{ background: issue.decision.includes('DETENER') ? '#ef444420' : issue.decision.includes('TALLER') ? '#f5920b20' : '#22c55e20', color: issue.decision.includes('DETENER') ? '#ef4444' : issue.decision.includes('TALLER') ? '#f59e0b' : '#22c55e' }}>{issue.decision}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 rounded-xl px-5 py-3">
+                  <p className="text-[11px] text-blue-200/90 leading-relaxed"><span className="font-bold text-blue-400">🤖 Iris dice:</span> ECO-304 acumula 7 fallas de motor con MTTR de 12h — 3x el promedio de flota. Costo acumulado $420K supera 65% del valor residual. <strong className="text-white">Recomendación: evaluar reemplazo inmediato.</strong></p>
+                </div>
+              </motion.div>
+            )}
+
+          
+            {/* ===== SECTION 4: ORQUESTACIÓN DE DATOS ===== */}
+            {homeSection === 4 && (
+              <motion.div key="s4" initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -40 }} transition={{ duration: 0.4 }} className="space-y-3">
+
+                {/* Top Row: Connection Map + Live Feed */}
+                <div className="grid grid-cols-12 gap-3">
+
+                  {/* LEFT: Constellation Map */}
+                  <div className="col-span-7 bg-white/[0.03] border border-white/[0.07] rounded-xl p-5 relative overflow-hidden" style={{ minHeight: '280px' }}>
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm">🌐</span>
+                        <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">Mapa de Conexiones — Iris Data Fabric</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-2.5 py-1">
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="text-[8px] text-emerald-400 font-bold uppercase tracking-wider">12 Fuentes Activas</span>
+                      </div>
+                    </div>
+
+                    {/* Central Brain Node */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+                      <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-2xl" style={{ background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)', boxShadow: '0 0 30px rgba(59,130,246,0.4)' }}>
+                        <Brain className="w-8 h-8 text-white" />
+                      </div>
+                      <div className="text-[8px] text-center text-blue-400 font-bold mt-1.5 tracking-wider">IRIS AI</div>
+                    </div>
+
+                    {/* Source Nodes arranged in circle */}
+                    {dataSourcesConfig.slice(0, 8).map((src, i) => {
+                      const angle = (i / 8) * 2 * Math.PI - Math.PI / 2;
+                      const rx = 42;
+                      const ry = 38;
+                      const cx = 50 + rx * Math.cos(angle);
+                      const cy = 50 + ry * Math.sin(angle);
+                      const isPulsing = dataFlowPulse[src.id] && (Date.now() - dataFlowPulse[src.id]) < 3000;
+                      return (
+                        <div key={src.id} className="absolute z-10 flex flex-col items-center" style={{ left: cx + '%', top: cy + '%', transform: 'translate(-50%, -50%)' }}>
+                          {/* Connection line (SVG would be ideal but div works) */}
+                          <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-sm transition-all duration-500 border ${isPulsing ? 'scale-110' : 'scale-100'}`}
+                            style={{ background: isPulsing ? src.color + '30' : 'rgba(255,255,255,0.04)', borderColor: isPulsing ? src.color : 'rgba(255,255,255,0.08)', boxShadow: isPulsing ? `0 0 15px ${src.color}40` : 'none' }}>
+                            {src.icon}
+                          </div>
+                          <span className="text-[7px] text-slate-500 font-semibold mt-0.5 whitespace-nowrap">{src.name}</span>
+                          <span className={`text-[7px] font-bold ${isPulsing ? 'text-emerald-400' : 'text-slate-600'}`}>{isPulsing ? '● SYNC' : '● Live'}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* RIGHT: Live Feed Terminal */}
+                  <div className="col-span-5 bg-black/40 border border-white/[0.07] rounded-xl overflow-hidden" style={{ minHeight: '280px' }}>
+                    <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/[0.08]" style={{ background: 'rgba(0,0,0,0.3)' }}>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px]">⚡</span>
+                        <span className="text-[10px] font-bold text-slate-300 uppercase tracking-wider font-mono">Live Data Feed</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-yellow-500" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                      </div>
+                    </div>
+                    <div className="px-4 py-2 space-y-0 overflow-auto font-mono" style={{ maxHeight: '240px' }}>
+                      {liveFeedEvents.map((evt, i) => (
+                        <motion.div key={evt.id} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}
+                          className={`flex items-start gap-2 py-1 border-b border-white/[0.03] ${i === 0 ? 'text-slate-200' : 'text-slate-500'}`}>
+                          <span className="text-[9px] text-slate-600 tabular-nums flex-shrink-0">{evt.ts}</span>
+                          <span className="text-[9px] flex-shrink-0">{evt.icon}</span>
+                          <span className={`text-[9px] leading-relaxed ${i === 0 ? 'text-slate-300' : 'text-slate-500'}`}>{evt.msg}</span>
+                        </motion.div>
+                      ))}
+                      {liveFeedEvents.length === 0 && (
+                        <div className="text-[10px] text-slate-600 py-4 text-center">Conectando fuentes de datos...</div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Middle: KPI Traceability */}
+                <div className="bg-white/[0.03] border border-white/[0.07] rounded-xl p-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm">🔍</span>
+                      <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">Trazabilidad de KPIs — De Dónde Viene Cada Dato</span>
+                    </div>
+                    <span className="text-[9px] text-slate-500">Click para expandir</span>
+                  </div>
+                  <div className="grid grid-cols-4 gap-2 mb-3">
+                    {Object.entries(kpiTraceData).map(([key, data]) => (
+                      <button key={key} onClick={() => setTracingKpi(tracingKpi === key ? null : key)}
+                        className={`p-3 rounded-lg text-left transition-all ${tracingKpi === key ? 'bg-cyan-500/15 border border-cyan-500/30' : 'bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.06]'}`}>
+                        <div className={`text-[18px] font-extrabold ${tracingKpi === key ? 'text-cyan-400' : 'text-slate-200'}`}>{data.value}</div>
+                        <div className="text-[9px] text-slate-500 font-semibold">{data.kpi}</div>
+                      </button>
+                    ))}
+                  </div>
+                  <AnimatePresence>
+                    {tracingKpi && kpiTraceData[tracingKpi] && (
+                      <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3 }}
+                        className="bg-black/20 rounded-lg p-4 border border-white/[0.05]">
+                        <div className="text-[10px] text-slate-500 mb-2 font-mono">{kpiTraceData[tracingKpi].kpi} = {kpiTraceData[tracingKpi].formula}</div>
+                        <div className="space-y-2">
+                          {kpiTraceData[tracingKpi].sources.map((s, i) => (
+                            <div key={i} className="flex items-center gap-3">
+                              <div className="w-1.5 h-1.5 rounded-full" style={{ background: s.color }} />
+                              <div className="flex items-center gap-2">
+                                {s.icons.map((ic, ii) => <span key={ii} className="text-xs">{ic}</span>)}
+                              </div>
+                              <div>
+                                <span className="text-[10px] text-slate-300 font-semibold">{s.name}</span>
+                                <span className="text-[10px] text-slate-600 ml-2">← {s.from}</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Bottom: Compatibility Matrix */}
+                <div className="bg-white/[0.03] border border-white/[0.07] rounded-xl p-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-sm">✅</span>
+                    <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">Compatibilidad — Iris se adapta a TU infraestructura</span>
+                  </div>
+                  <div className="grid grid-cols-4 gap-2">
+                    {[
+                      { name: 'SAP (MM/PM/FI)', icon: '🏢', status: 'Certificado', statusC: 'text-emerald-400', desc: 'RFC/BAPI + OData', bg: 'bg-emerald-500/10' },
+                      { name: 'Oracle EBS/Cloud', icon: '🔶', status: 'Certificado', statusC: 'text-emerald-400', desc: 'REST API nativa', bg: 'bg-emerald-500/10' },
+                      { name: 'Dynamics 365', icon: '🔷', status: 'Certificado', statusC: 'text-emerald-400', desc: 'Dataverse connector', bg: 'bg-emerald-500/10' },
+                      { name: 'Excel / Sheets', icon: '📊', status: 'Listo', statusC: 'text-emerald-400', desc: 'Solo pon tu archivo en Drive', bg: 'bg-emerald-500/10' },
+                      { name: 'Geotab / Samsara', icon: '📡', status: 'Certificado', statusC: 'text-emerald-400', desc: 'Telemetría API REST', bg: 'bg-emerald-500/10' },
+                      { name: 'GPS (cualquier)', icon: '📍', status: 'Compatible', statusC: 'text-blue-400', desc: 'NMEA / TCP / API', bg: 'bg-blue-500/10' },
+                      { name: 'Cámaras IA', icon: '🎥', status: 'Compatible', statusC: 'text-blue-400', desc: 'Webhook + REST', bg: 'bg-blue-500/10' },
+                      { name: 'Sin ERP', icon: '📁', status: 'Funcional', statusC: 'text-amber-400', desc: 'Excel + telemetría = suficiente', bg: 'bg-amber-500/10' },
+                    ].map((c, i) => (
+                      <div key={i} className={`${c.bg} border border-white/[0.06] rounded-lg px-3 py-2.5 flex items-center gap-2.5`}>
+                        <span className="text-base">{c.icon}</span>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-[10px] font-bold text-slate-300">{c.name}</div>
+                          <div className="text-[8px] text-slate-500">{c.desc}</div>
+                        </div>
+                        <span className={`text-[7px] font-bold uppercase ${c.statusC}`}>{c.status}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-3 text-center">
+                    <p className="text-[11px] text-cyan-400 font-semibold">💡 Iris se conecta con lo que ya tienes. No necesitas cambiar tu infraestructura.</p>
+                  </div>
+                </div>
+
+                {/* Iris Insight */}
+                <div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-xl px-5 py-3">
+                  <p className="text-[11px] text-cyan-200/90 leading-relaxed"><span className="font-bold text-cyan-400">🤖 Iris dice:</span> Hoy he procesado <strong className="text-white">146,347 data points</strong> de 8 fuentes activas. Mi tiempo promedio de orquestación es <strong className="text-white">1.2 segundos</strong> desde que un dato entra hasta que impacta un KPI. <strong className="text-white">Tu infraestructura actual es 100% compatible — cero cambios necesarios.</strong></p>
+                </div>
+
+              </motion.div>
+            )}
+
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* ====== DEEP DIVE OVERLAY — Análisis narrativo por capas ====== */}
+      <AnimatePresence>
+        {deepDiveKpi && deepDiveData && (
+          <motion.div
+            key="deep-dive-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="absolute inset-0 z-50 flex flex-col"
+            style={{ background: 'linear-gradient(135deg, #020617 0%, #0a1628 50%, #020617 100%)' }}
+          >
+            {/* ── HEADER: KPI izq + proceso arriba-der + cerrar ── */}
+            <div className="flex-shrink-0 px-8 pt-4 pb-4 border-b border-white/[0.08]" style={{ background: 'rgba(2,6,23,0.95)', backdropFilter: 'blur(20px)' }}>
+              <div className="flex items-center justify-between">
+                {/* Izquierda: ← + KPI grande */}
+                <div className="flex items-center gap-4">
+                  <button onClick={() => setDeepDiveKpi(null)} className="w-10 h-10 rounded-xl bg-white/[0.06] border border-white/[0.12] flex items-center justify-center text-slate-300 hover:text-white hover:bg-white/[0.12] transition text-lg">
+                    ←
+                  </button>
+                  {deepDiveKpi === 'uptime' && (
+                    <div className="flex items-center gap-4">
+                      <div>
+                        <div className="text-[42px] font-extrabold text-emerald-400 leading-none tracking-tight">{deepDiveData.valor_actual}%</div>
+                        <div className="text-[11px] text-white/60 mt-0.5">Uptime actual</div>
+                      </div>
+                      <div className="text-[16px] text-slate-500 font-bold">→</div>
+                      <div>
+                        <div className="text-[42px] font-extrabold text-slate-500 leading-none tracking-tight">{deepDiveData.meta}%</div>
+                        <div className="text-[11px] text-white/50 mt-0.5">Meta</div>
+                      </div>
+                      <div className="ml-2 bg-red-500/10 border border-red-500/25 rounded-xl px-3 py-1.5">
+                        <div className="text-[20px] font-extrabold text-red-400 leading-none">-{deepDiveData.descomposicion_gap?.total_gap_pct || deepDiveData.gap_pct}%</div>
+                        <div className="text-[9px] text-red-400/70 mt-0.5">gap</div>
+                      </div>
+                    </div>
+                  )}
+                  {deepDiveKpi === 'costo_km' && (
+                    <div className="flex items-center gap-4">
+                      <div>
+                        <div className="text-[42px] font-extrabold text-amber-400 leading-none tracking-tight">${deepDiveData.valor_actual}</div>
+                        <div className="text-[11px] text-white/60 mt-0.5">Costo / km actual</div>
+                      </div>
+                      <div className="text-[16px] text-slate-500 font-bold">→</div>
+                      <div>
+                        <div className="text-[42px] font-extrabold text-slate-500 leading-none tracking-tight">${deepDiveData.meta}</div>
+                        <div className="text-[11px] text-white/50 mt-0.5">Benchmark</div>
+                      </div>
+                      <div className="ml-2 bg-red-500/10 border border-red-500/25 rounded-xl px-3 py-1.5">
+                        <div className="text-[20px] font-extrabold text-red-400 leading-none">+{deepDiveData.gap_pct}%</div>
+                        <div className="text-[9px] text-red-400/70 mt-0.5">sobre benchmark</div>
+                      </div>
+                    </div>
+                  )}
+                  {deepDiveKpi === 'activos_criticos' && (
+                    <div className="flex items-center gap-4">
+                      <div>
+                        <div className="text-[42px] font-extrabold text-red-400 leading-none tracking-tight">{deepDiveData.valor_actual}</div>
+                        <div className="text-[11px] text-white/60 mt-0.5">Activos críticos</div>
+                      </div>
+                      <div className="text-[16px] text-slate-500 font-bold">→</div>
+                      <div>
+                        <div className="text-[42px] font-extrabold text-slate-500 leading-none tracking-tight">{deepDiveData.meta}</div>
+                        <div className="text-[11px] text-white/50 mt-0.5">Meta</div>
+                      </div>
+                      <div className="ml-2 bg-red-500/10 border border-red-500/25 rounded-xl px-3 py-1.5">
+                        <div className="text-[20px] font-extrabold text-red-400 leading-none">{deepDiveData.valor_actual} / {deepDiveData.total_flota}</div>
+                        <div className="text-[9px] text-red-400/70 mt-0.5">{deepDiveData.pct_criticos}% de la flota</div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Derecha: Proceso con flechas + cerrar */}
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-1">
+                    {[
+                      { id: 0, icon: '🔍', label: 'Hallazgo', sub: '¿Qué pasa?' },
+                      { id: 1, icon: '🔬', label: 'Causa raíz', sub: '¿Por qué?' },
+                      { id: 2, icon: '💰', label: 'Impacto $', sub: '¿Cuánto cuesta?' },
+                      { id: 3, icon: '⚡', label: 'Acciones', sub: '¿Qué hago?' },
+                    ].map((stp, si) => {
+                      const isActive = deepDiveLayer === si;
+                      const isNext = si === deepDiveLayer + 1;
+                      const isCompleted = si < deepDiveLayer;
+                      return (
+                        <React.Fragment key={si}>
+                          <button
+                            onClick={() => { setDeepDiveLayer(si); if (si < 1) setDeepDiveExpandedUnit(null); }}
+                            className={`flex items-center gap-2 px-3.5 py-2 rounded-xl transition-all border ${
+                              isActive
+                                ? 'bg-emerald-500/15 border-emerald-500/40 shadow-lg shadow-emerald-500/10'
+                                : isNext
+                                  ? 'bg-white/[0.08] border-white/[0.15] animate-pulse'
+                                  : 'bg-white/[0.06] border-white/[0.10] hover:bg-white/[0.10]'
+                            }`}>
+                            <span className="text-[15px]">{stp.icon}</span>
+                            <div className="text-left">
+                              <div className={`text-[13px] font-bold ${isActive ? 'text-emerald-400' : isCompleted ? 'text-emerald-300/80' : 'text-white'}`}>{stp.label}</div>
+                              <div className={`text-[10px] ${isActive ? 'text-emerald-400/70' : isCompleted ? 'text-emerald-300/50' : 'text-white/60'}`}>{stp.sub}</div>
+                            </div>
+                          </button>
+                          {si < 3 && (
+                            <div className={`mx-0.5 text-[14px] font-bold ${isCompleted ? 'text-emerald-500' : 'text-slate-600'}`}>→</div>
+                          )}
+                        </React.Fragment>
+                      );
+                    })}
+                  </div>
+                  <button onClick={() => setDeepDiveKpi(null)} className="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 hover:bg-red-500/20 transition text-lg">✕</button>
+                </div>
+              </div>
+            </div>
+
+            {/* ── Panel histórico desplegable ── */}
+            <AnimatePresence>
+              {deepDiveShowHistoric && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex-shrink-0 overflow-hidden border-b border-white/[0.08]" style={{ background: 'rgba(2,6,23,0.9)' }}>
+                  <div className="px-8 py-5">
+                    <div className="flex items-center justify-between mb-3">
+                      <h4 className="text-[14px] font-bold text-white">Evolución histórica {deepDiveKpi === 'uptime' ? 'del Uptime' : deepDiveKpi === 'costo_km' ? 'del Costo/Km' : 'de Activos Críticos'}</h4>
+                      {/* Tooltip valor activo — centrado */}
+                      {(() => {
+                        const datos = deepDiveData.historico?.[deepDiveSliderMode] || [];
+                        const labelKey = deepDiveSliderMode === 'diario' ? 'fecha' : deepDiveSliderMode === 'semanal' ? 'semana' : 'mes';
+                        const idx = Math.min(deepDiveSliderIdx, datos.length - 1);
+                        const d = datos[idx];
+                        if (!d) return null;
+                        return (
+                          <div className="bg-slate-800/80 border border-white/10 rounded-lg px-4 py-1.5">
+                            <span className="text-[14px] font-bold text-white">{deepDiveKpi === 'uptime' ? d.uptime + '%' : deepDiveKpi === 'costo_km' ? '$' + d.costo : d.criticos + ' críticos'}</span>
+                            <span className="text-[11px] text-slate-400 ml-2">{d[labelKey]}</span>
+                          </div>
+                        );
+                      })()}
+                      <div className="flex items-center gap-1">
+                        {['diario','semanal','mensual'].map(m => (
+                          <button key={m} onClick={() => { setDeepDiveSliderMode(m); setDeepDiveSliderIdx(deepDiveData.historico?.[m]?.length - 1 || 0); }}
+                            className={`text-[11px] px-3 py-1.5 rounded-lg font-semibold transition-all ${deepDiveSliderMode === m ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'text-slate-400 hover:text-white border border-transparent'}`}>
+                            {m === 'diario' ? 'Día' : m === 'semanal' ? 'Semana' : 'Mes'}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    {/* Gráfico estilo Google Finance */}
+                    {(() => {
+                      const datos = deepDiveData.historico?.[deepDiveSliderMode] || [];
+                      if (datos.length === 0) return null;
+                      const labelKey = deepDiveSliderMode === 'diario' ? 'fecha' : deepDiveSliderMode === 'semanal' ? 'semana' : 'mes';
+                      const valKey = deepDiveKpi === 'uptime' ? 'uptime' : deepDiveKpi === 'costo_km' ? 'costo' : 'criticos';
+                      const vals = datos.map(d => d[valKey]);
+                      const rawMin = Math.min(...vals, deepDiveData.meta);
+                      const rawMax = Math.max(...vals, deepDiveData.meta);
+                      const rangeBuffer = Math.max((rawMax - rawMin) * 0.2, 0.5);
+                      const minY = Math.floor((rawMin - rangeBuffer) * 10) / 10;
+                      const maxY = Math.ceil((rawMax + rangeBuffer) * 10) / 10;
+                      // Y ticks
+                      const yRange = maxY - minY;
+                      const yStep = yRange <= 4 ? 0.5 : yRange <= 8 ? 1 : yRange <= 16 ? 2 : 5;
+                      const yTicks = [];
+                      for (let t = Math.ceil(minY / yStep) * yStep; t <= maxY; t += yStep) yTicks.push(Math.round(t * 10) / 10);
+                      // Dimensions
+                      const chartH = 180;
+                      const yScale = (v) => chartH - ((v - minY) / (maxY - minY)) * chartH;
+                      const metaScreenY = yScale(deepDiveData.meta);
+                      // Points (0-1 normalized x)
+                      const points = datos.map((d, di) => ({
+                        pct: di / Math.max(datos.length - 1, 1),
+                        y: yScale(d[valKey]),
+                        uptime: d[valKey],
+                        label: d[labelKey]
+                      }));
+                      // X labels distribute ~6
+                      const xCount = Math.min(datos.length, 6);
+                      const xIdxs = Array.from({ length: xCount }, (_, i) => Math.round(i * (datos.length - 1) / Math.max(xCount - 1, 1)));
+                      // Color
+                      const lastVal = datos[datos.length - 1]?.[valKey] || 0;
+                      const lineColor = deepDiveKpi === 'uptime'
+                        ? (lastVal >= deepDiveData.meta ? '#22c55e' : '#ef4444')
+                        : (lastVal <= deepDiveData.meta ? '#22c55e' : '#ef4444');
+                      const gradId = 'uptGrd' + deepDiveSliderMode;
+                      // Active point
+                      const activeIdx = Math.min(deepDiveSliderIdx, datos.length - 1);
+                      const activeP = points[activeIdx];
+                      return (
+                        <div style={{ userSelect: 'none' }}>
+                          {/* Chart container */}
+                          <div className="relative" style={{ height: chartH + 40 }}>
+                            {/* Y-axis labels (positioned absolutely on left) */}
+                            <div className="absolute left-0 top-0" style={{ width: 44, height: chartH }}>
+                              {yTicks.map(t => (
+                                <div key={t} className="absolute text-right pr-2" style={{ top: yScale(t) - 7, width: 44, fontSize: 11, color: '#94a3b8', fontWeight: 500 }}>
+                                  {deepDiveKpi === 'uptime' ? t + '%' : deepDiveKpi === 'costo_km' ? '$' + t : t}
+                                </div>
+                              ))}
+                            </div>
+                            {/* Meta label (positioned absolutely on right) */}
+                            <div className="absolute right-0" style={{ top: metaScreenY - 12, textAlign: 'right' }}>
+                              <div style={{ fontSize: 10, color: '#22c55e', opacity: 0.7 }}>Meta</div>
+                              <div style={{ fontSize: 13, color: '#22c55e', fontWeight: 700 }}>{deepDiveKpi === 'uptime' ? deepDiveData.meta + '%' : deepDiveKpi === 'costo_km' ? '$' + deepDiveData.meta : deepDiveData.meta}</div>
+                            </div>
+                            {/* SVG Chart area */}
+                            <div className="absolute" style={{ left: 48, right: 60, top: 0, height: chartH }}>
+                              <svg width="100%" height={chartH} preserveAspectRatio="none" style={{ overflow: 'visible' }}>
+                                {/* Grid horizontal */}
+                                {yTicks.map(t => (
+                                  <line key={t} x1="0" y1={yScale(t)} x2="100%" y2={yScale(t)} stroke="white" strokeWidth="0.6" opacity="0.1" vectorEffect="non-scaling-stroke" />
+                                ))}
+                                {/* Meta dashed line */}
+                                <line x1="0" y1={metaScreenY} x2="100%" y2={metaScreenY} stroke="#22c55e" strokeWidth="1.5" strokeDasharray="8,6" opacity="0.5" vectorEffect="non-scaling-stroke" />
+                                {/* Bottom axis */}
+                                <line x1="0" y1={chartH} x2="100%" y2={chartH} stroke="white" strokeWidth="0.6" opacity="0.15" vectorEffect="non-scaling-stroke" />
+                                <defs>
+                                  <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stopColor={lineColor} stopOpacity="0.3" />
+                                    <stop offset="100%" stopColor={lineColor} stopOpacity="0.02" />
+                                  </linearGradient>
+                                </defs>
+                              </svg>
+                              {/* Canvas-like line using positioned divs + inline SVG polyline */}
+                              <svg
+                                viewBox={`0 0 1000 ${chartH}`}
+                                preserveAspectRatio="none"
+                                className="absolute inset-0"
+                                style={{ width: '100%', height: chartH, overflow: 'visible' }}
+                              >
+                                {/* Area */}
+                                <polygon
+                                  points={points.map(p => `${p.pct * 1000},${p.y}`).join(' ') + ` 1000,${chartH} 0,${chartH}`}
+                                  fill={`url(#${gradId})`}
+                                />
+                                {/* Line */}
+                                <polyline
+                                  points={points.map(p => `${p.pct * 1000},${p.y}`).join(' ')}
+                                  fill="none"
+                                  stroke={lineColor}
+                                  strokeWidth="2.5"
+                                  strokeLinejoin="round"
+                                  strokeLinecap="round"
+                                  vectorEffect="non-scaling-stroke"
+                                />
+                              </svg>
+                              {/* Interactive overlay — dots + hit areas */}
+                              <div className="absolute inset-0" style={{ overflow: 'visible' }}>
+                                {points.map((p, pi) => {
+                                  const isActive = pi === activeIdx;
+                                  return (
+                                    <div
+                                      key={pi}
+                                      className="absolute cursor-pointer"
+                                      style={{ left: `${p.pct * 100}%`, top: 0, width: 1, height: chartH }}
+                                      onClick={() => setDeepDiveSliderIdx(pi)}
+                                      onMouseEnter={() => setDeepDiveSliderIdx(pi)}
+                                    >
+                                      {/* Wider invisible hit area */}
+                                      <div className="absolute" style={{ left: -15, width: 30, top: 0, height: chartH }} />
+                                      {/* Vertical guide line on active */}
+                                      {isActive && <div className="absolute" style={{ left: 0, top: 0, width: 1, height: chartH, background: 'rgba(255,255,255,0.1)', borderLeft: '1px dashed rgba(255,255,255,0.2)' }} />}
+                                      {/* Dot */}
+                                      <div
+                                        className="absolute rounded-full"
+                                        style={{
+                                          left: isActive ? -6 : -3,
+                                          top: p.y - (isActive ? 6 : 3),
+                                          width: isActive ? 12 : 6,
+                                          height: isActive ? 12 : 6,
+                                          background: lineColor,
+                                          border: isActive ? '2.5px solid white' : 'none',
+                                          boxShadow: isActive ? `0 0 12px ${lineColor}60` : 'none',
+                                          opacity: isActive ? 1 : 0.5,
+                                          transition: 'all 0.15s ease'
+                                        }}
+                                      />
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                            {/* X-axis labels */}
+                            <div className="absolute flex justify-between" style={{ left: 48, right: 60, top: chartH + 8 }}>
+                              {xIdxs.map(idx => (
+                                <span key={idx} className="text-[10px] text-slate-500" style={{ fontFamily: 'system-ui' }}>{datos[idx]?.[labelKey]}</span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })()}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* ── CONTENIDO PRINCIPAL ── */}
+            <div className="flex-1 overflow-auto min-h-0 px-8 py-5">
+              <AnimatePresence mode="wait">
+
+                {/* ═══════ CAPA 0: HALLAZGO + GAP (lo importante primero) ═══════ */}
+                {deepDiveLayer === 0 && (
+                  <motion.div key="layer0" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}>
+
+                    {/* Narrativa Iris — grande y prominente */}
+                    <div className="bg-emerald-500/[0.08] border border-emerald-500/20 rounded-2xl p-6 mb-5">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg" style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>
+                          🧠
+                        </div>
+                        <div>
+                          <div className="text-[14px] font-bold text-emerald-400 mb-1">Iris dice:</div>
+                          <p className="text-[15px] text-slate-200 leading-relaxed">
+                            {deepDiveData.iris_narrativa?.hallazgo_principal}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Descomposición del gap */}
+                    <h3 className="text-[16px] font-bold text-white mb-1">Descomposición del gap: <span className="text-red-400">{deepDiveData.descomposicion_gap?.total_gap_pct}%</span> inactivo</h3>
+                    <p className="text-[13px] text-slate-400 mb-4">De {deepDiveData.total_unidades} unidades, {deepDiveData.descomposicion_gap?.total_unidades_afectadas} no están disponibles.</p>
+
+                    {/* Barra visual del gap */}
+                    <div className="bg-white/[0.03] border border-white/[0.07] rounded-xl p-5 mb-4">
+                      <div className="flex items-center gap-1 mb-4">
+                        <div className="flex-1 h-12 rounded-lg overflow-hidden flex">
+                          <div className="h-full bg-emerald-500/40 flex items-center justify-center text-[12px] font-bold text-white" style={{ width: `${deepDiveData.valor_actual}%` }}>
+                            {deepDiveData.valor_actual}% operativo
+                          </div>
+                          {deepDiveData.descomposicion_gap?.categorias?.map((cat, ci) => (
+                            <div key={ci} className="h-full flex items-center justify-center text-[11px] font-bold text-white" style={{ width: `${cat.pct_del_gap}%`, background: cat.color + '80' }}>
+                              {cat.pct_del_gap}%
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Categorías */}
+                      <div className="space-y-3">
+                        {deepDiveData.descomposicion_gap?.categorias?.map((cat, ci) => (
+                          <div key={ci} className="flex items-center gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] transition">
+                            <div className="text-3xl">{cat.icono}</div>
+                            <div className="flex-1">
+                              <div className="flex items-center gap-2">
+                                <span className="text-[15px] font-bold text-white">{cat.label}</span>
+                                <span className="text-[10px] px-2 py-0.5 rounded-full font-bold uppercase" style={{ background: cat.color + '20', color: cat.color }}>{cat.severidad}</span>
+                              </div>
+                              <div className="text-[12px] text-slate-400 mt-0.5">{cat.unidades} unidades · {cat.pct_del_gap}% del gap total</div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-[28px] font-extrabold" style={{ color: cat.color }}>{cat.pct_del_gap}%</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Hallazgo crítico */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4, duration: 0.5 }}
+                      className="bg-red-500/[0.08] border border-red-500/20 rounded-2xl p-5 mb-5">
+                      <div className="flex items-start gap-4">
+                        <div className="text-2xl mt-0.5">🚨</div>
+                        <div>
+                          <div className="text-[14px] font-bold text-red-400 mb-1">Hallazgo crítico</div>
+                          <p className="text-[14px] text-slate-200 leading-relaxed">
+                            De las <strong className="text-white">8 unidades en taller</strong>, <strong className="text-red-400">4 llevan entre 90% y 250% más tiempo</strong> del estándar para su tipo de reparación.
+                            2 tienen solución inmediata. <strong className="text-amber-400">Una ya está reparada y nadie se dio cuenta.</strong>
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+
+
+                    {/* CTA */}
+                    <div className="flex justify-center">
+                      <button onClick={() => setDeepDiveLayer(1)}
+                        className="flex items-center gap-3 px-6 py-3 rounded-xl text-[14px] font-semibold transition-all bg-red-500/15 border border-red-500/30 text-red-400 hover:bg-red-500/25 hover:scale-[1.02]">
+                        <span>🔬</span> Siguiente: Ver causa raíz de cada unidad →
+                      </button>
+                    </div>
+
+                    {/* Botón Histórico al fondo */}
+                    <div className="flex justify-center mt-6">
+                      <button onClick={() => setDeepDiveShowHistoric(!deepDiveShowHistoric)}
+                        className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-semibold transition-all border ${
+                          deepDiveShowHistoric
+                            ? 'bg-blue-500/15 border-blue-500/40 text-blue-400'
+                            : 'bg-white/[0.04] border-white/[0.08] text-white/70 hover:bg-white/[0.08] hover:text-white'
+                        }`}>
+                        📈 {deepDiveShowHistoric ? 'Ocultar Histórico' : 'Ver Histórico'}
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* ═══════ CAPA 1: CAUSA RAÍZ CORRELACIONADA ═══════ */}
+                {deepDiveLayer === 1 && (
+                  <motion.div key="layer1" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}>
+                    {/* Iris narrativa */}
+                    <div className="bg-amber-500/[0.06] border border-amber-500/15 rounded-2xl p-5 mb-5">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg" style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>🧠</div>
+                        <p className="text-[14px] text-slate-200 leading-relaxed">
+                          <span className="font-bold text-amber-400">Iris dice: </span>
+                          {deepDiveData.iris_narrativa?.revelacion}
+                        </p>
+                      </div>
+                    </div>
+
+                    <h3 className="text-[16px] font-bold text-white mb-1">Causa raíz — 4 unidades con exceso crítico en taller</h3>
+                    <p className="text-[13px] text-slate-400 mb-5">Iris correlacionó SAP PM, GPS, TMS, inventario y nómina para encontrar por qué cada unidad sigue parada.</p>
+
+                    <div className="space-y-3">
+                      {deepDiveData.unidades_criticas_taller?.map((u, ui) => {
+                        const isExpanded = deepDiveExpandedUnit === u.unidad;
+                        const causaIcon = u.causa_raiz === 'sin_inventario' ? '📦' : u.causa_raiz === 'sin_visibilidad' ? '👻' : u.causa_raiz === 'capacidad_taller' ? '🏗️' : '🔍';
+                        const causaColor = u.causa_raiz === 'sin_inventario' ? '#f59e0b' : u.causa_raiz === 'sin_visibilidad' ? '#ef4444' : u.causa_raiz === 'capacidad_taller' ? '#8b5cf6' : '#3b82f6';
+                        const causaLabel = u.causa_raiz === 'sin_inventario' ? 'Sin inventario' : u.causa_raiz === 'sin_visibilidad' ? 'Unidad olvidada' : u.causa_raiz === 'capacidad_taller' ? 'Capacidad taller' : u.causa_raiz === 'diagnostico_erroneo' ? 'Diagnóstico erróneo' : u.causa_raiz;
+                        return (
+                          <motion.div key={u.unidad}
+                            layout
+                            className={`bg-white/[0.03] border rounded-xl overflow-hidden transition-all ${isExpanded ? 'border-white/[0.15] ring-1 ring-white/[0.05]' : 'border-white/[0.07] hover:border-white/[0.12]'}`}>
+                            <div className="p-5 cursor-pointer" onClick={() => setDeepDiveExpandedUnit(isExpanded ? null : u.unidad)}>
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-4">
+                                  <div className="text-2xl">{causaIcon}</div>
+                                  <div>
+                                    <div className="flex items-center gap-2">
+                                      <span className="text-[15px] font-bold text-white">{u.unidad}</span>
+                                      <span className="text-[11px] text-slate-500">{u.modelo}</span>
+                                      <span className="text-[10px] px-2 py-0.5 rounded-full font-bold" style={{ background: causaColor + '20', color: causaColor }}>{causaLabel}</span>
+                                    </div>
+                                    <div className="text-[12px] text-slate-400 mt-0.5">{u.falla}</div>
+                                  </div>
+                                </div>
+                                <div className="flex items-center gap-5">
+                                  <div className="text-right">
+                                    <div className="text-[13px] font-bold text-red-400">{u.dias_en_taller}d en taller</div>
+                                    <div className="text-[10px] text-slate-500">Estándar: {u.dias_estandar}d · <span className="text-red-400 font-bold">+{u.exceso_pct}%</span></div>
+                                  </div>
+                                  <div className="text-[16px] font-extrabold text-red-400">${(u.impacto_financiero?.total_perdido || 0).toLocaleString()}</div>
+                                  <span className={`text-slate-400 transition-transform text-sm ${isExpanded ? 'rotate-90' : ''}`}>▶</span>
+                                </div>
+                              </div>
+                              {/* Barra de exceso */}
+                              <div className="mt-3 flex items-center gap-2">
+                                <div className="flex-1 h-2.5 bg-white/[0.05] rounded-full overflow-hidden">
+                                  <div className="h-full rounded-full" style={{ width: `${Math.min(100, (u.dias_en_taller / (u.dias_estandar * 3)) * 100)}%`, background: `linear-gradient(to right, ${causaColor}80, ${causaColor})` }} />
+                                </div>
+                                <span className="text-[9px] text-slate-500 whitespace-nowrap">{u.dias_en_taller}/{u.dias_estandar * 3}d</span>
+                              </div>
+                            </div>
+
+                            {/* Expandido: correlaciones */}
+                            {isExpanded && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1 }}
+                                className="border-t border-white/[0.07] px-5 py-5 bg-white/[0.02]">
+                                <div className="mb-4 p-4 rounded-xl border-l-3" style={{ borderLeftWidth: 3, borderColor: causaColor, background: causaColor + '08' }}>
+                                  <p className="text-[13px] text-slate-200 leading-relaxed">{u.causa_detalle}</p>
+                                </div>
+                                <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-3">Correlación de fuentes</div>
+                                <div className="space-y-2">
+                                  {u.correlaciones?.map((cor, cori) => (
+                                    <div key={cori} className="flex items-start gap-3 text-[12px]">
+                                      <span className="px-2 py-0.5 rounded-md bg-blue-500/15 text-blue-400 font-bold flex-shrink-0 text-[10px]">{cor.fuente}</span>
+                                      <span className="text-slate-300">{cor.dato}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                                <div className="mt-4 grid grid-cols-3 gap-3">
+                                  {[
+                                    { label: 'Capacidad perdida', val: u.impacto_financiero?.desglose?.capacidad_entrega_perdida || 0, c: '#ef4444' },
+                                    { label: 'Costo sustitución', val: u.impacto_financiero?.desglose?.costo_sustitucion || 0, c: '#f59e0b' },
+                                    { label: 'Penalizaciones SLA', val: u.impacto_financiero?.desglose?.penalizaciones_sla || 0, c: '#8b5cf6' },
+                                  ].map((d, di) => (
+                                    <div key={di} className="bg-white/[0.03] border border-white/[0.06] rounded-lg p-3 text-center">
+                                      <div className="text-[18px] font-extrabold" style={{ color: d.c }}>${d.val.toLocaleString()}</div>
+                                      <div className="text-[9px] text-slate-500 mt-0.5">{d.label}</div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </motion.div>
+                            )}
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+
+                    <div className="mt-5 flex justify-center">
+                      <button onClick={() => setDeepDiveLayer(2)}
+                        className="flex items-center gap-3 px-6 py-3 rounded-xl text-[14px] font-semibold transition-all bg-amber-500/15 border border-amber-500/30 text-amber-400 hover:bg-amber-500/25 hover:scale-[1.02]">
+                        <span>💰</span> Siguiente: Ver impacto financiero total →
+                      </button>
+                    </div>
+
+                    {/* Botón Histórico al fondo */}
+                    <div className="flex justify-center mt-6">
+                      <button onClick={() => setDeepDiveShowHistoric(!deepDiveShowHistoric)}
+                        className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-semibold transition-all border ${
+                          deepDiveShowHistoric
+                            ? 'bg-blue-500/15 border-blue-500/40 text-blue-400'
+                            : 'bg-white/[0.04] border-white/[0.08] text-white/70 hover:bg-white/[0.08] hover:text-white'
+                        }`}>
+                        📈 {deepDiveShowHistoric ? 'Ocultar Histórico' : 'Ver Histórico'}
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* ═══════ CAPA 2: IMPACTO FINANCIERO (TAXÍMETRO) ═══════ */}
+                {deepDiveLayer === 2 && (
+                  <motion.div key="layer2" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
+                    {/* Iris narrativa */}
+                    <div className="bg-red-500/[0.06] border border-red-500/15 rounded-2xl p-5 mb-5">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg" style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>🧠</div>
+                        <p className="text-[14px] text-slate-200 leading-relaxed">
+                          <span className="font-bold text-red-400">Iris dice: </span>
+                          Cada hora que pasa, pierdes <strong className="text-red-400">${Math.round(deepDiveData.resumen_financiero?.costo_por_hora_actual || 0).toLocaleString()} MXN</strong>. Total acumulado creciendo.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Taxímetro central */}
+                    <div className="bg-gradient-to-br from-red-950/40 to-red-900/20 border border-red-500/20 rounded-2xl p-8 text-center mb-5">
+                      <div className="text-[11px] text-red-400 uppercase tracking-widest font-bold mb-3">Pérdida acumulada por unidades en exceso</div>
+                      <div className="text-[56px] font-extrabold text-red-400 leading-none tabular-nums tracking-tight">
+                        ${Math.round(deepDiveTaximeter).toLocaleString()}
+                        <span className="text-[18px] text-red-500/60 ml-2">MXN</span>
+                      </div>
+                      <div className="text-[13px] text-red-400/60 mt-2 font-mono">+ ${Math.round(deepDiveData.resumen_financiero?.costo_por_hora_actual || 0).toLocaleString()} MXN por hora</div>
+                      <div className="mt-4 flex items-center justify-center gap-2">
+                        <div className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
+                        <span className="text-[12px] text-red-400 font-semibold">Contando en tiempo real...</span>
+                      </div>
+                    </div>
+
+                    {/* Proyecciones */}
+                    <div className="grid grid-cols-3 gap-3 mb-5">
+                      {[
+                        { label: 'Proyección 30 días sin acción', value: `$${((deepDiveData.resumen_financiero?.proyeccion_30_dias_sin_accion || 0) / 1000000).toFixed(1)}M`, color: '#ef4444', icon: '📈' },
+                        { label: 'Ahorro potencial con acciones', value: `$${((deepDiveData.resumen_financiero?.ahorro_potencial_con_acciones || 0) / 1000000).toFixed(1)}M`, color: '#22c55e', icon: '💪' },
+                        { label: 'Costo por día sin actuar', value: `$${Math.round((deepDiveData.resumen_financiero?.costo_por_hora_actual || 0) * 24).toLocaleString()}`, color: '#f59e0b', icon: '⏰' },
+                      ].map((p, pi) => (
+                        <div key={pi} className="bg-white/[0.04] border border-white/[0.07] rounded-xl p-5 text-center">
+                          <span className="text-xl">{p.icon}</span>
+                          <div className="text-[28px] font-extrabold mt-2" style={{ color: p.color }}>{p.value}</div>
+                          <div className="text-[11px] text-slate-400 mt-1 font-medium">{p.label}</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Desglose por unidad */}
+                    <div className="bg-white/[0.03] border border-white/[0.07] rounded-xl p-5 mb-5">
+                      <div className="text-[12px] font-bold text-slate-400 uppercase tracking-wider mb-3">Pérdida por unidad</div>
+                      {deepDiveData.unidades_criticas_taller?.map((u, ui) => (
+                        <div key={ui} className="flex items-center justify-between py-3 border-b border-white/[0.04] last:border-b-0">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[13px] font-bold text-white">{u.unidad}</span>
+                            <span className="text-[11px] text-slate-500">{u.dias_en_taller - u.dias_estandar} días en exceso</span>
+                          </div>
+                          <div className="text-[16px] font-extrabold text-red-400">${(u.impacto_financiero?.total_perdido || 0).toLocaleString()}</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="flex justify-center">
+                      <button onClick={() => setDeepDiveLayer(3)}
+                        className="flex items-center gap-3 px-6 py-3 rounded-xl text-[14px] font-semibold transition-all bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/25 hover:scale-[1.02]">
+                        <span>⚡</span> Siguiente: Plan de acción concreto →
+                      </button>
+                    </div>
+
+                    {/* Botón Histórico al fondo */}
+                    <div className="flex justify-center mt-6">
+                      <button onClick={() => setDeepDiveShowHistoric(!deepDiveShowHistoric)}
+                        className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-semibold transition-all border ${
+                          deepDiveShowHistoric
+                            ? 'bg-blue-500/15 border-blue-500/40 text-blue-400'
+                            : 'bg-white/[0.04] border-white/[0.08] text-white/70 hover:bg-white/[0.08] hover:text-white'
+                        }`}>
+                        📈 {deepDiveShowHistoric ? 'Ocultar Histórico' : 'Ver Histórico'}
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* ═══════ CAPA 3: ACCIONES Y PREVENCIÓN ═══════ */}
+                {deepDiveLayer === 3 && (
+                  <motion.div key="layer3" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}>
+                    {/* Iris narrativa */}
+                    <div className="bg-emerald-500/[0.06] border border-emerald-500/15 rounded-2xl p-5 mb-5">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg" style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>🧠</div>
+                        <p className="text-[14px] text-slate-200 leading-relaxed">
+                          <span className="font-bold text-emerald-400">Iris dice: </span>
+                          {deepDiveData.iris_narrativa?.cierre}
+                        </p>
+                      </div>
+                    </div>
+
+                    <h3 className="text-[16px] font-bold text-white mb-1">Plan de Acción — Iris recomienda</h3>
+                    <p className="text-[13px] text-slate-400 mb-5">3 acciones inmediatas + 2 preventivas. Ordenadas por impacto y facilidad de ejecución.</p>
+
+                    <div className="space-y-3">
+                      {deepDiveData.acciones?.map((a, ai) => {
+                        const typeColor = a.tipo === 'inmediata' ? '#22c55e' : a.tipo === 'escalamiento' ? '#f59e0b' : '#8b5cf6';
+                        const typeIcon = a.tipo === 'inmediata' ? '⚡' : a.tipo === 'escalamiento' ? '📢' : '🛡️';
+                        return (
+                          <motion.div key={ai}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: ai * 0.12 }}
+                            className="bg-white/[0.03] border border-white/[0.07] rounded-xl p-5 hover:bg-white/[0.05] transition-all">
+                            <div className="flex items-start gap-4">
+                              <div className="flex-shrink-0">
+                                <div className="w-11 h-11 rounded-xl flex items-center justify-center text-xl font-bold" style={{ background: typeColor + '15', border: `1px solid ${typeColor}40` }}>
+                                  {typeIcon}
+                                </div>
+                              </div>
+                              <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                  <span className="text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase" style={{ background: typeColor + '20', color: typeColor }}>
+                                    P{a.prioridad} · {a.tipo}
+                                  </span>
+                                  {a.unidad !== 'SISTEMA' && <span className="text-[11px] text-slate-500">Unidad: {a.unidad}</span>}
+                                </div>
+                                <div className="text-[14px] font-bold text-white mb-1">{a.accion}</div>
+                                <p className="text-[12px] text-slate-400 leading-relaxed">{a.detalle}</p>
+                                <div className="flex items-center gap-5 mt-3">
+                                  <span className="text-[12px] font-bold" style={{ color: typeColor }}>Ahorro: ${(a.ahorro_estimado || 0).toLocaleString()} {a.ahorro_unidad}</span>
+                                  <span className="text-[11px] text-slate-500">👤 {a.responsable}</span>
+                                  {a.contacto && <span className="text-[11px] text-blue-400">📞 {a.contacto}</span>}
+                                </div>
+                              </div>
+                            </div>
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+
+                    {/* Resumen total */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 }}
+                      className="mt-5 bg-gradient-to-r from-emerald-950/30 to-emerald-900/10 border border-emerald-500/20 rounded-2xl p-6 text-center">
+                      <div className="text-[12px] text-emerald-400 uppercase tracking-widest font-bold mb-3">Impacto total del plan de acción</div>
+                      <div className="flex items-center justify-center gap-10">
+                        <div>
+                          <div className="text-[34px] font-extrabold text-emerald-400">$93,900</div>
+                          <div className="text-[11px] text-emerald-400/60">recuperables por día (acciones inmediatas)</div>
+                        </div>
+                        <div className="w-px h-14 bg-emerald-500/20" />
+                        <div>
+                          <div className="text-[34px] font-extrabold text-emerald-400">$1.32M</div>
+                          <div className="text-[11px] text-emerald-400/60">ahorro anual estimado (preventivas)</div>
+                        </div>
+                      </div>
+                      <div className="mt-5 text-[13px] text-emerald-300/80 font-medium italic">
+                        "Yo monitoreo el cumplimiento. Si algo no avanza, te aviso." — Iris
+                      </div>
+                    </motion.div>
+
+                    {/* Botón Histórico al fondo */}
+                    <div className="flex justify-center mt-6">
+                      <button onClick={() => setDeepDiveShowHistoric(!deepDiveShowHistoric)}
+                        className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-semibold transition-all border ${
+                          deepDiveShowHistoric
+                            ? 'bg-blue-500/15 border-blue-500/40 text-blue-400'
+                            : 'bg-white/[0.04] border-white/[0.08] text-white/70 hover:bg-white/[0.08] hover:text-white'
+                        }`}>
+                        📈 {deepDiveShowHistoric ? 'Ocultar Histórico' : 'Ver Histórico'}
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* ═══════════════════════════════════════════════════════ */}
+                {/* ═══════ DEEP DIVE COSTO / KM — 4 CAPAS ═══════ */}
+                {/* ═══════════════════════════════════════════════════════ */}
+
+                {/* ═══════ COSTO CAPA 0: HALLAZGO — DESCOMPOSICIÓN DEL SOBRECOSTO ═══════ */}
+                {deepDiveKpi === 'costo_km' && deepDiveLayer === 0 && (
+                  <motion.div key="ck-layer0" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}>
+                    {/* Iris narrativa */}
+                    <div className="bg-amber-500/[0.08] border border-amber-500/20 rounded-2xl p-6 mb-5">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg" style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>🧠</div>
+                        <div>
+                          <div className="text-[14px] font-bold text-amber-400 mb-1">Iris dice:</div>
+                          <p className="text-[15px] text-slate-200 leading-relaxed">{deepDiveData.iris_narrativa?.hallazgo_principal}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Descomposición del sobrecosto */}
+                    <h3 className="text-[16px] font-bold text-white mb-1">Descomposición del sobrecosto: <span className="text-red-400">${(deepDiveData.descomposicion_costo?.total_exceso_mensual || 0).toLocaleString()}/mes</span> sobre benchmark</h3>
+                    <p className="text-[13px] text-slate-400 mb-4">{deepDiveData.flota_km_mes?.toLocaleString()} km/mes · ${deepDiveData.gasto_total_mes?.toLocaleString()} gasto total</p>
+
+                    {/* Barra visual */}
+                    <div className="bg-white/[0.03] border border-white/[0.07] rounded-xl p-5 mb-4">
+                      <div className="flex items-center gap-1 mb-4">
+                        <div className="flex-1 h-12 rounded-lg overflow-hidden flex">
+                          {deepDiveData.descomposicion_costo?.categorias?.map((cat, ci) => (
+                            <div key={ci} className="h-full flex items-center justify-center text-[11px] font-bold text-white" style={{ width: `${cat.pct_del_exceso}%`, background: cat.color + '80' }}>
+                              {cat.pct_del_exceso}%
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="space-y-3">
+                        {deepDiveData.descomposicion_costo?.categorias?.map((cat, ci) => (
+                          <div key={ci} className="flex items-center gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] transition">
+                            <div className="text-3xl">{cat.icono}</div>
+                            <div className="flex-1">
+                              <div className="flex items-center gap-2">
+                                <span className="text-[15px] font-bold text-white">{cat.label}</span>
+                                <span className="text-[10px] px-2 py-0.5 rounded-full font-bold uppercase" style={{ background: cat.color + '20', color: cat.color }}>{cat.severidad}</span>
+                              </div>
+                              <div className="text-[12px] text-slate-400 mt-0.5">Actual: {cat.actual} · Benchmark: {cat.benchmark} · {cat.pct_del_exceso}% del exceso</div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-[24px] font-extrabold" style={{ color: cat.color }}>${cat.monto?.toLocaleString()}</div>
+                              <div className="text-[10px] text-slate-500">exceso/mes</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Hallazgo clave */}
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.5 }}
+                      className="bg-red-500/[0.08] border border-red-500/20 rounded-2xl p-5 mb-5">
+                      <div className="flex items-start gap-4">
+                        <div className="text-2xl mt-0.5">🚨</div>
+                        <div>
+                          <div className="text-[14px] font-bold text-red-400 mb-1">Hallazgo crítico</div>
+                          <p className="text-[14px] text-slate-200 leading-relaxed">
+                            De <strong className="text-white">120 unidades</strong>, solo <strong className="text-red-400">3 generan el 20.7% del exceso total</strong>.
+                            Cada una tiene una causa raíz distinta: inyectores, estilo de conducción, y ruta inadecuada.
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    <div className="flex justify-center">
+                      <button onClick={() => setDeepDiveLayer(1)}
+                        className="flex items-center gap-3 px-6 py-3 rounded-xl text-[14px] font-semibold transition-all bg-amber-500/15 border border-amber-500/30 text-amber-400 hover:bg-amber-500/25 hover:scale-[1.02]">
+                        <span>🔬</span> Siguiente: Ver causa raíz por unidad →
+                      </button>
+                    </div>
+                    <div className="flex justify-center mt-6">
+                      <button onClick={() => setDeepDiveShowHistoric(!deepDiveShowHistoric)}
+                        className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-semibold transition-all border ${deepDiveShowHistoric ? 'bg-blue-500/15 border-blue-500/40 text-blue-400' : 'bg-white/[0.04] border-white/[0.08] text-white/70 hover:bg-white/[0.08] hover:text-white'}`}>
+                        📈 {deepDiveShowHistoric ? 'Ocultar Histórico' : 'Ver Histórico'}
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* ═══════ COSTO CAPA 1: CAUSA RAÍZ POR UNIDAD ═══════ */}
+                {deepDiveKpi === 'costo_km' && deepDiveLayer === 1 && (
+                  <motion.div key="ck-layer1" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}>
+                    <div className="bg-amber-500/[0.06] border border-amber-500/15 rounded-2xl p-5 mb-5">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg" style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>🧠</div>
+                        <p className="text-[14px] text-slate-200 leading-relaxed">
+                          <span className="font-bold text-amber-400">Iris dice: </span>{deepDiveData.iris_narrativa?.revelacion}
+                        </p>
+                      </div>
+                    </div>
+
+                    <h3 className="text-[16px] font-bold text-white mb-1">Causa raíz — 3 unidades con costo anómalo</h3>
+                    <p className="text-[13px] text-slate-400 mb-5">Iris correlacionó telemetría ECU, SAP PM, GPS, TMS e inventarios para encontrar por qué cada unidad cuesta más.</p>
+
+                    <div className="space-y-3">
+                      {deepDiveData.unidades_anomalas?.map((u, ui) => {
+                        const isExpanded = deepDiveExpandedUnit === u.unidad;
+                        const causaIcon = u.causa_raiz === 'consumo_diesel' ? '⛽' : u.causa_raiz === 'correctivos_frecuentes' ? '🔧' : '🛞';
+                        const causaColor = u.causa_raiz === 'consumo_diesel' ? '#f59e0b' : u.causa_raiz === 'correctivos_frecuentes' ? '#ef4444' : '#8b5cf6';
+                        const causaLabel = u.causa_raiz === 'consumo_diesel' ? 'Sobreconsumo diesel' : u.causa_raiz === 'correctivos_frecuentes' ? 'Correctivos excesivos' : 'Desgaste llantas/ruta';
+                        return (
+                          <motion.div key={u.unidad} layout
+                            className={`bg-white/[0.03] border rounded-xl overflow-hidden transition-all ${isExpanded ? 'border-white/[0.15] ring-1 ring-white/[0.05]' : 'border-white/[0.07] hover:border-white/[0.12]'}`}>
+                            <div className="p-5 cursor-pointer" onClick={() => setDeepDiveExpandedUnit(isExpanded ? null : u.unidad)}>
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-4">
+                                  <div className="text-2xl">{causaIcon}</div>
+                                  <div>
+                                    <div className="flex items-center gap-2">
+                                      <span className="text-[15px] font-bold text-white">{u.unidad}</span>
+                                      <span className="text-[11px] text-slate-500">{u.modelo}</span>
+                                      <span className="text-[10px] px-2 py-0.5 rounded-full font-bold" style={{ background: causaColor + '20', color: causaColor }}>{causaLabel}</span>
+                                    </div>
+                                    <div className="text-[12px] text-slate-400 mt-0.5">{u.ruta_principal}</div>
+                                  </div>
+                                </div>
+                                <div className="flex items-center gap-5">
+                                  <div className="text-right">
+                                    <div className="text-[13px] font-bold text-red-400">${u.costo_km_actual}/km</div>
+                                    <div className="text-[10px] text-slate-500">Benchmark: ${u.costo_km_benchmark}/km · <span className="text-red-400 font-bold">+{u.exceso_pct}%</span></div>
+                                  </div>
+                                  <div className="text-[16px] font-extrabold text-red-400">${u.impacto_financiero?.exceso_mensual?.toLocaleString()}/mes</div>
+                                  <span className={`text-slate-400 transition-transform text-sm ${isExpanded ? 'rotate-90' : ''}`}>▶</span>
+                                </div>
+                              </div>
+                              <div className="mt-3 flex items-center gap-2">
+                                <div className="flex-1 h-2.5 bg-white/[0.05] rounded-full overflow-hidden">
+                                  <div className="h-full rounded-full" style={{ width: `${Math.min(100, (u.costo_km_actual / (u.costo_km_benchmark * 2)) * 100)}%`, background: `linear-gradient(to right, ${causaColor}80, ${causaColor})` }} />
+                                </div>
+                                <span className="text-[9px] text-slate-500 whitespace-nowrap">${u.costo_km_actual}/${(u.costo_km_benchmark * 2).toFixed(2)}</span>
+                              </div>
+                            </div>
+                            {isExpanded && (
+                              <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }}
+                                className="border-t border-white/[0.07] px-5 py-5 bg-white/[0.02]">
+                                <div className="mb-4 p-4 rounded-xl border-l-3" style={{ borderLeftWidth: 3, borderColor: causaColor, background: causaColor + '08' }}>
+                                  <p className="text-[13px] text-slate-200 leading-relaxed">{u.causa_detalle}</p>
+                                </div>
+                                <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-3">Correlación de fuentes</div>
+                                <div className="space-y-2">
+                                  {u.correlaciones?.map((cor, cori) => (
+                                    <div key={cori} className="flex items-start gap-3 text-[12px]">
+                                      <span className="px-2 py-0.5 rounded-md bg-blue-500/15 text-blue-400 font-bold flex-shrink-0 text-[10px]">{cor.fuente}</span>
+                                      <span className="text-slate-300">{cor.dato}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                                <div className="mt-4 grid grid-cols-3 gap-3">
+                                  {Object.entries(u.impacto_financiero?.desglose || {}).map(([k, v], di) => {
+                                    const labels = { diesel_exceso: 'Diesel exceso', correctivo_evitable: 'Correctivo evitable', desgaste_acelerado: 'Desgaste acelerado', correctivos_exceso: 'Correctivos exceso', diesel_estilo_conduccion: 'Diesel conducción', desgaste_componentes: 'Desgaste componentes', llantas_exceso: 'Llantas exceso', alineacion_extra: 'Alineación extra', diesel_ruta_lenta: 'Diesel ruta lenta' };
+                                    const colors = ['#ef4444', '#f59e0b', '#8b5cf6'];
+                                    return (
+                                      <div key={k} className="bg-white/[0.03] border border-white/[0.06] rounded-lg p-3 text-center">
+                                        <div className="text-[18px] font-extrabold" style={{ color: colors[di % 3] }}>${v?.toLocaleString()}</div>
+                                        <div className="text-[9px] text-slate-500 mt-0.5">{labels[k] || k}</div>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              </motion.div>
+                            )}
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+
+                    <div className="mt-5 flex justify-center">
+                      <button onClick={() => setDeepDiveLayer(2)}
+                        className="flex items-center gap-3 px-6 py-3 rounded-xl text-[14px] font-semibold transition-all bg-red-500/15 border border-red-500/30 text-red-400 hover:bg-red-500/25 hover:scale-[1.02]">
+                        <span>💰</span> Siguiente: Ver impacto financiero total →
+                      </button>
+                    </div>
+                    <div className="flex justify-center mt-6">
+                      <button onClick={() => setDeepDiveShowHistoric(!deepDiveShowHistoric)}
+                        className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-semibold transition-all border ${deepDiveShowHistoric ? 'bg-blue-500/15 border-blue-500/40 text-blue-400' : 'bg-white/[0.04] border-white/[0.08] text-white/70 hover:bg-white/[0.08] hover:text-white'}`}>
+                        📈 {deepDiveShowHistoric ? 'Ocultar Histórico' : 'Ver Histórico'}
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* ═══════ COSTO CAPA 2: IMPACTO FINANCIERO (TAXÍMETRO) ═══════ */}
+                {deepDiveKpi === 'costo_km' && deepDiveLayer === 2 && (
+                  <motion.div key="ck-layer2" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
+                    <div className="bg-red-500/[0.06] border border-red-500/15 rounded-2xl p-5 mb-5">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg" style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>🧠</div>
+                        <p className="text-[14px] text-slate-200 leading-relaxed">
+                          <span className="font-bold text-red-400">Iris dice: </span>{deepDiveData.iris_narrativa?.impacto}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="bg-gradient-to-br from-red-950/40 to-red-900/20 border border-red-500/20 rounded-2xl p-8 text-center mb-5">
+                      <div className="text-[11px] text-red-400 uppercase tracking-widest font-bold mb-3">Sobrecosto acumulado por encima del benchmark</div>
+                      <div className="text-[56px] font-extrabold text-red-400 leading-none tabular-nums tracking-tight">
+                        ${Math.round(deepDiveTaximeter).toLocaleString()}
+                        <span className="text-[18px] text-red-500/60 ml-2">MXN/mes</span>
+                      </div>
+                      <div className="text-[13px] text-red-400/60 mt-2 font-mono">+ ${Math.round(deepDiveData.resumen_financiero?.costo_por_hora_exceso || 0).toLocaleString()} MXN por hora</div>
+                      <div className="mt-4 flex items-center justify-center gap-2">
+                        <div className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
+                        <span className="text-[12px] text-red-400 font-semibold">Contando en tiempo real...</span>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-3 mb-5">
+                      {[
+                        { label: 'Proyección anual sin acción', value: `$${((deepDiveData.resumen_financiero?.proyeccion_anual_sin_accion || 0) / 1000000).toFixed(1)}M`, color: '#ef4444', icon: '📈' },
+                        { label: 'Ahorro potencial con acciones', value: `$${((deepDiveData.resumen_financiero?.ahorro_potencial_con_acciones || 0) / 1000000).toFixed(1)}M`, color: '#22c55e', icon: '💪' },
+                        { label: 'Exceso por día', value: `$${Math.round((deepDiveData.resumen_financiero?.costo_por_hora_exceso || 0) * 24).toLocaleString()}`, color: '#f59e0b', icon: '⏰' },
+                      ].map((p, pi) => (
+                        <div key={pi} className="bg-white/[0.04] border border-white/[0.07] rounded-xl p-5 text-center">
+                          <span className="text-xl">{p.icon}</span>
+                          <div className="text-[28px] font-extrabold mt-2" style={{ color: p.color }}>{p.value}</div>
+                          <div className="text-[11px] text-slate-400 mt-1 font-medium">{p.label}</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="bg-white/[0.03] border border-white/[0.07] rounded-xl p-5 mb-5">
+                      <div className="text-[12px] font-bold text-slate-400 uppercase tracking-wider mb-3">Exceso por unidad anómala</div>
+                      {deepDiveData.unidades_anomalas?.map((u, ui) => (
+                        <div key={ui} className="flex items-center justify-between py-3 border-b border-white/[0.04] last:border-b-0">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[13px] font-bold text-white">{u.unidad}</span>
+                            <span className="text-[11px] text-slate-500">{u.ruta_principal}</span>
+                          </div>
+                          <div className="text-[16px] font-extrabold text-red-400">${u.impacto_financiero?.exceso_mensual?.toLocaleString()}/mes</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="flex justify-center">
+                      <button onClick={() => setDeepDiveLayer(3)}
+                        className="flex items-center gap-3 px-6 py-3 rounded-xl text-[14px] font-semibold transition-all bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/25 hover:scale-[1.02]">
+                        <span>⚡</span> Siguiente: Plan de acción concreto →
+                      </button>
+                    </div>
+                    <div className="flex justify-center mt-6">
+                      <button onClick={() => setDeepDiveShowHistoric(!deepDiveShowHistoric)}
+                        className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-semibold transition-all border ${deepDiveShowHistoric ? 'bg-blue-500/15 border-blue-500/40 text-blue-400' : 'bg-white/[0.04] border-white/[0.08] text-white/70 hover:bg-white/[0.08] hover:text-white'}`}>
+                        📈 {deepDiveShowHistoric ? 'Ocultar Histórico' : 'Ver Histórico'}
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* ═══════ COSTO CAPA 3: ACCIONES Y PREVENCIÓN ═══════ */}
+                {deepDiveKpi === 'costo_km' && deepDiveLayer === 3 && (
+                  <motion.div key="ck-layer3" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}>
+                    <div className="bg-emerald-500/[0.06] border border-emerald-500/15 rounded-2xl p-5 mb-5">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg" style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>🧠</div>
+                        <p className="text-[14px] text-slate-200 leading-relaxed">
+                          <span className="font-bold text-emerald-400">Iris dice: </span>{deepDiveData.iris_narrativa?.cierre}
+                        </p>
+                      </div>
+                    </div>
+
+                    <h3 className="text-[16px] font-bold text-white mb-1">Plan de Acción — Iris recomienda</h3>
+                    <p className="text-[13px] text-slate-400 mb-5">{deepDiveData.acciones?.length} acciones ordenadas por impacto y facilidad de ejecución.</p>
+
+                    <div className="space-y-3">
+                      {deepDiveData.acciones?.map((a, ai) => {
+                        const typeColor = a.tipo === 'inmediata' ? '#22c55e' : a.tipo === 'escalamiento' ? '#f59e0b' : '#8b5cf6';
+                        const typeIcon = a.tipo === 'inmediata' ? '⚡' : a.tipo === 'escalamiento' ? '📢' : '🛡️';
+                        return (
+                          <motion.div key={ai} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: ai * 0.12 }}
+                            className="bg-white/[0.03] border border-white/[0.07] rounded-xl p-5 hover:bg-white/[0.05] transition-all">
+                            <div className="flex items-start gap-4">
+                              <div className="flex-shrink-0">
+                                <div className="w-11 h-11 rounded-xl flex items-center justify-center text-xl font-bold" style={{ background: typeColor + '15', border: `1px solid ${typeColor}40` }}>{typeIcon}</div>
+                              </div>
+                              <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                  <span className="text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase" style={{ background: typeColor + '20', color: typeColor }}>P{a.prioridad} · {a.tipo}</span>
+                                  {a.unidad !== 'FLOTA' && a.unidad !== 'SISTEMA' && <span className="text-[11px] text-slate-500">Unidad: {a.unidad}</span>}
+                                </div>
+                                <div className="text-[14px] font-bold text-white mb-1">{a.accion}</div>
+                                <p className="text-[12px] text-slate-400 leading-relaxed">{a.detalle}</p>
+                                <div className="flex items-center gap-5 mt-3">
+                                  <span className="text-[12px] font-bold" style={{ color: typeColor }}>Ahorro: ${(a.ahorro_estimado || 0).toLocaleString()} {a.ahorro_unidad}</span>
+                                  <span className="text-[11px] text-slate-500">👤 {a.responsable}</span>
+                                  {a.contacto && <span className="text-[11px] text-blue-400">📞 {a.contacto}</span>}
+                                </div>
+                              </div>
+                            </div>
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
+                      className="mt-5 bg-gradient-to-r from-emerald-950/30 to-emerald-900/10 border border-emerald-500/20 rounded-2xl p-6 text-center">
+                      <div className="text-[12px] text-emerald-400 uppercase tracking-widest font-bold mb-3">Impacto total del plan de acción</div>
+                      <div className="flex items-center justify-center gap-10">
+                        <div>
+                          <div className="text-[34px] font-extrabold text-emerald-400">$34,850</div>
+                          <div className="text-[11px] text-emerald-400/60">recuperables por mes (acciones inmediatas)</div>
+                        </div>
+                        <div className="w-px h-14 bg-emerald-500/20" />
+                        <div>
+                          <div className="text-[34px] font-extrabold text-emerald-400">$1.25M</div>
+                          <div className="text-[11px] text-emerald-400/60">ahorro anual estimado (con programa scoring)</div>
+                        </div>
+                      </div>
+                      <div className="mt-5 text-[13px] text-emerald-300/80 font-medium italic">
+                        "Monitoreo cada centavo. Si el costo/km sube, te aviso antes de que sea tarde." — Iris
+                      </div>
+                    </motion.div>
+
+                    <div className="flex justify-center mt-6">
+                      <button onClick={() => setDeepDiveShowHistoric(!deepDiveShowHistoric)}
+                        className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-semibold transition-all border ${deepDiveShowHistoric ? 'bg-blue-500/15 border-blue-500/40 text-blue-400' : 'bg-white/[0.04] border-white/[0.08] text-white/70 hover:bg-white/[0.08] hover:text-white'}`}>
+                        📈 {deepDiveShowHistoric ? 'Ocultar Histórico' : 'Ver Histórico'}
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* ═══════════════════════════════════════════════════════ */}
+                {/* ═══════ DEEP DIVE ACTIVOS CRÍTICOS — 4 CAPAS ═══════ */}
+                {/* ═══════════════════════════════════════════════════════ */}
+
+                {/* ═══════ ACTIVOS CAPA 0: HALLAZGO — CLASIFICACIÓN DE CRÍTICOS ═══════ */}
+                {deepDiveKpi === 'activos_criticos' && deepDiveLayer === 0 && (
+                  <motion.div key="ac-layer0" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}>
+                    {/* Iris narrativa */}
+                    <div className="bg-red-500/[0.08] border border-red-500/20 rounded-2xl p-6 mb-5">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg" style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>🧠</div>
+                        <div>
+                          <div className="text-[14px] font-bold text-red-400 mb-1">Iris dice:</div>
+                          <p className="text-[15px] text-slate-200 leading-relaxed">{deepDiveData.iris_narrativa?.hallazgo_principal}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Clasificación de críticos */}
+                    <h3 className="text-[16px] font-bold text-white mb-1">Clasificación: <span className="text-red-400">{deepDiveData.clasificacion_criticos?.total} activos críticos</span> de {deepDiveData.total_flota}</h3>
+                    <p className="text-[13px] text-slate-400 mb-4">Cada activo tiene un nivel de severidad diferente y una ventana de acción distinta.</p>
+
+                    {/* Barra visual severidad */}
+                    <div className="bg-white/[0.03] border border-white/[0.07] rounded-xl p-5 mb-4">
+                      <div className="flex items-center gap-1 mb-4">
+                        <div className="flex-1 h-12 rounded-lg overflow-hidden flex">
+                          {deepDiveData.clasificacion_criticos?.categorias?.map((cat, ci) => (
+                            <div key={ci} className="h-full flex items-center justify-center text-[13px] font-bold text-white" style={{ width: `${(cat.cantidad / deepDiveData.clasificacion_criticos.total) * 100}%`, background: cat.color + '80' }}>
+                              {cat.cantidad}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="space-y-3">
+                        {deepDiveData.clasificacion_criticos?.categorias?.map((cat, ci) => (
+                          <div key={ci} className="flex items-center gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] transition">
+                            <div className="text-3xl">{cat.icono}</div>
+                            <div className="flex-1">
+                              <div className="flex items-center gap-2">
+                                <span className="text-[15px] font-bold text-white">{cat.label}</span>
+                                <span className="text-[10px] px-2 py-0.5 rounded-full font-bold uppercase" style={{ background: cat.color + '20', color: cat.color }}>{cat.severidad}</span>
+                              </div>
+                              <div className="text-[12px] text-slate-400 mt-0.5">{cat.descripcion}</div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-[32px] font-extrabold" style={{ color: cat.color }}>{cat.cantidad}</div>
+                              <div className="text-[10px] text-slate-500">unidad{cat.cantidad > 1 ? 'es' : ''}</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Hallazgo clave */}
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.5 }}
+                      className="bg-red-500/[0.08] border border-red-500/20 rounded-2xl p-5 mb-5">
+                      <div className="flex items-start gap-4">
+                        <div className="text-2xl mt-0.5">🚨</div>
+                        <div>
+                          <div className="text-[14px] font-bold text-red-400 mb-1">Alerta crítica</div>
+                          <p className="text-[14px] text-slate-200 leading-relaxed">
+                            <strong className="text-red-400">1 unidad requiere reemplazo HOY</strong> — su costo de mantenimiento ya supera el costo de un activo nuevo.
+                            <strong className="text-amber-400"> 1 unidad puede fallar en 15-30 días</strong> si no se interviene.
+                            La tercera se degrada silenciosamente.
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    <div className="flex justify-center">
+                      <button onClick={() => setDeepDiveLayer(1)}
+                        className="flex items-center gap-3 px-6 py-3 rounded-xl text-[14px] font-semibold transition-all bg-red-500/15 border border-red-500/30 text-red-400 hover:bg-red-500/25 hover:scale-[1.02]">
+                        <span>🔬</span> Siguiente: Análisis por activo →
+                      </button>
+                    </div>
+                    <div className="flex justify-center mt-6">
+                      <button onClick={() => setDeepDiveShowHistoric(!deepDiveShowHistoric)}
+                        className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-semibold transition-all border ${deepDiveShowHistoric ? 'bg-blue-500/15 border-blue-500/40 text-blue-400' : 'bg-white/[0.04] border-white/[0.08] text-white/70 hover:bg-white/[0.08] hover:text-white'}`}>
+                        📈 {deepDiveShowHistoric ? 'Ocultar Histórico' : 'Ver Histórico'}
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* ═══════ ACTIVOS CAPA 1: CAUSA RAÍZ POR ACTIVO ═══════ */}
+                {deepDiveKpi === 'activos_criticos' && deepDiveLayer === 1 && (
+                  <motion.div key="ac-layer1" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}>
+                    <div className="bg-red-500/[0.06] border border-red-500/15 rounded-2xl p-5 mb-5">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg" style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>🧠</div>
+                        <p className="text-[14px] text-slate-200 leading-relaxed">
+                          <span className="font-bold text-red-400">Iris dice: </span>{deepDiveData.iris_narrativa?.revelacion}
+                        </p>
+                      </div>
+                    </div>
+
+                    <h3 className="text-[16px] font-bold text-white mb-1">Análisis por activo crítico</h3>
+                    <p className="text-[13px] text-slate-400 mb-5">Iris correlacionó SAP PM, telemétrica, análisis de aceite, valuaciones y benchmarks para cada unidad.</p>
+
+                    <div className="space-y-3">
+                      {deepDiveData.activos?.map((u, ui) => {
+                        const isExpanded = deepDiveExpandedUnit === u.unidad;
+                        const estadoIcon = u.estado === 'reemplazo_inmediato' ? '🔴' : u.estado === 'falla_inminente' ? '🟠' : '🟡';
+                        return (
+                          <motion.div key={u.unidad} layout
+                            className={`bg-white/[0.03] border rounded-xl overflow-hidden transition-all ${isExpanded ? 'border-white/[0.15] ring-1 ring-white/[0.05]' : 'border-white/[0.07] hover:border-white/[0.12]'}`}>
+                            <div className="p-5 cursor-pointer" onClick={() => setDeepDiveExpandedUnit(isExpanded ? null : u.unidad)}>
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-4">
+                                  <div className="text-2xl">{estadoIcon}</div>
+                                  <div>
+                                    <div className="flex items-center gap-2">
+                                      <span className="text-[15px] font-bold text-white">{u.unidad}</span>
+                                      <span className="text-[11px] text-slate-500">{u.modelo}</span>
+                                      <span className="text-[10px] px-2 py-0.5 rounded-full font-bold" style={{ background: u.estado_color + '20', color: u.estado_color }}>{u.estado_label}</span>
+                                    </div>
+                                    <div className="text-[12px] text-slate-400 mt-0.5">{u.ruta_principal} · {u.km_acumulados?.toLocaleString()} km · {u.edad_anos} años</div>
+                                  </div>
+                                </div>
+                                <div className="flex items-center gap-5">
+                                  <div className="text-right">
+                                    <div className="text-[13px] font-bold" style={{ color: u.estado_color }}>{u.pct_vida_util}% vida útil</div>
+                                    <div className="text-[10px] text-slate-500">Mtto 6m: ${u.costo_mtto_6m?.toLocaleString()} <span style={{ color: u.estado_color }}>(benchmark: ${u.costo_mtto_benchmark_6m?.toLocaleString()})</span></div>
+                                  </div>
+                                  <div className="text-[16px] font-extrabold" style={{ color: u.estado_color }}>${u.impacto_financiero?.sobrecosto_mensual?.toLocaleString()}/mes</div>
+                                  <span className={`text-slate-400 transition-transform text-sm ${isExpanded ? 'rotate-90' : ''}`}>▶</span>
+                                </div>
+                              </div>
+                              {/* Barra vida útil */}
+                              <div className="mt-3 flex items-center gap-2">
+                                <div className="flex-1 h-2.5 bg-white/[0.05] rounded-full overflow-hidden">
+                                  <div className="h-full rounded-full" style={{ width: `${Math.min(100, u.pct_vida_util)}%`, background: `linear-gradient(to right, ${u.estado_color}80, ${u.estado_color})` }} />
+                                </div>
+                                <span className="text-[9px] text-slate-500 whitespace-nowrap">{u.pct_vida_util}% / 100%</span>
+                              </div>
+                            </div>
+                            {isExpanded && (
+                              <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }}
+                                className="border-t border-white/[0.07] px-5 py-5 bg-white/[0.02]">
+                                <div className="mb-4 p-4 rounded-xl border-l-3" style={{ borderLeftWidth: 3, borderColor: u.estado_color, background: u.estado_color + '08' }}>
+                                  <p className="text-[13px] text-slate-200 leading-relaxed">{u.causa_detalle}</p>
+                                </div>
+                                <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-3">Correlación de fuentes</div>
+                                <div className="space-y-2">
+                                  {u.correlaciones?.map((cor, cori) => (
+                                    <div key={cori} className="flex items-start gap-3 text-[12px]">
+                                      <span className="px-2 py-0.5 rounded-md bg-blue-500/15 text-blue-400 font-bold flex-shrink-0 text-[10px]">{cor.fuente}</span>
+                                      <span className="text-slate-300">{cor.dato}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                                <div className="mt-4 grid grid-cols-2 gap-3">
+                                  {Object.entries(u.impacto_financiero?.desglose || {}).map(([k, v], di) => {
+                                    const labels = { correctivos_exceso: 'Correctivos exceso', diesel_sobreconsumo: 'Diesel sobreconsumo', inactividad_perdida: 'Inactividad', costo_oportunidad: 'Costo oportunidad', mtto_exceso: 'Mtto exceso', riesgo_correctivo_carretera: 'Riesgo carretera', inactividad_si_falla: 'Inactividad si falla', diesel_ineficiencia_trans: 'Diesel ineficiencia', mtto_exceso_actual: 'Mtto exceso', riesgo_sobrecalentamiento: 'Riesgo sobretemp.', diesel_temp_elevada: 'Diesel temp. alta', frenos_regen_ineficiencia: 'Frenos regen' };
+                                    const colors = ['#ef4444', '#f59e0b', '#8b5cf6', '#3b82f6'];
+                                    return (
+                                      <div key={k} className="bg-white/[0.03] border border-white/[0.06] rounded-lg p-3 text-center">
+                                        <div className="text-[18px] font-extrabold" style={{ color: colors[di % 4] }}>${v?.toLocaleString()}</div>
+                                        <div className="text-[9px] text-slate-500 mt-0.5">{labels[k] || k}</div>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              </motion.div>
+                            )}
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+
+                    <div className="mt-5 flex justify-center">
+                      <button onClick={() => setDeepDiveLayer(2)}
+                        className="flex items-center gap-3 px-6 py-3 rounded-xl text-[14px] font-semibold transition-all bg-red-500/15 border border-red-500/30 text-red-400 hover:bg-red-500/25 hover:scale-[1.02]">
+                        <span>💰</span> Siguiente: Ver impacto financiero total →
+                      </button>
+                    </div>
+                    <div className="flex justify-center mt-6">
+                      <button onClick={() => setDeepDiveShowHistoric(!deepDiveShowHistoric)}
+                        className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-semibold transition-all border ${deepDiveShowHistoric ? 'bg-blue-500/15 border-blue-500/40 text-blue-400' : 'bg-white/[0.04] border-white/[0.08] text-white/70 hover:bg-white/[0.08] hover:text-white'}`}>
+                        📈 {deepDiveShowHistoric ? 'Ocultar Histórico' : 'Ver Histórico'}
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* ═══════ ACTIVOS CAPA 2: IMPACTO FINANCIERO (TAXÍMETRO) ═══════ */}
+                {deepDiveKpi === 'activos_criticos' && deepDiveLayer === 2 && (
+                  <motion.div key="ac-layer2" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
+                    <div className="bg-red-500/[0.06] border border-red-500/15 rounded-2xl p-5 mb-5">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg" style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>🧠</div>
+                        <p className="text-[14px] text-slate-200 leading-relaxed">
+                          <span className="font-bold text-red-400">Iris dice: </span>{deepDiveData.iris_narrativa?.impacto}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="bg-gradient-to-br from-red-950/40 to-red-900/20 border border-red-500/20 rounded-2xl p-8 text-center mb-5">
+                      <div className="text-[11px] text-red-400 uppercase tracking-widest font-bold mb-3">Costo de inactividad + sobrecosto de mantenimiento</div>
+                      <div className="text-[56px] font-extrabold text-red-400 leading-none tabular-nums tracking-tight">
+                        ${Math.round(deepDiveTaximeter).toLocaleString()}
+                        <span className="text-[18px] text-red-500/60 ml-2">MXN/mes</span>
+                      </div>
+                      <div className="text-[13px] text-red-400/60 mt-2 font-mono">+ ${Math.round(deepDiveData.resumen_financiero?.costo_por_hora_inactividad || 0).toLocaleString()} MXN por hora</div>
+                      <div className="mt-4 flex items-center justify-center gap-2">
+                        <div className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
+                        <span className="text-[12px] text-red-400 font-semibold">Contando en tiempo real...</span>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-3 mb-5">
+                      {[
+                        { label: 'Proyección anual sin acción', value: `$${((deepDiveData.resumen_financiero?.proyeccion_anual_sin_accion || 0) / 1000).toFixed(0)}K`, color: '#ef4444', icon: '📈' },
+                        { label: 'Ahorro potencial', value: `$${((deepDiveData.resumen_financiero?.ahorro_potencial_con_acciones || 0) / 1000).toFixed(0)}K`, color: '#22c55e', icon: '💪' },
+                        { label: 'Días inactivos (trim)', value: `${deepDiveData.resumen_financiero?.dias_inactivos_flota_trim || 0}d`, color: '#f59e0b', icon: '⏰' },
+                      ].map((p, pi) => (
+                        <div key={pi} className="bg-white/[0.04] border border-white/[0.07] rounded-xl p-5 text-center">
+                          <span className="text-xl">{p.icon}</span>
+                          <div className="text-[28px] font-extrabold mt-2" style={{ color: p.color }}>{p.value}</div>
+                          <div className="text-[11px] text-slate-400 mt-1 font-medium">{p.label}</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="bg-white/[0.03] border border-white/[0.07] rounded-xl p-5 mb-5">
+                      <div className="text-[12px] font-bold text-slate-400 uppercase tracking-wider mb-3">Impacto por activo crítico</div>
+                      {deepDiveData.activos?.map((u, ui) => (
+                        <div key={ui} className="flex items-center justify-between py-3 border-b border-white/[0.04] last:border-b-0">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[13px] font-bold text-white">{u.unidad}</span>
+                            <span className="text-[10px] px-2 py-0.5 rounded-full font-bold" style={{ background: u.estado_color + '20', color: u.estado_color }}>{u.estado_label}</span>
+                          </div>
+                          <div className="flex items-center gap-4">
+                            <span className="text-[11px] text-slate-500">{u.modelo}</span>
+                            <div className="text-[16px] font-extrabold text-red-400">${u.impacto_financiero?.sobrecosto_mensual?.toLocaleString()}/mes</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Inversión vs Retorno */}
+                    <div className="bg-white/[0.03] border border-white/[0.07] rounded-xl p-5 mb-5">
+                      <div className="text-[12px] font-bold text-slate-400 uppercase tracking-wider mb-3">Inversión requerida vs retorno</div>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="text-center">
+                          <div className="text-[28px] font-extrabold text-amber-400">${((deepDiveData.resumen_financiero?.inversion_requerida || 0) / 1000000).toFixed(1)}M</div>
+                          <div className="text-[11px] text-slate-400">Inversión total</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-[28px] font-extrabold text-emerald-400">{((deepDiveData.resumen_financiero?.roi_primer_ano || 0) * 100).toFixed(0)}%</div>
+                          <div className="text-[11px] text-slate-400">ROI primer año</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-center">
+                      <button onClick={() => setDeepDiveLayer(3)}
+                        className="flex items-center gap-3 px-6 py-3 rounded-xl text-[14px] font-semibold transition-all bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/25 hover:scale-[1.02]">
+                        <span>⚡</span> Siguiente: Plan de acción concreto →
+                      </button>
+                    </div>
+                    <div className="flex justify-center mt-6">
+                      <button onClick={() => setDeepDiveShowHistoric(!deepDiveShowHistoric)}
+                        className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-semibold transition-all border ${deepDiveShowHistoric ? 'bg-blue-500/15 border-blue-500/40 text-blue-400' : 'bg-white/[0.04] border-white/[0.08] text-white/70 hover:bg-white/[0.08] hover:text-white'}`}>
+                        📈 {deepDiveShowHistoric ? 'Ocultar Histórico' : 'Ver Histórico'}
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* ═══════ ACTIVOS CAPA 3: ACCIONES Y DECISIONES ═══════ */}
+                {deepDiveKpi === 'activos_criticos' && deepDiveLayer === 3 && (
+                  <motion.div key="ac-layer3" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}>
+                    <div className="bg-emerald-500/[0.06] border border-emerald-500/15 rounded-2xl p-5 mb-5">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg" style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>🧠</div>
+                        <p className="text-[14px] text-slate-200 leading-relaxed">
+                          <span className="font-bold text-emerald-400">Iris dice: </span>{deepDiveData.iris_narrativa?.cierre}
+                        </p>
+                      </div>
+                    </div>
+
+                    <h3 className="text-[16px] font-bold text-white mb-1">Plan de Acción — Iris recomienda</h3>
+                    <p className="text-[13px] text-slate-400 mb-5">{deepDiveData.acciones?.length} acciones ordenadas por urgencia e impacto financiero.</p>
+
+                    <div className="space-y-3">
+                      {deepDiveData.acciones?.map((a, ai) => {
+                        const typeColor = a.tipo === 'urgente' ? '#ef4444' : a.tipo === 'inmediata' ? '#f59e0b' : '#8b5cf6';
+                        const typeIcon = a.tipo === 'urgente' ? '🚨' : a.tipo === 'inmediata' ? '⚡' : '🛡️';
+                        return (
+                          <motion.div key={ai} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: ai * 0.12 }}
+                            className="bg-white/[0.03] border border-white/[0.07] rounded-xl p-5 hover:bg-white/[0.05] transition-all">
+                            <div className="flex items-start gap-4">
+                              <div className="flex-shrink-0">
+                                <div className="w-11 h-11 rounded-xl flex items-center justify-center text-xl font-bold" style={{ background: typeColor + '15', border: `1px solid ${typeColor}40` }}>{typeIcon}</div>
+                              </div>
+                              <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                  <span className="text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase" style={{ background: typeColor + '20', color: typeColor }}>P{a.prioridad} · {a.tipo}</span>
+                                  {a.unidad !== 'SISTEMA' && <span className="text-[11px] text-slate-500">Unidad: {a.unidad}</span>}
+                                </div>
+                                <div className="text-[14px] font-bold text-white mb-1">{a.accion}</div>
+                                <p className="text-[12px] text-slate-400 leading-relaxed">{a.detalle}</p>
+                                <div className="flex items-center gap-5 mt-3">
+                                  <span className="text-[12px] font-bold" style={{ color: typeColor }}>Ahorro/riesgo evitado: ${(a.ahorro_estimado || 0).toLocaleString()} {a.ahorro_unidad}</span>
+                                  <span className="text-[11px] text-slate-500">👤 {a.responsable}</span>
+                                  {a.contacto && <span className="text-[11px] text-blue-400">📞 {a.contacto}</span>}
+                                </div>
+                              </div>
+                            </div>
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
+                      className="mt-5 bg-gradient-to-r from-emerald-950/30 to-emerald-900/10 border border-emerald-500/20 rounded-2xl p-6 text-center">
+                      <div className="text-[12px] text-emerald-400 uppercase tracking-widest font-bold mb-3">Impacto total del plan de acción</div>
+                      <div className="flex items-center justify-center gap-10">
+                        <div>
+                          <div className="text-[34px] font-extrabold text-emerald-400">$520K</div>
+                          <div className="text-[11px] text-emerald-400/60">ahorro anual con todas las acciones</div>
+                        </div>
+                        <div className="w-px h-14 bg-emerald-500/20" />
+                        <div>
+                          <div className="text-[34px] font-extrabold text-emerald-400">118%</div>
+                          <div className="text-[11px] text-emerald-400/60">ROI primer año de la inversión</div>
+                        </div>
+                      </div>
+                      <div className="mt-5 text-[13px] text-emerald-300/80 font-medium italic">
+                        "Cada activo tiene un ciclo de vida óptimo. Mi trabajo es decirte cuándo es el momento exacto de actuar — ni antes ni después." — Iris
+                      </div>
+                    </motion.div>
+
+                    <div className="flex justify-center mt-6">
+                      <button onClick={() => setDeepDiveShowHistoric(!deepDiveShowHistoric)}
+                        className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-semibold transition-all border ${deepDiveShowHistoric ? 'bg-blue-500/15 border-blue-500/40 text-blue-400' : 'bg-white/[0.04] border-white/[0.08] text-white/70 hover:bg-white/[0.08] hover:text-white'}`}>
+                        📈 {deepDiveShowHistoric ? 'Ocultar Histórico' : 'Ver Histórico'}
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+
+              </AnimatePresence>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ====== BOTTOM: NARRATOR + ROLES ====== */}
+      <div className="flex-shrink-0 border-t border-white/[0.08]" style={{ background: 'rgba(2,6,23,0.85)', backdropFilter: 'blur(20px)' }}>
+        {/* Narrator Bar */}
+        <div className="px-7 py-2.5 border-b border-white/[0.05] flex items-center gap-3 min-h-[36px]">
+          <span className="text-sm flex-shrink-0">🤖</span>
+          <span className="text-[11px] font-bold text-blue-400 flex-shrink-0">¿{homeNarrQuestions[homeNarrIdx % homeNarrQuestions.length].q.replace('¿','')}</span>
+          <span className="text-[11px] text-slate-400 leading-relaxed truncate">
+            {homeNarrText}{homeNarrTyping && <span className="inline-block w-0.5 h-3 bg-blue-400 ml-0.5 animate-pulse align-middle" />}
+          </span>
+        </div>
+        {/* Role Tabs */}
+        <div className="px-7 py-2.5 flex items-center justify-between">
+          <div className="flex items-center gap-1.5">
+            {[
+              { role: 'monitorista', icon: '🖥️', label: 'Monitorista' },
+              { role: 'supervisor', icon: '👁️', label: 'Supervisor' },
+              { role: 'jefetaller', icon: '🔧', label: 'Jefe Taller' },
+              { role: 'gerenteflota', icon: '📊', label: 'Gerente Flota' },
+              { role: 'director', icon: '🏛️', label: 'Director / CFO' },
+            ].map((r, i) => (
+              <motion.button key={r.role}
+                onClick={() => { playHomeSound('click'); setUserRole(r.role); }}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[11px] font-semibold transition-all ${i === 0 ? 'bg-blue-600/20 border border-blue-500/40 text-blue-300' : 'bg-white/[0.04] border border-white/[0.08] text-slate-400 hover:bg-white/[0.08] hover:text-slate-200'}`}
+                whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                <span>{r.icon}</span><span>{r.label}</span>
+              </motion.button>
+            ))}
+          </div>
+          <div className="text-[10px] text-slate-600">Powered by <span className="text-slate-400 font-semibold">Iris Fleet Intelligence</span> · v3.0 Torre de Control 360°</div>
+        </div>
+      </div>
+    </div>
+      )}
+
+      {userRole === 'monitorista' && (<>
+    <div className="h-screen w-screen overflow-hidden bg-gray-100 relative">
+      {/* Background: Google Maps satellite + polígono geocerca when selected, else time-of-day */}
+      {step >= 4 && step <= 7 ? (() => {
+        const _selZ = zones.find(z => z.id === selectedZone) || zones[(selectedZone || 1) - 1] || zones[0];
+        return (
+          <GeoMapBackground
+            lat={_selZ?.lat}
+            lng={_selZ?.lng}
+            radioMetros={_selZ?.radioMetros}
+            zoneName={_selZ?.name}
+            zoneType={_selZ?.type}
+          />
+        );
+      })() : (
+        <motion.div className="absolute inset-0 bg-cover bg-center transition-all duration-700" style={{ backgroundImage: `url(${getTimeOfDayBackground()})` }} />
+      )}
+      {step <= 1 && (<>
+        <div className="absolute inset-0 bg-black/60 z-[1]" />
+        <div className="absolute inset-0 flex items-center justify-center z-[2] pointer-events-none">
+          <motion.div key={currentMessage} className="text-center max-w-2xl px-8" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.5 }}>
+            <p className="text-white text-2xl font-light leading-relaxed drop-shadow-lg" style={{ textShadow: '0 2px 20px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,1)' }}>{mindfulMessages[currentMessage].text}</p>
+            {mindfulMessages[currentMessage].sub && <p className="text-blue-200 text-sm font-semibold mt-3 drop-shadow-lg" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.6)' }}>{mindfulMessages[currentMessage].sub}</p>}
+            <div className="mt-6 flex items-center justify-center space-x-2"><div className="w-1.5 h-1.5 bg-blue-300 rounded-full opacity-80" /><p className="text-blue-200 text-xs opacity-90" style={{ textShadow: '0 1px 8px rgba(0,0,0,0.9)' }}>{getTimeGreeting()}, Cruz</p><div className="w-1.5 h-1.5 bg-blue-300 rounded-full opacity-80" /></div>
+          </motion.div>
+        </div>
+      </>)}
+
+
+      {/* CAMBIO #8: Menú Principal con hover expandible */}
+      <motion.div 
+        className="absolute left-0 top-0 h-full bg-gray-800 shadow-lg z-10 flex"
+        initial={{ x: -100 }}
+        animate={{ x: 0, width: showLeftMenu ? '240px' : '64px' }}
+        onMouseEnter={() => setShowLeftMenu(true)}
+        onMouseLeave={() => setShowLeftMenu(false)}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="w-16 flex flex-col items-center pt-[63px] space-y-[18px]">
+          {/* Enfoques */}
+          {menuSections.enfoques.map((item, idx) => {
+            const Icon = item.icon;
+            return <Icon key={idx} onClick={() => { if (item.label === 'Configuración') setShowConfigModal(true); if (item.label === 'Administración') setShowAdminPanel(true); }} className="w-6 h-6 text-white cursor-pointer drop-shadow-lg hover:text-blue-300 transition" />;
+          })}
+          
+          <div className="w-8 h-px bg-gray-600" />
+
+
+
+{/* Espacio adicional antes de GESTIÓN */}
+<div className="mt-[40px]" />
+          
+          {/* Gestión */}
+          {menuSections.gestion.map((item, idx) => {
+            const Icon = item.icon;
+            return <Icon key={idx} onClick={() => { if (item.label === 'Configuración') setShowConfigModal(true); if (item.label === 'Administración') setShowAdminPanel(true); }} className="w-6 h-6 text-white cursor-pointer drop-shadow-lg hover:text-blue-300 transition" />;
+          })}
+        </div>
+
+
+        {/* Panel expandido con nombres */}
+        <AnimatePresence>
+          {showLeftMenu && (
+            <motion.div
+              className="flex-1 pt-6 pr-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider px-2 mb-[14px] mt-0">Enfoques</h3>
+                  {menuSections.enfoques.map((item, idx) => (
+                    <button 
+                      key={idx}
+                      className="w-full text-left px-2 py-[6px] text-sm text-white font-semibold hover:bg-gray-700 rounded transition"
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+
+
+                <div className="space-y-2">
+                  <h3 className="text-xs font-bold text-white opacity-60 uppercase tracking-wider px-2 mb-[14px] mt-0">Gestión</h3>
+                  {menuSections.gestion.map((item, idx) => (
+                    <button 
+                      key={idx}
+                      onClick={() => { if (item.label === 'Configuración') setShowConfigModal(true); if (item.label === 'Administración') setShowAdminPanel(true); }}
+                      className={`w-full text-left px-2 py-2 text-sm text-white font-semibold rounded transition drop-shadow ${item.label === 'Configuración' ? 'hover:bg-white hover:bg-opacity-30 bg-white bg-opacity-10' : 'hover:bg-white hover:bg-opacity-20'}`}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+
+
+      {/* Seguridad de la Flota */}
+      {!showChat && (
+        <motion.div 
+          className="absolute left-20 top-6 w-80 bg-white bg-opacity-20 backdrop-blur-lg rounded-lg shadow-xl z-20 p-4"
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ 
+            x: (showRightPanel && !isLeftMenuHovered) ? -320 : showLeftMenu ? 176 : 0,
+            opacity: (showRightPanel && !isLeftMenuHovered) ? 0 : 1 
+          }}
+          transition={{ duration: 0.3 }}
+          onMouseEnter={() => setIsLeftMenuHovered(true)}
+          onMouseLeave={() => setIsLeftMenuHovered(false)}
+        >
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-bold text-white drop-shadow-lg">Enfoques</h2>
+            <span className="text-sm text-white opacity-80"></span>
+          </div>
+
+
+          <div className="bg-blue-600 bg-opacity-30 backdrop-blur-sm border-2 border-blue-300 border-opacity-50 rounded-lg p-3 mb-3">
+            <div className="flex items-center mb-2">
+              <Shield className="w-5 h-5 text-white mr-2 drop-shadow-lg" />
+              <span className="font-bold text-white drop-shadow">Atención Crítica</span>
+            </div>
+            <button onClick={() => setShowCriticalEventsModal(true)} className="w-full bg-red-600 bg-opacity-80 text-white py-2 rounded text-sm font-semibold hover:bg-red-700 hover:bg-opacity-90 transition backdrop-blur-sm">
+              ⚠ Ver alertas
+            </button>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div className="bg-orange-500 bg-opacity-30 backdrop-blur-sm border-2 border-orange-300 border-opacity-50 rounded-lg p-3 mb-3">
+            <div className="flex items-center mb-2">
+              <AlertTriangle className="w-5 h-5 text-white mr-2 drop-shadow-lg" />
+              <span className="font-bold text-white drop-shadow">Mantenimiento</span>
+            </div>
+            <button className="w-full bg-orange-500 bg-opacity-80 text-white py-2 rounded text-sm font-semibold hover:bg-orange-600 hover:bg-opacity-90 transition backdrop-blur-sm" onClick={handleOpenMaintenance}>Ver mantenimientos {torreControlData.enTaller > 0 && <span className="ml-1 px-1.5 py-0.5 bg-red-700 rounded-full text-[10px] font-bold animate-pulse">{torreControlData.enTaller} en taller</span>}</button>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <motion.div 
+            className="bg-blue-500 bg-opacity-30 backdrop-blur-sm border-2 border-blue-300 border-opacity-50 rounded-lg p-3 mb-3 cursor-pointer hover:bg-opacity-40 transition"
+            whileHover={{ scale: 1.02 }}
+            onClick={handleGeofenceClick}
+          >
+            <div className="flex items-center mb-2">
+              <MapPinned className="w-5 h-5 text-white mr-2 drop-shadow-lg" />
+              <span className="font-bold text-white drop-shadow">Geocercas Dinámicas</span>
+            </div>
+            <button className="w-full bg-blue-400 bg-opacity-40 text-white py-2 rounded text-sm font-semibold border border-blue-300 border-opacity-50 hover:bg-opacity-60 transition backdrop-blur-sm">
+              Ver geocercas
+            </button>
+          </motion.div>
+
+          {/* === AÑADIDO: Estado de viajes === */}
+          <motion.div 
+            className="bg-indigo-500 bg-opacity-30 backdrop-blur-sm border-2 border-indigo-300 border-opacity-50 rounded-lg p-3 cursor-pointer hover:bg-opacity-40 transition"
+            whileHover={{ scale: 1.02 }}
+            onClick={() => { setStep(1); setSelectedZone(null); setShowRightPanel(false); setShowTripStatusModal(true); }}
+          >
+            <div className="flex items-center mb-2">
+              <MapPin className="w-5 h-5 text-white mr-2 drop-shadow-lg" />
+              <span className="font-bold text-white drop-shadow">Control de Viajes</span>
+            </div>
+            <button className="w-full bg-indigo-400 bg-opacity-40 text-white py-2 rounded text-sm font-semibold border border-indigo-300 border-opacity-50 hover:bg-opacity-60 transition backdrop-blur-sm">
+              Ver flota
+            </button>
+          </motion.div>
+          {/* === FIN AÑADIDO === */}
+        </motion.div>
+      )}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* ROI Dashboard */}
+      <AnimatePresence>
+        {selectedZones.length > 0 && showRightPanel && (
+          <motion.div
+            className="absolute top-6 right-[420px] w-80 bg-gradient-to-br from-green-500 to-emerald-600 bg-opacity-30 backdrop-blur-lg rounded-lg shadow-2xl z-40 p-4 text-white border border-white border-opacity-30"
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: 100, opacity: 0 }}
+          >
+            <div className="flex items-center space-x-2 mb-3">
+              <DollarSign className="w-6 h-6 drop-shadow-lg" />
+              <h3 className="font-bold text-lg drop-shadow-lg">Impacto Económico Proyectado</h3>
+            </div>
+            <div className="text-sm mb-2 opacity-90 drop-shadow">Geocercas seleccionadas ({selectedZones.length})</div>
+            
+            <div className="space-y-2 mb-4">
+              {selectedZones.map(zoneId => {
+                const zone = zones.find(z => z.id === zoneId);
+                return (
+                  <div key={zoneId} className="bg-white bg-opacity-20 backdrop-blur-sm rounded p-2 text-xs border border-white border-opacity-20">
+                    <div className="font-semibold drop-shadow">{zone.name}</div>
+                    <div className="drop-shadow">Reducción pérdidas: ${(zone.economicImpact.savingsRisk / 1000).toFixed(0)}K</div>
+                    <div className="drop-shadow">Ahorro SLA: ${(zone.economicImpact.savingsSLA / 1000).toFixed(0)}K</div>
+                    <div className="drop-shadow">Optimización combustible: ${(zone.economicImpact.savingsFuel / 1000).toFixed(0)}K</div>
+                  </div>
+                );
+              })}
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div className="border-t border-white border-opacity-30 pt-3">
+              <div className="flex justify-between items-center mb-2">
+                <span className="font-bold text-lg drop-shadow-lg">Total ROI (12 meses)</span>
+                <span className="text-2xl font-bold drop-shadow-lg">${(calculateTotalROI() / 1000000).toFixed(2)}M</span>
+              </div>
+              <div className="flex justify-between text-sm opacity-90 drop-shadow">
+                <span>Payback:</span>
+                <span className="font-semibold">2.1 meses</span>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* Toast Notification */}
+      <AnimatePresence>
+        {showToast && (
+          <motion.div
+            className="absolute bottom-20 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full shadow-2xl z-50 flex items-center space-x-4"
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+          >
+            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+              <MapPinned className="w-6 h-6 text-blue-600" />
+            </div>
+            <div>
+              <h3 className="font-bold">Sugerencia de Zona</h3>
+              <p className="text-sm">Tengo 4 sugerencias de zona para ti</p>
+            </div>
+            <button 
+              onClick={handleShowSuggestions}
+              className="bg-white text-blue-600 px-6 py-2 rounded-full font-bold hover:bg-blue-50 transition"
+            >
+              Muéstrame
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* Panel Derecho Geocercas */}
+      <AnimatePresence>
+        {showRightPanel && !showChat && (
+          <motion.div
+            className="absolute right-0 top-0 h-full w-96 bg-white bg-opacity-20 backdrop-blur-lg shadow-2xl z-30 overflow-y-auto border-l border-white border-opacity-30"
+            initial={{ x: 400 }}
+            animate={{ x: 0 }}
+            exit={{ x: 400 }}
+            transition={{ type: "spring", damping: 25 }}
+          >
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                    <MapPinned className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h2 className="font-bold text-lg text-white drop-shadow-lg">ADI</h2>
+                    <p className="text-xs text-white opacity-80">Agente de Decisiones Inteligente</p>
+                  </div>
+                </div>
+                <X className="w-6 h-6 text-white cursor-pointer hover:text-gray-200 drop-shadow-lg" onClick={() => { setShowRightPanel(false); setStep(1); setSelectedZone(null); }} />
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div className="bg-blue-500 bg-opacity-30 backdrop-blur-sm rounded-lg p-4 mb-6 border border-blue-300 border-opacity-30">
+                <div className="flex items-center space-x-2 mb-2">
+                  <MapPinned className="w-5 h-5 text-white drop-shadow-lg" />
+                  <h3 className="font-bold text-white drop-shadow-lg">Sugerencia de Geocerca</h3>
+                </div>
+                <p className="text-sm text-white opacity-90 drop-shadow">4 sugerencias</p>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div className="space-y-[24px]">
+                {zones.map((zone, index) => (
+                  <motion.div
+                    key={zone.id}
+                    className={`border-2 rounded-lg p-4 cursor-pointer transition backdrop-blur-sm ${
+                      selectedZones.includes(zone.id) ? 'border-red-400 bg-red-500 bg-opacity-30' : 'border-blue-200 bg-blue-500 bg-opacity-20'
+                    }`}
+                    whileHover={{ scale: 1.02 }}
+                    onClick={() => handleZoneSelect(zone.id)}
+                  >
+                    {/* Badge de tipo */}
+                    <div className="flex items-center space-x-2 mb-3">
+                      {zone.type === 'critical' ? (
+                        <span className="px-3 py-1 bg-red-600 bg-opacity-80 backdrop-blur-sm text-white text-xs font-bold rounded-full flex items-center space-x-1 border border-red-400 border-opacity-50">
+                          <AlertTriangle className="w-3 h-3" />
+                          <span>EVENTO CRÍTICO</span>
+                        </span>
+                      ) : (
+                        <span className="px-3 py-1 bg-yellow-500 bg-opacity-80 backdrop-blur-sm text-gray-900 text-xs font-bold rounded-full flex items-center space-x-1 border border-yellow-400 border-opacity-50">
+                          <Zap className="w-3 h-3" />
+                          <span>PATRÓN EMERGENTE</span>
+                        </span>
+                      )}
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div className="bg-white bg-opacity-40 backdrop-blur-sm rounded-lg p-3 mb-3 border border-gray-200 border-opacity-30">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center space-x-2">
+                          <Activity className={`w-4 h-4 ${zone.riskScore >= 80 ? 'text-red-600' : zone.riskScore >= 70 ? 'text-orange-600' : 'text-yellow-600'}`} />
+                          <span className="text-xs font-semibold text-gray-800">Riesgo Predictivo</span>
+                        </div>
+                        <span className={`text-lg font-bold ${zone.riskScore >= 80 ? 'text-red-600' : zone.riskScore >= 70 ? 'text-orange-600' : 'text-yellow-600'}`}>
+                          {zone.riskScore}%
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between text-xs text-gray-700">
+                        <span>Tendencia: <span className="text-red-600 font-semibold">{zone.riskTrend}</span></span>
+                        <span>Confianza: {zone.confidence}%</span>
+                      </div>
+                      <div className="text-xs text-gray-600 mt-1">Basado en {zone.dataPoints} eventos históricos</div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    {/* CAMBIO #9: ELIMINADO "Geocerca tipo CEDIS" */}
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex items-center space-x-2">
+                        <span className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold drop-shadow-lg ${
+                          selectedZones.includes(zone.id) ? 'bg-red-500' : 'bg-blue-500'
+                        }`}>
+                          {index + 1}
+                        </span>
+                      </div>
+                      <input 
+                        type="checkbox"
+                        checked={selectedZones.includes(zone.id)}
+                        onChange={() => toggleZoneSelection(zone.id)}
+                        className="w-5 h-5 cursor-pointer"
+                        onClick={(e) => e.stopPropagation()}
+                      />
+                    </div>
+                    <p className="text-sm text-white drop-shadow mb-3">{zone.description}</p>
+                    
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleReasoning(zone.id);
+                      }}
+                      className="text-white drop-shadow-lg text-sm font-semibold flex items-center hover:underline mb-3"
+                    >
+                      Ver razonamiento {expandedReasoning === zone.id ? <ChevronDown className="w-4 h-4 ml-1" /> : <ChevronRight className="w-4 h-4 ml-1" />}
+                    </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <AnimatePresence>
+                      {expandedReasoning === zone.id && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="bg-white bg-opacity-40 backdrop-blur-sm border border-blue-200 border-opacity-30 rounded p-3 mb-3">
+                            <ul className="space-y-2">
+                              {zone.reasoningBullets.map((bullet, idx) => (
+                                <li 
+                                  key={idx}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    openDetailModal(bullet.detail);
+                                  }}
+                                  className="text-xs text-blue-900 hover:text-blue-700 cursor-pointer flex items-start group"
+                                >
+                                  <span className="mr-2">•</span>
+                                  <span className="flex-1 group-hover:underline">{bullet.text}</span>
+                                  <ExternalLink className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition" />
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              openCounterfactual(zone);
+                            }}
+                            className="w-full bg-orange-500 bg-opacity-30 backdrop-blur-sm border border-orange-300 border-opacity-50 text-white py-2 rounded text-xs font-semibold hover:bg-opacity-50 transition flex items-center justify-center space-x-2"
+                          >
+                            <TrendingUp className="w-4 h-4" />
+                            <span>¿Qué pasa si NO creo esta geocerca?</span>
+                          </button>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div className="mt-3">
+                      <label className="text-xs text-white opacity-80 block mb-1 drop-shadow">Nombre sugerido</label>
+                      <input 
+                        type="text"
+                        defaultValue={zone.name}
+                        className="w-full border border-blue-200 border-opacity-50 rounded px-3 py-2 text-sm bg-white bg-opacity-30 backdrop-blur-sm text-gray-900 placeholder-gray-600"
+                        onClick={(e) => e.stopPropagation()}
+                      />
+                      <div className="flex items-center gap-2 mt-1.5 px-1">
+                        <span className="text-[10px] text-white/70 font-mono drop-shadow">📍 {zone.lat?.toFixed(6) || '—'}, {zone.lng?.toFixed(6) || '—'}</span>
+                        <span className="text-[10px] text-blue-200/80 font-mono drop-shadow">Radio: {((zone.radioMetros || 500) / 1000).toFixed(1)} km</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              {selectedZones.length > 0 && (
+                <motion.div
+                  className="mt-6 space-y-3"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  <button 
+                    onClick={handleApply}
+                    className="w-full bg-red-500 bg-opacity-80 backdrop-blur-sm text-white py-3 rounded-lg font-bold hover:bg-red-600 hover:bg-opacity-90 transition flex items-center justify-center"
+                  >
+                    <CheckCircle2 className="w-5 h-5 mr-2" />
+                    Aplicar ({selectedZones.length})
+                  </button>
+                  <button className="w-full bg-gray-100 bg-opacity-30 backdrop-blur-sm text-white py-3 rounded-lg font-semibold hover:bg-opacity-40 transition">
+                    Seleccionar todo
+                  </button>
+                </motion.div>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* Modales - Sin cambios */}
+      <AnimatePresence>
+        {showDetailModal && modalContent && (
+          <motion.div
+            className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowDetailModal(false)}
+          >
+            <motion.div
+              className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[80vh] overflow-hidden"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: showEventDetailModal ? 0.05 : 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-6 text-white">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-bold">{modalContent.title}</h3>
+                  <button onClick={() => setShowDetailModal(false)} className="hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition">
+                    <X className="w-6 h-6" />
+                  </button>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div className="p-6 overflow-y-auto max-h-[calc(80vh-100px)]">
+                {modalContent.type === 'table' && (
+                  <div className="overflow-x-auto">
+                    <table className="w-full border-collapse">
+                      <thead>
+                        <tr className="bg-gray-100">
+                          {Object.keys(modalContent.data[0]).map((key) => (
+                            <th key={key} className="border border-gray-300 px-4 py-2 text-left text-sm font-semibold text-gray-700">
+                              {key.charAt(0).toUpperCase() + key.slice(1)}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {modalContent.data.map((row, idx) => (
+                          <tr key={idx} className="hover:bg-gray-50">
+                            {Object.values(row).map((value, i) => (
+                              <td key={i} className="border border-gray-300 px-4 py-2 text-sm text-gray-600">
+                                {value}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {modalContent.type === 'text' && (
+                  <div className="prose prose-sm max-w-none">
+                    <p className="text-gray-700 leading-relaxed">{modalContent.content}</p>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* Counterfactual Modal */}
+      <AnimatePresence>
+        {showCounterfactual && counterfactualZone && (
+          <motion.div
+            className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowCounterfactual(false)}
+          >
+            <motion.div
+              className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full overflow-hidden"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="bg-gradient-to-r from-orange-500 to-red-600 p-6 text-white">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <AlertTriangle className="w-8 h-8" />
+                    <div>
+                      <h3 className="text-xl font-bold">Análisis Contrafactual</h3>
+                      <p className="text-sm opacity-90">Impacto de NO crear "{counterfactualZone.name}"</p>
+                    </div>
+                  </div>
+                  <button onClick={() => setShowCounterfactual(false)} className="hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition">
+                    <X className="w-6 h-6" />
+                  </button>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div className="p-6">
+                <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4 mb-4">
+                  <div className="flex items-center space-x-2 mb-3">
+                    <DollarSign className="w-6 h-6 text-red-600" />
+                    <h4 className="font-bold text-red-900 text-lg">Pérdida Proyectada (6 meses)</h4>
+                  </div>
+                  <div className="text-4xl font-bold text-red-600 mb-2">
+                    ${(counterfactualZone.counterfactual.loss / 1000).toFixed(0)}K MXN
+                  </div>
+                  <div className="text-sm text-red-700">
+                    Costo de oportunidad por no implementar esta geocerca
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="bg-orange-50 rounded-lg p-4">
+                    <div className="text-sm text-gray-600 mb-1">Incumplimientos SLA</div>
+                    <div className="text-2xl font-bold text-orange-600">+{counterfactualZone.counterfactual.slaBreaches}</div>
+                    <div className="text-xs text-gray-500">eventos adicionales</div>
+                  </div>
+                  <div className="bg-yellow-50 rounded-lg p-4">
+                    <div className="text-sm text-gray-600 mb-1">Clientes en Riesgo</div>
+                    <div className="text-2xl font-bold text-yellow-600">{counterfactualZone.counterfactual.clientsAtRisk}</div>
+                    <div className="text-xs text-gray-500">cuentas Tier-1</div>
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <h5 className="font-semibold text-gray-800 mb-2">Consecuencias Proyectadas:</h5>
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    <li className="flex items-start">
+                      <span className="text-red-500 mr-2">•</span>
+                      <span>Aumento en tiempo de respuesta ante incidentes: +67%</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-red-500 mr-2">•</span>
+                      <span>Probabilidad de pérdida de contrato con cliente clave: 34%</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-red-500 mr-2">•</span>
+                      <span>Incremento en costos operativos por gestión reactiva: $127K</span>
+                    </li>
+                  </ul>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <button
+                  onClick={() => setShowCounterfactual(false)}
+                  className="w-full mt-4 bg-gradient-to-r from-orange-500 to-red-600 text-white py-3 rounded-lg font-bold hover:from-orange-600 hover:to-red-700 transition"
+                >
+                  Entendido
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* Emerging Patterns Modal */}
+      <AnimatePresence>
+        {showEmergingPatterns && (
+          <motion.div
+            className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowEmergingPatterns(false)}
+          >
+            <motion.div
+              className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[80vh] overflow-hidden"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="bg-gradient-to-r from-yellow-500 to-orange-500 p-6 text-white">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <Zap className="w-8 h-8" />
+                    <div>
+                      <h3 className="text-xl font-bold">Patrones Emergentes</h3>
+                      <p className="text-sm opacity-90">Señales débiles detectadas por Iris Fleet</p>
+                    </div>
+                  </div>
+                  <button onClick={() => setShowEmergingPatterns(false)} className="hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition">
+                    <X className="w-6 h-6" />
+                  </button>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div className="p-6 overflow-y-auto max-h-[calc(80vh-100px)]">
+                <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                  <p className="text-sm text-blue-900">
+                    <strong>Estos patrones aún NO son eventos críticos</strong>, pero podrían evolucionar en riesgos operativos. 
+                    Iris Fleet los detectó antes de que se vuelvan obvios para el mercado.
+                  </p>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div className="space-y-4">
+                  {emergingPatterns.map((pattern) => (
+                    <motion.div
+                      key={pattern.id}
+                      className={`border-2 rounded-lg p-4 ${
+                        pattern.severity === 'alta' ? 'border-red-300 bg-red-50' :
+                        pattern.severity === 'media' ? 'border-yellow-300 bg-yellow-50' :
+                        'border-green-300 bg-green-50'
+                      }`}
+                      whileHover={{ scale: 1.02 }}
+                    >
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="flex-1">
+                          <h4 className="font-bold text-gray-800 mb-2">{pattern.title}</h4>
+                          <div className="text-sm text-gray-600 space-y-1">
+                            <div className="flex items-center">
+                              <MapPin className="w-4 h-4 mr-2 text-gray-500" />
+                              <span>{pattern.zone}</span>
+                            </div>
+                            <div className="flex items-center">
+                              <TrendingUp className="w-4 h-4 mr-2 text-gray-500" />
+                              <span>Correlación: {pattern.correlation}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-2xl font-bold text-gray-800">{pattern.probability}%</div>
+                          <div className="text-xs text-gray-500">probabilidad</div>
+                        </div>
+                      </div>
+                      <button className="w-full bg-blue-500 text-white py-2 rounded text-sm font-semibold hover:bg-blue-600 transition">
+                        {pattern.action}
+                      </button>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* Learning Feedback Loop */}
+      <AnimatePresence>
+        {showLearning && (
+          <motion.div
+            className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="bg-white rounded-2xl p-12 text-center max-w-md"
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.5, opacity: 0 }}
+              transition={{ type: "spring", damping: 15 }}
+            >
+              <motion.div
+                className="w-24 h-24 bg-gradient-to-br from-purple-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              >
+                <Brain className="w-12 h-12 text-white" />
+              </motion.div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-3">ADI está aprendiendo...</h2>
+              <div className="space-y-2 text-left text-sm text-gray-600">
+                <motion.div 
+                  className="flex items-center space-x-2"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <CheckCircle2 className="w-4 h-4 text-green-500" />
+                  <span>Ajustando pesos en modelo de riesgo</span>
+                </motion.div>
+                <motion.div 
+                  className="flex items-center space-x-2"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.5 }}
+                >
+                  <CheckCircle2 className="w-4 h-4 text-green-500" />
+                  <span>Incorporando tu preferencia por zonas de alto valor</span>
+                </motion.div>
+                <motion.div 
+                  className="flex items-center space-x-2"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 3 }}
+                >
+                  <CheckCircle2 className="w-4 h-4 text-green-500" />
+                  <span>Refinando umbral de sugerencias futuras</span>
+                </motion.div>
+                <motion.div 
+                  className="flex items-center space-x-2"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 4.5 }}
+                >
+                  <CheckCircle2 className="w-4 h-4 text-green-500" />
+                  <span>Actualizando correlaciones conductuales</span>
+                </motion.div>
+                <motion.div 
+                  className="flex items-center space-x-2"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 6 }}
+                >
+                  <CheckCircle2 className="w-4 h-4 text-green-500" />
+                  <span>Integrando feedback en base de conocimiento</span>
+                </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* Success Modal */}
+      <AnimatePresence>
+        {showSuccess && (
+          <motion.div
+            className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="bg-white rounded-2xl p-12 text-center"
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.5, opacity: 0 }}
+              transition={{ type: "spring", damping: 15 }}
+            >
+              <motion.div
+                className="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6"
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 0.6 }}
+              >
+                <CheckCircle2 className="w-16 h-16 text-white" />
+              </motion.div>
+              <h2 className="text-3xl font-bold text-gray-800 mb-3">¡Completado!</h2>
+              <p className="text-gray-600">{selectedZones.length} sugerencias fueron aplicadas a tus operaciones.</p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* Chat Panel */}
+      <AnimatePresence>
+        {showChat && (
+          <motion.div
+            className="absolute right-0 top-0 h-full w-96 bg-white shadow-2xl z-30 flex flex-col"
+            initial={{ x: 400 }}
+            animate={{ x: 0 }}
+            exit={{ x: 400 }}
+          >
+            <div className="p-6 border-b">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center relative">
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg"
+                      animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.2, 0.5] }}
+                      transition={{ repeat: Infinity, duration: 2 }}
+                    />
+                    <span className="text-white font-bold text-xl relative z-10">AI</span>
+                  </div>
+                  <div>
+                    <h2 className="font-bold text-lg">ADI</h2>
+                    <p className="text-xs text-gray-500">Agente de Decisiones Inteligente</p>
+                  </div>
+                </div>
+                <X className="w-6 h-6 text-gray-400 cursor-pointer" onClick={() => setShowChat(false)} />
+              </div>
+              <div className="flex space-x-4 text-sm">
+                <button className="text-red-500 font-semibold border-b-2 border-red-500 pb-2">Conversación</button>
+                <button className="text-gray-500 hover:text-gray-700 pb-2">Historial</button>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div className="flex-1 overflow-y-auto p-6 space-y-4">
+              <p className="text-xs text-gray-400 text-center mb-4">⏰ INTERACCIONES RECIENTES</p>
+              
+              {chatMessages.map((msg, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  {msg.type === 'history' && (
+                    <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg hover:bg-blue-100 cursor-pointer">
+                      <div className="flex items-center space-x-2">
+                        <MapPinned className="w-4 h-4 text-blue-600" />
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800">{msg.text}</p>
+                          <p className="text-xs text-gray-500">{msg.time}</p>
+                        </div>
+                      </div>
+                      <ChevronRight className="w-4 h-4 text-gray-400" />
+                    </div>
+                  )}
+                  {msg.type === 'user' && (
+                    <div className="flex justify-end">
+                      <div className="bg-blue-500 text-white rounded-2xl rounded-tr-none px-4 py-3 max-w-xs">
+                        <p className="text-sm">{msg.text}</p>
+                      </div>
+                    </div>
+                  )}
+                  {msg.type === 'ai' && (
+                    <div className="flex justify-start">
+                      <div className="bg-gray-100 rounded-2xl rounded-tl-none px-4 py-3 max-w-xs">
+                        <p className="text-sm text-gray-800">{msg.text}</p>
+                        {msg.actions && (
+                          <div className="mt-3 space-y-2">
+                            {msg.actions.map((action, i) => (
+                              <button key={i} className="w-full bg-blue-500 text-white py-2 rounded-lg text-xs font-semibold hover:bg-blue-600 transition">
+                                {action}
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              {isAIThinking && (
+                <motion.div
+                  className="flex justify-start"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                >
+                  <div className="bg-gray-100 rounded-2xl rounded-tl-none px-4 py-3">
+                    <div className="flex space-x-2">
+                      <motion.div className="w-2 h-2 bg-gray-400 rounded-full" animate={{ scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 0.8, delay: 0 }} />
+                      <motion.div className="w-2 h-2 bg-gray-400 rounded-full" animate={{ scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 0.8, delay: 0.2 }} />
+                      <motion.div className="w-2 h-2 bg-gray-400 rounded-full" animate={{ scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 0.8, delay: 0.4 }} />
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div className="p-4 border-t">
+              <div className="flex items-center space-x-2">
+                <input
+                  type="text"
+                  value={userMessage}
+                  onChange={(e) => setUserMessage(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                  placeholder="Escribe tu pregunta..."
+                  className="flex-1 border border-gray-300 rounded-full px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <button 
+                  onClick={handleSendMessage}
+                  className="bg-blue-500 text-white p-3 rounded-full hover:bg-blue-600 transition"
+                >
+                  <Send className="w-5 h-5" />
+                </button>
+              </div>
+              <button className="w-full mt-3 text-red-500 text-sm font-semibold hover:underline">
+                🗑️ Borrar el historial
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* Modal Eventos Críticos */}
+      <AnimatePresence>{showCalmAnalyzing && (
+        <motion.div className="fixed inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 flex items-center justify-center z-[80]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <motion.div className="text-center" initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.2 }}>
+            <motion.div className="w-20 h-20 mx-auto mb-6 rounded-full bg-blue-500 bg-opacity-20 flex items-center justify-center" animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }} transition={{ duration: 2, repeat: Infinity }}><Shield className="w-10 h-10 text-blue-300" /></motion.div>
+            <motion.p className="text-blue-200 text-lg font-light mb-3" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>Iris está analizando los eventos de hoy...</motion.p>
+            <motion.p className="text-blue-300 text-base font-bold" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}>Priorizando por impacto.</motion.p>
+            <motion.div className="w-64 mx-auto mt-6 h-1 bg-blue-700 rounded-full overflow-hidden"><motion.div className="h-full bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full" initial={{ width: '0%' }} animate={{ width: '100%' }} transition={{ duration: 4.5 }} /></motion.div>
+          </motion.div>
+        </motion.div>
+      )}</AnimatePresence>
+      <AnimatePresence>{showCriticalEventsModal && (
+        <motion.div className="fixed inset-0 bg-blue-900 bg-opacity-70 flex items-center justify-center z-50 p-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowCriticalEventsModal(false)}>
+          {/* Snapshot floating pills */}
+          <div className="absolute right-4 top-1/2 transform -translate-y-1/2 space-y-2 z-[51]" style={{ right: '16px' }}>
+            <button onClick={(e) => { e.stopPropagation(); setActiveSnapshot('mantenimiento'); setSnapshotContext('atencion_critica'); }} className="flex items-center space-x-2 bg-white shadow-lg rounded-xl px-4 py-2.5 hover:shadow-xl transition border border-gray-200 whitespace-nowrap">
+              <span className="text-sm">🔧</span><span className="text-sm font-semibold text-gray-700">Mantenimiento</span>
+            </button>
+            <button onClick={(e) => { e.stopPropagation(); setActiveSnapshot('geocercas'); setSnapshotContext('atencion_critica'); }} className="flex items-center space-x-2 bg-white shadow-lg rounded-xl px-4 py-2.5 hover:shadow-xl transition border border-gray-200 whitespace-nowrap">
+              <span className="text-sm">📍</span><span className="text-sm font-semibold text-gray-700">Geocercas dinámicas</span>
+            </button>
+          </div>
+          <motion.div className="bg-gradient-to-b from-blue-50 to-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-hidden border border-blue-200" initial={{ scale: 0.9, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.9, opacity: 0, y: 20 }} onClick={(e) => e.stopPropagation()}>
+            <div className="bg-gradient-to-r from-red-700 to-red-900 p-6 text-white"><div className="flex items-center justify-between"><div className="flex items-center space-x-3"><div className="w-12 h-12 bg-white bg-opacity-15 rounded-full flex items-center justify-center"><AlertTriangle className="w-7 h-7" /></div><div><h3 className="text-2xl font-bold">Atención Crítica</h3><p className="text-sm text-blue-200">Eventos priorizados por Iris — {criticalEvents.length} requieren atención</p></div></div><button onClick={() => setShowCriticalEventsModal(false)} className="hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition"><X className="w-6 h-6" /></button></div></div>
+            <div className="p-6 overflow-y-auto max-h-[calc(85vh-100px)]">
+              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-5 mb-6"><div className="flex items-start space-x-4"><div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0"><Brain className="w-5 h-5 text-blue-600" /></div><div className="flex-1"><p className="text-sm text-blue-900 font-semibold mb-2">🛡️ Iris analizó 847 eventos y determinó que solo 10 requieren atención directa.</p><p className="text-sm text-blue-700">Ordenados por impacto. Click en <strong>"Resolver"</strong> para ver pasos y racional.</p>{(() => {
+                      const totalAnalyzed = 130;
+                      const criticos = criticalEvents.filter(e => e.severity === 'critico').length;
+                      const moderados = criticalEvents.filter(e => e.severity === 'moderado').length;
+                      const bajos = criticalEvents.filter(e => e.severity === 'bajo').length;
+                      const critScaled = Math.round(criticos / criticalEvents.length * totalAnalyzed);
+                      const modScaled = Math.round(moderados / criticalEvents.length * totalAnalyzed);
+                      const bajScaled = totalAnalyzed - critScaled - modScaled;
+                      return (
+                        <div className="mt-4 grid grid-cols-3 gap-3">
+                          <div className="bg-red-50 bg-opacity-90 rounded-lg p-3 border border-red-300">
+                            <span className="text-xs font-semibold text-red-800">Eventos críticos</span>
+                            <p className="text-xl font-bold text-red-700">{critScaled}/{totalAnalyzed}</p>
+                            <p className="text-xs font-semibold text-red-600">{(critScaled / totalAnalyzed * 100).toFixed(2)}%</p>
+                          </div>
+                          <div className="bg-amber-50 bg-opacity-90 rounded-lg p-3 border border-amber-300">
+                            <span className="text-xs font-semibold text-amber-800">Eventos moderados</span>
+                            <p className="text-xl font-bold text-amber-700">{modScaled}/{totalAnalyzed}</p>
+                            <p className="text-xs font-semibold text-amber-600">{(modScaled / totalAnalyzed * 100).toFixed(2)}%</p>
+                          </div>
+                          <div className="bg-green-50 bg-opacity-90 rounded-lg p-3 border border-green-300">
+                            <span className="text-xs font-semibold text-green-800">Eventos bajos</span>
+                            <p className="text-xl font-bold text-green-700">{bajScaled}/{totalAnalyzed}</p>
+                            <p className="text-xs font-semibold text-green-600">{(bajScaled / totalAnalyzed * 100).toFixed(2)}%</p>
+                          </div>
+                        </div>
+                      );
+                    })()}</div></div></div>
+              <div className="overflow-x-auto"><table className="w-full border-collapse"><thead><tr className="bg-gradient-to-r from-blue-50 to-indigo-50"><th className="border border-blue-200 px-3 py-3 text-left text-sm font-bold text-blue-800">Prioridad</th><th className="border border-blue-200 px-3 py-3 text-left text-sm font-bold text-blue-800">Vehículo</th><th className="border border-blue-200 px-3 py-3 text-left text-sm font-bold text-blue-800">Tipo</th><th className="border border-blue-200 px-3 py-3 text-left text-sm font-bold text-blue-800">Hora</th><th className="border border-blue-200 px-3 py-3 text-left text-sm font-bold text-blue-800" style={{ maxWidth: '180px' }}>Dirección</th><th className="border border-blue-200 px-3 py-3 text-center text-sm font-bold text-blue-800">Acción</th></tr></thead><tbody>{criticalEvents.map((event, idx) => (<motion.tr key={event.id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="hover:bg-blue-50 transition"><td className="border border-blue-100 px-3 py-3"><span className={`text-2xl font-bold ${event.color}`}>{event.priority}</span></td><td className="border border-blue-100 px-3 py-3"><span className="text-sm font-bold text-gray-900">{event.unit || '—'}</span></td><td className="border border-blue-100 px-3 py-3 text-sm font-semibold text-gray-800">{event.type}</td><td className="border border-blue-100 px-3 py-3 text-sm font-mono text-gray-700">{event.time}</td><td className="border border-blue-100 px-3 py-3" style={{ maxWidth: '180px' }}><p className="text-xs text-gray-700 truncate" title={event.direccion || event.route}>{event.direccion || event.route}</p></td><td className="border border-blue-100 px-4 py-3 text-center"><button onClick={(e) => { e.stopPropagation(); handleAttendEvent(event); setAlertPhase(1); setAlertValidated(null); setAlertActionMode(null); setAlertNotes(''); }} className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-1.5 rounded-lg text-xs font-semibold">Resolver →</button></td></motion.tr>))}</tbody></table></div>
+              <div className="mt-5 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-3 border border-blue-100"><p className="text-base text-blue-700 text-center font-bold">Iris monitorea continuamente. Si algo cambia, re-priorizará automáticamente.</p></div>
+              <div className="mt-6 flex space-x-3"><button className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-3 rounded-lg font-bold transition shadow-lg">▶ Iniciar secuencia de resolución</button><button onClick={() => setShowCriticalEventsModal(false)} className="px-6 bg-blue-100 text-blue-700 py-3 rounded-lg font-semibold hover:bg-blue-200 transition">Cerrar</button></div>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+      
+        <AnimatePresence>{activeSnapshot && <SnapshotPopup type={activeSnapshot} context={snapshotContext} onClose={() => { setActiveSnapshot(null); setSnapshotContext(null); }} />}</AnimatePresence>
+          {showMaintenanceModal && <MaintenanceListModal onClose={() => setShowMaintenanceModal(false)} />}
+        {showMaintenanceDetailModal && <MaintenanceDetailModal onClose={() => setShowMaintenanceDetailModal(false)} />}
+    </AnimatePresence>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* Modal Detalle Evento */}
+      <AnimatePresence>{showEventDetailModal && selectedEvent && (
+        <motion.div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[60] p-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => { setShowEventDetailModal(false); setAlertPhase(1); setAlertValidated(null); }}>
+          <motion.div className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} onClick={e => e.stopPropagation()}>
+            {/* HEADER WITH STEP INDICATOR */}
+            <div className="p-5 text-white" style={{ background: alertPhase === 1 ? 'linear-gradient(135deg, #7c3aed, #6d28d9)' : alertPhase === 2 ? 'linear-gradient(135deg, #d97706, #b45309)' : 'linear-gradient(135deg, #059669, #047857)' }}>
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-white/15 rounded-full flex items-center justify-center">{alertPhase === 1 ? <Eye className="w-5 h-5" /> : alertPhase === 2 ? <Settings className="w-5 h-5" /> : <CheckCircle2 className="w-5 h-5" />}</div>
+                  <div><h3 className="text-lg font-bold">{selectedEvent.type}</h3><p className="text-sm opacity-80">Evento #{selectedEvent.id} · {selectedEvent.unit || '—'} · {selectedEvent.route} · {selectedEvent.time}</p></div>
+                </div>
+                <button onClick={() => { setShowEventDetailModal(false); setAlertPhase(1); setAlertValidated(null); }} className="hover:bg-white/20 p-2 rounded-full"><X className="w-5 h-5" /></button>
+              </div>
+              {/* STEP BAR */}
+              <div className="flex items-center space-x-2">
+                {[{n:1,l:'Verificar',i:'1.'},{n:2,l:'Atender',i:'2.'},{n:3,l:'Resolver',i:'3.'}].map(step => (
+                  <div key={step.n} className="flex-1">
+                    <div className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold ${alertPhase === step.n ? 'bg-white/30 text-white' : alertPhase > step.n ? 'bg-white/15 text-white/70' : 'bg-white/5 text-white/40'}`}><span>{step.i}</span><span>Paso {step.n}: {step.l}</span>{alertPhase > step.n && <span>✓</span>}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="overflow-y-auto max-h-[calc(90vh-140px)] p-5 space-y-4">
+              {/* ============ PASO 1: VERIFICAR ============ */}
+              {alertPhase === 1 && (<>
+                <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+                  {/* Racional header + export */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center space-x-2"><Brain className="w-5 h-5 text-indigo-600" /><h4 className="font-bold text-gray-900 text-sm">Racional de priorización, evidencia e impacto financiero</h4></div>
+                    <button onClick={() => { const txt = `Tríada de Inteligencia — Prioridad ${selectedEvent.priority}/100\n\nSeguridad: ${selectedEvent.type}\nMomento: ${selectedEvent.time}hrs\nDinero: Evento ${selectedEvent.id}\n\nVehículo: ${selectedEvent.unit || 'N/A'}\nDirección: ${selectedEvent.direccion || selectedEvent.route}\n\nGenerado: ${new Date().toLocaleString('es-MX')}`; const b = new Blob([txt], {type:'text/plain'}); const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = `Racional-Evento-${selectedEvent.id}.txt`; a.click(); }} className="text-xs text-blue-600 font-semibold hover:text-blue-800 border border-blue-200 px-3 py-1 rounded-lg hover:bg-blue-50 transition">📄 Exportar racional (.txt)</button>
+                  </div>
+                  {/* Tríada de Inteligencia */}
+                  <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-4 border border-indigo-200 mb-4">
+                    <p className="text-sm font-bold text-indigo-900 mb-3">Tríada de Inteligencia — Prioridad <span className="text-indigo-600">{selectedEvent.priority}/100</span></p>
+                    <div className="space-y-3">
+                      <div className="bg-white rounded-lg p-3 border border-indigo-100">
+                        <div className="flex items-center justify-between mb-1"><span className="font-bold text-sm text-gray-800">🛡️ Seguridad</span><span className="font-black text-lg text-red-600">{Math.min(selectedEvent.priority + Math.floor(Math.random()*3-1),100)}/100</span></div>
+                        <p className="text-xs text-gray-600">{selectedEvent.type}. {selectedEvent.priority>=90?'Desviación + detención zona riesgo 8/10. CAN BUS: movimiento no autorizado. Pérdida total: 87%.':selectedEvent.priority>=80?'Patrón anómalo detectado. Correlación con 3 incidentes previos. Riesgo operativo: ALTO.':'Anomalía menor detectada. Monitoreo preventivo recomendado.'}</p>
+                      </div>
+                      <div className="bg-white rounded-lg p-3 border border-indigo-100">
+                        <div className="flex items-center justify-between mb-1"><span className="font-bold text-sm text-gray-800">⏱️ Momento</span><span className="font-black text-lg text-amber-600">{Math.min(selectedEvent.priority + Math.floor(Math.random()*5-2),100)}/100</span></div>
+                        <p className="text-xs text-gray-600">{selectedEvent.time}hrs zona industrial. {selectedEvent.priority>=90?'3 robos radio 2km en 60 días. Sin policía en 15km. Ventana: 8 min.':selectedEvent.priority>=80?'2 incidentes similares en últimos 30 días. Ventana: 15 min.':'Sin precedentes recientes. Ventana: 45 min.'}</p>
+                      </div>
+                      <div className="bg-white rounded-lg p-3 border border-indigo-100">
+                        <div className="flex items-center justify-between mb-1"><span className="font-bold text-sm text-gray-800">💰 Dinero</span><span className="font-black text-lg text-green-700">{Math.min(selectedEvent.priority - Math.floor(Math.random()*8),100)}/100</span></div>
+                        <p className="text-xs text-gray-600">{selectedEvent.priority>=90?'Carga $780K. Liverpool Tier-1 ($12M anual). Pérdida total: $1,070,000. Riesgo cancelación: MEDIO-ALTO.':selectedEvent.priority>=80?'Carga $350K. Cliente frecuente. Pérdida estimada: $520,000. Impacto SLA: ALTO.':'Carga $120K. Pérdida estimada: $185,000. Impacto operativo: MEDIO.'}</p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Resumen general */}
+                  <div className="bg-gray-50 rounded-xl p-4 border border-gray-200 mb-4">
+                    <p className="text-sm font-bold text-gray-800 mb-3">Resumen general</p>
+                    <div className="grid grid-cols-2 gap-2 text-sm">
+                      <div><span className="text-gray-500 text-xs">Vehículo:</span><p className="font-bold text-gray-900">{selectedEvent.unit || '—'}</p></div>
+                      <div><span className="text-gray-500 text-xs">Fecha:</span><p className="font-bold text-gray-900">2026-03-01 {selectedEvent.time}</p></div>
+                      <div><span className="text-gray-500 text-xs">Conductor:</span><p className="font-bold text-gray-900">{selectedEvent.id<=3?['Roberto Silva','María López','Carlos Ruiz'][selectedEvent.id-1]:'Driver '+( selectedEvent.unit||'Unknown')}</p></div>
+                      <div><span className="text-gray-500 text-xs">Regla:</span><p className="font-bold text-gray-900">{selectedEvent.type}</p></div>
+                      <div className="col-span-2"><span className="text-gray-500 text-xs">Dirección:</span><p className="font-bold text-gray-900 text-xs">{selectedEvent.direccion || selectedEvent.route}</p></div>
+                      <div><span className="text-gray-500 text-xs">Categoría:</span><p className="font-bold" style={{color:selectedEvent.priority>=90?'#dc2626':selectedEvent.priority>=80?'#d97706':'#16a34a'}}>{selectedEvent.priority>=90?'Crítico':selectedEvent.priority>=80?'Moderado':'Bajo'}</p></div>
+                    </div>
+                  </div>
+                  {/* Mapa de ubicación GPS */}
+                  <div className="rounded-xl overflow-hidden border border-gray-200 mb-4" style={{height:'220px'}}>
+                    <iframe title="Ubicación del vehículo" width="100%" height="100%" style={{border:0}} loading="lazy" referrerPolicy="no-referrer-when-downgrade" src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${selectedEvent.lat||25.6866},${selectedEvent.lng||-100.3161}&zoom=15&maptype=roadmap`} />
+                  </div>
+                  {/* Evidencia de video — dual camera — LAYOUT GRANDE para ver cara */}
+                  <div className="mb-3">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <button className="bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center space-x-2 hover:bg-red-700 transition"><span>🎬</span><span>PlayBack de alerta</span></button>
+                      {selectedEvent.tiene_video_real && <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold animate-pulse">🟢 Video real disponible</span>}
+                    </div>
+                    {/* Tabs para alternar entre cámaras — cada video usa ancho completo */}
+                    <div className="flex gap-2 mb-2">
+                      <button onClick={() => setVideoCamTab && setVideoCamTab('cabina')} className={'px-4 py-2 rounded-lg text-xs font-bold transition ' + ((typeof videoCamTab === 'undefined' || videoCamTab === 'cabina') ? 'bg-orange-500 text-white shadow-lg' : 'bg-gray-200 text-gray-600 hover:bg-gray-300')}>
+                        📹 Cámara Cabina (Conductor)
+                      </button>
+                      <button onClick={() => setVideoCamTab && setVideoCamTab('trafico')} className={'px-4 py-2 rounded-lg text-xs font-bold transition ' + (videoCamTab === 'trafico' ? 'bg-red-600 text-white shadow-lg' : 'bg-gray-200 text-gray-600 hover:bg-gray-300')}>
+                        📹 Cámara Tráfico
+                      </button>
+                      <button onClick={() => setVideoCamTab && setVideoCamTab('dual')} className={'px-4 py-2 rounded-lg text-xs font-bold transition ' + (videoCamTab === 'dual' ? 'bg-blue-600 text-white shadow-lg' : 'bg-gray-200 text-gray-600 hover:bg-gray-300')}>
+                        📹 Dual (lado a lado)
+                      </button>
+                    </div>
+                    {/* Vista individual — video a ancho completo del modal */}
+                    {(typeof videoCamTab === 'undefined' || videoCamTab === 'cabina') && (
+                      <div className="bg-black rounded-xl overflow-hidden">
+                        {selectedEvent.video_cabina ? (
+                          <div className="relative">
+                            <video controls playsInline preload="metadata" className="w-full object-contain bg-black" style={{maxHeight:'70vh'}} src={selectedEvent.video_cabina}>
+                              Tu navegador no soporta video.
+                            </video>
+                            <div className="absolute top-2 left-2 bg-orange-500 text-white px-2 py-0.5 rounded text-[10px] font-bold z-10">CABINA</div>
+                            <div className="absolute top-2 right-2 text-[10px] text-white/80 font-mono bg-black/50 px-1 rounded z-10">{selectedEvent.unit} · {selectedEvent.time}</div>
+                          </div>
+                        ) : (
+                          <div className="aspect-[3/4] bg-gray-900 flex items-center justify-center relative"><span className="text-sm font-bold text-white/60">CAM INTERIOR</span></div>
+                        )}
+                        <div className="flex items-center justify-between px-3 py-2">
+                          <span className="text-xs font-bold text-orange-400">{selectedEvent.video_cabina ? '📹 CAM CABINA — CONDUCTOR' : 'CABINA'}</span>
+                          {selectedEvent.video_cabina && <a href={selectedEvent.video_cabina} download className="text-orange-400 hover:text-orange-300 text-xs">⬇️ Descargar</a>}
+                        </div>
+                      </div>
+                    )}
+                    {videoCamTab === 'trafico' && (
+                      <div className="bg-black rounded-xl overflow-hidden">
+                        {selectedEvent.video_trafico ? (
+                          <div className="relative">
+                            <video controls playsInline preload="metadata" className="w-full object-contain bg-black" style={{maxHeight:'70vh'}} src={selectedEvent.video_trafico}>
+                              Tu navegador no soporta video.
+                            </video>
+                            <div className="absolute top-2 left-2 bg-red-600 text-white px-2 py-0.5 rounded text-[10px] font-bold z-10">REC</div>
+                            <div className="absolute top-2 right-2 text-[10px] text-white/80 font-mono bg-black/50 px-1 rounded z-10">{selectedEvent.unit} · {selectedEvent.time}</div>
+                          </div>
+                        ) : (
+                          <div className="aspect-video bg-gray-900 flex items-center justify-center relative"><span className="text-sm font-bold text-white/60">CAM FRONTAL</span></div>
+                        )}
+                        <div className="flex items-center justify-between px-3 py-2">
+                          <span className="text-xs font-bold text-red-500">{selectedEvent.video_trafico ? '📹 CAM TRÁFICO' : 'TRÁFICO'}</span>
+                          {selectedEvent.video_trafico && <a href={selectedEvent.video_trafico} download className="text-red-400 hover:text-red-300 text-xs">⬇️ Descargar</a>}
+                        </div>
+                      </div>
+                    )}
+                    {videoCamTab === 'dual' && (
+                      <div className="grid grid-cols-2 gap-3" style={{gridTemplateRows:'1fr'}}>
+                        <div className="bg-black rounded-xl overflow-hidden flex flex-col">
+                          {selectedEvent.video_cabina ? (
+                            <div className="relative flex-1 flex items-center justify-center bg-black" style={{height:'45vh'}}>
+                              <video controls playsInline preload="metadata" className="w-full h-full object-contain bg-black" src={selectedEvent.video_cabina}>
+                                Tu navegador no soporta video.
+                              </video>
+                              <div className="absolute top-2 left-2 bg-orange-500 text-white px-2 py-0.5 rounded text-[10px] font-bold z-10">CABINA</div>
+                            </div>
+                          ) : (
+                            <div className="bg-gray-900 flex items-center justify-center" style={{height:'45vh'}}><span className="text-sm font-bold text-white/60">CAM INTERIOR</span></div>
+                          )}
+                          <div className="px-3 py-1.5"><span className="text-xs font-bold text-orange-400">📹 CABINA</span></div>
+                        </div>
+                        <div className="bg-black rounded-xl overflow-hidden flex flex-col">
+                          {selectedEvent.video_trafico ? (
+                            <div className="relative flex-1 flex items-center justify-center bg-black" style={{height:'45vh'}}>
+                              <video controls playsInline preload="metadata" className="w-full h-full object-contain bg-black" src={selectedEvent.video_trafico}>
+                                Tu navegador no soporta video.
+                              </video>
+                              <div className="absolute top-2 left-2 bg-red-600 text-white px-2 py-0.5 rounded text-[10px] font-bold z-10">REC</div>
+                            </div>
+                          ) : (
+                            <div className="bg-gray-900 flex items-center justify-center" style={{height:'45vh'}}><span className="text-sm font-bold text-white/60">CAM FRONTAL</span></div>
+                          )}
+                          <div className="px-3 py-1.5"><span className="text-xs font-bold text-red-500">📹 TRÁFICO</span></div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="flex space-x-3">
+                  <button onClick={() => { setAlertValidated(true); setAlertPhase(2); }} className="flex-1 bg-red-600 text-white py-3 rounded-xl font-bold text-sm hover:bg-red-700 transition">✅ Confirmar alerta</button>
+                  <button onClick={() => { setAlertValidated(false); setShowEventDetailModal(false); setAlertPhase(1); }} className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-xl font-bold text-sm hover:bg-gray-300 transition">❌ Falso positivo</button>
+                </div>
+              </>)}
+              {/* ============ PASO 2: ATENDER ============ */}
+              {alertPhase === 2 && (<>
+                <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center space-x-2"><Settings className="w-5 h-5 text-amber-600" /><h4 className="font-bold text-amber-800">⚙️ Atendiendo alerta</h4></div>
+                    <span className="bg-amber-200 text-amber-800 px-3 py-1 rounded-full text-xs font-bold animate-pulse">⏳ En atención</span>
+                  </div>
+                  <p className="text-sm text-amber-700 mb-4">Selecciona cómo quieres ejecutar el plan de acción sugerido por Iris.</p>
+                  <div className="grid grid-cols-3 gap-3">
+                    <div onClick={() => setAlertActionMode('automatic')} className={`rounded-xl p-4 border-2 cursor-pointer transition ${alertActionMode === 'automatic' ? 'border-green-500 bg-green-50 shadow-lg' : 'border-gray-200 bg-white hover:border-green-300'}`}>
+                      <div className="text-center"><span className="text-2xl">🤖</span><h5 className="font-bold text-sm mt-2 text-gray-800">Automático</h5><p className="text-[10px] text-gray-500 mt-1">Iris ejecuta el protocolo completo. Tú supervisas.</p></div>
+                      <div className="mt-3 space-y-1 text-[10px] text-gray-600">
+                        <p>✓ Notifica conductor (llamada + SMS)</p>
+                        <p>✓ Alerta a supervisor</p>
+                        <p>✓ Redirige a punto seguro</p>
+                        <p>✓ Activa protocolo de seguro</p>
+                      </div>
+                    </div>
+                    <div onClick={() => setAlertActionMode('semi')} className={`rounded-xl p-4 border-2 cursor-pointer transition ${alertActionMode === 'semi' ? 'border-amber-500 bg-amber-50 shadow-lg' : 'border-gray-200 bg-white hover:border-amber-300'}`}>
+                      <div className="text-center"><span className="text-2xl">🤝</span><h5 className="font-bold text-sm mt-2 text-gray-800">Semi-automático</h5><p className="text-[10px] text-gray-500 mt-1">Iris prepara cada paso. Tú apruebas antes de ejecutar.</p></div>
+                      <div className="mt-3 space-y-1 text-[10px] text-gray-600">
+                        <p>○ Paso 1: Notificar → Aprobar</p>
+                        <p>○ Paso 2: Alertar → Aprobar</p>
+                        <p>○ Paso 3: Redirigir → Aprobar</p>
+                        <p>○ Paso 4: Seguro → Aprobar</p>
+                      </div>
+                    </div>
+                    <div onClick={() => setAlertActionMode('manual')} className={`rounded-xl p-4 border-2 cursor-pointer transition ${alertActionMode === 'manual' ? 'border-blue-500 bg-blue-50 shadow-lg' : 'border-gray-200 bg-white hover:border-blue-300'}`}>
+                      <div className="text-center"><span className="text-2xl">🎯</span><h5 className="font-bold text-sm mt-2 text-gray-800">Manual</h5><p className="text-[10px] text-gray-500 mt-1">Tú tomas el control. Iris muestra sugerencias.</p></div>
+                      <div className="mt-3 space-y-1 text-[10px] text-gray-600">
+                        <p>📋 Sugerencias visibles</p>
+                        <p>📞 Contactos disponibles</p>
+                        <p>🗺 Mapa de opciones</p>
+                        <p>✍️ Registro manual de acciones</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {alertActionMode && (
+                  <div className="bg-white rounded-xl border border-gray-200 p-4">
+                    <h5 className="font-bold text-gray-800 text-sm mb-3">Plan de acción: {alertActionMode === 'automatic' ? '🤖 Automático' : alertActionMode === 'semi' ? '🤝 Semi-automático' : '🎯 Manual'}</h5>
+                    <div className="space-y-2">
+                      {[{step: 1, action: 'Contactar conductor', detail: 'Llamada automática + SMS con instrucciones'}, {step: 2, action: 'Notificar supervisor', detail: 'Alerta push + email con contexto completo'}, {step: 3, action: 'Evaluar desvío', detail: 'Calcular ruta alterna al punto seguro más cercano'}, {step: 4, action: 'Activar protocolo', detail: 'Registro en bitácora + notificación a aseguradora'}].map(s => (
+                        <div key={s.step} className="flex items-center space-x-3 bg-gray-50 rounded-lg p-3">
+                          <div className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold" style={{ backgroundColor: alertActionMode === 'automatic' ? '#dcfce7' : '#fef3c7', color: alertActionMode === 'automatic' ? '#166534' : '#92400e' }}>{s.step}</div>
+                          <div className="flex-1"><p className="text-sm font-semibold text-gray-800">{s.action}</p><p className="text-[10px] text-gray-500">{s.detail}</p></div>
+                          {alertActionMode === 'automatic' && <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">Auto</span>}
+                          {alertActionMode === 'semi' && <button className="text-xs bg-amber-100 text-amber-700 px-3 py-1 rounded font-semibold hover:bg-amber-200">Aprobar</button>}
+                          {alertActionMode === 'manual' && <span className="text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded">Sugerido</span>}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <div className="flex space-x-3">
+                  <button onClick={() => setAlertPhase(1)} className="px-4 bg-gray-200 text-gray-700 py-3 rounded-xl font-bold text-sm hover:bg-gray-300 transition">← Regresar</button>
+                  <button onClick={() => { if (alertActionMode) { setAlertPhase(3); setAlertResolving(true); setTimeout(() => setAlertResolving(false), 2000); } }} disabled={!alertActionMode} className={`flex-1 py-3 rounded-xl font-bold text-sm transition ${alertActionMode ? 'bg-amber-600 text-white hover:bg-amber-700' : 'bg-gray-200 text-gray-400 cursor-not-allowed'}`}>{alertActionMode ? 'Ejecutar plan →' : 'Selecciona un modo'}</button>
+                </div>
+              </>)}
+              {/* ============ PASO 3: RESOLVER ============ */}
+              {alertPhase === 3 && (<>
+                {alertResolving ? (
+                  <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
+                    <div className="w-16 h-16 mx-auto border-4 border-green-500 border-t-transparent rounded-full animate-spin mb-4" />
+                    <p className="text-green-700 font-bold">Ejecutando plan de acción...</p>
+                    <p className="text-green-600 text-sm mt-1">Iris está {alertActionMode === 'automatic' ? 'ejecutando automáticamente' : 'preparando'} los pasos del protocolo.</p>
+                  </div>
+                ) : (<>
+                  <div className="bg-green-50 border border-green-200 rounded-xl p-4">
+                    <div className="flex items-center space-x-2 mb-3"><CheckCircle2 className="w-5 h-5 text-green-600" /><h4 className="font-bold text-green-800">✅ Plan ejecutado</h4></div>
+                    <div className="space-y-2">
+                      {['Conductor contactado y notificado', 'Supervisor alertado', 'Desvío evaluado y comunicado', 'Protocolo activado y registrado'].map((step, i) => (
+                        <div key={i} className="flex items-center space-x-2 bg-white rounded-lg p-2 border border-green-100"><span className="text-green-600 font-bold">✓</span><span className="text-sm text-gray-700">{step}</span><span className="text-[10px] text-gray-400 ml-auto">{new Date().toLocaleTimeString('es-MX', { hour12: false })}</span></div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="bg-white rounded-xl border border-gray-200 p-4">
+                    <h5 className="font-bold text-gray-800 text-sm mb-2">Notas de resolución</h5>
+                    <textarea value={alertNotes} onChange={e => setAlertNotes(e.target.value)} className="w-full border border-gray-300 rounded-lg p-3 text-sm resize-none h-20 focus:ring-2 focus:ring-green-500 focus:border-green-500" placeholder="Agrega notas sobre la resolución de esta alerta..." />
+                  </div>
+                  <div className="flex space-x-3">
+                    <button onClick={() => setAlertPhase(2)} className="px-4 bg-gray-200 text-gray-700 py-3 rounded-xl font-bold text-sm hover:bg-gray-300 transition">← Regresar</button>
+                    <button onClick={() => { setShowEventDetailModal(false); setAlertPhase(1); setAlertValidated(null); setAlertActionMode(null); setAlertNotes(''); }} className="flex-1 bg-green-600 text-white py-3 rounded-xl font-bold text-sm hover:bg-green-700 transition">✅ Marcar como resuelta</button>
+                  </div>
+                </>)}
+              </>)}
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+
+      {showEventDetailModal && selectedEvent && selectedEvent.type === 'Robo en curso' && alertPhase === 0 && (
+        <motion.div className="fixed inset-0 bg-blue-900 bg-opacity-85 flex items-center justify-center z-[60] p-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => { setShowEventDetailModal(false); setShowEventReasoning(false); }}>
+          <motion.div className="bg-gradient-to-b from-blue-50 to-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden border border-blue-200" initial={{ scale: 0.9, opacity: 0, y: 30 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.9, opacity: 0, y: 30 }} onClick={(e) => e.stopPropagation()}>
+            <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 text-white"><div className="flex items-center justify-between"><div className="flex items-center space-x-3"><div className="w-12 h-12 bg-white bg-opacity-15 rounded-full flex items-center justify-center"><Shield className="w-7 h-7" /></div><div><h3 className="text-2xl font-bold">Evento #{selectedEvent.id}: {selectedEvent.type}</h3><p className="text-sm text-blue-100">MX-3012 | Roberto Silva | {selectedEvent.route}</p></div></div><button onClick={() => { setShowEventDetailModal(false); setShowEventReasoning(false); }} className="hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition"><X className="w-6 h-6" /></button></div></div>
+            <div className="overflow-y-auto max-h-[calc(90vh-180px)]"><div className="p-6 space-y-5">
+              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-5"><div className="flex items-start space-x-4"><div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0"><Brain className="w-5 h-5 text-blue-600" /></div><div><p className="text-sm text-blue-900 font-semibold mb-1">🛡️ Iris detectó este evento y preparó un plan de 7 pasos.</p><p className="text-sm text-blue-700">Revisa, ajusta y ejecuta.</p></div></div></div>
+              <div className="bg-white rounded-xl p-5 border border-blue-200 shadow-sm">
+                <div className="flex items-center space-x-2 mb-4"><CheckCircle2 className="w-5 h-5 text-blue-600" /><h4 className="text-lg font-bold text-gray-800">Plan de acción sugerido</h4><span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-semibold">7 pasos · ~71 seg</span></div>
+                <div className="space-y-2">{[{s:1,t:'Obtener ubicación GPS (Lat: 25.6866, Lon: -100.3161)',d:'2s'},{s:2,t:'Identificar vehículo MX-3012 y conductor Roberto Silva',d:'1s'},{s:3,t:'Notificar autoridades (SSP NL + Guardia Nacional)',d:'15s'},{s:4,t:'Notificar aseguradora (Folio siniestro automático)',d:'10s'},{s:5,t:'Contactar conductor vía celular y radio',d:'30s'},{s:6,t:'Alertar Account Manager del cliente',d:'5s'},{s:7,t:'Estimar pérdida financiera y activar seguro',d:'8s'}].map((item) => (<div key={item.s} className="flex items-center space-x-3 bg-blue-50 rounded-lg p-3 border border-blue-100"><div className="w-7 h-7 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">{item.s}</div><p className="flex-1 text-sm text-gray-800">{item.t}</p><span className="text-xs text-blue-500 font-mono">{item.d}</span></div>))}</div>
+                <div className="mt-5 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4 border border-blue-200">
+                  <div className="flex items-center justify-between mb-3"><label className="text-sm font-semibold text-gray-700">Modo de ejecución:</label><div className="flex space-x-2"><button onClick={() => setExecutionMode('automatic')} className={'px-3 py-1.5 rounded-lg text-xs font-semibold transition ' + (executionMode === 'automatic' ? 'bg-blue-600 text-white' : 'bg-white text-gray-600 border')}>🤖 Automático</button><button onClick={() => setExecutionMode('semi-automatic')} className={'px-3 py-1.5 rounded-lg text-xs font-semibold transition ' + (executionMode === 'semi-automatic' ? 'bg-blue-600 text-white' : 'bg-white text-gray-600 border')}>🤝 Semi-Auto</button><button onClick={() => setExecutionMode('manual')} className={'px-3 py-1.5 rounded-lg text-xs font-semibold transition ' + (executionMode === 'manual' ? 'bg-blue-600 text-white' : 'bg-white text-gray-600 border')}>👤 Manual</button></div></div>
+                  <button onClick={handleExecuteFlow} disabled={isFlowExecuting} className={'w-full py-3 rounded-lg font-bold text-base transition shadow-md ' + (isFlowExecuting ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white hover:from-blue-700 hover:to-indigo-800')}>{isFlowExecuting ? '⏳ Ejecutando...' : '▶ Ejecutar Plan Ahora'}</button>
+                </div>
+              </div>
+              <div className="border border-gray-200 rounded-xl overflow-hidden">
+                <button onClick={() => setShowEventReasoning(!showEventReasoning)} className="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition text-left"><div className="flex items-center space-x-2"><Brain className="w-4 h-4 text-gray-500" /><span className="text-sm font-semibold text-gray-700">Racional de priorización, evidencia e impacto financiero</span></div><ChevronRight className={`w-5 h-5 text-gray-400 transition-transform ${showEventReasoning ? 'rotate-90' : ''}`} /></button>
+                <AnimatePresence>{showEventReasoning && (
+                  <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden"><div className="p-5 space-y-5 border-t border-gray-200">
+                    <div className="flex justify-end"><button onClick={() => exportRacionalTxt(false)} className="px-4 py-2 bg-blue-100 text-blue-700 text-xs rounded-lg font-semibold hover:bg-blue-200">📄 Exportar racional (.txt)</button></div>
+                    <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-5 border border-blue-200"><h4 className="text-base font-bold text-gray-800 mb-3">Tríada de Inteligencia — Prioridad 98/100</h4><div className="space-y-3">
+                      <div className="bg-white rounded-lg p-4 border-l-4 border-red-400"><div className="flex justify-between mb-2"><span className="font-bold text-sm">🛡️ Seguridad</span><span className="text-red-600 font-bold">95/100</span></div><p className="text-xs text-gray-600">Robo en curso. Desviación + detención zona riesgo 8/10. CAN BUS: movimiento no autorizado. Pérdida total: 87%.</p></div>
+                      <div className="bg-white rounded-lg p-4 border-l-4 border-orange-400"><div className="flex justify-between mb-2"><span className="font-bold text-sm">⏱️ Momento</span><span className="text-orange-600 font-bold">98/100</span></div><p className="text-xs text-gray-600">03:45hrs zona industrial. 3 robos radio 2km en 60 días. Sin policía en 15km. Ventana: 8 min.</p></div>
+                      <div className="bg-white rounded-lg p-4 border-l-4 border-green-400"><div className="flex justify-between mb-2"><span className="font-bold text-sm">💰 Dinero</span><span className="text-green-600 font-bold">92/100</span></div><p className="text-xs text-gray-600">Carga $780K. Liverpool Tier-1 ($12M anual). Pérdida total: $1,070,000. Riesgo cancelación: MEDIO-ALTO.</p></div>
+                    </div></div>
+                    <div className="bg-white rounded-xl p-5 border border-gray-200"><h4 className="text-base font-bold text-gray-800 mb-3">Evidencia</h4>{selectedEvent.tiene_video_real && <span className="inline-block mb-3 bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">🟢 Video real Lytx DriveCam</span>}<div className="space-y-4 mb-4"><div className="border rounded-lg overflow-hidden">{selectedEvent.video_cabina ? (<div><video controls playsInline preload="metadata" className="w-full object-contain bg-black rounded" style={{maxHeight:'65vh'}} src={selectedEvent.video_cabina} /><div className="flex"><a href={selectedEvent.video_cabina} download className="flex-1 bg-blue-600 text-white py-2 text-xs font-semibold text-center">⬇ Descargar Cabina</a></div></div>) : (<div><div className="bg-gray-800 h-32 flex items-center justify-center"><p className="text-sm text-white">📹 Video Interior Cabina</p></div><div className="flex"><button className="flex-1 bg-blue-600 text-white py-2 text-xs font-semibold">▶ Reproducir</button><button className="flex-1 bg-gray-200 text-gray-700 py-2 text-xs font-semibold">⬇ Descargar</button></div></div>)}</div><div className="border rounded-lg overflow-hidden">{selectedEvent.video_trafico ? (<div><video controls playsInline preload="metadata" className="w-full object-contain bg-black rounded" style={{maxHeight:'65vh'}} src={selectedEvent.video_trafico} /><div className="flex"><a href={selectedEvent.video_trafico} download className="flex-1 bg-blue-600 text-white py-2 text-xs font-semibold text-center">⬇ Descargar Tráfico</a></div></div>) : (<div><div className="bg-gray-800 h-32 flex items-center justify-center"><p className="text-sm text-white">📹 Video Exterior</p></div><div className="flex"><button className="flex-1 bg-blue-600 text-white py-2 text-xs font-semibold">▶ Reproducir</button><button className="flex-1 bg-gray-200 text-gray-700 py-2 text-xs font-semibold">⬇ Descargar</button></div></div>)}</div></div><div className="bg-blue-50 rounded-lg p-3 border border-blue-200"><p className="text-sm text-gray-700"><strong>GPS:</strong> {selectedEvent.lat||25.6866}, {selectedEvent.lng||-100.3161} · Av. Constitución #2400, Monterrey, N.L.</p></div></div>
+                    <div className="bg-white rounded-xl p-5 border border-gray-200"><h4 className="text-base font-bold text-gray-800 mb-3">Impacto financiero</h4><div className="border rounded-lg overflow-hidden"><div className="divide-y divide-gray-100"><div className="flex justify-between px-4 py-2.5"><span className="text-sm text-gray-700">Valor de carga</span><span className="font-semibold">$780,000</span></div><div className="flex justify-between px-4 py-2.5"><span className="text-sm text-gray-700">Multa SLA</span><span className="font-semibold">$150,000</span></div><div className="flex justify-between px-4 py-2.5"><span className="text-sm text-gray-700">Deducible seguro</span><span className="font-semibold">$95,000</span></div><div className="flex justify-between px-4 py-2.5"><span className="text-sm text-gray-700">Costo operativo</span><span className="font-semibold">$45,000</span></div></div><div className="bg-blue-50 px-4 py-3 flex justify-between"><span className="font-bold text-blue-800">TOTAL</span><span className="font-black text-blue-800 text-xl">$1,070,000</span></div></div></div>
+                  </div></motion.div>
+                )}</AnimatePresence>
+              </div>
+            </div></div>
+            <div className="bg-gray-50 px-6 py-4 border-t flex justify-end"><button onClick={() => { setShowEventDetailModal(false); setShowEventReasoning(false); }} className="px-6 bg-blue-100 text-blue-700 py-2.5 rounded-lg font-semibold hover:bg-blue-200 transition">Cerrar</button></div>
+          </motion.div>
+        </motion.div>
+      )}</AnimatePresence>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* FASE 2: Modal de Flujo en Tiempo Real */}
+      <AnimatePresence>
+        {showFlowModal && (
+          <motion.div
+            className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[70] p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full overflow-hidden"
+              initial={{ scale: 0.9, y: 50 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 50 }}
+            >
+              {/* Header */}
+              <div className="bg-gradient-to-r from-sky-500 to-teal-500 p-6 text-white">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                      <Activity className="w-7 h-7 animate-pulse" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold">Flujo en Ejecución</h3>
+                      <p className="text-sm opacity-90">
+                        Modo: {executionMode === 'automatic' ? '🤖 Automático' : executionMode === 'semi-automatic' ? '🤝 Semi-Automático' : '👤 Manual'}
+                      </p>
+                    </div>
+                  </div>
+                  {!isFlowExecuting && (
+                    <button 
+                      onClick={() => setShowFlowModal(false)}
+                      className="hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition"
+                    >
+                      <X className="w-6 h-6" />
+                    </button>
+                  )}
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+              {/* Progreso de pasos */}
+              <div className="p-6 max-h-[60vh] overflow-y-auto">
+                <div className="space-y-3">
+                  {flowSteps.map((step, idx) => (
+                    <div key={step.id} className="mb-3">
+                      <div
+                        className={'flex items-start space-x-3 p-4 rounded-lg border-2 cursor-pointer ' + (
+                          step.status === 'completed' ? 'bg-green-50 border-green-300' : 
+                          step.status === 'in-progress' ? 'bg-blue-50 border-blue-300 animate-pulse' : 
+                          'bg-gray-50 border-gray-200'
+                        )}
+                        onClick={() => setExpandedStep(expandedStep === step.id ? null : step.id)}
+                      >
+                        <div className={'w-10 h-10 rounded-full flex items-center justify-center font-bold ' + (
+                          step.status === 'completed' ? 'bg-green-500 text-white' :
+                          step.status === 'in-progress' ? 'bg-blue-500 text-white' : 
+                          'bg-gray-300 text-gray-600'
+                        )}>
+                          {step.status === 'completed' ? '✓' : step.status === 'in-progress' ? '⏳' : step.id}
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex justify-between">
+                            <p className="text-sm font-semibold">{step.text}</p>
+                            {expandedStep === step.id ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
+                          </div>
+                          <p className="text-xs text-gray-500 mt-1">
+                            {step.status === 'completed' ? '✅ Completado' : step.status === 'in-progress' ? '🔄 En progreso' : '⏱️ ' + step.time}
+                          </p>
+                        </div>
+                      </div>
+                      {expandedStep === step.id && step.details && (
+                        <div className="ml-16 mt-2 bg-white p-3 rounded border">
+                          {step.details.map((d, i) => (
+                            <div key={i} className="text-xs text-gray-700 mb-1">
+                              <span className="text-gray-400">├─ </span>{d}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      {waitingForApproval && currentApprovalStep === idx && (
+                        <button
+                          onClick={approveStep}
+                          className="w-full mt-2 bg-green-500 text-white py-3 rounded-lg font-bold hover:bg-green-600 transition"
+                        >
+                          ✓ Aprobar Paso {step.id}
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+
+
+
+
+
+
+
+                {/* Historial de acciones */}
+                {actionHistory.length > 0 && (
+                  <div className="mt-6 bg-gray-50 rounded-lg p-4 border">
+                    <div className="flex justify-between mb-3">
+                      <h4 className="font-bold text-gray-800">📜 Historial</h4>
+                      <button onClick={exportHistory} className="px-3 py-1 bg-blue-500 text-white text-xs rounded font-semibold hover:bg-blue-600">
+                        📄 Exportar
+                      </button>
+                    </div>
+                    <div className="space-y-2 max-h-40 overflow-y-auto mb-3">
+                      {actionHistory.map((entry, idx) => (
+                        <div key={idx} className="flex space-x-2 text-xs">
+                          <span className="font-mono text-gray-500">{entry.timestamp}</span>
+                          <span>-</span>
+                          <span>{entry.action}</span>
+                        </div>
+                      ))}
+                    </div>
+                    {flowEndTime && (
+                      <div className="bg-green-50 p-3 rounded border border-green-200">
+                        <p className="text-xs font-semibold text-green-800">
+                          ⏱️ Tiempo: {getResponseTime()}
+                        </p>
+                        <p className="text-xs text-green-700">
+                          🎯 Meta: {'<'}90seg | {parseInt(getResponseTime()) < 90 ? '✅ Cumplido' : '⚠️ Excedido'}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+
+
+
+
+
+
+
+
+              {/* Footer */}
+              {!isFlowExecuting && (
+                <div className="bg-gray-100 p-4 border-t">
+                  <button 
+                    onClick={() => setShowFlowModal(false)}
+                    className="w-full bg-sky-500 text-white py-3 rounded-lg font-bold hover:bg-sky-600 transition"
+                  >
+                    ✓ Cerrar
+                  </button>
+                </div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+
+
+
+
+
+
+
+
+
+      {/* Toast */}
+      <AnimatePresence>
+        {toastNotification.show && (
+          <motion.div
+            className="fixed top-6 right-6 z-[80] bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-4 rounded-lg shadow-2xl"
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+          >
+            <span className="font-semibold">{toastNotification.message}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Modal de Drill-Down de KPIs */}
+      <AnimatePresence>
+        {showKPIDrillDown && <KPIDrillDownModal onClose={() => setShowKPIDrillDown(false)} />}
+      </AnimatePresence>
+
+      {/* === AÑADIDO: Modal Estado de viajes === */}
+      <AnimatePresence>
+        {showTripStatusModal && <TripStatusModal />}
+      </AnimatePresence>
+
+
+      {/* User Badge */}
+      <div className="absolute bottom-[120px] left-20 z-10 flex items-center space-x-3 bg-white bg-opacity-30 backdrop-blur-lg rounded-full px-4 py-2 shadow-lg border border-white border-opacity-30">
+        <div className="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
+          <span className="text-sm font-bold text-gray-600">CM</span>
+        </div>
+        <div>
+          <p className="text-sm font-bold text-white drop-shadow-lg">Cruz Martínez</p>
+          <p className="text-xs text-white opacity-80 cursor-pointer hover:text-blue-200 transition" onClick={() => setUserRole(null)}>Monitorista · Cambiar rol →</p><p className="text-xs text-blue-300/40 hover:text-amber-400 cursor-pointer transition mt-1" onClick={() => { setSelectedCompany(null); setUserRole(null); }}>Cambiar empresa →</p>
+        </div>
+      </div>
+    </div>
+  
+      </>)}
+      {userRole === 'supervisor' && (
+    <div className="h-screen w-screen overflow-hidden bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 relative">
+      <div className="absolute inset-0 opacity-10"><div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl animate-pulse" style={{ animationDuration: '8s' }} /><div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500 rounded-full filter blur-3xl animate-pulse" style={{ animationDuration: '12s' }} /></div>
+      <div className="relative z-10 flex items-center justify-between px-8 py-4 border-b border-white border-opacity-10">
+        <div className="flex items-center space-x-4"><div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg"><Brain className="w-6 h-6 text-white" /></div><div><h1 className="text-xl font-bold text-white">Iris Fleet Intelligence</h1><p className="text-xs text-blue-300">Panel de Supervisor · {getTimeGreeting()}</p></div></div>
+        <div className="flex items-center space-x-6"><div className="text-right"><p className="text-sm font-semibold text-white">Lic. Alejandra Vega</p><p className="text-xs text-blue-300">Supervisora de Monitoreo</p></div><div className="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center"><span className="text-sm font-bold text-white">AV</span></div><button onClick={() => setUserRole(null)} className="text-xs text-blue-400 hover:text-white transition">Cambiar rol →</button><button onClick={() => { setSelectedCompany(null); setUserRole(null); }} className="text-xs text-blue-300/50 hover:text-amber-400 transition ml-2">· Empresa</button></div>
+      </div>
+      <div className="relative z-10 flex flex-col items-center justify-center mt-5">
+        <motion.div className="w-full" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-4 text-center">Centro de Operaciones del Supervisor</p>
+          <div className="grid grid-cols-3 gap-4"><div onClick={() => setSupOpsDetail('alertas')} className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-4 border border-red-500 border-opacity-30 cursor-pointer hover:bg-opacity-10 transition group"><div className="flex items-center justify-between mb-3"><div className="flex items-center space-x-2"><span className="text-xl">🚨</span><span className="text-sm font-bold text-red-300">Alertas Críticas</span></div><span className="text-3xl font-bold text-white">{supervisorOpsData.countAC.total}</span></div><div className="space-y-1.5"><div className="flex items-center justify-between"><div className="flex items-center space-x-1.5"><div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" /><span className="text-xs text-red-300">Sin atender</span></div><span className="text-sm font-bold text-red-400">{supervisorOpsData.countAC.sin_atender}</span></div><div className="flex items-center justify-between"><div className="flex items-center space-x-1.5"><div className="w-2 h-2 bg-yellow-400 rounded-full" /><span className="text-xs text-yellow-300">Atendiendo</span></div><span className="text-sm font-bold text-yellow-300">{supervisorOpsData.countAC.siendo_atendido}</span></div><div className="flex items-center justify-between"><div className="flex items-center space-x-1.5"><div className="w-2 h-2 bg-green-400 rounded-full" /><span className="text-xs text-green-300">Resueltos</span></div><span className="text-sm font-bold text-green-300">{supervisorOpsData.countAC.resuelto_ok+supervisorOpsData.countAC.resuelto_con_problema}</span></div></div><div className="mt-3 w-full h-1.5 rounded-full bg-white bg-opacity-10 overflow-hidden flex">{supervisorOpsData.countAC.total>0&&(<><div style={{width:(supervisorOpsData.countAC.resuelto_ok/supervisorOpsData.countAC.total*100)+'%'}} className="bg-green-400 h-full"/><div style={{width:(supervisorOpsData.countAC.resuelto_con_problema/supervisorOpsData.countAC.total*100)+'%'}} className="bg-amber-400 h-full"/><div style={{width:(supervisorOpsData.countAC.siendo_atendido/supervisorOpsData.countAC.total*100)+'%'}} className="bg-yellow-400 h-full"/><div style={{width:(supervisorOpsData.countAC.sin_atender/supervisorOpsData.countAC.total*100)+'%'}} className="bg-red-500 h-full"/></>)}</div><p className="text-[10px] text-blue-400 mt-2 opacity-0 group-hover:opacity-100 transition">Click para detalle →</p></div><div onClick={() => setSupOpsDetail('mantenimiento')} className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-4 border border-amber-500 border-opacity-30 cursor-pointer hover:bg-opacity-10 transition group"><div className="flex items-center justify-between mb-3"><div className="flex items-center space-x-2"><span className="text-xl">🔧</span><span className="text-sm font-bold text-amber-300">Mant. Urgente</span></div><span className="text-3xl font-bold text-white">{supervisorOpsData.countMU.total}</span></div><div className="space-y-1.5"><div className="flex items-center justify-between"><div className="flex items-center space-x-1.5"><div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" /><span className="text-xs text-red-300">Sin atender</span></div><span className="text-sm font-bold text-red-400">{supervisorOpsData.countMU.sin_atender}</span></div><div className="flex items-center justify-between"><div className="flex items-center space-x-1.5"><div className="w-2 h-2 bg-yellow-400 rounded-full" /><span className="text-xs text-yellow-300">Atendiendo</span></div><span className="text-sm font-bold text-yellow-300">{supervisorOpsData.countMU.siendo_atendido}</span></div><div className="flex items-center justify-between"><div className="flex items-center space-x-1.5"><div className="w-2 h-2 bg-green-400 rounded-full" /><span className="text-xs text-green-300">Resueltos</span></div><span className="text-sm font-bold text-green-300">{supervisorOpsData.countMU.resuelto_ok+supervisorOpsData.countMU.resuelto_con_problema}</span></div></div><div className="mt-3 w-full h-1.5 rounded-full bg-white bg-opacity-10 overflow-hidden flex">{supervisorOpsData.countMU.total>0&&(<><div style={{width:(supervisorOpsData.countMU.resuelto_ok/supervisorOpsData.countMU.total*100)+'%'}} className="bg-green-400 h-full"/><div style={{width:(supervisorOpsData.countMU.resuelto_con_problema/supervisorOpsData.countMU.total*100)+'%'}} className="bg-amber-400 h-full"/><div style={{width:(supervisorOpsData.countMU.siendo_atendido/supervisorOpsData.countMU.total*100)+'%'}} className="bg-yellow-400 h-full"/><div style={{width:(supervisorOpsData.countMU.sin_atender/supervisorOpsData.countMU.total*100)+'%'}} className="bg-red-500 h-full"/></>)}</div><p className="text-[10px] text-blue-400 mt-2 opacity-0 group-hover:opacity-100 transition">Click para detalle →</p></div><div onClick={() => setSupOpsDetail('viajes')} className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-4 border border-blue-500 border-opacity-30 cursor-pointer hover:bg-opacity-10 transition group"><div className="flex items-center justify-between mb-3"><div className="flex items-center space-x-2"><span className="text-xl">🚦</span><span className="text-sm font-bold text-blue-300">Viajes Críticos</span></div><span className="text-3xl font-bold text-white">{supervisorOpsData.countVC.total}</span></div><div className="space-y-1.5"><div className="flex items-center justify-between"><div className="flex items-center space-x-1.5"><div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" /><span className="text-xs text-red-300">Sin atender</span></div><span className="text-sm font-bold text-red-400">{supervisorOpsData.countVC.sin_atender}</span></div><div className="flex items-center justify-between"><div className="flex items-center space-x-1.5"><div className="w-2 h-2 bg-yellow-400 rounded-full" /><span className="text-xs text-yellow-300">Atendiendo</span></div><span className="text-sm font-bold text-yellow-300">{supervisorOpsData.countVC.siendo_atendido}</span></div><div className="flex items-center justify-between"><div className="flex items-center space-x-1.5"><div className="w-2 h-2 bg-green-400 rounded-full" /><span className="text-xs text-green-300">Resueltos</span></div><span className="text-sm font-bold text-green-300">{supervisorOpsData.countVC.resuelto_ok+supervisorOpsData.countVC.resuelto_con_problema}</span></div></div><div className="mt-3 w-full h-1.5 rounded-full bg-white bg-opacity-10 overflow-hidden flex">{supervisorOpsData.countVC.total>0&&(<><div style={{width:(supervisorOpsData.countVC.resuelto_ok/supervisorOpsData.countVC.total*100)+'%'}} className="bg-green-400 h-full"/><div style={{width:(supervisorOpsData.countVC.resuelto_con_problema/supervisorOpsData.countVC.total*100)+'%'}} className="bg-amber-400 h-full"/><div style={{width:(supervisorOpsData.countVC.siendo_atendido/supervisorOpsData.countVC.total*100)+'%'}} className="bg-yellow-400 h-full"/><div style={{width:(supervisorOpsData.countVC.sin_atender/supervisorOpsData.countVC.total*100)+'%'}} className="bg-red-500 h-full"/></>)}</div><p className="text-[10px] text-blue-400 mt-2 opacity-0 group-hover:opacity-100 transition">Click para detalle →</p></div></div>
+          <div className="flex items-center justify-center space-x-6 mt-4"><div className="flex items-center space-x-1.5"><div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" /><span className="text-xs text-red-300 font-semibold">{supervisorOpsData.countAC.sin_atender+supervisorOpsData.countMU.sin_atender+supervisorOpsData.countVC.sin_atender} sin atender</span></div><div className="flex items-center space-x-1.5"><div className="w-2 h-2 bg-yellow-400 rounded-full" /><span className="text-xs text-yellow-300">{supervisorOpsData.countAC.siendo_atendido+supervisorOpsData.countMU.siendo_atendido+supervisorOpsData.countVC.siendo_atendido} atendiendo</span></div><div className="flex items-center space-x-1.5"><div className="w-2 h-2 bg-green-400 rounded-full" /><span className="text-xs text-green-300">{supervisorOpsData.countAC.resuelto_ok+supervisorOpsData.countMU.resuelto_ok+supervisorOpsData.countVC.resuelto_ok+supervisorOpsData.countAC.resuelto_con_problema+supervisorOpsData.countMU.resuelto_con_problema+supervisorOpsData.countVC.resuelto_con_problema} resueltos</span></div></div>
+        </motion.div>
+      </div>
+      <div className="relative z-10 space-y-3 px-8 mt-5 max-h-[calc(100vh-280px)] overflow-y-auto pb-8">
+        <motion.div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl border border-white border-opacity-10 overflow-hidden" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
+          <button onClick={() => toggleSupSection('team')} className="w-full flex items-center justify-between p-5 hover:bg-white hover:bg-opacity-5 transition text-left">
+            <div className="flex items-center space-x-3"><Users className="w-5 h-5 text-blue-400" /><h3 className="text-lg font-bold text-white">Desempeño contextual del equipo</h3><span className="text-xs bg-blue-500 bg-opacity-20 text-blue-300 px-2 py-0.5 rounded-full font-semibold">5 activos</span></div>
+            <div className="flex items-center space-x-6"><div className="flex items-center space-x-4"><div className="text-center"><p className="text-2xl font-bold text-white">87.4</p><p className="text-xs text-blue-400">Score prom.</p></div><div className="w-px h-8 bg-white bg-opacity-10" /><div className="text-center"><p className="text-2xl font-bold text-green-400">73s</p><p className="text-xs text-blue-400">Tiempo prom.</p></div><div className="w-px h-8 bg-white bg-opacity-10" /><div className="text-center"><p className="text-2xl font-bold text-blue-300">48</p><p className="text-xs text-blue-400">Eventos hoy</p></div><div className="w-px h-8 bg-white bg-opacity-10" /><div className="flex items-end space-x-1 h-8">{[94,96,89,71,87].map((s,i) => (<div key={i} className={`w-3 rounded-t ${s >= 90 ? 'bg-green-400' : s >= 80 ? 'bg-blue-400' : 'bg-amber-400'}`} style={{ height: (s/100*32) + 'px' }} />))}</div></div><ChevronRight className={`w-5 h-5 text-blue-400 transition-transform duration-300 ${supSections.team ? 'rotate-90' : ''}`} /></div>
+          </button>
+          <AnimatePresence>{supSections.team && (
+            <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden"><div className="px-5 pb-5">
+                <div className="bg-white bg-opacity-5 rounded-xl p-5 border border-white border-opacity-10 mb-4">
+                  <div className="flex items-center justify-between mb-3"><h4 className="text-sm font-bold text-white">Mapa de desempeño multivariable</h4><div className="flex items-center space-x-4 text-xs text-blue-400"><span>X = Eventos</span><span>Y = Tiempo (s)</span><span>◉ = Complejidad</span><span>Color = Score</span></div></div>
+                  <div className="relative bg-slate-800 bg-opacity-50 rounded-xl border border-white border-opacity-5" style={{ height: '220px' }}>
+                    <div className="absolute left-2 top-2 text-[10px] text-blue-500">150s</div><div className="absolute left-2 top-1/2 -translate-y-1/2 text-[10px] text-blue-500">90s</div><div className="absolute left-2 bottom-2 text-[10px] text-blue-500">30s</div><div className="absolute bottom-1 left-12 text-[10px] text-blue-500">4</div><div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[10px] text-blue-500">9</div><div className="absolute bottom-1 right-8 text-[10px] text-blue-500">14</div>
+                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 220" preserveAspectRatio="none"><line x1="30" y1="30" x2="380" y2="190" stroke="rgba(148,163,184,0.3)" strokeWidth="1" strokeDasharray="6,4" /><text x="200" y="85" fill="rgba(148,163,184,0.4)" fontSize="9" textAnchor="middle" transform="rotate(-22, 200, 85)">Rendimiento esperado</text></svg>
+                    {[{name:'Cruz',x:370,y:140,r:26,color:'#4ade80',events:14,time:'68s',comp:72,score:94},{name:'Pedro',x:120,y:50,r:34,color:'#4ade80',events:8,time:'112s',comp:91,score:96},{name:'María',x:260,y:130,r:24,color:'#60a5fa',events:11,time:'74s',comp:65,score:89},{name:'Fernando',x:70,y:30,r:28,color:'#fbbf24',events:6,time:'145s',comp:78,score:71},{name:'Sandra',x:190,y:115,r:25,color:'#60a5fa',events:9,time:'82s',comp:69,score:87}].map((b,i) => (<div key={i} className="absolute group" style={{left:b.x+'px',top:b.y+'px',transform:'translate(-50%,-50%)'}}><motion.div initial={{scale:0}} animate={{scale:1}} transition={{delay:0.3+i*0.1,type:'spring'}} className="rounded-full flex items-center justify-center cursor-pointer border-2 shadow-lg" style={{width:b.r*2,height:b.r*2,backgroundColor:b.color+'40',borderColor:b.color}}><span className="text-white text-[10px] font-bold">{b.name.substring(0,3)}</span></motion.div><div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-slate-800 border border-blue-500 border-opacity-30 rounded-lg px-3 py-2 opacity-0 group-hover:opacity-100 transition pointer-events-none z-20 whitespace-nowrap"><p className="text-xs font-bold text-white">{b.name}</p><p className="text-[10px] text-blue-300">{b.events} eventos · {b.time} · Comp: {b.comp} · Score: {b.score}</p></div></div>))}
+                    <div className="absolute bottom-3 right-3 flex items-center space-x-3"><div className="flex items-center space-x-1"><div className="w-2.5 h-2.5 rounded-full bg-green-400" /><span className="text-[9px] text-blue-400">≥90</span></div><div className="flex items-center space-x-1"><div className="w-2.5 h-2.5 rounded-full bg-blue-400" /><span className="text-[9px] text-blue-400">≥80</span></div><div className="flex items-center space-x-1"><div className="w-2.5 h-2.5 rounded-full bg-amber-400" /><span className="text-[9px] text-blue-400">&lt;80</span></div></div>
+                  </div>
+                  <p className="text-xs text-blue-400 mt-2 italic">Pedro: burbuja grande arriba pero verde — complejidad alta justifica tiempo. Fernando: ámbar — causa infraestructural detectada.</p>
+                </div>
+                <div className="space-y-3">{[{name:'Cruz Martínez',init:'CM',events:14,avgTime:'68s',complexity:72,score:94,insight:'Excelente rendimiento turno diurno. Semi-auto en 3 eventos complejos: acertado en todos.',trend:'↑',tc:'text-green-400'},{name:'Pedro Ramírez',init:'PR',events:8,avgTime:'112s',complexity:91,score:96,insight:'Turno nocturno, 2 robos en curso. Tiempo mayor justificado: complejidad 91/100. Mejor score ajustado.',trend:'↑',tc:'text-green-400'},{name:'María López',init:'ML',events:11,avgTime:'74s',complexity:65,score:89,insight:'Buen ritmo. Modo manual en evento #7: evitó falsa alarma. Decisión ejemplar.',trend:'→',tc:'text-blue-400'},{name:'Fernando Díaz',init:'FD',events:6,avgTime:'145s',complexity:78,score:71,insight:'⚡ 2 eventos con falla comunicación radio zona DGO-MZT. Tiempo extra NO atribuible al monitorista.',trend:'↓',tc:'text-amber-400'},{name:'Sandra Ortiz',init:'SO',events:9,avgTime:'82s',complexity:69,score:87,insight:'Consistente. Primer turno nocturno — rendimiento estable. No requiere acción.',trend:'→',tc:'text-blue-400'}].map((m,idx) => (<div key={idx} className="bg-white bg-opacity-5 rounded-xl p-4 border border-white border-opacity-5 hover:bg-opacity-10 transition"><div className="flex items-center justify-between mb-2"><div className="flex items-center space-x-3"><div className="w-9 h-9 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center"><span className="text-xs font-bold text-white">{m.init}</span></div><div><p className="text-sm font-semibold text-white">{m.name}</p><p className="text-xs text-blue-400">{m.events} eventos · {m.avgTime} · Complejidad: {m.complexity}/100</p></div></div><div className="flex items-center space-x-3"><div className="text-right"><p className="text-2xl font-bold text-white">{m.score}</p><p className="text-xs text-blue-400">Score contextual</p></div><span className={`text-lg ${m.tc}`}>{m.trend}</span></div></div><div className="bg-blue-500 bg-opacity-10 rounded-lg p-3 border-l-2 border-blue-400"><p className="text-xs text-blue-200"><Brain className="w-3 h-3 inline mr-1" />{m.insight}</p></div></div>))}</div>
+              </div></motion.div>
+          )}</AnimatePresence>
+        </motion.div>
+        <motion.div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl border border-white border-opacity-10 overflow-hidden" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+          <button onClick={() => toggleSupSection('health')} className="w-full flex items-center justify-between p-5 hover:bg-white hover:bg-opacity-5 transition text-left">
+            <div className="flex items-center space-x-3"><Heart className="w-5 h-5 text-blue-400" /><h3 className="text-lg font-bold text-white">Salud del equipo</h3></div>
+            <div className="flex items-center space-x-6"><div className="flex items-center space-x-4"><div className="flex items-center space-x-2"><div className="w-3 h-3 bg-green-400 rounded-full" /><span className="text-sm text-green-300 font-semibold">Carga balanceada</span></div><div className="w-px h-8 bg-white bg-opacity-10" /><div className="flex items-center space-x-2"><div className="w-3 h-3 bg-amber-400 rounded-full animate-pulse" /><span className="text-sm text-amber-300 font-semibold">1 sugerencia rotación</span></div><div className="w-px h-8 bg-white bg-opacity-10" /><span className="text-sm text-blue-300">🏆 1 reconocimiento</span><div className="w-px h-8 bg-white bg-opacity-10" /><div className="flex items-center h-4 w-40 rounded-full overflow-hidden"><div className="h-full bg-blue-400" style={{ width: '29%' }} /><div className="h-full bg-blue-500" style={{ width: '23%' }} /><div className="h-full bg-indigo-400" style={{ width: '19%' }} /><div className="h-full bg-indigo-500" style={{ width: '17%' }} /><div className="h-full bg-indigo-600" style={{ width: '12%' }} /></div></div><ChevronRight className={`w-5 h-5 text-blue-400 transition-transform duration-300 ${supSections.health ? 'rotate-90' : ''}`} /></div>
+          </button>
+          <AnimatePresence>{supSections.health && (<motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden"><div className="px-5 pb-5 space-y-4">
+                <div className="bg-green-500 bg-opacity-10 rounded-xl p-4 border border-green-500 border-opacity-20"><p className="text-sm font-semibold text-green-300 mb-1">Carga cognitiva balanceada</p><p className="text-xs text-green-200">Distribución equitativa. Ningún monitorista excede umbral de fatiga.</p></div>
+                <div className="bg-amber-500 bg-opacity-10 rounded-xl p-4 border border-amber-500 border-opacity-20"><p className="text-sm font-semibold text-amber-300 mb-1">⚡ Sugerencia de rotación</p><p className="text-xs text-amber-200">Pedro lleva 3 turnos nocturnos consecutivos. Rendimiento cae 22% tras 3er turno. <strong>Recomendación: turno diurno mañana.</strong></p></div>
+                <div className="bg-blue-500 bg-opacity-10 rounded-xl p-4 border border-blue-500 border-opacity-20"><p className="text-sm font-semibold text-blue-300 mb-1">🏆 Reconocimiento</p><p className="text-xs text-blue-200">María evitó falsa alarma eligiendo modo manual. Ahorro: $45K. Destacar en reunión.</p></div>
+                <div className="bg-white bg-opacity-5 rounded-xl p-5 border border-white border-opacity-10"><div className="flex items-center justify-between mb-4"><p className="text-sm font-bold text-white">Distribución de carga contextual</p><div className="flex items-center space-x-3 text-[10px] text-blue-400"><div className="flex items-center space-x-1"><div className="w-3 h-1.5 bg-blue-400 rounded" /><span>Baja</span></div><div className="flex items-center space-x-1"><div className="w-3 h-1.5 bg-indigo-400 rounded" /><span>Media</span></div><div className="flex items-center space-x-1"><div className="w-3 h-1.5 bg-purple-500 rounded" /><span>Alta</span></div></div></div><div className="space-y-3">{[{n:'Cruz',p:29,low:40,med:45,high:15,turno:'Diurno',signal:'green',aiText:'🟢 Carga óptima. Turno diurno, complejidad moderada.'},{n:'María',p:23,low:35,med:40,high:25,turno:'Diurno',signal:'green',aiText:'🟢 Equilibrada. Modo manual ejemplar en evento #7.'},{n:'Sandra',p:19,low:30,med:50,high:20,turno:'Nocturno (1°)',signal:'green',aiText:'🟢 Primer nocturno esta semana. Rendimiento estable.'},{n:'Pedro',p:17,low:10,med:30,high:60,turno:'Nocturno (3°)',signal:'amber',aiText:'🟡 17% pero 60% alta complejidad + 3er nocturno. Carga real ~28%. Rotar mañana.'},{n:'Fernando',p:12,low:25,med:45,high:30,turno:'Nocturno',signal:'green',aiText:'🟢 12% correcto: falla infraestructura DGO-MZT consumió 40% capacidad.'}].map((m,i) => (<div key={i}><div className="flex items-center space-x-3 mb-1"><span className="text-xs text-blue-300 w-16 font-semibold">{m.n}</span><div className="flex-1 flex h-3 rounded-full overflow-hidden bg-white bg-opacity-5"><div className="h-full bg-blue-400" style={{ width: (m.p*m.low/100)+'%' }} /><div className="h-full bg-indigo-400" style={{ width: (m.p*m.med/100)+'%' }} /><div className="h-full bg-purple-500" style={{ width: (m.p*m.high/100)+'%' }} /></div><span className="text-xs text-blue-400 w-8 text-right font-bold">{m.p}%</span><span className="text-[10px] text-blue-500 w-24">{m.turno}</span><div className={`w-2.5 h-2.5 rounded-full ${m.signal==='green'?'bg-green-400':'bg-amber-400'}`} /></div><div className="ml-20 bg-blue-500 bg-opacity-5 rounded px-3 py-1.5 border-l border-blue-500 border-opacity-20 mb-1"><p className="text-[10px] text-blue-300">{m.aiText}</p></div></div>))}</div></div>
+              </div></motion.div>)}</AnimatePresence>
+        </motion.div>
+        <motion.div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl border border-white border-opacity-10 overflow-hidden" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+          <button onClick={() => toggleSupSection('patterns')} className="w-full flex items-center justify-between p-5 hover:bg-white hover:bg-opacity-5 transition text-left">
+            <div className="flex items-center space-x-3"><TrendingUp className="w-5 h-5 text-blue-400" /><h3 className="text-lg font-bold text-white">Patrones sistémicos detectados</h3><span className="text-xs text-blue-400">Últimos 30 días</span></div>
+            <div className="flex items-center space-x-6"><div className="flex items-center space-x-4"><div className="flex items-center space-x-2"><div className="w-3 h-3 bg-red-400 rounded-full" /><span className="text-sm text-red-300 font-semibold">2 alta</span></div><div className="flex items-center space-x-2"><div className="w-3 h-3 bg-amber-400 rounded-full" /><span className="text-sm text-amber-300 font-semibold">2 media</span></div><div className="w-px h-8 bg-white bg-opacity-10" /><div className="text-center"><p className="text-2xl font-bold text-green-300">$7.8M</p><p className="text-xs text-blue-400">Ahorro si se atienden</p></div></div><ChevronRight className={`w-5 h-5 text-blue-400 transition-transform duration-300 ${supSections.patterns ? 'rotate-90' : ''}`} /></div>
+          </button>
+          <AnimatePresence>{supSections.patterns && (<motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden"><div className="px-5 pb-5 space-y-3">
+                <p className="text-sm text-blue-300 mb-2">Iris analiza semanas de datos para encontrar causas raíz.</p>
+                {[{idx:0,icon:'🔴',title:'Corredor MTY→GDL km 180-195: zona alto riesgo nocturno',detail:'3 robos en 60 días entre 2:00-4:00 AM.',action:'Renegociar horario o contratar escolta.',impact:'Ahorro: $2.7M/trimestre',area:'Seguridad',areaColor:'from-red-500 to-red-600'},{idx:1,icon:'🟠',title:'Falla de comunicación corredor DGO-MZT',detail:'34% de "no ubicable" aquí. Baja cobertura celular.',action:'Instalar comunicación satelital en 12 unidades.',impact:'Reduce "no ubicables" 34%',area:'Salud de la Flota',areaColor:'from-orange-500 to-orange-600'},{idx:2,icon:'🟡',title:'Kenworth T680 2021: desgaste de frenos',detail:'Unidades 2021: 3x más alertas que 2023.',action:'Mantenimiento preventivo frenos en 14 unidades.',impact:'Previene 3-4 incidentes en 60 días',area:'Mantenimiento',areaColor:'from-amber-500 to-amber-600'},{idx:3,icon:'🟡',title:'Liverpool: ventanas de entrega ajustadas',detail:'28% eventos urgentes son de Liverpool.',action:'Presentar análisis comercial para renegociar SLA.',impact:'Reduce 28% urgentes y $2.3M/año',area:'Ventas',areaColor:'from-yellow-500 to-yellow-600'}].map((p) => (<div key={p.idx} className="bg-white bg-opacity-5 rounded-xl p-4 border border-white border-opacity-5 hover:bg-opacity-10 transition"><div className="flex items-start space-x-3"><span className="text-lg mt-0.5">{p.icon}</span><div className="flex-1"><p className="text-sm font-semibold text-white mb-1">{p.title}</p><p className="text-xs text-blue-300 mb-2">{p.detail}</p><div className="bg-blue-500 bg-opacity-10 rounded-lg p-3 border-l-2 border-blue-400 mb-2"><p className="text-xs text-blue-200"><strong>Recomendación:</strong> {p.action}</p></div><div className="flex items-center space-x-2"><TrendingUp className="w-3 h-3 text-green-400" /><span className="text-xs text-green-300 font-semibold">{p.impact}</span></div></div><div className="flex-shrink-0 ml-3">{patternSent[p.idx] ? (<div className="bg-green-500 bg-opacity-20 border border-green-500 border-opacity-30 rounded-lg px-3 py-2 text-center"><p className="text-[10px] text-green-300 font-semibold">✓ Enviado</p><p className="text-[10px] text-green-400 font-bold">{patternSent[p.idx]}</p></div>) : (<button onClick={() => handleSendPattern(p.idx, p.area)} className={`bg-gradient-to-r ${p.areaColor} text-white rounded-lg px-4 py-2.5 text-xs font-semibold hover:shadow-lg transition flex items-center space-x-2 whitespace-nowrap`}><Send className="w-3.5 h-3.5" /><span>Enviar a {p.area}</span></button>)}</div></div></div>))}
+              </div></motion.div>)}</AnimatePresence>
+        </motion.div>
+        <motion.div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl border border-white border-opacity-10 overflow-hidden" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+          <button onClick={() => toggleSupSection('narrative')} className="w-full flex items-center justify-between p-5 hover:bg-white hover:bg-opacity-5 transition text-left">
+            <div className="flex items-center space-x-3"><FileText className="w-5 h-5 text-blue-400" /><h3 className="text-lg font-bold text-white">Narrativa semanal</h3><span className="text-xs text-blue-400">Semana 6</span></div>
+            <div className="flex items-center space-x-6"><div className="flex items-center space-x-4"><div className="text-center"><p className="text-2xl font-bold text-white">847</p><p className="text-xs text-blue-400">Eventos</p></div><div className="w-px h-8 bg-white bg-opacity-10" /><div className="text-center"><p className="text-2xl font-bold text-blue-300">93.2%</p><p className="text-xs text-blue-400">Iris resolvió</p></div><div className="w-px h-8 bg-white bg-opacity-10" /><div className="text-center"><p className="text-2xl font-bold text-green-300">$4.2M</p><p className="text-xs text-blue-400">Pérdida evitada</p></div><div className="w-px h-8 bg-white bg-opacity-10" /><div className="relative w-10 h-10"><svg viewBox="0 0 36 36" className="w-10 h-10 -rotate-90"><circle cx="18" cy="18" r="14" fill="none" stroke="rgba(59,130,246,0.15)" strokeWidth="3" /><circle cx="18" cy="18" r="14" fill="none" stroke="#60a5fa" strokeWidth="3" strokeDasharray="87 13" strokeLinecap="round" /></svg><div className="absolute inset-0 flex items-center justify-center"><span className="text-[8px] font-bold text-blue-300">93%</span></div></div></div><ChevronRight className={`w-5 h-5 text-blue-400 transition-transform duration-300 ${supSections.narrative ? 'rotate-90' : ''}`} /></div>
+          </button>
+          <AnimatePresence>{supSections.narrative && (<motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden"><div className="px-5 pb-5">
+                <div className="bg-white bg-opacity-5 rounded-xl p-5 border border-white border-opacity-10 mb-4"><p className="text-sm text-blue-100 leading-relaxed"><strong className="text-white">Semana 6:</strong> Flota con <strong className="text-green-300">94.2% disponibilidad</strong>. 847 eventos — <strong className="text-blue-300">Iris resolvió 789</strong> (93.2%). Equipo atendió 58 en <strong className="text-white">73 seg</strong> (meta: 90 seg ✓).</p><p className="text-sm text-blue-100 leading-relaxed mt-3"><strong className="text-amber-300">Patrón:</strong> Ruta MTY→GDL tiene robos nocturnos. Acción inmediata recomendada.</p><p className="text-sm text-blue-100 leading-relaxed mt-3"><strong className="text-green-300">Impacto evitado: $4.2M MXN.</strong> Costo Iris: $38K. ROI: 110x.</p></div>
+                <div className="grid grid-cols-5 gap-3 mb-4"><div className="bg-white bg-opacity-5 rounded-lg p-3 text-center"><p className="text-xs text-blue-300">Eventos</p><p className="text-lg font-bold text-white">847</p></div><div className="bg-white bg-opacity-5 rounded-lg p-3 text-center"><p className="text-xs text-blue-300">Por Iris</p><p className="text-lg font-bold text-blue-300">789</p></div><div className="bg-white bg-opacity-5 rounded-lg p-3 text-center"><p className="text-xs text-blue-300">Equipo</p><p className="text-lg font-bold text-white">58</p></div><div className="bg-white bg-opacity-5 rounded-lg p-3 text-center"><p className="text-xs text-blue-300">Promedio</p><p className="text-lg font-bold text-green-300">73s ✓</p></div><div className="bg-green-500 bg-opacity-10 rounded-lg p-3 text-center border border-green-500 border-opacity-20"><p className="text-xs text-green-300">Evitado</p><p className="text-lg font-bold text-green-300">$4.2M</p></div></div>
+                <button className="w-full bg-blue-500 bg-opacity-20 text-blue-300 py-3 rounded-lg text-sm font-semibold hover:bg-opacity-30 transition border border-blue-500 border-opacity-20">📄 Exportar reporte semanal</button>
+              </div></motion.div>)}</AnimatePresence>
+        </motion.div>
+        {/* === TORRE DE CONTROL 360 — Secciones expandibles del Supervisor === */}
+        <motion.div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl border border-white border-opacity-10 overflow-hidden" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
+          <button onClick={() => toggleSupSection('maintenance')} className="w-full flex items-center justify-between p-5 hover:bg-white hover:bg-opacity-5 transition text-left">
+            <div className="flex items-center space-x-3"><Wrench className="w-5 h-5 text-orange-400" /><h3 className="text-lg font-bold text-white">Mantenimiento &amp; Uptime</h3></div>
+            <div className="flex items-center space-x-6"><div className="flex items-center space-x-4"><div className="text-center"><p className="text-2xl font-bold text-white">{torreControlData.uptimePct}%</p><p className="text-xs text-blue-400">Uptime</p></div><div className="w-px h-8 bg-white bg-opacity-10" /><div className="text-center"><p className="text-2xl font-bold text-orange-300">{torreControlData.mttrHoras}h</p><p className="text-xs text-blue-400">MTTR prom.</p></div><div className="w-px h-8 bg-white bg-opacity-10" /><div className="text-center"><p className="text-2xl font-bold text-green-300">{torreControlData.cumplimientoPreventivo}%</p><p className="text-xs text-blue-400">Prev. cumplido</p></div><div className="w-px h-8 bg-white bg-opacity-10" /><div className="flex items-center space-x-2"><div className="w-3 h-3 bg-red-400 rounded-full animate-pulse" /><span className="text-sm text-red-300 font-semibold">{torreControlData.enTaller} en taller</span></div></div><ChevronRight className={`w-5 h-5 text-blue-400 transition-transform duration-300 ${supSections.maintenance ? 'rotate-90' : ''}`} /></div>
+          </button>
+          <AnimatePresence>{supSections.maintenance && (<motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden"><div className="px-5 pb-5 space-y-4">
+            <div className="grid grid-cols-4 gap-3">
+              <div className="bg-green-500 bg-opacity-10 rounded-xl p-4 border border-green-500 border-opacity-20 text-center"><p className="text-3xl font-bold text-green-300">{torreControlData.uptimePct}%</p><p className="text-xs text-green-400 mt-1">Disponibilidad total</p></div>
+              <div className="bg-orange-500 bg-opacity-10 rounded-xl p-4 border border-orange-500 border-opacity-20 text-center"><p className="text-3xl font-bold text-orange-300">{torreControlData.mtbfHoras}h</p><p className="text-xs text-orange-400 mt-1">MTBF promedio</p></div>
+              <div className="bg-blue-500 bg-opacity-10 rounded-xl p-4 border border-blue-500 border-opacity-20 text-center"><p className="text-3xl font-bold text-blue-300">${torreControlData.costoMantPorKm}</p><p className="text-xs text-blue-400 mt-1">Costo mant/km</p></div>
+              <div className="bg-purple-500 bg-opacity-10 rounded-xl p-4 border border-purple-500 border-opacity-20 text-center"><p className="text-3xl font-bold text-purple-300">{torreControlData.backlogOrdenes}</p><p className="text-xs text-purple-400 mt-1">Backlog OTs</p></div>
+            </div>
+            <div className="bg-white bg-opacity-5 rounded-xl p-4 border border-white border-opacity-10"><p className="text-sm font-bold text-white mb-3">Mix Preventivo vs Correctivo</p><div className="flex items-center space-x-3"><div className="flex-1 h-4 rounded-full overflow-hidden bg-white bg-opacity-10 flex"><div className="h-full bg-green-500" style={{ width: torreControlData.mixPreventivo + '%' }} /><div className="h-full bg-red-500" style={{ width: torreControlData.mixCorrectivo + '%' }} /></div><span className="text-xs text-green-300 font-semibold w-20">{torreControlData.mixPreventivo}% prev</span></div></div>
+            <div className="bg-white bg-opacity-5 rounded-xl p-4 border border-white border-opacity-10"><p className="text-sm font-bold text-white mb-3">Unidades con fallas recurrentes</p><div className="space-y-2">{torreControlData.fleetMaintenanceData.filter(m => m.fallas >= 3).map((m, i) => (<div key={i} className="flex items-center justify-between bg-red-500 bg-opacity-10 rounded-lg px-3 py-2 border border-red-500 border-opacity-20"><div className="flex items-center space-x-3"><span className="text-sm font-bold text-white">{m.unit}</span><span className="text-xs text-red-300">{m.tipo} · {m.fallas} fallas</span></div><div className="flex items-center space-x-3"><span className="text-xs text-orange-300">MTTR: {m.mttr}h</span><span className="text-xs text-blue-300">${m.costoAcum.toLocaleString()}</span><span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${m.status === 'critica' ? 'bg-red-600 text-white' : 'bg-green-600 text-white'}`}>{m.status}</span></div></div>))}</div></div>
+            <div className="bg-blue-500 bg-opacity-10 rounded-lg p-3 border-l-2 border-blue-400"><p className="text-xs text-blue-200"><Brain className="w-3 h-3 inline mr-1" />ECO-304 acumula $420K en correctivo con 7 fallas motor. MTTR de 12h vs promedio flota 4.2h. Recomendación: evaluar reemplazo inmediato — el costo acumulado supera el 65% del valor residual.</p></div>
+          </div></motion.div>)}</AnimatePresence>
+        </motion.div>
+
+        <motion.div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl border border-white border-opacity-10 overflow-hidden" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}>
+          <button onClick={() => toggleSupSection('costs')} className="w-full flex items-center justify-between p-5 hover:bg-white hover:bg-opacity-5 transition text-left">
+            <div className="flex items-center space-x-3"><DollarSign className="w-5 h-5 text-emerald-400" /><h3 className="text-lg font-bold text-white">Fuel &amp; Costo Operativo</h3></div>
+            <div className="flex items-center space-x-6"><div className="flex items-center space-x-4"><div className="text-center"><p className="text-2xl font-bold text-white">${torreControlData.costoPorKmFlota}</p><p className="text-xs text-blue-400">Costo/km flota</p></div><div className="w-px h-8 bg-white bg-opacity-10" /><div className="text-center"><p className="text-2xl font-bold text-green-300">{torreControlData.avgRendimiento}</p><p className="text-xs text-blue-400">km/L prom.</p></div><div className="w-px h-8 bg-white bg-opacity-10" />{torreControlData.unitsConAlertaConsumo > 0 && <div className="flex items-center space-x-2"><div className="w-3 h-3 bg-amber-400 rounded-full animate-pulse" /><span className="text-sm text-amber-300 font-semibold">{torreControlData.unitsConAlertaConsumo} consumo anómalo</span></div>}</div><ChevronRight className={`w-5 h-5 text-blue-400 transition-transform duration-300 ${supSections.costs ? 'rotate-90' : ''}`} /></div>
+          </button>
+          <AnimatePresence>{supSections.costs && (<motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden"><div className="px-5 pb-5 space-y-4">
+            <div className="grid grid-cols-3 gap-3">
+              <div className="bg-emerald-500 bg-opacity-10 rounded-xl p-4 border border-emerald-500 border-opacity-20 text-center"><p className="text-3xl font-bold text-emerald-300">${torreControlData.costoPorKmFlota}</p><p className="text-xs text-emerald-400 mt-1">Costo total/km</p></div>
+              <div className="bg-blue-500 bg-opacity-10 rounded-xl p-4 border border-blue-500 border-opacity-20 text-center"><p className="text-3xl font-bold text-blue-300">{torreControlData.avgRendimiento} km/L</p><p className="text-xs text-blue-400 mt-1">Rendimiento prom.</p><p className="text-[10px] text-blue-500 mt-0.5">Benchmark: {torreControlData.benchmarkRendimiento} km/L</p></div>
+              <div className="bg-amber-500 bg-opacity-10 rounded-xl p-4 border border-amber-500 border-opacity-20 text-center"><p className="text-3xl font-bold text-amber-300">${torreControlData.totalDieselCost.toLocaleString()}</p><p className="text-xs text-amber-400 mt-1">Diesel hoy</p></div>
+            </div>
+            <div className="bg-white bg-opacity-5 rounded-xl p-4 border border-white border-opacity-10"><p className="text-sm font-bold text-white mb-3">Eficiencia por unidad</p><div className="space-y-2">{torreControlData.fuelEfficiencyData.slice(0,5).map((fe, i) => (<div key={i} className="flex items-center justify-between"><div className="flex items-center space-x-3"><span className="text-sm font-semibold text-white">{fe.unit}</span><span className="text-xs text-blue-400">{fe.ruta}</span></div><div className="flex items-center space-x-3"><span className="text-sm text-white">{fe.rendimientoReal} km/L</span><span className={`text-xs font-semibold ${parseFloat(fe.desviacion) >= 0 ? 'text-green-400' : parseFloat(fe.desviacion) > -15 ? 'text-amber-400' : 'text-red-400'}`}>{parseFloat(fe.desviacion) >= 0 ? '+' : ''}{fe.desviacion}%</span></div></div>))}</div></div>
+            <div className="bg-blue-500 bg-opacity-10 rounded-lg p-3 border-l-2 border-blue-400"><p className="text-xs text-blue-200"><Brain className="w-3 h-3 inline mr-1" />EXT-4501 muestra consumo elevado +12% vs benchmark. Correlación: tramo montañoso + exceso horas conducción. Acción: programar revisión inyectores y evaluar ruta alterna por autopista.</p></div>
+          </div></motion.div>)}</AnimatePresence>
+        </motion.div>
+
+        <motion.div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl border border-white border-opacity-10 overflow-hidden" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}>
+          <button onClick={() => toggleSupSection('compliance')} className="w-full flex items-center justify-between p-5 hover:bg-white hover:bg-opacity-5 transition text-left">
+            <div className="flex items-center space-x-3"><Shield className="w-5 h-5 text-red-400" /><h3 className="text-lg font-bold text-white">Compliance &amp; Riesgo</h3></div>
+            <div className="flex items-center space-x-6"><div className="flex items-center space-x-4"><div className="text-center"><p className="text-2xl font-bold text-white">{torreControlData.diasSinAccidentes}</p><p className="text-xs text-blue-400">Días sin accidentes</p></div><div className="w-px h-8 bg-white bg-opacity-10" /><div className="text-center"><p className="text-2xl font-bold text-green-300">{Math.round((torreControlData.complianceData.docVigente / torreControlData.complianceData.docTotal) * 100)}%</p><p className="text-xs text-blue-400">Docs vigentes</p></div><div className="w-px h-8 bg-white bg-opacity-10" />{torreControlData.hrsConduccionAltas > 0 && <div className="flex items-center space-x-2"><div className="w-3 h-3 bg-red-400 rounded-full animate-pulse" /><span className="text-sm text-red-300 font-semibold">{torreControlData.hrsConduccionAltas} ops +8h</span></div>}</div><ChevronRight className={`w-5 h-5 text-blue-400 transition-transform duration-300 ${supSections.compliance ? 'rotate-90' : ''}`} /></div>
+          </button>
+          <AnimatePresence>{supSections.compliance && (<motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden"><div className="px-5 pb-5 space-y-4">
+            <div className="grid grid-cols-4 gap-3">
+              <div className="bg-green-500 bg-opacity-10 rounded-xl p-4 border border-green-500 border-opacity-20 text-center"><p className="text-3xl font-bold text-green-300">{torreControlData.diasSinAccidentes}</p><p className="text-xs text-green-400 mt-1">Días sin accidentes</p></div>
+              <div className="bg-blue-500 bg-opacity-10 rounded-xl p-4 border border-blue-500 border-opacity-20 text-center"><p className="text-3xl font-bold text-blue-300">{torreControlData.incidentesPorMillonKm}</p><p className="text-xs text-blue-400 mt-1">Incidentes/M km</p></div>
+              <div className="bg-amber-500 bg-opacity-10 rounded-xl p-4 border border-amber-500 border-opacity-20 text-center"><p className="text-3xl font-bold text-amber-300">{Math.round((torreControlData.complianceData.inspeccionesCumplidas / torreControlData.complianceData.inspeccionesTotal) * 100)}%</p><p className="text-xs text-amber-400 mt-1">Inspecciones OK</p></div>
+              <div className="bg-red-500 bg-opacity-10 rounded-xl p-4 border border-red-500 border-opacity-20 text-center"><p className="text-3xl font-bold text-red-300">{torreControlData.tasaSiniestralidad}%</p><p className="text-xs text-red-400 mt-1">Siniestralidad</p></div>
+            </div>
+            <div className="bg-white bg-opacity-5 rounded-xl p-4 border border-white border-opacity-10"><p className="text-sm font-bold text-white mb-3">Vencimientos próximos</p><div className="space-y-2">{torreControlData.complianceData.vencimientosProximos.map((v, i) => (<div key={i} className={`flex items-center justify-between rounded-lg px-3 py-2 border ${v.status === 'rojo' ? 'bg-red-500 bg-opacity-10 border-red-500 border-opacity-20' : v.status === 'amarillo' ? 'bg-amber-500 bg-opacity-10 border-amber-500 border-opacity-20' : 'bg-green-500 bg-opacity-10 border-green-500 border-opacity-20'}`}><div className="flex items-center space-x-3"><span className={`w-2.5 h-2.5 rounded-full ${v.status === 'rojo' ? 'bg-red-500 animate-pulse' : v.status === 'amarillo' ? 'bg-amber-400' : 'bg-green-400'}`} /><span className="text-sm font-semibold text-white">{v.tipo}</span><span className="text-xs text-blue-300">{v.unidad} · {v.operador}</span></div><div className="flex items-center space-x-2"><span className="text-xs text-blue-400">Vence: {v.vence}</span><span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${v.diasRestantes <= 7 ? 'bg-red-600 text-white' : v.diasRestantes <= 15 ? 'bg-amber-600 text-white' : 'bg-green-600 text-white'}`}>{v.diasRestantes}d</span></div></div>))}</div></div>
+            <div className="bg-white bg-opacity-5 rounded-xl p-4 border border-white border-opacity-10"><p className="text-sm font-bold text-white mb-3">Well-being del operador (horas conducción)</p><div className="space-y-2">{torreControlData.complianceData.wellbeingOperadores.filter(w => w.status !== 'ok').map((w, i) => (<div key={i} className={`flex items-center justify-between rounded-lg px-3 py-2 ${w.status === 'critico' ? 'bg-red-500 bg-opacity-10 border border-red-500 border-opacity-20' : w.status === 'alerta' ? 'bg-amber-500 bg-opacity-10 border border-amber-500 border-opacity-20' : 'bg-blue-500 bg-opacity-10 border border-blue-500 border-opacity-20'}`}><div className="flex items-center space-x-3"><span className="text-sm font-semibold text-white">{w.unit}</span><span className="text-xs text-blue-300">{w.conductor}</span></div><div className="flex items-center space-x-2"><span className={`text-sm font-bold ${w.status === 'critico' ? 'text-red-400' : w.status === 'alerta' ? 'text-amber-400' : 'text-blue-400'}`}>{w.horasConduccion}h</span><span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${w.status === 'critico' ? 'bg-red-600 text-white' : w.status === 'alerta' ? 'bg-amber-600 text-white' : 'bg-blue-600 text-white'}`}>{w.status === 'critico' ? '⛔ EXCEDE LÍMITE' : w.status === 'alerta' ? '⚠ Precaución' : 'ℹ Monitorear'}</span></div></div>))}</div></div>
+            <div className="bg-blue-500 bg-opacity-10 rounded-lg p-3 border-l-2 border-blue-400"><p className="text-xs text-blue-200"><Brain className="w-3 h-3 inline mr-1" />EXT-4501 con 6.5h continuas. Verificación vehicular vence en 7 días — requiere acción inmediata. 2 operadores en zona de precaución por fatiga acumulada.</p></div>
+          </div></motion.div>)}</AnimatePresence>
+        </motion.div>
+        {/* === FIN Secciones Torre de Control Supervisor === */}
+
+      </div>
+    </div>
+      )}
+
+      <AnimatePresence>
+        {supOpsDetail && (
+          <motion.div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSupOpsDetail(null)}>
+            <motion.div className="bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[85vh] overflow-hidden" initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 0.9, opacity: 0 }} onClick={e => e.stopPropagation()}>
+              <div className="p-5 text-white" style={{ background: supOpsDetail==='alertas'?'linear-gradient(135deg,#dc2626,#991b1b)':supOpsDetail==='mantenimiento'?'linear-gradient(135deg,#d97706,#92400e)':'linear-gradient(135deg,#2563eb,#1e40af)' }}>
+                <div className="flex items-center justify-between"><div className="flex items-center space-x-3"><span className="text-2xl">{supOpsDetail==='alertas'?'🚨':supOpsDetail==='mantenimiento'?'🔧':'🚦'}</span><h3 className="text-lg font-bold">{supOpsDetail==='alertas'?'Alertas Críticas':supOpsDetail==='mantenimiento'?'Mantenimiento Urgente':'Viajes Críticos'}</h3></div><button onClick={() => setSupOpsDetail(null)} className="hover:bg-white/20 p-2 rounded-full"><X className="w-5 h-5" /></button></div>
+              </div>
+              <div className="overflow-y-auto" style={{ maxHeight:'calc(85vh - 80px)' }}>
+                {supOpsDetail==='alertas'&&(<table className="w-full text-sm"><thead className="bg-gray-50 sticky top-0"><tr><th className="px-3 py-2 text-left text-xs font-bold border-b">Tipo</th><th className="px-3 py-2 text-left text-xs font-bold border-b">Vehículo</th><th className="px-3 py-2 text-left text-xs font-bold border-b" style={{maxWidth:'160px'}}>Dirección</th><th className="px-3 py-2 text-left text-xs font-bold border-b">Prioridad</th><th className="px-3 py-2 text-left text-xs font-bold border-b">Status</th><th className="px-3 py-2 text-left text-xs font-bold border-b">Monitorista</th></tr></thead><tbody>{supervisorOpsData.alertasCriticas.map((a,i)=>(<tr key={i} className="border-b hover:bg-red-50"><td className="px-3 py-2 text-xs">{a.tipo}</td><td className="px-3 py-2 text-xs font-bold">{a.unit}</td><td className="px-3 py-2 text-xs truncate" style={{maxWidth:'160px'}} title={a.direccion}>{a.direccion}</td><td className="px-3 py-2"><span className={`px-2 py-0.5 rounded-full text-xs font-bold text-white ${a.prioridad>=95?'bg-red-600':'bg-amber-500'}`}>{a.prioridad}</span></td><td className="px-3 py-2 text-xs"><span className={`w-2 h-2 inline-block rounded-full mr-1 ${supervisorOpsData.statusColor[a.status]}`}/>{supervisorOpsData.statusLabel[a.status]}</td><td className="px-3 py-2 text-xs">{a.monitorista}</td></tr>))}</tbody></table>)}
+                {supOpsDetail==='mantenimiento'&&(<table className="w-full text-sm"><thead className="bg-gray-50 sticky top-0"><tr><th className="px-3 py-2 text-left text-xs font-bold border-b">Unidad</th><th className="px-3 py-2 text-left text-xs font-bold border-b">Razón</th><th className="px-3 py-2 text-left text-xs font-bold border-b">Status</th><th className="px-3 py-2 text-left text-xs font-bold border-b">Impacto</th></tr></thead><tbody>{supervisorOpsData.mantUrgente.map((m,i)=>(<tr key={i} className="border-b hover:bg-amber-50"><td className="px-3 py-2 text-xs">{m.unidad}</td><td className="px-3 py-2 text-xs">{m.razon}</td><td className="px-3 py-2 text-xs"><span className={`w-2 h-2 inline-block rounded-full mr-1 ${supervisorOpsData.statusColor[m.status]}`}/>{supervisorOpsData.statusLabel[m.status]}</td><td className="px-3 py-2 text-xs text-red-600">{m.impacto}</td></tr>))}</tbody></table>)}
+                {supOpsDetail==='viajes'&&(<table className="w-full text-sm"><thead className="bg-gray-50 sticky top-0"><tr><th className="px-3 py-2 text-left text-xs font-bold border-b">Unidad</th><th className="px-3 py-2 text-left text-xs font-bold border-b">Categoría</th><th className="px-3 py-2 text-left text-xs font-bold border-b">Detalle</th><th className="px-3 py-2 text-left text-xs font-bold border-b">Status</th></tr></thead><tbody>{supervisorOpsData.viajesCriticos.map((v,i)=>(<tr key={i} className="border-b hover:bg-blue-50"><td className="px-3 py-2 text-xs">{v.unidad}</td><td className="px-3 py-2 text-xs">{v.icono} {v.categoria}</td><td className="px-3 py-2 text-xs">{v.detalle}</td><td className="px-3 py-2 text-xs"><span className={`w-2 h-2 inline-block rounded-full mr-1 ${supervisorOpsData.statusColor[v.status]}`}/>{supervisorOpsData.statusLabel[v.status]}</td></tr>))}</tbody></table>)}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showConfigModal && (
+          <motion.div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-[55] p-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowConfigModal(false)}>
+            <motion.div className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl overflow-hidden" style={{ maxHeight: '85vh' }} initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} onClick={e => e.stopPropagation()}>
+              <div className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 px-6 py-4 flex items-center justify-between">
+                <div className="flex items-center space-x-3"><Settings className="w-6 h-6 text-white" /><div><h3 className="text-white font-bold text-lg">Configuración</h3><p className="text-gray-300 text-xs">Personaliza Iris Fleet</p></div></div>
+                <button onClick={() => setShowConfigModal(false)} className="text-gray-400 hover:text-white p-1"><X className="w-5 h-5" /></button>
+              </div>
+              <div className="flex border-b bg-gray-50 px-4 overflow-x-auto">
+                {[{key:'alertas',label:'Atención Crítica',icon:'🚨'},{key:'mant',label:'Mantenimiento',icon:'🔧'},{key:'geo',label:'Geocercas',icon:'📍'},{key:'viajes',label:'Viajes',icon:'🚛'},{key:'general',label:'General',icon:'⚙️'}].map(tab => (
+                  <button key={tab.key} onClick={() => setConfigTab(tab.key)} className={`flex items-center space-x-2 px-4 py-3 text-sm font-semibold border-b-2 transition whitespace-nowrap ${configTab === tab.key ? 'border-blue-500 text-blue-700 bg-white' : 'border-transparent text-gray-500 hover:text-gray-700'}`}><span>{tab.icon}</span><span>{tab.label}</span></button>
+                ))}
+              </div>
+              <div className="overflow-y-auto p-6" style={{ maxHeight: 'calc(85vh - 180px)' }}>
+                {configTab === 'alertas' && (<div className="space-y-6">
+                  <div className="bg-red-50 rounded-xl p-5 border border-red-200"><h4 className="font-bold text-red-800 mb-1 flex items-center space-x-2"><Shield className="w-4 h-4" /><span>Ejes de Correlación</span></h4><p className="text-xs text-red-600 mb-3">Variables del algoritmo</p>
+                    <div className="flex space-x-6">{[['seguridad','🛡️ Seguridad','Riesgo humano'],['momento','⏱️ Momento','Hora, ubicación'],['dinero','💰 Dinero','Valor, SLA']].map(([key,label,desc]) => (<label key={key} className="flex items-start space-x-3 cursor-pointer"><input type="checkbox" checked={demoConfig.alertas_ejes[key]} onChange={() => setDemoConfig(p => ({...p, alertas_ejes: {...p.alertas_ejes, [key]: !p.alertas_ejes[key]}}))} className="mt-1 w-4 h-4 rounded border-red-300 text-red-600" /><div><p className="text-sm font-semibold">{label}</p><p className="text-xs text-gray-500">{desc}</p></div></label>))}</div>
+                    {!demoConfig.alertas_ejes.dinero && <p className="text-xs text-amber-600 mt-2 bg-amber-50 px-3 py-1.5 rounded-lg">⚠️ Sin "Dinero", alertas priorizadas solo por seguridad y contexto.</p>}
+                  </div>
+                  <div className="bg-red-50 rounded-xl p-5 border border-red-200"><h4 className="font-bold text-red-800 mb-1 flex items-center space-x-2"><AlertTriangle className="w-4 h-4" /><span>Umbrales de Prioridad</span></h4>
+                    <div className="grid grid-cols-2 gap-4"><div><label className="text-xs font-semibold">Crítica (desde P...)</label><input type="range" min="70" max="99" value={demoConfig.alertas_umbral_critico} onChange={e => setDemoConfig(p => ({...p, alertas_umbral_critico: +e.target.value}))} className="w-full mt-1 accent-red-600" /><div className="flex justify-between text-xs"><span>P70</span><span className="font-bold text-red-600">P{demoConfig.alertas_umbral_critico}+</span><span>P99</span></div></div><div><label className="text-xs font-semibold">Alta (desde P...)</label><input type="range" min="40" max="84" value={demoConfig.alertas_umbral_alto} onChange={e => setDemoConfig(p => ({...p, alertas_umbral_alto: +e.target.value}))} className="w-full mt-1 accent-amber-500" /><div className="flex justify-between text-xs"><span>P40</span><span className="font-bold text-amber-600">P{demoConfig.alertas_umbral_alto}+</span><span>P84</span></div></div></div>
+                    <div className="mt-3 flex space-x-2 text-xs"><span className="px-2 py-1 bg-red-600 text-white rounded-full font-bold">Crítica: P{demoConfig.alertas_umbral_critico}+</span><span className="px-2 py-1 bg-amber-500 text-white rounded-full font-bold">Alta: P{demoConfig.alertas_umbral_alto}-P{demoConfig.alertas_umbral_critico-1}</span><span className="px-2 py-1 bg-yellow-400 text-gray-800 rounded-full font-bold">Media: P40-P{demoConfig.alertas_umbral_alto-1}</span><span className="px-2 py-1 bg-gray-300 rounded-full font-bold">Baja: P0-P39</span></div>
+                  </div>
+                  <div className="bg-red-50 rounded-xl p-5 border border-red-200"><h4 className="font-bold text-red-800 mb-1 flex items-center space-x-2"><Clock className="w-4 h-4" /><span>Escalamiento Automático</span></h4>
+                    <div className="grid grid-cols-2 gap-4"><div><label className="text-xs font-semibold">P{demoConfig.alertas_umbral_critico}+ → Escalar en:</label><div className="flex items-center space-x-2 mt-1"><input type="number" min="1" max="60" value={demoConfig.alertas_escalar_p95} onChange={e => setDemoConfig(p => ({...p, alertas_escalar_p95: +e.target.value}))} className="w-20 px-3 py-2 border rounded-lg text-sm" /><span className="text-sm text-gray-600">min</span></div></div><div><label className="text-xs font-semibold">P{demoConfig.alertas_umbral_alto}+ → Escalar en:</label><div className="flex items-center space-x-2 mt-1"><input type="number" min="1" max="120" value={demoConfig.alertas_escalar_p80} onChange={e => setDemoConfig(p => ({...p, alertas_escalar_p80: +e.target.value}))} className="w-20 px-3 py-2 border rounded-lg text-sm" /><span className="text-sm text-gray-600">min</span></div></div></div>
+                  </div>
+                </div>)}
+                {configTab === 'mant' && (<div className="space-y-6">
+                  <div className="bg-amber-50 rounded-xl p-5 border border-amber-200"><h4 className="font-bold text-amber-800 mb-1">📋 Intervalos Preventivos</h4><div className="grid grid-cols-3 gap-4 mt-2">{[['mant_aceite_km','🛢️ Aceite'],['mant_frenos_km','🔴 Frenos'],['mant_llantas_km','🔘 Llantas']].map(([key,label]) => (<div key={key}><label className="text-xs font-semibold">{label}</label><div className="flex items-center space-x-2 mt-1"><input type="number" step="1000" value={demoConfig[key]} onChange={e => setDemoConfig(p => ({...p, [key]: +e.target.value}))} className="w-full px-3 py-2 border rounded-lg text-sm" /><span className="text-xs text-gray-500">km</span></div></div>))}</div></div>
+                  <div className="bg-amber-50 rounded-xl p-5 border border-amber-200"><h4 className="font-bold text-amber-800 mb-1">🏭 Talleres Autorizados</h4><div className="space-y-2 mt-2">{demoConfig.mant_talleres.map((t,i) => (<div key={i} className="flex items-center space-x-3 bg-white rounded-lg px-3 py-2 border"><span className="text-green-500">●</span><span className="text-sm flex-1">{t}</span><span className="text-xs text-gray-400">Activo</span></div>))}<button className="w-full py-2 border-2 border-dashed border-amber-300 rounded-lg text-amber-600 text-sm font-semibold hover:bg-amber-100">+ Agregar taller</button></div></div>
+                  <div className="bg-amber-50 rounded-xl p-5 border border-amber-200"><h4 className="font-bold text-amber-800 mb-1">🩺 Umbrales de Salud</h4><div className="grid grid-cols-2 gap-4 mt-2"><div><label className="text-xs font-semibold">⚠️ Amarilla</label><div className="flex items-center space-x-2 mt-1"><input type="range" min="50" max="95" value={demoConfig.mant_salud_amarilla} onChange={e => setDemoConfig(p => ({...p, mant_salud_amarilla: +e.target.value}))} className="w-full accent-amber-500" /><span className="font-bold text-amber-600 w-12 text-right">{demoConfig.mant_salud_amarilla}%</span></div></div><div><label className="text-xs font-semibold">🔴 Roja</label><div className="flex items-center space-x-2 mt-1"><input type="range" min="30" max="80" value={demoConfig.mant_salud_roja} onChange={e => setDemoConfig(p => ({...p, mant_salud_roja: +e.target.value}))} className="w-full accent-red-500" /><span className="font-bold text-red-600 w-12 text-right">{demoConfig.mant_salud_roja}%</span></div></div></div><div className="mt-3 w-full h-3 rounded-full bg-gray-200 overflow-hidden flex"><div className="bg-red-500 h-full" style={{width: demoConfig.mant_salud_roja+'%'}} /><div className="bg-amber-400 h-full" style={{width: (demoConfig.mant_salud_amarilla-demoConfig.mant_salud_roja)+'%'}} /><div className="bg-green-500 h-full flex-1" /></div></div>
+                </div>)}
+                {configTab === 'geo' && (<div className="space-y-6">
+                  <div className="bg-blue-50 rounded-xl p-5 border border-blue-200"><h4 className="font-bold text-blue-800 mb-1">🗺️ Zonas de Riesgo</h4><div className="space-y-3 mt-2">{[['geo_zonas_riesgo','🔴 Zonas alto riesgo'],['geo_zonas_huachicoleo','⛽ Huachicoleo'],['geo_zonas_custom','📌 Personalizadas']].map(([key,label]) => (<label key={key} className="flex items-center justify-between bg-white rounded-lg px-4 py-3 border cursor-pointer hover:bg-blue-50"><span className="text-sm font-semibold">{label}</span><div className={`w-12 h-6 rounded-full flex items-center p-0.5 transition cursor-pointer ${demoConfig[key] ? 'bg-blue-600 justify-end' : 'bg-gray-300 justify-start'}`} onClick={e => { e.preventDefault(); setDemoConfig(p => ({...p, [key]: !p[key]})); }}><div className="w-5 h-5 bg-white rounded-full shadow" /></div></label>))}</div></div>
+                  <div className="bg-blue-50 rounded-xl p-5 border border-blue-200"><h4 className="font-bold text-blue-800 mb-1">⚡ Acciones</h4><div className="grid grid-cols-2 gap-4 mt-2"><div><label className="text-xs font-semibold">Al entrar zona riesgo:</label><select value={demoConfig.geo_accion_entrada} onChange={e => setDemoConfig(p => ({...p, geo_accion_entrada: e.target.value}))} className="w-full mt-1 px-3 py-2 border rounded-lg text-sm"><option value="notificar">📱 Notificar</option><option value="activar_camara">📹 Activar cámara</option><option value="todo">🔒 Todas</option></select></div><div><label className="text-xs font-semibold">Zona exclusión:</label><select value={demoConfig.geo_accion_exclusion} onChange={e => setDemoConfig(p => ({...p, geo_accion_exclusion: e.target.value}))} className="w-full mt-1 px-3 py-2 border rounded-lg text-sm"><option value="alerta_maxima">🚨 Alerta máxima</option><option value="bloquear_motor">🔒 Bloquear motor</option></select></div></div></div>
+                  <div className="bg-blue-50 rounded-xl p-5 border border-blue-200"><h4 className="font-bold text-blue-800 mb-1">🕐 Horarios</h4><label className="flex items-center space-x-3 mt-2 cursor-pointer"><div className={`w-12 h-6 rounded-full flex items-center p-0.5 transition ${demoConfig.geo_horario_activo ? 'bg-blue-600 justify-end' : 'bg-gray-300 justify-start'}`} onClick={() => setDemoConfig(p => ({...p, geo_horario_activo: !p.geo_horario_activo}))}><div className="w-5 h-5 bg-white rounded-full shadow" /></div><span className="text-sm font-semibold">{demoConfig.geo_horario_activo ? 'Horario restringido' : '24/7'}</span></label>{demoConfig.geo_horario_activo && (<div className="flex items-center space-x-4 mt-3"><div><label className="text-xs">Desde</label><input type="time" value={demoConfig.geo_horario_inicio} onChange={e => setDemoConfig(p => ({...p, geo_horario_inicio: e.target.value}))} className="block mt-1 px-3 py-2 border rounded-lg text-sm" /></div><span className="mt-5">→</span><div><label className="text-xs">Hasta</label><input type="time" value={demoConfig.geo_horario_fin} onChange={e => setDemoConfig(p => ({...p, geo_horario_fin: e.target.value}))} className="block mt-1 px-3 py-2 border rounded-lg text-sm" /></div></div>)}</div>
+                </div>)}
+                {configTab === 'viajes' && (<div className="space-y-6">
+                  <div className="bg-purple-50 rounded-xl p-5 border border-purple-200"><h4 className="font-bold text-purple-800 mb-1">💎 Valor de Contratos</h4><div className="flex space-x-4 mb-4 mt-2"><label className="flex items-center space-x-2 cursor-pointer"><input type="radio" checked={demoConfig.viajes_valor_modo==='relativo'} onChange={() => setDemoConfig(p => ({...p, viajes_valor_modo:'relativo'}))} /><span className="text-sm">Escala 0-10</span></label><label className="flex items-center space-x-2 cursor-pointer"><input type="radio" checked={demoConfig.viajes_valor_modo==='absoluto'} onChange={() => setDemoConfig(p => ({...p, viajes_valor_modo:'absoluto'}))} /><span className="text-sm">MXN</span></label></div>
+                    <table className="w-full text-sm"><thead><tr className="bg-purple-100"><th className="px-3 py-2 text-left text-xs font-bold text-purple-700">Cliente</th><th className="px-3 py-2 text-xs font-bold text-purple-700">{demoConfig.viajes_valor_modo==='relativo'?'Importancia':'MXN'}</th><th className="px-3 py-2 text-xs font-bold text-purple-700">SLA (min)</th><th className="px-3 py-2 text-xs font-bold text-purple-700">Temp (°C)</th></tr></thead><tbody>{demoConfig.viajes_clientes.map((c,i) => (<tr key={i} className="border-b border-purple-100"><td className="px-3 py-2 font-semibold">{c.nombre}</td><td className="px-3 py-2"><input type="number" min="0" max="10" value={c.valor} onChange={e => { const nv=[...demoConfig.viajes_clientes]; nv[i]={...nv[i], valor:+e.target.value}; setDemoConfig(p => ({...p, viajes_clientes:nv})); }} className="w-16 px-2 py-1 border rounded text-sm" /></td><td className="px-3 py-2"><input type="number" value={c.sla_ventana} onChange={e => { const nv=[...demoConfig.viajes_clientes]; nv[i]={...nv[i], sla_ventana:+e.target.value}; setDemoConfig(p => ({...p, viajes_clientes:nv})); }} className="w-16 px-2 py-1 border rounded text-sm" /></td><td className="px-3 py-2"><input type="number" step="0.5" value={c.sla_temp} onChange={e => { const nv=[...demoConfig.viajes_clientes]; nv[i]={...nv[i], sla_temp:+e.target.value}; setDemoConfig(p => ({...p, viajes_clientes:nv})); }} className="w-16 px-2 py-1 border rounded text-sm" /></td></tr>))}</tbody></table>
+                  </div>
+                  <div className="bg-purple-50 rounded-xl p-5 border border-purple-200"><h4 className="font-bold text-purple-800 mb-1">🚦 Puntualidad</h4><div className="grid grid-cols-2 gap-4 mt-2"><div><label className="text-xs font-semibold">⚠️ Demora leve (min)</label><input type="number" value={demoConfig.viajes_demora_leve} onChange={e => setDemoConfig(p => ({...p, viajes_demora_leve: +e.target.value}))} className="w-full mt-1 px-3 py-2 border rounded-lg text-sm" /></div><div><label className="text-xs font-semibold">🔴 Demora crítica (min)</label><input type="number" value={demoConfig.viajes_demora_critica} onChange={e => setDemoConfig(p => ({...p, viajes_demora_critica: +e.target.value}))} className="w-full mt-1 px-3 py-2 border rounded-lg text-sm" /></div></div><div className="mt-3 flex space-x-2 text-xs"><span className="px-2 py-1 bg-green-100 text-green-700 rounded-full">A tiempo: 0-{demoConfig.viajes_demora_leve-1}min</span><span className="px-2 py-1 bg-amber-100 text-amber-700 rounded-full">Leve: {demoConfig.viajes_demora_leve}-{demoConfig.viajes_demora_critica-1}min</span><span className="px-2 py-1 bg-red-100 text-red-700 rounded-full">Crítica: {demoConfig.viajes_demora_critica}+min</span></div></div>
+                </div>)}
+                {configTab === 'general' && (<div className="space-y-6">
+                  <div className="bg-gray-50 rounded-xl p-5 border"><h4 className="font-bold mb-1">👥 Usuarios y Roles</h4><table className="w-full text-sm mt-2"><thead><tr className="bg-gray-100"><th className="px-3 py-2 text-left text-xs font-bold">Nombre</th><th className="px-3 py-2 text-left text-xs font-bold">Rol</th><th className="px-3 py-2 text-left text-xs font-bold">Permisos</th></tr></thead><tbody>{demoConfig.general_roles.map((u,i) => (<tr key={i} className="border-b"><td className="px-3 py-2">{u.nombre}</td><td className="px-3 py-2"><span className={`px-2 py-0.5 rounded-full text-xs font-bold ${u.rol==='Admin'?'bg-purple-100 text-purple-700':u.rol==='Supervisora'?'bg-blue-100 text-blue-700':'bg-green-100 text-green-700'}`}>{u.rol}</span></td><td className="px-3 py-2 text-xs text-gray-600">{u.permisos}</td></tr>))}</tbody></table><button className="mt-3 w-full py-2 border-2 border-dashed rounded-lg text-gray-500 text-sm font-semibold hover:bg-gray-100">+ Agregar usuario</button></div>
+                  <div className="bg-gray-50 rounded-xl p-5 border"><h4 className="font-bold mb-1">📱 Módulos Visibles</h4><div className="grid grid-cols-3 gap-3 mt-2">{[['salud','❤️ Salud'],['seguridad','🛡️ Seguridad'],['mantenimiento','🔧 Mantenimiento'],['finanzas','💰 Finanzas'],['cadena_frio','❄️ Cadena de Frío'],['geocercas','📍 Geocercas']].map(([key,label]) => (<label key={key} className="flex items-center justify-between bg-white rounded-lg px-4 py-3 border cursor-pointer hover:bg-gray-50"><span className="text-sm font-semibold">{label}</span><div className={`w-10 h-5 rounded-full flex items-center p-0.5 transition ${demoConfig.general_modulos[key] ? 'bg-blue-600 justify-end' : 'bg-gray-300 justify-start'}`} onClick={e => { e.preventDefault(); setDemoConfig(p => ({...p, general_modulos: {...p.general_modulos, [key]: !p.general_modulos[key]}})); }}><div className="w-4 h-4 bg-white rounded-full shadow" /></div></label>))}</div></div>
+                  <div className="bg-gray-50 rounded-xl p-5 border"><h4 className="font-bold mb-1">🎨 Branding</h4><div className="grid grid-cols-2 gap-4 mt-2"><div><label className="text-xs font-semibold">Empresa</label><input type="text" value={demoConfig.general_empresa} onChange={e => setDemoConfig(p => ({...p, general_empresa: e.target.value}))} className="w-full mt-1 px-3 py-2 border rounded-lg text-sm" /></div><div><label className="text-xs font-semibold">Color</label><div className="flex items-center space-x-2 mt-1"><input type="color" value={demoConfig.general_color} onChange={e => setDemoConfig(p => ({...p, general_color: e.target.value}))} className="w-10 h-10 rounded-lg border cursor-pointer" /><span className="text-sm">{demoConfig.general_color}</span></div></div></div></div>
+                </div>)}
+              </div>
+              <div className="px-6 py-4 bg-gray-50 border-t flex items-center justify-between"><p className="text-xs text-gray-400">Demo: cambios ilustrativos</p><div className="flex items-center space-x-3"><button onClick={() => setShowConfigModal(false)} className="px-4 py-2 text-sm text-gray-600">Cancelar</button><button onClick={() => { handleConfigSave(); setShowConfigModal(false); }} className="px-6 py-2 bg-blue-600 text-white text-sm font-bold rounded-xl hover:bg-blue-700 shadow-lg transition">Guardar</button></div></div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {userRole && (<div className="fixed bottom-0 left-0 right-0 z-[60]"><div className="bg-gradient-to-r from-[#0a1628] via-[#1a2744] to-[#0a1628] border-t border-blue-800/50 px-4 py-2.5 shadow-2xl"><div className="flex items-center space-x-3 max-w-4xl mx-auto"><div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0"><span className="text-white font-bold text-xs">AI</span></div><div className="flex-1"><input ref={geminiInputRef} type="text" onKeyDown={(e) => { if (e.key==='Enter'&&!e.shiftKey) { e.preventDefault(); handleGeminiSend(); } }} placeholder="Pregúntale a ADI..." className="w-full bg-white bg-opacity-10 border border-blue-700/50 rounded-xl px-4 py-2.5 text-sm text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-500" disabled={geminiLoading} /></div><button onClick={handleGeminiSend} className="p-2.5 rounded-xl bg-blue-600 text-white hover:bg-blue-500 shadow-lg transition flex-shrink-0"><Send className="w-4 h-4" /></button>{geminiMessages.length>0&&!geminiModalOpen&&(<button onClick={() => setGeminiModalOpen(true)} className="px-3 py-2 rounded-xl bg-white bg-opacity-10 text-blue-300 text-xs hover:bg-opacity-20 transition flex-shrink-0 border border-blue-700/30">Ver chat</button>)}</div></div></div>)}
+      {geminiModalOpen && (<div className="fixed inset-0 bg-black bg-opacity-60 flex items-end justify-center z-[65] p-4 pb-16" onClick={() => setGeminiModalOpen(false)}><div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden" style={{maxHeight:'70vh'}} onClick={e => e.stopPropagation()}><div className="bg-gradient-to-r from-[#0a1628] via-[#1a2744] to-[#0a1628] px-5 py-3 flex items-center justify-between"><div className="flex items-center space-x-3"><div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center"><span className="text-white font-bold text-xs">AI</span></div><div><h3 className="text-white font-bold text-sm">ADI</h3><p className="text-blue-300 text-[11px]">Powered by Gemini AI</p></div></div><div className="flex items-center space-x-2">{geminiMessages.length>0&&(<button onClick={()=>setGeminiMessages([])} className="text-gray-400 hover:text-white text-xs px-2 py-1 border border-gray-600 rounded-lg">Limpiar</button>)}<button onClick={() => setGeminiModalOpen(false)} className="text-gray-400 hover:text-white p-1"><X className="w-5 h-5" /></button></div></div><div ref={geminiChatRef} className="overflow-y-auto px-5 py-4 space-y-3 bg-gray-50" style={{maxHeight:'calc(70vh - 110px)'}}>{geminiMessages.length===0&&(<div className="flex flex-col items-center justify-center py-8 text-center"><Brain className="w-10 h-10 text-blue-300 mb-3" /><p className="text-gray-400 text-sm">Escribe tu pregunta abajo</p></div>)}{geminiMessages.map((msg,idx) => (<div key={idx} className={`flex ${msg.role==='user'?'justify-end':'justify-start'}`}>{msg.role==='ai'&&(<div className="w-7 h-7 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-2 mt-1 flex-shrink-0"><span className="text-white text-[10px] font-bold">AI</span></div>)}<div className={`max-w-[85%] ${msg.role==='user'?'bg-blue-600 text-white rounded-2xl rounded-tr-sm px-4 py-2.5':'bg-white border border-gray-200 rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm'}`}>{msg.role==='user'?(<p className="text-sm">{msg.text}</p>):(<div className="text-gray-800 space-y-1">{renderMd(msg.text)}</div>)}<p className={`text-[10px] mt-1 ${msg.role==='user'?'text-blue-200':'text-gray-400'}`}>{msg.time}</p></div></div>))}{geminiLoading&&(<div className="flex items-start"><div className="w-7 h-7 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-2 flex-shrink-0"><span className="text-white text-[10px] font-bold">AI</span></div><div className="bg-white border border-gray-200 rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm"><div className="flex items-center space-x-2"><div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"/><div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{animationDelay:'0.2s'}}/><div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{animationDelay:'0.4s'}}/><span className="text-xs text-gray-400 ml-1">ADI analizando...</span></div></div></div>)}</div>{geminiMessages.length>0&&!geminiLoading&&(<div className="px-5 py-2 bg-blue-50 border-t"><button onClick={exportGeminiChat} className="text-xs text-blue-600 hover:text-blue-800 font-semibold underline">💾 Exportar conversación</button></div>)}</div></div>)}
+
+      {/* === TORRE DE CONTROL 360 — Vista Jefe de Taller === */}
+      {userRole === 'jefetaller' && (
+    <div className="h-screen w-screen overflow-hidden bg-gradient-to-br from-slate-900 via-orange-950 to-amber-950 relative">
+      <div className="absolute inset-0 opacity-10"><div className="absolute top-0 left-0 w-96 h-96 bg-orange-500 rounded-full filter blur-3xl animate-pulse" style={{ animationDuration: '8s' }} /><div className="absolute bottom-0 right-0 w-96 h-96 bg-amber-500 rounded-full filter blur-3xl animate-pulse" style={{ animationDuration: '12s' }} /></div>
+      <div className="relative z-10 flex items-center justify-between px-8 py-4 border-b border-white border-opacity-10">
+        <div className="flex items-center space-x-4"><div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-amber-600 rounded-xl flex items-center justify-center shadow-lg"><Wrench className="w-6 h-6 text-white" /></div><div><h1 className="text-xl font-bold text-white">Iris Fleet · Torre de Control</h1><p className="text-xs text-orange-300">Jefe de Taller · Mantenimiento &amp; Uptime</p></div></div>
+        <div className="flex items-center space-x-6"><div className="flex items-center space-x-4"><div className="text-center"><p className="text-2xl font-bold text-green-400">{torreControlData.uptimePct}%</p><p className="text-[10px] text-orange-300">Uptime</p></div><div className="text-center"><p className="text-2xl font-bold text-orange-300">{torreControlData.enTaller}</p><p className="text-[10px] text-orange-300">En taller</p></div></div><div className="text-right"><p className="text-sm font-semibold text-white">Ing. Ramón Vega</p><p className="text-xs text-orange-300">Jefe de Taller</p></div><button onClick={() => setUserRole(null)} className="text-xs text-orange-400 hover:text-white transition">Cambiar rol →</button><button onClick={() => { setSelectedCompany(null); setUserRole(null); }} className="text-xs text-orange-300/50 hover:text-amber-400 transition ml-2">· Empresa</button></div>
+      </div>
+      <div className="relative z-10 overflow-y-auto" style={{ height: 'calc(100vh - 120px)', paddingBottom: '80px' }}>
+        <div className="px-8 py-6 space-y-6">
+          <div className="grid grid-cols-4 gap-4">
+            <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-5 border border-green-500 border-opacity-30"><div className="flex items-center justify-between mb-2"><span className="text-2xl">🟢</span><span className="text-3xl font-bold text-green-400">{torreControlData.operativas}</span></div><p className="text-sm font-semibold text-green-300">Operativas</p><p className="text-xs text-green-400 opacity-70">{torreControlData.uptimePct}% de la flota</p></div>
+            <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-5 border border-amber-500 border-opacity-30"><div className="flex items-center justify-between mb-2"><span className="text-2xl">🔧</span><span className="text-3xl font-bold text-amber-400">{torreControlData.downtimeProgramado}</span></div><p className="text-sm font-semibold text-amber-300">Mant. Programado</p></div>
+            <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-5 border border-red-500 border-opacity-30"><div className="flex items-center justify-between mb-2"><span className="text-2xl">⛔</span><span className="text-3xl font-bold text-red-400">{torreControlData.downtimeNoProgramado}</span></div><p className="text-sm font-semibold text-red-300">Correctivo No Prog.</p></div>
+            <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-5 border border-blue-500 border-opacity-30"><div className="flex items-center justify-between mb-2"><span className="text-2xl">📋</span><span className="text-3xl font-bold text-blue-400">{torreControlData.backlogOrdenes}</span></div><p className="text-sm font-semibold text-blue-300">Backlog OTs</p></div>
+          </div>
+          <div className="grid grid-cols-3 gap-4">
+            <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-5 border border-white border-opacity-10"><p className="text-sm font-bold text-white mb-1">MTBF</p><p className="text-3xl font-bold text-orange-300">{torreControlData.mtbfHoras}h</p><p className="text-xs text-blue-400">Tiempo medio entre fallas</p></div>
+            <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-5 border border-white border-opacity-10"><p className="text-sm font-bold text-white mb-1">MTTR</p><p className="text-3xl font-bold text-amber-300">{torreControlData.mttrHoras}h</p><p className="text-xs text-blue-400">Tiempo medio de reparación</p></div>
+            <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-5 border border-white border-opacity-10"><p className="text-sm font-bold text-white mb-1">Preventivo cumplido</p><p className="text-3xl font-bold text-green-300">{torreControlData.cumplimientoPreventivo}%</p><div className="w-full h-2 rounded-full bg-white bg-opacity-10 mt-2 overflow-hidden"><div className="h-full bg-green-500 rounded-full" style={{ width: torreControlData.cumplimientoPreventivo + '%' }} /></div></div>
+          </div>
+          <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl border border-white border-opacity-10 overflow-hidden">
+            <div className="px-5 py-3 border-b border-white border-opacity-10 flex items-center justify-between"><h3 className="text-sm font-bold text-white">Historial de Mantenimiento por Unidad</h3><span className="text-xs text-orange-300">{torreControlData.fleetMaintenanceData.length} unidades</span></div>
+            <div className="p-4 space-y-2">{torreControlData.fleetMaintenanceData.map((m, i) => (<div key={i} className={`flex items-center justify-between rounded-xl px-4 py-3 border ${m.status === 'critica' ? 'bg-red-500 bg-opacity-10 border-red-500 border-opacity-20' : m.status === 'excelente' ? 'bg-green-500 bg-opacity-10 border-green-500 border-opacity-20' : 'bg-white bg-opacity-5 border-white border-opacity-10'}`}><div className="flex items-center space-x-4"><span className={`w-3 h-3 rounded-full ${m.status === 'critica' ? 'bg-red-500 animate-pulse' : m.status === 'excelente' ? 'bg-green-500' : 'bg-amber-400'}`} /><div><p className="text-sm font-bold text-white">{m.unit}</p><p className="text-xs text-blue-300">{m.tipo} · {m.fallas} fallas · Próx: {m.proxServicio}</p></div></div><div className="flex items-center space-x-6"><div className="text-center"><p className="text-sm font-bold text-orange-300">{m.mtbf}h</p><p className="text-[10px] text-blue-400">MTBF</p></div><div className="text-center"><p className="text-sm font-bold text-amber-300">{m.mttr}h</p><p className="text-[10px] text-blue-400">MTTR</p></div><div className="text-center"><p className="text-sm font-bold text-blue-300">${m.costoAcum.toLocaleString()}</p><p className="text-[10px] text-blue-400">Costo acum.</p></div><span className={`px-3 py-1 rounded-full text-xs font-bold ${m.status === 'critica' ? 'bg-red-600 text-white' : m.status === 'excelente' ? 'bg-green-600 text-white' : 'bg-amber-600 text-white'}`}>{m.status}</span></div></div>))}</div>
+          </div>
+          <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-5 border border-white border-opacity-10"><div className="flex items-center space-x-3 mb-3"><span className="text-sm font-bold text-white">Mix Preventivo vs Correctivo</span></div><div className="flex items-center space-x-4"><div className="flex-1 h-6 rounded-full overflow-hidden bg-white bg-opacity-10 flex"><div className="h-full bg-green-500 flex items-center justify-center" style={{ width: torreControlData.mixPreventivo + '%' }}><span className="text-[10px] text-white font-bold">{torreControlData.mixPreventivo}% Preventivo</span></div><div className="h-full bg-red-500 flex items-center justify-center" style={{ width: torreControlData.mixCorrectivo + '%' }}><span className="text-[10px] text-white font-bold">{torreControlData.mixCorrectivo}%</span></div></div></div><p className="text-xs text-blue-400 mt-2 italic">Meta: 80% preventivo / 20% correctivo. Tasa fallas recurrentes: {torreControlData.tasaFallasRecurrentes}%</p></div>
+          <div className="bg-orange-500 bg-opacity-10 rounded-xl p-5 border border-orange-500 border-opacity-20"><div className="flex items-center space-x-2 mb-2"><Brain className="w-4 h-4 text-orange-400" /><p className="text-sm font-bold text-orange-300">Insight del Motor de Decisión</p></div><p className="text-xs text-orange-200">ECO-304 acumula 7 fallas de motor con MTTR de 12h — 3x el promedio de flota. Costo acumulado $420K supera 65% del valor residual. <strong>Recomendación: evaluar reemplazo inmediato.</strong> MX-2389 tiene transmisión con 4 fallas recurrentes.</p></div>
+        </div>
+      </div>
+    </div>
+      )}
+
+      {/* === TORRE DE CONTROL 360 — Vista Gerente de Flota === */}
+      {userRole === 'gerenteflota' && (
+    <div className="h-screen w-screen overflow-hidden bg-gradient-to-br from-slate-900 via-emerald-950 to-teal-950 relative">
+      <div className="absolute inset-0 opacity-10"><div className="absolute top-0 left-0 w-96 h-96 bg-emerald-500 rounded-full filter blur-3xl animate-pulse" style={{ animationDuration: '8s' }} /><div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500 rounded-full filter blur-3xl animate-pulse" style={{ animationDuration: '12s' }} /></div>
+      <div className="relative z-10 flex items-center justify-between px-8 py-4 border-b border-white border-opacity-10">
+        <div className="flex items-center space-x-4"><div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg"><BarChart3 className="w-6 h-6 text-white" /></div><div><h1 className="text-xl font-bold text-white">Iris Fleet · Torre de Control</h1><p className="text-xs text-emerald-300">Gerente de Flota · Fuel &amp; Costo Operativo</p></div></div>
+        <div className="flex items-center space-x-6"><div className="flex items-center space-x-4"><div className="text-center"><p className="text-2xl font-bold text-emerald-400">${torreControlData.costoPorKmFlota}</p><p className="text-[10px] text-emerald-300">$/km</p></div><div className="text-center"><p className="text-2xl font-bold text-teal-300">{torreControlData.avgRendimiento}</p><p className="text-[10px] text-emerald-300">km/L</p></div></div><div className="text-right"><p className="text-sm font-semibold text-white">Lic. Fernando Díaz</p><p className="text-xs text-emerald-300">Gerente de Flota</p></div><button onClick={() => setUserRole(null)} className="text-xs text-emerald-400 hover:text-white transition">Cambiar rol →</button><button onClick={() => { setSelectedCompany(null); setUserRole(null); }} className="text-xs text-emerald-300/50 hover:text-amber-400 transition ml-2">· Empresa</button></div>
+      </div>
+      <div className="relative z-10 overflow-y-auto" style={{ height: 'calc(100vh - 120px)', paddingBottom: '80px' }}>
+        <div className="px-8 py-6 space-y-6">
+          <div className="grid grid-cols-4 gap-4">
+            <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-5 border border-emerald-500 border-opacity-30"><p className="text-sm font-semibold text-emerald-300 mb-1">Costo total/km</p><p className="text-3xl font-bold text-white">${torreControlData.costoPorKmFlota}</p></div>
+            <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-5 border border-teal-500 border-opacity-30"><p className="text-sm font-semibold text-teal-300 mb-1">Diesel hoy</p><p className="text-3xl font-bold text-white">${torreControlData.totalDieselCost.toLocaleString()}</p></div>
+            <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-5 border border-blue-500 border-opacity-30"><p className="text-sm font-semibold text-blue-300 mb-1">Rendimiento prom.</p><p className="text-3xl font-bold text-white">{torreControlData.avgRendimiento} km/L</p></div>
+            <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-5 border border-amber-500 border-opacity-30"><p className="text-sm font-semibold text-amber-300 mb-1">Consumo anómalo</p><p className="text-3xl font-bold text-amber-400">{torreControlData.unitsConAlertaConsumo}</p></div>
+          </div>
+          <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl border border-white border-opacity-10 overflow-hidden">
+            <div className="px-5 py-3 border-b border-white border-opacity-10"><h3 className="text-sm font-bold text-white">Rendimiento Real vs Benchmark por Unidad</h3></div>
+            <div className="p-4 space-y-2">{torreControlData.fuelEfficiencyData.map((fe, i) => (<div key={i} className="flex items-center justify-between bg-white bg-opacity-5 rounded-lg px-4 py-3 border border-white border-opacity-5 hover:bg-opacity-10 transition"><div className="flex items-center space-x-4"><div className={`w-3 h-3 rounded-full ${fe.score === 'eficiente' ? 'bg-green-500' : fe.score === 'sobre_promedio' ? 'bg-amber-400' : 'bg-red-500 animate-pulse'}`} /><div><p className="text-sm font-bold text-white">{fe.unit}</p><p className="text-xs text-blue-300">{fe.conductor} · {fe.ruta}</p></div></div><div className="flex items-center space-x-6"><div className="text-center"><p className="text-sm font-bold text-white">{fe.rendimientoReal} km/L</p></div><div className="w-24 h-2 rounded-full bg-white bg-opacity-10 overflow-hidden"><div className={`h-full rounded-full ${fe.score === 'eficiente' ? 'bg-green-500' : fe.score === 'sobre_promedio' ? 'bg-amber-400' : 'bg-red-500'}`} style={{ width: Math.min(100, (fe.rendimientoReal / fe.benchmark) * 100) + '%' }} /></div><span className={`text-xs font-bold w-16 text-right ${parseFloat(fe.desviacion) >= 0 ? 'text-green-400' : parseFloat(fe.desviacion) > -15 ? 'text-amber-400' : 'text-red-400'}`}>{parseFloat(fe.desviacion) >= 0 ? '+' : ''}{fe.desviacion}%</span></div></div>))}</div>
+          </div>
+          <div className="bg-emerald-500 bg-opacity-10 rounded-xl p-5 border border-emerald-500 border-opacity-20"><div className="flex items-center space-x-2 mb-2"><Brain className="w-4 h-4 text-emerald-400" /><p className="text-sm font-bold text-emerald-300">Insight Financiero-Operativo</p></div><p className="text-xs text-emerald-200">El costo por km de febrero ($2.30) superó el benchmark en 15%. Causa principal: 3 unidades con consumo anómalo en tramos montañosos + 2 correctivos no programados que sumaron $85K. <strong>Acción sugerida:</strong> renegociar tarifa diesel zona Pacífico y evaluar ruta alterna.</p></div>
+        </div>
+      </div>
+    </div>
+      )}
+
+      {/* === TORRE DE CONTROL 360 — Vista Director / CFO === */}
+      {userRole === 'director' && (
+    <div className="h-screen w-screen overflow-hidden bg-gradient-to-br from-slate-900 via-purple-950 to-indigo-950 relative">
+      <div className="absolute inset-0 opacity-10"><div className="absolute top-0 left-0 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl animate-pulse" style={{ animationDuration: '8s' }} /><div className="absolute bottom-0 right-0 w-96 h-96 bg-pink-500 rounded-full filter blur-3xl animate-pulse" style={{ animationDuration: '12s' }} /></div>
+      <div className="relative z-10 flex items-center justify-between px-8 py-4 border-b border-white border-opacity-10">
+        <div className="flex items-center space-x-4"><div className="w-10 h-10 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl flex items-center justify-center shadow-lg"><Landmark className="w-6 h-6 text-white" /></div><div><h1 className="text-xl font-bold text-white">Iris Fleet · Torre de Control</h1><p className="text-xs text-purple-300">Director / CFO · KPIs Maestros &amp; Asset Lifecycle</p></div></div>
+        <div className="flex items-center space-x-6"><div className="text-right"><p className="text-sm font-semibold text-white">C.P. Martha Solís</p><p className="text-xs text-purple-300">Directora de Finanzas</p></div><button onClick={() => setUserRole(null)} className="text-xs text-purple-400 hover:text-white transition">Cambiar rol →</button><button onClick={() => { setSelectedCompany(null); setUserRole(null); }} className="text-xs text-purple-300/50 hover:text-amber-400 transition ml-2">· Empresa</button></div>
+      </div>
+      <div className="relative z-10 overflow-y-auto" style={{ height: 'calc(100vh - 120px)', paddingBottom: '80px' }}>
+        <div className="px-8 py-6 space-y-6">
+          <p className="text-purple-400 text-sm font-semibold tracking-widest uppercase text-center">KPIs Maestros · Nivel CEO / Board</p>
+          <div className="grid grid-cols-3 gap-4">
+            <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-6 border border-green-500 border-opacity-30 text-center"><p className="text-4xl font-bold text-green-400">{torreControlData.uptimePct}%</p><p className="text-sm text-green-300 mt-2 font-semibold">Disponibilidad Total Flota</p><p className="text-xs text-green-400 opacity-70 mt-1">{torreControlData.operativas} de {torreControlData.totalUnits} activas</p></div>
+            <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-6 border border-emerald-500 border-opacity-30 text-center"><p className="text-4xl font-bold text-emerald-400">${torreControlData.costoPorKmFlota}</p><p className="text-sm text-emerald-300 mt-2 font-semibold">Costo Total por Km</p></div>
+            <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-6 border border-blue-500 border-opacity-30 text-center"><p className="text-4xl font-bold text-blue-400">${(torreControlData.ebitdaPorActivo / 1000).toFixed(0)}K</p><p className="text-sm text-blue-300 mt-2 font-semibold">EBITDA por Activo</p></div>
+          </div>
+          <div className="grid grid-cols-3 gap-4">
+            <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-6 border border-red-500 border-opacity-30 text-center"><p className="text-4xl font-bold text-red-400">{torreControlData.tasaSiniestralidad}%</p><p className="text-sm text-red-300 mt-2 font-semibold">Tasa de Accidentes</p></div>
+            <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-6 border border-purple-500 border-opacity-30 text-center"><p className="text-4xl font-bold text-purple-400">{torreControlData.roiPromedioUnidad}%</p><p className="text-sm text-purple-300 mt-2 font-semibold">ROI Promedio/Unidad</p></div>
+            <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-6 border border-amber-500 border-opacity-30 text-center"><p className="text-4xl font-bold text-amber-400">{torreControlData.variabilidadMensualCostos}%</p><p className="text-sm text-amber-300 mt-2 font-semibold">Variabilidad Costos</p></div>
+          </div>
+          <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl border border-white border-opacity-10 overflow-hidden">
+            <div className="px-5 py-3 border-b border-white border-opacity-10 flex items-center justify-between"><h3 className="text-sm font-bold text-white">Matriz de Activos · Ciclo de Vida</h3><span className="text-xs text-purple-300">Recomendación IA por unidad</span></div>
+            <div className="overflow-x-auto"><table className="w-full text-sm"><thead><tr className="border-b border-white border-opacity-10"><th className="px-4 py-3 text-left text-xs font-semibold text-purple-300">Unidad</th><th className="px-4 py-3 text-center text-xs font-semibold text-purple-300">Edad</th><th className="px-4 py-3 text-center text-xs font-semibold text-purple-300">Km</th><th className="px-4 py-3 text-center text-xs font-semibold text-purple-300">Costo Acum.</th><th className="px-4 py-3 text-center text-xs font-semibold text-purple-300">Ingreso Gen.</th><th className="px-4 py-3 text-center text-xs font-semibold text-purple-300">ROI</th><th className="px-4 py-3 text-center text-xs font-semibold text-purple-300">Valor Resid.</th><th className="px-4 py-3 text-center text-xs font-semibold text-purple-300">Salud</th><th className="px-4 py-3 text-center text-xs font-semibold text-purple-300">IA</th></tr></thead><tbody>{torreControlData.assetLifecycleData.map((a, i) => (<tr key={i} className="border-b border-white border-opacity-5 hover:bg-white hover:bg-opacity-5 transition"><td className="px-4 py-3 text-white font-semibold">{a.unit}</td><td className="px-4 py-3 text-center text-blue-300">{a.edadAnios}y</td><td className="px-4 py-3 text-center text-blue-300">{(a.kmTotales / 1000).toFixed(0)}K</td><td className="px-4 py-3 text-center text-red-300">${(a.costoAcum / 1000000).toFixed(1)}M</td><td className="px-4 py-3 text-center text-green-300">${(a.ingresoGen / 1000000).toFixed(1)}M</td><td className={`px-4 py-3 text-center font-bold ${parseFloat(a.roi) > 20 ? 'text-green-400' : parseFloat(a.roi) > 0 ? 'text-amber-400' : 'text-red-400'}`}>{a.roi}%</td><td className="px-4 py-3 text-center text-blue-300">${(a.valorResidual / 1000).toFixed(0)}K</td><td className="px-4 py-3 text-center"><div className="w-full h-2 rounded-full bg-white bg-opacity-10 overflow-hidden"><div className={`h-full rounded-full ${a.saludPct >= 90 ? 'bg-green-500' : a.saludPct >= 75 ? 'bg-amber-500' : 'bg-red-500'}`} style={{ width: a.saludPct + '%' }} /></div><span className="text-[10px] text-blue-400">{a.saludPct}%</span></td><td className="px-4 py-3 text-center"><span className={`px-2 py-1 rounded-full text-[10px] font-bold ${a.recomendacion === 'Mantener' ? 'bg-green-600 text-white' : a.recomendacion === 'Monitorear' ? 'bg-blue-600 text-white' : a.recomendacion === 'Evaluar venta' ? 'bg-amber-600 text-white' : 'bg-red-600 text-white'}`}>{a.recomendacion}</span></td></tr>))}</tbody></table></div>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-5 border border-white border-opacity-10"><p className="text-sm font-bold text-white mb-3">CAPEX Plan vs Ejecutado</p><div className="flex items-center space-x-4"><div className="flex-1"><div className="flex items-center justify-between mb-1"><span className="text-xs text-blue-400">Ejecutado</span><span className="text-xs text-white font-bold">{torreControlData.capexEjecutado}%</span></div><div className="w-full h-4 rounded-full bg-white bg-opacity-10 overflow-hidden"><div className="h-full bg-purple-500 rounded-full" style={{ width: torreControlData.capexEjecutado + '%' }} /></div></div></div><p className="text-xs text-blue-400 mt-2">$18.5M ejecutados de $25.7M presupuestados</p></div>
+            <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-5 border border-white border-opacity-10"><p className="text-sm font-bold text-white mb-3">Indicadores Fleet</p><div className="grid grid-cols-2 gap-3"><div className="text-center"><p className="text-xl font-bold text-purple-300">{torreControlData.edadPromedioFlota}y</p><p className="text-[10px] text-blue-400">Edad prom.</p></div><div className="text-center"><p className="text-xl font-bold text-blue-300">{torreControlData.utilizacionReal}%</p><p className="text-[10px] text-blue-400">Utilización</p></div><div className="text-center"><p className="text-xl font-bold text-green-300">{torreControlData.cumplimientoPreventivo}%</p><p className="text-[10px] text-blue-400">Preventivo OK</p></div><div className="text-center"><p className="text-xl font-bold text-amber-300">{torreControlData.diasSinAccidentes}d</p><p className="text-[10px] text-blue-400">Sin accidentes</p></div></div></div>
+          </div>
+          <div className="bg-purple-500 bg-opacity-10 rounded-xl p-5 border border-purple-500 border-opacity-20"><div className="flex items-center space-x-2 mb-2"><Brain className="w-4 h-4 text-purple-400" /><p className="text-sm font-bold text-purple-300">Decisión Estratégica Sugerida</p></div><p className="text-xs text-purple-200">ECO-304 (6.2 años, 720K km, ROI negativo) ha destruido $2.1M en capital. Costo acumulado supera valor residual en 23x. <strong>Recomendación: vender inmediatamente y reemplazar.</strong> MX-2389 se acerca al punto de inflexión (4.5 años). Programar evaluación Q2.</p></div>
+        </div>
+      </div>
+    </div>
+      )}
+
+      {/* === PANEL DE ADMINISTRACIÓN === */}
+      <AdminPanel
+        isOpen={showAdminPanel}
+        onClose={() => setShowAdminPanel(false)}
+        conductores={adminConductores}
+        setConductores={setAdminConductores}
+        vehiculos={adminVehiculos}
+        setVehiculos={setAdminVehiculos}
+        rutas={adminRutas}
+        setRutas={setAdminRutas}
+        zonasSeguras={adminZonasSeguras}
+        setZonasSeguras={setAdminZonasSeguras}
+        alertas={adminAlertas}
+        setAlertas={setAdminAlertas}
+        eventosCamaras={adminEventosCamaras}
+        setEventosCamaras={setAdminEventosCamaras}
+      />
+    </>
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export default App;
