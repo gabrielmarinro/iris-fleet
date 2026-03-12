@@ -1,68 +1,422 @@
 {
   "kpi": "activos_criticos",
-  "titulo": "Activos Críticos — Vehículos en Riesgo",
-  "total_unidades": 120,
-  "activos_criticos": 3,
-  "unidades_criticas": [
-    {
-      "unidad": "ME-H019",
-      "modelo": "Hilux 2019",
-      "km": 245000,
-      "edad_anios": 7,
-      "valor_residual": 120000,
-      "costo_mantenimiento_acumulado": 890000,
-      "roi_pct": -34.8,
-      "salud_pct": 38,
-      "recomendacion": "REEMPLAZAR"
-    },
-    {
-      "unidad": "ME-F032",
-      "modelo": "Frontier 2020",
-      "km": 210000,
-      "edad_anios": 6,
-      "valor_residual": 155000,
-      "costo_mantenimiento_acumulado": 620000,
-      "roi_pct": -22.5,
-      "salud_pct": 52,
-      "recomendacion": "ESCALAR A AGENCIA"
-    },
-    {
-      "unidad": "ME-N012",
-      "modelo": "NV350 2021",
-      "km": 165000,
-      "edad_anios": 5,
-      "valor_residual": 195000,
-      "costo_mantenimiento_acumulado": 480000,
-      "roi_pct": 8.2,
-      "salud_pct": 45,
-      "recomendacion": "RENTAR + REFORZAR"
-    }
-  ],
-  "resumen_financiero": {
-    "costo_inactividad_mensual": 1650000,
-    "ahorro_anual_reemplazo": 8400000
-  },
-  "iris_narrativa": {
-    "hallazgo_principal": "3 vehículos concentran el 78% del costo de inactividad."
-  },
+  "valor_actual": 8,
+  "meta": 0,
+  "unidad": "unidades en estado crítico",
+  "total_flota": 120,
+  "pct_criticos": 6.7,
   "historico": {
     "diario": [
       {
-        "fecha": "2026-02-01",
-        "valor": 2
+        "fecha": "2026-02-04",
+        "criticos": 9
+      },
+      {
+        "fecha": "2026-02-05",
+        "criticos": 9
+      },
+      {
+        "fecha": "2026-02-06",
+        "criticos": 9
+      },
+      {
+        "fecha": "2026-02-07",
+        "criticos": 9
+      },
+      {
+        "fecha": "2026-02-08",
+        "criticos": 6
+      },
+      {
+        "fecha": "2026-02-09",
+        "criticos": 10
+      },
+      {
+        "fecha": "2026-02-10",
+        "criticos": 7
+      },
+      {
+        "fecha": "2026-02-11",
+        "criticos": 8
+      },
+      {
+        "fecha": "2026-02-12",
+        "criticos": 9
+      },
+      {
+        "fecha": "2026-02-13",
+        "criticos": 7
+      },
+      {
+        "fecha": "2026-02-14",
+        "criticos": 7
       },
       {
         "fecha": "2026-02-15",
-        "valor": 3
+        "criticos": 9
+      },
+      {
+        "fecha": "2026-02-16",
+        "criticos": 9
+      },
+      {
+        "fecha": "2026-02-17",
+        "criticos": 6
+      },
+      {
+        "fecha": "2026-02-18",
+        "criticos": 8
+      },
+      {
+        "fecha": "2026-02-19",
+        "criticos": 7
+      },
+      {
+        "fecha": "2026-02-20",
+        "criticos": 7
+      },
+      {
+        "fecha": "2026-02-21",
+        "criticos": 8
+      },
+      {
+        "fecha": "2026-02-22",
+        "criticos": 7
+      },
+      {
+        "fecha": "2026-02-23",
+        "criticos": 9
+      },
+      {
+        "fecha": "2026-02-24",
+        "criticos": 10
+      },
+      {
+        "fecha": "2026-02-25",
+        "criticos": 10
+      },
+      {
+        "fecha": "2026-02-26",
+        "criticos": 10
+      },
+      {
+        "fecha": "2026-02-27",
+        "criticos": 9
+      },
+      {
+        "fecha": "2026-02-28",
+        "criticos": 8
       },
       {
         "fecha": "2026-03-01",
-        "valor": 3
+        "criticos": 7
       },
       {
-        "fecha": "2026-03-10",
-        "valor": 3
+        "fecha": "2026-03-02",
+        "criticos": 10
+      },
+      {
+        "fecha": "2026-03-03",
+        "criticos": 6
+      },
+      {
+        "fecha": "2026-03-04",
+        "criticos": 8
+      },
+      {
+        "fecha": "2026-03-05",
+        "criticos": 8
+      },
+      {
+        "fecha": "2026-03-06",
+        "criticos": 8
+      }
+    ],
+    "semanal": [
+      {
+        "semana": "Sem 1",
+        "fecha_inicio": "2026-02-04",
+        "criticos": 8.4
+      },
+      {
+        "semana": "Sem 2",
+        "fecha_inicio": "2026-02-11",
+        "criticos": 7.9
+      },
+      {
+        "semana": "Sem 3",
+        "fecha_inicio": "2026-02-18",
+        "criticos": 8.0
+      },
+      {
+        "semana": "Sem 4",
+        "fecha_inicio": "2026-02-25",
+        "criticos": 8.6
+      },
+      {
+        "semana": "Sem 5",
+        "fecha_inicio": "2026-03-04",
+        "criticos": 8.0
+      }
+    ],
+    "mensual": [
+      {
+        "mes": "Febrero",
+        "criticos": 7.5
+      },
+      {
+        "mes": "Marzo",
+        "criticos": 8
       }
     ]
+  },
+  "clasificacion_criticos": {
+    "total": 3,
+    "categorias": [
+      {
+        "label": "Reemplazo inmediato",
+        "icono": "🔴",
+        "cantidad": 1,
+        "descripcion": "Más allá de vida útil económica — cuesta más mantener que reemplazar",
+        "color": "#ef4444",
+        "severidad": "CRÍTICA"
+      },
+      {
+        "label": "Riesgo de falla inminente",
+        "icono": "🟠",
+        "cantidad": 1,
+        "descripcion": "Componentes principales con desgaste > 85% — ventana de acción: 15-30 días",
+        "color": "#f59e0b",
+        "severidad": "ALTA"
+      },
+      {
+        "label": "Degradación progresiva",
+        "icono": "🟡",
+        "cantidad": 1,
+        "descripcion": "Rendimiento decayendo — si no se interviene, será crítico en 60 días",
+        "color": "#eab308",
+        "severidad": "MEDIA"
+      }
+    ]
+  },
+  "activos": [
+    {
+      "unidad": "EXT-2104",
+      "modelo": "Kenworth T680 2019",
+      "km_acumulados": 782000,
+      "vida_util_estimada": 750000,
+      "pct_vida_util": 104.3,
+      "edad_anos": 7,
+      "ruta_principal": "CDMX → Puebla → Veracruz",
+      "estado": "reemplazo_inmediato",
+      "estado_label": "Reemplazo inmediato",
+      "estado_color": "#ef4444",
+      "costo_mtto_6m": 285000,
+      "costo_mtto_benchmark_6m": 95000,
+      "ratio_mtto_vs_valor": 0.38,
+      "valor_residual": 420000,
+      "valor_reemplazo": 2800000,
+      "causa_detalle": "Motor con 782K km — ya superó su vida útil económica de 750K. En los últimos 6 meses acumuló $285K en correctivos (3x el benchmark). El turbo se reemplazó 2 veces en 12 meses. El costo de mantenerla activa ya supera el costo anualizado de un activo nuevo: $47.5K/mes actual vs $38K/mes con unidad nueva financiada a 60 meses.",
+      "correlaciones": [
+        {
+          "fuente": "SAP PM",
+          "dato": "14 OTs correctivas en 6 meses — promedio flota: 3"
+        },
+        {
+          "fuente": "Telemetría ECU",
+          "dato": "Motor con pérdida de 12% de potencia vs especificación. Consumo aceite: 1.2L/1000km (normal: 0.3)"
+        },
+        {
+          "fuente": "Valuación",
+          "dato": "Valor residual $420K — apenas 15% del valor original. Depreciación acelerada por estado mecánico"
+        },
+        {
+          "fuente": "Financiero",
+          "dato": "Ratio mtto/valor = 0.38 (regla: reemplazar si > 0.30 sostenido)"
+        },
+        {
+          "fuente": "Benchmark flota",
+          "dato": "KW T680 similares con <600K km: $15.8K/mes mtto promedio vs $47.5K esta unidad"
+        }
+      ],
+      "impacto_financiero": {
+        "sobrecosto_mensual": 31667,
+        "proyeccion_anual_sin_accion": 380000,
+        "dias_inactiva_ultimo_trim": 18,
+        "costo_inactividad": 162000,
+        "desglose": {
+          "correctivos_exceso": 190000,
+          "diesel_sobreconsumo": 45000,
+          "inactividad_perdida": 162000,
+          "costo_oportunidad": 54000
+        }
+      }
+    },
+    {
+      "unidad": "EXT-3812",
+      "modelo": "Freightliner Cascadia 2020",
+      "km_acumulados": 598000,
+      "vida_util_estimada": 750000,
+      "pct_vida_util": 79.7,
+      "edad_anos": 6,
+      "ruta_principal": "Monterrey → Saltillo → Chihuahua",
+      "estado": "falla_inminente",
+      "estado_label": "Riesgo de falla inminente",
+      "estado_color": "#f59e0b",
+      "costo_mtto_6m": 178000,
+      "costo_mtto_benchmark_6m": 85000,
+      "ratio_mtto_vs_valor": 0.22,
+      "valor_residual": 680000,
+      "valor_reemplazo": 2650000,
+      "causa_detalle": "Transmisión Eaton Fuller con desgaste de sincronizadores al 89% según análisis de aceite (partículas metálicas 4x sobre límite). Telemetría muestra 340ms de retraso en cambios vs 120ms de fábrica. Si falla en ruta, el correctivo en carretera cuesta $180K+ (vs $65K en taller programado). Ventana: 15-30 días antes de falla probable.",
+      "correlaciones": [
+        {
+          "fuente": "Análisis aceite",
+          "dato": "Partículas Fe: 842ppm (límite: 200ppm). Tendencia ascendente 3 meses consecutivos"
+        },
+        {
+          "fuente": "Telemetría ECU",
+          "dato": "Retraso en cambios: 340ms (fábrica: 120ms). 12% de cambios con 'grinding' detectado"
+        },
+        {
+          "fuente": "SAP PM",
+          "dato": "OT preventiva programada para Mar-15 — pero componente necesita intervención antes"
+        },
+        {
+          "fuente": "Proveedor",
+          "dato": "Kit reconstrucción Eaton: $65K en taller vs $180K+ correctivo en carretera"
+        },
+        {
+          "fuente": "Historial similar",
+          "dato": "EXT-2890 falló con síntomas idénticos hace 8 meses — 5 días fuera de servicio, $195K total"
+        }
+      ],
+      "impacto_financiero": {
+        "sobrecosto_mensual": 15500,
+        "proyeccion_anual_sin_accion": 186000,
+        "riesgo_falla_carretera": 180000,
+        "costo_preventivo_ahora": 65000,
+        "desglose": {
+          "mtto_exceso": 93000,
+          "riesgo_correctivo_carretera": 180000,
+          "inactividad_si_falla": 90000,
+          "diesel_ineficiencia_trans": 22000
+        }
+      }
+    },
+    {
+      "unidad": "EXT-6201",
+      "modelo": "International LT625 2021",
+      "km_acumulados": 435000,
+      "vida_util_estimada": 750000,
+      "pct_vida_util": 58.0,
+      "edad_anos": 5,
+      "ruta_principal": "Guadalajara → León → Aguascalientes",
+      "estado": "degradacion_progresiva",
+      "estado_label": "Degradación progresiva",
+      "estado_color": "#eab308",
+      "costo_mtto_6m": 142000,
+      "costo_mtto_benchmark_6m": 78000,
+      "ratio_mtto_vs_valor": 0.15,
+      "valor_residual": 920000,
+      "valor_reemplazo": 2700000,
+      "causa_detalle": "Sistema de enfriamiento con degradación: radiador con eficiencia al 72% (cambiar al llegar a 65%). Motor trabaja a 2-4°C sobre temperatura óptima constantemente. No es urgente hoy, pero la tendencia indica que en 60 días cruzará el umbral de sobrecalentamiento frecuente, acelerando desgaste de empaques y sellos. Además el sistema de frenos regenerativo muestra 15% menos eficiencia — componente electrónico probable.",
+      "correlaciones": [
+        {
+          "fuente": "Telemetría",
+          "dato": "Temp motor promedio: 96°C (óptimo: 92°C). Picos de 104°C en subidas (límite: 108°C)"
+        },
+        {
+          "fuente": "Análisis coolant",
+          "dato": "Eficiencia radiador 72% — caída de 8 puntos en 4 meses. Tendencia: 65% en ~60 días"
+        },
+        {
+          "fuente": "SAP PM",
+          "dato": "3 correctivos menores por sobrecalentamiento en 90 días (termostato, manguera, sensor)"
+        },
+        {
+          "fuente": "Frenos regen",
+          "dato": "Eficiencia frenado regenerativo 85% vs 100% nominal — módulo ECU a revisar"
+        },
+        {
+          "fuente": "Benchmark flota",
+          "dato": "International LT625 similares: $13K/mes mtto. Esta unidad: $23.7K/mes"
+        }
+      ],
+      "impacto_financiero": {
+        "sobrecosto_mensual": 10667,
+        "proyeccion_anual_sin_accion": 128000,
+        "costo_preventivo_ahora": 35000,
+        "costo_si_falla_60_dias": 120000,
+        "desglose": {
+          "mtto_exceso_actual": 64000,
+          "riesgo_sobrecalentamiento": 120000,
+          "diesel_temp_elevada": 18000,
+          "frenos_regen_ineficiencia": 12000
+        }
+      }
+    }
+  ],
+  "resumen_financiero": {
+    "costo_inactividad_mensual": 57834,
+    "costo_por_hora_inactividad": 80,
+    "proyeccion_anual_sin_accion": 694000,
+    "ahorro_potencial_con_acciones": 520000,
+    "inversion_requerida": 2965000,
+    "roi_primer_ano": 1.18,
+    "dias_inactivos_flota_trim": 42
+  },
+  "acciones": [
+    {
+      "prioridad": 1,
+      "tipo": "urgente",
+      "unidad": "EXT-2104",
+      "accion": "Iniciar proceso de reemplazo — cotizar unidad nueva + plan financiero",
+      "detalle": "Esta unidad cuesta $47.5K/mes en mantenimiento. Una KW T680 2026 financiada a 60 meses cuesta $38K/mes todo incluido. Cada mes que se retrasa el reemplazo son $9.5K extra. Valor residual actual: $420K como enganche. Recomendación: solicitar cotización esta semana, entregar unidad a disposición en máx 45 días.",
+      "ahorro_estimado": 114000,
+      "ahorro_unidad": "MXN/año (vs mantener activo actual)",
+      "responsable": "Dirección de Flota + Finanzas",
+      "contacto": "Ing. Director Flota"
+    },
+    {
+      "prioridad": 2,
+      "tipo": "inmediata",
+      "unidad": "EXT-3812",
+      "accion": "Programar reconstrucción de transmisión ANTES del 15 de marzo",
+      "detalle": "Kit Eaton Fuller en taller: $65K y 3 días fuera de servicio. Si falla en carretera: $180K+ y 5+ días. La ventana de acción es de 15-30 días según análisis de aceite. Adelantar la OT preventiva de Mar-15 a esta semana elimina el riesgo de $180K.",
+      "ahorro_estimado": 115000,
+      "ahorro_unidad": "MXN (riesgo evitado vs correctivo carretera)",
+      "responsable": "Jefe Taller MTY",
+      "contacto": "Ing. Garza x5102"
+    },
+    {
+      "prioridad": 3,
+      "tipo": "preventiva",
+      "unidad": "EXT-6201",
+      "accion": "Cambio de radiador + diagnóstico módulo frenos regenerativos",
+      "detalle": "Radiador nuevo: $18K. Diagnóstico frenos regen: $2K. Total: $20K. Si el radiador baja a 65% sin cambio, se arriesga a daño de empaques de cabeza ($85K+). Programar para dentro de 2 semanas máximo.",
+      "ahorro_estimado": 85000,
+      "ahorro_unidad": "MXN (riesgo evitado si se deteriora más)",
+      "responsable": "Coordinador Mantenimiento GDL",
+      "contacto": "Ing. López x3340"
+    },
+    {
+      "prioridad": 4,
+      "tipo": "preventiva",
+      "unidad": "SISTEMA",
+      "accion": "Implementar scoring predictivo de salud de activos en Iris",
+      "detalle": "Crear índice compuesto: edad, km, ratio mtto/valor, tendencia aceite, telemetría. Score 0-100 para cada unidad. Alerta automática cuando score < 40. Empresas con scoring predictivo reportan 35% menos paros no programados y 20% extensión de vida útil promedio.",
+      "ahorro_estimado": 420000,
+      "ahorro_unidad": "MXN/año (estimado con scoring activo)",
+      "responsable": "Gerencia Flota + TI",
+      "contacto": null
+    }
+  ],
+  "iris_narrativa": {
+    "hallazgo_principal": "Las unidades críticas concentran el 65% de los ingresos a taller. ME-H019 (245K km) y ME-F032 (210K km) han superado su vida útil operativa en condiciones de terracería.",
+    "revelacion": "ME-H019 ha costado $89K en reparaciones en 60 días. A este ritmo, en 6 meses habrás gastado más que el valor residual de la unidad.",
+    "impacto": "Sin acción, estos 3 activos representan $694K al año en sobrecostos y riesgos. Pero la inversión para resolverlo se paga en menos de 12 meses. La reconstrucción de EXT-3812 tiene el ROI más rápido: $65K que evitan $180K+ en los próximos 30 días.",
+    "cierre": "Reemplazando 3 unidades críticas y aplicando mantenimiento preventivo reforzado en 5, reduces activos críticos a 2 en 60 días.",
+    "apertura": "8 unidades de tu flota de 120 están en estado crítico. 3 requieren reemplazo inmediato por km acumulados."
   }
 }

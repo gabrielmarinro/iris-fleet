@@ -2189,5 +2189,413 @@
     "km_recorridos_mes": 6489,
     "status": "activo",
     "unidad_asignada": "ME-N014"
+  },
+  {
+    "nombre": "Ricardo Mendoza Vega",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-EX01",
+    "certificaciones": [
+      "Licencia Federal Tipo E",
+      "NOM-006-STPS",
+      "Cert. Operador Volquete"
+    ],
+    "score_seguridad": 96,
+    "antiguedad_anios": 15,
+    "turno": "Diurno",
+    "horas_conduccion_hoy": 3.9,
+    "alertas_mes": 2,
+    "near_misses_mes": 0
+  },
+  {
+    "nombre": "Alejandro Torres Ríos",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-EX02",
+    "certificaciones": [
+      "NOM-006-STPS",
+      "Cert. Operador Grúa",
+      "Cert. Operador Excavadora",
+      "Cert. Trabajo en Altura"
+    ],
+    "score_seguridad": 88,
+    "antiguedad_anios": 5,
+    "turno": "Diurno",
+    "horas_conduccion_hoy": 10.0,
+    "alertas_mes": 3,
+    "near_misses_mes": 1
+  },
+  {
+    "nombre": "Miguel Ángel Soto Cruz",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-EX03",
+    "certificaciones": [
+      "Cert. Operador Volquete",
+      "Licencia Federal Tipo E",
+      "NOM-006-STPS"
+    ],
+    "score_seguridad": 84,
+    "antiguedad_anios": 4,
+    "turno": "Nocturno",
+    "horas_conduccion_hoy": 7.0,
+    "alertas_mes": 3,
+    "near_misses_mes": 0
+  },
+  {
+    "nombre": "Carlos Ramírez Luna",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-EX04",
+    "certificaciones": [
+      "Cert. Operador Bulldozer",
+      "Cert. Trabajo en Altura",
+      "Licencia Federal Tipo E",
+      "Cert. Operador Volquete"
+    ],
+    "score_seguridad": 95,
+    "antiguedad_anios": 10,
+    "turno": "Diurno",
+    "horas_conduccion_hoy": 1.1,
+    "alertas_mes": 4,
+    "near_misses_mes": 2
+  },
+  {
+    "nombre": "José Luis Hernández Bravo",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-RX01",
+    "certificaciones": [
+      "Cert. Operador Volquete",
+      "Cert. Operador Bulldozer",
+      "Cert. Trabajo en Altura"
+    ],
+    "score_seguridad": 88,
+    "antiguedad_anios": 3,
+    "turno": "Diurno",
+    "horas_conduccion_hoy": 0.9,
+    "alertas_mes": 4,
+    "near_misses_mes": 1
+  },
+  {
+    "nombre": "Pedro Jiménez Vargas",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-RX02",
+    "certificaciones": [
+      "Cert. Trabajo en Altura",
+      "Licencia Federal Tipo E",
+      "Cert. Operador Bulldozer"
+    ],
+    "score_seguridad": 89,
+    "antiguedad_anios": 11,
+    "turno": "Nocturno",
+    "horas_conduccion_hoy": 1.3,
+    "alertas_mes": 4,
+    "near_misses_mes": 1
+  },
+  {
+    "nombre": "Francisco García Morales",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-RX03",
+    "certificaciones": [
+      "NOM-006-STPS",
+      "Cert. Operador Grúa"
+    ],
+    "score_seguridad": 78,
+    "antiguedad_anios": 7,
+    "turno": "Diurno",
+    "horas_conduccion_hoy": 6.1,
+    "alertas_mes": 4,
+    "near_misses_mes": 1
+  },
+  {
+    "nombre": "Raúl Díaz Montes",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-VQ01",
+    "certificaciones": [
+      "Cert. Operador Grúa",
+      "Cert. Operador Volquete",
+      "NOM-006-STPS",
+      "Cert. Trabajo en Altura"
+    ],
+    "score_seguridad": 85,
+    "antiguedad_anios": 6,
+    "turno": "Diurno",
+    "horas_conduccion_hoy": 12.0,
+    "alertas_mes": 3,
+    "near_misses_mes": 1
+  },
+  {
+    "nombre": "Sergio Castillo Flores",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-VQ02",
+    "certificaciones": [
+      "Licencia Federal Tipo E",
+      "Cert. Trabajo en Altura"
+    ],
+    "score_seguridad": 74,
+    "antiguedad_anios": 12,
+    "turno": "Nocturno",
+    "horas_conduccion_hoy": 1.7,
+    "alertas_mes": 5,
+    "near_misses_mes": 0
+  },
+  {
+    "nombre": "Eduardo Vázquez Romero",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-VQ03",
+    "certificaciones": [
+      "Cert. Trabajo en Altura",
+      "Cert. Operador Excavadora",
+      "Cert. Operador Volquete",
+      "Licencia Federal Tipo E"
+    ],
+    "score_seguridad": 76,
+    "antiguedad_anios": 3,
+    "turno": "Diurno",
+    "horas_conduccion_hoy": 3.2,
+    "alertas_mes": 4,
+    "near_misses_mes": 2
+  },
+  {
+    "nombre": "Antonio López Sánchez",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-VQ04",
+    "certificaciones": [
+      "NOM-006-STPS",
+      "Cert. Operador Grúa"
+    ],
+    "score_seguridad": 76,
+    "antiguedad_anios": 12,
+    "turno": "Diurno",
+    "horas_conduccion_hoy": 0.6,
+    "alertas_mes": 1,
+    "near_misses_mes": 1
+  },
+  {
+    "nombre": "Juan Pablo Ortega",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-CF01",
+    "certificaciones": [
+      "Cert. Operador Bulldozer",
+      "Licencia Federal Tipo E",
+      "NOM-006-STPS"
+    ],
+    "score_seguridad": 66,
+    "antiguedad_anios": 5,
+    "turno": "Nocturno",
+    "horas_conduccion_hoy": 2.7,
+    "alertas_mes": 2,
+    "near_misses_mes": 0
+  },
+  {
+    "nombre": "Héctor Martínez Duarte",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-CF02",
+    "certificaciones": [
+      "Cert. Operador Bulldozer",
+      "Cert. Trabajo en Altura",
+      "NOM-006-STPS"
+    ],
+    "score_seguridad": 74,
+    "antiguedad_anios": 15,
+    "turno": "Diurno",
+    "horas_conduccion_hoy": 3.9,
+    "alertas_mes": 5,
+    "near_misses_mes": 0
+  },
+  {
+    "nombre": "Guillermo Reyes Acosta",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-CF03",
+    "certificaciones": [
+      "Cert. Operador Excavadora",
+      "Cert. Trabajo en Altura",
+      "Cert. Operador Bulldozer"
+    ],
+    "score_seguridad": 87,
+    "antiguedad_anios": 10,
+    "turno": "Diurno",
+    "horas_conduccion_hoy": 10.1,
+    "alertas_mes": 5,
+    "near_misses_mes": 2
+  },
+  {
+    "nombre": "Roberto Salazar Núñez",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-BD01",
+    "certificaciones": [
+      "Cert. Trabajo en Altura",
+      "Cert. Operador Excavadora",
+      "Cert. Operador Grúa"
+    ],
+    "score_seguridad": 97,
+    "antiguedad_anios": 4,
+    "turno": "Nocturno",
+    "horas_conduccion_hoy": 10.4,
+    "alertas_mes": 0,
+    "near_misses_mes": 3
+  },
+  {
+    "nombre": "David Moreno Estrada",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-BD02",
+    "certificaciones": [
+      "NOM-006-STPS",
+      "Cert. Operador Grúa",
+      "Cert. Operador Bulldozer",
+      "Licencia Federal Tipo E"
+    ],
+    "score_seguridad": 79,
+    "antiguedad_anios": 11,
+    "turno": "Diurno",
+    "horas_conduccion_hoy": 11.6,
+    "alertas_mes": 1,
+    "near_misses_mes": 2
+  },
+  {
+    "nombre": "Javier Ruiz Palacios",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-GR01",
+    "certificaciones": [
+      "Licencia Federal Tipo E",
+      "NOM-006-STPS"
+    ],
+    "score_seguridad": 92,
+    "antiguedad_anios": 8,
+    "turno": "Diurno",
+    "horas_conduccion_hoy": 10.3,
+    "alertas_mes": 5,
+    "near_misses_mes": 1
+  },
+  {
+    "nombre": "Fernando Domínguez Castro",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-GR02",
+    "certificaciones": [
+      "Cert. Operador Bulldozer",
+      "Cert. Trabajo en Altura",
+      "NOM-006-STPS"
+    ],
+    "score_seguridad": 95,
+    "antiguedad_anios": 2,
+    "turno": "Nocturno",
+    "horas_conduccion_hoy": 10.5,
+    "alertas_mes": 1,
+    "near_misses_mes": 1
+  },
+  {
+    "nombre": "Óscar Navarro Peña",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-MC01",
+    "certificaciones": [
+      "Cert. Trabajo en Altura",
+      "Cert. Operador Excavadora"
+    ],
+    "score_seguridad": 87,
+    "antiguedad_anios": 12,
+    "turno": "Diurno",
+    "horas_conduccion_hoy": 8.1,
+    "alertas_mes": 5,
+    "near_misses_mes": 1
+  },
+  {
+    "nombre": "Luis Enrique Aguilar",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-MC02",
+    "certificaciones": [
+      "Cert. Operador Grúa",
+      "Cert. Trabajo en Altura"
+    ],
+    "score_seguridad": 92,
+    "antiguedad_anios": 4,
+    "turno": "Diurno",
+    "horas_conduccion_hoy": 10.8,
+    "alertas_mes": 3,
+    "near_misses_mes": 0
+  },
+  {
+    "nombre": "Arturo Espinosa León",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-RC01",
+    "certificaciones": [
+      "Cert. Operador Grúa",
+      "Cert. Operador Bulldozer",
+      "Cert. Operador Volquete",
+      "Licencia Federal Tipo E"
+    ],
+    "score_seguridad": 88,
+    "antiguedad_anios": 7,
+    "turno": "Nocturno",
+    "horas_conduccion_hoy": 0.1,
+    "alertas_mes": 4,
+    "near_misses_mes": 3
+  },
+  {
+    "nombre": "Manuel Córdoba Ríos",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-RC02",
+    "certificaciones": [
+      "Cert. Trabajo en Altura",
+      "Cert. Operador Volquete",
+      "NOM-006-STPS"
+    ],
+    "score_seguridad": 73,
+    "antiguedad_anios": 2,
+    "turno": "Diurno",
+    "horas_conduccion_hoy": 9.5,
+    "alertas_mes": 4,
+    "near_misses_mes": 1
+  },
+  {
+    "nombre": "Ignacio Fuentes Valdez",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-PF01",
+    "certificaciones": [
+      "NOM-006-STPS",
+      "Cert. Trabajo en Altura",
+      "Licencia Federal Tipo E"
+    ],
+    "score_seguridad": 68,
+    "antiguedad_anios": 15,
+    "turno": "Diurno",
+    "horas_conduccion_hoy": 8.4,
+    "alertas_mes": 4,
+    "near_misses_mes": 2
+  },
+  {
+    "nombre": "Jorge Medina Contreras",
+    "tipo_flota": "pesado",
+    "rol": "Operador de Maquinaria Pesada",
+    "unidad_asignada": "ME-PA01",
+    "certificaciones": [
+      "Cert. Operador Bulldozer",
+      "Cert. Operador Excavadora",
+      "NOM-006-STPS"
+    ],
+    "score_seguridad": 94,
+    "antiguedad_anios": 6,
+    "turno": "Nocturno",
+    "horas_conduccion_hoy": 6.6,
+    "alertas_mes": 4,
+    "near_misses_mes": 0
   }
 ]

@@ -46,7 +46,8 @@
       "seguro": {
         "poliza": "POL-ME-57052",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H002",
@@ -94,7 +95,8 @@
       "seguro": {
         "poliza": "POL-ME-70589",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H003",
@@ -140,7 +142,8 @@
       "seguro": {
         "poliza": "POL-ME-24371",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H004",
@@ -188,7 +191,8 @@
       "seguro": {
         "poliza": "POL-ME-31174",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H005",
@@ -238,7 +242,8 @@
       "seguro": {
         "poliza": "POL-ME-18392",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H006",
@@ -286,7 +291,8 @@
       "seguro": {
         "poliza": "POL-ME-62772",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H007",
@@ -332,7 +338,8 @@
       "seguro": {
         "poliza": "POL-ME-82845",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H008",
@@ -378,7 +385,8 @@
       "seguro": {
         "poliza": "POL-ME-51180",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H009",
@@ -428,7 +436,8 @@
       "seguro": {
         "poliza": "POL-ME-46930",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H010",
@@ -474,7 +483,8 @@
       "seguro": {
         "poliza": "POL-ME-42706",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H011",
@@ -521,7 +531,8 @@
       "seguro": {
         "poliza": "POL-ME-46585",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H012",
@@ -568,7 +579,8 @@
       "seguro": {
         "poliza": "POL-ME-49363",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H013",
@@ -615,7 +627,8 @@
       "seguro": {
         "poliza": "POL-ME-50687",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H014",
@@ -662,7 +675,8 @@
       "seguro": {
         "poliza": "POL-ME-76162",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H015",
@@ -709,7 +723,8 @@
       "seguro": {
         "poliza": "POL-ME-10772",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H016",
@@ -758,7 +773,8 @@
       "seguro": {
         "poliza": "POL-ME-52906",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H017",
@@ -808,7 +824,8 @@
       "seguro": {
         "poliza": "POL-ME-24168",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H018",
@@ -854,7 +871,8 @@
       "seguro": {
         "poliza": "POL-ME-33086",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H019",
@@ -904,7 +922,8 @@
       "seguro": {
         "poliza": "POL-ME-72402",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H020",
@@ -951,7 +970,8 @@
       "seguro": {
         "poliza": "POL-ME-39816",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H021",
@@ -999,7 +1019,8 @@
       "seguro": {
         "poliza": "POL-ME-42530",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H022",
@@ -1047,7 +1068,8 @@
       "seguro": {
         "poliza": "POL-ME-91927",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H023",
@@ -1095,7 +1117,8 @@
       "seguro": {
         "poliza": "POL-ME-15273",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H024",
@@ -1144,7 +1167,8 @@
       "seguro": {
         "poliza": "POL-ME-75338",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H025",
@@ -1192,7 +1216,8 @@
       "seguro": {
         "poliza": "POL-ME-64387",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H026",
@@ -1241,7 +1266,8 @@
       "seguro": {
         "poliza": "POL-ME-75836",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H027",
@@ -1289,7 +1315,8 @@
       "seguro": {
         "poliza": "POL-ME-93066",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H028",
@@ -1337,7 +1364,8 @@
       "seguro": {
         "poliza": "POL-ME-87014",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H029",
@@ -1383,7 +1411,8 @@
       "seguro": {
         "poliza": "POL-ME-22735",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H030",
@@ -1431,7 +1460,8 @@
       "seguro": {
         "poliza": "POL-ME-98125",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H031",
@@ -1479,7 +1509,8 @@
       "seguro": {
         "poliza": "POL-ME-95841",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H032",
@@ -1527,7 +1558,8 @@
       "seguro": {
         "poliza": "POL-ME-40539",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H033",
@@ -1573,7 +1605,8 @@
       "seguro": {
         "poliza": "POL-ME-96363",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H034",
@@ -1621,7 +1654,8 @@
       "seguro": {
         "poliza": "POL-ME-64239",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H035",
@@ -1669,7 +1703,8 @@
       "seguro": {
         "poliza": "POL-ME-23579",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H036",
@@ -1717,7 +1752,8 @@
       "seguro": {
         "poliza": "POL-ME-79531",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H037",
@@ -1764,7 +1800,8 @@
       "seguro": {
         "poliza": "POL-ME-37686",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H038",
@@ -1810,7 +1847,8 @@
       "seguro": {
         "poliza": "POL-ME-67240",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H039",
@@ -1856,7 +1894,8 @@
       "seguro": {
         "poliza": "POL-ME-67640",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H040",
@@ -1907,7 +1946,8 @@
       "seguro": {
         "poliza": "POL-ME-42472",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H041",
@@ -1954,7 +1994,8 @@
       "seguro": {
         "poliza": "POL-ME-83259",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H042",
@@ -2000,7 +2041,8 @@
       "seguro": {
         "poliza": "POL-ME-63852",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H043",
@@ -2050,7 +2092,8 @@
       "seguro": {
         "poliza": "POL-ME-31012",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H044",
@@ -2099,7 +2142,8 @@
       "seguro": {
         "poliza": "POL-ME-12490",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H045",
@@ -2149,7 +2193,8 @@
       "seguro": {
         "poliza": "POL-ME-93318",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H046",
@@ -2197,7 +2242,8 @@
       "seguro": {
         "poliza": "POL-ME-56789",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H047",
@@ -2247,7 +2293,8 @@
       "seguro": {
         "poliza": "POL-ME-93816",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H048",
@@ -2295,7 +2342,8 @@
       "seguro": {
         "poliza": "POL-ME-77861",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H049",
@@ -2341,7 +2389,8 @@
       "seguro": {
         "poliza": "POL-ME-85009",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-H050",
@@ -2387,7 +2436,8 @@
       "seguro": {
         "poliza": "POL-ME-52291",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F051",
@@ -2437,7 +2487,8 @@
       "seguro": {
         "poliza": "POL-ME-42096",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F052",
@@ -2484,7 +2535,8 @@
       "seguro": {
         "poliza": "POL-ME-30885",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F053",
@@ -2532,7 +2584,8 @@
       "seguro": {
         "poliza": "POL-ME-82070",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F054",
@@ -2578,7 +2631,8 @@
       "seguro": {
         "poliza": "POL-ME-12180",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F055",
@@ -2626,7 +2680,8 @@
       "seguro": {
         "poliza": "POL-ME-18163",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F056",
@@ -2674,7 +2729,8 @@
       "seguro": {
         "poliza": "POL-ME-98686",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F057",
@@ -2721,7 +2777,8 @@
       "seguro": {
         "poliza": "POL-ME-95575",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F058",
@@ -2769,7 +2826,8 @@
       "seguro": {
         "poliza": "POL-ME-76088",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F059",
@@ -2819,7 +2877,8 @@
       "seguro": {
         "poliza": "POL-ME-40972",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F060",
@@ -2865,7 +2924,8 @@
       "seguro": {
         "poliza": "POL-ME-80341",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F061",
@@ -2914,7 +2974,8 @@
       "seguro": {
         "poliza": "POL-ME-63591",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F062",
@@ -2960,7 +3021,8 @@
       "seguro": {
         "poliza": "POL-ME-24790",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F063",
@@ -3007,7 +3069,8 @@
       "seguro": {
         "poliza": "POL-ME-17989",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F064",
@@ -3054,7 +3117,8 @@
       "seguro": {
         "poliza": "POL-ME-45187",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F065",
@@ -3102,7 +3166,8 @@
       "seguro": {
         "poliza": "POL-ME-71537",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F066",
@@ -3150,7 +3215,8 @@
       "seguro": {
         "poliza": "POL-ME-14433",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F067",
@@ -3197,7 +3263,8 @@
       "seguro": {
         "poliza": "POL-ME-35156",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F068",
@@ -3243,7 +3310,8 @@
       "seguro": {
         "poliza": "POL-ME-99709",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F069",
@@ -3291,7 +3359,8 @@
       "seguro": {
         "poliza": "POL-ME-82487",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F070",
@@ -3340,7 +3409,8 @@
       "seguro": {
         "poliza": "POL-ME-48253",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F071",
@@ -3388,7 +3458,8 @@
       "seguro": {
         "poliza": "POL-ME-53193",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F072",
@@ -3436,7 +3507,8 @@
       "seguro": {
         "poliza": "POL-ME-75444",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F073",
@@ -3484,7 +3556,8 @@
       "seguro": {
         "poliza": "POL-ME-70694",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F074",
@@ -3532,7 +3605,8 @@
       "seguro": {
         "poliza": "POL-ME-83380",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-F075",
@@ -3582,7 +3656,8 @@
       "seguro": {
         "poliza": "POL-ME-32613",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y076",
@@ -3629,7 +3704,8 @@
       "seguro": {
         "poliza": "POL-ME-68176",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y077",
@@ -3677,7 +3753,8 @@
       "seguro": {
         "poliza": "POL-ME-21401",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y078",
@@ -3725,7 +3802,8 @@
       "seguro": {
         "poliza": "POL-ME-29168",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y079",
@@ -3773,7 +3851,8 @@
       "seguro": {
         "poliza": "POL-ME-81737",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y080",
@@ -3823,7 +3902,8 @@
       "seguro": {
         "poliza": "POL-ME-20215",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y081",
@@ -3871,7 +3951,8 @@
       "seguro": {
         "poliza": "POL-ME-90750",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y082",
@@ -3919,7 +4000,8 @@
       "seguro": {
         "poliza": "POL-ME-60703",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y083",
@@ -3967,7 +4049,8 @@
       "seguro": {
         "poliza": "POL-ME-41278",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y084",
@@ -4013,7 +4096,8 @@
       "seguro": {
         "poliza": "POL-ME-57202",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y085",
@@ -4059,7 +4143,8 @@
       "seguro": {
         "poliza": "POL-ME-75803",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y086",
@@ -4106,7 +4191,8 @@
       "seguro": {
         "poliza": "POL-ME-96154",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y087",
@@ -4153,7 +4239,8 @@
       "seguro": {
         "poliza": "POL-ME-69343",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y088",
@@ -4200,7 +4287,8 @@
       "seguro": {
         "poliza": "POL-ME-32789",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y089",
@@ -4248,7 +4336,8 @@
       "seguro": {
         "poliza": "POL-ME-32018",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y090",
@@ -4296,7 +4385,8 @@
       "seguro": {
         "poliza": "POL-ME-45446",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y091",
@@ -4342,7 +4432,8 @@
       "seguro": {
         "poliza": "POL-ME-83873",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y092",
@@ -4388,7 +4479,8 @@
       "seguro": {
         "poliza": "POL-ME-67261",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y093",
@@ -4434,7 +4526,8 @@
       "seguro": {
         "poliza": "POL-ME-97821",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y094",
@@ -4481,7 +4574,8 @@
       "seguro": {
         "poliza": "POL-ME-31090",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-Y095",
@@ -4527,7 +4621,8 @@
       "seguro": {
         "poliza": "POL-ME-37125",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-N096",
@@ -4576,7 +4671,8 @@
       "seguro": {
         "poliza": "POL-ME-78495",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-N097",
@@ -4623,7 +4719,8 @@
       "seguro": {
         "poliza": "POL-ME-52746",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-N098",
@@ -4671,7 +4768,8 @@
       "seguro": {
         "poliza": "POL-ME-49722",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-N099",
@@ -4719,7 +4817,8 @@
       "seguro": {
         "poliza": "POL-ME-17553",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-N100",
@@ -4768,7 +4867,8 @@
       "seguro": {
         "poliza": "POL-ME-39505",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-N101",
@@ -4815,7 +4915,8 @@
       "seguro": {
         "poliza": "POL-ME-99707",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-N102",
@@ -4861,7 +4962,8 @@
       "seguro": {
         "poliza": "POL-ME-56988",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-N103",
@@ -4907,7 +5009,8 @@
       "seguro": {
         "poliza": "POL-ME-17086",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-N104",
@@ -4954,7 +5057,8 @@
       "seguro": {
         "poliza": "POL-ME-58903",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-N105",
@@ -5000,7 +5104,8 @@
       "seguro": {
         "poliza": "POL-ME-27197",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-N106",
@@ -5048,7 +5153,8 @@
       "seguro": {
         "poliza": "POL-ME-90962",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-N107",
@@ -5094,7 +5200,8 @@
       "seguro": {
         "poliza": "POL-ME-48800",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-N108",
@@ -5142,7 +5249,8 @@
       "seguro": {
         "poliza": "POL-ME-65278",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-N109",
@@ -5191,7 +5299,8 @@
       "seguro": {
         "poliza": "POL-ME-78564",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-N110",
@@ -5239,7 +5348,8 @@
       "seguro": {
         "poliza": "POL-ME-51426",
         "aseguradora": "Qualitas"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-S111",
@@ -5287,7 +5397,8 @@
       "seguro": {
         "poliza": "POL-ME-93055",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-S112",
@@ -5334,7 +5445,8 @@
       "seguro": {
         "poliza": "POL-ME-33226",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-S113",
@@ -5381,7 +5493,8 @@
       "seguro": {
         "poliza": "POL-ME-81105",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-S114",
@@ -5427,7 +5540,8 @@
       "seguro": {
         "poliza": "POL-ME-94819",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-S115",
@@ -5475,7 +5589,8 @@
       "seguro": {
         "poliza": "POL-ME-15326",
         "aseguradora": "HDI"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-S116",
@@ -5521,7 +5636,8 @@
       "seguro": {
         "poliza": "POL-ME-55796",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-S117",
@@ -5568,7 +5684,8 @@
       "seguro": {
         "poliza": "POL-ME-95397",
         "aseguradora": "GNP"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-S118",
@@ -5616,7 +5733,8 @@
       "seguro": {
         "poliza": "POL-ME-39837",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-S119",
@@ -5662,7 +5780,8 @@
       "seguro": {
         "poliza": "POL-ME-98773",
         "aseguradora": "AXA"
-      }
+      },
+      "tipo_flota": "ligero"
     },
     {
       "unidad": "ME-S120",
@@ -5708,6 +5827,1322 @@
       "seguro": {
         "poliza": "POL-ME-98039",
         "aseguradora": "Qualitas"
+      },
+      "tipo_flota": "ligero"
+    },
+    {
+      "unidad": "ME-EX01",
+      "modelo": "CAT 320 GC",
+      "tipo": "Excavadora",
+      "tipo_flota": "pesado",
+      "peso_ton": 22,
+      "capacidad": "1.0 m³",
+      "anio": 2022,
+      "placa": "ME-863-P",
+      "estado": "en_sitio",
+      "conductor": "Ricardo Mendoza Vega",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "Cert. Operador Volquete",
+        "Cert. Operador Excavadora"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": "Frente Ampliación Puerto Veracruz",
+      "frente_obra": "Frente Ampliación Puerto Veracruz",
+      "horometro_hrs": 7148,
+      "horas_hoy": 3.7,
+      "combustible_pct": 86,
+      "consumo_lph": 32.5,
+      "consumo_estandar_lph": 24.3,
+      "idle_pct": 12.5,
+      "salud_motor_pct": 49,
+      "salud_hidraulicos_pct": 86,
+      "salud_general_pct": 83,
+      "inclinacion_grados": 8.9,
+      "tpms_psi": 115,
+      "temperatura_motor_c": 104,
+      "ubicacion": {
+        "lat": 20.4436,
+        "lng": -100.1784
+      },
+      "alertas": [
+        "Temperatura motor alta: 104°C"
+      ],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": true
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 286,
+        "ultimo_servicio": "2026-02-03",
+        "tipo_proximo": "Inspección mayor"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-10-18"
+      }
+    },
+    {
+      "unidad": "ME-EX02",
+      "modelo": "CAT 330 GC",
+      "tipo": "Excavadora",
+      "tipo_flota": "pesado",
+      "peso_ton": 30,
+      "capacidad": "1.5 m³",
+      "anio": 2022,
+      "placa": "ME-507-P",
+      "estado": "en_sitio",
+      "conductor": "Alejandro Torres Ríos",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "NOM-006-STPS",
+        "Licencia Federal Tipo E",
+        "Cert. Operador Volquete"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Méx-Toluca",
+      "destino": "Frente Tren Interurbano Méx-Toluca",
+      "frente_obra": "Frente Tren Interurbano Méx-Toluca",
+      "horometro_hrs": 3907,
+      "horas_hoy": 5.4,
+      "combustible_pct": 81,
+      "consumo_lph": 39.7,
+      "consumo_estandar_lph": 28.6,
+      "idle_pct": 29.1,
+      "salud_motor_pct": 89,
+      "salud_hidraulicos_pct": 53,
+      "salud_general_pct": 90,
+      "inclinacion_grados": 15.0,
+      "tpms_psi": 73,
+      "temperatura_motor_c": 102,
+      "ubicacion": {
+        "lat": 21.4068,
+        "lng": -93.6982
+      },
+      "alertas": [
+        "Ralentí excesivo: 29.1% del turno",
+        "Temperatura motor alta: 102°C"
+      ],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": false
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 269,
+        "ultimo_servicio": "2026-02-05",
+        "tipo_proximo": "Inspección mayor"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-07-28"
+      }
+    },
+    {
+      "unidad": "ME-EX03",
+      "modelo": "Komatsu PC210",
+      "tipo": "Excavadora",
+      "tipo_flota": "pesado",
+      "peso_ton": 21,
+      "capacidad": "0.9 m³",
+      "anio": 2023,
+      "placa": "ME-357-P",
+      "estado": "en_sitio",
+      "conductor": "Miguel Ángel Soto Cruz",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "Cert. Operador Volquete",
+        "NOM-006-STPS",
+        "Cert. Operador Grúa"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base 5",
+      "destino": "Frente Tren Maya Tramo 5",
+      "frente_obra": "Frente Tren Maya Tramo 5",
+      "horometro_hrs": 9484,
+      "horas_hoy": 7.4,
+      "combustible_pct": 70,
+      "consumo_lph": 23.5,
+      "consumo_estandar_lph": 32.5,
+      "idle_pct": 26.4,
+      "salud_motor_pct": 40,
+      "salud_hidraulicos_pct": 47,
+      "salud_general_pct": 47,
+      "inclinacion_grados": 24.7,
+      "tpms_psi": 111,
+      "temperatura_motor_c": 105,
+      "ubicacion": {
+        "lat": 21.2051,
+        "lng": -88.0113
+      },
+      "alertas": [
+        "Ralentí excesivo: 26.4% del turno",
+        "Inclinación 24.7° — riesgo volcadura",
+        "Temperatura motor alta: 105°C"
+      ],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": true
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 234,
+        "ultimo_servicio": "2026-01-09",
+        "tipo_proximo": "Inspección mayor"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-09-17"
+      }
+    },
+    {
+      "unidad": "ME-EX04",
+      "modelo": "Komatsu PC360",
+      "tipo": "Excavadora",
+      "tipo_flota": "pesado",
+      "peso_ton": 36,
+      "capacidad": "1.8 m³",
+      "anio": 2021,
+      "placa": "ME-424-P",
+      "estado": "en_sitio",
+      "conductor": "Carlos Ramírez Luna",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "Cert. Operador Excavadora",
+        "NOM-006-STPS",
+        "Cert. Operador Volquete"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base 3",
+      "destino": "Frente Tren Maya Tramo 3",
+      "frente_obra": "Frente Tren Maya Tramo 3",
+      "horometro_hrs": 10145,
+      "horas_hoy": 8.5,
+      "combustible_pct": 80,
+      "consumo_lph": 25.0,
+      "consumo_estandar_lph": 33.8,
+      "idle_pct": 21.7,
+      "salud_motor_pct": 51,
+      "salud_hidraulicos_pct": 72,
+      "salud_general_pct": 91,
+      "inclinacion_grados": 0.8,
+      "tpms_psi": 116,
+      "temperatura_motor_c": 104,
+      "ubicacion": {
+        "lat": 20.1979,
+        "lng": -99.6642
+      },
+      "alertas": [
+        "Temperatura motor alta: 104°C"
+      ],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": true
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 239,
+        "ultimo_servicio": "2026-01-07",
+        "tipo_proximo": "Inspección mayor"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-07-15"
+      }
+    },
+    {
+      "unidad": "ME-RX01",
+      "modelo": "CAT 420F2",
+      "tipo": "Retroexcavadora",
+      "tipo_flota": "pesado",
+      "peso_ton": 11,
+      "capacidad": "0.3 m³",
+      "anio": 2022,
+      "placa": "ME-694-P",
+      "estado": "en_transito",
+      "conductor": "José Luis Hernández Bravo",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "Licencia Federal Tipo E",
+        "Cert. Operador Grúa"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base 5",
+      "destino": "Frente Tren Maya Tramo 5",
+      "frente_obra": "Frente Tren Maya Tramo 5",
+      "horometro_hrs": 3510,
+      "horas_hoy": 0,
+      "combustible_pct": 46,
+      "consumo_lph": 21.3,
+      "consumo_estandar_lph": 20.7,
+      "idle_pct": 0,
+      "salud_motor_pct": 74,
+      "salud_hidraulicos_pct": 62,
+      "salud_general_pct": 80,
+      "inclinacion_grados": 0,
+      "tpms_psi": 118,
+      "temperatura_motor_c": 75,
+      "ubicacion": {
+        "lat": 20.5885,
+        "lng": -98.4881
+      },
+      "alertas": [],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": false
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 344,
+        "ultimo_servicio": "2026-02-23",
+        "tipo_proximo": "Hidráulicos"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-10-08"
+      }
+    },
+    {
+      "unidad": "ME-RX02",
+      "modelo": "JCB 3CX",
+      "tipo": "Retroexcavadora",
+      "tipo_flota": "pesado",
+      "peso_ton": 8,
+      "capacidad": "0.25 m³",
+      "anio": 2023,
+      "placa": "ME-397-P",
+      "estado": "idle",
+      "conductor": "Pedro Jiménez Vargas",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "NOM-006-STPS",
+        "Cert. Operador Grúa"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Méx-Toluca",
+      "destino": "Frente Tren Interurbano Méx-Toluca",
+      "frente_obra": "Frente Tren Interurbano Méx-Toluca",
+      "horometro_hrs": 11632,
+      "horas_hoy": 0,
+      "combustible_pct": 32,
+      "consumo_lph": 39.2,
+      "consumo_estandar_lph": 33.7,
+      "idle_pct": 8.9,
+      "salud_motor_pct": 59,
+      "salud_hidraulicos_pct": 77,
+      "salud_general_pct": 64,
+      "inclinacion_grados": 0,
+      "tpms_psi": 94,
+      "temperatura_motor_c": 94,
+      "ubicacion": {
+        "lat": 21.02,
+        "lng": -93.7396
+      },
+      "alertas": [],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": true
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 57,
+        "ultimo_servicio": "2026-01-13",
+        "tipo_proximo": "Aceite + filtros"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-06-27"
+      }
+    },
+    {
+      "unidad": "ME-RX03",
+      "modelo": "CASE 580SN",
+      "tipo": "Retroexcavadora",
+      "tipo_flota": "pesado",
+      "peso_ton": 8,
+      "capacidad": "0.25 m³",
+      "anio": 2021,
+      "placa": "ME-799-P",
+      "estado": "en_sitio",
+      "conductor": "Francisco García Morales",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "NOM-006-STPS",
+        "Cert. Operador Volquete",
+        "Cert. Operador Excavadora"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base MTY-Saltillo",
+      "destino": "Frente Autopista MTY-Saltillo",
+      "frente_obra": "Frente Autopista MTY-Saltillo",
+      "horometro_hrs": 7790,
+      "horas_hoy": 9.5,
+      "combustible_pct": 78,
+      "consumo_lph": 43.6,
+      "consumo_estandar_lph": 28.6,
+      "idle_pct": 33.4,
+      "salud_motor_pct": 91,
+      "salud_hidraulicos_pct": 55,
+      "salud_general_pct": 47,
+      "inclinacion_grados": 12.8,
+      "tpms_psi": 107,
+      "temperatura_motor_c": 75,
+      "ubicacion": {
+        "lat": 20.299,
+        "lng": -94.8631
+      },
+      "alertas": [
+        "Ralentí excesivo: 33.4% del turno"
+      ],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": true
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 356,
+        "ultimo_servicio": "2026-01-22",
+        "tipo_proximo": "Aceite + filtros"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-10-13"
+      }
+    },
+    {
+      "unidad": "ME-VQ01",
+      "modelo": "Komatsu HD325-8",
+      "tipo": "Camión de Acarreo",
+      "tipo_flota": "pesado",
+      "peso_ton": 36,
+      "capacidad": "36 ton",
+      "anio": 2019,
+      "placa": "ME-562-P",
+      "estado": "en_sitio",
+      "conductor": "Raúl Díaz Montes",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "NOM-006-STPS",
+        "Cert. Operador Excavadora"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base 5",
+      "destino": "Frente Tren Maya Tramo 5",
+      "frente_obra": "Frente Tren Maya Tramo 5",
+      "horometro_hrs": 5202,
+      "horas_hoy": 7.2,
+      "combustible_pct": 31,
+      "consumo_lph": 35.4,
+      "consumo_estandar_lph": 23.3,
+      "idle_pct": 10.2,
+      "salud_motor_pct": 96,
+      "salud_hidraulicos_pct": 78,
+      "salud_general_pct": 95,
+      "inclinacion_grados": 13.6,
+      "tpms_psi": 78,
+      "temperatura_motor_c": 95,
+      "ubicacion": {
+        "lat": 19.401,
+        "lng": -89.5231
+      },
+      "alertas": [],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": true
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 267,
+        "ultimo_servicio": "2026-02-28",
+        "tipo_proximo": "Aceite + filtros"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-09-10"
+      }
+    },
+    {
+      "unidad": "ME-VQ02",
+      "modelo": "CAT 730",
+      "tipo": "Camión de Acarreo",
+      "tipo_flota": "pesado",
+      "peso_ton": 30,
+      "capacidad": "28 ton",
+      "anio": 2021,
+      "placa": "ME-578-P",
+      "estado": "en_sitio",
+      "conductor": "Sergio Castillo Flores",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "Cert. Operador Volquete",
+        "NOM-006-STPS"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": "Frente Nuevo Aeropuerto Tulum",
+      "frente_obra": "Frente Nuevo Aeropuerto Tulum",
+      "horometro_hrs": 7637,
+      "horas_hoy": 3.4,
+      "combustible_pct": 71,
+      "consumo_lph": 21.2,
+      "consumo_estandar_lph": 31.9,
+      "idle_pct": 18.9,
+      "salud_motor_pct": 90,
+      "salud_hidraulicos_pct": 62,
+      "salud_general_pct": 90,
+      "inclinacion_grados": 20.4,
+      "tpms_psi": 76,
+      "temperatura_motor_c": 99,
+      "ubicacion": {
+        "lat": 21.1197,
+        "lng": -97.4926
+      },
+      "alertas": [
+        "Inclinación 20.4° — riesgo volcadura"
+      ],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": true
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 380,
+        "ultimo_servicio": "2026-02-14",
+        "tipo_proximo": "Hidráulicos"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-06-12"
+      }
+    },
+    {
+      "unidad": "ME-VQ03",
+      "modelo": "Volvo A30G",
+      "tipo": "Camión de Acarreo",
+      "tipo_flota": "pesado",
+      "peso_ton": 28,
+      "capacidad": "28 ton",
+      "anio": 2019,
+      "placa": "ME-735-P",
+      "estado": "en_sitio",
+      "conductor": "Eduardo Vázquez Romero",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "Licencia Federal Tipo E",
+        "Cert. Operador Grúa",
+        "Cert. Operador Volquete"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base 3",
+      "destino": "Frente Tren Maya Tramo 3",
+      "frente_obra": "Frente Tren Maya Tramo 3",
+      "horometro_hrs": 4568,
+      "horas_hoy": 4.8,
+      "combustible_pct": 52,
+      "consumo_lph": 33.2,
+      "consumo_estandar_lph": 30.1,
+      "idle_pct": 25.6,
+      "salud_motor_pct": 48,
+      "salud_hidraulicos_pct": 51,
+      "salud_general_pct": 88,
+      "inclinacion_grados": 13.5,
+      "tpms_psi": 86,
+      "temperatura_motor_c": 100,
+      "ubicacion": {
+        "lat": 19.2411,
+        "lng": -94.8313
+      },
+      "alertas": [
+        "Ralentí excesivo: 25.6% del turno"
+      ],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": true
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 438,
+        "ultimo_servicio": "2026-02-24",
+        "tipo_proximo": "Hidráulicos"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-11-21"
+      }
+    },
+    {
+      "unidad": "ME-VQ04",
+      "modelo": "CAT 745",
+      "tipo": "Camión de Acarreo",
+      "tipo_flota": "pesado",
+      "peso_ton": 41,
+      "capacidad": "41 ton",
+      "anio": 2019,
+      "placa": "ME-398-P",
+      "estado": "idle",
+      "conductor": "Antonio López Sánchez",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "Cert. Operador Grúa",
+        "Cert. Operador Volquete",
+        "Licencia Federal Tipo E"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base 5",
+      "destino": "Frente Tren Maya Tramo 5",
+      "frente_obra": "Frente Tren Maya Tramo 5",
+      "horometro_hrs": 10300,
+      "horas_hoy": 0,
+      "combustible_pct": 23,
+      "consumo_lph": 18.4,
+      "consumo_estandar_lph": 33.0,
+      "idle_pct": 14.4,
+      "salud_motor_pct": 97,
+      "salud_hidraulicos_pct": 94,
+      "salud_general_pct": 54,
+      "inclinacion_grados": 0,
+      "tpms_psi": 96,
+      "temperatura_motor_c": 93,
+      "ubicacion": {
+        "lat": 21.4136,
+        "lng": -99.7549
+      },
+      "alertas": [],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": true
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 208,
+        "ultimo_servicio": "2026-01-04",
+        "tipo_proximo": "Engrase general"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-08-25"
+      }
+    },
+    {
+      "unidad": "ME-CF01",
+      "modelo": "CAT 950 GC",
+      "tipo": "Cargador Frontal",
+      "tipo_flota": "pesado",
+      "peso_ton": 18,
+      "capacidad": "3.3 m³",
+      "anio": 2023,
+      "placa": "ME-138-P",
+      "estado": "idle",
+      "conductor": "Juan Pablo Ortega",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "Cert. Operador Volquete",
+        "Cert. Operador Grúa",
+        "Licencia Federal Tipo E"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Méx-Toluca",
+      "destino": "Frente Tren Interurbano Méx-Toluca",
+      "frente_obra": "Frente Tren Interurbano Méx-Toluca",
+      "horometro_hrs": 11949,
+      "horas_hoy": 0,
+      "combustible_pct": 74,
+      "consumo_lph": 29.5,
+      "consumo_estandar_lph": 30.1,
+      "idle_pct": 23.8,
+      "salud_motor_pct": 47,
+      "salud_hidraulicos_pct": 88,
+      "salud_general_pct": 61,
+      "inclinacion_grados": 0,
+      "tpms_psi": 102,
+      "temperatura_motor_c": 97,
+      "ubicacion": {
+        "lat": 20.7035,
+        "lng": -88.4915
+      },
+      "alertas": [],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": true
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 468,
+        "ultimo_servicio": "2026-02-02",
+        "tipo_proximo": "Inspección mayor"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-06-10"
+      }
+    },
+    {
+      "unidad": "ME-CF02",
+      "modelo": "Komatsu WA380",
+      "tipo": "Cargador Frontal",
+      "tipo_flota": "pesado",
+      "peso_ton": 20,
+      "capacidad": "3.8 m³",
+      "anio": 2021,
+      "placa": "ME-886-P",
+      "estado": "en_sitio",
+      "conductor": "Héctor Martínez Duarte",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "Cert. Operador Volquete",
+        "Cert. Operador Excavadora",
+        "Licencia Federal Tipo E"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": "Frente Ampliación Puerto Veracruz",
+      "frente_obra": "Frente Ampliación Puerto Veracruz",
+      "horometro_hrs": 7415,
+      "horas_hoy": 4.3,
+      "combustible_pct": 58,
+      "consumo_lph": 23.3,
+      "consumo_estandar_lph": 20.8,
+      "idle_pct": 33.7,
+      "salud_motor_pct": 47,
+      "salud_hidraulicos_pct": 55,
+      "salud_general_pct": 77,
+      "inclinacion_grados": 22.9,
+      "tpms_psi": 77,
+      "temperatura_motor_c": 100,
+      "ubicacion": {
+        "lat": 19.2957,
+        "lng": -98.8661
+      },
+      "alertas": [
+        "Ralentí excesivo: 33.7% del turno",
+        "Inclinación 22.9° — riesgo volcadura"
+      ],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": false
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 381,
+        "ultimo_servicio": "2026-02-01",
+        "tipo_proximo": "Inspección mayor"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-10-05"
+      }
+    },
+    {
+      "unidad": "ME-CF03",
+      "modelo": "Volvo L120H",
+      "tipo": "Cargador Frontal",
+      "tipo_flota": "pesado",
+      "peso_ton": 19,
+      "capacidad": "3.5 m³",
+      "anio": 2022,
+      "placa": "ME-345-P",
+      "estado": "en_taller",
+      "conductor": "Guillermo Reyes Acosta",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "Cert. Operador Grúa",
+        "Licencia Federal Tipo E",
+        "Cert. Operador Excavadora"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base MTY-Saltillo",
+      "destino": "Frente Autopista MTY-Saltillo",
+      "frente_obra": "Frente Autopista MTY-Saltillo",
+      "horometro_hrs": 8804,
+      "horas_hoy": 0,
+      "combustible_pct": 84,
+      "consumo_lph": 18.8,
+      "consumo_estandar_lph": 30.8,
+      "idle_pct": 0,
+      "salud_motor_pct": 74,
+      "salud_hidraulicos_pct": 88,
+      "salud_general_pct": 73,
+      "inclinacion_grados": 0,
+      "tpms_psi": 95,
+      "temperatura_motor_c": 87,
+      "ubicacion": {
+        "lat": 21.2229,
+        "lng": -90.2741
+      },
+      "alertas": [],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": true
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 58,
+        "ultimo_servicio": "2026-02-18",
+        "tipo_proximo": "Inspección mayor"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-09-09"
+      }
+    },
+    {
+      "unidad": "ME-BD01",
+      "modelo": "CAT D6",
+      "tipo": "Bulldozer",
+      "tipo_flota": "pesado",
+      "peso_ton": 20,
+      "capacidad": "3.9 m³",
+      "anio": 2019,
+      "placa": "ME-765-P",
+      "estado": "en_sitio",
+      "conductor": "Roberto Salazar Núñez",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "Cert. Operador Volquete",
+        "Licencia Federal Tipo E",
+        "Cert. Operador Excavadora"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base MTY-Saltillo",
+      "destino": "Frente Autopista MTY-Saltillo",
+      "frente_obra": "Frente Autopista MTY-Saltillo",
+      "horometro_hrs": 4271,
+      "horas_hoy": 9.6,
+      "combustible_pct": 16,
+      "consumo_lph": 35.0,
+      "consumo_estandar_lph": 23.6,
+      "idle_pct": 22.8,
+      "salud_motor_pct": 43,
+      "salud_hidraulicos_pct": 59,
+      "salud_general_pct": 81,
+      "inclinacion_grados": 4.5,
+      "tpms_psi": 102,
+      "temperatura_motor_c": 101,
+      "ubicacion": {
+        "lat": 21.1553,
+        "lng": -88.446
+      },
+      "alertas": [
+        "Temperatura motor alta: 101°C"
+      ],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": true
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 454,
+        "ultimo_servicio": "2026-01-18",
+        "tipo_proximo": "Engrase general"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-08-28"
+      }
+    },
+    {
+      "unidad": "ME-BD02",
+      "modelo": "Komatsu D65EX",
+      "tipo": "Bulldozer",
+      "tipo_flota": "pesado",
+      "peso_ton": 21,
+      "capacidad": "4.2 m³",
+      "anio": 2022,
+      "placa": "ME-752-P",
+      "estado": "en_taller",
+      "conductor": "David Moreno Estrada",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "Licencia Federal Tipo E",
+        "NOM-006-STPS",
+        "Cert. Operador Volquete"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": "Frente Nuevo Aeropuerto Tulum",
+      "frente_obra": "Frente Nuevo Aeropuerto Tulum",
+      "horometro_hrs": 8139,
+      "horas_hoy": 0,
+      "combustible_pct": 89,
+      "consumo_lph": 26.4,
+      "consumo_estandar_lph": 22.4,
+      "idle_pct": 0,
+      "salud_motor_pct": 66,
+      "salud_hidraulicos_pct": 54,
+      "salud_general_pct": 69,
+      "inclinacion_grados": 0,
+      "tpms_psi": 70,
+      "temperatura_motor_c": 86,
+      "ubicacion": {
+        "lat": 21.3761,
+        "lng": -89.9212
+      },
+      "alertas": [],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": true
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 457,
+        "ultimo_servicio": "2026-01-21",
+        "tipo_proximo": "Hidráulicos"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-06-10"
+      }
+    },
+    {
+      "unidad": "ME-GR01",
+      "modelo": "Liebherr LTM 1100",
+      "tipo": "Grúa Móvil",
+      "tipo_flota": "pesado",
+      "peso_ton": 60,
+      "capacidad": "100 ton",
+      "anio": 2019,
+      "placa": "ME-646-P",
+      "estado": "en_sitio",
+      "conductor": "Javier Ruiz Palacios",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "Licencia Federal Tipo E",
+        "Cert. Operador Volquete"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base MTY-Saltillo",
+      "destino": "Frente Autopista MTY-Saltillo",
+      "frente_obra": "Frente Autopista MTY-Saltillo",
+      "horometro_hrs": 10957,
+      "horas_hoy": 7.8,
+      "combustible_pct": 88,
+      "consumo_lph": 19.2,
+      "consumo_estandar_lph": 25.9,
+      "idle_pct": 9.1,
+      "salud_motor_pct": 74,
+      "salud_hidraulicos_pct": 78,
+      "salud_general_pct": 89,
+      "inclinacion_grados": 2.5,
+      "tpms_psi": 111,
+      "temperatura_motor_c": 98,
+      "ubicacion": {
+        "lat": 20.6544,
+        "lng": -87.9529
+      },
+      "alertas": [],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": true
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 122,
+        "ultimo_servicio": "2026-02-11",
+        "tipo_proximo": "Engrase general"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-08-02"
+      }
+    },
+    {
+      "unidad": "ME-GR02",
+      "modelo": "Tadano GR-1000XL",
+      "tipo": "Grúa Móvil",
+      "tipo_flota": "pesado",
+      "peso_ton": 55,
+      "capacidad": "100 ton",
+      "anio": 2020,
+      "placa": "ME-266-P",
+      "estado": "en_taller",
+      "conductor": "Fernando Domínguez Castro",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "Cert. Operador Volquete",
+        "Licencia Federal Tipo E",
+        "Cert. Operador Grúa"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Veracruz",
+      "destino": "Frente Ampliación Puerto Veracruz",
+      "frente_obra": "Frente Ampliación Puerto Veracruz",
+      "horometro_hrs": 11711,
+      "horas_hoy": 0,
+      "combustible_pct": 32,
+      "consumo_lph": 44.3,
+      "consumo_estandar_lph": 22.8,
+      "idle_pct": 0,
+      "salud_motor_pct": 87,
+      "salud_hidraulicos_pct": 85,
+      "salud_general_pct": 38,
+      "inclinacion_grados": 0,
+      "tpms_psi": 108,
+      "temperatura_motor_c": 96,
+      "ubicacion": {
+        "lat": 20.6195,
+        "lng": -88.2902
+      },
+      "alertas": [],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": false
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 137,
+        "ultimo_servicio": "2026-01-06",
+        "tipo_proximo": "Engrase general"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-10-05"
+      }
+    },
+    {
+      "unidad": "ME-MC01",
+      "modelo": "CAT 140 GC",
+      "tipo": "Motoconformadora",
+      "tipo_flota": "pesado",
+      "peso_ton": 16,
+      "capacidad": "3.7m cuchilla",
+      "anio": 2019,
+      "placa": "ME-962-P",
+      "estado": "en_sitio",
+      "conductor": "Óscar Navarro Peña",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "Cert. Operador Excavadora",
+        "Cert. Operador Volquete",
+        "Cert. Operador Grúa"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": "Frente Nuevo Aeropuerto Tulum",
+      "frente_obra": "Frente Nuevo Aeropuerto Tulum",
+      "horometro_hrs": 2465,
+      "horas_hoy": 9.1,
+      "combustible_pct": 42,
+      "consumo_lph": 32.4,
+      "consumo_estandar_lph": 29.0,
+      "idle_pct": 20.4,
+      "salud_motor_pct": 55,
+      "salud_hidraulicos_pct": 53,
+      "salud_general_pct": 44,
+      "inclinacion_grados": 17.6,
+      "tpms_psi": 90,
+      "temperatura_motor_c": 103,
+      "ubicacion": {
+        "lat": 20.2114,
+        "lng": -89.1383
+      },
+      "alertas": [
+        "Temperatura motor alta: 103°C"
+      ],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": true
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 184,
+        "ultimo_servicio": "2026-02-21",
+        "tipo_proximo": "Aceite + filtros"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-08-16"
+      }
+    },
+    {
+      "unidad": "ME-MC02",
+      "modelo": "John Deere 672G",
+      "tipo": "Motoconformadora",
+      "tipo_flota": "pesado",
+      "peso_ton": 18,
+      "capacidad": "4.3m cuchilla",
+      "anio": 2023,
+      "placa": "ME-352-P",
+      "estado": "no_ubicable",
+      "conductor": "Luis Enrique Aguilar",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "NOM-006-STPS",
+        "Cert. Operador Volquete",
+        "Cert. Operador Excavadora"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Méx-Toluca",
+      "destino": "Frente Tren Interurbano Méx-Toluca",
+      "frente_obra": "Frente Tren Interurbano Méx-Toluca",
+      "horometro_hrs": 3981,
+      "horas_hoy": 0,
+      "combustible_pct": 23,
+      "consumo_lph": 39.0,
+      "consumo_estandar_lph": 21.3,
+      "idle_pct": 0,
+      "salud_motor_pct": 71,
+      "salud_hidraulicos_pct": 94,
+      "salud_general_pct": 57,
+      "inclinacion_grados": 0,
+      "tpms_psi": 86,
+      "temperatura_motor_c": 92,
+      "ubicacion": {
+        "lat": 20.8832,
+        "lng": -97.5614
+      },
+      "alertas": [],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": true
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 309,
+        "ultimo_servicio": "2026-02-11",
+        "tipo_proximo": "Inspección mayor"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-09-11"
+      }
+    },
+    {
+      "unidad": "ME-RC01",
+      "modelo": "CAT CS56B",
+      "tipo": "Rodillo Compactador",
+      "tipo_flota": "pesado",
+      "peso_ton": 12,
+      "capacidad": "2.1m tambor",
+      "anio": 2022,
+      "placa": "ME-325-P",
+      "estado": "en_transito",
+      "conductor": "Arturo Espinosa León",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "Cert. Operador Volquete",
+        "NOM-006-STPS",
+        "Licencia Federal Tipo E"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base Tulum",
+      "destino": "Frente Nuevo Aeropuerto Tulum",
+      "frente_obra": "Frente Nuevo Aeropuerto Tulum",
+      "horometro_hrs": 5219,
+      "horas_hoy": 0,
+      "combustible_pct": 63,
+      "consumo_lph": 23.7,
+      "consumo_estandar_lph": 26.6,
+      "idle_pct": 0,
+      "salud_motor_pct": 76,
+      "salud_hidraulicos_pct": 87,
+      "salud_general_pct": 85,
+      "inclinacion_grados": 0,
+      "tpms_psi": 78,
+      "temperatura_motor_c": 100,
+      "ubicacion": {
+        "lat": 20.0782,
+        "lng": -96.2233
+      },
+      "alertas": [],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": true
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 186,
+        "ultimo_servicio": "2026-02-09",
+        "tipo_proximo": "Hidráulicos"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-10-21"
+      }
+    },
+    {
+      "unidad": "ME-RC02",
+      "modelo": "BOMAG BW213D",
+      "tipo": "Rodillo Compactador",
+      "tipo_flota": "pesado",
+      "peso_ton": 13,
+      "capacidad": "2.1m tambor",
+      "anio": 2020,
+      "placa": "ME-674-P",
+      "estado": "en_taller",
+      "conductor": "Manuel Córdoba Ríos",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "Cert. Operador Volquete",
+        "Licencia Federal Tipo E"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base MTY-Saltillo",
+      "destino": "Frente Autopista MTY-Saltillo",
+      "frente_obra": "Frente Autopista MTY-Saltillo",
+      "horometro_hrs": 5838,
+      "horas_hoy": 0,
+      "combustible_pct": 88,
+      "consumo_lph": 30.4,
+      "consumo_estandar_lph": 26.0,
+      "idle_pct": 0,
+      "salud_motor_pct": 41,
+      "salud_hidraulicos_pct": 80,
+      "salud_general_pct": 83,
+      "inclinacion_grados": 0,
+      "tpms_psi": 91,
+      "temperatura_motor_c": 85,
+      "ubicacion": {
+        "lat": 20.6853,
+        "lng": -96.1211
+      },
+      "alertas": [],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": false
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 314,
+        "ultimo_servicio": "2026-01-14",
+        "tipo_proximo": "Engrase general"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-11-11"
+      }
+    },
+    {
+      "unidad": "ME-PF01",
+      "modelo": "Atlas Copco D65",
+      "tipo": "Perforadora",
+      "tipo_flota": "pesado",
+      "peso_ton": 22,
+      "capacidad": "65mm",
+      "anio": 2020,
+      "placa": "ME-442-P",
+      "estado": "en_sitio",
+      "conductor": "Ignacio Fuentes Valdez",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "NOM-006-STPS",
+        "Licencia Federal Tipo E",
+        "Cert. Operador Grúa"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base 5",
+      "destino": "Frente Tren Maya Tramo 5",
+      "frente_obra": "Frente Tren Maya Tramo 5",
+      "horometro_hrs": 8549,
+      "horas_hoy": 7.8,
+      "combustible_pct": 16,
+      "consumo_lph": 19.0,
+      "consumo_estandar_lph": 23.3,
+      "idle_pct": 5.3,
+      "salud_motor_pct": 47,
+      "salud_hidraulicos_pct": 87,
+      "salud_general_pct": 92,
+      "inclinacion_grados": 17.5,
+      "tpms_psi": 87,
+      "temperatura_motor_c": 92,
+      "ubicacion": {
+        "lat": 19.8165,
+        "lng": -90.363
+      },
+      "alertas": [],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": false
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 191,
+        "ultimo_servicio": "2026-02-03",
+        "tipo_proximo": "Hidráulicos"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-10-25"
+      }
+    },
+    {
+      "unidad": "ME-PA01",
+      "modelo": "Wirtgen SP 15i",
+      "tipo": "Pavimentadora",
+      "tipo_flota": "pesado",
+      "peso_ton": 19,
+      "capacidad": "600 ton/h",
+      "anio": 2023,
+      "placa": "ME-789-P",
+      "estado": "en_sitio",
+      "conductor": "Jorge Medina Contreras",
+      "rol": "Operador de Maquinaria",
+      "certificaciones": [
+        "Cert. Operador Volquete",
+        "Cert. Operador Excavadora"
+      ],
+      "cliente": "Mota-Engil México",
+      "origen": "Base 5",
+      "destino": "Frente Tren Maya Tramo 5",
+      "frente_obra": "Frente Tren Maya Tramo 5",
+      "horometro_hrs": 3566,
+      "horas_hoy": 3.2,
+      "combustible_pct": 87,
+      "consumo_lph": 29.3,
+      "consumo_estandar_lph": 27.8,
+      "idle_pct": 34.2,
+      "salud_motor_pct": 77,
+      "salud_hidraulicos_pct": 80,
+      "salud_general_pct": 46,
+      "inclinacion_grados": 11.6,
+      "tpms_psi": 76,
+      "temperatura_motor_c": 105,
+      "ubicacion": {
+        "lat": 19.0708,
+        "lng": -88.2926
+      },
+      "alertas": [
+        "Ralentí excesivo: 34.2% del turno",
+        "Temperatura motor alta: 105°C"
+      ],
+      "gps": {
+        "activo": true
+      },
+      "dashcam": {
+        "activa": true
+      },
+      "mantenimiento": {
+        "proximo_servicio_hrs": 331,
+        "ultimo_servicio": "2026-01-16",
+        "tipo_proximo": "Engrase general"
+      },
+      "seguro": {
+        "vigente": true,
+        "vence": "2026-08-12"
       }
     }
   ]

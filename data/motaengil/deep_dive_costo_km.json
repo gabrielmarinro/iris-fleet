@@ -1,64 +1,424 @@
 {
-  "kpi": "costo_km",
-  "titulo": "Costo/Km — Flota Ligera",
+  "kpi": "costo_por_km",
+  "valor_actual": 4.2,
+  "meta": 3.85,
+  "benchmark_industria": 3.85,
+  "unidad_moneda": "MXN",
+  "gap_pct": 9.1,
   "total_unidades": 120,
-  "costo_km_actual": 4.2,
-  "costo_km_benchmark": 3.8,
-  "exceso_pct": 10.5,
-  "unidades_criticas": [
-    {
-      "unidad": "ME-H019",
-      "modelo": "Hilux 2019",
-      "costo_km_actual": 6.2,
-      "benchmark": 3.8,
-      "causa_detalle": "Correctivos excesivos. 245K km.",
-      "exceso_mensual": 48000,
-      "recomendacion": "REEMPLAZAR"
-    },
-    {
-      "unidad": "ME-F017",
-      "modelo": "Frontier 2020",
-      "costo_km_actual": 5.8,
-      "benchmark": 3.8,
-      "causa_detalle": "Ruta 65% terracería. Rendimiento 6.2 vs 10.5 km/L en pavimento.",
-      "exceso_mensual": 38000,
-      "recomendacion": "REASIGNAR RUTA"
-    },
-    {
-      "unidad": "ME-H041",
-      "modelo": "Hilux 2022",
-      "costo_km_actual": 5.4,
-      "benchmark": 3.8,
-      "causa_detalle": "Conductor con 18 eventos manejo agresivo/semana.",
-      "exceso_mensual": 32000,
-      "recomendacion": "CAPACITACIÓN"
-    }
-  ],
-  "resumen_financiero": {
-    "exceso_total_mensual": 154000,
-    "ahorro_potencial_mensual": 118000
-  },
-  "iris_narrativa": {
-    "hallazgo_principal": "Costo/km de $4.20 está 10.5% sobre benchmark de $3.80. Solo 3 unidades generan el 76% del problema."
-  },
+  "flota_km_mes": 850000,
+  "gasto_total_mes": 1115500,
   "historico": {
     "diario": [
       {
-        "fecha": "2026-02-01",
-        "valor": 4.05
+        "fecha": "2026-02-04",
+        "costo": 3.97
+      },
+      {
+        "fecha": "2026-02-05",
+        "costo": 3.99
+      },
+      {
+        "fecha": "2026-02-06",
+        "costo": 4.14
+      },
+      {
+        "fecha": "2026-02-07",
+        "costo": 4.01
+      },
+      {
+        "fecha": "2026-02-08",
+        "costo": 4.37
+      },
+      {
+        "fecha": "2026-02-09",
+        "costo": 3.98
+      },
+      {
+        "fecha": "2026-02-10",
+        "costo": 4.21
+      },
+      {
+        "fecha": "2026-02-11",
+        "costo": 4.12
+      },
+      {
+        "fecha": "2026-02-12",
+        "costo": 4.36
+      },
+      {
+        "fecha": "2026-02-13",
+        "costo": 4.05
+      },
+      {
+        "fecha": "2026-02-14",
+        "costo": 4.13
       },
       {
         "fecha": "2026-02-15",
-        "valor": 4.22
+        "costo": 4.13
+      },
+      {
+        "fecha": "2026-02-16",
+        "costo": 4.1
+      },
+      {
+        "fecha": "2026-02-17",
+        "costo": 3.99
+      },
+      {
+        "fecha": "2026-02-18",
+        "costo": 4.19
+      },
+      {
+        "fecha": "2026-02-19",
+        "costo": 4.03
+      },
+      {
+        "fecha": "2026-02-20",
+        "costo": 4.27
+      },
+      {
+        "fecha": "2026-02-21",
+        "costo": 4.03
+      },
+      {
+        "fecha": "2026-02-22",
+        "costo": 4.15
+      },
+      {
+        "fecha": "2026-02-23",
+        "costo": 4.21
+      },
+      {
+        "fecha": "2026-02-24",
+        "costo": 4.42
+      },
+      {
+        "fecha": "2026-02-25",
+        "costo": 4.05
+      },
+      {
+        "fecha": "2026-02-26",
+        "costo": 4.08
+      },
+      {
+        "fecha": "2026-02-27",
+        "costo": 4.37
+      },
+      {
+        "fecha": "2026-02-28",
+        "costo": 4.03
       },
       {
         "fecha": "2026-03-01",
-        "valor": 4.19
+        "costo": 4.44
       },
       {
-        "fecha": "2026-03-10",
-        "valor": 4.2
+        "fecha": "2026-03-02",
+        "costo": 4.29
+      },
+      {
+        "fecha": "2026-03-03",
+        "costo": 4.15
+      },
+      {
+        "fecha": "2026-03-04",
+        "costo": 4.41
+      },
+      {
+        "fecha": "2026-03-05",
+        "costo": 4.38
+      },
+      {
+        "fecha": "2026-03-06",
+        "costo": 4.2
+      }
+    ],
+    "semanal": [
+      {
+        "semana": "Sem 1",
+        "fecha_inicio": "2026-02-04",
+        "costo": 4.1
+      },
+      {
+        "semana": "Sem 2",
+        "fecha_inicio": "2026-02-11",
+        "costo": 4.13
+      },
+      {
+        "semana": "Sem 3",
+        "fecha_inicio": "2026-02-18",
+        "costo": 4.19
+      },
+      {
+        "semana": "Sem 4",
+        "fecha_inicio": "2026-02-25",
+        "costo": 4.2
+      },
+      {
+        "semana": "Sem 5",
+        "fecha_inicio": "2026-03-04",
+        "costo": 4.33
+      }
+    ],
+    "mensual": [
+      {
+        "mes": "Febrero",
+        "costo": 4.15
+      },
+      {
+        "mes": "Marzo",
+        "costo": 4.2
       }
     ]
+  },
+  "descomposicion_costo": {
+    "total_exceso_mensual": 145500,
+    "categorias": [
+      {
+        "label": "Diesel",
+        "icono": "⛽",
+        "monto": 68000,
+        "pct_del_exceso": 46.7,
+        "benchmark": "$1.05/km",
+        "actual": "$1.21/km",
+        "color": "#f59e0b",
+        "severidad": "ALTA"
+      },
+      {
+        "label": "Correctivos no programados",
+        "icono": "🔧",
+        "monto": 42000,
+        "pct_del_exceso": 28.9,
+        "benchmark": "$0.35/km",
+        "actual": "$0.44/km",
+        "color": "#ef4444",
+        "severidad": "CRÍTICA"
+      },
+      {
+        "label": "Llantas",
+        "icono": "🛞",
+        "monto": 22500,
+        "pct_del_exceso": 15.5,
+        "benchmark": "$0.28/km",
+        "actual": "$0.33/km",
+        "color": "#8b5cf6",
+        "severidad": "MEDIA"
+      },
+      {
+        "label": "Casetas + peajes",
+        "icono": "🛣️",
+        "monto": 13000,
+        "pct_del_exceso": 8.9,
+        "benchmark": "$0.32/km",
+        "actual": "$0.32/km",
+        "color": "#3b82f6",
+        "severidad": "NORMAL"
+      }
+    ]
+  },
+  "unidades_anomalas": [
+    {
+      "unidad": "EXT-4501",
+      "modelo": "Kenworth T680 2022",
+      "ruta_principal": "CDMX → Guadalajara (Mil Cumbres)",
+      "costo_km_actual": 3.15,
+      "costo_km_benchmark": 2.0,
+      "exceso_pct": 57.5,
+      "km_mes": 12400,
+      "gasto_total_mes": 39060,
+      "causa_raiz": "consumo_diesel",
+      "causa_detalle": "Rendimiento de 2.8 km/L vs estándar de 3.6 km/L para este modelo. Inyectores con 18.4% de desviación vs parámetros de fábrica. Ruta Mil Cumbres tiene 2,400m de desnivel acumulado — pero otras unidades en la misma ruta logran 3.3 km/L. La diferencia: EXT-4501 no tuvo afinación programada en enero (se pospuso por falta de disponibilidad taller QRO).",
+      "correlaciones": [
+        {
+          "fuente": "Telemetría ECU",
+          "dato": "Inyector cilindro 3 con 18.4% sobredosificación"
+        },
+        {
+          "fuente": "SAP PM",
+          "dato": "Afinación preventiva pospuesta 45 días (OT-2026-0089)"
+        },
+        {
+          "fuente": "GPS Topología",
+          "dato": "Ruta con 2,400m desnivel — consumo esperado 3.3 km/L, real 2.8"
+        },
+        {
+          "fuente": "TMS",
+          "dato": "12 viajes en Feb, carga promedio 92% capacidad (normal)"
+        },
+        {
+          "fuente": "Benchmark flota",
+          "dato": "KW T680 similares en misma ruta: $2.45/km promedio"
+        }
+      ],
+      "impacto_financiero": {
+        "exceso_mensual": 14260,
+        "proyeccion_anual": 171120,
+        "desglose": {
+          "diesel_exceso": 9800,
+          "correctivo_evitable": 3200,
+          "desgaste_acelerado": 1260
+        }
+      }
+    },
+    {
+      "unidad": "EXT-3207",
+      "modelo": "Freightliner Cascadia 2021",
+      "ruta_principal": "Monterrey → Tampico",
+      "costo_km_actual": 2.85,
+      "costo_km_benchmark": 2.0,
+      "exceso_pct": 42.5,
+      "km_mes": 10800,
+      "gasto_total_mes": 30780,
+      "causa_raiz": "correctivos_frecuentes",
+      "causa_detalle": "3 correctivos en 60 días: embrague ($18K), frenos ($12K), turbo ($8K). El embrague se reemplazó hace 6 meses — falla prematura indica problema en estilo de conducción. Operador asignado tiene 23% más eventos de frenado brusco que promedio flota según telemetría.",
+      "correlaciones": [
+        {
+          "fuente": "SAP PM",
+          "dato": "3 OTs correctivas en 60 días — OT-2026-0112, 0134, 0158"
+        },
+        {
+          "fuente": "Telemetría",
+          "dato": "Operador con 23% más frenados bruscos vs promedio"
+        },
+        {
+          "fuente": "GPS Eventos",
+          "dato": "47 eventos de aceleración agresiva en Feb (promedio flota: 12)"
+        },
+        {
+          "fuente": "Inventario taller",
+          "dato": "Embrague reemplazado ago-2025, falló en 6 meses (vida útil: 18m)"
+        },
+        {
+          "fuente": "Nómina/HR",
+          "dato": "Operador Ricardo Mendoza — 3 años antigüedad, sin capacitación eco-driving"
+        }
+      ],
+      "impacto_financiero": {
+        "exceso_mensual": 9180,
+        "proyeccion_anual": 110160,
+        "desglose": {
+          "correctivos_exceso": 6300,
+          "diesel_estilo_conduccion": 1800,
+          "desgaste_componentes": 1080
+        }
+      }
+    },
+    {
+      "unidad": "EXT-5890",
+      "modelo": "International LT625 2023",
+      "ruta_principal": "Guadalajara → Mazatlán (costera)",
+      "costo_km_actual": 2.72,
+      "costo_km_benchmark": 2.0,
+      "exceso_pct": 36.0,
+      "km_mes": 9200,
+      "gasto_total_mes": 25024,
+      "causa_raiz": "llantas_ruta",
+      "causa_detalle": "Ruta costera con tramos sin pavimentar (28km zona Concordia-Mazatlán). Desgaste de llantas 40% mayor al estándar. Se reventaron 2 llantas en Feb ($8,500 c/u). Además, la ruta alterna por autopista es 45km más larga pero $0.18/km más barata en TCO por menor desgaste.",
+      "correlaciones": [
+        {
+          "fuente": "Inventario llantas",
+          "dato": "2 reventones Feb, 4 en últimos 90 días (promedio flota: 0.5/trim)"
+        },
+        {
+          "fuente": "GPS Ruta",
+          "dato": "28km sin pavimentar en tramo Concordia — velocidad cae a 35km/h"
+        },
+        {
+          "fuente": "TMS Rutas alternas",
+          "dato": "Autopista Durango-Mazatlán: +45km, pero $0.18/km menos en TCO"
+        },
+        {
+          "fuente": "Mantenimiento",
+          "dato": "Alineación cada 15 días vs estándar 45 días por condición de ruta"
+        },
+        {
+          "fuente": "Proveedor llantas",
+          "dato": "Bridgestone R283: no recomendada para mixto, cambiar a R284 AT"
+        }
+      ],
+      "impacto_financiero": {
+        "exceso_mensual": 6624,
+        "proyeccion_anual": 79488,
+        "desglose": {
+          "llantas_exceso": 4200,
+          "alineacion_extra": 1200,
+          "diesel_ruta_lenta": 1224
+        }
+      }
+    }
+  ],
+  "resumen_financiero": {
+    "exceso_total_mensual": 297000,
+    "costo_por_hora_exceso": 412,
+    "proyeccion_anual_sin_accion": 3564000,
+    "ahorro_potencial_con_acciones": 2100000,
+    "proyeccion_30_dias_sin_accion": 175000,
+    "total_perdido_acumulado": 145500
+  },
+  "acciones": [
+    {
+      "prioridad": 1,
+      "tipo": "inmediata",
+      "unidad": "EXT-4501",
+      "accion": "Programar afinación + cambio inyector cil. 3",
+      "detalle": "La afinación pospuesta desde enero es la causa principal del sobreconsumo. Con inyector nuevo y afinación, el rendimiento debería volver a 3.3-3.5 km/L. Costo: $12K. ROI: se paga en 12 días.",
+      "ahorro_estimado": 9800,
+      "ahorro_unidad": "MXN/mes",
+      "responsable": "Jefe Taller QRO",
+      "contacto": "Ing. Ramírez x4521"
+    },
+    {
+      "prioridad": 2,
+      "tipo": "inmediata",
+      "unidad": "EXT-3207",
+      "accion": "Capacitación eco-driving + recalibrar telemetría de alertas",
+      "detalle": "El operador Ricardo Mendoza tiene 23% más frenados bruscos. Programa de 2 días de eco-driving reduce consumo 8-12% y alarga vida de embrague/frenos. Configurar alerta telemetría cuando exceda 15 eventos/día.",
+      "ahorro_estimado": 6300,
+      "ahorro_unidad": "MXN/mes",
+      "responsable": "Coordinador Operadores",
+      "contacto": "Lic. Vega x3102"
+    },
+    {
+      "prioridad": 3,
+      "tipo": "inmediata",
+      "unidad": "EXT-5890",
+      "accion": "Cambiar a ruta autopista Durango-Mazatlán + llantas AT",
+      "detalle": "Ruta alterna es 45km más larga pero elimina 28km sin pavimentar. TCO neto: $0.18/km menos. Además cambiar a llanta Bridgestone R284 AT ($2K más por llanta, pero vida útil 3x en mixto).",
+      "ahorro_estimado": 4200,
+      "ahorro_unidad": "MXN/mes",
+      "responsable": "Planeación de Rutas",
+      "contacto": "Ing. Salazar x2208"
+    },
+    {
+      "prioridad": 4,
+      "tipo": "escalamiento",
+      "unidad": "FLOTA",
+      "accion": "Renegociar tarifa diesel zona Pacífico",
+      "detalle": "Estamos pagando $24.80/L en estaciones zona Pacífico vs $23.50 promedio nacional. Volumen mensual justifica negociación directa con PEMEX/BP. Ahorro estimado: $0.03/km en toda la flota.",
+      "ahorro_estimado": 14550,
+      "ahorro_unidad": "MXN/mes",
+      "responsable": "Dirección Compras",
+      "contacto": null
+    },
+    {
+      "prioridad": 5,
+      "tipo": "preventiva",
+      "unidad": "SISTEMA",
+      "accion": "Implementar scoring de eficiencia por operador",
+      "detalle": "Crear dashboard Iris con score semanal de eficiencia por operador (km/L, eventos bruscos, cumplimiento ruta). Top 10% recibe bono. Bottom 10% entra a programa eco-driving. Empresas similares reportan 8-15% reducción de costo/km en 6 meses.",
+      "ahorro_estimado": 68000,
+      "ahorro_unidad": "MXN/mes (estimado a 6 meses)",
+      "responsable": "Gerencia Flota + RRHH",
+      "contacto": null
+    }
+  ],
+  "iris_narrativa": {
+    "hallazgo_principal": "8 unidades operan por encima de $5.50/km. Las rutas de terracería del Tren Maya y el combustible sin control son los principales drivers.",
+    "revelacion": "ME-H019 gasta $7.80/km — el doble del promedio. 3 ingresos a taller en 60 días + consumo de combustible 40% arriba. Esta unidad ya no es rentable.",
+    "impacto": "Si no actúas, son $1.75M al año tirados. Pero el 71.6% es recuperable con 5 acciones concretas. La más fácil: la afinación de EXT-4501 cuesta $12K y se paga en 12 días.",
+    "cierre": "Optimizando rutas de terracería y controlando combustible en 8 unidades críticas, puedes bajar a $3.95/km en 45 días.",
+    "apertura": "Tu flota gasta $4.20/km vs benchmark de $3.85/km. Eso es 9.1% de exceso — $297K mensuales que podrías ahorrar."
   }
 }
