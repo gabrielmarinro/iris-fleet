@@ -1,0 +1,1 @@
+{"eventos":[{"id":"EC-001","vehiculo":"VX-001","tipo":"distraccion","timestamp":"2026-03-14T06:32:00","descripcion":"Conductor mirando teléfono - duración 3s","severidad":"media","resuelto":false},{"id":"EC-002","vehiculo":"VX-003","tipo":"fatiga","timestamp":"2026-03-14T07:10:00","descripcion":"Detección microsueño - duración 2s","severidad":"alta","resuelto":false}]}

@@ -32,6 +32,7 @@ const GeoMapBackground = ({ lat, lng, radioMetros, zoneName, zoneType }) => {
   const mapRef = useRef(null);
   const mapInstanceRef = useRef(null);
   const [leafletReady, setLeafletReady] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
 
   // Esperar a que Leaflet cargue
   useEffect(() => {
@@ -212,44 +213,70 @@ const exportKpiPopupToTxt = (kpiData) => {
 
 function App() {
   const [selectedCompany, setSelectedCompany] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // ===== BIMBO: Estados para Reqs 1-5 (Mapeo rutas, Desvíos, NOM-087, Zonas seguras, Casetas) =====
   const [bimboRouteView, setBimboRouteView] = useState('primary'); // 'primary' | 'alternates'
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [bimboNom087Modal, setBimboNom087Modal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [bimboDesvioAlerts, setBimboDesvioAlerts] = useState([]);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [bimboCasetasSummaryOpen, setBimboCasetasSummaryOpen] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [bimboZonasSeguras, setBimboZonasSeguras] = useState(true); // show safe zones on map
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [bimboParadaProhibidaModal, setBimboParadaProhibidaModal] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [homeSectionPaused, setHomeSectionPaused] = useState(false); // Bimbo: pause carousel
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
 
   // === DATOS DINÁMICOS: Estados para JSONs de Bimbo ===
   const [jsonFlota, setJsonFlota] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonRutas, setJsonRutas] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonKpis, setJsonKpis] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonGeocercas, setJsonGeocercas] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonZonasSeguras, setJsonZonasSeguras] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonAlertas, setJsonAlertas] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonCasetas, setJsonCasetas] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonConductores, setJsonConductores] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonMantenimiento, setJsonMantenimiento] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonSaludVehicular, setJsonSaludVehicular] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonTelemetria, setJsonTelemetria] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonClima, setJsonClima] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonEventosCamaras, setJsonEventosCamaras] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonSeguridad, setJsonSeguridad] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonEventosCriticos, setJsonEventosCriticos] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonSupervisorOps, setJsonSupervisorOps] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonTorreControlKpis, setJsonTorreControlKpis] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonDataLoaded, setJsonDataLoaded] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // === FIN DATOS DINÁMICOS Estados ===
   // ===== FIN BIMBO Estados =====
 
   // === CARGA DINÁMICA: Fetch de JSONs cuando se selecciona Bimbo ===
   useEffect(() => {
-    if (selectedCompany !== 'bimbo' && selectedCompany !== 'motaengil') {
+    if (selectedCompany !== 'bimbo' && selectedCompany !== 'motaengil' && selectedCompany !== 'idealease') {
       setJsonDataLoaded(false);
       return;
     }
-    const basePath = './data/bimbo/';
+    const basePath = selectedCompany === 'idealease' ? './data/idealease/' : './data/bimbo/';
     const fetchAll = async () => {
       try {
         const [
@@ -765,33 +792,53 @@ function App() {
   };
   // === FIN ADAPTADORES ===
   const [userRole, setUserRole] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // ====== TORRE DE CONTROL 360° v3 — HOME STATES ======
   const [homeSection, setHomeSection] = React.useState(0);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [homeNarrIdx, setHomeNarrIdx] = React.useState(0);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [homeNarrText, setHomeNarrText] = React.useState('');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [homeNarrTyping, setHomeNarrTyping] = React.useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [homeClock, setHomeClock] = React.useState('');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [homeDate, setHomeDate] = React.useState('');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const homeAudioRef = React.useRef(null);
   const [liveFeedEvents, setLiveFeedEvents] = React.useState([]);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [dataFlowPulse, setDataFlowPulse] = React.useState({});
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [tracingKpi, setTracingKpi] = React.useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
 
 
   const [step, setStep] = useState(1);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showToast, setShowToast] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showRightPanel, setShowRightPanel] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [selectedZones, setSelectedZones] = useState([]);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showSuccess, setShowSuccess] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showChat, setShowChat] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [chatMessages, setChatMessages] = useState([
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
     { type: 'history', text: 'Sugerencia de Geocerca', time: 'hace 15 minutos' },
     { type: 'history', text: 'Sugerencia de nueva ruta', time: 'hace 30 minutos' },
     { type: 'history', text: 'Fallo de motor detectado', time: 'hace 45 minutos' },
   ]);
   const [userMessage, setUserMessage] = useState('');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [isAIThinking, setIsAIThinking] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [currentBackground, setCurrentBackground] = useState(BACKGROUNDS.initial);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const mindfulMessages = [
     { text: 'Todo está siendo monitoreado. Tú estás aquí para lo que importa.', sub: '— Iris Fleet' },
     { text: 'La calma no es ausencia de tormenta, sino paz en medio de ella.', sub: '' },
@@ -807,28 +854,47 @@ function App() {
     { text: 'El silencio aquí significa que todo va bien.', sub: '' },
   ];
   const [currentMessage, setCurrentMessage] = useState(0);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showCalmAnalyzing, setShowCalmAnalyzing] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [supSections, setSupSections] = useState({ team: false, health: false, patterns: false, narrative: false, maintenance: false, costs: false, compliance: false });
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // === TORRE DE CONTROL 360 — Estados adicionales ===
   const [torreTab, setTorreTab] = useState({ jefetaller: 'disponibilidad', gerente: 'costoKm', director: 'kpis' });
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [torreModal, setTorreModal] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // === DEEP DIVE — Estado para análisis narrativo por KPI ===
   const [deepDiveKpi, setDeepDiveKpi] = useState(null); // null | 'uptime' | 'costo_km' | 'mtbf' | etc.
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [deepDiveData, setDeepDiveData] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [deepDiveLayer, setDeepDiveLayer] = useState(0); // 0-4 = capas narrativas
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [deepDiveAnimPhase, setDeepDiveAnimPhase] = useState('entering'); // entering|active|zooming
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [deepDiveSliderMode, setDeepDiveSliderMode] = useState('diario'); // diario|semanal|mensual
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [deepDiveSliderIdx, setDeepDiveSliderIdx] = useState(0);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [deepDiveExpandedUnit, setDeepDiveExpandedUnit] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [deepDiveTaximeter, setDeepDiveTaximeter] = useState(0);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [deepDiveShowHistoric, setDeepDiveShowHistoric] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const deepDiveTaxiRef = useRef(null);
   const toggleSupSection = (key) => setSupSections(prev => ({ ...prev, [key]: !prev[key] }));
   const [patternSent, setPatternSent] = useState({});
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showConfigModal, setShowConfigModal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [configTab, setConfigTab] = useState('alertas');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [configToast, setConfigToast] = useState('');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [demoConfig, setDemoConfig] = useState({
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
     alertas_ejes: { seguridad: true, momento: true, dinero: true },
     alertas_umbral_critico: 85, alertas_umbral_alto: 70,
     alertas_escalar_p95: 5, alertas_escalar_p80: 15,
@@ -857,9 +923,13 @@ function App() {
     ],
   });
   const [supOpsDetail, setSupOpsDetail] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [geminiLoading, setGeminiLoading] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [geminiMessages, setGeminiMessages] = useState([]);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [geminiModalOpen, setGeminiModalOpen] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const geminiChatRef = React.useRef(null);
   const geminiInputRef = React.useRef(null);
 
@@ -868,47 +938,86 @@ function App() {
   const getTimeGreeting = () => { const h = new Date().getHours(); if (h >= 6 && h < 12) return 'Buenos días'; if (h >= 12 && h < 19) return 'Buenas tardes'; return 'Buenas noches'; };
   useEffect(() => { const interval = setInterval(() => { setCurrentMessage(prev => (prev + 1) % mindfulMessages.length); }, 20000); return () => clearInterval(interval); }, []);
   const [selectedZone, setSelectedZone] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [expandedReasoning, setExpandedReasoning] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showDetailModal, setShowDetailModal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [modalContent, setModalContent] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showCounterfactual, setShowCounterfactual] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [counterfactualZone, setCounterfactualZone] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showLearning, setShowLearning] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showEmergingPatterns, setShowEmergingPatterns] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [isLeftMenuHovered, setIsLeftMenuHovered] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showLeftMenu, setShowLeftMenu] = useState(false); // CAMBIO #8: Estado para mostrar menú expandido
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showAdminPanel, setShowAdminPanel] = useState(false); // Panel de Administración
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // === DATOS EDITABLES para Admin Panel (copias en memoria de los JSONs) ===
   const [adminConductores, setAdminConductores] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [adminVehiculos, setAdminVehiculos] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [adminRutas, setAdminRutas] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [adminZonasSeguras, setAdminZonasSeguras] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [adminAlertas, setAdminAlertas] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [adminEventosCamaras, setAdminEventosCamaras] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // === FIN DATOS EDITABLES ===
   const [showCriticalEventsModal, setShowCriticalEventsModal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
 
   const [showMaintenanceModal, setShowMaintenanceModal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showExcCameraModal, setShowExcCameraModal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showMaintenanceDetailModal, setShowMaintenanceDetailModal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [selectedMaintenance, setSelectedMaintenance] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [isMaintenanceFlowExecuting, setIsMaintenanceFlowExecuting] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [currentMaintenanceFlowSteps, setCurrentMaintenanceFlowSteps] = useState([]);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [maintenanceExecutionMode, setMaintenanceExecutionMode] = useState('automatic');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showKPIDrillDown, setShowKPIDrillDown] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [selectedKPI, setSelectedKPI] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [alertPhase, setAlertPhase] = useState(1);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [videoCamTab, setVideoCamTab] = useState('cabina');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [alertActionMode, setAlertActionMode] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [alertValidated, setAlertValidated] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [alertNotes, setAlertNotes] = useState('');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [alertResolving, setAlertResolving] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showEventDetailModal, setShowEventDetailModal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showEventReasoning, setShowEventReasoning] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [elapsedTime, setElapsedTime] = useState(0);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [executionMode, setExecutionMode] = useState('automatic');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [flowSteps, setFlowSteps] = useState([
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
     { id: 1, text: 'Obtener ubicación GPS', time: '2 seg', status: 'pending', details: ['Lat: 25.6866, Lon: -100.3161', 'Dirección: Av. Constitución #2400', 'Zona riesgo: 8/10'] },
     { id: 2, text: 'Identificar vehículo', time: '1 seg', status: 'pending', details: ['Unidad: MX-3012', 'Conductor: Roberto Silva', 'Carga: $780K'] },
     { id: 3, text: 'Notificar autoridades', time: '15 seg', status: 'pending', details: ['SSP + Guardia Nacional', 'Folio y ubicación', 'Plantilla predefinida'] },
@@ -918,29 +1027,50 @@ function App() {
     { id: 7, text: 'Estimar pérdida', time: '8 seg', status: 'pending', details: ['$1,070,000', 'Activar seguro', 'Notificar finanzas'] }
   ]);
   const [isFlowExecuting, setIsFlowExecuting] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [actionHistory, setActionHistory] = useState([]);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showFlowModal, setShowFlowModal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [toastNotification, setToastNotification] = useState({ show: false, message: '' });
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [expandedStep, setExpandedStep] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [waitingForApproval, setWaitingForApproval] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [currentApprovalStep, setCurrentApprovalStep] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [flowStartTime, setFlowStartTime] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [flowEndTime, setFlowEndTime] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // === AÑADIDO: Estado de viajes ===
   const [lockedClickLog, setLockedClickLog] = useState([]);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const trackLockedClick = (module, source) => { setLockedClickLog(prev => [...prev, { module, source, ts: new Date().toISOString(), user: userRole }]); };
   const [showTripStatusModal, setShowTripStatusModal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // Snapshot popup states
   const [activeSnapshot, setActiveSnapshot] = useState(null); // 'atencion_critica', 'mantenimiento', 'geocercas', 'control_viajes'
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [snapshotContext, setSnapshotContext] = useState(null); // which parent modal opened it
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [tripView, setTripView] = useState('drone');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [tripDrillDown, setTripDrillDown] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [tripFleetFilter, setTripFleetFilter] = useState('all');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [selectedVehicle, setSelectedVehicle] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [tripExceptionIdx, setTripExceptionIdx] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [tripExecMode, setTripExecMode] = useState('automatic');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [tripExecRunning, setTripExecRunning] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [tripExecDone, setTripExecDone] = useState({});
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // === FIN AÑADIDO ===
  // Estado para modal de eventos críticos
 
@@ -1951,7 +2081,7 @@ function App() {
     l.push(''); l.push('Evento: #1 — Robo en curso'); l.push('Unidad: MX-3012 (Kenworth T680 2023)'); l.push('Conductor: Roberto Silva (RS-4521)'); l.push('Ruta: MTY→GDL · Prioridad: 98/100'); l.push('');
     l.push('SEGURIDAD 95/100: Robo en curso. Desviación + detención zona riesgo 8/10. CAN BUS: movimiento no autorizado. Pérdida total: 87%.');
     l.push('MOMENTO 98/100: 03:45hrs zona industrial. 3 robos radio 2km últimos 60 días. Ventana crítica: 8 min.');
-    l.push('DINERO 92/100: Carga $780K. Liverpool Tier-1 ($12M anual). Pérdida total: $1,070,000.');
+    l.push('DINERO 92/100: Carga $780K. Cliente prioritario ($12M anual). Pérdida total: $1,070,000.');
     l.push(''); l.push('Generado: ' + new Date().toLocaleString('es-MX', { hour12: false })); return l.join('\n');
   };
   const exportRacionalTxt = (includeHistory) => {
@@ -1987,7 +2117,7 @@ function App() {
     setFlowSteps(prev => prev.map((step, idx) => 
       idx === stepIndex ? { ...step, status: 'completed' } : step
     ));
-    var sd = ['Paso 1 "GPS" ✓: Lat 25.6866, Lon -100.3161 · Zona riesgo 8/10','Paso 2 "Identificar" ✓: MX-3012 Kenworth T680 · Roberto Silva · Carga $780K','Paso 3 "Autoridades" ✓: SSP-NL Folio SSP-NL-2026-08412 · GN Folio GN-2026-MTY-3891 · ETA patrulla 22min','Paso 4 "Aseguradora" ✓: GNP Folio SIN-2026-00847 · Evidencia 2 videos+GPS+CAN · Ajustador Lic. F. Ríos','Paso 5 "Conductor" ✓: Sin respuesta 3 intentos · Radio sin respuesta · Escalado protocolo emergencia','Paso 6 "Manager" ✓: Liverpool Tier-1 · J. Pérez · Retraso 3h45min (ETA 14:30→18:15)','Paso 7 "Pérdida" ✓: Total $1,070,000 · Protocolo PROT-2026-00847 · Finanzas notificado'];
+    var sd = ['Paso 1 "GPS" ✓: Lat 25.6866, Lon -100.3161 · Zona riesgo 8/10','Paso 2 "Identificar" ✓: MX-3012 Kenworth T680 · Roberto Silva · Carga $780K','Paso 3 "Autoridades" ✓: SSP-NL Folio SSP-NL-2026-08412 · GN Folio GN-2026-MTY-3891 · ETA patrulla 22min','Paso 4 "Aseguradora" ✓: GNP Folio SIN-2026-00847 · Evidencia 2 videos+GPS+CAN · Ajustador Lic. F. Ríos','Paso 5 "Conductor" ✓: Sin respuesta 3 intentos · Radio sin respuesta · Escalado protocolo emergencia','Paso 6 "Manager" ✓: Cliente prioritario · J. Pérez · Retraso 3h45min (ETA 14:30→18:15)','Paso 7 "Pérdida" ✓: Total $1,070,000 · Protocolo PROT-2026-00847 · Finanzas notificado'];
     addToHistory(sd[stepIndex]);
   };
 
@@ -2863,6 +2993,7 @@ const MaintenanceListModal = ({ onClose }) => {
         const vMapRef = React.useRef(null);
         const vMapInstance = React.useRef(null);
         const [vMapReady, setVMapReady] = React.useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
         React.useEffect(() => {
           if (window.google && window.google.maps) { setVMapReady(true); return; }
           if (document.querySelector('script[src*="maps.googleapis"]')) {
@@ -3101,6 +3232,7 @@ const MaintenanceListModal = ({ onClose }) => {
                     const excMapRef = React.useRef(null);
                     const excMapInst = React.useRef(null);
                     const [excMapReady, setExcMapReady] = React.useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
                     React.useEffect(() => {
                       if (window.google && window.google.maps) { setExcMapReady(true); return; }
                       if (document.querySelector('script[src*="maps.googleapis"]')) {
@@ -3868,6 +4000,7 @@ const MaintenanceListModal = ({ onClose }) => {
                     const markersRef = React.useRef([]);
                     const infoRef = React.useRef(null);
                     const [mapReady, setMapReady] = React.useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
 
                     React.useEffect(() => {
                       if (window.google && window.google.maps) { setMapReady(true); return; }
@@ -8402,7 +8535,7 @@ const MaintenanceListModal = ({ onClose }) => {
           <motion.div className="bg-gradient-to-b from-blue-50 to-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-hidden border border-blue-200" initial={{ scale: 0.9, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.9, opacity: 0, y: 20 }} onClick={(e) => e.stopPropagation()}>
             <div className="bg-gradient-to-r from-red-700 to-red-900 p-6 text-white"><div className="flex items-center justify-between"><div className="flex items-center space-x-3"><div className="w-12 h-12 bg-white bg-opacity-15 rounded-full flex items-center justify-center"><AlertTriangle className="w-7 h-7" /></div><div><h3 className="text-2xl font-bold">Atención Crítica</h3><p className="text-sm text-blue-200">Eventos priorizados por Iris — {criticalEvents.length} requieren atención</p></div></div><button onClick={() => setShowCriticalEventsModal(false)} className="hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition"><X className="w-6 h-6" /></button></div></div>
             <div className="p-6 overflow-y-auto max-h-[calc(85vh-100px)]">
-              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-5 mb-6"><div className="flex items-start space-x-4"><div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0"><Brain className="w-5 h-5 text-blue-600" /></div><div className="flex-1"><p className="text-sm text-blue-900 font-semibold mb-2">🛡️ Iris analizó 847 eventos y determinó que solo 10 requieren atención directa.</p><p className="text-sm text-blue-700">Ordenados por impacto. Click en <strong>"Resolver"</strong> para ver pasos y racional.</p>{(() => {
+              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-5 mb-6"><div className="flex items-start space-x-4"><div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0"><Brain className="w-5 h-5 text-blue-600" /></div><div className="flex-1"><p className="text-sm text-blue-900 font-semibold mb-2">🛡️ Iris analizó {Cs.length} eventos y determinó que solo {criticalCount} requieren atención directa.</p><p className="text-sm text-blue-700">Ordenados por impacto. Click en <strong>"Resolver"</strong> para ver pasos y racional.</p>{(() => {
                       const totalAnalyzed = 130;
                       const criticos = criticalEvents.filter(e => e.severity === 'critico').length;
                       const moderados = criticalEvents.filter(e => e.severity === 'moderado').length;
@@ -8535,7 +8668,7 @@ const MaintenanceListModal = ({ onClose }) => {
                       </div>
                       <div className="bg-white rounded-lg p-3 border border-indigo-100">
                         <div className="flex items-center justify-between mb-1"><span className="font-bold text-sm text-gray-800">💰 Dinero</span><span className="font-black text-lg text-green-700">{Math.min(selectedEvent.priority - Math.floor(Math.random()*8),100)}/100</span></div>
-                        <p className="text-xs text-gray-600">{selectedEvent.priority>=90?'Carga $780K. Liverpool Tier-1 ($12M anual). Pérdida total: $1,070,000. Riesgo cancelación: MEDIO-ALTO.':selectedEvent.priority>=80?'Carga $350K. Cliente frecuente. Pérdida estimada: $520,000. Impacto SLA: ALTO.':'Carga $120K. Pérdida estimada: $185,000. Impacto operativo: MEDIO.'}</p>
+                        <p className="text-xs text-gray-600">{selectedEvent.priority>=90?'Carga $780K. Cliente prioritario ($12M anual). Pérdida total: $1,070,000. Riesgo cancelación: MEDIO-ALTO.':selectedEvent.priority>=80?'Carga $350K. Cliente frecuente. Pérdida estimada: $520,000. Impacto SLA: ALTO.':'Carga $120K. Pérdida estimada: $185,000. Impacto operativo: MEDIO.'}</p>
                       </div>
                     </div>
                   </div>
@@ -8762,7 +8895,7 @@ const MaintenanceListModal = ({ onClose }) => {
                     <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-5 border border-blue-200"><h4 className="text-base font-bold text-gray-800 mb-3">Tríada de Inteligencia — Prioridad 98/100</h4><div className="space-y-3">
                       <div className="bg-white rounded-lg p-4 border-l-4 border-red-400"><div className="flex justify-between mb-2"><span className="font-bold text-sm">🛡️ Seguridad</span><span className="text-red-600 font-bold">95/100</span></div><p className="text-xs text-gray-600">Robo en curso. Desviación + detención zona riesgo 8/10. CAN BUS: movimiento no autorizado. Pérdida total: 87%.</p></div>
                       <div className="bg-white rounded-lg p-4 border-l-4 border-orange-400"><div className="flex justify-between mb-2"><span className="font-bold text-sm">⏱️ Momento</span><span className="text-orange-600 font-bold">98/100</span></div><p className="text-xs text-gray-600">03:45hrs zona industrial. 3 robos radio 2km en 60 días. Sin policía en 15km. Ventana: 8 min.</p></div>
-                      <div className="bg-white rounded-lg p-4 border-l-4 border-green-400"><div className="flex justify-between mb-2"><span className="font-bold text-sm">💰 Dinero</span><span className="text-green-600 font-bold">92/100</span></div><p className="text-xs text-gray-600">Carga $780K. Liverpool Tier-1 ($12M anual). Pérdida total: $1,070,000. Riesgo cancelación: MEDIO-ALTO.</p></div>
+                      <div className="bg-white rounded-lg p-4 border-l-4 border-green-400"><div className="flex justify-between mb-2"><span className="font-bold text-sm">💰 Dinero</span><span className="text-green-600 font-bold">92/100</span></div><p className="text-xs text-gray-600">Carga $780K. Cliente prioritario ($12M anual). Pérdida total: $1,070,000. Riesgo cancelación: MEDIO-ALTO.</p></div>
                     </div></div>
                     <div className="bg-white rounded-xl p-5 border border-gray-200"><h4 className="text-base font-bold text-gray-800 mb-3">Evidencia</h4>{selectedEvent.tiene_video_real && <span className="inline-block mb-3 bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">🟢 Video real Lytx DriveCam</span>}<div className="space-y-4 mb-4"><div className="border rounded-lg overflow-hidden">{selectedEvent.video_cabina ? (<div><video controls playsInline preload="metadata" className="w-full object-contain bg-black rounded" style={{maxHeight:'65vh'}} src={selectedEvent.video_cabina} /><div className="flex"><a href={selectedEvent.video_cabina} download className="flex-1 bg-blue-600 text-white py-2 text-xs font-semibold text-center">⬇ Descargar Cabina</a></div></div>) : (<div><div className="bg-gray-800 h-32 flex items-center justify-center"><p className="text-sm text-white">📹 Video Interior Cabina</p></div><div className="flex"><button className="flex-1 bg-blue-600 text-white py-2 text-xs font-semibold">▶ Reproducir</button><button className="flex-1 bg-gray-200 text-gray-700 py-2 text-xs font-semibold">⬇ Descargar</button></div></div>)}</div><div className="border rounded-lg overflow-hidden">{selectedEvent.video_trafico ? (<div><video controls playsInline preload="metadata" className="w-full object-contain bg-black rounded" style={{maxHeight:'65vh'}} src={selectedEvent.video_trafico} /><div className="flex"><a href={selectedEvent.video_trafico} download className="flex-1 bg-blue-600 text-white py-2 text-xs font-semibold text-center">⬇ Descargar Tráfico</a></div></div>) : (<div><div className="bg-gray-800 h-32 flex items-center justify-center"><p className="text-sm text-white">📹 Video Exterior</p></div><div className="flex"><button className="flex-1 bg-blue-600 text-white py-2 text-xs font-semibold">▶ Reproducir</button><button className="flex-1 bg-gray-200 text-gray-700 py-2 text-xs font-semibold">⬇ Descargar</button></div></div>)}</div></div><div className="bg-blue-50 rounded-lg p-3 border border-blue-200"><p className="text-sm text-gray-700"><strong>GPS:</strong> {selectedEvent.lat||25.6866}, {selectedEvent.lng||-100.3161} · Av. Constitución #2400, Monterrey, N.L.</p></div></div>
                     <div className="bg-white rounded-xl p-5 border border-gray-200"><h4 className="text-base font-bold text-gray-800 mb-3">Impacto financiero</h4><div className="border rounded-lg overflow-hidden"><div className="divide-y divide-gray-100"><div className="flex justify-between px-4 py-2.5"><span className="text-sm text-gray-700">Valor de carga</span><span className="font-semibold">$780,000</span></div><div className="flex justify-between px-4 py-2.5"><span className="text-sm text-gray-700">Multa SLA</span><span className="font-semibold">$150,000</span></div><div className="flex justify-between px-4 py-2.5"><span className="text-sm text-gray-700">Deducible seguro</span><span className="font-semibold">$95,000</span></div><div className="flex justify-between px-4 py-2.5"><span className="text-sm text-gray-700">Costo operativo</span><span className="font-semibold">$45,000</span></div></div><div className="bg-blue-50 px-4 py-3 flex justify-between"><span className="font-bold text-blue-800">TOTAL</span><span className="font-black text-blue-800 text-xl">$1,070,000</span></div></div></div>
@@ -9070,7 +9203,7 @@ const MaintenanceListModal = ({ onClose }) => {
           </button>
           <AnimatePresence>{supSections.narrative && (<motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden"><div className="px-5 pb-5">
                 <div className="bg-white bg-opacity-5 rounded-xl p-5 border border-white border-opacity-10 mb-4"><p className="text-sm text-blue-100 leading-relaxed"><strong className="text-white">Semana 6:</strong> Flota con <strong className="text-green-300">94.2% disponibilidad</strong>. 847 eventos — <strong className="text-blue-300">Iris resolvió 789</strong> (93.2%). Equipo atendió 58 en <strong className="text-white">73 seg</strong> (meta: 90 seg ✓).</p><p className="text-sm text-blue-100 leading-relaxed mt-3"><strong className="text-amber-300">Patrón:</strong> Ruta MTY→GDL tiene robos nocturnos. Acción inmediata recomendada.</p><p className="text-sm text-blue-100 leading-relaxed mt-3"><strong className="text-green-300">Impacto evitado: $4.2M MXN.</strong> Costo Iris: $38K. ROI: 110x.</p></div>
-                <div className="grid grid-cols-5 gap-3 mb-4"><div className="bg-white bg-opacity-5 rounded-lg p-3 text-center"><p className="text-xs text-blue-300">Eventos</p><p className="text-lg font-bold text-white">847</p></div><div className="bg-white bg-opacity-5 rounded-lg p-3 text-center"><p className="text-xs text-blue-300">Por Iris</p><p className="text-lg font-bold text-blue-300">789</p></div><div className="bg-white bg-opacity-5 rounded-lg p-3 text-center"><p className="text-xs text-blue-300">Equipo</p><p className="text-lg font-bold text-white">58</p></div><div className="bg-white bg-opacity-5 rounded-lg p-3 text-center"><p className="text-xs text-blue-300">Promedio</p><p className="text-lg font-bold text-green-300">73s ✓</p></div><div className="bg-green-500 bg-opacity-10 rounded-lg p-3 text-center border border-green-500 border-opacity-20"><p className="text-xs text-green-300">Evitado</p><p className="text-lg font-bold text-green-300">$4.2M</p></div></div>
+                <div className="grid grid-cols-5 gap-3 mb-4"><div className="bg-white bg-opacity-5 rounded-lg p-3 text-center"><p className="text-xs text-blue-300">Eventos</p><p className="text-lg font-bold text-white">{Cs.length}</p></div><div className="bg-white bg-opacity-5 rounded-lg p-3 text-center"><p className="text-xs text-blue-300">Por Iris</p><p className="text-lg font-bold text-blue-300">789</p></div><div className="bg-white bg-opacity-5 rounded-lg p-3 text-center"><p className="text-xs text-blue-300">Equipo</p><p className="text-lg font-bold text-white">58</p></div><div className="bg-white bg-opacity-5 rounded-lg p-3 text-center"><p className="text-xs text-blue-300">Promedio</p><p className="text-lg font-bold text-green-300">73s ✓</p></div><div className="bg-green-500 bg-opacity-10 rounded-lg p-3 text-center border border-green-500 border-opacity-20"><p className="text-xs text-green-300">Evitado</p><p className="text-lg font-bold text-green-300">$4.2M</p></div></div>
                 <button className="w-full bg-blue-500 bg-opacity-20 text-blue-300 py-3 rounded-lg text-sm font-semibold hover:bg-opacity-30 transition border border-blue-500 border-opacity-20">📄 Exportar reporte semanal</button>
               </div></motion.div>)}</AnimatePresence>
         </motion.div>

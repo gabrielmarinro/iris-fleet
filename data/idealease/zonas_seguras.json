@@ -1,0 +1,1 @@
+{"zonas":[{"id":"ZS-001","nombre":"Estación de Servicio PEMEX Ags Norte","lat":21.9100,"lng":-102.3200,"tipo":"combustible","horario":"24hrs"},{"id":"ZS-002","nombre":"Área de Descanso Carretera 45","lat":21.5000,"lng":-101.9500,"tipo":"descanso","horario":"24hrs"},{"id":"ZS-003","nombre":"Terminal León","lat":21.1700,"lng":-101.7000,"tipo":"terminal","horario":"06:00-22:00"}]}

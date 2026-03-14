@@ -1,0 +1,1 @@
+{"rutas":[{"ruta_id":"R-001","condiciones":"Despejado","temperatura_c":24,"viento_kmh":12,"visibilidad_km":15,"riesgo":"bajo","alertas_clima":[]},{"ruta_id":"R-002","condiciones":"Parcialmente nublado","temperatura_c":21,"viento_kmh":18,"visibilidad_km":12,"riesgo":"bajo","alertas_clima":[]}]}

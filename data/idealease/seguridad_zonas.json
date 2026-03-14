@@ -1,0 +1,1 @@
+{"zonas_riesgo":[{"id":"ZR-001","nombre":"Libramiento Silao","nivel_riesgo":"medio","tipo":"huachicol","lat":20.9500,"lng":-101.7000,"radio_km":15,"recomendacion":"Convoy recomendado - no detenerse"},{"id":"ZR-002","nombre":"Tramo Ags-León km 80-120","nivel_riesgo":"bajo","tipo":"robo_carretera","lat":21.3000,"lng":-101.9000,"radio_km":20,"recomendacion":"Precaución nocturna"}]}
