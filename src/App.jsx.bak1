@@ -32,7 +32,6 @@ const GeoMapBackground = ({ lat, lng, radioMetros, zoneName, zoneType }) => {
   const mapRef = useRef(null);
   const mapInstanceRef = useRef(null);
   const [leafletReady, setLeafletReady] = useState(false);
-  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
 
   // Esperar a que Leaflet cargue
   useEffect(() => {
@@ -246,11 +245,11 @@ function App() {
 
   // === CARGA DINÁMICA: Fetch de JSONs cuando se selecciona Bimbo ===
   useEffect(() => {
-    if (selectedCompany !== 'bimbo' && selectedCompany !== 'motaengil' && selectedCompany !== 'idealease') {
+    if (selectedCompany !== 'bimbo' && selectedCompany !== 'motaengil') {
       setJsonDataLoaded(false);
       return;
     }
-    const basePath = selectedCompany === 'idealease' ? './data/idealease/' : './data/bimbo/';
+    const basePath = './data/bimbo/';
     const fetchAll = async () => {
       try {
         const [

@@ -213,44 +213,70 @@ const exportKpiPopupToTxt = (kpiData) => {
 
 function App() {
   const [selectedCompany, setSelectedCompany] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // ===== BIMBO: Estados para Reqs 1-5 (Mapeo rutas, Desvíos, NOM-087, Zonas seguras, Casetas) =====
   const [bimboRouteView, setBimboRouteView] = useState('primary'); // 'primary' | 'alternates'
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [bimboNom087Modal, setBimboNom087Modal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [bimboDesvioAlerts, setBimboDesvioAlerts] = useState([]);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [bimboCasetasSummaryOpen, setBimboCasetasSummaryOpen] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [bimboZonasSeguras, setBimboZonasSeguras] = useState(true); // show safe zones on map
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [bimboParadaProhibidaModal, setBimboParadaProhibidaModal] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [homeSectionPaused, setHomeSectionPaused] = useState(false); // Bimbo: pause carousel
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
 
   // === DATOS DINÁMICOS: Estados para JSONs de Bimbo ===
   const [jsonFlota, setJsonFlota] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonRutas, setJsonRutas] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonKpis, setJsonKpis] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonGeocercas, setJsonGeocercas] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonZonasSeguras, setJsonZonasSeguras] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonAlertas, setJsonAlertas] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonCasetas, setJsonCasetas] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonConductores, setJsonConductores] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonMantenimiento, setJsonMantenimiento] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonSaludVehicular, setJsonSaludVehicular] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonTelemetria, setJsonTelemetria] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonClima, setJsonClima] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonEventosCamaras, setJsonEventosCamaras] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonSeguridad, setJsonSeguridad] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonEventosCriticos, setJsonEventosCriticos] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonSupervisorOps, setJsonSupervisorOps] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonTorreControlKpis, setJsonTorreControlKpis] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [jsonDataLoaded, setJsonDataLoaded] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // === FIN DATOS DINÁMICOS Estados ===
   // ===== FIN BIMBO Estados =====
 
   // === CARGA DINÁMICA: Fetch de JSONs cuando se selecciona Bimbo ===
   useEffect(() => {
-    if (selectedCompany !== 'bimbo' && selectedCompany !== 'motaengil' && selectedCompany !== 'idealease') {
+    if (selectedCompany !== 'bimbo' && selectedCompany !== 'motaengil') {
       setJsonDataLoaded(false);
       return;
     }
-    const basePath = selectedCompany === 'idealease' ? './data/idealease/' : './data/bimbo/';
+    const basePath = './data/bimbo/';
     const fetchAll = async () => {
       try {
         const [
@@ -766,33 +792,53 @@ function App() {
   };
   // === FIN ADAPTADORES ===
   const [userRole, setUserRole] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // ====== TORRE DE CONTROL 360° v3 — HOME STATES ======
   const [homeSection, setHomeSection] = React.useState(0);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [homeNarrIdx, setHomeNarrIdx] = React.useState(0);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [homeNarrText, setHomeNarrText] = React.useState('');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [homeNarrTyping, setHomeNarrTyping] = React.useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [homeClock, setHomeClock] = React.useState('');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [homeDate, setHomeDate] = React.useState('');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const homeAudioRef = React.useRef(null);
   const [liveFeedEvents, setLiveFeedEvents] = React.useState([]);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [dataFlowPulse, setDataFlowPulse] = React.useState({});
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [tracingKpi, setTracingKpi] = React.useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
 
 
   const [step, setStep] = useState(1);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showToast, setShowToast] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showRightPanel, setShowRightPanel] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [selectedZones, setSelectedZones] = useState([]);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showSuccess, setShowSuccess] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showChat, setShowChat] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [chatMessages, setChatMessages] = useState([
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
     { type: 'history', text: 'Sugerencia de Geocerca', time: 'hace 15 minutos' },
     { type: 'history', text: 'Sugerencia de nueva ruta', time: 'hace 30 minutos' },
     { type: 'history', text: 'Fallo de motor detectado', time: 'hace 45 minutos' },
   ]);
   const [userMessage, setUserMessage] = useState('');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [isAIThinking, setIsAIThinking] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [currentBackground, setCurrentBackground] = useState(BACKGROUNDS.initial);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const mindfulMessages = [
     { text: 'Todo está siendo monitoreado. Tú estás aquí para lo que importa.', sub: '— Iris Fleet' },
     { text: 'La calma no es ausencia de tormenta, sino paz en medio de ella.', sub: '' },
@@ -808,28 +854,47 @@ function App() {
     { text: 'El silencio aquí significa que todo va bien.', sub: '' },
   ];
   const [currentMessage, setCurrentMessage] = useState(0);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showCalmAnalyzing, setShowCalmAnalyzing] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [supSections, setSupSections] = useState({ team: false, health: false, patterns: false, narrative: false, maintenance: false, costs: false, compliance: false });
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // === TORRE DE CONTROL 360 — Estados adicionales ===
   const [torreTab, setTorreTab] = useState({ jefetaller: 'disponibilidad', gerente: 'costoKm', director: 'kpis' });
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [torreModal, setTorreModal] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // === DEEP DIVE — Estado para análisis narrativo por KPI ===
   const [deepDiveKpi, setDeepDiveKpi] = useState(null); // null | 'uptime' | 'costo_km' | 'mtbf' | etc.
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [deepDiveData, setDeepDiveData] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [deepDiveLayer, setDeepDiveLayer] = useState(0); // 0-4 = capas narrativas
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [deepDiveAnimPhase, setDeepDiveAnimPhase] = useState('entering'); // entering|active|zooming
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [deepDiveSliderMode, setDeepDiveSliderMode] = useState('diario'); // diario|semanal|mensual
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [deepDiveSliderIdx, setDeepDiveSliderIdx] = useState(0);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [deepDiveExpandedUnit, setDeepDiveExpandedUnit] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [deepDiveTaximeter, setDeepDiveTaximeter] = useState(0);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [deepDiveShowHistoric, setDeepDiveShowHistoric] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const deepDiveTaxiRef = useRef(null);
   const toggleSupSection = (key) => setSupSections(prev => ({ ...prev, [key]: !prev[key] }));
   const [patternSent, setPatternSent] = useState({});
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showConfigModal, setShowConfigModal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [configTab, setConfigTab] = useState('alertas');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [configToast, setConfigToast] = useState('');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [demoConfig, setDemoConfig] = useState({
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
     alertas_ejes: { seguridad: true, momento: true, dinero: true },
     alertas_umbral_critico: 85, alertas_umbral_alto: 70,
     alertas_escalar_p95: 5, alertas_escalar_p80: 15,
@@ -858,9 +923,13 @@ function App() {
     ],
   });
   const [supOpsDetail, setSupOpsDetail] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [geminiLoading, setGeminiLoading] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [geminiMessages, setGeminiMessages] = useState([]);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [geminiModalOpen, setGeminiModalOpen] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const geminiChatRef = React.useRef(null);
   const geminiInputRef = React.useRef(null);
 
@@ -869,47 +938,86 @@ function App() {
   const getTimeGreeting = () => { const h = new Date().getHours(); if (h >= 6 && h < 12) return 'Buenos días'; if (h >= 12 && h < 19) return 'Buenas tardes'; return 'Buenas noches'; };
   useEffect(() => { const interval = setInterval(() => { setCurrentMessage(prev => (prev + 1) % mindfulMessages.length); }, 20000); return () => clearInterval(interval); }, []);
   const [selectedZone, setSelectedZone] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [expandedReasoning, setExpandedReasoning] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showDetailModal, setShowDetailModal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [modalContent, setModalContent] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showCounterfactual, setShowCounterfactual] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [counterfactualZone, setCounterfactualZone] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showLearning, setShowLearning] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showEmergingPatterns, setShowEmergingPatterns] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [isLeftMenuHovered, setIsLeftMenuHovered] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showLeftMenu, setShowLeftMenu] = useState(false); // CAMBIO #8: Estado para mostrar menú expandido
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showAdminPanel, setShowAdminPanel] = useState(false); // Panel de Administración
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // === DATOS EDITABLES para Admin Panel (copias en memoria de los JSONs) ===
   const [adminConductores, setAdminConductores] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [adminVehiculos, setAdminVehiculos] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [adminRutas, setAdminRutas] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [adminZonasSeguras, setAdminZonasSeguras] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [adminAlertas, setAdminAlertas] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [adminEventosCamaras, setAdminEventosCamaras] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // === FIN DATOS EDITABLES ===
   const [showCriticalEventsModal, setShowCriticalEventsModal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
 
   const [showMaintenanceModal, setShowMaintenanceModal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showExcCameraModal, setShowExcCameraModal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showMaintenanceDetailModal, setShowMaintenanceDetailModal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [selectedMaintenance, setSelectedMaintenance] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [isMaintenanceFlowExecuting, setIsMaintenanceFlowExecuting] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [currentMaintenanceFlowSteps, setCurrentMaintenanceFlowSteps] = useState([]);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [maintenanceExecutionMode, setMaintenanceExecutionMode] = useState('automatic');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showKPIDrillDown, setShowKPIDrillDown] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [selectedKPI, setSelectedKPI] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [alertPhase, setAlertPhase] = useState(1);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [videoCamTab, setVideoCamTab] = useState('cabina');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [alertActionMode, setAlertActionMode] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [alertValidated, setAlertValidated] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [alertNotes, setAlertNotes] = useState('');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [alertResolving, setAlertResolving] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showEventDetailModal, setShowEventDetailModal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showEventReasoning, setShowEventReasoning] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [elapsedTime, setElapsedTime] = useState(0);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [executionMode, setExecutionMode] = useState('automatic');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [flowSteps, setFlowSteps] = useState([
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
     { id: 1, text: 'Obtener ubicación GPS', time: '2 seg', status: 'pending', details: ['Lat: 25.6866, Lon: -100.3161', 'Dirección: Av. Constitución #2400', 'Zona riesgo: 8/10'] },
     { id: 2, text: 'Identificar vehículo', time: '1 seg', status: 'pending', details: ['Unidad: MX-3012', 'Conductor: Roberto Silva', 'Carga: $780K'] },
     { id: 3, text: 'Notificar autoridades', time: '15 seg', status: 'pending', details: ['SSP + Guardia Nacional', 'Folio y ubicación', 'Plantilla predefinida'] },
@@ -919,29 +1027,50 @@ function App() {
     { id: 7, text: 'Estimar pérdida', time: '8 seg', status: 'pending', details: ['$1,070,000', 'Activar seguro', 'Notificar finanzas'] }
   ]);
   const [isFlowExecuting, setIsFlowExecuting] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [actionHistory, setActionHistory] = useState([]);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [showFlowModal, setShowFlowModal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [toastNotification, setToastNotification] = useState({ show: false, message: '' });
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [expandedStep, setExpandedStep] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [waitingForApproval, setWaitingForApproval] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [currentApprovalStep, setCurrentApprovalStep] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [flowStartTime, setFlowStartTime] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [flowEndTime, setFlowEndTime] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // === AÑADIDO: Estado de viajes ===
   const [lockedClickLog, setLockedClickLog] = useState([]);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const trackLockedClick = (module, source) => { setLockedClickLog(prev => [...prev, { module, source, ts: new Date().toISOString(), user: userRole }]); };
   const [showTripStatusModal, setShowTripStatusModal] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // Snapshot popup states
   const [activeSnapshot, setActiveSnapshot] = useState(null); // 'atencion_critica', 'mantenimiento', 'geocercas', 'control_viajes'
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [snapshotContext, setSnapshotContext] = useState(null); // which parent modal opened it
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [tripView, setTripView] = useState('drone');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [tripDrillDown, setTripDrillDown] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [tripFleetFilter, setTripFleetFilter] = useState('all');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [selectedVehicle, setSelectedVehicle] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [tripExceptionIdx, setTripExceptionIdx] = useState(null);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [tripExecMode, setTripExecMode] = useState('automatic');
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [tripExecRunning, setTripExecRunning] = useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   const [tripExecDone, setTripExecDone] = useState({});
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
   // === FIN AÑADIDO ===
  // Estado para modal de eventos críticos
 
@@ -2864,6 +2993,7 @@ const MaintenanceListModal = ({ onClose }) => {
         const vMapRef = React.useRef(null);
         const vMapInstance = React.useRef(null);
         const [vMapReady, setVMapReady] = React.useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
         React.useEffect(() => {
           if (window.google && window.google.maps) { setVMapReady(true); return; }
           if (document.querySelector('script[src*="maps.googleapis"]')) {
@@ -3102,6 +3232,7 @@ const MaintenanceListModal = ({ onClose }) => {
                     const excMapRef = React.useRef(null);
                     const excMapInst = React.useRef(null);
                     const [excMapReady, setExcMapReady] = React.useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
                     React.useEffect(() => {
                       if (window.google && window.google.maps) { setExcMapReady(true); return; }
                       if (document.querySelector('script[src*="maps.googleapis"]')) {
@@ -3869,6 +4000,7 @@ const MaintenanceListModal = ({ onClose }) => {
                     const markersRef = React.useRef([]);
                     const infoRef = React.useRef(null);
                     const [mapReady, setMapReady] = React.useState(false);
+  const [fleetTypeFilter, setFleetTypeFilter] = useState("todos"); // ligeros, pesados, todos
 
                     React.useEffect(() => {
                       if (window.google && window.google.maps) { setMapReady(true); return; }
